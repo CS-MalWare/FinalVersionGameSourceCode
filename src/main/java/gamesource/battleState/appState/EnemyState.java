@@ -674,7 +674,18 @@ public class EnemyState extends BaseAppState {
         this.initializeHints();
         this.inputManager.addRawInputListener(myRawInputListener);
         // 在启动背景的时候吧这个特效加载背景节点上去
-        this.rootNode.attachChild(KingSkeletonStateParticle.getParticle1(app.getAssetManager()));
+        if(this.enemies.size() == 1){//boss 只有一个
+            switch (this.enemies.get(0).getSrc()){
+                case "Enemies/skeleton/KingSkeleton/KingSkeleton0.j3o":
+                    this.rootNode.attachChild(KingSkeletonStateParticle.getParticle1(app.getAssetManager()));
+                    break;
+                case "Enemies/zhenwang/boss0.j3o":
+                    this.rootNode.attachChild(StuxnetStateParticle.getParticle1(app.getAssetManager()));
+                    break;
+                case "Enemies/bossKnight/scene0.j3o":
+                    break;
+            }
+        }
         app.getRootNode().attachChild(this.rootNode);
 
     }
