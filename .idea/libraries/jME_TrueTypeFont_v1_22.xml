@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jME-TrueTypeFont-v1.22">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/jME-TrueTypeFont-v1.22.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

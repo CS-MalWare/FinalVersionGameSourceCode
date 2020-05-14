@@ -17,7 +17,7 @@ public class BattleBackGroundState extends BaseAppState {
     private SimpleApplication app;
     private Node rootNode = new Node("Map");
 
-    private static String backgroundSrc="Map/tree.obj";
+    private static String backgroundSrc="Map/second.j3o";
 
     protected void initialize(Application application) {
         this.app = (SimpleApplication) getApplication();
@@ -58,8 +58,6 @@ public class BattleBackGroundState extends BaseAppState {
 
     @Override
     protected void onEnable() {
-        // 在启动背景的时候吧这个特效加载背景节点上去
-        this.rootNode.attachChild(KingSkeletonStateParticle.getParticle1(app.getAssetManager()));
         app.getRootNode().attachChild(this.rootNode);
     }
 

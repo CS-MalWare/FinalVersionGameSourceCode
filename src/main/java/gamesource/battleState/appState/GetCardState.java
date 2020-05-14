@@ -1,7 +1,10 @@
 package gamesource.battleState.appState;
 
 import com.jme3.font.Rectangle;
+import com.jme3.material.Material;
+import com.jme3.material.RenderState;
 import com.jme3.post.FilterPostProcessor;
+import com.jme3.scene.shape.Quad;
 import com.jme3.ui.Picture;
 import gamesource.battleState.battle.Battle;
 import gamesource.battleState.card.Card;
@@ -92,17 +95,17 @@ public class GetCardState extends BaseAppState {
         goldCount.setLocalTranslation(-0.5f, 4f, 0);
         rootNode.attachChild(goldCount);
 
-        //         如果想要黑色背景,就取消这段注释
-//        Material mat = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-//        mat.setColor("Color", new ColorRGBA(0f, 0f, 0f, 0.1f));// 镜面反射时，高光的颜色。
-//        // 应用材质。
-//        Geometry geom = new Geometry("选卡界面", new Quad(1600, 900));
-//        geom.setMaterial(mat);
-//
-//        // 使物体看起来透明
-//        mat.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
-//        geom.setQueueBucket(RenderQueue.Bucket.Transparent);
-//        geom.center();
+              //   如果想要黑色背景,就取消这段注释
+        Material mat = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+        mat.setColor("Color", new ColorRGBA(0f, 0f, 0f, 0.1f));// 镜面反射时，高光的颜色。
+        // 应用材质。
+        Geometry geom = new Geometry("选卡界面", new Quad(1600, 900));
+        geom.setMaterial(mat);
+
+        // 使物体看起来透明
+        mat.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
+        geom.setQueueBucket(RenderQueue.Bucket.Transparent);
+        geom.center();
 
         // 跳过按钮
         Picture skip = new Picture("跳过");
@@ -139,7 +142,7 @@ public class GetCardState extends BaseAppState {
 
         rootNode.attachChild(word);
 
-//        rootNode.attachChild(geom);
+        rootNode.attachChild(geom);
 
 
     }
@@ -382,7 +385,8 @@ public class GetCardState extends BaseAppState {
         stateManager.detach(stateManager.getState(EnemyState.class));
         stateManager.detach(stateManager.getState(HandCardsState.class));
         stateManager.detach(stateManager.getState(DecksState.class));
-        stateManager.getState(LeadingActorState.class).end();
+        stateManager.detach(stateManager.getState(LeadingActorState.class));
+        stateManager.detach(stateManager.getState(BattleBackGroundState.class));
         app.getRootNode().attachChild(this.rootNode);
         app.getInputManager().addRawInputListener(mril);
         FilterPostProcessor fpp = stateManager.getState(BattleState.class).getFpp();
