@@ -86,7 +86,8 @@ public class Battle extends BaseAppState {
         }
 
 
-
+        app.getCamera().setLocation(new Vector3f(0,0,10.3f));
+        app.getCamera().lookAtDirection(new Vector3f(0,0,-1),new Vector3f(0,1,0));
 
         MainRole mainRole = MainRole.getInstance();
         mainRole.bindApp(app);

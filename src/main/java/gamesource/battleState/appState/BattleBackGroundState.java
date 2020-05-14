@@ -29,7 +29,7 @@ public class BattleBackGroundState extends BaseAppState {
         model1.move(2, (float) 4, -3);
         model1.rotate(0, 0f, 0);
 
-        model1.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
+//        model1.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
 
       /*  DirectionalLight sun = new DirectionalLight();
         sun.setDirection(new Vector3f(2, 1, -3));
