@@ -303,6 +303,7 @@ public class SecondState  extends BaseAppState {
 
     @Override
     protected void onEnable() {
+        System.out.println("second enable");
         inputManager.addMapping(talk,TALK);
         inputManager.addMapping(change,CHANGECAMERA);
         inputManager.addMapping(bag,BAG);
@@ -324,7 +325,7 @@ public class SecondState  extends BaseAppState {
         inputManager.deleteTrigger(bag, BAG);
         inputManager.deleteTrigger(move,MOVE);
         for (BaseAppState baseAppState : states) {
-            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
+            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)&& !(baseAppState instanceof MajorActor)&& !(baseAppState instanceof InputAppState)) {
                 baseAppState.setEnabled(false);
                 //state.detach(baseAppState);
             }

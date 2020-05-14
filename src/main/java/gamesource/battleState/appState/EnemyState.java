@@ -31,6 +31,7 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Quad;
 import gamesource.battleState.particle.DamageParticle;
+import gamesource.battleState.particle.KingSkeletonStateParticle;
 import gamesource.battleState.particle.StuxnetStateParticle;
 
 import java.util.ArrayList;
@@ -672,6 +673,8 @@ public class EnemyState extends BaseAppState {
         this.initEnemies();
         this.initializeHints();
         this.inputManager.addRawInputListener(myRawInputListener);
+        // 在启动背景的时候吧这个特效加载背景节点上去
+        this.rootNode.attachChild(KingSkeletonStateParticle.getParticle1(app.getAssetManager()));
         app.getRootNode().attachChild(this.rootNode);
 
     }
