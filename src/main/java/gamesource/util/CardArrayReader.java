@@ -39,11 +39,21 @@ public class CardArrayReader {
         return cardUI;
     }
 
-    public static Card findCardByUI(CardUI cardUI){
+    public Card findCardByUI(CardUI cardUI){
         Card card = cards.get(0);
         for(int i=0; i<cardUIs.length; i++){
             if(cardUIs[i] == cardUI){
                 card = cards.get(i);
+            }
+        }
+        return card;
+    }
+
+    public static Card findCardByCardUIs(Card[] cardsExtern, CardUI[] cardUIsExtern, CardUI cardUI){
+        Card card = cardsExtern[0];
+        for(int i=0; i<cardUIsExtern.length; i++){
+            if(cardUI.equals(cardUIsExtern[i].getButton())){
+                card = cardsExtern[i];
             }
         }
         return card;

@@ -35,6 +35,7 @@ public class FormattedTextForShop extends BaseAppState{
         numberOfBuy = number;
         this.cost = cost;
         this.totalMoney = totalMoney;
+        this.cardUI = cardUI;
     }
 
     @Override
@@ -94,7 +95,7 @@ public class FormattedTextForShop extends BaseAppState{
     @Override
     public void update(float tpf){
         if(reference.update()){
-            int numberOfBuy = Integer.parseInt(reference.get().getText());
+            numberOfBuy = Integer.parseInt(reference.get().getText());
             restNumber.setText("Rest Number: " + (10 - numberOfBuy) + "/10");
             totalCost.setText("Total Cost: " + numberOfBuy * cost);
         }

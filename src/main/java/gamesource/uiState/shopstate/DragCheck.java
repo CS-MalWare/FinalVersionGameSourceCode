@@ -59,7 +59,8 @@ public class DragCheck extends BaseAppState{
     protected void Confirm(){
         totalMoney = totalMoney - totalCost;
         for(int i=0; i<numberOfBuy; i++){
-            MainRole.getInstance().getDeck_().add(CardArrayReader.findCardByUI(cardUI));
+            MainRole.getInstance().getDeck_().add(CardArrayReader
+                .findCardByCardUIs(ShopAppState.getShopCard(), ShopAppState.getShopCardUIs(), cardUI));
         }
         getState(TabTextForShop.class).getStateManager().detach(DragCheck.this);
     }
