@@ -186,16 +186,19 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         leftPart.addChild(new Label("Shop", new ElementId("header"), "glass"));
         leftPart.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass")).setUserData(LayerComparator.LAYER, 2);
 
+        Button general = new Button("General");
         Button caster = new Button("Caster");
         Button neutral = new Button("Neutral");
         Button backToStart = new Button("Back");
         //Button saber = new Button("Saber");
 
+        leftPart.addChild(general);
         leftPart.addChild(caster);
         leftPart.addChild(neutral);
         leftPart.addChild(backToStart);
         //leftPart.addChild(saber);
 
+        general.addClickCommands(new ShowGeneral());
         caster.addClickCommands(new ShowCaster());
         neutral.addClickCommands(new ShowNeutral());
         backToStart.addClickCommands(new BackToStart());
@@ -208,6 +211,26 @@ public class ShopAppState extends BaseAppState implements ActionListener{
                 showCards(centralPart);
                 showCardsType();
                 isMapPressed = true;
+            }
+        }
+    }
+
+    private class ShowGeneral implements Command<Button>{
+        public void execute(Button button){
+            centralPart.detachAllChildren();
+            pagesContainer.detachAllChildren();
+            cardUIs = cardUIsCopy;
+            int pageNumber = cardUIs.length % 12;
+
+            for(int i=0; i<12; i++){
+                int j = i % 4;
+                int z = (i-j) / 4;
+                cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+            }
+
+            for(int i=1; i <= pageNumber; i++){
+                Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                pageButton.addClickCommands(new PageButtonClick());
             }
         }
     }
@@ -235,20 +258,20 @@ public class ShopAppState extends BaseAppState implements ActionListener{
 
     private class BackToStart implements Command<Button>{
         public void execute(Button button){
-            centralPart.detachAllChildren();
-            pagesContainer.detachAllChildren();
-            cardUIs = cardUIsCopy;
+            leftPart.detachAllChildren();
+            SpringGridLayout leftLayOut = new SpringGridLayout(Axis.Y, Axis.X, FillMode.None, FillMode.None);
+            leftPart.setLayout(leftLayOut);
+        
+            leftPart.setBackground(new QuadBackgroundComponent(new ColorRGBA(0, 0.5f, 0.5f, 0.5f), 5, 5, 0.02f, false));
+            leftPart.addChild(new Label("Shop", new ElementId("header"), "glass"), 0, 0);
+            leftPart.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass"), 1, 0).setUserData(LayerComparator.LAYER, 2);
+        
+            Button cards = new Button("Cards");
+            Button equipments = new Button("Equipments");
+            leftPart.addChild(cards, 2, 0);
+            leftPart.addChild(equipments, 3, 0);
 
-            for(int i=0; i<12; i++){
-                int j = i % 4;
-                int z = (i - j) / 4;
-                cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
-            }
-
-            for(int i=1; i<=2; i++){
-                Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
-                pageButton.addClickCommands(new PageButtonClick());
-            }
+            cards.addClickCommands(new CardsDirectoryClick());
         }
     }
 
