@@ -255,6 +255,8 @@ public class SecondState  extends BaseAppState {
                 inputManager.deleteTrigger(bag, BAG);
                 inputManager.deleteTrigger(move,MOVE);
                 state.attach(new Battle(states));
+                cam.setLocation(new Vector3f(0,0,10.3f));
+                cam.lookAtDirection(new Vector3f(0,0,-1),new Vector3f(0,1,0));
             }
         }
     }
