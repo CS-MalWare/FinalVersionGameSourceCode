@@ -25,6 +25,7 @@ import gamesource.State.CharacterState.secondWorldCharacter.goblinGirlState;
 import gamesource.State.CharacterState.secondWorldCharacter.shanmanState;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.mapState.secondWorldMap;
+import gamesource.battleState.character.MainRole;
 
 public class BattleState extends BaseAppState {
 
@@ -134,6 +135,7 @@ public class BattleState extends BaseAppState {
         stateManager.detach(stateManager.getState(LeadingActorState.class));
         stateManager.detach(stateManager.getState(BattleBackGroundState.class));
         stateManager.detach(stateManager.getState(LightState.class));
+        MainRole.getInstance().endBattle();
     }
 
     @Override
