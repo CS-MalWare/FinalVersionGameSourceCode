@@ -7,6 +7,11 @@ import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
+import com.jme3.post.FilterPostProcessor;
+import com.jme3.post.filters.ColorOverlayFilter;
+import com.jme3.post.filters.DepthOfFieldFilter;
+import com.jme3.post.filters.FogFilter;
+import com.jme3.post.ssao.SSAOFilter;
 import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
@@ -18,6 +23,8 @@ public class BattleBackGroundState extends BaseAppState {
     private Node rootNode = new Node("Map");
 
     private static String backgroundSrc="Map/second.j3o";
+
+    private FilterPostProcessor fpp;
 
     protected void initialize(Application application) {
         this.app = (SimpleApplication) getApplication();
@@ -44,7 +51,49 @@ public class BattleBackGroundState extends BaseAppState {
         // #3 将模型和光源添加到场景图中
         rootNode.addLight(sun);
         rootNode.addLight(ambient);*/
+        fpp = new FilterPostProcessor(app.getAssetManager());
+        initFpp();
+
         rootNode.attachChild(model1);
+    }
+
+    public void initFpp(){
+        // 初始化滤镜处理器
+        switch (backgroundSrc){
+            case "Map/second.j3o":
+                fpp = new FilterPostProcessor(app.getAssetManager());
+                app.getViewPort().addProcessor(fpp);
+
+                // 添加雾化滤镜
+                FogFilter fogFilter = new FogFilter(ColorRGBA.Red, 0.5f, 500f);
+                fpp.addFilter(fogFilter);
+
+
+                // 纯色叠加
+                ColorOverlayFilter colorOverlay = new ColorOverlayFilter(new ColorRGBA(1f, 0.8f, 0.8f, 0.4f));
+                fpp.addFilter(colorOverlay);
+
+                // 屏幕空间环境光遮蔽
+                SSAOFilter ssao = new SSAOFilter(10f, 25f, 0.6f, 0.6f);
+                fpp.addFilter(ssao);
+
+                // 景深
+                DepthOfFieldFilter depthOfField = new DepthOfFieldFilter();
+                depthOfField.setFocusDistance(0);
+                depthOfField.setFocusRange(20);
+                depthOfField.setBlurScale(1.4f);
+
+                fpp.addFilter(depthOfField);
+                break;
+
+            default: break;
+        }
+
+    }
+
+
+    public FilterPostProcessor getFpp() {
+        return fpp;
     }
 
     // 修改背景模型的地址

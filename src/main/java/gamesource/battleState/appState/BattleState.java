@@ -46,7 +46,6 @@ public class BattleState extends BaseAppState {
 
     private AppStateManager state;
     private SimpleApplication app;
-    FilterPostProcessor fpp;
 
     @Override
     protected void initialize(Application app) {
@@ -64,30 +63,7 @@ public class BattleState extends BaseAppState {
 //        app.getStateManager().attach(new FilterAppState());
 
 
-        // 初始化滤镜处理器
-        fpp = new FilterPostProcessor(app.getAssetManager());
-        app.getViewPort().addProcessor(fpp);
 
-        // 添加雾化滤镜
-        FogFilter fogFilter = new FogFilter(ColorRGBA.Red, 0.5f, 500f);
-        fpp.addFilter(fogFilter);
-
-
-        // 纯色叠加
-        ColorOverlayFilter colorOverlay = new ColorOverlayFilter(new ColorRGBA(1f, 0.8f, 0.8f, 0.4f));
-        fpp.addFilter(colorOverlay);
-
-        // 屏幕空间环境光遮蔽
-        SSAOFilter ssao = new SSAOFilter(10f, 25f, 0.6f, 0.6f);
-        fpp.addFilter(ssao);
-
-        // 景深
-        DepthOfFieldFilter depthOfField = new DepthOfFieldFilter();
-        depthOfField.setFocusDistance(0);
-        depthOfField.setFocusRange(20);
-        depthOfField.setBlurScale(1.4f);
-
-        fpp.addFilter(depthOfField);
         // 改变鼠标图标
         changeCursor();
 
@@ -163,10 +139,6 @@ public class BattleState extends BaseAppState {
     @Override
     protected void onEnable() {
 
-    }
-
-    public FilterPostProcessor getFpp(){
-        return fpp;
     }
 
     @Override

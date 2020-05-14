@@ -32,6 +32,7 @@ import com.jme3.scene.Node;
 import com.jme3.scene.shape.Quad;
 import gamesource.battleState.equipment.CreateEquipment;
 import gamesource.battleState.equipment.Equipment;
+import javafx.scene.layout.Background;
 
 import java.util.ArrayList;
 
@@ -331,7 +332,7 @@ public class GetEquipmentState extends BaseAppState {
         stateManager.detach(stateManager.getState(BattleBackGroundState.class));
         app.getRootNode().attachChild(this.rootNode);
         app.getInputManager().addRawInputListener(mril);
-        FilterPostProcessor fpp = stateManager.getState(BattleState.class).getFpp();
+        FilterPostProcessor fpp = stateManager.getState(BattleBackGroundState.class).getFpp();
         fpp.removeAllFilters();
         app.getViewPort().removeProcessor(fpp);
     }
