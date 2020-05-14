@@ -401,15 +401,6 @@ public void update(float tpf){
         inputManager.deleteTrigger(change, CHANGECAMERA);
         inputManager.deleteTrigger(bag, BAG);
 
-
-        for (BaseAppState baseAppState : states) {
-            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)&& !(baseAppState instanceof MajorActor)&& !(baseAppState instanceof InputAppState)) {
-                baseAppState.setEnabled(false);
-                //state.detach(baseAppState);
-            }
-
-        }
-
         /*major.setEnabled(false);
         king.setEnabled(false);
         //input.setEnabled(false);

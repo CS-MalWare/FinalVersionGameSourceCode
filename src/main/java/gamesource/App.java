@@ -52,9 +52,17 @@ public class App extends SimpleApplication
     private AppStateManager state;
 
 
-    private float time;
-    private int chan=0;
 
+    /*public App(){
+        super(new StatsAppState(),
+              new AudioListenerState(),
+              new DebugKeysAppState()
+              //new BulletAppState(),
+              //new FirstWorldState()
+        );
+
+
+    }*/
     //@Override
     public void simpleInitApp(){
         BulletAppState bullet=new BulletAppState();
@@ -71,10 +79,12 @@ public class App extends SimpleApplication
         stateManager.attach(new MenuAppState());
         stateManager.attach(new makeCross());
         f1=new FirstState();
+        stateManager.attach(f1);
         f2=new SecondState();
-        stateManager.attachAll(f1,f2);
-        stateManager.getState(SecondState.class).setEnabled(false);
+        //stateManager.attach(f2);
 
+        //stateManager.getState(SecondState.class).setEnabled(false);
+        //f2.setEnabled(false);
         //stateManager.attach(f2);
         //initSecondWorld();
 
@@ -82,6 +92,17 @@ public class App extends SimpleApplication
         inputManager.addListener(new StartTalk(),world);
     }
 
+    public void initSecondWorld(){
+        stateManager.attach(new SecondState());
+        stateManager.attach(new BagAppState());
+        stateManager.attach(new ShopAppState());
+        stateManager.attach(new MenuAppState());
+        FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
+        addLight(fpp);
+        skyBox2();
+        makeCross();
+        initEffect(fpp);
+    }
 
     public void initFirstWorld(){
         /*BulletAppState bullet=new BulletAppState();         //现在为为世界添加物理引擎的测试情况
@@ -181,29 +202,94 @@ public class App extends SimpleApplication
         cam.lookAt(new Vector3f(0,0.5f,0),new Vector3f(0,1,0));
     }*/
 
-    public void update(float tpf){
-        if(chan==0) {
-            time = time + tpf;
-            System.out.println("time");
-            if (time < 30 && time > 15) {
-                System.out.println("change");
-                stateManager.getState(SecondState.class).setEnabled(false);
-                chan=1;
-            }
-        }
+    private void initWater(FilterPostProcessor fpp){
+        //FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
+        //viewPort.addProcessor(fpp);
+
+        // 水
+        WaterFilter waterFilter = new WaterFilter();
+        //waterFilter.setCenter(new Vector3f(0, -5, 0));
+        waterFilter.setRadius(350);// 水面半径
+        waterFilter.setWaterHeight(-34.4f);// 水面高度
+        waterFilter.setWaterTransparency(0.2f);// 透明度
+        waterFilter.setShapeType(WaterFilter.AreaShape.Circular);
+        waterFilter.setWaterColor(new ColorRGBA(0.4314f, 0.9373f, 0.8431f, 1f));// 水面颜色
+
+        fpp.addFilter(waterFilter);
     }
 
+    private void initEffect(FilterPostProcessor fpp){
+        BloomFilter bloom=new BloomFilter();
+        bloom.setBloomIntensity(0.2f);
+        bloom.setBlurScale(0.2f);
+        FogFilter fog = new FogFilter(ColorRGBA.White, 0.4f, 250f);
+        Vector3f sunDir = new Vector3f(-1,-2,-3);
+        LightScatteringFilter lightScattering = new LightScatteringFilter(sunDir.mult(-3000));
+        CartoonEdgeFilter cartoonEdge= new CartoonEdgeFilter();
+        cartoonEdge.setDepthSensitivity(0.4f);
+        cartoonEdge.setEdgeIntensity(0.55f);
+        cartoonEdge.setEdgeWidth(0.55f);
+        cartoonEdge.setNormalThreshold(0.55f);
+        DepthOfFieldFilter depthOfField=new DepthOfFieldFilter();
+        depthOfField.setFocusDistance(0);
+        depthOfField.setFocusRange(25);
+        depthOfField.setBlurScale(1.2f);
+        fpp.addFilter(cartoonEdge);
+        fpp.addFilter(depthOfField);
+        fpp.addFilter(fog);
+        fpp.addFilter(bloom);
+    }
 
+    public void skyBox(){
+            /*Texture west = assetManager.loadTexture("skyBox/left2.png");
+            Texture east = assetManager.loadTexture("skyBox/left1.png");
+            Texture north = assetManager.loadTexture("skyBox/right1.png");
+            Texture south = assetManager.loadTexture("skyBox/right2.png");
+            Texture up = assetManager.loadTexture("skyBox/up.png");
+            Texture down = assetManager.loadTexture("skyBox/down.png");
 
+            Spatial sky = SkyFactory.createSky(assetManager, west, east, north, south, up, down);
+            rootNode.attachChild(sky);*/
+            Texture west = assetManager.loadTexture("bluecloud_ft.jpg");
+            Texture east = assetManager.loadTexture("bluecloud_bk.jpg");
+            Texture north = assetManager.loadTexture("bluecloud_lf.jpg");
+            Texture south = assetManager.loadTexture("bluecloud_rt.jpg");
+            Texture up = assetManager.loadTexture("bluecloud_up.jpg");
+            Texture down = assetManager.loadTexture("bluecloud_dn.jpg");
+
+            Spatial sky = SkyFactory.createSky(assetManager, west, east, north, south, up, down);
+            rootNode.attachChild(sky);
+
+    }
+    public void skyBox2(){
+            /*Texture west = assetManager.loadTexture("skyBox/left2.png");
+            Texture east = assetManager.loadTexture("skyBox/left1.png");
+            Texture north = assetManager.loadTexture("skyBox/right1.png");
+            Texture south = assetManager.loadTexture("skyBox/right2.png");
+            Texture up = assetManager.loadTexture("skyBox/up.png");
+            Texture down = assetManager.loadTexture("skyBox/down.png");
+
+            Spatial sky = SkyFactory.createSky(assetManager, west, east, north, south, up, down);
+            rootNode.attachChild(sky);*/
+        Texture west = assetManager.loadTexture("skyBox/back.jpg");
+        Texture east = assetManager.loadTexture("skyBox/front.jpg");
+        Texture north = assetManager.loadTexture("skyBox/lf.jpg");
+        Texture south = assetManager.loadTexture("skyBox/rg.jpg");
+        Texture up = assetManager.loadTexture("skyBox/up.jpg");
+        Texture down = assetManager.loadTexture("skyBox/down.jpg");
+
+        Spatial sky = SkyFactory.createSky(assetManager, west, east, north, south, up, down);
+        rootNode.attachChild(sky);
+
+    }
     class StartTalk implements ActionListener {
         @Override
         public void onAction(String name, boolean isPressed, float tpf) {
             if (world.equals(name) && isPressed) {
-                System.out.println("change world");
-                //stateManager.detach(f1);
-                //stateManager.attach(f2);
-                f1.setEnabled(false);
-                f2.setEnabled(true);
+                stateManager.detach(f1);
+                stateManager.attach(f2);
+                //f1.setEnabled(false);
+                //f2.setEnabled(true);
                 //System.out.println("zzzzzz");
 
                 //x1.setEnabled(false);
