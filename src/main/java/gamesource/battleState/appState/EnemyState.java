@@ -143,6 +143,42 @@ public class EnemyState extends BaseAppState {
         rootNode.attachChild(displayBoard);
         getInstance().displayAction();
         this.myRawInputListener = new MyRawInputListener();
+        modelPositions = new ArrayList<Integer>() {{
+            //每个怪物的x y z坐标
+            add(4);
+            add(0);
+            add(-1);
+
+            add(6);
+            add(0);
+            add(-1);
+
+            add(8);
+            add(0);
+            add(-1);
+        }};
+        hpPositions = new ArrayList<Float>() {{
+            //每个血量提示的x y坐标
+            add(1.7f);
+            add(1.5f);
+
+            add(3.7f);
+            add(1.5f);
+
+            add(5.7f);
+            add(1.5f);
+        }};
+        blockPositions = new ArrayList<Float>() {{
+            //每个护甲提示的x y坐标
+            add(2f);
+            add(-1f);
+
+            add(4f);
+            add(-1f);
+
+            add(6f);
+            add(-1f);
+        }};
 //        rootNode.attachChild(DamageParticle.getParticle1(assetManager))
     }
 
@@ -770,6 +806,7 @@ public class EnemyState extends BaseAppState {
 
     @Override
     protected void onDisable() {
+        removeAction();
         this.rootNode.removeFromParent();
         this.enemies.clear();
         for (Spatial spatial : enemiesModel) {

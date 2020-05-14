@@ -81,9 +81,6 @@ public class Role {
     }
 
     public void startTurn() {
-        if (this.stun.getDuration() > 0) {
-            this.endTurn();
-        }
         this.block = 0;
     }
 

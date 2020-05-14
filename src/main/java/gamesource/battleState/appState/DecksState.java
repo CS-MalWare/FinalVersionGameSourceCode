@@ -3,6 +3,7 @@ package gamesource.battleState.appState;
 import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;
 import com.jme3.animation.LoopMode;
+import com.sun.org.apache.bcel.internal.generic.GOTO;
 import gamesource.battleState.card.Card;
 import gamesource.battleState.character.Enemy;
 import gamesource.battleState.character.MainRole;
@@ -529,70 +530,81 @@ public class DecksState extends BaseAppState {
                             isDropDeckShow = false;
                             break;
                         case "结束回合":
-
-                            MainRole.getInstance().endTurn();
-                            app.getStateManager().getState(LeadingActorState.class).updateHints();
-
-                            ArrayList<Enemy> enemies = app.getStateManager().getState(EnemyState.class).getEnemies();
-                            // 所有敌人开始行动
-                            int i = 0;
-                            ArrayList<AnimControl> animControls = app.getStateManager().getState(EnemyState.class).getAnimControls();
-                            ArrayList<AnimChannel> animChannels = app.getStateManager().getState(EnemyState.class).getAnimChannels();
-                            for (Enemy enemy : enemies) {
-                                enemy.startTurn();
-                                enemyActionAudio = enemy.enemyAction();
-                                switch (enemyActionAudio){
-                                    case "slime attack":
-                                        audioNodes.get(0).playInstance();
-                                        break;
-                                    case "slime skill":
-                                        audioNodes.get(1).playInstance();
-                                        break;
-                                    case "wolfman attack":
-                                        audioNodes.get(3).playInstance();
-                                        break;
-                                    case "wolfman skill":
-                                        audioNodes.get(4).playInstance();
-                                        break;
-                                    case "robot attack":
-                                        audioNodes.get(6).playInstance();
-                                        break;
-                                    case "robot skill":
-                                        audioNodes.get(7).playInstance();
-                                        break;
-                                    case "dragon attack":
-                                        audioNodes.get(9).playInstance();
-                                        break;
-                                    case "dragon skill":
-                                        audioNodes.get(10).playInstance();
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                app.getStateManager().getState(EnemyState.class).updateHints(true);
+                            boolean flag= false;
+                            do{
+                                MainRole.getInstance().endTurn();
                                 app.getStateManager().getState(LeadingActorState.class).updateHints();
 
-                                if(i<animChannels.size()){
-                                    animChannels.get(i).setAnim(animControls.get(i).getAnimationNames().toArray()[0].toString());
-                                    // TODO 待统一动画名字
+                                ArrayList<Enemy> enemies = app.getStateManager().getState(EnemyState.class).getEnemies();
+                                // 所有敌人开始行动
+                                int i = 0;
+                                ArrayList<AnimControl> animControls = app.getStateManager().getState(EnemyState.class).getAnimControls();
+                                ArrayList<AnimChannel> animChannels = app.getStateManager().getState(EnemyState.class).getAnimChannels();
+                                for (Enemy enemy : enemies) {
+                                    if(enemy.getStun().getDuration()==0){
+                                        enemy.startTurn();
+                                        enemyActionAudio = enemy.enemyAction();
+                                        switch (enemyActionAudio){
+                                            case "slime attack":
+                                                audioNodes.get(0).playInstance();
+                                                break;
+                                            case "slime skill":
+                                                audioNodes.get(1).playInstance();
+                                                break;
+                                            case "wolfman attack":
+                                                audioNodes.get(3).playInstance();
+                                                break;
+                                            case "wolfman skill":
+                                                audioNodes.get(4).playInstance();
+                                                break;
+                                            case "robot attack":
+                                                audioNodes.get(6).playInstance();
+                                                break;
+                                            case "robot skill":
+                                                audioNodes.get(7).playInstance();
+                                                break;
+                                            case "dragon attack":
+                                                audioNodes.get(9).playInstance();
+                                                break;
+                                            case "dragon skill":
+                                                audioNodes.get(10).playInstance();
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                    enemy.endTurn();
+                                    app.getStateManager().getState(EnemyState.class).updateHints(true);
+                                    app.getStateManager().getState(LeadingActorState.class).updateHints();
+
+                                    if(i<animChannels.size()){
+                                        animChannels.get(i).setAnim(animControls.get(i).getAnimationNames().toArray()[0].toString());
+                                        // TODO 待统一动画名字
 //                                EnemyState.getInstance().getAnimChannels().get(i).setAnim("代命名");
 
-                                    animChannels.get(i).setLoopMode(LoopMode.DontLoop);
-                                }
+                                        animChannels.get(i).setLoopMode(LoopMode.DontLoop);
+                                    }
 
-                                i++;
-                            }
-                            // 停顿一下,假装在加载（逸润巨佬还是高明）
-                            try {
-                                Thread.sleep(300);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            // 敌人行动完后,主角可以行动
-                            MainRole.getInstance().startTurn();
-                            // 将本回合内中已打出的牌清0
-                            app.getStateManager().getState(HandCardsState.class).setCardUsedCount(0);
-                            app.getStateManager().getState(LeadingActorState.class).updateHints();
+                                    i++;
+                                }
+                                // 停顿一下,假装在加载（逸润巨佬还是高明）
+                                try {
+                                    Thread.sleep(300);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                                // 敌人行动完后,主角可以行动
+                                MainRole.getInstance().startTurn();
+                                app.getStateManager().getState(HandCardsState.class).setCardUsedCount(0);
+                                app.getStateManager().getState(LeadingActorState.class).updateHints();
+                                if(MainRole.getInstance().getStun().getDuration()>0){
+                                    flag=true;
+                                    continue;
+                                }
+                                // 将本回合内中已打出的牌清0
+                                flag=false;
+                            }while(flag);
+
                             break;
                         default:
                             isExhuastDeckShow = false;

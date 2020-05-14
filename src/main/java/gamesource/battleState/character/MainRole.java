@@ -15,6 +15,7 @@ import gamesource.battleState.card.neutral.skill.Intelligent;
 import gamesource.battleState.card.neutral.skill.Winding;
 import gamesource.battleState.card.saber.attack.FireSlash;
 import gamesource.battleState.card.saber.attack.IceSlash;
+import gamesource.battleState.card.saber.attack.Surmount;
 import gamesource.battleState.card.saber.power.ManaBoost;
 import gamesource.battleState.card.saber.skill.*;
 import gamesource.battleState.equipment.Equipment;
@@ -99,6 +100,7 @@ public class MainRole extends Role {
         this.deck_.add(new Winding());
         this.deck_.add(new Crouch());
         this.deck_.add(new HookBoxing());
+        this.deck_.add(new Surmount());
 
 
     }
@@ -159,7 +161,6 @@ public class MainRole extends Role {
             this.cardEffects.remove("残影+");
         }
         if (this.stun.getDuration() > 0) {
-            this.endTurn();
             return;
         }
         if (cardEffects.contains("晶化")) {
