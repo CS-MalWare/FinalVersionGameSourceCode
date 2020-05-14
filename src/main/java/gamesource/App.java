@@ -23,6 +23,7 @@ import gamesource.State.SpecialEffect.FirstWorldOtherSpecial;
 import gamesource.State.SpecialEffect.Water;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
+import gamesource.State.mapState.ThirdWorldMap;
 import gamesource.State.worldState.FirstState;
 
 import com.jme3.app.SimpleApplication;
@@ -33,6 +34,7 @@ import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.post.FilterPostProcessor;
 import gamesource.State.worldState.SecondState;
+import gamesource.State.worldState.ThirdState;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -48,6 +50,7 @@ public class App extends SimpleApplication
 
     FirstState f1;
     SecondState f2;
+    ThirdState f3;
 
     private AppStateManager state;
 
@@ -79,8 +82,10 @@ public class App extends SimpleApplication
         stateManager.attach(new MenuAppState());
         stateManager.attach(new makeCross());
         f1=new FirstState();
-        stateManager.attach(f1);
+        //stateManager.attach(f1);
         f2=new SecondState();
+        f3=new ThirdState();
+        stateManager.attach(f3);
         //stateManager.attach(f2);
 
         //stateManager.getState(SecondState.class).setEnabled(false);
