@@ -6,8 +6,6 @@ import com.simsilica.lemur.Command;
 import com.simsilica.lemur.Container;
 import com.simsilica.lemur.component.IconComponent;
 
-import gamesource.battleState.card.Card;
-
 public class CardUI {
     private Button button = new Button("name");
     private BagMoney money = new BagMoney();
@@ -47,6 +45,10 @@ public class CardUI {
         this.button.setName(name);
         this.money.setMoney(money);
         this.description = description;
+    }
+    
+    public boolean equals(CardUI cardUI){
+        return this.description.equals(cardUI.getDescription());
     }
 
     public void addToContainer(Container container, int xOfButton, int yOfButton){

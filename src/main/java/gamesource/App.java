@@ -36,6 +36,7 @@ import gamesource.State.worldState.SecondState;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
+import org.lwjgl.Sys;
 
 /**
  * Hello world!
@@ -80,9 +81,14 @@ public class App extends SimpleApplication
         stateManager.attach(new makeCross());
         f1=new FirstState();
         stateManager.attach(f1);
-        f2=new SecondState();
-        //stateManager.attach(f2);
-
+        new Thread(){
+            public void run(){
+                f2=new SecondState();
+                while(!f2.isInitialized());
+                stateManager.attach(f2);
+                f2.setEnabled(false);
+            }
+        }.start();
         //stateManager.getState(SecondState.class).setEnabled(false);
         //f2.setEnabled(false);
         //stateManager.attach(f2);

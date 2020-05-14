@@ -45,7 +45,10 @@ public class BagAppState extends BaseAppState{
     private final static String bagString = "Bag";
     private VersionedReference[] cardsReference = new VersionedReference[100];
     private ArrayList<Card> mainRoleCards = MainRole.getInstance().getDeck_();
-    private CardUI[] cardUIs = new CardUI[100];
+    private CardUI[] cardUIs = new CardUI[90];
+    private CardUI[] cardUIsCopy = new CardUI[30];
+    private CardUI[] casterCardUIs = new CardUI[30];
+    private CardUI[] neutralCardUIs = new CardUI[30];
     private Container generalBorder;
     private Container centralPart;
     private Container leftPartContainer;
@@ -73,6 +76,9 @@ public class BagAppState extends BaseAppState{
         generalBorder.setLayout(borderLayout);
         generalBorder.setLocalTranslation(5, app.getCamera().getHeight()-50, 0);
 
+        for(int i=0; i<cardUIs.length; i++){
+            
+        }
     }
 
     protected void showBag(){
