@@ -806,6 +806,7 @@ public class EnemyState extends BaseAppState {
 
     @Override
     protected void onDisable() {
+        removeAction();
         this.rootNode.removeFromParent();
         this.enemies.clear();
         for (Spatial spatial : enemiesModel) {
