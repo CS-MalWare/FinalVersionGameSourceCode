@@ -15,10 +15,13 @@ import gamesource.battleState.card.neutral.skill.Intelligent;
 import gamesource.battleState.card.neutral.skill.Winding;
 import gamesource.battleState.card.saber.attack.FireSlash;
 import gamesource.battleState.card.saber.attack.IceSlash;
+import gamesource.battleState.card.saber.attack.Surmount;
 import gamesource.battleState.card.saber.power.ManaBoost;
 import gamesource.battleState.card.saber.skill.*;
 import gamesource.battleState.equipment.Equipment;
+import gamesource.battleState.utils.buffs.foreverBuffs.Artifact;
 import gamesource.battleState.utils.buffs.foreverBuffs.Dodge;
+import gamesource.battleState.utils.buffs.limitBuffs.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -99,6 +102,7 @@ public class MainRole extends Role {
         this.deck_.add(new Winding());
         this.deck_.add(new Crouch());
         this.deck_.add(new HookBoxing());
+        this.deck_.add(new Surmount());
 
 
     }
@@ -159,7 +163,6 @@ public class MainRole extends Role {
             this.cardEffects.remove("残影+");
         }
         if (this.stun.getDuration() > 0) {
-            this.endTurn();
             return;
         }
         if (cardEffects.contains("晶化")) {
@@ -251,8 +254,26 @@ public class MainRole extends Role {
         this.cardEffects.clear();
         this.deck.clear();
 
+
+        vulnerable.setDuration(0);
+        weak.setDuration(0);
+        stun.setDuration(0);
+        silence.setDuration(0);
+        shield.setDuration(0);
+        poison.setDuration(0);
+        intangible.setDuration(0);
+        excite.setDuration(0);
+        erode.setDuration(0);
+        disarm.setDuration(0);
+        bleeding.setDuration(0);
+        artifact.setTimes(0);
+        dodge.setTimes(0);
+        dexterity=0;
+        strength=0;
+        atk=0;
+
         // 人物被动"苟"
-        this.treat((int)(0.1*(this.getTotalHP()-this.getHP())));
+        this.treat((int) (0.1 * (this.getTotalHP() - this.getHP())));
     }
 
 

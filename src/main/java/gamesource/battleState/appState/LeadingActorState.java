@@ -306,7 +306,8 @@ public class LeadingActorState extends BaseAppState {
                     buffDisplay.setQueueBucket(RenderQueue.Bucket.Transparent);
                     buffDisplay.setSize(0.25f);
                     buffDisplay.setText(txtB);
-                    rootNode.attachChild(buffDisplay);
+                    if(!EnemyState.getInstance().lock)
+                        rootNode.attachChild(buffDisplay);
                 }
             } else {
 //                if (buffDisplay != null)

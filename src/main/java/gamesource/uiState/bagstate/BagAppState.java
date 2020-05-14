@@ -45,10 +45,15 @@ public class BagAppState extends BaseAppState{
     private final static String bagString = "Bag";
     private VersionedReference[] cardsReference = new VersionedReference[100];
     private ArrayList<Card> mainRoleCards = MainRole.getInstance().getDeck_();
-    private CardUI[] cardUIs = new CardUI[100];
+    private CardUI[] cardUIs = new CardUI[90];
+    private CardUI[] cardUIsCopy = new CardUI[90];
+    private CardUI[] casterCardUIs = new CardUI[30];
+    private CardUI[] neutralCardUIs = new CardUI[30];
     private Container generalBorder;
     private Container centralPart;
     private Container leftPartContainer;
+    private Container buttomPartContainer;
+    private Container pagesContainer;
     private Container leftPart;
     private BagMoney totalMoney = new BagMoney();
     private BagMoney totalMoneyOfCards = new BagMoney();
@@ -72,7 +77,6 @@ public class BagAppState extends BaseAppState{
         BorderLayout borderLayout = new BorderLayout();
         generalBorder.setLayout(borderLayout);
         generalBorder.setLocalTranslation(5, app.getCamera().getHeight()-50, 0);
-
     }
 
     protected void showBag(){
@@ -126,11 +130,11 @@ public class BagAppState extends BaseAppState{
 
         Button caster = new Button("Caster");
         Button neutral = new Button("Neutral");
-        Button saber = new Button("Saber");
+        //Button saber = new Button("Saber");
 
         leftPart.addChild(caster);
         leftPart.addChild(neutral);
-        leftPart.addChild(saber);
+        //leftPart.addChild(saber);
     }
 
     public void showMoney(){

@@ -19,6 +19,7 @@ import com.simsilica.lemur.style.BaseStyles;
 import com.simsilica.lemur.style.ElementId;
 import com.simsilica.lemur.style.Styles;
 
+import gamesource.battleState.card.Card;
 import gamesource.battleState.card.CreateCard;
 import gamesource.battleState.card.Card.OCCUPATION;
 import gamesource.battleState.character.MainRole;
@@ -29,7 +30,8 @@ public class ShopAppState extends BaseAppState implements ActionListener{
     private AppStateManager stateManager;
     private final static String shopString = "Shop";
     private Container general;
-    private CardUI[] cardUIs = new CardUI[40];
+    private static CardUI[] cardUIs = new CardUI[40];
+    private static Card[] cards = new Card[40];
     private CardUI[] cardUIsCopy = new CardUI[40];
     private CardUI[] casterCardUIs = new CardUI[20];
     private CardUI[] neutralCardUIs = new CardUI[20];
@@ -43,6 +45,9 @@ public class ShopAppState extends BaseAppState implements ActionListener{
     private ShopMoney shopMoney = new ShopMoney(MainRole.getInstance().getGold());
     private Styles styles;
     private boolean isMapPressed = false;
+
+    private Card casterCard;
+    private Card neutralCard;
 
     @Override
     public void initialize(Application application){//测试的时候先是启动加载，稍后会做出更新
@@ -60,10 +65,14 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         general.setLocalTranslation(5, app.getCamera().getHeight()-50, 0);
 
         for(int i=0; i < 20; i++){
-            casterCardUIs[i] = CardArrayReader.cardToCardUI(CreateCard.getRandomCard(OCCUPATION.CASTER));
-            neutralCardUIs[i] = CardArrayReader.cardToCardUI(CreateCard.getRandomCard(OCCUPATION.NEUTRAL));
+            casterCard = CreateCard.getRandomCard(OCCUPATION.CASTER);
+            neutralCard = CreateCard.getRandomCard(OCCUPATION.NEUTRAL);
+            casterCardUIs[i] = CardArrayReader.cardToCardUI(casterCard);
+            neutralCardUIs[i] = CardArrayReader.cardToCardUI(neutralCard);
             //saberCardUIs[i] = CardArrayReader.cardToCardUI(CreateCard.getRandomCard(OCCUPATION.SABER));
             cardUIs[i] = casterCardUIs[i];
+            cards[i] = casterCard;
+            cards[i+20] = neutralCard;
             cardUIsCopy[i] = casterCardUIs[i];
             cardUIs[i+20] = neutralCardUIs[i];
             cardUIsCopy[i+20] = neutralCardUIs[i];
@@ -177,18 +186,22 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         leftPart.addChild(new Label("Shop", new ElementId("header"), "glass"));
         leftPart.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass")).setUserData(LayerComparator.LAYER, 2);
 
+        Button general = new Button("General");
         Button caster = new Button("Caster");
         Button neutral = new Button("Neutral");
         Button backToStart = new Button("Back");
         //Button saber = new Button("Saber");
 
+        leftPart.addChild(general);
         leftPart.addChild(caster);
         leftPart.addChild(neutral);
         leftPart.addChild(backToStart);
         //leftPart.addChild(saber);
 
+        general.addClickCommands(new ShowGeneral());
         caster.addClickCommands(new ShowCaster());
         neutral.addClickCommands(new ShowNeutral());
+        backToStart.addClickCommands(new BackToStart());
     }
     
     private class CardsDirectoryClick implements Command<Button>{
@@ -198,6 +211,26 @@ public class ShopAppState extends BaseAppState implements ActionListener{
                 showCards(centralPart);
                 showCardsType();
                 isMapPressed = true;
+            }
+        }
+    }
+
+    private class ShowGeneral implements Command<Button>{
+        public void execute(Button button){
+            centralPart.detachAllChildren();
+            pagesContainer.detachAllChildren();
+            cardUIs = cardUIsCopy;
+            int pageNumber = cardUIs.length % 12;
+
+            for(int i=0; i<12; i++){
+                int j = i % 4;
+                int z = (i-j) / 4;
+                cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+            }
+
+            for(int i=1; i <= pageNumber; i++){
+                Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                pageButton.addClickCommands(new PageButtonClick());
             }
         }
     }
@@ -220,6 +253,25 @@ public class ShopAppState extends BaseAppState implements ActionListener{
             }
 
             cardUIs = cardUIsCopy;
+        }
+    }
+
+    private class BackToStart implements Command<Button>{
+        public void execute(Button button){
+            leftPart.detachAllChildren();
+            SpringGridLayout leftLayOut = new SpringGridLayout(Axis.Y, Axis.X, FillMode.None, FillMode.None);
+            leftPart.setLayout(leftLayOut);
+        
+            leftPart.setBackground(new QuadBackgroundComponent(new ColorRGBA(0, 0.5f, 0.5f, 0.5f), 5, 5, 0.02f, false));
+            leftPart.addChild(new Label("Shop", new ElementId("header"), "glass"), 0, 0);
+            leftPart.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass"), 1, 0).setUserData(LayerComparator.LAYER, 2);
+        
+            Button cards = new Button("Cards");
+            Button equipments = new Button("Equipments");
+            leftPart.addChild(cards, 2, 0);
+            leftPart.addChild(equipments, 3, 0);
+
+            cards.addClickCommands(new CardsDirectoryClick());
         }
     }
 
@@ -307,4 +359,12 @@ public class ShopAppState extends BaseAppState implements ActionListener{
             }
         }
     }
-}
+
+    public static CardUI[] getShopCardUIs(){
+        return cardUIs;
+    }
+
+    public static Card[] getShopCard(){
+        return cards;
+    }
+ }

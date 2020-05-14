@@ -86,7 +86,8 @@ public class Battle extends BaseAppState {
         }
 
 
-
+        app.getCamera().setLocation(new Vector3f(0,0,10.5f));
+        app.getCamera().lookAtDirection(new Vector3f(0,0,-1),new Vector3f(0,1,0));
 
         MainRole mainRole = MainRole.getInstance();
         mainRole.bindApp(app);
@@ -99,17 +100,19 @@ public class Battle extends BaseAppState {
         mainRole.getEquipment(CreateEquipment.getRandomEquipment());
         EnemyState enemyState = EnemyState.getInstance();
 
+
         enemyState.addEnemies(
 //                new DarkDragon(1, "Enemies/zhenwang/boss.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
 
 //        new DarkDragon(1, "Enemies/skeleton/skeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
 //        new DarkDragon(1, "Enemies/snowRobot/snowRobot.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
 //                new DarkDragon(1, "Enemies/bossKnight/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-//        new DarkDragon(1, "Enemies/snowRobot/snowRobot.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
-//                new DarkDragon(100, "Enemies/skeleton/KingSkeleton/kingSkeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
-                new DarkDragon(20, "Enemies/bat/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                new DarkDragon(1, "Enemies/underWater/mushroom_bug.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                new DarkDragon(20, "Enemies/underWater/mushroom_bug.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                new DarkDragon(20, "Enemies/underWater/mushroom_bug.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
 
         );
+        //addLight();
         //addLight();
 
     }

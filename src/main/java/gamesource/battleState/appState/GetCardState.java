@@ -386,12 +386,13 @@ public class GetCardState extends BaseAppState {
         stateManager.detach(stateManager.getState(HandCardsState.class));
         stateManager.detach(stateManager.getState(DecksState.class));
         stateManager.detach(stateManager.getState(LeadingActorState.class));
+        FilterPostProcessor fpp = stateManager.getState(BattleBackGroundState.class).getFpp();
+        fpp.removeAllFilters();
+        app.getViewPort().removeProcessor(fpp);
         stateManager.detach(stateManager.getState(BattleBackGroundState.class));
         app.getRootNode().attachChild(this.rootNode);
         app.getInputManager().addRawInputListener(mril);
-        FilterPostProcessor fpp = stateManager.getState(BattleState.class).getFpp();
-        fpp.removeAllFilters();
-        app.getViewPort().removeProcessor(fpp);
+
     }
 
     @Override

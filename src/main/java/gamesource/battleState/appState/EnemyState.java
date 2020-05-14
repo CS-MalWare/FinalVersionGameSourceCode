@@ -65,6 +65,7 @@ public class EnemyState extends BaseAppState {
     private Camera camera;
     Quad q;
     BitmapFont fnt;
+    BitmapText buffDisplay;
     protected BitmapText actionDisplay;
     private Geometry displayBoard;
 
@@ -119,12 +120,14 @@ public class EnemyState extends BaseAppState {
         chosen = null;
         target = null;
         targetID = -1;
+
     }
 
 
     @Override
     protected void initialize(Application application) {
         this.app = (SimpleApplication) getApplication();
+
         this.assetManager = app.getAssetManager();
         this.stateManager = app.getStateManager();
         this.inputManager = app.getInputManager();
@@ -133,6 +136,8 @@ public class EnemyState extends BaseAppState {
         q = new Quad(6, 3);
         fnt = assetManager.loadFont("Interface/Fonts/Default.fnt");
         actionDisplay = new BitmapText(fnt, false);
+        buffDisplay = new BitmapText(fnt, false);//显示的文字
+
         displayBoard = new Geometry("quad", q);
         displayBoard.setLocalTranslation(2, 2, -1);
         Material mt = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
@@ -143,6 +148,42 @@ public class EnemyState extends BaseAppState {
         rootNode.attachChild(displayBoard);
         getInstance().displayAction();
         this.myRawInputListener = new MyRawInputListener();
+        modelPositions = new ArrayList<Integer>() {{
+            //每个怪物的x y z坐标
+            add(4);
+            add(0);
+            add(-1);
+
+            add(6);
+            add(0);
+            add(-1);
+
+            add(8);
+            add(0);
+            add(-1);
+        }};
+        hpPositions = new ArrayList<Float>() {{
+            //每个血量提示的x y坐标
+            add(1.7f);
+            add(1.5f);
+
+            add(3.7f);
+            add(1.5f);
+
+            add(5.7f);
+            add(1.5f);
+        }};
+        blockPositions = new ArrayList<Float>() {{
+            //每个护甲提示的x y坐标
+            add(2f);
+            add(-1f);
+
+            add(4f);
+            add(-1f);
+
+            add(6f);
+            add(-1f);
+        }};
 //        rootNode.attachChild(DamageParticle.getParticle1(assetManager))
     }
 
@@ -294,6 +335,32 @@ public class EnemyState extends BaseAppState {
             case "Enemies/zhenwang/boss0.j3o":
                 model.scale(0.04f);
                 break;
+            case "Enemies/underWater/drunkCrab0.j3o":
+            case "Enemies/underWater/drunkCrab1.j3o":
+            case "Enemies/underWater/drunkCrab2.j3o":
+                model.scale(0.15f);
+                break;
+            case "Enemies/underWater/fish10.j3o":
+            case "Enemies/underWater/fish11.j3o":
+            case "Enemies/underWater/fish12.j3o":
+                model.scale(0.06f);
+                break;
+
+            case "Enemies/underWater/fish20.j3o":
+            case "Enemies/underWater/fish21.j3o":
+            case "Enemies/underWater/fish22.j3o":
+                model.scale(0.3f);
+                break;
+
+            case "Enemies/underWater/hollowKnight0.j3o":
+            case "Enemies/underWater/hollowKnight1.j3o":
+            case "Enemies/underWater/hollowKnight2.j3o":
+                model.scale(0.01f);
+                break;
+            case "Enemies/underWater/mushroom_bug0.j3o":
+            case "Enemies/underWater/mushroom_bug1.j3o":
+            case "Enemies/underWater/mushroom_bug2.j3o":
+                model.scale(1.2f);
 
             default:
                 break;
@@ -385,8 +452,57 @@ public class EnemyState extends BaseAppState {
                 break;
             case "Enemies/skeleton/skeleton2.j3o":
                 model.move(-0.7f, 0, 0);
-
                 break;
+            case "Enemies/underWater/drunkCrab0.j3o":
+                model.move(-1.7f, 0, 0);
+                break;
+            case "Enemies/underWater/drunkCrab1.j3o":
+                model.move(-1.55f, -0.4f, 0);
+                break;
+            case "Enemies/underWater/drunkCrab2.j3o":
+                model.move(-1.45f, -0.4f, 0);
+                break;
+
+            case "Enemies/underWater/fish10.j3o":
+                model.move(-1.5f, 0, 0);
+                break;
+            case "Enemies/underWater/fish11.j3o":
+                model.move(-1.3f, 0, 0);
+                break;
+            case "Enemies/underWater/fish12.j3o":
+                model.move(-1.1f, 0, 0);
+                break;
+
+            case "Enemies/underWater/fish20.j3o":
+                model.move(-1.5f, 0, 0);
+                break;
+            case "Enemies/underWater/fish21.j3o":
+                model.move(-1.3f, 0, 0);
+                break;
+            case "Enemies/underWater/fish22.j3o":
+                model.move(-1.1f, 0, 0);
+                break;
+
+            case "Enemies/underWater/hollowKnight0.j3o":
+                model.move(-1.5f,0,0);
+                break;
+            case "Enemies/underWater/hollowKnight1.j3o":
+                model.move(-1.3f,0,0);
+                break;
+            case "Enemies/underWater/hollowKnight2.j3o":
+                model.move(-1.1f,0,0);
+                break;
+
+            case "Enemies/underWater/mushroom_bug0.j3o":
+                model.move(-1.5f,0,0);
+                break;
+            case "Enemies/underWater/mushroom_bug1.j3o":
+                model.move(-1.15f,-0.075f,0);
+                break;
+            case "Enemies/underWater/mushroom_bug2.j3o":
+                model.move(-0.95f,-0.15f,0);
+                break;
+
             default:
                 break;
         }
@@ -414,7 +530,6 @@ public class EnemyState extends BaseAppState {
 
             try {
                 Node scene = (Node) model;
-                // TODO 等高仕伟命名
                 Node bip001 = (Node) scene.getChild("bip001");
 
                 AnimControl animControl = bip001.getControl(AnimControl.class);
@@ -487,7 +602,6 @@ public class EnemyState extends BaseAppState {
     }
 
     class MyRawInputListener implements RawInputListener {
-        private BitmapText buffDisplay = new BitmapText(fnt, false);//显示的文字
         private Geometry buffDisplayBoard = new Geometry("quad", q);//文字后面的版
 
 
@@ -674,7 +788,18 @@ public class EnemyState extends BaseAppState {
         this.initializeHints();
         this.inputManager.addRawInputListener(myRawInputListener);
         // 在启动背景的时候吧这个特效加载背景节点上去
-        this.rootNode.attachChild(KingSkeletonStateParticle.getParticle1(app.getAssetManager()));
+        if(this.enemies.size() == 1){//boss 只有一个
+            switch (this.enemies.get(0).getSrc()){
+                case "Enemies/skeleton/KingSkeleton/KingSkeleton0.j3o":
+                    this.rootNode.attachChild(KingSkeletonStateParticle.getParticle1(app.getAssetManager()));
+                    break;
+                case "Enemies/zhenwang/boss0.j3o":
+                    this.rootNode.attachChild(StuxnetStateParticle.getParticle1(app.getAssetManager()));
+                    break;
+                case "Enemies/bossKnight/scene0.j3o":
+                    break;
+            }
+        }
         app.getRootNode().attachChild(this.rootNode);
 
     }
@@ -685,6 +810,9 @@ public class EnemyState extends BaseAppState {
 
     @Override
     protected void onDisable() {
+        removeAction();
+        if(this.buffDisplay!=null)
+            this.buffDisplay.removeFromParent();
         this.rootNode.removeFromParent();
         this.enemies.clear();
         for (Spatial spatial : enemiesModel) {
