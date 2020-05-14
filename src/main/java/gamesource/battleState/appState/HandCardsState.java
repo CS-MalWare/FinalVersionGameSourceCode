@@ -364,6 +364,10 @@ public class HandCardsState extends BaseAppState {
                     if (flag) {
                         Thread.sleep(300);
                         // 加载选卡界面和移除主角
+
+                        for(Card x:this.handCards){
+                            x.removeControl(CardMotionControl.class);
+                        }
                         app.getStateManager().attach(new GetCardState());
 //                        app.getStateManager().detach(app.getStateManager().getState(LeadingActorState.class));
                     }
@@ -423,6 +427,10 @@ public class HandCardsState extends BaseAppState {
                     if (flag) {
                         Thread.sleep(300);
                         // 加载选卡界面和移除主角
+
+                        for(Card x:this.handCards){
+                            x.removeControl(CardMotionControl.class);
+                        }
                         app.getStateManager().attach(new GetCardState());
 //                        app.getStateManager().detach(app.getStateManager().getState(LeadingActorState.class));
                     }
