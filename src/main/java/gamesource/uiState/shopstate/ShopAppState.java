@@ -167,6 +167,7 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         public void execute(Button button){
             if(button.isPressed()){
                 general.removeFromParent();
+                app.getFlyByCamera().setDragToRotate(false);
             }
         }
     }
@@ -178,13 +179,16 @@ public class ShopAppState extends BaseAppState implements ActionListener{
 
         Button caster = new Button("Caster");
         Button neutral = new Button("Neutral");
+        Button backToStart = new Button("Back");
         //Button saber = new Button("Saber");
 
         leftPart.addChild(caster);
         leftPart.addChild(neutral);
+        leftPart.addChild(backToStart);
         //leftPart.addChild(saber);
 
         caster.addClickCommands(new ShowCaster());
+        neutral.addClickCommands(new ShowNeutral());
     }
     
     private class CardsDirectoryClick implements Command<Button>{
@@ -203,10 +207,40 @@ public class ShopAppState extends BaseAppState implements ActionListener{
             centralPart.detachAllChildren();
             pagesContainer.detachAllChildren();
             cardUIs = casterCardUIs;
+
+            for(int i=0; i<12; i++){
+                int j = i % 4;
+                int z = (i - j)/4;
+                cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+            }
+            
             for(int i=1; i<=2; i++){
                 Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
                 pageButton.addClickCommands(new PageButtonClick());
             }
+
+            cardUIs = cardUIsCopy;
+        }
+    }
+
+    private class ShowNeutral implements Command<Button>{
+        public void execute(Button button){
+            centralPart.detachAllChildren();
+            pagesContainer.detachAllChildren();
+            cardUIs = neutralCardUIs;
+
+            for(int i=0; i<12; i++){
+                int j = i % 4;
+                int z= (i - j)/4;
+                cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+            }
+
+            for(int i=1; i<=2; i++){
+                Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                pageButton.addClickCommands(new PageButtonClick());
+            }
+
+            cardUIs = cardUIsCopy;
         }
     }
 

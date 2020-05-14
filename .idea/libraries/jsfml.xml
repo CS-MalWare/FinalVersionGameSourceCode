@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="jsfml">
     <CLASSES>
-      <root url="jar://D:/JavaProject/jsfml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../GameSourceCode-master/src/main/java/Interface/jsfml.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
