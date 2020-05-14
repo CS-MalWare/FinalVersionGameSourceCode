@@ -81,10 +81,10 @@ public class App extends SimpleApplication
         f1=new FirstState();
         stateManager.attach(f1);
         f2=new SecondState();
-        stateManager.attach(f2);
+        //stateManager.attach(f2);
 
-        stateManager.getState(SecondState.class).setEnabled(false);
-        f2.setEnabled(false);
+        //stateManager.getState(SecondState.class).setEnabled(false);
+        //f2.setEnabled(false);
         //stateManager.attach(f2);
         //initSecondWorld();
 
