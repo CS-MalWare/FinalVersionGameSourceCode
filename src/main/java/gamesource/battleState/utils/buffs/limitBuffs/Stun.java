@@ -19,7 +19,6 @@ public class Stun extends LimitBuff implements BuffFunction {
 
     @Override
     public void triggerFunc() {
-        MainRole.getInstance().endTurn();
         this.decDuration();
     }
 }
