@@ -65,6 +65,7 @@ public class EnemyState extends BaseAppState {
     private Camera camera;
     Quad q;
     BitmapFont fnt;
+    BitmapText buffDisplay;
     protected BitmapText actionDisplay;
     private Geometry displayBoard;
 
@@ -119,12 +120,14 @@ public class EnemyState extends BaseAppState {
         chosen = null;
         target = null;
         targetID = -1;
+
     }
 
 
     @Override
     protected void initialize(Application application) {
         this.app = (SimpleApplication) getApplication();
+
         this.assetManager = app.getAssetManager();
         this.stateManager = app.getStateManager();
         this.inputManager = app.getInputManager();
@@ -133,6 +136,8 @@ public class EnemyState extends BaseAppState {
         q = new Quad(6, 3);
         fnt = assetManager.loadFont("Interface/Fonts/Default.fnt");
         actionDisplay = new BitmapText(fnt, false);
+        buffDisplay = new BitmapText(fnt, false);//显示的文字
+
         displayBoard = new Geometry("quad", q);
         displayBoard.setLocalTranslation(2, 2, -1);
         Material mt = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
@@ -597,7 +602,6 @@ public class EnemyState extends BaseAppState {
     }
 
     class MyRawInputListener implements RawInputListener {
-        private BitmapText buffDisplay = new BitmapText(fnt, false);//显示的文字
         private Geometry buffDisplayBoard = new Geometry("quad", q);//文字后面的版
 
 
@@ -807,6 +811,8 @@ public class EnemyState extends BaseAppState {
     @Override
     protected void onDisable() {
         removeAction();
+        if(this.buffDisplay!=null)
+            this.buffDisplay.removeFromParent();
         this.rootNode.removeFromParent();
         this.enemies.clear();
         for (Spatial spatial : enemiesModel) {

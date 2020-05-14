@@ -19,7 +19,9 @@ import gamesource.battleState.card.saber.attack.Surmount;
 import gamesource.battleState.card.saber.power.ManaBoost;
 import gamesource.battleState.card.saber.skill.*;
 import gamesource.battleState.equipment.Equipment;
+import gamesource.battleState.utils.buffs.foreverBuffs.Artifact;
 import gamesource.battleState.utils.buffs.foreverBuffs.Dodge;
+import gamesource.battleState.utils.buffs.limitBuffs.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -252,8 +254,26 @@ public class MainRole extends Role {
         this.cardEffects.clear();
         this.deck.clear();
 
+
+        vulnerable.setDuration(0);
+        weak.setDuration(0);
+        stun.setDuration(0);
+        silence.setDuration(0);
+        shield.setDuration(0);
+        poison.setDuration(0);
+        intangible.setDuration(0);
+        excite.setDuration(0);
+        erode.setDuration(0);
+        disarm.setDuration(0);
+        bleeding.setDuration(0);
+        artifact.setTimes(0);
+        dodge.setTimes(0);
+        dexterity=0;
+        strength=0;
+        atk=0;
+
         // 人物被动"苟"
-        this.treat((int)(0.1*(this.getTotalHP()-this.getHP())));
+        this.treat((int) (0.1 * (this.getTotalHP() - this.getHP())));
     }
 
 
