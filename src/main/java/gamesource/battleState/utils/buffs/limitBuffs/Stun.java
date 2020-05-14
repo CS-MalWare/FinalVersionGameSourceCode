@@ -1,5 +1,6 @@
 package gamesource.battleState.utils.buffs.limitBuffs;
 
+import gamesource.battleState.character.MainRole;
 import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
 import gamesource.battleState.utils.buffs.BuffFunction;
@@ -18,6 +19,7 @@ public class Stun extends LimitBuff implements BuffFunction {
 
     @Override
     public void triggerFunc() {
-        //TODO
+        MainRole.getInstance().endTurn();
+        this.decDuration();
     }
 }
