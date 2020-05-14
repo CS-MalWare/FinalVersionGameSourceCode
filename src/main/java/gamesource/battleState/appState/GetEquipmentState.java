@@ -32,7 +32,6 @@ import com.jme3.scene.Node;
 import com.jme3.scene.shape.Quad;
 import gamesource.battleState.equipment.CreateEquipment;
 import gamesource.battleState.equipment.Equipment;
-import javafx.scene.layout.Background;
 
 import java.util.ArrayList;
 

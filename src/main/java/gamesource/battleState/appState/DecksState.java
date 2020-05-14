@@ -3,7 +3,6 @@ package gamesource.battleState.appState;
 import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;
 import com.jme3.animation.LoopMode;
-import com.sun.org.apache.bcel.internal.generic.GOTO;
 import gamesource.battleState.card.Card;
 import gamesource.battleState.character.Enemy;
 import gamesource.battleState.character.MainRole;
