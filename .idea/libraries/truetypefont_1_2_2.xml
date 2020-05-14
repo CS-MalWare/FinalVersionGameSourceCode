@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="truetypefont-1.2.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../GameSourceCode-master/src/main/java/appState/truetypefont-1.2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
