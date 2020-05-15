@@ -10,7 +10,6 @@ import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
-import com.jme3.scene.Spatial;
 import com.simsilica.lemur.Axis;
 import com.simsilica.lemur.Button;
 import com.simsilica.lemur.Checkbox;
@@ -21,7 +20,6 @@ import com.simsilica.lemur.GuiGlobals;
 import com.simsilica.lemur.HAlignment;
 import com.simsilica.lemur.Label;
 import com.simsilica.lemur.LayerComparator;
-import com.simsilica.lemur.ListBox;
 import com.simsilica.lemur.Panel;
 import com.simsilica.lemur.ProgressBar;
 import com.simsilica.lemur.component.BorderLayout;
@@ -35,8 +33,8 @@ import com.simsilica.lemur.style.ElementId;
 import com.simsilica.lemur.style.Styles;
 
 import gamesource.battleState.card.Card;
+import gamesource.battleState.card.Card.OCCUPATION;
 import gamesource.battleState.character.MainRole;
-import gamesource.uiState.shopstate.TabTextForShop;
 import gamesource.util.*;
 
 public class BagAppState extends BaseAppState{
@@ -45,8 +43,8 @@ public class BagAppState extends BaseAppState{
     private final static String bagString = "Bag";
     private VersionedReference[] cardsReference = new VersionedReference[100];
     private ArrayList<Card> mainRoleCards = MainRole.getInstance().getDeck_();
-    private CardUI[] cardUIs = new CardUI[90];
-    private CardUI[] cardUIsCopy = new CardUI[90];
+    private CardUI[] cardUIs = new CardUI[60];
+    private CardUI[] cardUIsCopy = new CardUI[60];
     private CardUI[] casterCardUIs = new CardUI[30];
     private CardUI[] neutralCardUIs = new CardUI[30];
     private Container generalBorder;
@@ -60,6 +58,8 @@ public class BagAppState extends BaseAppState{
     private Styles styles;
     private boolean isOpenBag = false;
     private boolean isShowCards = false;
+
+    private boolean isFirstOpen = true;
 
     @Override
     public void initialize(Application application){
@@ -128,13 +128,19 @@ public class BagAppState extends BaseAppState{
         leftPart.addChild(new Label("Bag", new ElementId("header"), "glass"));
         leftPart.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass")).setUserData(LayerComparator.LAYER, 2);
 
+        Button general = new Button("General");
         Button caster = new Button("Caster");
         Button neutral = new Button("Neutral");
+        Button backToStart = new Button("Back");
         //Button saber = new Button("Saber");
 
         leftPart.addChild(caster);
         leftPart.addChild(neutral);
         //leftPart.addChild(saber);
+
+        caster.addClickCommands(new ShowCaster());
+        neutral.addClickCommands(new ShowNeutral());
+        general.addClickCommands(new showGeneral());
     }
 
     public void showMoney(){
@@ -157,6 +163,16 @@ public class BagAppState extends BaseAppState{
     public void showCards(Container centralPart){
         CardArrayReader cardArrayReader = new CardArrayReader(MainRole.getInstance().getDeck_());
         cardUIs = cardArrayReader.CardArrayToCardUIs();
+        System.arraycopy(cardUIs, 0, cardUIsCopy, 0, cardUIs.length);
+
+        for(int i=0; i<cardUIs.length; i++){
+            if(mainRoleCards.get(i).getOccupation().equals(OCCUPATION.CASTER)){
+                appendToCasterCardUIs(cardUIs[i]);
+            }else{
+                appendToNeutralCardUIs(cardUIs[i]);
+            }
+        }
+
         for(int i=0; i<cardUIs.length; i++){
             int j = i % 6;
             int z = (i - j)/6;
@@ -166,6 +182,110 @@ public class BagAppState extends BaseAppState{
             VersionedReference<Boolean> reference = cardUIs[i].getCheckBox().getModel().createReference();
             cardsReference[i] = reference;
         }
+    }
+
+    private class showGeneral implements Command<Button>{
+        public void execute(Button button){
+            centralPart.detachAllChildren();
+            pagesContainer.detachAllChildren();
+            cardUIs = cardUIsCopy;
+            int pageNumber = cardUIs.length % 12;
+
+            for(int i=0; i<12; i++){
+                int j = i % 4;
+                int z = (i - j) / 4;
+                cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+            }
+
+            for(int i=1; i<pageNumber; i++){
+                Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                pageButton.addClickCommands(new PageButtonClick());
+            }
+        }
+    } 
+    
+    private class ShowCaster implements Command<Button>{
+        public void execute(Button button){
+            centralPart.detachAllChildren();
+            pagesContainer.detachAllChildren();
+            cardUIs = casterCardUIs;
+
+            for(int i=0; i<12; i++){
+                int j = i % 4;
+                int z = (i - j)/4;
+                cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+            }
+
+            for(int i=1; i<=2; i++){
+                Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                pageButton.addClickCommands(new PageButtonClick());
+            }
+        }
+    }
+
+    private class ShowNeutral implements Command<Button>{
+        public void execute(Button button){
+            centralPart.detachAllChildren();
+            pagesContainer.detachAllChildren();
+            cardUIs = neutralCardUIs;
+
+            for(int i=0; i<12; i++){
+                int j = i % 4;
+                int z = (i - j) / 4;
+                cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+            }
+
+            for(int i=1; i<=2; i++){
+                Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                pageButton.addClickCommands(new PageButtonClick());
+            }
+        }
+    }
+
+    private class BackToStart implements Command<Button>{
+        public void execute(Button button){
+            leftPart.detachAllChildren();
+            SpringGridLayout leftGridLayout = new SpringGridLayout(Axis.Y, Axis.X, FillMode.None, FillMode.None);
+            leftPart.setLayout(leftGridLayout);
+        
+            leftPart.setBackground(new QuadBackgroundComponent(new ColorRGBA(0, 0.5f, 0.5f, 0.5f), 5, 5, 0.02f, false));
+            leftPart.addChild(new Label("Shop", new ElementId("header"), "glass"), 0, 0);
+            leftPart.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass"), 1, 0).setUserData(LayerComparator.LAYER, 2);
+        
+            Button cards = new Button("Cards");
+            Button equipments = new Button("Equipments");
+            leftPart.addChild(cards, 2, 0);
+            leftPart.addChild(equipments, 3, 0);
+
+            cards.addClickCommands(new CardsDirectoryClick());
+        }
+    }
+
+    private class PageButtonClick implements Command<Button>{
+        public void execute(Button button){
+            int pageIndex = Integer.parseInt(button.getText());
+
+            centralPart.detachAllChildren();
+            if(cardUIs.length < 12 * pageIndex){
+                for(int i = 12*(pageIndex - 1); i<cardUIs.length; i++){
+                    int index = i - 12*(pageIndex-1);
+                    int j = index % 4;
+                    int z = (index - j)/4;
+                    cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                }
+            }else{
+                for(int i = 12*(pageIndex - 1); i<12*pageIndex; i++){
+                    int index = i - 12*(pageIndex - 1);
+                    int j = index % 4;
+                    int z = (index - j)/4;
+                    cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                }
+            }
+        }
+    }
+
+    public void refreshPage(CardUI[] cardUIs){
+        buttomPartContainer.detachAllChildren();
     }
 
     public void caculateMoney(int cardsMoney){
@@ -228,8 +348,22 @@ public class BagAppState extends BaseAppState{
         }
     }
 
-    public void addButtonEffect(Button button){
-        
+    public void appendToCasterCardUIs(CardUI cardUI){
+        for(int i=0; i<casterCardUIs.length; i++){
+            if(casterCardUIs[i] == null){
+                casterCardUIs[i] = cardUI;
+                break;
+            }
+        }
+    }
+
+    public void appendToNeutralCardUIs(CardUI cardUI){
+        for(int i=0; i< neutralCardUIs.length; i++){
+            if(neutralCardUIs[i] == null){
+                neutralCardUIs[i] = cardUI;
+                break;
+            }
+        }
     }
     // public void update(float tpf){
     //     if(isShowCards){
