@@ -20,10 +20,8 @@ import gamesource.State.CharacterState.secondWorldCharacter.goblinGirlState;
 import gamesource.State.CharacterState.secondWorldCharacter.shanmanState;
 import gamesource.State.SpecialEffect.*;
 import gamesource.State.controlState.InputAppState;
-import gamesource.State.mapState.ThirdWorldMap;
-import gamesource.State.mapState.chest;
-import gamesource.State.mapState.secondWorldMap;
-import gamesource.State.mapState.skyBox2;
+import gamesource.State.controlState.PositionInputState;
+import gamesource.State.mapState.*;
 import gamesource.State.musicState.SecondBackMusic;
 import gamesource.battleState.battle.Battle;
 import gamesource.uiState.bagstate.BagAppState;
@@ -90,6 +88,7 @@ public class ThirdState  extends BaseAppState {
         cam=application.getCamera();
         state.attach(world);
         states.add(world);
+        state.attach(new PositionInputState());
         input=state.getState(InputAppState.class);
         states.add(input);
         major=state.getState(MajorActor.class);
@@ -105,6 +104,7 @@ public class ThirdState  extends BaseAppState {
         state.attach(fish3);
         state.attach(light);
         state.attach(water);
+        state.attach(new skyBox());
 
 
         this.inputManager=application.getInputManager();
