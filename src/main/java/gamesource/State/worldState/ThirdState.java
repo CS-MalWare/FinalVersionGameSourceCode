@@ -57,6 +57,8 @@ public class ThirdState  extends BaseAppState {
     chest c2 = new chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
     chest c3 = new chest(new Vector3f(12.185162f, -18.157299f, -74.07405f),4.2f);
 
+    //这个地图暂时这5种怪物，想新加new一下加入state里面，构造函数第一个参数是位置，第二个是朝向，进入游戏需要先按c进入第一人称，再按f1来获取玩家坐标
+
     private drunkCrab crab1=new drunkCrab();
 
     private Fish1State fish1=new Fish1State();
