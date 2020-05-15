@@ -10,12 +10,13 @@ import org.jsfml.window.VideoMode;
 import org.jsfml.window.event.Event;
 import java.nio.file.Paths;
 import java.io.IOException;
+import static gamesource.initialinterface.Main_test.start;
 
 public class StartInterface {
     public static void main(String[] arcs) throws IOException, ContextActivationException, InterruptedException {
-        //int screenWidth = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
-        //int screenHeight=java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
-        //System.out.println(screenHeight + " " + screenWidth);
+        int screenWidth = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+        int screenHeight=java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+        System.out.println(screenHeight + " " + screenWidth);
         int num = 0;
         RenderWindow window = new RenderWindow();
         window.create(new VideoMode(1536,864), "Cholera");
@@ -116,6 +117,9 @@ public class StartInterface {
                     {
                         start_button.setTexture(texture_start_pressed);
                         move.play();
+                        start();
+                        music.pause();
+                        window.close();
                     }
                     if(click_compute(texture_white_released, white_button))
                     {
