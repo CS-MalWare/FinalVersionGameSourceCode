@@ -1,4 +1,4 @@
-package initialinterface;
+package gamesource.initialinterface;
 
 import org.jsfml.graphics.Color;
 import org.jsfml.graphics.Font;

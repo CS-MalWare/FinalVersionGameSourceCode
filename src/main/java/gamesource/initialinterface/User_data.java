@@ -1,6 +1,6 @@
 package gamesource.initialinterface;
 
-import javax.xml.soap.Text;
+//import javax.xml.soap.Text;
 
 public class User_data
 {
