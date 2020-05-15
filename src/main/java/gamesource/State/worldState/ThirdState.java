@@ -64,7 +64,7 @@ public class ThirdState  extends BaseAppState {
     private Fish1State fish1=new Fish1State();
 
     private Fish2State fish2=new Fish2State();
-    private Fish3State fish3=new Fish3State(new Vector3f(0,35,0));
+    private Fish3State fish3=new Fish3State(new Vector3f(0,35,0),6.4f);
 
     private mushroomBug bu1=new mushroomBug();
 
