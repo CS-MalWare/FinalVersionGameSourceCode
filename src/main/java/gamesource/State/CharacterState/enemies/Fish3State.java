@@ -15,7 +15,7 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
-public class hollowKnight extends BaseAppState {
+public class Fish3State extends BaseAppState {
     private BulletAppState bullet;
     private Spatial skeleton;
     private CapsuleCollisionShape capsuleShape=new CapsuleCollisionShape();
@@ -57,13 +57,13 @@ public class hollowKnight extends BaseAppState {
         skeletonControl.setPhysicsLocation(place);
     }
 
-    public hollowKnight(){
+    public Fish3State(){
 
     }
-    public hollowKnight(Vector3f place){
+    public Fish3State(Vector3f place){
         this.place=place;
     }
-    public hollowKnight(Vector3f place,float modelY){
+    public Fish3State(Vector3f place,float modelY){
         this.place=place;
         this.modelY=modelY;
     }

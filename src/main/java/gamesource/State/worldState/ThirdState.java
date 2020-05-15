@@ -18,10 +18,7 @@ import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.enemies.*;
 import gamesource.State.CharacterState.secondWorldCharacter.goblinGirlState;
 import gamesource.State.CharacterState.secondWorldCharacter.shanmanState;
-import gamesource.State.SpecialEffect.SecondWorldLight;
-import gamesource.State.SpecialEffect.SecondWorldOtherSpecial;
-import gamesource.State.SpecialEffect.Water;
-import gamesource.State.SpecialEffect.makeCross;
+import gamesource.State.SpecialEffect.*;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.mapState.ThirdWorldMap;
 import gamesource.State.mapState.chest;
@@ -67,7 +64,7 @@ public class ThirdState  extends BaseAppState {
     private Fish1State fish1=new Fish1State();
 
     private Fish2State fish2=new Fish2State();
-    private hollowKnight knight=new hollowKnight(new Vector3f(0,35,0));
+    private Fish3State fish3=new Fish3State(new Vector3f(0,35,0));
 
     private mushroomBug bu1=new mushroomBug();
 
@@ -83,8 +80,8 @@ public class ThirdState  extends BaseAppState {
     private ShopAppState shopState;
     private MenuAppState menuState;
     private makeCross cross;
-    private SecondWorldLight light=new SecondWorldLight();
-    private Water water=new Water(25);
+    private ThirdWorldLight light=new ThirdWorldLight();
+    private Water water=new Water(22);
 
     private ArrayList<BaseAppState> states=new ArrayList<BaseAppState>();
 
@@ -105,7 +102,7 @@ public class ThirdState  extends BaseAppState {
         states.add(menuState);
         cross=state.getState(makeCross.class);
         states.add(cross);
-        state.attach(knight);
+        state.attach(fish3);
         state.attach(light);
         state.attach(water);
 
@@ -131,7 +128,10 @@ public class ThirdState  extends BaseAppState {
     class StartTalk implements ActionListener {
         @Override
         public void onAction(String name,boolean isPressed,float tpf){
-
+            if (change.equals(name) && isPressed) {
+                System.out.println("change");
+                major.change();
+            }
         }
     }
 
