@@ -35,6 +35,7 @@ import com.jme3.math.Vector3f;
 import com.jme3.post.FilterPostProcessor;
 import gamesource.State.worldState.SecondState;
 import gamesource.State.worldState.ThirdState;
+import gamesource.State.worldState.forthState;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -51,7 +52,7 @@ public class App extends SimpleApplication
     FirstState f1;
     SecondState f2;
     ThirdState f3;
-
+    forthState f4;
     private AppStateManager state;
 
 
@@ -85,7 +86,8 @@ public class App extends SimpleApplication
         //stateManager.attach(f1);
         f2=new SecondState();
         f3=new ThirdState();
-        stateManager.attach(f3);
+        f4=new forthState();
+        stateManager.attach(f4);
         //stateManager.attach(f2);
 
         //stateManager.getState(SecondState.class).setEnabled(false);
