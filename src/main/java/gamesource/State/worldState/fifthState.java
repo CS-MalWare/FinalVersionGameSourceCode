@@ -14,6 +14,7 @@ import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.enemies.*;
+import gamesource.State.CharacterState.enemies.fifth.flyRobot;
 import gamesource.State.CharacterState.enemies.fifth.plane;
 import gamesource.State.CharacterState.enemies.fifth.walkRobot;
 import gamesource.State.SpecialEffect.FirstWorldOtherSpecial;
@@ -63,6 +64,7 @@ public class fifthState  extends BaseAppState {
 
     private plane p1=new plane(new Vector3f(0,0,0));
     private walkRobot robot1=new walkRobot(new Vector3f(0,0,0));
+    private flyRobot robot2=new flyRobot(new Vector3f(0,0,0));
 
     private StartTalk st=new StartTalk();
 
@@ -101,7 +103,7 @@ public class fifthState  extends BaseAppState {
         cross=state.getState(makeCross.class);
         states.add(cross);
         //state.attach(p1);
-        state.attach(robot1);
+        state.attach(robot2);
         state.attach(light);
         state.attach(effect);
         //state.attach(water);
