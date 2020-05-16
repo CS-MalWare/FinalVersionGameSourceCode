@@ -15,7 +15,7 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
-public class mushroomBug extends BaseAppState {
+public class DrunkCrab extends BaseAppState {
     private BulletAppState bullet;
     private Spatial skeleton;
     private CapsuleCollisionShape capsuleShape=new CapsuleCollisionShape();
@@ -57,21 +57,21 @@ public class mushroomBug extends BaseAppState {
         skeletonControl.setPhysicsLocation(place);
     }
 
-    public mushroomBug(){
+    public DrunkCrab(){
 
     }
-    public mushroomBug(Vector3f place){
+    public DrunkCrab(Vector3f place){
         this.place=place;
     }
-    public mushroomBug(Vector3f place,float modelY){
+    public DrunkCrab(Vector3f place, float modelY){
         this.place=place;
         this.modelY=modelY;
     }
     public void initModel(){
-        skeleton=app.getAssetManager().loadModel("Enemies/underWater/mushroomBug.j3o");
+        skeleton=app.getAssetManager().loadModel("Enemies/underWater/drunkCrab.j3o");
         skeleton.setName("skeleton");
         skeleton.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
-        skeleton.scale(0.90f);
+        skeleton.scale(0.20f);
         skeleton.rotate(0f,modelY,0f);
         ske=skeleton.getWorldBound();
     }
@@ -87,7 +87,7 @@ public class mushroomBug extends BaseAppState {
         radius=0.4f;
         height=0.6f;
 
-        skeleton.move(0.06f,-(height/2+radius)+0.90f,0);
+        skeleton.move(0.06f,-(height/2+radius)+0.37f,0);
 
         character=new Node("Character");
         rootNode.attachChild(character);
