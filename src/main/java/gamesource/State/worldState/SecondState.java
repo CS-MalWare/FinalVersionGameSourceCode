@@ -120,6 +120,7 @@ public class SecondState extends BaseAppState {
         states.add(menuState);
         cross = state.getState(makeCross.class);
         states.add(cross);
+        state.attach(new PositionInputState());
         //state.attach(new PositionInputState());
         //states.add(wldor);
         state.attach(skeleton1);
