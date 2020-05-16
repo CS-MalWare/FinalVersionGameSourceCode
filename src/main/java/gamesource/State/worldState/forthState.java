@@ -58,14 +58,6 @@ public class forthState extends BaseAppState {
 
     //这个地图暂时这5种怪物，想新加new一下加入state里面，构造函数第一个参数是位置，第二个是朝向，进入游戏需要先按c进入第一人称，再按f1来获取玩家坐标
 
-    private drunkCrab crab1=new drunkCrab();
-
-    private Fish1State fish1=new Fish1State();
-
-    private Fish2State fish2=new Fish2State();
-    private Fish3State fish3=new Fish3State(new Vector3f(0,35,0),6.4f);
-
-    private mushroomBug bu1=new mushroomBug();
 
     private StartTalk st=new StartTalk();
 
@@ -102,7 +94,6 @@ public class forthState extends BaseAppState {
         states.add(menuState);
         cross=state.getState(makeCross.class);
         states.add(cross);
-        state.attach(fish3);
         state.attach(light);
         //state.attach(water);
         state.attach(new skyBox());
