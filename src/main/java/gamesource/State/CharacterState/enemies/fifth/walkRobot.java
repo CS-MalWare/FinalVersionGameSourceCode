@@ -87,7 +87,7 @@ public class walkRobot extends BaseAppState {
         radius=0.4f;
         height=0.6f;
 
-        robot.move(0.06f,-(height/2+radius)+0.75f,0);
+        robot.move(0.06f,-(height/2+radius)+1f,0);
 
         character=new Node("Character");
         rootNode.attachChild(character);

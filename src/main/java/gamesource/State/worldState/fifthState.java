@@ -16,6 +16,7 @@ import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.enemies.*;
 import gamesource.State.CharacterState.enemies.fifth.plane;
 import gamesource.State.CharacterState.enemies.fifth.walkRobot;
+import gamesource.State.SpecialEffect.FirstWorldOtherSpecial;
 import gamesource.State.SpecialEffect.ThirdWorldLight;
 import gamesource.State.SpecialEffect.Water;
 import gamesource.State.SpecialEffect.makeCross;
@@ -77,6 +78,7 @@ public class fifthState  extends BaseAppState {
     private makeCross cross;
     private ThirdWorldLight light=new ThirdWorldLight();
     private Water water=new Water(22);
+    private FirstWorldOtherSpecial effect=new FirstWorldOtherSpecial();
 
     private ArrayList<BaseAppState> states=new ArrayList<BaseAppState>();
 
@@ -101,6 +103,7 @@ public class fifthState  extends BaseAppState {
         //state.attach(p1);
         state.attach(robot1);
         state.attach(light);
+        state.attach(effect);
         //state.attach(water);
         state.attach(new skyBox());
 
