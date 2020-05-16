@@ -86,7 +86,7 @@ public class App extends SimpleApplication
         f3=new ThirdState();
         f4=new forthState();
         f5=new fifthState();
-        stateManager.attach(f2);
+        stateManager.attach(f3);
         //stateManager.attach(f2);
 
         //stateManager.getState(SecondState.class).setEnabled(false);
