@@ -15,6 +15,7 @@ import com.jme3.renderer.Camera;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.enemies.*;
 import gamesource.State.CharacterState.enemies.fifth.plane;
+import gamesource.State.CharacterState.enemies.fifth.walkRobot;
 import gamesource.State.SpecialEffect.ThirdWorldLight;
 import gamesource.State.SpecialEffect.Water;
 import gamesource.State.SpecialEffect.makeCross;
@@ -60,6 +61,7 @@ public class fifthState  extends BaseAppState {
     //这个地图暂时这5种怪物，想新加new一下加入state里面，构造函数第一个参数是位置，第二个是朝向，进入游戏需要先按c进入第一人称，再按f1来获取玩家坐标
 
     private plane p1=new plane(new Vector3f(0,0,0));
+    private walkRobot robot1=new walkRobot(new Vector3f(0,0,0));
 
     private StartTalk st=new StartTalk();
 
@@ -96,7 +98,8 @@ public class fifthState  extends BaseAppState {
         states.add(menuState);
         cross=state.getState(makeCross.class);
         states.add(cross);
-        state.attach(p1);
+        //state.attach(p1);
+        state.attach(robot1);
         state.attach(light);
         //state.attach(water);
         state.attach(new skyBox());
