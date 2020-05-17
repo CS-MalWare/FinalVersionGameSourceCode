@@ -58,29 +58,31 @@ public class SecondState extends BaseAppState {
     Chest c1 = new Chest(new Vector3f(9.952984f, -31.962004f, 56.09926f), 4f);
     Chest c2 = new Chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
     Chest c3 = new Chest(new Vector3f(12.185162f, -18.157299f, -74.07405f), 4.2f);
-    private angryskeletonState skeleton1 = new angryskeletonState(new Vector3f(3.0883105f, -31.735968f, 43.255566f), 0.5f);
+    private AngrySkeletonState skeleton1 = new AngrySkeletonState(new Vector3f(3.0883105f, -31.735968f, 43.255566f), 0.5f);
 
     private shanmanState shanman = new shanmanState(new Vector3f(5.1453485f, -32.197643f, 58.86895f), -1.5f);
 
     private goblinGirlState girl = new goblinGirlState(new Vector3f(5.3336577f, -31.696009f, 55.903286f), -1.5f);
 
-    private greenSkeletonState skeleton2 = new greenSkeletonState(new Vector3f(8.143902f, -32.197643f, 44.735046f), -0.7f);
+    private GreenSkeletonState skeleton2 = new GreenSkeletonState(new Vector3f(8.143902f, -32.197643f, 44.735046f), -0.7f);
+    private BlueSkeletonState skeleton3 = new BlueSkeletonState(new Vector3f(-7.6294403f, -22.044151f, 76.60776f), -0.5f);
+    private RedSkeletonState  skeleton4 = new RedSkeletonState(new Vector3f(-15.020414f, -24.167147f, 60.66891f), 0.5f);
 
     private InputAppState input;
 
     private SecondWorldMap world = new SecondWorldMap();
 
-    private snowRobotState snowRobot = new snowRobotState(new Vector3f(8.143902f, -32.197643f, 44.735046f));
+    private SnowRobotState snowRobot = new SnowRobotState(new Vector3f(8.143902f, -32.197643f, 44.735046f));
 
-    private batState bat = new batState();
+    private BatState bat = new BatState();
 
-    private bossKnight knight = new bossKnight();
+    private BossKnight knight = new BossKnight();
 
     BulletAppState bullet = new BulletAppState();         //现在为为世界添加物理引擎的测试情况
 
     private SecondBackMusic music = new SecondBackMusic();
 
-    private stuxnetState boss = new stuxnetState();
+    private StuxnetState boss = new StuxnetState();
 
     private SkyBox2 sky = new SkyBox2();
 

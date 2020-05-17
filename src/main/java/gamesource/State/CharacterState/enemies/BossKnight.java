@@ -15,7 +15,7 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
-public class blueSkeletonState extends BaseAppState {
+public class BossKnight extends BaseAppState {
     private BulletAppState bullet;
     private Spatial skeleton;
     private CapsuleCollisionShape capsuleShape=new CapsuleCollisionShape();
@@ -26,7 +26,7 @@ public class blueSkeletonState extends BaseAppState {
 
     private PhysicsSpace physics;
 
-    private Node rootNode=new Node("blueSkeleton");
+    private Node rootNode=new Node("skeleton");
 
     private SimpleApplication app;
 
@@ -42,9 +42,10 @@ public class blueSkeletonState extends BaseAppState {
 
     private float rotateX=0f,rotateY=0f,rotateZ=0f,modelY=0f;
 
+    private Vector3f place=new Vector3f(0,0,0);
+
     private BoundingVolume ske;
 
-    private Vector3f place=new Vector3f(0,0,0);
     protected void initialize(Application application){
         app=(SimpleApplication)application;
 
@@ -52,26 +53,25 @@ public class blueSkeletonState extends BaseAppState {
         initModel();
         initPhysics();
 
-        initAnim();
 
         skeletonControl.setPhysicsLocation(place);
     }
 
-    public blueSkeletonState(){
+    public BossKnight(){
 
     }
-    public blueSkeletonState(Vector3f place){
+    public BossKnight(Vector3f place){
         this.place=place;
     }
-    public blueSkeletonState(Vector3f place,float modelY){
+    public BossKnight(Vector3f place, float modelY){
         this.place=place;
         this.modelY=modelY;
     }
     public void initModel(){
-        skeleton=app.getAssetManager().loadModel("Enemies/skeleton/blueSkeleton/blueSkeleton.j3o");
+        skeleton=app.getAssetManager().loadModel("Enemies/bossKnight/scene.j3o");
         skeleton.setName("skeleton");
         skeleton.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
-        skeleton.scale(0.01f);
+        skeleton.scale(0.67f);
         skeleton.rotate(0f,modelY,0f);
         ske=skeleton.getWorldBound();
     }
@@ -79,6 +79,7 @@ public class blueSkeletonState extends BaseAppState {
     public BoundingVolume get(){
         return ske;
     }
+
     public void initPhysics(){
         bullet=app.getStateManager().getState(BulletAppState.class);
         physics=bullet.getPhysicsSpace();
@@ -86,7 +87,7 @@ public class blueSkeletonState extends BaseAppState {
         radius=0.4f;
         height=0.6f;
 
-        skeleton.move(0.06f,-(height/2+radius)+0.1f,0);
+        skeleton.move(0.06f,-(height/2+radius)+0.37f,0);
 
         character=new Node("Character");
         rootNode.attachChild(character);
@@ -111,29 +112,7 @@ public class blueSkeletonState extends BaseAppState {
 
         rootNode.attachChild(character);
     }
-    public void initAnim(){
 
-
-        scene=(Node)skeleton;
-
-        bip001=(Node)scene.getChild("bip001");
-
-        //bip001.getChild("AnimControl");
-
-
-        animControl=bip001.getControl(AnimControl.class);
-
-        //AnimControl control = (AnimControl)spatial.getControl(0);
-
-        System.out.println(animControl.getAnimationNames()+"zzzzzzz");
-
-        animChannel=animControl.createChannel();
-
-        //spatial.move(0, 1, 0);
-
-
-        animChannel.setAnim("archer_shoot");
-    }
     @Override
     protected void cleanup(Application application) {
 
@@ -146,7 +125,10 @@ public class blueSkeletonState extends BaseAppState {
 
     @Override
     protected void onDisable() {
+
         this.rootNode.removeFromParent();
         physics.remove(skeletonControl);
     }
+
 }
+

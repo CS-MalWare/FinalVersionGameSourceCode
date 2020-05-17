@@ -85,7 +85,7 @@ public class InputAppState extends BaseAppState implements ActionListener {
         } else if (RIGHT.equals(name)) {
             right = isPressed;
         } else if (FORWARD.equals(name)) {
-            System.out.println("get forward");
+//            System.out.println("get forward");
             forward = isPressed;
         } else if (BACKWARD.equals(name)) {
             backward = isPressed;
