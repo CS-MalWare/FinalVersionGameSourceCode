@@ -4,6 +4,7 @@ import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.bounding.BoundingVolume;
+import com.jme3.collision.CollisionResults;
 import com.jme3.input.InputManager;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
@@ -18,6 +19,12 @@ import gamesource.State.SpecialEffect.*;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.*;
+import gamesource.battleState.appState.EnemyState;
+import gamesource.battleState.battle.Battle;
+import gamesource.battleState.character.enemy.mechanicalEmpire.RampageRobot;
+import gamesource.battleState.character.enemy.mechanicalEmpire.Robot;
+import gamesource.battleState.character.enemy.mechanicalEmpire.StrongRobot;
+import gamesource.battleState.character.enemy.originalForest.*;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -42,7 +49,6 @@ public class ThirdState  extends BaseAppState {
     Ray ray;
 
     private Camera cam;
-
     MajorActor major;
     InputAppState input;
     ThirdWorldMap world=new ThirdWorldMap();
@@ -55,7 +61,7 @@ public class ThirdState  extends BaseAppState {
 
     private DrunkCrab crab1=new DrunkCrab(new Vector3f(86.417725f, 3.0157287f, -5.2350335f),2f);
 
-    private Fish1State fish1_1=new Fish1State(new Vector3f(93.7314f, -3.7759366f, 27.07812f), 5f);
+    private Fish1State fish1_1 = new Fish1State(new Vector3f(93.7314f, -3.7759366f, 27.07812f), 5f);
     private Fish1State fish1_2 = new Fish1State(new Vector3f(46.98013f, 0.9620397f, -0.31717157f), -3f);
     private Fish1State fish1_3 = new Fish1State(new Vector3f(56.948456f, 3.351931f, -47.507305f), 3f);
     private Fish1State fish1_4 = new Fish1State(new Vector3f(12.754826f, -3.4226258f, -74.095726f), 1f);
@@ -69,7 +75,6 @@ public class ThirdState  extends BaseAppState {
     private Fish3State fish3_2=new Fish3State(new Vector3f(-79.33274f, -1.6759943f, 24.259945f),6.4f);
     private Fish3State fish3_3=new Fish3State(new Vector3f(-58.6319f, -1.6084806f, 50.47643f),-6.4f);
     private Fish3State fish3_4=new Fish3State(new Vector3f(-80.64096f, -6.567422f, 66.516266f),3.4f);
-
     private MushroomBug bu1=new MushroomBug(new Vector3f(60.75251f, 4.0023937f, -34.16455f),-4f);
 
     private StartTalk st=new StartTalk();
@@ -99,6 +104,9 @@ public class ThirdState  extends BaseAppState {
         states.add(input);
         major=state.getState(MajorActor.class);
         states.add(major);
+
+        maj = major.getMajor();
+
         bagState=state.getState(BagAppState.class);
         states.add(bagState);
         shopState=state.getState(ShopAppState.class);
@@ -108,22 +116,38 @@ public class ThirdState  extends BaseAppState {
         cross=state.getState(makeCross.class);
         states.add(cross);
         state.attach(fish1_1);
+        states.add(fish1_1);
         state.attach(fish1_2);
+        states.add(fish1_2);
         state.attach(fish1_3);
+        states.add(fish1_3);
         state.attach(fish1_4);
+        states.add(fish1_4);
         state.attach(fish1_5);
+        states.add(fish1_5);
         state.attach(fish2_1);
+        states.add(fish2_1);
         state.attach(fish2_2);
+        states.add(fish2_2);
         state.attach(fish2_3);
+        states.add(fish2_3);
         state.attach(fish2_4);
+        states.add(fish2_4);
         state.attach(fish2_5);
+        states.add(fish2_5);
         state.attach(fish3_1);
+        states.add(fish3_1);
         state.attach(fish3_2);
+        states.add(fish3_2);
         state.attach(fish3_3);
+        states.add(fish3_3);
         state.attach(fish3_4);
+        states.add(fish3_4);
 
         state.attach(bu1);
+        states.add(bu1);
         state.attach(crab1);
+        states.add(crab1);
 
         state.attach(light);
         state.attach(water);
@@ -151,16 +175,496 @@ public class ThirdState  extends BaseAppState {
     class StartTalk implements ActionListener {
         @Override
         public void onAction(String name,boolean isPressed,float tpf){
+            int battle1 = -1;
+            CollisionResults results1_1 = results1_1();
+            CollisionResults results1_2 = results1_2();
+            CollisionResults results1_3 = results1_3();
+            CollisionResults results1_4 = results1_4();
+            CollisionResults results1_5 = results1_5();
+            CollisionResults results2_1 = results2_1();
+            CollisionResults results2_2 = results2_2();
+            CollisionResults results2_3 = results2_3();
+            CollisionResults results2_4 = results2_4();
+            CollisionResults results2_5 = results2_5();
+            CollisionResults results3_1 = results3_1();
+            CollisionResults results3_2 = results3_2();
+            CollisionResults results3_3 = results3_3();
+            CollisionResults results3_4 = results3_4();
+
+            CollisionResults results4_1 = results4_1();
+
+            CollisionResults results5_1 = results5_1();
+            if (move.equals(name) && isPressed) {
+                if (results1_1.size() > 0) {
+                    battle1 = 0;
+                } else if (results1_2.size() > 0) {
+                    battle1 = 1;
+                } else if (results1_3.size() > 0) {
+                    battle1 = 2;
+                } else if (results1_4.size() > 0) {
+                    battle1 = 3;
+                } else if (results1_5.size() > 0) {
+                    battle1 = 4;
+                } else if (results2_1.size() > 0) {
+                    battle1 = 5;
+                } else if (results2_2.size() > 0) {
+                    battle1 = 6;
+                } else if (results2_3.size() > 0) {
+                    battle1 = 7;
+                } else if (results2_4.size() > 0) {
+                    battle1 = 8;
+                } else if (results2_5.size() > 0) {
+                    battle1 = 9;
+                } else if (results3_1.size() > 0) {
+                    battle1 = 10;
+                } else if (results3_2.size() > 0) {
+                    battle1 = 11;
+                } else if (results3_3.size() > 0) {
+                    battle1 = 12;
+                } else if (results3_4.size() > 0) {
+                    battle1 = 13;
+                } else if(results4_1.size()>0){
+                    battle1 = 14;
+                } else if (results5_1.size() > 0) {
+                    battle1 = 15;
+                }
+            }
+
             if (change.equals(name) && isPressed) {
                 System.out.println("change");
                 major.change();
             }
+            if (bag.equals(name) && isPressed) {
+                if (canmove == 1) {
+                    state.detach(input);
+                    major.mouseChange();
+                    canmove = 0;
+                } else {
+                    state.attach(input);
+                    major.mouseChange();
+                    canmove = 1;
+                }
+            }
+
+            switch (battle1) {
+                case 0:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Robot(45, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(fish1_1);
+                    states.remove(fish1_1);
+                    fish1_1.setEnabled(false);
+                    fish1_1 = null;
+                    state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    major.setPlace(fish1_1.get().getCenter());
+                    break;
+                case 1:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Robot(45, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(fish1_2);
+                    states.remove(fish1_2);
+                    fish1_2.setEnabled(false);
+                    major.setPlace(fish1_2.get().getCenter());
+                    state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+                case 2:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Robot(45, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(fish1_3);
+                    states.remove(fish1_3);
+                    fish1_3.setEnabled(false);
+                    major.setPlace(fish1_3.get().getCenter());
+                    state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+                case 3:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Robot(45, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(fish1_4);
+                    states.remove(fish1_4);
+                    fish1_4.setEnabled(false);
+                    state.attach(new Battle(states));
+                    major.setPlace(fish1_4.get().getCenter());
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+
+                case 4:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Robot(45, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(fish1_5);
+                    states.remove(fish1_5);
+                    fish1_5.setEnabled(false);
+                    state.attach(new Battle(states));
+                    major.setPlace(fish1_5.get().getCenter());
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+
+                case 5:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Robot(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(fish2_1);
+                    states.remove(fish2_1);
+                    fish2_1.setEnabled(false);
+                    state.attach(new Battle(states));
+                    major.setPlace(fish2_1.get().getCenter());
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+
+                case 6:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Robot(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(fish2_2);
+                    states.remove(fish2_2);
+                    state.attach(new Battle(states));
+                    fish2_2.setEnabled(false);
+                    major.setPlace(fish2_2.get().getCenter());
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+
+
+                case 7:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Robot(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(fish2_3);
+                    states.remove(fish2_3);
+                    fish2_3.setEnabled(false);
+                    major.setPlace(fish2_3.get().getCenter());
+                    state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+                case 8:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Robot(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(fish2_4);
+                    states.remove(fish2_4);
+                    fish2_4.setEnabled(false);
+                    major.setPlace(fish2_4.get().getCenter());
+                    state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+                case 9:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Robot(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(fish2_5);
+                    states.remove(fish2_5);
+                    state.attach(new Battle(states));
+                    fish2_5.setEnabled(false);
+                    major.setPlace(fish2_5.get().getCenter());
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+                case 10:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new StrongRobot(60, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(fish3_1);
+                    states.remove(fish3_1);
+                    fish3_1.setEnabled(false);
+                    major.setPlace(fish3_1.get().getCenter());
+                    state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+                case 11:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new StrongRobot(60, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(fish3_2);
+                    states.remove(fish3_2);
+                    fish3_2.setEnabled(false);
+                    major.setPlace(fish3_2.get().getCenter());
+                    state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+                case 12:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new StrongRobot(60, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(fish3_3);
+                    states.remove(fish3_3);
+                    state.attach(new Battle(states));
+                    fish3_3.setEnabled(false);
+                    major.setPlace(fish3_3.get().getCenter());
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+                case 13:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new StrongRobot(60, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0),
+                            new StrongRobot(60, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(fish3_4);
+                    states.remove(fish3_4);
+                    fish3_4.setEnabled(false);
+                    state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    major.setPlace(fish3_4.get().getCenter());
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+                case 14:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new RampageRobot(100, "Enemies/underWater/drunkCrab.j3o", 10, 0, 0, 0, 1, 0, 0, 0)
+                    );
+                    state.detach(crab1);
+                    crab1.setEnabled(false);
+                    states.remove(crab1);
+                    state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    major.setPlace(crab1.get().getCenter());
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+                case 15:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new StrongRobot(60, "Enemies/underWater/mushroomBug.j3o", 10, 1, 0, 0, 0, 0, 0, 0),
+                            new StrongRobot(60, "Enemies/underWater/mushroomBug.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(bu1);
+                    bu1.setEnabled(false);
+                    states.remove(bu1);
+                    state.attach(new Battle(states));
+                    major.setPlace(bu1.get().getCenter());
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+                default:
+                    break;
+
+            }
         }
     }
-
-    protected void cancel(){
-
+    public CollisionResults results1_1() {
+        if(fish1_1!=null) {
+            BoundingVolume ske = fish1_1.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        }
+        return  new CollisionResults();
     }
+    public CollisionResults results1_2() {
+        BoundingVolume ske = fish1_2.get();
+        CollisionResults result = new CollisionResults();
+        maj.collideWith(ske, result);
+        return result;
+    }
+    public CollisionResults results1_3() {
+        BoundingVolume ske = fish1_3.get();
+        CollisionResults result = new CollisionResults();
+        maj.collideWith(ske, result);
+        return result;
+    }
+    public CollisionResults results1_4() {
+        BoundingVolume ske = fish1_4.get();
+        CollisionResults result = new CollisionResults();
+        maj.collideWith(ske, result);
+        return result;
+    }public CollisionResults results1_5() {
+        BoundingVolume ske = fish1_5.get();
+        CollisionResults result = new CollisionResults();
+        maj.collideWith(ske, result);
+        return result;
+    }public CollisionResults results2_1() {
+        BoundingVolume ske = fish2_1.get();
+        CollisionResults result = new CollisionResults();
+        maj.collideWith(ske, result);
+        return result;
+    }public CollisionResults results2_2() {
+        BoundingVolume ske = fish2_2.get();
+        CollisionResults result = new CollisionResults();
+        maj.collideWith(ske, result);
+        return result;
+    }public CollisionResults results2_3() {
+        BoundingVolume ske = fish2_3.get();
+        CollisionResults result = new CollisionResults();
+        maj.collideWith(ske, result);
+        return result;
+    }
+    public CollisionResults results2_4() {
+        BoundingVolume ske = fish2_4.get();
+        CollisionResults result = new CollisionResults();
+        maj.collideWith(ske, result);
+        return result;
+    }
+    public CollisionResults results2_5() {
+        BoundingVolume ske = fish2_5.get();
+        CollisionResults result = new CollisionResults();
+        maj.collideWith(ske, result);
+        return result;
+    }
+    public CollisionResults results3_1() {
+        BoundingVolume ske = fish3_1.get();
+        CollisionResults result = new CollisionResults();
+        maj.collideWith(ske, result);
+        return result;
+    }
+    public CollisionResults results3_2() {
+        BoundingVolume ske = fish3_2.get();
+        CollisionResults result = new CollisionResults();
+        maj.collideWith(ske, result);
+        return result;
+    }
+    public CollisionResults results3_3() {
+        BoundingVolume ske = fish3_3.get();
+        CollisionResults result = new CollisionResults();
+        maj.collideWith(ske, result);
+        return result;
+    }
+    public CollisionResults results3_4() {
+        BoundingVolume ske = fish3_4.get();
+        CollisionResults result = new CollisionResults();
+        maj.collideWith(ske, result);
+        return result;
+    }
+
+    public CollisionResults results4_1(){
+        BoundingVolume ske = crab1.get();
+        CollisionResults results = new CollisionResults();
+        maj.collideWith(ske,results);
+        return results;
+    }
+
+    public CollisionResults results5_1(){
+        BoundingVolume ske = bu1.get();
+        CollisionResults results = new CollisionResults();
+        maj.collideWith(ske,results);
+        return results;
+    }
+
+
+
+
 
     public void change(){
         if(chan==0) {
