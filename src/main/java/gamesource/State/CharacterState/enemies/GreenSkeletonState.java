@@ -149,11 +149,13 @@ public class GreenSkeletonState extends BaseAppState {
     protected void onEnable() {
         app.getRootNode().attachChild(this.rootNode);
         physics.add(skeletonControl);
+        ske=skeleton.getWorldBound();
     }
 
     @Override
     protected void onDisable() {
         this.rootNode.removeFromParent();
         physics.remove(skeletonControl);
+        ske=null;
     }
 }

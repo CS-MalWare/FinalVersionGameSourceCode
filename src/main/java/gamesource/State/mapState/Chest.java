@@ -109,7 +109,6 @@ public class Chest extends BaseAppState {
         chestNode.setRefDistance(distance);
         chestNode.setPositional(true);
         chestNode.setPitch(1f);
-        chestNode.play();
     }
 
     public BoundingVolume get(){
@@ -182,7 +181,7 @@ public class Chest extends BaseAppState {
     protected void onEnable() {
         app.getRootNode().attachChild(this.rootNode);
         physics.add(skeletonControl);
-        rootNode.attachChild(chestNode);
+        chestNode.play();
     }
 
     @Override
@@ -191,6 +190,7 @@ public class Chest extends BaseAppState {
         this.rootNode.removeFromParent();
         physics.remove(skeletonControl);
         rootNode.detachChild(chestNode);
+        chestNode.stop();
     }
 
 }

@@ -244,13 +244,15 @@ public class MajorActor extends BaseAppState implements AnimEventListener {
     @Override
     protected void onEnable() {
         rootNode.attachChild(character);
-        rootNode.attachChild(run);
+        physics.add(player);
+        //run.play();
     }
 
     @Override
     protected void onDisable() {
         rootNode.detachChild(character);
-        rootNode.detachChild(run);
+        physics.remove(player);
+        run.stop();
     }
 
    /* public void onAction(String name, boolean isPressed, float tpf) {
@@ -290,7 +292,7 @@ public class MajorActor extends BaseAppState implements AnimEventListener {
 
     public void jump(){
         if(player.onGround()){
-            player.jump(new Vector3f(0,3f,0));
+            player.jump(new Vector3f(0,6f,0));
 
             animChannel.setAnim("jump");
             animChannel.setLoopMode(LoopMode.DontLoop);

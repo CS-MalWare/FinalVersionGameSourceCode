@@ -164,9 +164,11 @@ public class plane extends BaseAppState {
     protected void onEnable() {
         app.getRootNode().attachChild(this.rootNode);
         physics.add(planeControl);
+        plane=Plane.getWorldBound();
     }
     protected void onDisable() {
         this.rootNode.removeFromParent();
         physics.remove(planeControl);
+        plane=null;
     }
 }
