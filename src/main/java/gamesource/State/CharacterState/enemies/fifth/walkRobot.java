@@ -163,9 +163,11 @@ public class walkRobot extends BaseAppState {
     protected void onEnable() {
         app.getRootNode().attachChild(this.rootNode);
         physics.add(robotControl);
+        plane=robot.getWorldBound();
     }
     protected void onDisable() {
         this.rootNode.removeFromParent();
         physics.remove(robotControl);
+        plane=null;
     }
 }

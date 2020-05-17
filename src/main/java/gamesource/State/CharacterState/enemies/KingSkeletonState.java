@@ -144,6 +144,7 @@ public class KingSkeletonState extends BaseAppState {
     protected void onEnable() {
         app.getRootNode().attachChild(this.rootNode);
         physics.add(skeletonControl);
+        ske=skeleton.getWorldBound();
     }
 
     @Override
@@ -151,5 +152,6 @@ public class KingSkeletonState extends BaseAppState {
 
         this.rootNode.removeFromParent();
         physics.remove(skeletonControl);
+        ske=null;
     }
 }
