@@ -1,4 +1,4 @@
-package gamesource.State.CharacterState.enemies;
+package gamesource.State.CharacterState.enemies.third;
 
 import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;
@@ -15,7 +15,7 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
-public class Fish3State extends BaseAppState {
+public class Fish2State extends BaseAppState {
     private BulletAppState bullet;
     private Spatial skeleton;
     private CapsuleCollisionShape capsuleShape=new CapsuleCollisionShape();
@@ -57,21 +57,21 @@ public class Fish3State extends BaseAppState {
         skeletonControl.setPhysicsLocation(place);
     }
 
-    public Fish3State(){
+    public Fish2State(){
 
     }
-    public Fish3State(Vector3f place){
+    public Fish2State(Vector3f place){
         this.place=place;
     }
-    public Fish3State(Vector3f place,float modelY){
+    public Fish2State(Vector3f place,float modelY){
         this.place=place;
         this.modelY=modelY;
     }
     public void initModel(){
-        skeleton=app.getAssetManager().loadModel("Enemies/underWater/fish3.j3o");
+        skeleton=app.getAssetManager().loadModel("Enemies/underWater/fish2.j3o");
         skeleton.setName("skeleton");
         skeleton.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
-        skeleton.scale(0.65f);
+        skeleton.scale(0.3f);
         skeleton.rotate(0f,modelY,0f);
         ske=skeleton.getWorldBound();
     }
@@ -87,7 +87,7 @@ public class Fish3State extends BaseAppState {
         radius=0.4f;
         height=0.6f;
 
-        skeleton.move(0.06f,-(height/2+radius)+0.37f,0);
+        skeleton.move(0.06f,-(height/2+radius)+1.3f,0);
 
         character=new Node("Character");
         rootNode.attachChild(character);
