@@ -71,7 +71,7 @@ public class Battle extends BaseAppState {
 
         state=application.getStateManager();
         state.attach(b1);
-        state.detach(state.getState(FlyCamAppState.class));
+        state.attach(state.getState(FlyCamAppState.class));
         app=(SimpleApplication)application;
         inputManager=app.getInputManager();
 
