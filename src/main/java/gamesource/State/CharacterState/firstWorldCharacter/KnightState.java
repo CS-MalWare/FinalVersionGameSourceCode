@@ -295,12 +295,14 @@ public class KnightState extends BaseAppState implements ActionListener {
     protected void onEnable() {
         app.getRootNode().attachChild(this.rootNode);
         physics.add(knightControl);
+        knight=Knight.getWorldBound();
     }
 
     @Override
     protected void onDisable() {
         this.rootNode.removeFromParent();
         physics.remove(knightControl);
+        knight=null;
     }
 
     @Override

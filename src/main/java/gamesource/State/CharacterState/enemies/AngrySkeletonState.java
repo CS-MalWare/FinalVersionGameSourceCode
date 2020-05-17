@@ -75,7 +75,6 @@ public class AngrySkeletonState extends BaseAppState {
         skeleton.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
         skeleton.scale(0.01f);
         skeleton.rotate(0f,modelY,0f);
-        ske=skeleton.getWorldBound();
     }
 
     public BoundingVolume get(){
@@ -145,12 +144,14 @@ public class AngrySkeletonState extends BaseAppState {
     protected void onEnable() {
         app.getRootNode().attachChild(this.rootNode);
         physics.add(skeletonControl);
+        ske=skeleton.getWorldBound();
     }
 
     @Override
     protected void onDisable() {
         this.rootNode.removeFromParent();
         physics.remove(skeletonControl);
+        ske=null;
     }
 
 }

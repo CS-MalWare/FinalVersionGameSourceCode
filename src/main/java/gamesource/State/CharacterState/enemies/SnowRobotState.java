@@ -126,6 +126,7 @@ public class SnowRobotState extends BaseAppState {
         //if (false) { 存档的时候可以用过这里控制加载的敌人模型
             app.getRootNode().attachChild(this.rootNode);
         physics.add(skeletonControl);
+        ske=skeleton.getWorldBound();
         //}
     }
 
@@ -134,5 +135,6 @@ public class SnowRobotState extends BaseAppState {
 
         this.rootNode.removeFromParent();
         physics.remove(skeletonControl);
+        ske=null;
     }
 }
