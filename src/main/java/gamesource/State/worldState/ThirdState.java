@@ -198,37 +198,37 @@ public class ThirdState extends BaseAppState {
 
             CollisionResults results5_1 = results5_1();
             if (move.equals(name) && isPressed) {
-                if (results1_1.size() > 0) {
+                if (results1_1!=null&&results1_1.size() > 0) {
                     battle1 = 0;
-                } else if (results1_2.size() > 0) {
+                } else if (results1_2!=null&&results1_2.size() > 0) {
                     battle1 = 1;
-                } else if (results1_3.size() > 0) {
+                } else if (results1_3!=null&&results1_3.size() > 0) {
                     battle1 = 2;
-                } else if (results1_4.size() > 0) {
+                } else if (results1_4!=null&&results1_4.size() > 0) {
                     battle1 = 3;
-                } else if (results1_5.size() > 0) {
+                } else if (results1_5!=null&&results1_5.size() > 0) {
                     battle1 = 4;
-                } else if (results2_1.size() > 0) {
+                } else if (results2_1!=null&&results2_1.size() > 0) {
                     battle1 = 5;
-                } else if (results2_2.size() > 0) {
+                } else if (results2_2!=null&&results2_2.size() > 0) {
                     battle1 = 6;
-                } else if (results2_3.size() > 0) {
+                } else if (results2_3!=null&&results2_3.size() > 0) {
                     battle1 = 7;
-                } else if (results2_4.size() > 0) {
+                } else if (results2_4!=null&&results2_4.size() > 0) {
                     battle1 = 8;
-                } else if (results2_5.size() > 0) {
+                } else if (results2_5!=null&&results2_5.size() > 0) {
                     battle1 = 9;
-                } else if (results3_1.size() > 0) {
+                } else if (results3_1!=null&&results3_1.size() > 0) {
                     battle1 = 10;
-                } else if (results3_2.size() > 0) {
+                } else if (results3_2!=null&&results3_2.size() > 0) {
                     battle1 = 11;
-                } else if (results3_3.size() > 0) {
+                } else if (results3_3!=null&&results3_3.size() > 0) {
                     battle1 = 12;
-                } else if (results3_4.size() > 0) {
+                } else if (results3_4!=null&&results3_4.size() > 0) {
                     battle1 = 13;
-                } else if (results4_1.size() > 0) {
+                } else if (results4_1!=null&&results4_1.size() > 0) {
                     battle1 = 14;
-                } else if (results5_1.size() > 0) {
+                } else if (results5_1!=null&&results5_1.size() > 0) {
                     battle1 = 15;
                 }
             }
