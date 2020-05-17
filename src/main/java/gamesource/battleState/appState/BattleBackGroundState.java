@@ -22,7 +22,7 @@ public class BattleBackGroundState extends BaseAppState {
     private SimpleApplication app;
     private Node rootNode = new Node("Map");
 
-    private static String backgroundSrc="Map/first.j3o";
+    private static String backgroundSrc="Map/fifth.j3o";
 
     private FilterPostProcessor fpp;
 
@@ -49,12 +49,22 @@ public class BattleBackGroundState extends BaseAppState {
                 model1.setName("Map");
                 model1.scale(6f);// 按比例缩小
                 model1.center();// 将模型的中心移到原点
-                model1.move(2, (float) 4, -3);
+                model1.move(2, (float) 4, -4);
                 model1.rotate(0, 0f, 0);
                 break;
             case "Map/fourth.j3o":
+                model1.setName("Map");
+                model1.scale(6f);// 按比例缩小
+                model1.center();// 将模型的中心移到原点
+                model1.move(2, (float) 4, -2);
+                model1.rotate(0, 0f, 0);
                 break;
             case "Map/fifth.j3o":
+                model1.setName("Map");
+                model1.scale(6f);// 按比例缩小
+                model1.center();// 将模型的中心移到原点
+                model1.move(2, (float) 4, -5);
+                model1.rotate(0, 0f, 0);
                 break;
         }
 
