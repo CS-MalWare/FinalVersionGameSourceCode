@@ -12,7 +12,7 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
-public class forthWorldMap  extends BaseAppState {
+public class FifthWorldState extends BaseAppState {
 
     public Spatial Scene;
 
@@ -22,7 +22,7 @@ public class forthWorldMap  extends BaseAppState {
 
     public PhysicsSpace physics;
 
-    private Node rootNode=new Node("ForthWorldState");
+    private Node rootNode=new Node("FirstWorldState");
 
     private SimpleApplication app;
 
@@ -34,10 +34,10 @@ public class forthWorldMap  extends BaseAppState {
 
         physics=bullet.getPhysicsSpace();
 
-        Scene=app.getAssetManager().loadModel("Map/fourth.j3o");
+        Scene=app.getAssetManager().loadModel("Map/fifth.j3o");
 
         Scene.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
-        Scene.scale(1.9f);
+        Scene.scale(2f);
         Scene.move(0, -35, -3);
 
         sceneShape = CollisionShapeFactory.createMeshShape(Scene);

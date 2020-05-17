@@ -1,5 +1,6 @@
 package gamesource.State.CharacterState.enemies;
 
+import com.github.javaparser.resolution.declarations.ResolvedTypeParameterDeclaration;
 import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;
 import com.jme3.app.Application;
@@ -15,7 +16,7 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
-public class blueSkeletonState extends BaseAppState {
+public class AngrySkeletonState extends BaseAppState {
     private BulletAppState bullet;
     private Spatial skeleton;
     private CapsuleCollisionShape capsuleShape=new CapsuleCollisionShape();
@@ -26,7 +27,7 @@ public class blueSkeletonState extends BaseAppState {
 
     private PhysicsSpace physics;
 
-    private Node rootNode=new Node("blueSkeleton");
+    private Node rootNode=new Node("skeleton");
 
     private SimpleApplication app;
 
@@ -42,9 +43,10 @@ public class blueSkeletonState extends BaseAppState {
 
     private float rotateX=0f,rotateY=0f,rotateZ=0f,modelY=0f;
 
+    private Vector3f place=new Vector3f(0,0,0);
+
     private BoundingVolume ske;
 
-    private Vector3f place=new Vector3f(0,0,0);
     protected void initialize(Application application){
         app=(SimpleApplication)application;
 
@@ -57,18 +59,18 @@ public class blueSkeletonState extends BaseAppState {
         skeletonControl.setPhysicsLocation(place);
     }
 
-    public blueSkeletonState(){
+    public AngrySkeletonState(){
 
     }
-    public blueSkeletonState(Vector3f place){
+    public AngrySkeletonState(Vector3f place){
         this.place=place;
     }
-    public blueSkeletonState(Vector3f place,float modelY){
+    public AngrySkeletonState(Vector3f place, float modelY){
         this.place=place;
         this.modelY=modelY;
     }
     public void initModel(){
-        skeleton=app.getAssetManager().loadModel("Enemies/skeleton/blueSkeleton/blueSkeleton.j3o");
+        skeleton=app.getAssetManager().loadModel("Enemies/skeleton/skeleton.j3o");
         skeleton.setName("skeleton");
         skeleton.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
         skeleton.scale(0.01f);
@@ -79,6 +81,7 @@ public class blueSkeletonState extends BaseAppState {
     public BoundingVolume get(){
         return ske;
     }
+
     public void initPhysics(){
         bullet=app.getStateManager().getState(BulletAppState.class);
         physics=bullet.getPhysicsSpace();
@@ -132,7 +135,7 @@ public class blueSkeletonState extends BaseAppState {
         //spatial.move(0, 1, 0);
 
 
-        animChannel.setAnim("archer_shoot");
+        animChannel.setAnim("base_roar");
     }
     @Override
     protected void cleanup(Application application) {
@@ -149,4 +152,5 @@ public class blueSkeletonState extends BaseAppState {
         this.rootNode.removeFromParent();
         physics.remove(skeletonControl);
     }
+
 }

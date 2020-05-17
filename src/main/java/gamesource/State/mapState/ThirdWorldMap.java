@@ -21,7 +21,7 @@ public class ThirdWorldMap  extends BaseAppState {
 
     public PhysicsSpace physics;
 
-    private Node rootNode=new Node("SecondWorldMap");
+    private Node rootNode=new Node("SecondWorldMap"); // 不知道大佬虎为什么取这个名字,不敢改
 
     private SimpleApplication app;
     @Override

@@ -1,10 +1,9 @@
 package gamesource.battleState.character.enemy.originalForest;
 
 import gamesource.battleState.character.Enemy;
-import gamesource.battleState.character.MainRole;
 import gamesource.battleState.utils.buffs.limitBuffs.Weak;
 
-class Slime extends Enemy {
+public class Slime extends Enemy {
     //TODO 固化HP和src等属性
     public Slime(int HP, String src, int block, int strength, int dexterity, int dodge, int artifact, int shield, int disarm, int silence) {
         super(HP, src, block, strength, dexterity, dodge, artifact, shield, disarm, silence);

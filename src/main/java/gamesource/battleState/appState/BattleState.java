@@ -11,37 +11,31 @@ import com.jme3.bullet.BulletAppState;
 import com.jme3.cursors.plugins.JmeCursor;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.event.*;
-import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
-import com.jme3.post.FilterPostProcessor;
-import com.jme3.post.filters.ColorOverlayFilter;
-import com.jme3.post.filters.DepthOfFieldFilter;
-import com.jme3.post.filters.FogFilter;
-import com.jme3.post.ssao.SSAOFilter;
 import gamesource.State.CharacterState.MajorActor;
-import gamesource.State.CharacterState.enemies.angryskeletonState;
-import gamesource.State.CharacterState.enemies.greenSkeletonState;
+import gamesource.State.CharacterState.enemies.AngrySkeletonState;
+import gamesource.State.CharacterState.enemies.GreenSkeletonState;
 import gamesource.State.CharacterState.secondWorldCharacter.goblinGirlState;
 import gamesource.State.CharacterState.secondWorldCharacter.shanmanState;
 import gamesource.State.controlState.InputAppState;
-import gamesource.State.mapState.secondWorldMap;
+import gamesource.State.mapState.SecondWorldMap;
 import gamesource.battleState.character.MainRole;
 
 public class BattleState extends BaseAppState {
 
     MajorActor major=new MajorActor(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
 
-    private angryskeletonState skeleton1=new angryskeletonState(new Vector3f(3.0883105f, -31.735968f, 43.255566f),0.5f);
+    private AngrySkeletonState skeleton1=new AngrySkeletonState(new Vector3f(3.0883105f, -31.735968f, 43.255566f),0.5f);
 
     private shanmanState shanman=new shanmanState(new Vector3f(5.1453485f, -32.197643f, 58.86895f),-1.5f);
 
     private goblinGirlState girl =new goblinGirlState(new Vector3f(5.3336577f, -31.696009f, 55.903286f),-1.5f);
 
-    private greenSkeletonState skeleton2=new greenSkeletonState(new Vector3f(8.143902f, -32.197643f, 44.735046f),-0.7f);
+    private GreenSkeletonState skeleton2=new GreenSkeletonState(new Vector3f(8.143902f, -32.197643f, 44.735046f),-0.7f);
 
     private InputAppState input=new InputAppState();
 
-    private secondWorldMap world=new secondWorldMap();
+    private SecondWorldMap world=new SecondWorldMap();
 
     BulletAppState bullet=new BulletAppState();
 

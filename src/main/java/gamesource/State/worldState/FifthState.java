@@ -13,7 +13,6 @@ import com.jme3.math.Ray;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import gamesource.State.CharacterState.MajorActor;
-import gamesource.State.CharacterState.enemies.*;
 import gamesource.State.CharacterState.enemies.fifth.flyRobot;
 import gamesource.State.CharacterState.enemies.fifth.plane;
 import gamesource.State.CharacterState.enemies.fifth.walkRobot;
@@ -23,17 +22,16 @@ import gamesource.State.SpecialEffect.Water;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
-import gamesource.State.mapState.chest;
-import gamesource.State.mapState.fifthWorldState;
-import gamesource.State.mapState.forthWorldMap;
-import gamesource.State.mapState.skyBox;
+import gamesource.State.mapState.Chest;
+import gamesource.State.mapState.FifthWorldState;
+import gamesource.State.mapState.SkyBox;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
 
 import java.util.ArrayList;
 
-public class fifthState  extends BaseAppState {
+public class FifthState extends BaseAppState {
     public final static String talk="TALK";
     public final static Trigger TALK = new KeyTrigger(KeyInput.KEY_N);
     public final static String change="CHANGE";
@@ -54,11 +52,11 @@ public class fifthState  extends BaseAppState {
 
     MajorActor major;
     InputAppState input;
-    fifthWorldState world=new fifthWorldState();
+    FifthWorldState world=new FifthWorldState();
     // MajorActor major=new MajorActor(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
-    chest c1 = new chest(new Vector3f(9.952984f, -31.962004f, 56.09926f),4f);
-    chest c2 = new chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
-    chest c3 = new chest(new Vector3f(12.185162f, -18.157299f, -74.07405f),4.2f);
+    Chest c1 = new Chest(new Vector3f(9.952984f, -31.962004f, 56.09926f),4f);
+    Chest c2 = new Chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
+    Chest c3 = new Chest(new Vector3f(12.185162f, -18.157299f, -74.07405f),4.2f);
 
     //这个地图暂时这5种怪物，想新加new一下加入state里面，构造函数第一个参数是位置，第二个是朝向，进入游戏需要先按c进入第一人称，再按f1来获取玩家坐标
 
@@ -107,7 +105,7 @@ public class fifthState  extends BaseAppState {
         state.attach(light);
         state.attach(effect);
         //state.attach(water);
-        state.attach(new skyBox());
+        state.attach(new SkyBox());
 
 
         this.inputManager=application.getInputManager();

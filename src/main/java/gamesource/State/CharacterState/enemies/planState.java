@@ -58,7 +58,7 @@ public class planState extends BaseAppState {
     public planState(Vector3f place){
         this.place=place;
     }
-    public planState(Vector3f place,float modelY){
+    public planState(Vector3f place, float modelY){
         this.place=place;
         this.modelY=modelY;
     }

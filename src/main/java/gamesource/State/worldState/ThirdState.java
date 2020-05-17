@@ -4,8 +4,6 @@ import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.bounding.BoundingVolume;
-import com.jme3.bullet.BulletAppState;
-import com.jme3.collision.CollisionResults;
 import com.jme3.input.InputManager;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
@@ -16,14 +14,10 @@ import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.enemies.*;
-import gamesource.State.CharacterState.secondWorldCharacter.goblinGirlState;
-import gamesource.State.CharacterState.secondWorldCharacter.shanmanState;
 import gamesource.State.SpecialEffect.*;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.*;
-import gamesource.State.musicState.SecondBackMusic;
-import gamesource.battleState.battle.Battle;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -53,20 +47,30 @@ public class ThirdState  extends BaseAppState {
     InputAppState input;
     ThirdWorldMap world=new ThirdWorldMap();
     // MajorActor major=new MajorActor(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
-    chest c1 = new chest(new Vector3f(9.952984f, -31.962004f, 56.09926f),4f);
-    chest c2 = new chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
-    chest c3 = new chest(new Vector3f(12.185162f, -18.157299f, -74.07405f),4.2f);
+    Chest c1 = new Chest(new Vector3f(9.952984f, -31.962004f, 56.09926f),4f);
+    Chest c2 = new Chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
+    Chest c3 = new Chest(new Vector3f(12.185162f, -18.157299f, -74.07405f),4.2f);
 
     //这个地图暂时这5种怪物，想新加new一下加入state里面，构造函数第一个参数是位置，第二个是朝向，进入游戏需要先按c进入第一人称，再按f1来获取玩家坐标
 
-    private drunkCrab crab1=new drunkCrab();
+    private DrunkCrab crab1=new DrunkCrab(new Vector3f(86.417725f, 3.0157287f, -5.2350335f),2f);
 
-    private Fish1State fish1=new Fish1State();
+    private Fish1State fish1_1=new Fish1State(new Vector3f(93.7314f, -3.7759366f, 27.07812f), 5f);
+    private Fish1State fish1_2 = new Fish1State(new Vector3f(46.98013f, 0.9620397f, -0.31717157f), -3f);
+    private Fish1State fish1_3 = new Fish1State(new Vector3f(56.948456f, 3.351931f, -47.507305f), 3f);
+    private Fish1State fish1_4 = new Fish1State(new Vector3f(12.754826f, -3.4226258f, -74.095726f), 1f);
+    private Fish1State fish1_5 = new Fish1State(new Vector3f(-50.21668f, -5.0685973f, -71.16844f), 1.5f);
+    private Fish2State fish2_1=new Fish2State(new Vector3f(77.26708f, 2.1770868f, 0.21428971f), 2f);
+    private Fish2State fish2_2=new Fish2State(new Vector3f(-68.81787f, -7.400928f, -82.652245f), 3.7f);
+    private Fish2State fish2_3=new Fish2State(new Vector3f(-104.77109f, -8.663721f, -96.10981f), -3.7f);
+    private Fish2State fish2_4=new Fish2State(new Vector3f(-108.34749f, -7.848976f, -66.91676f), -5.7f);
+    private Fish2State fish2_5=new Fish2State(new Vector3f(-95.21405f, -2.9428518f, 2.1157131f), -5.7f);
+    private Fish3State fish3_1=new Fish3State(new Vector3f(0,35,0),6.4f);
+    private Fish3State fish3_2=new Fish3State(new Vector3f(-79.33274f, -1.6759943f, 24.259945f),6.4f);
+    private Fish3State fish3_3=new Fish3State(new Vector3f(-58.6319f, -1.6084806f, 50.47643f),-6.4f);
+    private Fish3State fish3_4=new Fish3State(new Vector3f(-80.64096f, -6.567422f, 66.516266f),3.4f);
 
-    private Fish2State fish2=new Fish2State();
-    private Fish3State fish3=new Fish3State(new Vector3f(0,35,0),6.4f);
-
-    private mushroomBug bu1=new mushroomBug();
+    private MushroomBug bu1=new MushroomBug(new Vector3f(60.75251f, 4.0023937f, -34.16455f),-4f);
 
     private StartTalk st=new StartTalk();
 
@@ -103,10 +107,27 @@ public class ThirdState  extends BaseAppState {
         states.add(menuState);
         cross=state.getState(makeCross.class);
         states.add(cross);
-        state.attach(fish3);
+        state.attach(fish1_1);
+        state.attach(fish1_2);
+        state.attach(fish1_3);
+        state.attach(fish1_4);
+        state.attach(fish1_5);
+        state.attach(fish2_1);
+        state.attach(fish2_2);
+        state.attach(fish2_3);
+        state.attach(fish2_4);
+        state.attach(fish2_5);
+        state.attach(fish3_1);
+        state.attach(fish3_2);
+        state.attach(fish3_3);
+        state.attach(fish3_4);
+
+        state.attach(bu1);
+        state.attach(crab1);
+
         state.attach(light);
         state.attach(water);
-        state.attach(new skyBox());
+        state.attach(new SkyBox());
 
 
         this.inputManager=application.getInputManager();

@@ -22,7 +22,7 @@ public class BattleBackGroundState extends BaseAppState {
     private SimpleApplication app;
     private Node rootNode = new Node("Map");
 
-    private static String backgroundSrc="Map/second.j3o";
+    private static String backgroundSrc="Map/scene.j3o";
 
     private FilterPostProcessor fpp;
 
@@ -30,11 +30,34 @@ public class BattleBackGroundState extends BaseAppState {
         this.app = (SimpleApplication) getApplication();
         Spatial model1 = application.getAssetManager().loadModel(backgroundSrc);
         System.out.println(model1.getName());
-        model1.setName("Map");
-        model1.scale(6f);// 按比例缩小
-        model1.center();// 将模型的中心移到原点
-        model1.move(2, (float) 4, -3);
-        model1.rotate(0, 0f, 0);
+        switch (model1.getName()){
+            case "Map/first.j3o":
+                model1.setName("Map");
+                model1.scale(50f);// 按比例缩小
+                model1.center();// 将模型的中心移到原点
+                model1.move(2, (float) 5, -500);
+                model1.rotate(0, 0f, 0);
+                break;
+            case "Map/second.j3o":
+                model1.setName("Map");
+                model1.scale(6f);// 按比例缩小
+                model1.center();// 将模型的中心移到原点
+                model1.move(2, (float) 4, -3);
+                model1.rotate(0, 0f, 0);
+                break;
+            case "Map/scene.j3o":
+                model1.setName("Map");
+                model1.scale(-600000f);// 按比例缩小
+                model1.center();// 将模型的中心移到原点
+                model1.move(2, (float) 4, -30);
+                model1.rotate(0, 0f, 0);
+                break;
+            case "Map/fourth.j3o":
+                break;
+            case "Map/fifth.j3o":
+                break;
+        }
+
 
 //        model1.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
 

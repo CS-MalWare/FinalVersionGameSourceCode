@@ -2,7 +2,6 @@ package gamesource.State.CharacterState.enemies;
 
 import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;
-import com.jme3.animation.LoopMode;
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.BaseAppState;
@@ -16,7 +15,7 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
-public class greenSkeletonState extends BaseAppState {
+public class BossKnight extends BaseAppState {
     private BulletAppState bullet;
     private Spatial skeleton;
     private CapsuleCollisionShape capsuleShape=new CapsuleCollisionShape();
@@ -27,7 +26,7 @@ public class greenSkeletonState extends BaseAppState {
 
     private PhysicsSpace physics;
 
-    private Node rootNode=new Node("greenSkeleton");
+    private Node rootNode=new Node("skeleton");
 
     private SimpleApplication app;
 
@@ -54,33 +53,33 @@ public class greenSkeletonState extends BaseAppState {
         initModel();
         initPhysics();
 
+
         skeletonControl.setPhysicsLocation(place);
     }
 
-    public greenSkeletonState(){
+    public BossKnight(){
 
     }
-    public greenSkeletonState(Vector3f place){
+    public BossKnight(Vector3f place){
         this.place=place;
     }
-    public greenSkeletonState(Vector3f place,float modelY){
+    public BossKnight(Vector3f place, float modelY){
         this.place=place;
         this.modelY=modelY;
     }
     public void initModel(){
-        skeleton=app.getAssetManager().loadModel("Enemies/skeleton/greenSkeleton/greenSkeleton.j3o");
+        skeleton=app.getAssetManager().loadModel("Enemies/bossKnight/scene.j3o");
         skeleton.setName("skeleton");
         skeleton.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
-        skeleton.scale(0.01f);
+        skeleton.scale(0.67f);
         skeleton.rotate(0f,modelY,0f);
-        initAnim();
-
         ske=skeleton.getWorldBound();
     }
 
     public BoundingVolume get(){
         return ske;
     }
+
     public void initPhysics(){
         bullet=app.getStateManager().getState(BulletAppState.class);
         physics=bullet.getPhysicsSpace();
@@ -88,7 +87,7 @@ public class greenSkeletonState extends BaseAppState {
         radius=0.4f;
         height=0.6f;
 
-        skeleton.move(0.06f,-(height/2+radius)+0.1f,0);
+        skeleton.move(0.06f,-(height/2+radius)+0.37f,0);
 
         character=new Node("Character");
         rootNode.attachChild(character);
@@ -113,34 +112,7 @@ public class greenSkeletonState extends BaseAppState {
 
         rootNode.attachChild(character);
     }
-    public void initAnim(){
 
-
-        scene=(Node)skeleton;
-
-        bip001=(Node)scene.getChild("bip001");
-
-        //bip001.getChild("AnimControl");
-
-
-        animControl=bip001.getControl(AnimControl.class);
-
-        //AnimControl control = (AnimControl)spatial.getControl(0);
-
-        System.out.println(animControl.getAnimationNames()+"zzzzzzz");
-
-
-
-        animChannel=animControl.createChannel();
-
-        //spatial.move(0, 1, 0);
-
-
-        animChannel.setAnim("mage_attack_2");
-
-
-        animChannel.setLoopMode(LoopMode.DontLoop);
-    }
     @Override
     protected void cleanup(Application application) {
 
@@ -153,7 +125,10 @@ public class greenSkeletonState extends BaseAppState {
 
     @Override
     protected void onDisable() {
+
         this.rootNode.removeFromParent();
         physics.remove(skeletonControl);
     }
+
 }
+
