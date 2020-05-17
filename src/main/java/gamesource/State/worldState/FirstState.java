@@ -16,10 +16,7 @@ import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.controls.Trigger;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector3f;
-import com.jme3.renderer.ViewPort;
 import com.jme3.scene.Node;
-import com.simsilica.lemur.GuiGlobals;
-import com.simsilica.lemur.style.BaseStyles;
 
 import gamesource.State.CharacterState.*;
 import gamesource.State.CharacterState.firstWorldCharacter.*;
@@ -30,8 +27,8 @@ import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.FirstWorldState;
-import gamesource.State.mapState.chest;
-import gamesource.State.mapState.skyBox;
+import gamesource.State.mapState.Chest;
+import gamesource.State.mapState.SkyBox;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -74,13 +71,13 @@ public class FirstState extends BaseAppState {
     FirstWorldState f1=new FirstWorldState();
     PositionInputState p1=new PositionInputState();
     BulletAppState bullet=new BulletAppState();         //现在为为世界添加物理引擎的测试情况
-    chest c1 = new chest(new Vector3f(62.722965f, -26.72887f, 9.268448f));
-    chest c2 = new chest(new Vector3f(-15.538464f, -2.8196087f, -60.361416f));
-    chest c3 = new chest(new Vector3f(-26.772413f, 6.3929253f, -8.448748f),2.9f);
+    Chest c1 = new Chest(new Vector3f(62.722965f, -26.72887f, 9.268448f));
+    Chest c2 = new Chest(new Vector3f(-15.538464f, -2.8196087f, -60.361416f));
+    Chest c3 = new Chest(new Vector3f(-26.772413f, 6.3929253f, -8.448748f),2.9f);
     Water x1=new Water(-34.4f);
     FirstWorldLight light=new FirstWorldLight(0);
     FirstWorldOtherSpecial special =new FirstWorldOtherSpecial();
-    skyBox sky=new skyBox();
+    SkyBox sky=new SkyBox();
 
 
     private BagAppState bagState;

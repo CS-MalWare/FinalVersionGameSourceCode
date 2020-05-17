@@ -17,7 +17,7 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
-public class chest extends BaseAppState {
+public class Chest extends BaseAppState {
     private BulletAppState bullet;
     private Spatial skeleton;
     private CapsuleCollisionShape capsuleShape=new CapsuleCollisionShape();
@@ -67,24 +67,24 @@ public class chest extends BaseAppState {
         skeletonControl.setPhysicsLocation(place);
     }
 
-    public chest(){
+    public Chest(){
 
     }
-    public chest(Vector3f place){
+    public Chest(Vector3f place){
         this.place=place;
     }
-    public chest(Vector3f place,float modelY){
+    public Chest(Vector3f place, float modelY){
         this.place=place;
         this.modelY=modelY;
     }
 
-    public chest(Vector3f place,float modelY,float distance){
+    public Chest(Vector3f place, float modelY, float distance){
         this.place=place;
         this.modelY=modelY;
         this.distance=distance;
     }
 
-    public chest(Vector3f place,float modelY,float distance,float volume){
+    public Chest(Vector3f place, float modelY, float distance, float volume){
         this.place=place;
         this.modelY=modelY;
         this.distance=distance;

@@ -11,20 +11,14 @@ import com.jme3.bullet.BulletAppState;
 import com.jme3.cursors.plugins.JmeCursor;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.event.*;
-import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
-import com.jme3.post.FilterPostProcessor;
-import com.jme3.post.filters.ColorOverlayFilter;
-import com.jme3.post.filters.DepthOfFieldFilter;
-import com.jme3.post.filters.FogFilter;
-import com.jme3.post.ssao.SSAOFilter;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.enemies.angryskeletonState;
 import gamesource.State.CharacterState.enemies.greenSkeletonState;
 import gamesource.State.CharacterState.secondWorldCharacter.goblinGirlState;
 import gamesource.State.CharacterState.secondWorldCharacter.shanmanState;
 import gamesource.State.controlState.InputAppState;
-import gamesource.State.mapState.secondWorldMap;
+import gamesource.State.mapState.SecondWorldMap;
 import gamesource.battleState.character.MainRole;
 
 public class BattleState extends BaseAppState {
@@ -41,7 +35,7 @@ public class BattleState extends BaseAppState {
 
     private InputAppState input=new InputAppState();
 
-    private secondWorldMap world=new secondWorldMap();
+    private SecondWorldMap world=new SecondWorldMap();
 
     BulletAppState bullet=new BulletAppState();
 

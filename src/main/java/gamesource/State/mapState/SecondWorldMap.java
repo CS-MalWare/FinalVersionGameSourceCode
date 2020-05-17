@@ -12,7 +12,7 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
-public class secondWorldMap extends BaseAppState {
+public class SecondWorldMap extends BaseAppState {
     public Spatial Scene;
 
     public CollisionShape sceneShape;

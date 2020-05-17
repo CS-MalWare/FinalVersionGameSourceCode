@@ -47,9 +47,9 @@ public class ThirdState  extends BaseAppState {
     InputAppState input;
     ThirdWorldMap world=new ThirdWorldMap();
     // MajorActor major=new MajorActor(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
-    chest c1 = new chest(new Vector3f(9.952984f, -31.962004f, 56.09926f),4f);
-    chest c2 = new chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
-    chest c3 = new chest(new Vector3f(12.185162f, -18.157299f, -74.07405f),4.2f);
+    Chest c1 = new Chest(new Vector3f(9.952984f, -31.962004f, 56.09926f),4f);
+    Chest c2 = new Chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
+    Chest c3 = new Chest(new Vector3f(12.185162f, -18.157299f, -74.07405f),4.2f);
 
     //这个地图暂时这5种怪物，想新加new一下加入state里面，构造函数第一个参数是位置，第二个是朝向，进入游戏需要先按c进入第一人称，再按f1来获取玩家坐标
 
@@ -127,7 +127,7 @@ public class ThirdState  extends BaseAppState {
 
         state.attach(light);
         state.attach(water);
-        state.attach(new skyBox());
+        state.attach(new SkyBox());
 
 
         this.inputManager=application.getInputManager();

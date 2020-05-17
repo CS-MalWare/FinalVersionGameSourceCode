@@ -23,9 +23,9 @@ import gamesource.State.SpecialEffect.SecondWorldOtherSpecial;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
-import gamesource.State.mapState.chest;
-import gamesource.State.mapState.secondWorldMap;
-import gamesource.State.mapState.skyBox2;
+import gamesource.State.mapState.Chest;
+import gamesource.State.mapState.SecondWorldMap;
+import gamesource.State.mapState.SkyBox2;
 import gamesource.State.musicState.SecondBackMusic;
 import gamesource.battleState.battle.Battle;
 import gamesource.uiState.bagstate.BagAppState;
@@ -55,9 +55,9 @@ public class SecondState extends BaseAppState {
 
     MajorActor major;
     // MajorActor major=new MajorActor(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
-    chest c1 = new chest(new Vector3f(9.952984f, -31.962004f, 56.09926f), 4f);
-    chest c2 = new chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
-    chest c3 = new chest(new Vector3f(12.185162f, -18.157299f, -74.07405f), 4.2f);
+    Chest c1 = new Chest(new Vector3f(9.952984f, -31.962004f, 56.09926f), 4f);
+    Chest c2 = new Chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
+    Chest c3 = new Chest(new Vector3f(12.185162f, -18.157299f, -74.07405f), 4.2f);
     private angryskeletonState skeleton1 = new angryskeletonState(new Vector3f(3.0883105f, -31.735968f, 43.255566f), 0.5f);
 
     private shanmanState shanman = new shanmanState(new Vector3f(5.1453485f, -32.197643f, 58.86895f), -1.5f);
@@ -68,7 +68,7 @@ public class SecondState extends BaseAppState {
 
     private InputAppState input;
 
-    private secondWorldMap world = new secondWorldMap();
+    private SecondWorldMap world = new SecondWorldMap();
 
     private snowRobotState snowRobot = new snowRobotState(new Vector3f(8.143902f, -32.197643f, 44.735046f));
 
@@ -82,7 +82,7 @@ public class SecondState extends BaseAppState {
 
     private stuxnetState boss = new stuxnetState();
 
-    private skyBox2 sky = new skyBox2();
+    private SkyBox2 sky = new SkyBox2();
 
     private SecondWorldLight light = new SecondWorldLight();
 

@@ -22,7 +22,7 @@ public class BattleBackGroundState extends BaseAppState {
     private SimpleApplication app;
     private Node rootNode = new Node("Map");
 
-    private static String backgroundSrc="Map/second.j3o";
+    private static String backgroundSrc="Map/first.j3o";
 
     private FilterPostProcessor fpp;
 
