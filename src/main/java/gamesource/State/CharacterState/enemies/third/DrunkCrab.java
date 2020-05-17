@@ -1,4 +1,4 @@
-package gamesource.State.CharacterState.enemies;
+package gamesource.State.CharacterState.enemies.third;
 
 import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;
@@ -15,7 +15,7 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
-public class Fish1State extends BaseAppState {
+public class DrunkCrab extends BaseAppState {
     private BulletAppState bullet;
     private Spatial skeleton;
     private CapsuleCollisionShape capsuleShape=new CapsuleCollisionShape();
@@ -57,21 +57,21 @@ public class Fish1State extends BaseAppState {
         skeletonControl.setPhysicsLocation(place);
     }
 
-    public Fish1State(){
+    public DrunkCrab(){
 
     }
-    public Fish1State(Vector3f place){
+    public DrunkCrab(Vector3f place){
         this.place=place;
     }
-    public Fish1State(Vector3f place,float modelY){
+    public DrunkCrab(Vector3f place, float modelY){
         this.place=place;
         this.modelY=modelY;
     }
     public void initModel(){
-        skeleton=app.getAssetManager().loadModel("Enemies/underWater/fish1.j3o");
+        skeleton=app.getAssetManager().loadModel("Enemies/underWater/drunkCrab.j3o");
         skeleton.setName("skeleton");
         skeleton.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
-        skeleton.scale(0.04f);
+        skeleton.scale(0.20f);
         skeleton.rotate(0f,modelY,0f);
         ske=skeleton.getWorldBound();
     }

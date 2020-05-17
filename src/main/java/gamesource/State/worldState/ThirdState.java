@@ -13,7 +13,7 @@ import com.jme3.math.Ray;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import gamesource.State.CharacterState.MajorActor;
-import gamesource.State.CharacterState.enemies.*;
+import gamesource.State.CharacterState.enemies.third.*;
 import gamesource.State.SpecialEffect.*;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
@@ -69,6 +69,7 @@ public class ThirdState  extends BaseAppState {
     private Fish3State fish3_2=new Fish3State(new Vector3f(-79.33274f, -1.6759943f, 24.259945f),6.4f);
     private Fish3State fish3_3=new Fish3State(new Vector3f(-58.6319f, -1.6084806f, 50.47643f),-6.4f);
     private Fish3State fish3_4=new Fish3State(new Vector3f(-80.64096f, -6.567422f, 66.516266f),3.4f);
+    private FishBoss boss=new FishBoss(new Vector3f(0,26,0));
 
     private MushroomBug bu1=new MushroomBug(new Vector3f(60.75251f, 4.0023937f, -34.16455f),-4f);
 
@@ -121,6 +122,7 @@ public class ThirdState  extends BaseAppState {
         state.attach(fish3_2);
         state.attach(fish3_3);
         state.attach(fish3_4);
+        state.attach(boss);
 
         state.attach(bu1);
         state.attach(crab1);
