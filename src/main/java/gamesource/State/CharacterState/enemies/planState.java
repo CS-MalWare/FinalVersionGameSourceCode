@@ -13,7 +13,7 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
-public class PlanState extends BaseAppState {
+public class planState extends BaseAppState {
     private BulletAppState bullet;
     private Spatial boy;
     private CapsuleCollisionShape capsuleShape=new CapsuleCollisionShape();
@@ -52,13 +52,13 @@ public class PlanState extends BaseAppState {
         //initKeys();
         //initChaseCamera();
     }
-    public PlanState(){
+    public planState(){
 
     }
-    public PlanState(Vector3f place){
+    public planState(Vector3f place){
         this.place=place;
     }
-    public PlanState(Vector3f place, float modelY){
+    public planState(Vector3f place, float modelY){
         this.place=place;
         this.modelY=modelY;
     }
