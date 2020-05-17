@@ -12,23 +12,17 @@ import com.jme3.post.filters.LightScatteringFilter;
 
 import com.jme3.post.filters.BloomFilter;
 import com.jme3.scene.Spatial;
-import com.jme3.shadow.DirectionalLightShadowFilter;
 import com.jme3.shadow.DirectionalLightShadowRenderer;
 import com.jme3.texture.Texture;
 import com.jme3.util.SkyFactory;
 import com.jme3.water.WaterFilter;
 import gamesource.State.CharacterState.MajorActor;
-import gamesource.State.SpecialEffect.FirstWorldLight;
-import gamesource.State.SpecialEffect.FirstWorldOtherSpecial;
-import gamesource.State.SpecialEffect.Water;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
-import gamesource.State.mapState.ThirdWorldMap;
 import gamesource.State.worldState.*;
 
 import com.jme3.app.SimpleApplication;
 import com.jme3.bullet.BulletAppState;
-import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
@@ -49,8 +43,8 @@ public class App extends SimpleApplication
     FirstState f1;
     SecondState f2;
     ThirdState f3;
-    forthState f4;
-    fifthState f5;
+    ForthState f4;
+    FifthState f5;
     private AppStateManager state;
 
 
@@ -84,8 +78,8 @@ public class App extends SimpleApplication
         //stateManager.attach(f1);
         f2=new SecondState();
         f3=new ThirdState();
-        f4=new forthState();
-        f5=new fifthState();
+        f4=new ForthState();
+        f5=new FifthState();
         stateManager.attach(f2);
         //stateManager.getState(SecondState.class).setEnabled(false);
         //f2.setEnabled(false);

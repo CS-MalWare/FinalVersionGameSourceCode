@@ -13,13 +13,17 @@ import com.jme3.math.Ray;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import gamesource.State.CharacterState.MajorActor;
+import gamesource.State.CharacterState.enemies.fifth.flyRobot;
+import gamesource.State.CharacterState.enemies.fifth.plane;
+import gamesource.State.CharacterState.enemies.fifth.walkRobot;
+import gamesource.State.SpecialEffect.FirstWorldOtherSpecial;
 import gamesource.State.SpecialEffect.ThirdWorldLight;
 import gamesource.State.SpecialEffect.Water;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
-import gamesource.State.mapState.ForthWorldMap;
+import gamesource.State.mapState.FifthWorldState;
 import gamesource.State.mapState.SkyBox;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
@@ -27,7 +31,7 @@ import gamesource.uiState.shopstate.ShopAppState;
 
 import java.util.ArrayList;
 
-public class forthState extends BaseAppState {
+public class FifthState extends BaseAppState {
     public final static String talk="TALK";
     public final static Trigger TALK = new KeyTrigger(KeyInput.KEY_N);
     public final static String change="CHANGE";
@@ -48,7 +52,7 @@ public class forthState extends BaseAppState {
 
     MajorActor major;
     InputAppState input;
-    ForthWorldMap world=new ForthWorldMap();
+    FifthWorldState world=new FifthWorldState();
     // MajorActor major=new MajorActor(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
     Chest c1 = new Chest(new Vector3f(9.952984f, -31.962004f, 56.09926f),4f);
     Chest c2 = new Chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
@@ -56,6 +60,9 @@ public class forthState extends BaseAppState {
 
     //这个地图暂时这5种怪物，想新加new一下加入state里面，构造函数第一个参数是位置，第二个是朝向，进入游戏需要先按c进入第一人称，再按f1来获取玩家坐标
 
+    private plane p1=new plane(new Vector3f(0,0,0));
+    private walkRobot robot1=new walkRobot(new Vector3f(0,0,0));
+    private flyRobot robot2=new flyRobot(new Vector3f(0,0,0));
 
     private StartTalk st=new StartTalk();
 
@@ -71,6 +78,7 @@ public class forthState extends BaseAppState {
     private makeCross cross;
     private ThirdWorldLight light=new ThirdWorldLight();
     private Water water=new Water(22);
+    private FirstWorldOtherSpecial effect=new FirstWorldOtherSpecial();
 
     private ArrayList<BaseAppState> states=new ArrayList<BaseAppState>();
 
@@ -92,7 +100,10 @@ public class forthState extends BaseAppState {
         states.add(menuState);
         cross=state.getState(makeCross.class);
         states.add(cross);
+        //state.attach(p1);
+        state.attach(robot2);
         state.attach(light);
+        state.attach(effect);
         //state.attach(water);
         state.attach(new SkyBox());
 
