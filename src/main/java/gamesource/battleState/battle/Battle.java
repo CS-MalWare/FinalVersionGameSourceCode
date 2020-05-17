@@ -14,14 +14,12 @@ import com.jme3.light.DirectionalLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.post.FilterPostProcessor;
-import com.jme3.scene.Node;
 import com.jme3.shadow.DirectionalLightShadowFilter;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.controlState.InputAppState;
 import gamesource.battleState.appState.BattleState;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.character.MainRole;
-import gamesource.battleState.character.enemy.dragonWat.DarkDragon;
 import gamesource.battleState.equipment.CreateEquipment;
 import gamesource.battleState.equipment.common.KnightGloves;
 import gamesource.battleState.equipment.epic.ArmstrongGun;
@@ -77,6 +75,7 @@ public class Battle extends BaseAppState {
         app=(SimpleApplication)application;
         inputManager=app.getInputManager();
 
+
         for (BaseAppState baseAppState : State) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
                 baseAppState.setEnabled(false);
@@ -101,17 +100,17 @@ public class Battle extends BaseAppState {
         EnemyState enemyState = EnemyState.getInstance();
 
 
-        enemyState.addEnemies(
+//        enemyState.addEnemies(
 //                new DarkDragon(1, "Enemies/zhenwang/boss.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
 
 //        new DarkDragon(1, "Enemies/skeleton/skeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
 //        new DarkDragon(1, "Enemies/snowRobot/snowRobot.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
 //                new DarkDragon(1, "Enemies/bossKnight/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                new DarkDragon(1, "Enemies/underWater/mushroom_bug.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                new DarkDragon(20, "Enemies/underWater/mushroom_bug.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                new DarkDragon(20, "Enemies/underWater/mushroom_bug.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
-
-        );
+//                new DarkDragon(1, "Enemies/underWater/mushroom_bug.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+//                new DarkDragon(20, "Enemies/underWater/mushroom_bug.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+//                new DarkDragon(20, "Enemies/underWater/mushroom_bug.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+//
+//        );
         //addLight();
         //addLight();
 

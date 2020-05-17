@@ -1,14 +1,12 @@
 package gamesource.battleState.character.enemy.originalForest;
 
 import gamesource.battleState.character.Enemy;
-import gamesource.battleState.character.MainRole;
-import gamesource.battleState.utils.buffs.Buff;
 import gamesource.battleState.utils.buffs.limitBuffs.Bleeding;
 import gamesource.battleState.utils.buffs.limitBuffs.Weak;
 
-public class RedSilme extends Enemy {
+public class RedSlime extends Enemy {
     //TODO 固化HP和src等属性
-    public RedSilme(int HP, String src, int block, int strength, int dexterity, int dodge, int artifact, int shield, int disarm, int silence) {
+    public RedSlime(int HP, String src, int block, int strength, int dexterity, int dodge, int artifact, int shield, int disarm, int silence) {
         super(HP, src, block, strength, dexterity, dodge, artifact, shield, disarm, silence);
 
         this.updateHints();
