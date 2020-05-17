@@ -65,14 +65,21 @@ public class SecondState extends BaseAppState {
     private goblinGirlState girl = new goblinGirlState(new Vector3f(5.3336577f, -31.696009f, 55.903286f), -1.5f);
 
     private GreenSkeletonState skeleton2 = new GreenSkeletonState(new Vector3f(8.143902f, -32.197643f, 44.735046f), -0.7f);
-    private BlueSkeletonState skeleton3 = new BlueSkeletonState(new Vector3f(-7.6294403f, -22.044151f, 76.60776f), -0.5f);
-    private RedSkeletonState  skeleton4 = new RedSkeletonState(new Vector3f(-15.020414f, -24.167147f, 60.66891f), 0.5f);
+    private BlueSkeletonState skeleton3 = new BlueSkeletonState(new Vector3f(-15.3608456f, -21.152367f, 72.28308f), 2f);
+    private RedSkeletonState skeleton4 = new RedSkeletonState(new Vector3f(-12.66109f, -26.166546f, 53.731964f), 0.5f);
+    private BatState bat1 = new BatState(new Vector3f(-6.6939545f, -29.954361f, 29.743092f), 0.7f);
+    private SnowRobotState snowRobot1 = new SnowRobotState(new Vector3f(17.560339f, -32.435986f, 35.696587f), 2f);
+    private KingSkeletonState skeleton5 = new KingSkeletonState(new Vector3f(8.058961f, -31.545362f, 17.327284f), -0.7f);
+    private GreenSkeletonState skeleton6 = new GreenSkeletonState(new Vector3f(-0.22325397f, -19.929562f, -6.269995f), 0.3f);
+    private AngrySkeletonState skeleton7 = new AngrySkeletonState(new Vector3f(15.483921f, -24.226637f, -20.16292f), 0.5f);
+    private BlueSkeletonState skeleton8 = new BlueSkeletonState(new Vector3f(7.382364f, -18.829222f, -69.045815f), -0.4f);
+    private SnowRobotState snowRobot2 = new SnowRobotState(new Vector3f(-3.889712f, -18.6719f, -73.689575f), -2f);
+
 
     private InputAppState input;
 
     private SecondWorldMap world = new SecondWorldMap();
 
-    private SnowRobotState snowRobot = new SnowRobotState(new Vector3f(8.143902f, -32.197643f, 44.735046f));
 
     private BatState bat = new BatState();
 
@@ -82,7 +89,7 @@ public class SecondState extends BaseAppState {
 
     private SecondBackMusic music = new SecondBackMusic();
 
-    private StuxnetState boss = new StuxnetState();
+//    private StuxnetState boss = new StuxnetState();
 
     private SkyBox2 sky = new SkyBox2();
 
@@ -133,12 +140,30 @@ public class SecondState extends BaseAppState {
         states.add(girl);
         state.attach(skeleton2);
         states.add(skeleton2);
+        state.attach(skeleton3);
+        states.add(skeleton3);
+        state.attach(skeleton4);
+        states.add(skeleton4);
+        state.attach(bat1);
+        states.add(bat1);
+        state.attach(snowRobot1);
+        states.add(snowRobot1);
+        state.attach(skeleton5);
+        states.add(skeleton5);
+        state.attach(skeleton6);
+        states.add(skeleton6);
+        state.attach(skeleton7);
+        states.add(skeleton7);
+        state.attach(skeleton8);
+        states.add(skeleton8);
+        state.attach(snowRobot2);
+        states.add(snowRobot2);
+
         state.attach(music);
         states.add(music);
-        state.attach(snowRobot);
-        states.add(snowRobot);
-        state.attach(boss);
-        states.add(boss);
+
+//        state.attach(boss);
+//        states.add(boss);
         state.attach(c1);
         states.add(c1);
         state.attach(c2);
@@ -151,6 +176,7 @@ public class SecondState extends BaseAppState {
         states.add(special);
         state.attach(light);
         states.add(light);
+
 
         this.inputManager = application.getInputManager();
         inputManager.addMapping(talk, TALK);
