@@ -22,7 +22,7 @@ public class BattleBackGroundState extends BaseAppState {
     private SimpleApplication app;
     private Node rootNode = new Node("Map");
 
-    private static String backgroundSrc="Map/scene.j3o";
+    private static String backgroundSrc="Map/first.j3o";
 
     private FilterPostProcessor fpp;
 
@@ -30,12 +30,12 @@ public class BattleBackGroundState extends BaseAppState {
         this.app = (SimpleApplication) getApplication();
         Spatial model1 = application.getAssetManager().loadModel(backgroundSrc);
         System.out.println(model1.getName());
-        switch (model1.getName()){
+        switch (backgroundSrc){
             case "Map/first.j3o":
                 model1.setName("Map");
-                model1.scale(50f);// 按比例缩小
+                model1.scale(2f);// 按比例缩小
                 model1.center();// 将模型的中心移到原点
-                model1.move(2, (float) 5, -500);
+                model1.move(0, (float) -60, -30);//x是左右，y是高低，z是深浅
                 model1.rotate(0, 0f, 0);
                 break;
             case "Map/second.j3o":
