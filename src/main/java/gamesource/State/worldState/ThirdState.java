@@ -20,6 +20,7 @@ import gamesource.State.SpecialEffect.*;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.*;
+import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.battle.Battle;
 import gamesource.battleState.character.enemy.mechanicalEmpire.RampageRobot;
@@ -77,7 +78,7 @@ public class ThirdState extends BaseAppState {
     private Fish3State fish3_3 = new Fish3State(new Vector3f(-58.6319f, -1.6084806f, 50.47643f), -6.4f);
     private Fish3State fish3_4 = new Fish3State(new Vector3f(-80.64096f, -6.567422f, 66.516266f), 3.4f);
     private MushroomBug bu1 = new MushroomBug(new Vector3f(60.75251f, 4.0023937f, -34.16455f), -4f);
-    private FishBoss boss=new FishBoss(new Vector3f(0,29,0));
+//    private FishBoss boss=new FishBoss(new Vector3f(0,29,0));
 
     private StartTalk st = new StartTalk();
 
@@ -145,7 +146,7 @@ public class ThirdState extends BaseAppState {
         states.add(fish3_3);
         state.attach(fish3_4);
         states.add(fish3_4);
-        state.attach(boss);
+//        state.attach(boss);
 
         state.attach(bu1);
         states.add(bu1);
@@ -172,6 +173,8 @@ public class ThirdState extends BaseAppState {
 
         cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
         major.setPlace(new Vector3f(0f, 30f, 0f));
+        // 到时候修改背景改这里,先用逸润巨佬的背景
+        BattleBackGroundState.setBackgroundSrc("Map/second.j3o");
     }
 
 

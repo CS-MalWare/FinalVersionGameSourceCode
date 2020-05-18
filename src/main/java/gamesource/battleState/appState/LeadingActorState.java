@@ -28,6 +28,7 @@ import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Quad;
 import com.jme3.ui.Picture;
 import gamesource.battleState.character.MainRole;
+import gamesource.battleState.particle.MPParticle;
 import truetypefont.TrueTypeFont;
 import truetypefont.TrueTypeKey;
 
@@ -137,7 +138,7 @@ public class LeadingActorState extends BaseAppState {
         MpPic.setWidth(200);
         MpPic.setPosition(150, 180);
         guiNode.attachChild(MpPic);
-
+        rootNode.attachChild(MPParticle.getParticle1(app.getAssetManager()));
 
         // 创建MP文字
         MpText = font.getBitmapGeom(String.format("%d/%d", MainRole.getInstance().getMP_current(), MainRole.getInstance().getMP_max()), 0, ColorRGBA.Red);
