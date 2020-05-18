@@ -158,7 +158,9 @@ public class ThirdState extends BaseAppState {
         states.add(crab2);
 
         state.attach(light);
+        states.add(light);
         state.attach(water);
+        states.add(water);
         state.attach(new SkyBox());
 
 
