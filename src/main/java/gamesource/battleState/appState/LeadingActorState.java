@@ -1,7 +1,5 @@
 package gamesource.battleState.appState;
 
-import gamesource.battleState.character.Enemy;
-import gamesource.battleState.character.MainRole;
 import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;
 import com.jme3.animation.LoopMode;
@@ -29,8 +27,7 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Quad;
 import com.jme3.ui.Picture;
-import org.ejml.alg.generic.GenericMatrixOps;
-import org.lwjgl.Sys;
+import gamesource.battleState.character.MainRole;
 import truetypefont.TrueTypeFont;
 import truetypefont.TrueTypeKey;
 
@@ -136,15 +133,15 @@ public class LeadingActorState extends BaseAppState {
         // 添加MP显示的图片与文字
         MpPic = new Picture("MP");
         MpPic.setImage(app.getAssetManager(), "Util/MP.png", true);
-        MpPic.setHeight(120);
-        MpPic.setWidth(120);
-        MpPic.setPosition(220, 220);
+        MpPic.setHeight(200);
+        MpPic.setWidth(200);
+        MpPic.setPosition(150, 180);
         guiNode.attachChild(MpPic);
 
 
         // 创建MP文字
         MpText = font.getBitmapGeom(String.format("%d/%d", MainRole.getInstance().getMP_current(), MainRole.getInstance().getMP_max()), 0, ColorRGBA.Red);
-        MpText.setLocalTranslation(250, 270, 1);
+        MpText.setLocalTranslation(220, 270, 1);
         guiNode.attachChild(MpText);
 
     }
@@ -170,7 +167,7 @@ public class LeadingActorState extends BaseAppState {
 
         MpText.removeFromParent();
         MpText = font.getBitmapGeom(String.format("%d/%d", MainRole.getInstance().getMP_current(), MainRole.getInstance().getMP_max()), 0, ColorRGBA.Red);
-        MpText.setLocalTranslation(250, 270, 1);
+        MpText.setLocalTranslation(220, 270, 1);
         guiNode.attachChild(MpText);
 
     }
