@@ -23,9 +23,7 @@ import gamesource.State.mapState.*;
 import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.battle.Battle;
-import gamesource.battleState.character.enemy.mechanicalEmpire.RampageRobot;
-import gamesource.battleState.character.enemy.mechanicalEmpire.Robot;
-import gamesource.battleState.character.enemy.mechanicalEmpire.StrongRobot;
+import gamesource.battleState.character.enemy.mechanicalEmpire.*;
 import gamesource.battleState.character.enemy.originalForest.*;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
@@ -62,7 +60,7 @@ public class ThirdState extends BaseAppState {
     //这个地图暂时这5种怪物，想新加new一下加入state里面，构造函数第一个参数是位置，第二个是朝向，进入游戏需要先按c进入第一人称，再按f1来获取玩家坐标
 
     private DrunkCrab crab1 = new DrunkCrab(new Vector3f(86.417725f, 3.0157287f, -5.2350335f), 2f);
-
+    private DrunkCrab crab2 = new DrunkCrab(new Vector3f(-62.53405f, 3.3551812f, 1.4148519f),3f);
     private Fish1State fish1_1 = new Fish1State(new Vector3f(93.7314f, -3.7759366f, 27.07812f), 5f);
     private Fish1State fish1_2 = new Fish1State(new Vector3f(46.98013f, 0.9620397f, -0.31717157f), -3f);
     private Fish1State fish1_3 = new Fish1State(new Vector3f(56.948456f, 3.351931f, -47.507305f), 3f);
@@ -78,7 +76,8 @@ public class ThirdState extends BaseAppState {
     private Fish3State fish3_3 = new Fish3State(new Vector3f(-58.6319f, -1.6084806f, 50.47643f), -6.4f);
     private Fish3State fish3_4 = new Fish3State(new Vector3f(-80.64096f, -6.567422f, 66.516266f), 3.4f);
     private MushroomBug bu1 = new MushroomBug(new Vector3f(60.75251f, 4.0023937f, -34.16455f), -4f);
-//    private FishBoss boss=new FishBoss(new Vector3f(0,29,0));
+    private MushroomBug bu2 = new MushroomBug(new Vector3f(-61.74419f, 4.1799035f, -12.796891f),4f);
+    private FishBoss boss=new FishBoss(new Vector3f(-71.28984f, -2.5547683f, 37.708557f),2);
 
     private StartTalk st = new StartTalk();
 
@@ -146,12 +145,17 @@ public class ThirdState extends BaseAppState {
         states.add(fish3_3);
         state.attach(fish3_4);
         states.add(fish3_4);
-//        state.attach(boss);
+        state.attach(boss);
+        states.add(boss);
 
         state.attach(bu1);
         states.add(bu1);
+        state.attach(bu2);
+        states.add(bu2);
         state.attach(crab1);
         states.add(crab1);
+        state.attach(crab2);
+        states.add(crab2);
 
         state.attach(light);
         state.attach(water);
@@ -198,8 +202,12 @@ public class ThirdState extends BaseAppState {
             CollisionResults results3_4 = results3_4();
 
             CollisionResults results4_1 = results4_1();
+            CollisionResults results4_2 = results4_2();
 
             CollisionResults results5_1 = results5_1();
+            CollisionResults results5_2 = results5_2();
+
+            CollisionResults results6 = results6();
             if (move.equals(name) && isPressed) {
                 if (results1_1!=null&&results1_1.size() > 0) {
                     battle1 = 0;
@@ -231,8 +239,14 @@ public class ThirdState extends BaseAppState {
                     battle1 = 13;
                 } else if (results4_1!=null&&results4_1.size() > 0) {
                     battle1 = 14;
-                } else if (results5_1!=null&&results5_1.size() > 0) {
+                }else if (results4_2!=null&&results4_2.size() > 0) {
                     battle1 = 15;
+                } else if (results5_1!=null&&results5_1.size() > 0) {
+                    battle1 = 16;
+                }else if (results5_2!=null&&results5_1.size() > 0) {
+                    battle1 = 17;
+                }else if (results6!=null&&results6.size() > 0) {
+                    battle1 = 18;
                 }
             }
 
@@ -538,11 +552,63 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
+                            new EliteRobot(120, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(crab2);
+                    states.remove(crab2);
+                    state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    major.setPlace(crab1.get().getCenter());
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+                case 16:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
                             new StrongRobot(60, "Enemies/underWater/mushroomBug.j3o", 10, 1, 0, 0, 0, 0, 0, 0),
                             new StrongRobot(60, "Enemies/underWater/mushroomBug.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(bu1);
                     states.remove(bu1);
+                    state.attach(new Battle(states));
+                    major.setPlace(bu1.get().getCenter());
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+                case 17:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new StrongRobot(60, "Enemies/underWater/mushroomBug.j3o", 10, 1, 0, 0, 0, 0, 0, 0),
+                            new StrongRobot(60, "Enemies/underWater/mushroomBug.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(bu2);
+                    states.remove(bu2);
+                    state.attach(new Battle(states));
+                    major.setPlace(bu1.get().getCenter());
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
+                case 18:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new SteamRobot(280, "Enemies/underWater/fishboss.j3o", 10, 1, 0, 1, 3, 0, 0, 0)
+                    );
+                    state.detach(boss);
+                    states.remove(boss);
                     state.attach(new Battle(states));
                     major.setPlace(bu1.get().getCenter());
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
@@ -720,8 +786,38 @@ public class ThirdState extends BaseAppState {
         }
     }
 
+    public CollisionResults results4_2() {
+        BoundingVolume ske = crab2.get();
+        CollisionResults result = new CollisionResults();
+        try {
+            maj.collideWith(ske, result);
+            return result;
+        } catch (NullPointerException npe) {
+            return new CollisionResults();
+        }
+    }
     public CollisionResults results5_1() {
         BoundingVolume ske = bu1.get();
+        CollisionResults result = new CollisionResults();
+        try {
+            maj.collideWith(ske, result);
+            return result;
+        } catch (NullPointerException npe) {
+            return new CollisionResults();
+        }
+    }
+    public CollisionResults results5_2() {
+        BoundingVolume ske = bu2.get();
+        CollisionResults result = new CollisionResults();
+        try {
+            maj.collideWith(ske, result);
+            return result;
+        } catch (NullPointerException npe) {
+            return new CollisionResults();
+        }
+    }
+    public CollisionResults results6() {
+        BoundingVolume ske = boss.get();
         CollisionResults result = new CollisionResults();
         try {
             maj.collideWith(ske, result);

@@ -124,7 +124,7 @@ public class FishBoss extends BaseAppState {
         robot = app.getAssetManager().loadModel("Enemies/underWater/fishboss.j3o");
         robot.setName("Knight");
         robot.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
-        robot.scale(0.12f);
+        robot.scale(0.03f);
         robot.rotate(0,modelY,0);
         plane=robot.getWorldBound();
     }

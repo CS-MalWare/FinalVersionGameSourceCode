@@ -222,121 +222,121 @@ public class SecondState extends BaseAppState {
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
             return result;
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
 
     public CollisionResults results4() {
         try {
-        BoundingVolume ske = skeleton2.get();
-        CollisionResults result = new CollisionResults();
-        maj.collideWith(ske, result);
-        return result;
-    }catch (Exception e){
-        return null;
-    }
+            BoundingVolume ske = skeleton2.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 
     public CollisionResults results5() {
         try {
-        BoundingVolume ske = skeleton3.get();
-        CollisionResults result = new CollisionResults();
-        maj.collideWith(ske, result);
-        return result;
-    }catch (Exception e){
-        return null;
+            BoundingVolume ske = skeleton3.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
         }
     }
 
     public CollisionResults results6() {
         try {
-        BoundingVolume ske = skeleton4.get();
-        CollisionResults result = new CollisionResults();
-        maj.collideWith(ske, result);
-        return result;
-        }catch (Exception e){
-        return null;
+            BoundingVolume ske = skeleton4.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
         }
     }
 
 
     public CollisionResults results7() {
         try {
-        BoundingVolume ske = bat1.get();
-        CollisionResults result = new CollisionResults();
-        maj.collideWith(ske, result);
-        return result;
-        }catch (Exception e){
-        return null;
+            BoundingVolume ske = bat1.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
         }
     }
 
     public CollisionResults results8() {
         try {
-        BoundingVolume ske = snowRobot1.get();
-        CollisionResults result = new CollisionResults();
-        maj.collideWith(ske, result);
-        return result;
-        }catch (Exception e){
-        return null;
+            BoundingVolume ske = snowRobot1.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
         }
     }
 
     public CollisionResults results9() {
         try {
-        BoundingVolume ske = skeleton5.get();
-        CollisionResults result = new CollisionResults();
-        maj.collideWith(ske, result);
-        return result;
-        }catch (Exception e){
-        return null;
+            BoundingVolume ske = skeleton5.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
         }
     }
 
     public CollisionResults results10() {
         try {
-        BoundingVolume ske = skeleton6.get();
-        CollisionResults result = new CollisionResults();
-        maj.collideWith(ske, result);
-        return result;
-        }catch (Exception e){
-        return null;
+            BoundingVolume ske = skeleton6.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
         }
     }
 
     public CollisionResults results11() {
         try {
-        BoundingVolume ske = skeleton7.get();
-        CollisionResults result = new CollisionResults();
-        maj.collideWith(ske, result);
-        return result;
-        }catch (Exception e){
-        return null;
+            BoundingVolume ske = skeleton7.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
         }
     }
 
 
     public CollisionResults results12() {
         try {
-        BoundingVolume ske = skeleton8.get();
-        CollisionResults result = new CollisionResults();
-        maj.collideWith(ske, result);
-        return result;
-        }catch (Exception e){
-        return null;
+            BoundingVolume ske = skeleton8.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
         }
     }
 
     public CollisionResults results13() {
         try {
-        BoundingVolume ske = snowRobot2.get();
-        CollisionResults result = new CollisionResults();
-        maj.collideWith(ske, result);
-        return result;
-        }catch (Exception e){
-        return null;
+            BoundingVolume ske = snowRobot2.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
         }
     }
 
@@ -383,27 +383,27 @@ public class SecondState extends BaseAppState {
                 }
             }
             if (move.equals(name) && isPressed) {
-                if (results3!=null&&results3.size() > 0) {
+                if (results3 != null && results3.size() > 0) {
                     battle1 = 0;
-                } else if (results4!=null&&results4.size() > 0) {
+                } else if (results4 != null && results4.size() > 0) {
                     battle1 = 1;
-                } else if (results5!=null&&results5.size() > 0) {
+                } else if (results5 != null && results5.size() > 0) {
                     battle1 = 2;
-                } else if (results6!=null&&results6.size() > 0) {
+                } else if (results6 != null && results6.size() > 0) {
                     battle1 = 3;
-                } else if (results7!=null&&results7.size() > 0) {
+                } else if (results7 != null && results7.size() > 0) {
                     battle1 = 4;
-                } else if (results8!=null&&results8.size() > 0) {
+                } else if (results8 != null && results8.size() > 0) {
                     battle1 = 5;
-                } else if (results9!=null&&results9.size() > 0) {
+                } else if (results9 != null && results9.size() > 0) {
                     battle1 = 6;
-                } else if (results10!=null&&results10.size() > 0) {
+                } else if (results10 != null && results10.size() > 0) {
                     battle1 = 7;
-                } else if (results11!=null&&results11.size() > 0) {
+                } else if (results11 != null && results11.size() > 0) {
                     battle1 = 8;
-                } else if (results12!=null&&results12.size() > 0) {
+                } else if (results12 != null && results12.size() > 0) {
                     battle1 = 9;
-                } else if (results13!=null&&results13.size() > 0) {
+                } else if (results13 != null && results13.size() > 0) {
                     battle1 = 10;
                 }
             }
