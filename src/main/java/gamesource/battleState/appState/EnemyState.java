@@ -361,7 +361,9 @@ public class EnemyState extends BaseAppState {
             case "Enemies/underWater/mushroom_bug1.j3o":
             case "Enemies/underWater/mushroom_bug2.j3o":
                 model.scale(1.2f);
-
+            case "Enemies/underWater/fishboss0.j3o":
+                model.scale(0.07f);
+                break;
             default:
                 break;
         }

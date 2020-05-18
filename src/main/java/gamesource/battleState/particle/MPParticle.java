@@ -27,7 +27,7 @@ public class MPParticle {
         // 设置2x2的动画
         flame.setImagesX(2);
         flame.setImagesY(2);
-        flame.setLocalTranslation(-4.65f, -2.14f, 1);
+        flame.setLocalTranslation(-4.67f, -2.13f, 1);
         // 初始颜色，结束颜色
         flame.setEndColor(new ColorRGBA(1f, 0f, 0f, 1f)); // red
         flame.setStartColor(new ColorRGBA(1f, 1f, 0f, 0.5f)); // yellow
