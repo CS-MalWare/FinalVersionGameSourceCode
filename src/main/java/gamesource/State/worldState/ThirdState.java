@@ -179,8 +179,8 @@ public class ThirdState extends BaseAppState {
 
         cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
         major.setPlace(new Vector3f(0f, 30f, 0f));
-        // 到时候修改背景改这里,先用逸润巨佬的背景
-        BattleBackGroundState.setBackgroundSrc("Map/second.j3o");
+        
+        BattleBackGroundState.setBackgroundSrc("Map/scene.j3o");
     }
 
 
