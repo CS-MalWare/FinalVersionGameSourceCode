@@ -343,15 +343,20 @@ public class EnemyState extends BaseAppState {
             case "Enemies/underWater/fish10.j3o":
             case "Enemies/underWater/fish11.j3o":
             case "Enemies/underWater/fish12.j3o":
-                model.scale(0.06f);
+                model.scale(0.05f);
                 break;
 
             case "Enemies/underWater/fish20.j3o":
             case "Enemies/underWater/fish21.j3o":
             case "Enemies/underWater/fish22.j3o":
-                model.scale(0.3f);
+                model.scale(0.28f);
                 break;
 
+            case "Enemies/underWater/fish30.j3o":
+            case "Enemies/underWater/fish31.j3o":
+            case "Enemies/underWater/fish32.j3o":
+                model.scale(0.6f);
+                break;
             case "Enemies/underWater/hollowKnight0.j3o":
             case "Enemies/underWater/hollowKnight1.j3o":
             case "Enemies/underWater/hollowKnight2.j3o":
@@ -465,14 +470,18 @@ public class EnemyState extends BaseAppState {
                 model.move(-1.45f, -0.4f, 0);
                 break;
 
-            case "Enemies/underWater/fish10.j3o":
-                model.move(-1.5f, 0, 0);
+            case "Enemies/underWater/fishboss0.j3o":
+                model.move(-1.1f, 0.3f, 0);
                 break;
-            case "Enemies/underWater/fish11.j3o":
+
+            case "Enemies/underWater/fish10.j3o":
                 model.move(-1.3f, 0, 0);
                 break;
-            case "Enemies/underWater/fish12.j3o":
+            case "Enemies/underWater/fish11.j3o":
                 model.move(-1.1f, 0, 0);
+                break;
+            case "Enemies/underWater/fish12.j3o":
+                model.move(-0.9f, 0, 0);
                 break;
 
             case "Enemies/underWater/fish20.j3o":
@@ -482,6 +491,16 @@ public class EnemyState extends BaseAppState {
                 model.move(-1.3f, 0, 0);
                 break;
             case "Enemies/underWater/fish22.j3o":
+                model.move(-1.1f, 0, 0);
+                break;
+
+            case "Enemies/underWater/fish30.j3o":
+                model.move(-1.5f, 0, 0);
+                break;
+            case "Enemies/underWater/fish31.j3o":
+                model.move(-1.3f, 0, 0);
+                break;
+            case "Enemies/underWater/fish32.j3o":
                 model.move(-1.1f, 0, 0);
                 break;
 
@@ -496,13 +515,23 @@ public class EnemyState extends BaseAppState {
                 break;
 
             case "Enemies/underWater/mushroom_bug0.j3o":
-                model.move(-1.5f,0,0);
+                model.move(0.5f,0,0);
                 break;
             case "Enemies/underWater/mushroom_bug1.j3o":
-                model.move(-1.15f,-0.075f,0);
+                model.move(0.3f,-0.075f,0);
                 break;
             case "Enemies/underWater/mushroom_bug2.j3o":
-                model.move(-0.95f,-0.15f,0);
+                model.move(0.1f,-0.15f,0);
+                break;
+
+            case "Enemies/underWater/mushroomBug0.j3o":
+                model.move(-0.9f,0,0);
+                break;
+            case "Enemies/underWater/mushroomBug1.j3o":
+                model.move(-0.7f,0f,0);
+                break;
+            case "Enemies/underWater/mushroomBug2.j3o":
+                model.move(-0.5f,0f,0);
                 break;
 
             default:
