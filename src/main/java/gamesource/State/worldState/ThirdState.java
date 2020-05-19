@@ -53,14 +53,15 @@ public class ThirdState extends BaseAppState {
     InputAppState input;
     ThirdWorldMap world = new ThirdWorldMap();
     // MajorActor major=new MajorActor(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
-    Chest c1 = new Chest(new Vector3f(9.952984f, -31.962004f, 56.09926f), 4f);
-    Chest c2 = new Chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
-    Chest c3 = new Chest(new Vector3f(12.185162f, -18.157299f, -74.07405f), 4.2f);
+    Chest c1 = new Chest(new Vector3f(-26.21191f, 35.16028f, 18.530737f),5f);
+    Chest c2 = new Chest(new Vector3f(-85.80681f, -5.9977064f, 60.71085f));
+    Chest c3 = new Chest(new Vector3f(74.26929f, -2.273324f, 37.252453f),-1f);
 
     //这个地图暂时这5种怪物，想新加new一下加入state里面，构造函数第一个参数是位置，第二个是朝向，进入游戏需要先按c进入第一人称，再按f1来获取玩家坐标
 
     private DrunkCrab crab1 = new DrunkCrab(new Vector3f(86.417725f, 3.0157287f, -5.2350335f), 2f);
     private DrunkCrab crab2 = new DrunkCrab(new Vector3f(-62.53405f, 3.3551812f, 1.4148519f),3f);
+    private DrunkCrab crab3 = new DrunkCrab(new Vector3f(82.45858f, -3.1019607f, 43.562225f),4f);
     private Fish1State fish1_1 = new Fish1State(new Vector3f(93.7314f, -3.7759366f, 27.07812f), 5f);
     private Fish1State fish1_2 = new Fish1State(new Vector3f(46.98013f, 0.9620397f, -0.31717157f), -3f);
     private Fish1State fish1_3 = new Fish1State(new Vector3f(56.948456f, 3.351931f, -47.507305f), 3f);
@@ -148,6 +149,13 @@ public class ThirdState extends BaseAppState {
         state.attach(boss);
         states.add(boss);
 
+        state.attach(c1);
+        states.add(c1);
+        state.attach(c2);
+        states.add(c2);
+        state.attach(c3);
+        states.add(c3);
+
         state.attach(bu1);
         states.add(bu1);
         state.attach(bu2);
@@ -156,6 +164,8 @@ public class ThirdState extends BaseAppState {
         states.add(crab1);
         state.attach(crab2);
         states.add(crab2);
+        state.attach(crab3);
+        states.add(crab3);
 
         state.attach(light);
         states.add(light);
@@ -205,11 +215,13 @@ public class ThirdState extends BaseAppState {
 
             CollisionResults results4_1 = results4_1();
             CollisionResults results4_2 = results4_2();
+            CollisionResults results4_3 = results4_3();
 
             CollisionResults results5_1 = results5_1();
             CollisionResults results5_2 = results5_2();
 
             CollisionResults results6 = results6();
+
             if (move.equals(name) && isPressed) {
                 if (results1_1!=null&&results1_1.size() > 0) {
                     battle1 = 0;
@@ -243,6 +255,8 @@ public class ThirdState extends BaseAppState {
                     battle1 = 14;
                 }else if (results4_2!=null&&results4_2.size() > 0) {
                     battle1 = 15;
+                }else if (results4_3!=null&&results4_3.size() > 0) {
+                    battle1 = 19;
                 } else if (results5_1!=null&&results5_1.size() > 0) {
                     battle1 = 16;
                 }else if (results5_2!=null&&results5_1.size() > 0) {
@@ -616,6 +630,23 @@ public class ThirdState extends BaseAppState {
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     break;
+                case 19:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new RampageRobot(200, "Enemies/underWater/drunkCrab.j3o", 10, 0, 0, 0, 1, 0, 0, 0)
+                    );
+                    state.detach(crab3);
+                    states.remove(crab3);
+                    state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    major.setPlace(crab1.get().getCenter());
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    break;
                 default:
                     break;
 
@@ -798,6 +829,18 @@ public class ThirdState extends BaseAppState {
             return new CollisionResults();
         }
     }
+
+    public CollisionResults results4_3() {
+        BoundingVolume ske = crab3.get();
+        CollisionResults result = new CollisionResults();
+        try {
+            maj.collideWith(ske, result);
+            return result;
+        } catch (NullPointerException npe) {
+            return new CollisionResults();
+        }
+    }
+
     public CollisionResults results5_1() {
         BoundingVolume ske = bu1.get();
         CollisionResults result = new CollisionResults();

@@ -58,7 +58,6 @@ public class SecondState extends BaseAppState {
 
     MajorActor major;
     // MajorActor major=new MajorActor(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
-    Chest c1 = new Chest(new Vector3f(9.952984f, -31.962004f, 56.09926f), 4f);
     Chest c2 = new Chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
     Chest c3 = new Chest(new Vector3f(12.185162f, -18.157299f, -74.07405f), 4.2f);
     private AngrySkeletonState skeleton1 = new AngrySkeletonState(new Vector3f(3.0883105f, -31.735968f, 43.255566f), 0.5f);
@@ -167,8 +166,6 @@ public class SecondState extends BaseAppState {
 
 //        state.attach(boss);
 //        states.add(boss);
-        state.attach(c1);
-        states.add(c1);
         state.attach(c2);
         states.add(c2);
         state.attach(c3);
