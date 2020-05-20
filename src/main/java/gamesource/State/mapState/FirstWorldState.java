@@ -37,7 +37,7 @@ public class FirstWorldState extends BaseAppState {
 
         physics=bullet.getPhysicsSpace();
 
-        Scene=app.getAssetManager().loadModel("Map/first.j3o");
+        Scene=app.getAssetManager().loadModel("Map/first/ditu.j3o");
 
         Scene.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
         Scene.scale(3.5f);

@@ -16,6 +16,7 @@ import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.enemies.*;
+import gamesource.State.CharacterState.enemies.forth.BossKnight;
 import gamesource.State.CharacterState.secondWorldCharacter.goblinGirlState;
 import gamesource.State.CharacterState.secondWorldCharacter.shanmanState;
 import gamesource.State.SpecialEffect.SecondWorldLight;

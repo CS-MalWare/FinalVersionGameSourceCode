@@ -10,16 +10,15 @@ import org.jsfml.window.VideoMode;
 import org.jsfml.window.event.Event;
 import java.nio.file.Paths;
 import java.io.IOException;
-import static gamesource.initialinterface.Main_test.start;
 
-/*public class StartInterface {
-    public static void main(String[] arcs) throws IOException, ContextActivationException, InterruptedException {
-        //int screenWidth = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
-        //int screenHeight=java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
-        //System.out.println(screenHeight + " " + screenWidth);
+public class StartInterface {
+    private static RenderWindow window = new RenderWindow();
+    public static void init() throws IOException, ContextActivationException, InterruptedException {
+        /*int screenWidth = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+        int screenHeight=java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+        System.out.println(screenHeight + " " + screenWidth);*/
         int num = 0;
-        RenderWindow window = new RenderWindow();
-        window.create(new VideoMode(1600,900), "Cholera");
+        window.create(new VideoMode(1536,864), "Cholera");
         window.setMouseCursorVisible(true);
         window.setFramerateLimit(30);
 
@@ -134,9 +133,10 @@ import static gamesource.initialinterface.Main_test.start;
                     if(click_compute(texture_start_released, start_button))
                     {
                         start_button.setTexture(texture_start_released);
-                        start();
-                        music.pause();
+                        window.setVisible(false);
+                        //Thread.sleep(1 * 1000);
                         window.close();
+
                     }
                     if(click_compute(texture_white_released, white_button))
                     {
@@ -153,7 +153,7 @@ import static gamesource.initialinterface.Main_test.start;
     }
     public static boolean click_compute(Texture texture, Sprite button)
     {
-        Vector2i verctor_mouse = Mouse.getPosition();
+        Vector2i verctor_mouse = Mouse.getPosition(window);
         Vector2i verctor_start_size = texture.getSize();
         Vector2f vector_start_position = button.getPosition();
         int mouse_x = verctor_mouse.x;
@@ -188,4 +188,3 @@ import static gamesource.initialinterface.Main_test.start;
         return text_start;
     }
 }
-*/

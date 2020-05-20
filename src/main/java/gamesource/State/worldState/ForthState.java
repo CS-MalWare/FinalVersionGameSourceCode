@@ -13,6 +13,12 @@ import com.jme3.math.Ray;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import gamesource.State.CharacterState.MajorActor;
+import gamesource.State.CharacterState.enemies.BatState;
+import gamesource.State.CharacterState.enemies.BlueSkeletonState;
+import gamesource.State.CharacterState.enemies.RedSkeletonState;
+import gamesource.State.CharacterState.enemies.forth.BossKnight;
+import gamesource.State.CharacterState.enemies.forth.StoneMan;
+import gamesource.State.CharacterState.enemies.forth.boss;
 import gamesource.State.SpecialEffect.ThirdWorldLight;
 import gamesource.State.SpecialEffect.Water;
 import gamesource.State.SpecialEffect.makeCross;
@@ -53,10 +59,17 @@ public class ForthState extends BaseAppState {
     Chest c1 = new Chest(new Vector3f(9.952984f, -31.962004f, 56.09926f),4f);
     Chest c2 = new Chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
     Chest c3 = new Chest(new Vector3f(12.185162f, -18.157299f, -74.07405f),4.2f);
+    private StoneMan man1=new StoneMan(new Vector3f(1.2305703f, -21.918747f, 31.115707f),4.5f,1,0,1);
+    private boss bos=new boss(new Vector3f(0.2364038f, -12.214317f, -34.228657f),3.6f);
+    private BatState bat1=new BatState(new Vector3f(-8.639356f, -21.22517f, 19.451141f),-0.5f);
 
-    //这个地图暂时这5种怪物，想新加new一下加入state里面，构造函数第一个参数是位置，第二个是朝向，进入游戏需要先按c进入第一人称，再按f1来获取玩家坐标
-
-
+    private BatState bat2=new BatState(new Vector3f(-16.774906f, -15.959639f, 18.43346f),1.1f);
+    private BatState bat3=new BatState(new Vector3f(-14.036222f, -0.26350462f, -22.96706f),-0.5f);
+    private BossKnight knight=new BossKnight(new Vector3f(2.0474744f, -21.482273f, 7.5591955f),-1.2f);
+    private StoneMan man2=new StoneMan(new Vector3f(-5.5626683f, -15.747082f, -8.876474f),0.7f,1,0,1,"Attack1");
+    private StoneMan man3=new StoneMan(new Vector3f(3.491192f, -22.307375f, 11.724836f),4.5f,1,0,1);
+    private BlueSkeletonState ske1=new BlueSkeletonState(new Vector3f(-4.245868f, -11.549194f, -25.822964f),0.2f);
+    private RedSkeletonState ske2=new RedSkeletonState(new Vector3f(-1.4215671f, -11.728199f, -24.200905f),-0.7f);
     private StartTalk st=new StartTalk();
 
     private BoundingVolume maj;
@@ -93,6 +106,26 @@ public class ForthState extends BaseAppState {
         cross=state.getState(makeCross.class);
         states.add(cross);
         state.attach(light);
+        state.attach(bos);
+        states.add(bos);
+        state.attach(man1);
+        states.add(man1);
+        state.attach(bat1);
+        states.add(bat1);
+        state.attach(bat2);
+        states.add(bat2);
+        state.attach(bat3);
+        states.add(bat3);
+        state.attach(knight);
+        states.add(knight);
+        state.attach(man2);
+        states.add(man2);
+        state.attach(man3);
+        states.add(man3);
+        state.attach(ske1);
+        states.add(ske1);
+        state.attach(ske2);
+        states.add(ske2);
         //state.attach(water);
         state.attach(new SkyBox());
 
@@ -112,6 +145,7 @@ public class ForthState extends BaseAppState {
 
         cam.lookAtDirection(new Vector3f(0,0,-1),new Vector3f(0,1,0));
         major.setPlace(new Vector3f(0f, 10f, 0f));
+        major.setPlace(new Vector3f(1.5346308f, -18.545364f, 56.147945f));
     }
 
 
