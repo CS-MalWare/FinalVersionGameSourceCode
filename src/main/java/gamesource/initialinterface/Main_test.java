@@ -1,6 +1,7 @@
 package gamesource.initialinterface;
 
 
+import gamesource.Interface.StartInterface;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.graphics.Texture;
@@ -11,13 +12,22 @@ import java.io.IOException;
 
 public class Main_test
 {
-    private static gamesource.initialinterface.Test test = new gamesource.initialinterface.Test();
+    //private static gamesource.initialinterface.Test test = new gamesource.initialinterface.Test();
+    //private static StartInterface startInterface = new StartInterface();
     public static void start() throws InterruptedException {
         Thread t3 = new Thread(new Runnable(){
             @Override
             public void run()
             {
-                gamesource.initialinterface.Test.test();
+                try {
+                    StartInterface.init();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (ContextActivationException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         },"t3");
 
@@ -43,11 +53,14 @@ public class Main_test
                 }
 
             }
-        },"t2");
 
+        },"t1");
+
+
+        t3.run();
         t1.start();
         Thread.sleep(1000);
-        t2.start();
+        t2.run();
     }
     public static void main(String[] argcs) throws IOException, InterruptedException, ContextActivationException {
 

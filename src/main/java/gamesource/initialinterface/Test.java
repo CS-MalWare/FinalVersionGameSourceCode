@@ -1,5 +1,5 @@
 package gamesource.initialinterface;
-//import com.sun.xml.internal.bind.v2.model.annotation.RuntimeAnnotationReader;
+import com.sun.xml.internal.bind.v2.model.annotation.RuntimeAnnotationReader;
 import gamesource.initialinterface.Texture_init;
 import gamesource.initialinterface.User_data;
 import org.jsfml.graphics.*;
@@ -61,7 +61,7 @@ public class Test {
         final int screenHeight = 900;
         final int screenWidth = 1600;
 
-        window.create(new VideoMode(screenWidth, screenHeight), "Cholera");
+        window.create(new VideoMode(screenWidth, screenHeight), "UI test!");
         window.setMouseCursorVisible(true);
 
         window.setFramerateLimit(30);
