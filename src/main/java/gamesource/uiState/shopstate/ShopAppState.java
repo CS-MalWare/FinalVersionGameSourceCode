@@ -23,6 +23,7 @@ import gamesource.battleState.card.Card;
 import gamesource.battleState.card.CreateCard;
 import gamesource.battleState.card.Card.OCCUPATION;
 import gamesource.battleState.character.MainRole;
+import gamesource.battleState.equipment.Equipment;
 import gamesource.uiState.bagstate.CardUI;
 import gamesource.util.CardArrayReader;
 
@@ -35,6 +36,10 @@ public class ShopAppState extends BaseAppState implements ActionListener{
     private CardUI[] cardUIsCopy = new CardUI[40];
     private CardUI[] casterCardUIs = new CardUI[20];
     private CardUI[] neutralCardUIs = new CardUI[20];
+
+    private EquipmentUI[] equipmentUIs = new EquipmentUI[40];
+    private Equipment[] equipments = new Equipment[40];
+    private EquipmentUI[] equipmentUIsCopy = new EquipmentUI[40];
     //private CardUI[] saberCardUIs = new CardUI[20];
     private Container centralPart;
     private Container leftPartContainer;
@@ -95,7 +100,7 @@ public class ShopAppState extends BaseAppState implements ActionListener{
             new QuadBackgroundComponent(new ColorRGBA(0, 0.75f, 0.75f, 0.5f)));
         styles.getSelector(Slider.THUMB_ID, "glass").set("text", "[]", false);
         styles.getSelector("header", "glass").set("shadowColor", new ColorRGBA(1, 0f, 0f, 1));
-        app.getGuiNode().attachChildAt(general, 2);
+        app.getGuiNode().attachChild(general);
         
         leftPart = new Container("glass");
         SpringGridLayout leftLayOut = new SpringGridLayout(Axis.Y, Axis.X, FillMode.None, FillMode.None);

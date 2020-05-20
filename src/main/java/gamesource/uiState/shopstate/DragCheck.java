@@ -52,7 +52,7 @@ public class DragCheck extends BaseAppState{
         dragWindow.addChild(new Label("Do you make sure you want to buy these cards ? It will cost " + totalCost));
         dragWindow.addChild(new ActionButton(new CallMethodAction(this, "Confirm")));
         dragWindow.setLocalTranslation(600, 700, 100);
-        dragWindow.setAlpha(2f);
+        dragWindow.setAlpha(10f);
         getState(PopupState.class).showPopup(dragWindow);
     }
 

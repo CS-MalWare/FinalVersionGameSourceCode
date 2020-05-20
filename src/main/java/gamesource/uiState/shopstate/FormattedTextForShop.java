@@ -1,5 +1,7 @@
 package gamesource.uiState.shopstate;
 
+import java.util.regex.Pattern;
+
 import com.jme3.app.Application;
 import com.jme3.app.state.BaseAppState;
 import com.simsilica.lemur.ActionButton;
@@ -72,7 +74,7 @@ public class FormattedTextForShop extends BaseAppState{
         window.addChild(new ActionButton(new CallMethodAction(this, "Buy")));
         window.addChild(new ActionButton(new CallMethodAction("Close", window, "removeFromParent")));
         window.setLocalTranslation(700, 600, 100);
-        window.setAlpha(2f);
+        window.setAlpha(10f);
         getState(PopupState.class).showPopup(window, closeCommand);
     }
 
@@ -95,9 +97,16 @@ public class FormattedTextForShop extends BaseAppState{
     @Override
     public void update(float tpf){
         if(reference.update()){
+            if(isInteger(reference.get().getText())){
             numberOfBuy = Integer.parseInt(reference.get().getText());
             restNumber.setText("Rest Number: " + (10 - numberOfBuy) + "/10");
             totalCost.setText("Total Cost: " + numberOfBuy * cost);
+            }
         }
+    }
+
+    public static boolean isInteger(String string){
+        Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
+        return pattern.matcher(string).matches();
     }
 }
