@@ -17,6 +17,7 @@ import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.enemies.fifth.flyRobot;
 import gamesource.State.CharacterState.enemies.fifth.plane;
 import gamesource.State.CharacterState.enemies.fifth.walkRobot;
+import gamesource.State.CharacterState.firstWorldCharacter.lizardState;
 import gamesource.State.SpecialEffect.FirstWorldOtherSpecial;
 import gamesource.State.SpecialEffect.ThirdWorldLight;
 import gamesource.State.SpecialEffect.Water;
@@ -64,13 +65,18 @@ public class FifthState extends BaseAppState {
 
     //这个地图暂时这5种怪物，想新加new一下加入state里面，构造函数第一个参数是位置，第二个是朝向，进入游戏需要先按c进入第一人称，再按f1来获取玩家坐标
 
-    private plane p1=new plane(new Vector3f(0,0,0));
-    private walkRobot robot1=new walkRobot(new Vector3f(0,0,0));
+    private plane p1=new plane(new Vector3f(22.074516f, -10.199999f, -23.742216f),0,0,8,0);
+    private plane p2=new plane(new Vector3f(46.47963f, -10.199999f, -7.7142005f),0f,8,0,0);
+    private plane p3=new plane(new Vector3f(11.662053f, 1.3200008f, 26.24392f),-1.5f,0,8,0);
+    private walkRobot robot1=new walkRobot(new Vector3f(26.040071f, -21.72f, -1.5775526f),3.0f,0,4,0);
     private flyRobot robot2=new flyRobot(new Vector3f(0,0,0),2.2f);
     private flyRobot robot3=new flyRobot(new Vector3f(-12.852558f, -33.24f, -13.446446f),-2.4f,-3f,3,0,2,9);
     private flyRobot robot4=new flyRobot(new Vector3f(-17.62852f, -33.24f, 0.89568424f),-0.9f,3f,3,0,2,11);
     private flyRobot robot5=new flyRobot(new Vector3f(18.963163f, -33.24f, 0.511641f),1.3f,0f,3,0,2,7);
-
+    private walkRobot robot6=new walkRobot(new Vector3f(34.28899f, -21.72f, -57.356865f),4.7f,15,0,0,40);
+    private walkRobot robot7=new walkRobot(new Vector3f(9.650833f, -10.199997f, -36.951283f),-0.6f,8,-8,0,7);
+    private flyRobot robot8=new flyRobot(new Vector3f(-26.445934f, 1.3200009f, -3.8378994f),-0.3f,0f,3,0,1,18);
+    private lizardState lizard=new lizardState(new Vector3f(9.348317f, 16.739998f, -24.272078f));
 
     private StartTalk st=new StartTalk();
 
@@ -109,10 +115,18 @@ public class FifthState extends BaseAppState {
         cross=state.getState(makeCross.class);
         states.add(cross);
         //state.attach(p1);
+        state.attach(robot1);
         state.attach(robot2);
         state.attach(robot3);
         state.attach(robot4);
         state.attach(robot5);
+        state.attach(robot6);
+        state.attach(robot7);
+        state.attach(robot8);
+        state.attach(p1);
+        state.attach(p2);
+        state.attach(p3);
+        state.attach(lizard);
         state.attach(light);
         state.attach(effect);
         //state.attach(water);
@@ -133,7 +147,7 @@ public class FifthState extends BaseAppState {
         inputManager.addListener(st,move);
 
         cam.lookAtDirection(new Vector3f(0,0,-1),new Vector3f(0,1,0));
-        major.setPlace(new Vector3f(0f, 10f, 0f));
+        major.setPlace(new Vector3f(0f, 0f, 0f));
     }
 
 

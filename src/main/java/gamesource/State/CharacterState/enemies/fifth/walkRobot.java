@@ -41,7 +41,7 @@ public class walkRobot extends BaseAppState {
 
     private float timer=0;
 
-    private int model=1,type=1;
+    private int model=1,type=1,time=6;
 
     private float rotateX=1f,rotateY=0f,rotateZ=-1f,modelY=5.4f;
 
@@ -80,6 +80,14 @@ public class walkRobot extends BaseAppState {
         this.rotateY=rotateY;
         this.rotateZ=rotateZ;
     }
+    public walkRobot(Vector3f place,float modelY,float rotateX,float rotateZ,float rotateY,int time){
+        this.modelY=modelY;
+        this.place=place;
+        this.rotateX=rotateX;
+        this.rotateY=rotateY;
+        this.rotateZ=rotateZ;
+        this.time=time;
+    }
     public void initPhysics(){
         bullet=app.getStateManager().getState(BulletAppState.class);
         physics=bullet.getPhysicsSpace();
@@ -87,7 +95,7 @@ public class walkRobot extends BaseAppState {
         radius=0.4f;
         height=0.6f;
 
-        robot.move(0.06f,-(height/2+radius)+1f,0);
+        robot.move(0.06f,-(height/2+radius)+1.45f,0);
 
         character=new Node("Character");
         rootNode.attachChild(character);
@@ -124,12 +132,12 @@ public class walkRobot extends BaseAppState {
         robot = app.getAssetManager().loadModel("Enemies/fifthMap/walking_robot/scene.j3o");
         robot.setName("Knight");
         robot.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
-        robot.scale(0.12f);
+        robot.scale(0.17f);
         robot.rotate(0,modelY,0);
         plane=robot.getWorldBound();
     }
     public void update(float tpf){
-        if (timer >= 6) {
+        if (timer >= time) {
             Vector3f direction = new Vector3f(rotateX, rotateY,
                     rotateZ);
             //direction.addLocal(direction);
@@ -138,7 +146,7 @@ public class walkRobot extends BaseAppState {
             direction.multLocal(0.01f);
             robotControl.setWalkDirection(direction);
             timer = timer - tpf;
-            if (timer < 6.1) {
+            if (timer < time+0.1) {
                 timer = 0;
                 robot.rotate(0, 3f, 0);
             }
@@ -151,8 +159,8 @@ public class walkRobot extends BaseAppState {
             direction.multLocal(0.01f);
             robotControl.setWalkDirection(direction);
             timer = timer + tpf;
-            if (timer >= 6) {
-                timer = 12;
+            if (timer >= time) {
+                timer = time*2;
                 robot.rotate(0, -3f, 0);
             }
         }
