@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 import java.io.IOException;
 import static gamesource.initialinterface.Main_test.start;
 
-public class StartInterface {
+/*public class StartInterface {
     public static void main(String[] arcs) throws IOException, ContextActivationException, InterruptedException {
         //int screenWidth = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         //int screenHeight=java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -188,3 +188,4 @@ public class StartInterface {
         return text_start;
     }
 }
+*/

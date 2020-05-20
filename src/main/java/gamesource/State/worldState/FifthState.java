@@ -4,6 +4,7 @@ import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.bounding.BoundingVolume;
+import com.jme3.collision.CollisionResults;
 import com.jme3.input.InputManager;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
@@ -25,6 +26,9 @@ import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
 import gamesource.State.mapState.FifthWorldState;
 import gamesource.State.mapState.SkyBox;
+import gamesource.battleState.appState.EnemyState;
+import gamesource.battleState.battle.Battle;
+import gamesource.battleState.character.enemy.originalForest.*;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -62,7 +66,7 @@ public class FifthState extends BaseAppState {
 
     private plane p1=new plane(new Vector3f(0,0,0));
     private walkRobot robot1=new walkRobot(new Vector3f(0,0,0));
-    private flyRobot robot2=new flyRobot(new Vector3f(0,0,0));
+    private flyRobot robot2=new flyRobot(new Vector3f(0,0,0),2.2f);
 
     private StartTalk st=new StartTalk();
 
@@ -126,13 +130,48 @@ public class FifthState extends BaseAppState {
     }
 
 
+
+    public CollisionResults results1() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = robot2.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+
     class StartTalk implements ActionListener {
         @Override
-        public void onAction(String name,boolean isPressed,float tpf){
+        public void onAction(String name, boolean isPressed, float tpf) {
+            int battle1 = -1;
+            CollisionResults results1 = results1();
+            if (move.equals(name) && isPressed) {
+                if (results1 != null && results1.size() > 0) {
+                    System.out.println("zzzzzzzz");
+                }
+            }
+
             if (change.equals(name) && isPressed) {
                 System.out.println("change");
                 major.change();
             }
+            if (bag.equals(name) && isPressed) {
+                if (canmove == 1) {
+                    state.detach(input);
+                    major.mouseChange();
+                    canmove = 0;
+                } else {
+                    state.attach(input);
+                    major.mouseChange();
+                    canmove = 1;
+                }
+            }
+
+
         }
     }
 

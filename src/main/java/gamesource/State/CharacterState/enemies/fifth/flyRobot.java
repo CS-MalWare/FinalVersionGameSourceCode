@@ -68,7 +68,7 @@ public class flyRobot  extends BaseAppState {
         this.place=place;
     }
 
-    public flyRobot(Vector3f place, int modelY){
+    public flyRobot(Vector3f place, float  modelY){
         this.place=place;
         this.modelY=modelY;
     }
@@ -118,13 +118,13 @@ public class flyRobot  extends BaseAppState {
         System.out.println(animControl.getAnimationNames());
 
         animChannel=animControl.createChannel();
-        animChannel.setAnim("Armature|idle");
+        animChannel.setAnim("Take 001");
     }
     public void initModel(){
-        robot = app.getAssetManager().loadModel("Enemies/fifthMap/fly/scene.j3o");
+        robot = app.getAssetManager().loadModel("Enemies/fifthMap/mech_drone/scene.j3o");
         robot.setName("Knight");
         robot.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
-        robot.scale(0.007f);
+        robot.scale(1.0f);
         robot.rotate(0,modelY,0);
         plane=robot.getWorldBound();
     }
