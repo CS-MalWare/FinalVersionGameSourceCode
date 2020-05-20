@@ -121,7 +121,7 @@ public class walkRobot extends BaseAppState {
         animChannel.setAnim("Take 001");
     }
     public void initModel(){
-        robot = app.getAssetManager().loadModel("Enemies/fifthMap/scene.j3o");
+        robot = app.getAssetManager().loadModel("Enemies/fifthMap/walking_robot/scene.j3o");
         robot.setName("Knight");
         robot.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
         robot.scale(0.12f);

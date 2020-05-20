@@ -121,7 +121,7 @@ public class flyRobot  extends BaseAppState {
         animChannel.setAnim("Armature|idle");
     }
     public void initModel(){
-        robot = app.getAssetManager().loadModel("Enemies/fifthMap/fly.j3o");
+        robot = app.getAssetManager().loadModel("Enemies/fifthMap/fly/scene.j3o");
         robot.setName("Knight");
         robot.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
         robot.scale(0.007f);
