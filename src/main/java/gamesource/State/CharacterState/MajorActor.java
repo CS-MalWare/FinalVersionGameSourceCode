@@ -292,7 +292,7 @@ public class MajorActor extends BaseAppState implements AnimEventListener {
 
     public void jump(){
         if(player.onGround()){
-            player.jump(new Vector3f(0,6f,0));
+            player.jump(new Vector3f(0,22f,0));
 
             animChannel.setAnim("jump");
             animChannel.setLoopMode(LoopMode.DontLoop);

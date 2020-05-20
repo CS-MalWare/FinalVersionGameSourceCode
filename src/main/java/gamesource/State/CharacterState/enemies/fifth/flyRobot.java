@@ -49,6 +49,8 @@ public class flyRobot  extends BaseAppState {
 
     private BoundingVolume plane;
 
+    private int time=6;
+
     protected void initialize (Application application){
         app=(SimpleApplication)application;
 
@@ -79,6 +81,23 @@ public class flyRobot  extends BaseAppState {
         this.rotateX=rotateX;
         this.rotateY=rotateY;
         this.rotateZ=rotateZ;
+    }
+    public flyRobot(Vector3f place,float modelY,float rotateX,float rotateZ,float rotateY, int type){
+        this.modelY=modelY;
+        this.place=place;
+        this.rotateX=rotateX;
+        this.rotateY=rotateY;
+        this.rotateZ=rotateZ;
+        this.type=type;
+    }
+    public flyRobot(Vector3f place,float modelY,float rotateX,float rotateZ,float rotateY, int type,int time){
+        this.modelY=modelY;
+        this.place=place;
+        this.rotateX=rotateX;
+        this.rotateY=rotateY;
+        this.rotateZ=rotateZ;
+        this.type=type;
+        this.time=time;
     }
     public void initPhysics(){
         bullet=app.getStateManager().getState(BulletAppState.class);
@@ -129,31 +148,61 @@ public class flyRobot  extends BaseAppState {
         plane=robot.getWorldBound();
     }
     public void update(float tpf){
-        if (timer >= 6) {
-            Vector3f direction = new Vector3f(rotateX, rotateY,
-                    rotateZ);
-            //direction.addLocal(direction);
-            direction.y = 0;
-            direction.normalizeLocal();
-            direction.multLocal(0.01f);
-            robotControl.setWalkDirection(direction);
-            timer = timer - tpf;
-            if (timer < 6.1) {
-                timer = 0;
-                robot.rotate(0, 3f, 0);
+        if(type==1) {
+            if (timer >= time) {
+                Vector3f direction = new Vector3f(rotateX, rotateY,
+                        rotateZ);
+                //direction.addLocal(direction);
+                direction.y = 0;
+                direction.normalizeLocal();
+                direction.multLocal(0.01f);
+                robotControl.setWalkDirection(direction);
+                timer = timer - tpf;
+                if (timer < time+0.1) {
+                    timer = 0;
+                    robot.rotate(0, 3f, 0);
+                }
+            } else {
+                Vector3f direction = new Vector3f(-rotateX, -rotateY,
+                        -rotateZ);
+                //walkDirection.addLocal(direction);
+                direction.y = 0;
+                direction.normalizeLocal();
+                direction.multLocal(0.01f);
+                robotControl.setWalkDirection(direction);
+                timer = timer + tpf;
+                if (timer >= time) {
+                    timer = time*2;
+                    robot.rotate(0, -3f, 0);
+                }
             }
-        } else {
-            Vector3f direction = new Vector3f(-rotateX, -rotateY,
-                    -rotateZ);
-            //walkDirection.addLocal(direction);
-            direction.y = 0;
-            direction.normalizeLocal();
-            direction.multLocal(0.01f);
-            robotControl.setWalkDirection(direction);
-            timer = timer + tpf;
-            if (timer >= 6) {
-                timer = 12;
-                robot.rotate(0, -3f, 0);
+        }else{
+            if (timer >= time) {
+                Vector3f direction = new Vector3f(rotateX, rotateY,
+                        rotateZ);
+                //direction.addLocal(direction);
+                direction.y = 0;
+                direction.normalizeLocal();
+                direction.multLocal(0.01f);
+                robotControl.setWalkDirection(direction);
+                timer = timer - tpf;
+                if (timer < time+0.1) {
+                    timer = 0;
+                    //robot.rotate(0, 3f, 0);
+                }
+            } else {
+                Vector3f direction = new Vector3f(-rotateX, -rotateY,
+                        -rotateZ);
+                //walkDirection.addLocal(direction);
+                direction.y = 0;
+                direction.normalizeLocal();
+                direction.multLocal(0.01f);
+                robotControl.setWalkDirection(direction);
+                timer = timer + tpf;
+                if (timer >= time) {
+                    timer = time*2;
+                    //robot.rotate(0, -3f, 0);
+                }
             }
         }
     }

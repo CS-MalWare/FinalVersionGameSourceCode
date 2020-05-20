@@ -67,6 +67,10 @@ public class FifthState extends BaseAppState {
     private plane p1=new plane(new Vector3f(0,0,0));
     private walkRobot robot1=new walkRobot(new Vector3f(0,0,0));
     private flyRobot robot2=new flyRobot(new Vector3f(0,0,0),2.2f);
+    private flyRobot robot3=new flyRobot(new Vector3f(-12.852558f, -33.24f, -13.446446f),-2.4f,-3f,3,0,2,9);
+    private flyRobot robot4=new flyRobot(new Vector3f(-17.62852f, -33.24f, 0.89568424f),-0.9f,3f,3,0,2,11);
+    private flyRobot robot5=new flyRobot(new Vector3f(18.963163f, -33.24f, 0.511641f),1.3f,0f,3,0,2,7);
+
 
     private StartTalk st=new StartTalk();
 
@@ -106,6 +110,9 @@ public class FifthState extends BaseAppState {
         states.add(cross);
         //state.attach(p1);
         state.attach(robot2);
+        state.attach(robot3);
+        state.attach(robot4);
+        state.attach(robot5);
         state.attach(light);
         state.attach(effect);
         //state.attach(water);
