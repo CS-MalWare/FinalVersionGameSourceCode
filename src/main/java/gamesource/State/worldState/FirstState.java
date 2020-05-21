@@ -43,6 +43,8 @@ public class FirstState extends BaseAppState {
     public final static Trigger CHANGECAMERA = new KeyTrigger(KeyInput.KEY_C);
     public final static String bag="BAG";
     public final static Trigger BAG = new KeyTrigger(KeyInput.KEY_B);
+    public final static String move = "MOVE";
+    public final static Trigger MOVE = new KeyTrigger(KeyInput.KEY_W);
     private InputManager inputManager;
 
     MajorActor major;
@@ -95,6 +97,8 @@ public class FirstState extends BaseAppState {
     private int canmove=1,chan=0;
 
     Ray ray;
+
+    BoundingVolume maj;
 
     private float time;
 
@@ -193,6 +197,9 @@ public class FirstState extends BaseAppState {
         inputManager.addListener(st,bag);
 
 
+        inputManager.addMapping(move, MOVE);
+        inputManager.addListener(st, move);
+
         major.setPlace(new Vector3f(-35.907394f, 3.7558994f, -35.212135f));
 
     }
@@ -236,7 +243,37 @@ public class FirstState extends BaseAppState {
         ray.collideWith(kni,results);
         return results;
     }
-
+    public CollisionResults collision5(){
+        try {
+            maj = major.getMajor();
+            BoundingVolume kni = c1.get();
+            CollisionResults results = new CollisionResults();
+            maj.collideWith(kni, results);
+            return results;
+        }catch(Exception e){
+            return null;
+        }
+    }
+    public CollisionResults collision6(){
+        try {
+            BoundingVolume kni = c2.get();
+            CollisionResults results = new CollisionResults();
+            maj.collideWith(kni, results);
+            return results;
+        }catch(Exception e){
+            return null;
+        }
+    }
+    public CollisionResults collision7(){
+        try {
+            BoundingVolume kni = c3.get();
+            CollisionResults results = new CollisionResults();
+            maj.collideWith(kni, results);
+            return results;
+        }catch(Exception e){
+            return null;
+        }
+    }
     class StartTalk implements ActionListener {
         ArrayList<String> content = new ArrayList<>();
 
@@ -246,6 +283,9 @@ public class FirstState extends BaseAppState {
             CollisionResults results2=collision2();
             CollisionResults results3=collision3();
             CollisionResults results4=collision4();
+            CollisionResults results5=collision5();
+            CollisionResults results6=collision6();
+            CollisionResults results7=collision7();
             if(talk.equals(name)&&isPressed){
                 //System.out.println("zzzzzz");
                 if(results.size()>0){                 
@@ -313,6 +353,15 @@ public class FirstState extends BaseAppState {
                     state.attach(input);
                     major.mouseChange();
                     canmove=1;
+                }
+            }
+            if(move.equals(name)&&isPressed){
+                if(results5!=null&&results5.size()>0){
+                    c1.open();
+                }else if(results6!=null&&results6.size()>0){
+                    c2.open();
+                }else if(results7!=null&&results7.size()>0){
+                    c3.open();
                 }
             }
         }
