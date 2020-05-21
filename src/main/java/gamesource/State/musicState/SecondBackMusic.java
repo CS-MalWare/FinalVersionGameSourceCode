@@ -31,7 +31,6 @@ private Node node=new Node("music");
         node.attachChild(BackGround);
 
         BackGround.setLooping(true);
-        BackGround.play();
     }
 
 
@@ -43,10 +42,12 @@ private Node node=new Node("music");
     @Override
     protected void onEnable() {
         app.getRootNode().attachChild(this.node);
+        BackGround.play();
     }
 
     @Override
     protected void onDisable() {
         this.node.removeFromParent();
+        BackGround.stop();
     }
 }
