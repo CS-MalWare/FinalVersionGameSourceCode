@@ -1,4 +1,4 @@
-package gamesource.Interface;
+package gamesource.initialinterface;
 
 import org.jsfml.audio.*;
 import org.jsfml.graphics.*;

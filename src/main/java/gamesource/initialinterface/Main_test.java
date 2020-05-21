@@ -1,7 +1,7 @@
 package gamesource.initialinterface;
 
 
-import gamesource.Interface.StartInterface;
+import gamesource.initialinterface.*;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.graphics.Texture;
