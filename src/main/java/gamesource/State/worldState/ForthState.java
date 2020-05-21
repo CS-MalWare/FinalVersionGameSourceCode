@@ -364,12 +364,12 @@ public class ForthState extends BaseAppState {
                             new Slime(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
                             new Slime(80, "Enemies/forth/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                   // cam.setLocation(new Vector3f(0, 0, 10.3f));
+                  //  cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(man1);
                     states.remove(man1);
                     state.attach(new Battle(states));
-                    major.setPlace(man1.get().getCenter());
+                  //  major.setPlace(man1.get().getCenter());
 
                     break;
                 case 1:
@@ -383,12 +383,12 @@ public class ForthState extends BaseAppState {
                             new Slime(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
                             new Slime(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                   // cam.setLocation(new Vector3f(0, 0, 10.3f));
+                   // cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(man2);
                     states.remove(man2);
                     state.attach(new Battle(states));
-                    major.setPlace(man2.get().getCenter());
+                   // major.setPlace(man2.get().getCenter());
                     break;
                 case 2:
                     state.detach(input);
@@ -401,12 +401,12 @@ public class ForthState extends BaseAppState {
                             new RedSlime(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
                             new Slime(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                   // cam.setLocation(new Vector3f(0, 0, 10.3f));
+                   // cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(man3);
                     states.remove(man3);
                     state.attach(new Battle(states));
-                    major.setPlace(man3.get().getCenter());
+                   // major.setPlace(man3.get().getCenter());
                     break;
                 case 3:
                     state.detach(input);
@@ -419,12 +419,12 @@ public class ForthState extends BaseAppState {
                             new RedSlime(65, "Enemies/bat/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
                             new RedSlime(65, "Enemies/bat/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    //cam.setLocation(new Vector3f(0, 0, 10.3f));
+                   // cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(bat1);
                     states.remove(bat1);
                     state.attach(new Battle(states));
-                    major.setPlace(bat1.get().getCenter());
+                    //major.setPlace(bat1.get().getCenter());
                     break;
 
                 case 4:
@@ -438,12 +438,12 @@ public class ForthState extends BaseAppState {
                             new BlackSlime(40, "Enemies/bat/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
                             new BlackSlime(40, "Enemies/bat/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                   // cam.setLocation(new Vector3f(0, 0, 10.3f));
+                   // cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(bat2);
                     states.remove(bat2);
                     state.attach(new Battle(states));
-                    major.setPlace(bat2.get().getCenter());
+                    //major.setPlace(bat2.get().getCenter());
                     break;
 
                 case 5:
@@ -456,12 +456,12 @@ public class ForthState extends BaseAppState {
                     EnemyState.getInstance().addEnemies(
                             new EliteSlime(90, "Enemies/bat/scene.j3o", 10, 1, 2, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    //cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    //cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(bat3);
                     states.remove(bat3);
                     state.attach(new Battle(states));
-                    major.setPlace(bat3.get().getCenter());
+                    //major.setPlace(bat3.get().getCenter());
                     break;
 
                 case 6:
@@ -474,12 +474,12 @@ public class ForthState extends BaseAppState {
                     EnemyState.getInstance().addEnemies(
                             new KingSlime(100, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 4, 1, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    //cam.setLocation(new Vector3f(0, 0, 10.3f));
+                   // cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(ske1);
                     states.remove(ske1);
                     state.attach(new Battle(states));
-                    major.setPlace(ske1.get().getCenter());
+                    //major.setPlace(ske1.get().getCenter());
                     break;
 
 
@@ -494,12 +494,12 @@ public class ForthState extends BaseAppState {
                             new Wolfman(80, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 3, 0, 0, 0, 0, 0),
                             new Wolfman(80, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 2, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    //cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    //cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(ske2);
                     states.remove(ske2);
                     state.attach(new Battle(states));
-                    major.setPlace(ske2.get().getCenter());
+                    //major.setPlace(ske2.get().getCenter());
                     break;
                 case 8:
                     state.detach(input);
@@ -511,12 +511,12 @@ public class ForthState extends BaseAppState {
                     EnemyState.getInstance().addEnemies(
                             new OneEyedWolfman(250, "Enemies/forth/boss/scene.j3o", 20, 0, 2, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    //cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    //cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(bos);
                     states.remove(bos);
                     state.attach(new Battle(states));
-                    major.setPlace(bos.get().getCenter());
+                    //major.setPlace(bos.get().getCenter());
                     break;
                 case 9:
                     state.detach(input);
@@ -528,12 +528,12 @@ public class ForthState extends BaseAppState {
                     EnemyState.getInstance().addEnemies(
                             new EliteWolfman(305, "Enemies/bossKnight/scene.j3o", 20, 5, 1, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    //cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    //cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(knight);
                     states.remove(knight);
                     state.attach(new Battle(states));
-                    major.setPlace(knight.get().getCenter());
+                    //major.setPlace(knight.get().getCenter());
                     break;
 
                 default:

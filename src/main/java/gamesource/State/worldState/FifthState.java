@@ -28,7 +28,9 @@ import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
 import gamesource.State.mapState.FifthWorldState;
 import gamesource.State.mapState.SkyBox;
+import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
+import gamesource.battleState.appState.GetCardState;
 import gamesource.battleState.battle.Battle;
 import gamesource.battleState.character.enemy.originalForest.*;
 import gamesource.uiState.bagstate.BagAppState;
@@ -154,11 +156,56 @@ public class FifthState extends BaseAppState {
         cam.lookAtDirection(new Vector3f(0,0,-1),new Vector3f(0,1,0));
         major.setPlace(new Vector3f(0f, 0f, 0f));
         major.height(22f);
+        BattleBackGroundState.setBackgroundSrc("Map/fifth.j3o");
     }
 
 
 
     public CollisionResults results1() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = p1.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results2() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = p2.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results3() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = p3.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results4() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = robot1.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results5() {
         try {
             maj = major.getMajor();
             BoundingVolume ske = robot2.get();
@@ -169,6 +216,94 @@ public class FifthState extends BaseAppState {
             return null;
         }
     }
+    public CollisionResults results6() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = robot3.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results7() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = robot4.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results8() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = robot5.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results9() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = robot6.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results10() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = robot7.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results11() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = robot8.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results12(){
+        try {
+            maj = major.getMajor();
+            BoundingVolume kni = c1.get();
+            CollisionResults results = new CollisionResults();
+            maj.collideWith(kni, results);
+            return results;
+        }catch(Exception e){
+            return null;
+        }
+    }
+    public CollisionResults results13(){
+        try {
+            maj = major.getMajor();
+            BoundingVolume kni = c2.get();
+            CollisionResults results = new CollisionResults();
+            maj.collideWith(kni, results);
+            return results;
+        }catch(Exception e){
+            return null;
+        }
+    }
 
 
     class StartTalk implements ActionListener {
@@ -176,9 +311,47 @@ public class FifthState extends BaseAppState {
         public void onAction(String name, boolean isPressed, float tpf) {
             int battle1 = -1;
             CollisionResults results1 = results1();
+            CollisionResults results2 = results2();
+            CollisionResults results3 = results3();
+            CollisionResults results4 = results4();
+            CollisionResults results5 = results5();
+            CollisionResults results6 = results6();
+            CollisionResults results7 = results7();
+            CollisionResults results8 = results8();
+            CollisionResults results9 = results9();
+            CollisionResults results10 = results10();
+            CollisionResults results11 = results11();
+            CollisionResults results12 = results12();
+            CollisionResults results13 = results13();
             if (move.equals(name) && isPressed) {
                 if (results1 != null && results1.size() > 0) {
-                    System.out.println("zzzzzzzz");
+                    battle1 = 0;
+                } else if (results2 != null && results2.size() > 0) {
+                    battle1 = 1;
+                } else if (results3 != null && results3.size() > 0) {
+                    battle1 = 2;
+                } else if (results4 != null && results4.size() > 0) {
+                    battle1 = 3;
+                } else if (results5 != null && results5.size() > 0) {
+                    battle1 = 4;
+                } else if (results6 != null && results6.size() > 0) {
+                    battle1 = 5;
+                } else if (results7 != null && results7.size() > 0) {
+                    battle1 = 6;
+                } else if (results8 != null && results8.size() > 0) {
+                    battle1 = 7;
+                } else if (results9 != null && results9.size() > 0) {
+                    battle1 = 8;
+                } else if (results10 != null && results10.size() > 0) {
+                    battle1 = 9;
+                } else if (results11 != null && results11.size() > 0) {
+                    battle1 = 10;
+                } else if(results12!=null&&results12.size()>0){
+                    System.out.println("chest");
+                    c1.open();
+                }else if(results13!=null&&results13.size()>0){
+                    System.out.println("chest");
+                    c2.open();
                 }
             }
 
@@ -198,6 +371,226 @@ public class FifthState extends BaseAppState {
                 }
             }
 
+            switch (battle1) {
+                case 0:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Slime(90, "Enemies/fifthMap/airplane.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
+                            new Slime(90, "Enemies/fifthMap/airplane.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(p1);
+                    states.remove(p1);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(25);
+
+                    break;
+                case 1:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Slime(90, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Slime(90, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(p2);
+                    states.remove(p2);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(25);
+
+                    break;
+                case 2:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new RedSlime(90, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Slime(90, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(p3);
+                    states.remove(p3);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(30);
+
+                    break;
+                case 3:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
+                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(robot1);
+                    states.remove(robot1);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(30);
+
+                    break;
+
+                case 4:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
+                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(robot2);
+                    states.remove(robot2);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(40);
+
+                    break;
+
+                case 5:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
+                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(robot3);
+                    states.remove(robot3);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(40);
+
+                    break;
+
+                case 6:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
+                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(robot4);
+                    states.remove(robot4);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(40);
+
+                    break;
+
+
+                case 7:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
+                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(robot5);
+                    states.remove(robot5);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(40);
+
+                    break;
+                case 8:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
+                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(robot6);
+                    states.remove(robot6);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(30);
+
+                    break;
+                case 9:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
+                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(robot7);
+                    states.remove(robot7);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(30);
+
+                    break;
+                case 10:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
+                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(robot8);
+                    states.remove(robot8);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(30);
+
+                    break;
+
+                default:
+                    break;
+
+            }
 
         }
     }

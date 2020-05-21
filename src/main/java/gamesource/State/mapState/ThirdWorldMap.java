@@ -32,7 +32,7 @@ public class ThirdWorldMap  extends BaseAppState {
 
         physics=bullet.getPhysicsSpace();
 
-        Scene = app.getAssetManager().loadModel("Map/Scene.j3o");
+        Scene = app.getAssetManager().loadModel("Map/scene.j3o");
 
         Scene.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
         Scene.scale(0.65f);
@@ -47,7 +47,7 @@ public class ThirdWorldMap  extends BaseAppState {
 
         rootNode.attachChild(Scene);
         physics.add(landScape);
-        BattleBackGroundState.setBackgroundSrc("Map/Scene.j3o");
+        BattleBackGroundState.setBackgroundSrc("Map/scene.j3o");
     }
     @Override
     protected void cleanup(Application application) {
