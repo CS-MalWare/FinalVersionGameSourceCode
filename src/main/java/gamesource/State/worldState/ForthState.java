@@ -4,6 +4,7 @@ import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.bounding.BoundingVolume;
+import com.jme3.collision.CollisionResults;
 import com.jme3.input.InputManager;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
@@ -27,6 +28,10 @@ import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
 import gamesource.State.mapState.ForthWorldMap;
 import gamesource.State.mapState.SkyBox;
+import gamesource.battleState.appState.BattleBackGroundState;
+import gamesource.battleState.appState.EnemyState;
+import gamesource.battleState.battle.Battle;
+import gamesource.battleState.character.enemy.originalForest.*;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -150,15 +155,390 @@ public class ForthState extends BaseAppState {
         cam.lookAtDirection(new Vector3f(0,0,-1),new Vector3f(0,1,0));
         major.setPlace(new Vector3f(0f, 10f, 0f));
         major.setPlace(new Vector3f(1.5346308f, -18.545364f, 56.147945f));
+        BattleBackGroundState.setBackgroundSrc("Map/fourth.j3o");
     }
 
+    public CollisionResults results1() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = man1.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results2() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = man2.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results3() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = man3.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results4() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = bat1.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results5() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = bat2.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results6() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = bat3.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results7() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = ske1.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results8() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = ske2.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results9() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = bos.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results10() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = knight.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results11(){
+        try {
+            maj = major.getMajor();
+            BoundingVolume kni = c1.get();
+            CollisionResults results = new CollisionResults();
+            maj.collideWith(kni, results);
+            return results;
+        }catch(Exception e){
+            return null;
+        }
+    }
+    public CollisionResults results12(){
+        try {
+            maj = major.getMajor();
+            BoundingVolume kni = c2.get();
+            CollisionResults results = new CollisionResults();
+            maj.collideWith(kni, results);
+            return results;
+        }catch(Exception e){
+            return null;
+        }
+    }
 
     class StartTalk implements ActionListener {
         @Override
         public void onAction(String name,boolean isPressed,float tpf){
+            int battle1 = -1;
+            CollisionResults results1 = results1();
+            CollisionResults results2 = results2();
+            CollisionResults results3 = results3();
+            CollisionResults results4 = results4();
+            CollisionResults results5 = results5();
+            CollisionResults results6 = results6();
+            CollisionResults results7 = results7();
+            CollisionResults results8 = results8();
+            CollisionResults results9 = results9();
+            CollisionResults results10 = results10();
+            CollisionResults results11 = results11();
+            CollisionResults results12 = results12();
             if (change.equals(name) && isPressed) {
                 System.out.println("change");
                 major.change();
+            }
+            if (move.equals(name) && isPressed) {
+                if (results1 != null && results1.size() > 0) {
+                    battle1 = 0;
+                } else if (results2 != null && results2.size() > 0) {
+                    battle1 = 1;
+                } else if (results3 != null && results3.size() > 0) {
+                    battle1 = 2;
+                } else if (results4 != null && results4.size() > 0) {
+                    battle1 = 3;
+                } else if (results5 != null && results5.size() > 0) {
+                    battle1 = 4;
+                } else if (results6 != null && results6.size() > 0) {
+                    battle1 = 5;
+                } else if (results7 != null && results7.size() > 0) {
+                    battle1 = 6;
+                } else if (results8 != null && results8.size() > 0) {
+                    battle1 = 7;
+                } else if (results9 != null && results9.size() > 0) {
+                    battle1 = 8;
+                } else if (results10 != null && results10.size() > 0) {
+                    battle1 = 9;
+                } else if(results11!=null&&results11.size()>0){
+                    System.out.println("chest");
+                    c1.open();
+                }else if(results12!=null&&results12.size()>0){
+                    System.out.println("chest");
+                    c2.open();
+                }
+            }
+
+            if (bag.equals(name) && isPressed) {
+                if (canmove == 1) {
+                    state.detach(input);
+                    major.mouseChange();
+                    canmove = 0;
+                } else {
+                    state.attach(input);
+                    major.mouseChange();
+                    canmove = 1;
+                }
+            }
+            switch (battle1) {
+                case 0:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Slime(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Slime(80, "Enemies/forth/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    state.detach(man1);
+                    states.remove(man1);
+                    state.attach(new Battle(states));
+                    major.setPlace(man1.get().getCenter());
+
+                    break;
+                case 1:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Slime(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Slime(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    state.detach(man2);
+                    states.remove(man2);
+                    state.attach(new Battle(states));
+                    major.setPlace(man2.get().getCenter());
+                    break;
+                case 2:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new RedSlime(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Slime(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    state.detach(man3);
+                    states.remove(man3);
+                    state.attach(new Battle(states));
+                    major.setPlace(man3.get().getCenter());
+                    break;
+                case 3:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new RedSlime(65, "Enemies/bat/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
+                            new RedSlime(65, "Enemies/bat/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    state.detach(bat1);
+                    states.remove(bat1);
+                    state.attach(new Battle(states));
+                    major.setPlace(bat1.get().getCenter());
+                    break;
+
+                case 4:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new BlackSlime(40, "Enemies/bat/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
+                            new BlackSlime(40, "Enemies/bat/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                    );
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    state.detach(bat2);
+                    states.remove(bat2);
+                    state.attach(new Battle(states));
+                    major.setPlace(bat2.get().getCenter());
+                    break;
+
+                case 5:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new EliteSlime(90, "Enemies/bat/scene.j3o", 10, 1, 2, 0, 0, 0, 0, 0)
+                    );
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    state.detach(bat3);
+                    states.remove(bat3);
+                    state.attach(new Battle(states));
+                    major.setPlace(bat3.get().getCenter());
+                    break;
+
+                case 6:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new KingSlime(100, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 4, 1, 0, 0, 0, 0, 0)
+                    );
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    state.detach(ske1);
+                    states.remove(ske1);
+                    state.attach(new Battle(states));
+                    major.setPlace(ske1.get().getCenter());
+                    break;
+
+
+                case 7:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Wolfman(80, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 3, 0, 0, 0, 0, 0),
+                            new Wolfman(80, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 2, 0, 0, 0, 0, 0)
+                    );
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    state.detach(ske2);
+                    states.remove(ske2);
+                    state.attach(new Battle(states));
+                    major.setPlace(ske2.get().getCenter());
+                    break;
+                case 8:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new OneEyedWolfman(250, "Enemies/forth/boss/scene.j3o", 20, 0, 2, 0, 0, 0, 0, 0)
+                    );
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    state.detach(bos);
+                    states.remove(bos);
+                    state.attach(new Battle(states));
+                    major.setPlace(bos.get().getCenter());
+                    break;
+                case 9:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new EliteWolfman(305, "Enemies/bossKnight/scene.j3o", 20, 5, 1, 0, 0, 0, 0, 0)
+                    );
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    state.detach(knight);
+                    states.remove(knight);
+                    state.attach(new Battle(states));
+                    major.setPlace(knight.get().getCenter());
+                    break;
+
+                default:
+                    break;
+
             }
         }
     }
