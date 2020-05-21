@@ -27,12 +27,10 @@ import gamesource.uiState.shopstate.ShopAppState;
 
 /**
  * Hello world!
- *
  */
-public class App extends SimpleApplication
-{
+public class App extends SimpleApplication {
 
-    public final static String world="WORLD";
+    public final static String world = "WORLD";
 
     FirstState f1;
     SecondState f2;
@@ -40,7 +38,6 @@ public class App extends SimpleApplication
     ForthState f4;
     FifthState f5;
     private AppStateManager state;
-
 
 
     /*public App(){
@@ -54,10 +51,10 @@ public class App extends SimpleApplication
 
     }*/
     //@Override
-    public void simpleInitApp(){
-        BulletAppState bullet=new BulletAppState();
+    public void simpleInitApp() {
+        BulletAppState bullet = new BulletAppState();
         stateManager.attach(bullet);
-        bullet.getPhysicsSpace().setGravity(new Vector3f(0,-9.81f,0));
+        bullet.getPhysicsSpace().setGravity(new Vector3f(0, -9.81f, 0));
 
         FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
         fpp.setNumSamples(4);
@@ -74,7 +71,7 @@ public class App extends SimpleApplication
         f3 = new ThirdState();
         f4 = new ForthState();
         f5 = new FifthState();
-        stateManager.attach(f5);
+        stateManager.attach(f4);
         //stateManager.getState(SecondState.class).setEnabled(false);
         //f2.setEnabled(false);
         //stateManager.attach(f2);
@@ -84,7 +81,7 @@ public class App extends SimpleApplication
         inputManager.addListener(new StartTalk(), world);
     }
 
-    public void initSecondWorld(){
+    public void initSecondWorld() {
         stateManager.attach(new SecondState());
         stateManager.attach(new BagAppState());
         stateManager.attach(new ShopAppState());
@@ -96,7 +93,7 @@ public class App extends SimpleApplication
         initEffect(fpp);
     }
 
-    public void initFirstWorld(){
+    public void initFirstWorld() {
         /*BulletAppState bullet=new BulletAppState();         //现在为为世界添加物理引擎的测试情况
         stateManager.attach(bullet);
         stateManager.attach(new FirstWorldState());
@@ -120,7 +117,7 @@ public class App extends SimpleApplication
         bullet.getPhysicsSpace().setGravity(new Vector3f(0,-9.81f,0));
         //stateManager.attach(new QuadState());*/
         //bullet.setDebugEnabled(true);                     //这个功能为调试模式
-        stateManager.attach(f1);
+        stateManager.attach(f4);
 
         //stateManager.attach(new FirstWorldLight(0));
         //addLight(fpp);
@@ -148,7 +145,6 @@ public class App extends SimpleApplication
 
         return text;
     }
-
 
 
     public void addLight(FilterPostProcessor fpp) {
@@ -194,7 +190,7 @@ public class App extends SimpleApplication
         cam.lookAt(new Vector3f(0,0.5f,0),new Vector3f(0,1,0));
     }*/
 
-    private void initWater(FilterPostProcessor fpp){
+    private void initWater(FilterPostProcessor fpp) {
         //FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
         //viewPort.addProcessor(fpp);
 
@@ -210,19 +206,19 @@ public class App extends SimpleApplication
         fpp.addFilter(waterFilter);
     }
 
-    private void initEffect(FilterPostProcessor fpp){
-        BloomFilter bloom=new BloomFilter();
+    private void initEffect(FilterPostProcessor fpp) {
+        BloomFilter bloom = new BloomFilter();
         bloom.setBloomIntensity(0.2f);
         bloom.setBlurScale(0.2f);
         FogFilter fog = new FogFilter(ColorRGBA.White, 0.4f, 250f);
-        Vector3f sunDir = new Vector3f(-1,-2,-3);
+        Vector3f sunDir = new Vector3f(-1, -2, -3);
         LightScatteringFilter lightScattering = new LightScatteringFilter(sunDir.mult(-3000));
-        CartoonEdgeFilter cartoonEdge= new CartoonEdgeFilter();
+        CartoonEdgeFilter cartoonEdge = new CartoonEdgeFilter();
         cartoonEdge.setDepthSensitivity(0.4f);
         cartoonEdge.setEdgeIntensity(0.55f);
         cartoonEdge.setEdgeWidth(0.55f);
         cartoonEdge.setNormalThreshold(0.55f);
-        DepthOfFieldFilter depthOfField=new DepthOfFieldFilter();
+        DepthOfFieldFilter depthOfField = new DepthOfFieldFilter();
         depthOfField.setFocusDistance(0);
         depthOfField.setFocusRange(25);
         depthOfField.setBlurScale(1.2f);
@@ -232,7 +228,7 @@ public class App extends SimpleApplication
         fpp.addFilter(bloom);
     }
 
-    public void skyBox(){
+    public void skyBox() {
             /*Texture west = assetManager.loadTexture("skyBox/left2.png");
             Texture east = assetManager.loadTexture("skyBox/left1.png");
             Texture north = assetManager.loadTexture("skyBox/right1.png");
@@ -242,18 +238,19 @@ public class App extends SimpleApplication
 
             Spatial sky = SkyFactory.createSky(assetManager, west, east, north, south, up, down);
             rootNode.attachChild(sky);*/
-            Texture west = assetManager.loadTexture("bluecloud_ft.jpg");
-            Texture east = assetManager.loadTexture("bluecloud_bk.jpg");
-            Texture north = assetManager.loadTexture("bluecloud_lf.jpg");
-            Texture south = assetManager.loadTexture("bluecloud_rt.jpg");
-            Texture up = assetManager.loadTexture("bluecloud_up.jpg");
-            Texture down = assetManager.loadTexture("bluecloud_dn.jpg");
+        Texture west = assetManager.loadTexture("bluecloud_ft.jpg");
+        Texture east = assetManager.loadTexture("bluecloud_bk.jpg");
+        Texture north = assetManager.loadTexture("bluecloud_lf.jpg");
+        Texture south = assetManager.loadTexture("bluecloud_rt.jpg");
+        Texture up = assetManager.loadTexture("bluecloud_up.jpg");
+        Texture down = assetManager.loadTexture("bluecloud_dn.jpg");
 
-            Spatial sky = SkyFactory.createSky(assetManager, west, east, north, south, up, down);
-            rootNode.attachChild(sky);
+        Spatial sky = SkyFactory.createSky(assetManager, west, east, north, south, up, down);
+        rootNode.attachChild(sky);
 
     }
-    public void skyBox2(){
+
+    public void skyBox2() {
             /*Texture west = assetManager.loadTexture("skyBox/left2.png");
             Texture east = assetManager.loadTexture("skyBox/left1.png");
             Texture north = assetManager.loadTexture("skyBox/right1.png");
@@ -274,6 +271,7 @@ public class App extends SimpleApplication
         rootNode.attachChild(sky);
 
     }
+
     class StartTalk implements ActionListener {
         @Override
         public void onAction(String name, boolean isPressed, float tpf) {
@@ -289,8 +287,7 @@ public class App extends SimpleApplication
         }
     }
 
-    public static void main( String[] args )
-    {
+    public static void main(String[] args) {
 
         App app = new App();
         //app.setSettings(settings);

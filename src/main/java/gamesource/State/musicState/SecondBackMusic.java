@@ -9,15 +9,15 @@ import com.jme3.audio.AudioNode;
 import com.jme3.scene.Node;
 
 public class SecondBackMusic extends BaseAppState {
-private AudioNode BackGround;
+    private AudioNode BackGround;
 
-private SimpleApplication app;
+    private SimpleApplication app;
 
-private Node node=new Node("music");
+    private Node node = new Node("music");
 
     @Override
     protected void initialize(Application application) {
-        app=(SimpleApplication)application;
+        app = (SimpleApplication) application;
         initAudio();
     }
 

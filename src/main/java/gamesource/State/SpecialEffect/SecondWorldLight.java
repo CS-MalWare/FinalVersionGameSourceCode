@@ -29,15 +29,16 @@ public class SecondWorldLight extends BaseAppState {
     private FilterPostProcessor fpp;
     DirectionalLightShadowFilter su;
 
-    SafeArrayList<SceneProcessor> x1  ;
+    SafeArrayList<SceneProcessor> x1;
 
-    private int turnOn=0;
+    private int turnOn = 0;
+
     @Override
     protected void initialize(Application application) {
-        app=(SimpleApplication)application;
-        rootNode=app.getRootNode();
-        manager=app.getAssetManager();
-        view=app.getViewPort();
+        app = (SimpleApplication) application;
+        rootNode = app.getRootNode();
+        manager = app.getAssetManager();
+        view = app.getViewPort();
         sun.setDirection(new Vector3f(-1, -2, -3));
 
 
@@ -57,7 +58,7 @@ public class SecondWorldLight extends BaseAppState {
         //rootNode.addLight(sun3);
         //rootNode.addLight(sun4);
         //rootNode.addLight(sun6);
-        if(turnOn==1) {
+        if (turnOn == 1) {
             su = new DirectionalLightShadowFilter(manager, 1024, 1);
 
             su.setLight(sun);
@@ -69,11 +70,14 @@ public class SecondWorldLight extends BaseAppState {
             //fpp.addFilter(su);
         }
     }
-    public SecondWorldLight(int turnOn){
-        this.turnOn=turnOn;
+
+    public SecondWorldLight(int turnOn) {
+        this.turnOn = turnOn;
     }
-    public SecondWorldLight(){
+
+    public SecondWorldLight() {
     }
+
     @Override
     protected void cleanup(Application application) {
 
@@ -86,7 +90,7 @@ public class SecondWorldLight extends BaseAppState {
         rootNode.addLight(sun3);
         rootNode.addLight(sun4);
         rootNode.addLight(sun6);
-        if(turnOn==1){
+        if (turnOn == 1) {
             fpp.addFilter(su);
         }
     }
@@ -98,7 +102,7 @@ public class SecondWorldLight extends BaseAppState {
         rootNode.removeLight(sun3);
         rootNode.removeLight(sun4);
         rootNode.removeLight(sun6);
-        if(turnOn==1){
+        if (turnOn == 1) {
             fpp.removeFilter(su);
         }
     }

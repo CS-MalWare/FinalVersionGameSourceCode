@@ -15,11 +15,11 @@ public class makeCross extends BaseAppState {
 
     @Override
     protected void initialize(Application application) {
-        app=(SimpleApplication)application;
-        fnt=app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
-        text=new BitmapText(fnt,false);
+        app = (SimpleApplication) application;
+        fnt = app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
+        text = new BitmapText(fnt, false);
         text.setText("+");
-        Camera cam=app.getCamera();
+        Camera cam = app.getCamera();
         text.setSize(fnt.getPreferredSize() * 2f);
         float x = (cam.getWidth() - text.getLineWidth()) * 0.5f;
         float y = (cam.getHeight() + text.getLineHeight()) * 0.5f;

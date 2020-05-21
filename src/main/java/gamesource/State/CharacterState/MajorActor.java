@@ -28,36 +28,36 @@ import com.jme3.scene.Spatial;
 
 public class MajorActor extends BaseAppState implements AnimEventListener {
 
-    public final static String DEBUG="debug";
-    public final static String FORWARD="forward";
-    public final static String BACKWARD="backward";
+    public final static String DEBUG = "debug";
+    public final static String FORWARD = "forward";
+    public final static String BACKWARD = "backward";
     public final static String LEFT = "left";
     public final static String RIGHT = "right";
     public final static String JUMP = "jump";
     private Vector3f walkDirection = new Vector3f();
     private boolean left = false, right = false, up = false, down = false;
-    private Vector3f camDir=new Vector3f();
-    private Vector3f camLeft=new Vector3f();
+    private Vector3f camDir = new Vector3f();
+    private Vector3f camLeft = new Vector3f();
     private Camera cam;
     private FlyByCamera flycam;
     private InputManager inputManager;
     private BulletAppState bullet;
     private Vector3f camPlace;
-    private Quaternion camRot =new Quaternion();
-    private Vector3f walkDir=new Vector3f();
+    private Quaternion camRot = new Quaternion();
+    private Vector3f walkDir = new Vector3f();
 
     private Spatial MajorStar;
-    private CapsuleCollisionShape capsuleShape=new CapsuleCollisionShape();      //胶囊体作为玩家的碰撞形状
-    private CharacterControl player ;                                            //玩家动作控制器，用这种控制方法，可以大幅度减少actionlistener
-    private float stepHeight=0.01f;
+    private CapsuleCollisionShape capsuleShape = new CapsuleCollisionShape();      //胶囊体作为玩家的碰撞形状
+    private CharacterControl player;                                            //玩家动作控制器，用这种控制方法，可以大幅度减少actionlistener
+    private float stepHeight = 0.01f;
 
     private AnimControl animControl;
     private AnimChannel animChannel;
 
     private PhysicsSpace physics;
 
-    private Node rootNode=new Node("MajorStar");
-    private Node camNode=new Node("Camera");
+    private Node rootNode = new Node("MajorStar");
+    private Node camNode = new Node("Camera");
 
     private SimpleApplication app;
 
@@ -77,21 +77,22 @@ public class MajorActor extends BaseAppState implements AnimEventListener {
 
     private ChaseCamera chaseCam;
 
-    private int CamSituation=1;
-    private float jump=5;
-    private int camSituation2=1;
+    private int CamSituation = 1;
+    private float jump = 6;
+    private int camSituation2 = 1;
     private Vector3f place;
 
     private AudioNode run;
+
     @Override
     protected void initialize(Application application) {
-        app=(SimpleApplication)application;
-        bullet=app.getStateManager().getState(BulletAppState.class);
-        cam=app.getCamera();
-        flycam=app.getFlyByCamera();
-        inputManager=app.getInputManager();
-        physics=bullet.getPhysicsSpace();
-        rootNode=app.getRootNode();
+        app = (SimpleApplication) application;
+        bullet = app.getStateManager().getState(BulletAppState.class);
+        cam = app.getCamera();
+        flycam = app.getFlyByCamera();
+        inputManager = app.getInputManager();
+        physics = bullet.getPhysicsSpace();
+        rootNode = app.getRootNode();
         initModel();
         initAnim();
         initPhysics();
@@ -100,106 +101,116 @@ public class MajorActor extends BaseAppState implements AnimEventListener {
 
     }
 
-    public void height(float jump){
-        this.jump=jump;
+    public void height(float jump) {
+        this.jump = jump;
     }
 
-    public void initModel(){
-        MajorStar=app.getAssetManager().loadModel("LeadingActor/MajorActor4.j3o");
+    public float getX(){
+        return player.getPhysicsLocation().x;
+    }
+    public float getY(){
+        return player.getPhysicsLocation().y;
+    }
+    public float getZ(){
+        return player.getPhysicsLocation().z;
+    }
+    public void initModel() {
+        MajorStar = app.getAssetManager().loadModel("LeadingActor/MajorActor4.j3o");
         MajorStar.setName("MajorStar");
         MajorStar.setShadowMode(RenderQueue.ShadowMode.Cast);
         MajorStar.scale(0.015f);
-        MajorStar.rotate(-1.5f,0f,-0.03f);
+        MajorStar.rotate(-1.5f, 0f, -0.03f);
     }
 
-    public void initAnim(){
-        scene=(Node)MajorStar;
-        bip001=(Node)scene.getChild("Bip001");
+    public void initAnim() {
+        scene = (Node) MajorStar;
+        bip001 = (Node) scene.getChild("Bip001");
 
-        animControl=bip001.getControl(AnimControl.class);
+        animControl = bip001.getControl(AnimControl.class);
         //System.out.println(animControl.getAnimationNames());
 
-        animChannel=animControl.createChannel();
+        animChannel = animControl.createChannel();
         animControl.addListener(this);
         animChannel.setAnim("idle");
     }
 
-    public void initPhysics(){
-        radius=0.4f;
-        height=0.6f;
+    public void initPhysics() {
+        radius = 0.4f;
+        height = 0.6f;
 
-        character=new Node("Character");
-        MajorStar.move(0.06f,-(height/2+radius)+0.0f,0);
+        character = new Node("Character");
+        MajorStar.move(0.06f, -(height / 2 + radius) + 0.0f, 0);
         character.attachChild(MajorStar);
 
-        capsuleShape=new CapsuleCollisionShape(radius,height,1);
+        capsuleShape = new CapsuleCollisionShape(radius, height, 1);
 
-        player=new CharacterControl(capsuleShape,stepHeight);
+        player = new CharacterControl(capsuleShape, stepHeight);
         character.addControl(player);
 
         //player.setJumpSpeed(1);
         player.setFallSpeed(55);
-        player.setPhysicsLocation(new Vector3f(0,height/2+radius,0));
-        player.setGravity(new Vector3f(0,-9.81f,0));
+        player.setPhysicsLocation(new Vector3f(0, height / 2 + radius, 0));
+        player.setGravity(new Vector3f(0, -9.81f, 0));
 
         physics.add(player);
 
         character.setLocalTranslation(0, height / 2 + radius, 0);
-        character.move(0.06f,-(height/2+radius)+3,0);
+        character.move(0.06f, -(height / 2 + radius) + 3, 0);
 
         character.attachChild(camNode);
-        camNode.setLocalTranslation(0,height/2+0.8f,radius);
+        camNode.setLocalTranslation(0, height / 2 + 0.8f, radius);
         //rootNode.attachChild(character);
 
-        ray=new Ray();
+        ray = new Ray();
         ray.setLimit(0.02f);
 
-        major=MajorStar.getWorldBound();
+        major = MajorStar.getWorldBound();
         //initKeys();
         initChaseCamera();
         player.setPhysicsLocation(place);
     }
 
-    public void initMusic(){
-        run=new AudioNode(app.getAssetManager(), "Sound/run/run.wav", AudioData.DataType.Stream);
+    public void initMusic() {
+        run = new AudioNode(app.getAssetManager(), "Sound/run/run.wav", AudioData.DataType.Stream);
         run.setLooping(true);
         run.setPositional(false);
         run.setVolume(10);
         run.setPitch(0.7f);
-        cam.lookAtDirection(new Vector3f(0,0,-1),new Vector3f(0,1,0));
+        cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
     }
 
 
-    public MajorActor(){
-        place=new Vector3f(91.454414f, -32.017883f, 16.952227f);
-    }
-    public MajorActor(Vector3f place){
-        this.place=place;
+    public MajorActor() {
+        place = new Vector3f(91.454414f, -32.017883f, 16.952227f);
     }
 
-    public Ray get(){
+    public MajorActor(Vector3f place) {
+        this.place = place;
+    }
+
+    public Ray get() {
         return ray;
     }
 
-    public BoundingVolume getMajor(){
+    public BoundingVolume getMajor() {
         return major;
     }
 
-    public void mouseChange(){
-        if(camSituation2==1) {
+    public void mouseChange() {
+        if (camSituation2 == 1) {
             if (CamSituation == 1) {
                 chaseCam.setDragToRotate(true);
             } else {
                 flycam.setDragToRotate(true);
             }
-            camSituation2=0;
-        }else{
+            camSituation2 = 0;
+        } else {
             if (CamSituation == 1) {
                 chaseCam.setDragToRotate(false);
             } else {
                 flycam.setDragToRotate(false);
             }
-            camSituation2=1;
+            camSituation2 = 1;
         }
     }
 
@@ -225,7 +236,7 @@ public class MajorActor extends BaseAppState implements AnimEventListener {
 
         player.setWalkDirection(camDir);
         cam.setLocation(camNode.getWorldTranslation());
-        if(player.getPhysicsLocation().y<-50){
+        if (player.getPhysicsLocation().y < -50) {
             player.setPhysicsLocation(place);
         }
     }
@@ -260,44 +271,44 @@ public class MajorActor extends BaseAppState implements AnimEventListener {
         run.stop();
     }
 
-   /* public void onAction(String name, boolean isPressed, float tpf) {
-        if (DEBUG.equals(name) && isPressed) {
-            boolean debugEnabled = bullet.isDebugEnabled();
-            bullet.setDebugEnabled(!debugEnabled);
-        } else if (LEFT.equals(name)) {
-            left = isPressed;
-        } else if (RIGHT.equals(name)) {
-            right = isPressed;
-        } else if (FORWARD.equals(name)) {
-            up = isPressed;
-        } else if (BACKWARD.equals(name)) {
-            down = isPressed;
-        } else if (JUMP.equals(name) && isPressed) {
-            player.jump();
-        }
-    }*/
-    private void initChaseCamera(){
-        chaseCam=new ChaseCamera(cam,camNode,inputManager);
+    /* public void onAction(String name, boolean isPressed, float tpf) {
+         if (DEBUG.equals(name) && isPressed) {
+             boolean debugEnabled = bullet.isDebugEnabled();
+             bullet.setDebugEnabled(!debugEnabled);
+         } else if (LEFT.equals(name)) {
+             left = isPressed;
+         } else if (RIGHT.equals(name)) {
+             right = isPressed;
+         } else if (FORWARD.equals(name)) {
+             up = isPressed;
+         } else if (BACKWARD.equals(name)) {
+             down = isPressed;
+         } else if (JUMP.equals(name) && isPressed) {
+             player.jump();
+         }
+     }*/
+    private void initChaseCamera() {
+        chaseCam = new ChaseCamera(cam, camNode, inputManager);
         chaseCam.setInvertVerticalAxis(true);
         chaseCam.setMinDistance(0.1f);
         chaseCam.setDefaultDistance(10f);
         chaseCam.setDragToRotate(false);
     }
 
-    public void change(){
-        if(CamSituation==1) {
+    public void change() {
+        if (CamSituation == 1) {
             camNode.removeControl(chaseCam);
-            CamSituation=0;
-        }else{
+            CamSituation = 0;
+        } else {
             camNode.addControl(chaseCam);
-            CamSituation=1;
+            CamSituation = 1;
         }
 
     }
 
-    public void jump(){
-        if(player.onGround()){
-            player.jump(new Vector3f(0,jump,0));
+    public void jump() {
+        if (player.onGround()) {
+            player.jump(new Vector3f(0, jump, 0));
 
             animChannel.setAnim("jump");
             animChannel.setLoopMode(LoopMode.DontLoop);
@@ -305,21 +316,21 @@ public class MajorActor extends BaseAppState implements AnimEventListener {
         }
     }
 
-    public void idle(){
-        walkDir.set(0,0,0);
+    public void idle() {
+        walkDir.set(0, 0, 0);
         //if(player.onGround()){
-            animChannel.setAnim("idle");
-            run.stop();
+        animChannel.setAnim("idle");
+        run.stop();
         //}
     }
 
     public void walk(Vector3f dir) {
         if (dir != null) {
-                    if (walkDir.lengthSquared() == 0) {
-                    animChannel.setAnim("run");
-                    animChannel.setSpeed(1.4f);
-                    run.play();
-                }
+            if (walkDir.lengthSquared() == 0) {
+                animChannel.setAnim("run");
+                animChannel.setSpeed(1.4f);
+                run.play();
+            }
 
             dir.normalizeLocal();
 
@@ -339,19 +350,19 @@ public class MajorActor extends BaseAppState implements AnimEventListener {
                 channel.setSpeed(1f);
                 run.play();
             } else {
-               channel.setAnim("idle");
-               channel.setLoopMode(LoopMode.Loop);
-               run.stop();
+                channel.setAnim("idle");
+                channel.setLoopMode(LoopMode.Loop);
+                run.stop();
             }
         }
     }
 
-    public void setPlace(Vector3f place){
-        this.place=place;
+    public void setPlace(Vector3f place) {
+        this.place = place;
         player.setPhysicsLocation(place);
     }
 
-    public void onAnimChange(AnimControl control, AnimChannel channel,String animName){
+    public void onAnimChange(AnimControl control, AnimChannel channel, String animName) {
 
     }
 }
