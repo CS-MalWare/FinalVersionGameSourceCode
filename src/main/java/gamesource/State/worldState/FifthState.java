@@ -59,9 +59,8 @@ public class FifthState extends BaseAppState {
     InputAppState input;
     FifthWorldState world=new FifthWorldState();
     // MajorActor major=new MajorActor(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
-    Chest c1 = new Chest(new Vector3f(9.952984f, -31.962004f, 56.09926f),4f);
-    Chest c2 = new Chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
-    Chest c3 = new Chest(new Vector3f(12.185162f, -18.157299f, -74.07405f),4.2f);
+    Chest c1 = new Chest(new Vector3f(21.895473f, -23.64f, 28.8404f),-1.6f);
+    Chest c2 = new Chest(new Vector3f(9.5974655f, 16.679998f, -30.491623f),-1.6f);
 
     //这个地图暂时这5种怪物，想新加new一下加入state里面，构造函数第一个参数是位置，第二个是朝向，进入游戏需要先按c进入第一人称，再按f1来获取玩家坐标
 
@@ -129,6 +128,10 @@ public class FifthState extends BaseAppState {
         state.attach(lizard);
         state.attach(light);
         state.attach(effect);
+        state.attach(c1);
+        states.add(c1);
+        state.attach(c2);
+        states.add(c2);
         //state.attach(water);
         state.attach(new SkyBox());
 

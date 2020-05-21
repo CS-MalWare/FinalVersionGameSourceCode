@@ -56,9 +56,9 @@ public class ForthState extends BaseAppState {
     InputAppState input;
     ForthWorldMap world=new ForthWorldMap();
     // MajorActor major=new MajorActor(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
-    Chest c1 = new Chest(new Vector3f(9.952984f, -31.962004f, 56.09926f),4f);
-    Chest c2 = new Chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
-    Chest c3 = new Chest(new Vector3f(12.185162f, -18.157299f, -74.07405f),4.2f);
+    Chest c1 = new Chest(new Vector3f(3.6333275f, -21.916998f, 25.883167f),-1.3f);
+    Chest c2 = new Chest(new Vector3f(-2.0793266f, -11.933819f, -37.70006f),-1f);
+
     private StoneMan man1=new StoneMan(new Vector3f(1.2305703f, -21.918747f, 31.115707f),4.5f,1,0,1);
     private boss bos=new boss(new Vector3f(0.2364038f, -12.214317f, -34.228657f),3.6f);
     private BatState bat1=new BatState(new Vector3f(-8.639356f, -21.22517f, 19.451141f),-0.5f);
@@ -126,6 +126,10 @@ public class ForthState extends BaseAppState {
         states.add(ske1);
         state.attach(ske2);
         states.add(ske2);
+        state.attach(c1);
+        states.add(c1);
+        state.attach(c2);
+        states.add(c2);
         //state.attach(water);
         state.attach(new SkyBox());
 
