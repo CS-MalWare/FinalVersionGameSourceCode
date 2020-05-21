@@ -71,6 +71,7 @@ public class TabTextForShop extends BaseAppState{
         getState(PopupState.class).showPopup(window, closeCommand);
         window.scale(1.2f);
         window.setAlpha(2f);
+        calculatePreferLocation();
         System.out.println("Initialize Completed");
     }
 
@@ -78,6 +79,17 @@ public class TabTextForShop extends BaseAppState{
         getStateManager().attach(new FormattedTextForShop(0, cardUI.getCardMoney(), MainRole.getInstance().getGold(),
             cardUI));
         System.out.println("You want to buy card");
+    }
+
+    public void calculatePreferLocation(){
+        float xOfWindow = getState(ShopAppState.class).getGeneral().getPreferredSize().x +
+            getState(ShopAppState.class).getGeneral().getLocalTranslation().x;
+        float yOfWindow = getState(ShopAppState.class).getGeneral().getPreferredSize().y;
+        window.setLocalTranslation(xOfWindow, yOfWindow, 100);
+    }
+
+    public Container getWindow(){
+        return window;
     }
 
     @Override

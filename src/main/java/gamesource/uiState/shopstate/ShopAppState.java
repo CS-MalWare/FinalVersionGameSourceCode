@@ -332,6 +332,10 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         buttomPartContainer.detachAllChildren();
     }
 
+    public Container getGeneral(){
+        return general;
+    }
+
     public void detachShop(){
         leftPart.detachAllChildren();
     }

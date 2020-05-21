@@ -75,7 +75,16 @@ public class FormattedTextForShop extends BaseAppState{
         window.addChild(new ActionButton(new CallMethodAction("Close", window, "removeFromParent")));
         window.setLocalTranslation(700, 600, 100);
         window.setAlpha(10f);
+        calculatePreferLocation();
         getState(PopupState.class).showPopup(window, closeCommand);
+    }
+
+    public void calculatePreferLocation(){
+        float xOfWindow = getState(ShopAppState.class).getGeneral().getLocalTranslation().x+
+            getState(ShopAppState.class).getGeneral().getPreferredSize().x;
+        float yOfWindow = getState(TabTextForShop.class).getWindow().getLocalTranslation().y -
+            getState(TabTextForShop.class).getWindow().getPreferredSize().y - 50;
+        window.setLocalTranslation(xOfWindow, yOfWindow, 100);
     }
 
     @Override
