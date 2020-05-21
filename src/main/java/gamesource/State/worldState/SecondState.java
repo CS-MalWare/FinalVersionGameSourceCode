@@ -467,8 +467,8 @@ public class SecondState extends BaseAppState {
                     state.detach(skeleton1);
                     states.remove(skeleton1);
                     state.attach(new Battle(states));
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     GetCardState.setGoldCountAfterThisBattle(25);
 
                     break;
@@ -486,8 +486,8 @@ public class SecondState extends BaseAppState {
                     state.detach(skeleton2);
                     states.remove(skeleton2);
                     state.attach(new Battle(states));
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     GetCardState.setGoldCountAfterThisBattle(25);
 
                     break;
@@ -505,8 +505,8 @@ public class SecondState extends BaseAppState {
                     state.detach(skeleton3);
                     states.remove(skeleton3);
                     state.attach(new Battle(states));
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     GetCardState.setGoldCountAfterThisBattle(30);
 
                     break;
@@ -524,8 +524,8 @@ public class SecondState extends BaseAppState {
                     state.detach(skeleton4);
                     states.remove(skeleton4);
                     state.attach(new Battle(states));
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     GetCardState.setGoldCountAfterThisBattle(30);
 
                     break;
@@ -544,8 +544,8 @@ public class SecondState extends BaseAppState {
                     state.detach(bat1);
                     states.remove(bat1);
                     state.attach(new Battle(states));
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     GetCardState.setGoldCountAfterThisBattle(40);
 
                     break;
@@ -563,8 +563,8 @@ public class SecondState extends BaseAppState {
                     state.detach(snowRobot1);
                     states.remove(snowRobot1);
                     state.attach(new Battle(states));
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     GetCardState.setGoldCountAfterThisBattle(70);
 
                     break;
@@ -582,8 +582,8 @@ public class SecondState extends BaseAppState {
                     state.detach(skeleton5);
                     states.remove(skeleton5);
                     state.attach(new Battle(states));
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     GetCardState.setGoldCountAfterThisBattle(100);
 
                     break;
@@ -603,8 +603,8 @@ public class SecondState extends BaseAppState {
                     state.detach(skeleton6);
                     states.remove(skeleton6);
                     state.attach(new Battle(states));
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     GetCardState.setGoldCountAfterThisBattle(40);
 
                     break;
@@ -622,8 +622,8 @@ public class SecondState extends BaseAppState {
                     state.detach(skeleton7);
                     states.remove(skeleton7);
                     state.attach(new Battle(states));
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     GetCardState.setGoldCountAfterThisBattle(45);
 
                     break;
@@ -640,8 +640,8 @@ public class SecondState extends BaseAppState {
                     state.detach(skeleton8);
                     states.remove(skeleton8);
                     state.attach(new Battle(states));
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     GetCardState.setGoldCountAfterThisBattle(70);
 
                     break;
@@ -658,8 +658,8 @@ public class SecondState extends BaseAppState {
                     state.detach(snowRobot2);
                     states.remove(snowRobot2);
                     state.attach(new Battle(states));
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     GetCardState.setGoldCountAfterThisBattle(120);
 
                     break;
