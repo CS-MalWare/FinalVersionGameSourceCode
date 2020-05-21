@@ -80,6 +80,7 @@ public class FirstState extends BaseAppState {
     FirstWorldLight light=new FirstWorldLight(0);
     FirstWorldOtherSpecial special =new FirstWorldOtherSpecial();
     SkyBox sky=new SkyBox();
+    private Master1 master=new Master1(new Vector3f(-42.829556f, 4.341275f, -10.886024f),-2.9f);
 
 
     private BagAppState bagState;
@@ -184,6 +185,8 @@ public class FirstState extends BaseAppState {
         states.add(special);
         state.attach(sky);
         states.add(sky);
+        state.attach(master);
+        states.add(master);
 
         this.inputManager=application.getInputManager();
         inputManager.addMapping(talk,TALK);

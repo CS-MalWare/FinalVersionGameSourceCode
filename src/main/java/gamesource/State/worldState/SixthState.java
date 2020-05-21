@@ -14,7 +14,7 @@ import com.jme3.math.Ray;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import gamesource.State.CharacterState.MajorActor;
-import gamesource.State.CharacterState.Master1;
+import gamesource.State.CharacterState.Master2;
 import gamesource.State.CharacterState.enemies.fifth.flyRobot;
 import gamesource.State.CharacterState.enemies.fifth.plane;
 import gamesource.State.CharacterState.enemies.fifth.walkRobot;
@@ -27,17 +27,15 @@ import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
 import gamesource.State.mapState.FifthWorldState;
+import gamesource.State.mapState.FirstWorldState;
 import gamesource.State.mapState.SkyBox;
-import gamesource.battleState.appState.EnemyState;
-import gamesource.battleState.battle.Battle;
-import gamesource.battleState.character.enemy.originalForest.*;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
 
 import java.util.ArrayList;
 
-public class FifthState extends BaseAppState {
+public class SixthState  extends BaseAppState {
     public final static String talk="TALK";
     public final static Trigger TALK = new KeyTrigger(KeyInput.KEY_N);
     public final static String change="CHANGE";
@@ -58,28 +56,7 @@ public class FifthState extends BaseAppState {
 
     MajorActor major;
     InputAppState input;
-    FifthWorldState world=new FifthWorldState();
-    // MajorActor major=new MajorActor(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
-    Chest c1 = new Chest(new Vector3f(9.952984f, -31.962004f, 56.09926f),4f);
-    Chest c2 = new Chest(new Vector3f(-10.413138f, -29.553904f, 28.508766f));
-    Chest c3 = new Chest(new Vector3f(12.185162f, -18.157299f, -74.07405f),4.2f);
-
-    //这个地图暂时这5种怪物，想新加new一下加入state里面，构造函数第一个参数是位置，第二个是朝向，进入游戏需要先按c进入第一人称，再按f1来获取玩家坐标
-
-    private plane p1=new plane(new Vector3f(22.074516f, -10.199999f, -23.742216f),0,0,8,0);
-    private plane p2=new plane(new Vector3f(46.47963f, -10.199999f, -7.7142005f),0f,8,0,0);
-    private plane p3=new plane(new Vector3f(11.662053f, 1.3200008f, 26.24392f),-1.5f,0,8,0);
-    private walkRobot robot1=new walkRobot(new Vector3f(26.040071f, -21.72f, -1.5775526f),3.0f,0,4,0);
-    private flyRobot robot2=new flyRobot(new Vector3f(0,0,0),2.2f);
-    private flyRobot robot3=new flyRobot(new Vector3f(-12.852558f, -33.24f, -13.446446f),-2.4f,-3f,3,0,2,9);
-    private flyRobot robot4=new flyRobot(new Vector3f(-17.62852f, -33.24f, 0.89568424f),-0.9f,3f,3,0,2,11);
-    private flyRobot robot5=new flyRobot(new Vector3f(18.963163f, -33.24f, 0.511641f),1.3f,0f,3,0,2,7);
-    private walkRobot robot6=new walkRobot(new Vector3f(34.28899f, -21.72f, -57.356865f),4.7f,15,0,0,40);
-    private walkRobot robot7=new walkRobot(new Vector3f(9.650833f, -10.199997f, -36.951283f),-0.6f,8,-8,0,7);
-    private flyRobot robot8=new flyRobot(new Vector3f(-26.445934f, 1.3200009f, -3.8378994f),-0.3f,0f,3,0,1,18);
-    private lizardState lizard=new lizardState(new Vector3f(6.345871f, 16.74f, -24.815386f),-0.3f);
-    private Master1 master=new Master1(new Vector3f(9.348317f, 16.739998f, -24.272078f),-0.3f);
-    private StartTalk st=new StartTalk();
+    FirstWorldState world=new FirstWorldState();
 
     private BoundingVolume maj;
 
@@ -87,13 +64,16 @@ public class FifthState extends BaseAppState {
 
     private int chan=0;
 
+    private StartTalk st=new StartTalk();
+
     private BagAppState bagState;
     private ShopAppState shopState;
     private MenuAppState menuState;
     private makeCross cross;
     private ThirdWorldLight light=new ThirdWorldLight();
-    private Water water=new Water(22);
+    Water x1=new Water(-34.4f);
     private FirstWorldOtherSpecial effect=new FirstWorldOtherSpecial();
+    private Master2 master=new Master2(new Vector3f(12.150929f, -9.193834f, -33.237625f),-2.6f);
 
     private ArrayList<BaseAppState> states=new ArrayList<BaseAppState>();
 
@@ -114,24 +94,11 @@ public class FifthState extends BaseAppState {
         menuState=state.getState(MenuAppState.class);
         states.add(menuState);
         cross=state.getState(makeCross.class);
-        state.attach(master);
         states.add(cross);
-        //state.attach(p1);
-        state.attach(robot1);
-        state.attach(robot2);
-        state.attach(robot3);
-        state.attach(robot4);
-        state.attach(robot5);
-        state.attach(robot6);
-        state.attach(robot7);
-        state.attach(robot8);
-        state.attach(p1);
-        state.attach(p2);
-        state.attach(p3);
-        state.attach(lizard);
         state.attach(light);
         state.attach(effect);
-        //state.attach(water);
+        state.attach(x1);
+        state.attach(master);
         state.attach(new SkyBox());
 
 
@@ -149,35 +116,16 @@ public class FifthState extends BaseAppState {
         inputManager.addListener(st,move);
 
         cam.lookAtDirection(new Vector3f(0,0,-1),new Vector3f(0,1,0));
-        major.setPlace(new Vector3f(0f, 0f, 0f));
-        major.height(22f);
+        major.setPlace(new Vector3f(0f, 10f, 0f));
     }
 
 
 
-    public CollisionResults results1() {
-        try {
-            maj = major.getMajor();
-            BoundingVolume ske = robot2.get();
-            CollisionResults result = new CollisionResults();
-            maj.collideWith(ske, result);
-            return result;
-        } catch (Exception e) {
-            return null;
-        }
-    }
 
 
     class StartTalk implements ActionListener {
         @Override
         public void onAction(String name, boolean isPressed, float tpf) {
-            int battle1 = -1;
-            CollisionResults results1 = results1();
-            if (move.equals(name) && isPressed) {
-                if (results1 != null && results1.size() > 0) {
-                    System.out.println("zzzzzzzz");
-                }
-            }
 
             if (change.equals(name) && isPressed) {
                 System.out.println("change");
@@ -197,10 +145,6 @@ public class FifthState extends BaseAppState {
 
 
         }
-    }
-
-    protected void cancel(){
-
     }
 
     public void change(){
