@@ -31,6 +31,8 @@ import gamesource.State.mapState.SkyBox;
 import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.battle.Battle;
+import gamesource.battleState.character.enemy.boss.Ace;
+import gamesource.battleState.character.enemy.boss.Zac;
 import gamesource.battleState.character.enemy.originalForest.*;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
@@ -509,7 +511,7 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new OneEyedWolfman(250, "Enemies/forth/boss/scene.j3o", 20, 0, 2, 0, 0, 0, 0, 0)
+                            new Zac(200, "Enemies/forth/boss/scene.j3o", 20, 0, 2, 0, 0, 0, 0, 0)
                     );
                     //cam.setLocation(new Vector3f(0, 0, 10.3f));
                     //cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -526,7 +528,7 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new EliteWolfman(305, "Enemies/bossKnight/scene.j3o", 20, 5, 1, 0, 0, 0, 0, 0)
+                            new Ace(135, "Enemies/bossKnight/scene.j3o", 0, 5, 1, 0, 0, 0, 0, 0)
                     );
                     //cam.setLocation(new Vector3f(0, 0, 10.3f));
                     //cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));

@@ -32,6 +32,10 @@ import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.appState.GetCardState;
 import gamesource.battleState.battle.Battle;
+import gamesource.battleState.character.enemy.mechanicalEmpire.RampageRobot;
+import gamesource.battleState.character.enemy.mechanicalEmpire.Robot;
+import gamesource.battleState.character.enemy.mechanicalEmpire.SteamRobot;
+import gamesource.battleState.character.enemy.mechanicalEmpire.StrongRobot;
 import gamesource.battleState.character.enemy.originalForest.*;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
@@ -380,8 +384,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Slime(90, "Enemies/fifthMap/airplane.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
-                            new Slime(90, "Enemies/fifthMap/airplane.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                            new Robot(80, "Enemies/fifthMap/airplane.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(80, "Enemies/fifthMap/airplane.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(p1);
                     states.remove(p1);
@@ -399,8 +403,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Slime(90, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                            new Slime(90, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                            new Robot(80, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(80, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(p2);
                     states.remove(p2);
@@ -418,8 +422,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RedSlime(90, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                            new Slime(90, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                            new Robot(80, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(80, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(p3);
                     states.remove(p3);
@@ -437,8 +441,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
-                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                            new SteamRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
+                            new SteamRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot1);
                     states.remove(robot1);
@@ -457,8 +461,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
-                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                            new StrongRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
+                            new StrongRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot2);
                     states.remove(robot2);
@@ -477,8 +481,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
-                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                            new StrongRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
+                            new StrongRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot3);
                     states.remove(robot3);
@@ -497,8 +501,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
-                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                            new StrongRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
+                            new StrongRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot4);
                     states.remove(robot4);
@@ -518,8 +522,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
-                            new BlackSlime(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                            new RampageRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
+                            new RampageRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot5);
                     states.remove(robot5);
@@ -537,8 +541,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
-                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                            new RampageRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
+                            new RampageRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot6);
                     states.remove(robot6);
@@ -556,8 +560,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
-                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                            new RampageRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
+                            new RampageRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot7);
                     states.remove(robot7);
@@ -575,8 +579,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
-                            new RedSlime(95, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                            new RampageRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
+                            new RampageRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot8);
                     states.remove(robot8);

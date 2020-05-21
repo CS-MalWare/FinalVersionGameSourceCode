@@ -369,6 +369,30 @@ public class EnemyState extends BaseAppState {
             case "Enemies/underWater/fishboss0.j3o":
                 model.scale(0.07f);
                 break;
+            case "Enemies/forth/scene0.j3o":
+            case "Enemies/forth/scene1.j3o":
+            case "Enemies/forth/scene2.j3o":
+                model.scale(0.14f);
+                break;
+            case "Enemies/forth/boss/scene0.j3o":
+                model.scale(0.35f);
+                model.rotate(0,2.7f,0);
+                break;
+            case "Enemies/fifthMap/mech_drone/scene0.j3o":
+            case "Enemies/fifthMap/mech_drone/scene1.j3o":
+            case "Enemies/fifthMap/mech_drone/scene2.j3o":
+                model.scale(0.8f);
+                break;
+            case "Enemies/fifthMap/walking_robot/scene0.j3o":
+            case "Enemies/fifthMap/walking_robot/scene1.j3o":
+            case "Enemies/fifthMap/walking_robot/scene2.j3o":
+                model.scale(0.12f);
+                break;
+            case "Enemies/fifthMap/airplane0.j3o":
+            case "Enemies/fifthMap/airplane1.j3o":
+            case "Enemies/fifthMap/airplane2.j3o":
+                model.scale(0.07f);
+                break;
             default:
                 break;
         }
@@ -376,6 +400,45 @@ public class EnemyState extends BaseAppState {
 
     private void setModelPos(Spatial model) {
         switch (model.getName()) {
+            case "Enemies/fifthMap/airplane0.j3o":
+                model.move(-1f, 0.2f, 0);
+                break;
+            case "Enemies/fifthMap/airplane1.j3o":
+                model.move(-0.9f, 0.1f, 0);
+                break;
+            case "Enemies/fifthMap/airplane2.j3o":
+                model.move(-0.9f, 0.2f, 0);
+                break;
+            case "Enemies/fifthMap/walking_robot/scene0.j3o":
+                model.move(-1.3f, 0.2f, 0);
+                break;
+            case "Enemies/fifthMap/walking_robot/scene1.j3o":
+                model.move(-1.1f, 0.2f, 0);
+                break;
+            case "Enemies/fifthMap/walking_robot/scene2.j3o":
+                model.move(-1f, 0.4f, 0);
+                break;
+            case "Enemies/fifthMap/mech_drone/scene0.j3o":
+                model.move(-1.3f, -0.7f, 0);
+                break;
+            case "Enemies/fifthMap/mech_drone/scene1.j3o":
+                model.move(-1.1f, -0.7f, 0);
+                break;
+            case "Enemies/fifthMap/mech_drone/scene2.j3o":
+                model.move(-1f, 0.4f, 0);
+                break;
+            case "Enemies/forth/boss/scene0.j3o":
+                model.move(-1f, 0.4f, 0);
+                break;
+            case "Enemies/forth/scene0.j3o":
+                model.move(-1.1f, 1f, 0);
+                break;
+            case "Enemies/forth/scene1.j3o":
+                model.move(-0.9f, 1f, 0);
+                break;
+            case "Enemies/forth/scene2.j3o":
+                model.move(-0.7f, 1f, 0);
+                break;
             case "Enemies/skeleton/greenSkeleton/greenSkeleton0.j3o":
                 model.move(-1.1f, 0.1f, 0);
                 break;

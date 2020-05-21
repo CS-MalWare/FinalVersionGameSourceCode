@@ -23,6 +23,7 @@ import gamesource.State.mapState.*;
 import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.battle.Battle;
+import gamesource.battleState.character.enemy.boss.Faker;
 import gamesource.battleState.character.enemy.mechanicalEmpire.*;
 import gamesource.battleState.character.enemy.originalForest.*;
 import gamesource.uiState.bagstate.BagAppState;
@@ -637,7 +638,7 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new SteamRobot(280, "Enemies/underWater/fishboss.j3o", 10, 1, 0, 1, 3, 0, 0, 0)
+                            new Faker(150, "Enemies/underWater/fishboss.j3o", 10, 1, 0, 1, 3, 0, 0, 0)
                     );
                     state.detach(boss);
                     states.remove(boss);
