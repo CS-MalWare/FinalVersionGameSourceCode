@@ -30,6 +30,7 @@ import gamesource.State.mapState.SkyBox2;
 import gamesource.State.musicState.SecondBackMusic;
 import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
+import gamesource.battleState.appState.GetCardState;
 import gamesource.battleState.battle.Battle;
 import gamesource.battleState.character.enemy.originalForest.*;
 import gamesource.uiState.bagstate.BagAppState;
@@ -337,6 +338,28 @@ public class SecondState extends BaseAppState {
             return null;
         }
     }
+    public CollisionResults results14(){
+        try {
+            maj = major.getMajor();
+            BoundingVolume kni = c2.get();
+            CollisionResults results = new CollisionResults();
+            maj.collideWith(kni, results);
+            return results;
+        }catch(Exception e){
+            return null;
+        }
+    }
+    public CollisionResults results15(){
+        try {
+            maj = major.getMajor();
+            BoundingVolume kni = c3.get();
+            CollisionResults results = new CollisionResults();
+            maj.collideWith(kni, results);
+            return results;
+        }catch(Exception e){
+            return null;
+        }
+    }
 
 
     class StartTalk implements ActionListener {
@@ -356,6 +379,8 @@ public class SecondState extends BaseAppState {
             CollisionResults results11 = results11();
             CollisionResults results12 = results12();
             CollisionResults results13 = results13();
+            CollisionResults results14 = results14();
+            CollisionResults results15 = results15();
             if (talk.equals(name) && isPressed) {
                 if (results1.size() > 0) {
                     System.out.println("get");
@@ -403,6 +428,12 @@ public class SecondState extends BaseAppState {
                     battle1 = 9;
                 } else if (results13 != null && results13.size() > 0) {
                     battle1 = 10;
+                } else if(results14!=null&&results14.size()>0){
+                    System.out.println("chest");
+                    c2.open();
+                }else if(results15!=null&&results15.size()>0){
+                    System.out.println("chest");
+                    c3.open();
                 }
             }
 
@@ -433,12 +464,12 @@ public class SecondState extends BaseAppState {
                             new Slime(20, "Enemies/skeleton/skeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
                             new Slime(15, "Enemies/skeleton/skeleton.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(skeleton1);
                     states.remove(skeleton1);
                     state.attach(new Battle(states));
-
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(25);
 
                     break;
                 case 1:
@@ -449,14 +480,15 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Slime(25, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                            new Slime(20, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                            new Slime(20, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Slime(16, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(skeleton2);
                     states.remove(skeleton2);
                     state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(25);
 
                     break;
                 case 2:
@@ -467,14 +499,15 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RedSlime(25, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                            new Slime(27, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                            new RedSlime(24, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Slime(26, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(skeleton3);
                     states.remove(skeleton3);
                     state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(30);
 
                     break;
                 case 3:
@@ -488,11 +521,12 @@ public class SecondState extends BaseAppState {
                             new RedSlime(30, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
                             new RedSlime(25, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(skeleton4);
                     states.remove(skeleton4);
                     state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(30);
 
                     break;
 
@@ -504,14 +538,15 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new BlackSlime(33, "Enemies/bat/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
-                            new BlackSlime(25, "Enemies/bat/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                            new BlackSlime(30, "Enemies/bat/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
+                            new BlackSlime(40, "Enemies/bat/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(bat1);
                     states.remove(bat1);
                     state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(40);
 
                     break;
 
@@ -523,13 +558,14 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new EliteSlime(70, "Enemies/snowRobot/snowRobot.j3o", 10, 1, 2, 0, 0, 0, 0, 0)
+                            new EliteSlime(75, "Enemies/snowRobot/snowRobot.j3o", 10, 1, 2, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(snowRobot1);
                     states.remove(snowRobot1);
                     state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(70);
 
                     break;
 
@@ -543,11 +579,12 @@ public class SecondState extends BaseAppState {
                     EnemyState.getInstance().addEnemies(
                             new KingSlime(150, "Enemies/skeleton/KingSkeleton/kingSkeleton.j3o", 0, 4, 1, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(skeleton5);
                     states.remove(skeleton5);
                     state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(100);
 
                     break;
 
@@ -560,14 +597,16 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Wolfman(30, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 5, 0, 3, 0, 0, 0, 0, 0),
-                            new Wolfman(35, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 5, 0, 2, 0, 0, 0, 0, 0)
+                            new Wolfman(40, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 5, 0, 3, 0, 0, 0, 0, 0),
+                            new Wolfman(50, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 5, 0, 2, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(skeleton6);
                     states.remove(skeleton6);
                     state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(40);
+
                     break;
                 case 8:
                     state.detach(input);
@@ -580,11 +619,13 @@ public class SecondState extends BaseAppState {
                             new OneEyedWolfman(30, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 0, 2, 0, 0, 0, 0, 0),
                             new OneEyedWolfman(45, "Enemies/skeleton/skeleton.j3o", 0, 1, 0, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(skeleton7);
                     states.remove(skeleton7);
                     state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(45);
+
                     break;
                 case 9:
                     state.detach(input);
@@ -594,13 +635,15 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new EliteWolfman(85, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 1, 1, 0, 0, 0, 0, 0)
+                            new EliteWolfman(90, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 1, 1, 0, 0, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(skeleton8);
                     states.remove(skeleton8);
                     state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(70);
+
                     break;
                 case 10:
                     state.detach(input);
@@ -610,13 +653,15 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new KingWolfman(180, "Enemies/snowRobot/snowRobot.j3o", 0, 2, 2, 0, 1, 0, 0, 0)
+                            new KingWolfman(160, "Enemies/snowRobot/snowRobot.j3o", 0, 2, 2, 0, 1, 0, 0, 0)
                     );
-                    cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     state.detach(snowRobot2);
                     states.remove(snowRobot2);
                     state.attach(new Battle(states));
+                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(120);
+
                     break;
 
                 default:

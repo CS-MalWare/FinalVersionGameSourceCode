@@ -1,16 +1,17 @@
 package gamesource;
 
+import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
+import com.jme3.bullet.BulletAppState;
 import com.jme3.font.BitmapText;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
-import com.jme3.post.filters.CartoonEdgeFilter;
-import com.jme3.post.filters.DepthOfFieldFilter;
-import com.jme3.post.filters.FogFilter;
-import com.jme3.post.filters.LightScatteringFilter;
-
-import com.jme3.post.filters.BloomFilter;
+import com.jme3.light.DirectionalLight;
+import com.jme3.math.ColorRGBA;
+import com.jme3.math.Vector3f;
+import com.jme3.post.FilterPostProcessor;
+import com.jme3.post.filters.*;
 import com.jme3.scene.Spatial;
 import com.jme3.shadow.DirectionalLightShadowRenderer;
 import com.jme3.texture.Texture;
@@ -20,13 +21,6 @@ import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.worldState.*;
-
-import com.jme3.app.SimpleApplication;
-import com.jme3.bullet.BulletAppState;
-import com.jme3.light.DirectionalLight;
-import com.jme3.math.ColorRGBA;
-import com.jme3.math.Vector3f;
-import com.jme3.post.FilterPostProcessor;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -45,7 +39,6 @@ public class App extends SimpleApplication
     ThirdState f3;
     ForthState f4;
     FifthState f5;
-    SixthState f6;
     private AppStateManager state;
 
 
@@ -75,21 +68,20 @@ public class App extends SimpleApplication
         stateManager.attach(new ShopAppState());
         stateManager.attach(new MenuAppState());
         stateManager.attach(new makeCross());
-        f1=new FirstState();
+        f1 = new FirstState();
         //stateManager.attach(f1);
-        f2=new SecondState();
-        f3=new ThirdState();
-        f4=new ForthState();
-        f5=new FifthState();
-        f6=new SixthState();
-        stateManager.attach(f6);
+        f2 = new SecondState();
+        f3 = new ThirdState();
+        f4 = new ForthState();
+        f5 = new FifthState();
+        stateManager.attach(f2);
         //stateManager.getState(SecondState.class).setEnabled(false);
         //f2.setEnabled(false);
         //stateManager.attach(f2);
         //initSecondWorld();
 
-        inputManager.addMapping(world,new KeyTrigger(KeyInput.KEY_Z));
-        inputManager.addListener(new StartTalk(),world);
+        inputManager.addMapping(world, new KeyTrigger(KeyInput.KEY_Z));
+        inputManager.addListener(new StartTalk(), world);
     }
 
     public void initSecondWorld(){
