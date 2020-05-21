@@ -32,7 +32,7 @@ public class WoundedStrike extends AttackCard {
             return false;
         }
         MainRole mainRole = MainRole.getInstance();
-        int lostHP = mainRole.getTotalHP() - mainRole.getHP();
+        int lostHP = (mainRole.getTotalHP() - mainRole.getHP()) / 2;
         target.getDamage(mainRole.computeDamage(lostHP));
         return true;
     }

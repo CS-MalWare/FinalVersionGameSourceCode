@@ -20,13 +20,6 @@ import gamesource.State.controlState.InputAppState;
 import gamesource.battleState.appState.BattleState;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.character.MainRole;
-import gamesource.battleState.equipment.CreateEquipment;
-import gamesource.battleState.equipment.common.KnightGloves;
-import gamesource.battleState.equipment.epic.ArmstrongGun;
-import gamesource.battleState.equipment.epic.LampOfAladdin;
-import gamesource.battleState.equipment.legendary.BalancedLibra;
-import gamesource.battleState.equipment.legendary.MerlinGown;
-import gamesource.battleState.equipment.legendary.MerlinWand;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -90,13 +83,6 @@ public class Battle extends BaseAppState {
 
         MainRole mainRole = MainRole.getInstance();
         mainRole.bindApp(app);
-        mainRole.getEquipment(new BalancedLibra());
-        mainRole.getEquipment(new MerlinGown());
-        mainRole.getEquipment(new MerlinWand());
-        mainRole.getEquipment(new ArmstrongGun());
-        mainRole.getEquipment(new LampOfAladdin());
-        mainRole.getEquipment(new KnightGloves());
-        mainRole.getEquipment(CreateEquipment.getRandomEquipment());
         EnemyState enemyState = EnemyState.getInstance();
 
 
