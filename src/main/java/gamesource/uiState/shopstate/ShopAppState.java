@@ -35,7 +35,7 @@ public class ShopAppState extends BaseAppState implements ActionListener{
     private static CardUI[] cardUIs = new CardUI[40];
     private static Card[] cards = new Card[40];
     private CardUI[] cardUIsCopy = new CardUI[40];
-    private CardUI[] casterCardUIs = new CardUI[20];
+    private CardUI[] saberCardUIs = new CardUI[20];
     private CardUI[] neutralCardUIs = new CardUI[20];
 
     private EquipmentUI[] equipmentUIs = new EquipmentUI[40];
@@ -52,7 +52,7 @@ public class ShopAppState extends BaseAppState implements ActionListener{
     private Styles styles;
     private boolean isMapPressed = false;
 
-    private Card casterCard;
+    private Card saberCard;
     private Card neutralCard;
     private Equipment commonEquipment;
 
@@ -72,16 +72,17 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         general.setLocalTranslation(5, app.getCamera().getHeight()-50, 0);
 
         for(int i=0; i < 20; i++){
-            casterCard = CreateCard.getRandomCard(OCCUPATION.CASTER);
+            saberCard = CreateCard.getRandomCard(OCCUPATION.SABER);
             neutralCard = CreateCard.getRandomCard(OCCUPATION.NEUTRAL);
-            casterCardUIs[i] = CardArrayReader.cardToCardUI(casterCard);
-            neutralCardUIs[i] = CardArrayReader.cardToCardUI(neutralCard);
             commonEquipment = CreateEquipment.getRandomCommonEquipment();
+            saberCardUIs[i] = CardArrayReader.cardToCardUI(saberCard);
+            neutralCardUIs[i] = CardArrayReader.cardToCardUI(neutralCard);
+
             //saberCardUIs[i] = CardArrayReader.cardToCardUI(CreateCard.getRandomCard(OCCUPATION.SABER));
-            cardUIs[i] = casterCardUIs[i];
-            cards[i] = casterCard;
+            cardUIs[i] = saberCardUIs[i];
+            cards[i] = saberCard;
             cards[i+20] = neutralCard;
-            cardUIsCopy[i] = casterCardUIs[i];
+            cardUIsCopy[i] = saberCardUIs[i];
             cardUIs[i+20] = neutralCardUIs[i];
             cardUIsCopy[i+20] = neutralCardUIs[i];
             //cardUIs[i+40] =  saberCardUIs[i];
@@ -195,7 +196,7 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         leftPart.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass")).setUserData(LayerComparator.LAYER, 2);
 
         Button general = new Button("General");
-        Button caster = new Button("Caster");
+        Button caster = new Button("Saber");
         Button neutral = new Button("Neutral");
         Button backToStart = new Button("Back");
         //Button saber = new Button("Saber");
@@ -247,7 +248,7 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         public void execute(Button button){
             centralPart.detachAllChildren();
             pagesContainer.detachAllChildren();
-            cardUIs = casterCardUIs;
+            cardUIs = saberCardUIs;
 
             for(int i=0; i<12; i++){
                 int j = i % 4;
