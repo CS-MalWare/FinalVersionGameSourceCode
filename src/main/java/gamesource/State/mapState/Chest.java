@@ -2,6 +2,7 @@ package gamesource.State.mapState;
 
 import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;
+import com.jme3.animation.LoopMode;
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.BaseAppState;
@@ -171,7 +172,13 @@ public class Chest extends BaseAppState {
         //spatial.move(0, 1, 0);
 
 
+        //animChannel.setAnim("open");
+    }
+
+    public void open(){
+        animChannel.setLoopMode(LoopMode.DontLoop);
         animChannel.setAnim("open");
+        ske=null;
     }
     @Override
     protected void cleanup(Application application) {
