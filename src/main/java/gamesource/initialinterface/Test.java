@@ -1,5 +1,5 @@
 package gamesource.initialinterface;
-import com.sun.xml.internal.bind.v2.model.annotation.RuntimeAnnotationReader;
+//import com.sun.xml.internal.bind.v2.model.annotation.RuntimeAnnotationReader;
 import gamesource.initialinterface.Texture_init;
 import gamesource.initialinterface.User_data;
 import org.jsfml.graphics.*;

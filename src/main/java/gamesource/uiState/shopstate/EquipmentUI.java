@@ -5,6 +5,8 @@ import com.simsilica.lemur.Command;
 import com.simsilica.lemur.Container;
 import com.simsilica.lemur.component.IconComponent;
 
+import gamesource.battleState.equipment.Equipment.EquipmentDegree;
+
 public class EquipmentUI {
     private String description;
     private Button button = new Button("name");
@@ -22,6 +24,15 @@ public class EquipmentUI {
         this.button.setIcon(iconComponent);
         this.description = description;
         this.shopMoney.setMoney(money);
+    }
+
+    public EquipmentUI(IconComponent iconComponent, String name, EquipmentDegree equipmentDegree, String description){
+        this.button.setName(name);
+        this.button.setIcon(iconComponent);
+        this.description = description;
+        if(equipmentDegree == EquipmentDegree.COMMON){
+            this.shopMoney.setMoney(100);
+        }
     }
 
     public boolean equals(EquipmentUI equipmentUI){

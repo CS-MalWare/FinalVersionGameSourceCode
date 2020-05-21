@@ -23,6 +23,7 @@ import gamesource.battleState.card.Card;
 import gamesource.battleState.card.CreateCard;
 import gamesource.battleState.card.Card.OCCUPATION;
 import gamesource.battleState.character.MainRole;
+import gamesource.battleState.equipment.CreateEquipment;
 import gamesource.battleState.equipment.Equipment;
 import gamesource.uiState.bagstate.CardUI;
 import gamesource.util.CardArrayReader;
@@ -53,6 +54,7 @@ public class ShopAppState extends BaseAppState implements ActionListener{
 
     private Card casterCard;
     private Card neutralCard;
+    private Equipment commonEquipment;
 
     @Override
     public void initialize(Application application){//测试的时候先是启动加载，稍后会做出更新
@@ -74,6 +76,7 @@ public class ShopAppState extends BaseAppState implements ActionListener{
             neutralCard = CreateCard.getRandomCard(OCCUPATION.NEUTRAL);
             casterCardUIs[i] = CardArrayReader.cardToCardUI(casterCard);
             neutralCardUIs[i] = CardArrayReader.cardToCardUI(neutralCard);
+            commonEquipment = CreateEquipment.getRandomCommonEquipment();
             //saberCardUIs[i] = CardArrayReader.cardToCardUI(CreateCard.getRandomCard(OCCUPATION.SABER));
             cardUIs[i] = casterCardUIs[i];
             cards[i] = casterCard;
