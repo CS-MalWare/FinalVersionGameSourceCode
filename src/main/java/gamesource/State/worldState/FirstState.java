@@ -357,10 +357,13 @@ public class FirstState extends BaseAppState {
             }
             if(move.equals(name)&&isPressed){
                 if(results5!=null&&results5.size()>0){
+                    System.out.println("chest");
                     c1.open();
                 }else if(results6!=null&&results6.size()>0){
+                    System.out.println("chest");
                     c2.open();
                 }else if(results7!=null&&results7.size()>0){
+                    System.out.println("chest");
                     c3.open();
                 }
             }

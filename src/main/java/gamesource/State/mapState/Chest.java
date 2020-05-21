@@ -176,8 +176,8 @@ public class Chest extends BaseAppState {
     }
 
     public void open(){
-        animChannel.setLoopMode(LoopMode.DontLoop);
         animChannel.setAnim("open");
+        animChannel.setLoopMode(LoopMode.DontLoop);
         ske=null;
     }
     @Override
