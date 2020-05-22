@@ -174,7 +174,7 @@ public class MajorActor extends BaseAppState implements AnimEventListener {
         run = new AudioNode(app.getAssetManager(), "Sound/run/run.wav", AudioData.DataType.Stream);
         run.setLooping(true);
         run.setPositional(false);
-        run.setVolume(10);
+        run.setVolume(6);
         run.setPitch(0.7f);
         cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
     }

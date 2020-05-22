@@ -29,6 +29,7 @@ import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.FirstWorldState;
 import gamesource.State.mapState.Chest;
 import gamesource.State.mapState.SkyBox;
+import gamesource.State.musicState.FirstBackMusic;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -81,6 +82,7 @@ public class FirstState extends BaseAppState {
     FirstWorldOtherSpecial special = new FirstWorldOtherSpecial();
     SkyBox sky = new SkyBox();
     private Master1 master = new Master1(new Vector3f(-42.829556f, 4.341275f, -10.886024f), -2.9f);
+    FirstBackMusic music=new FirstBackMusic();
 
 
     private BagAppState bagState;
@@ -187,6 +189,8 @@ public class FirstState extends BaseAppState {
         states.add(sky);
         state.attach(master);
         states.add(master);
+        state.attach(music);
+        states.add(music);
 
         this.inputManager = application.getInputManager();
         inputManager.addMapping(talk, TALK);

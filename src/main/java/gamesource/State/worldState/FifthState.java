@@ -29,6 +29,7 @@ import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
 import gamesource.State.mapState.FifthWorldState;
 import gamesource.State.mapState.SkyBox;
+import gamesource.State.musicState.FifthBackMusic;
 import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.appState.GetCardState;
@@ -86,7 +87,7 @@ public class FifthState extends BaseAppState {
     private lizardState lizard=new lizardState(new Vector3f(6.345871f, 16.74f, -24.815386f),-0.3f);
     private Master1 master=new Master1(new Vector3f(9.348317f, 16.739998f, -24.272078f),-0.3f);
     private StartTalk st=new StartTalk();
-
+    private FifthBackMusic music=new FifthBackMusic();
     private BoundingVolume maj;
 
     private float time=0;
@@ -150,6 +151,8 @@ public class FifthState extends BaseAppState {
         states.add(lizard);
         state.attach(light);
         states.add(light);
+        state.attach(music);
+        states.add(music);
         state.attach(effect);
         states.add(effect);
         state.attach(c1);

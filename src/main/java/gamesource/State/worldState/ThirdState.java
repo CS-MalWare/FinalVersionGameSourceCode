@@ -20,6 +20,7 @@ import gamesource.State.SpecialEffect.*;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.*;
+import gamesource.State.musicState.ThirdBackMusic;
 import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.battle.Battle;
@@ -80,6 +81,7 @@ public class ThirdState extends BaseAppState {
     private MushroomBug bu1 = new MushroomBug(new Vector3f(60.75251f, 4.0023937f, -34.16455f), -4f);
     private MushroomBug bu2 = new MushroomBug(new Vector3f(-61.74419f, 4.1799035f, -12.796891f),4f);
     private FishBoss boss=new FishBoss(new Vector3f(-71.28984f, -2.5547683f, 37.708557f),2);
+    private ThirdBackMusic music=new ThirdBackMusic();
     //private Fish6State fish5_1 =new Fish6State(new Vector3f(5,30,0));
 
     private StartTalk st = new StartTalk();
@@ -173,6 +175,8 @@ public class ThirdState extends BaseAppState {
         states.add(light);
         state.attach(water);
         states.add(water);
+        state.attach(music);
+        states.add(music);
         //state.attach(fish5_1);
         //states.add(fish5_1);
         state.attach(new SkyBox());

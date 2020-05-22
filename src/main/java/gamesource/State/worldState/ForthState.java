@@ -28,6 +28,7 @@ import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
 import gamesource.State.mapState.ForthWorldMap;
 import gamesource.State.mapState.SkyBox;
+import gamesource.State.musicState.ForthBackMusic;
 import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.battle.Battle;
@@ -78,7 +79,7 @@ public class ForthState extends BaseAppState {
     private BlueSkeletonState ske1=new BlueSkeletonState(new Vector3f(-4.245868f, -11.549194f, -25.822964f),0.2f);
     private RedSkeletonState ske2=new RedSkeletonState(new Vector3f(-1.4215671f, -11.728199f, -24.200905f),-0.7f);
     private StartTalk st=new StartTalk();
-
+    private ForthBackMusic music=new ForthBackMusic();
     private BoundingVolume maj;
 
     private float time=0;
@@ -113,6 +114,7 @@ public class ForthState extends BaseAppState {
         cross=state.getState(makeCross.class);
         states.add(cross);
         state.attach(light);
+        states.add(light);
         state.attach(bos);
         states.add(bos);
         state.attach(man1);
@@ -137,6 +139,8 @@ public class ForthState extends BaseAppState {
         states.add(c1);
         state.attach(c2);
         states.add(c2);
+        state.attach(music);
+        states.add(music);
         //state.attach(water);
         state.attach(new SkyBox());
 
