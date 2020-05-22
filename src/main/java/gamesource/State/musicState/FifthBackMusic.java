@@ -26,7 +26,7 @@ public class FifthBackMusic  extends BaseAppState {
         BackGround = new AudioNode(app.getAssetManager(), "Sound/fifth/fifth.wav", AudioData.DataType.Stream);
         BackGround.setLooping(true);
         BackGround.setPositional(false);
-        BackGround.setVolume(0.3f);
+        BackGround.setVolume(3f);
         node.attachChild(BackGround);
 
         BackGround.setLooping(true);

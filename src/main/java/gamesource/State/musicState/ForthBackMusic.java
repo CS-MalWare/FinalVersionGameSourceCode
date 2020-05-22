@@ -26,7 +26,7 @@ public class ForthBackMusic  extends BaseAppState {
         BackGround = new AudioNode(app.getAssetManager(), "Sound/forth/forth.wav", AudioData.DataType.Stream);
         BackGround.setLooping(true);
         BackGround.setPositional(false);
-        BackGround.setVolume(2f);
+        BackGround.setVolume(3f);
         node.attachChild(BackGround);
 
         BackGround.setLooping(true);
