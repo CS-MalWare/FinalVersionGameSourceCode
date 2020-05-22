@@ -72,12 +72,12 @@ public class SecondState extends BaseAppState {
     private BlueSkeletonState skeleton3 = new BlueSkeletonState(new Vector3f(-15.3608456f, -21.152367f, 72.28308f), 2f);
     private RedSkeletonState skeleton4 = new RedSkeletonState(new Vector3f(-12.66109f, -26.166546f, 53.731964f), 0.5f);
     private BatState bat1 = new BatState(new Vector3f(-6.6939545f, -29.954361f, 29.743092f), 0.7f);
-    private SnowRobotState snowRobot1 = new SnowRobotState(new Vector3f(17.560339f, -32.435986f, 35.696587f), 2f);
+    private RedSkeletonState snowRobot1 = new RedSkeletonState(new Vector3f(17.560339f, -32.435986f, 35.696587f), -1f);
     private KingSkeletonState skeleton5 = new KingSkeletonState(new Vector3f(8.058961f, -31.545362f, 17.327284f), -0.7f);
     private GreenSkeletonState skeleton6 = new GreenSkeletonState(new Vector3f(-0.22325397f, -19.929562f, -6.269995f), 0.3f);
     private AngrySkeletonState skeleton7 = new AngrySkeletonState(new Vector3f(15.483921f, -24.226637f, -20.16292f), 0.5f);
     private BlueSkeletonState skeleton8 = new BlueSkeletonState(new Vector3f(7.382364f, -18.829222f, -69.045815f), -0.4f);
-    private SnowRobotState snowRobot2 = new SnowRobotState(new Vector3f(-3.889712f, -18.6719f, -73.689575f), -2f);
+    private BatState bat2 = new BatState(new Vector3f(-3.889712f, -18.6719f, -73.689575f), 0f);
 
 
     private InputAppState input;
@@ -160,8 +160,8 @@ public class SecondState extends BaseAppState {
         states.add(skeleton7);
         state.attach(skeleton8);
         states.add(skeleton8);
-        state.attach(snowRobot2);
-        states.add(snowRobot2);
+        state.attach(bat2);
+        states.add(bat2);
 
         state.attach(music);
         states.add(music);
@@ -330,7 +330,7 @@ public class SecondState extends BaseAppState {
 
     public CollisionResults results13() {
         try {
-            BoundingVolume ske = snowRobot2.get();
+            BoundingVolume ske = bat2.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
             return result;
@@ -558,7 +558,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new EliteSlime(75, "Enemies/snowRobot/snowRobot.j3o", 10, 1, 2, 0, 0, 0, 0, 0)
+                            new RedSlime(35, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 10, 1, 2, 0, 0, 0, 0, 0),
+                            new RedSlime(35, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 10, 1, 2, 0, 0, 0, 0, 0)
                     );
                     state.detach(snowRobot1);
                     states.remove(snowRobot1);
@@ -653,10 +654,10 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new KingWolfman(160, "Enemies/snowRobot/snowRobot.j3o", 0, 2, 2, 0, 1, 0, 0, 0)
+                            new KingWolfman(60, "Enemies/bat/scene.j3o", 5, 2, 2, 0, 1, 0, 0, 0)
                     );
-                    state.detach(snowRobot2);
-                    states.remove(snowRobot2);
+                    state.detach(bat2);
+                    states.remove(bat2);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));

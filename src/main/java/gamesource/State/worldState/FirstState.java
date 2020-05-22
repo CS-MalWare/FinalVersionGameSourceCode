@@ -207,7 +207,7 @@ public class FirstState extends BaseAppState {
         inputManager.addMapping(move, MOVE);
         inputManager.addListener(st, move);
 
-        major.setPlace(new Vector3f(-35.907394f, 3.7558994f, -35.212135f));
+        major.setPlace(new Vector3f(93.51907f, -31.696218f, 18.607859f));
 
     }
 
