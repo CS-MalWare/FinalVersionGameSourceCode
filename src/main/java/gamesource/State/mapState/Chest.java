@@ -52,7 +52,7 @@ public class Chest extends BaseAppState {
 
     private AudioNode chestNode;
 
-    private float distance=1.2f,volume =3;
+    private float distance=0.7f,volume =1;
 
     protected void initialize(Application application){
         app=(SimpleApplication)application;
@@ -180,6 +180,7 @@ public class Chest extends BaseAppState {
         animChannel.setLoopMode(LoopMode.DontLoop);
         ske=null;
         chestNode.setLooping(false);
+        chestNode.stop();
     }
     @Override
     protected void cleanup(Application application) {
