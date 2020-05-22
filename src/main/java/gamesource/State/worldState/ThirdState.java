@@ -196,7 +196,7 @@ public class ThirdState extends BaseAppState {
         inputManager.addListener(st, move);
 
         cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-        major.setPlace(new Vector3f(0f, 30f, 0f));
+        major.setPlace(new Vector3f(-20.689228f, 28.32263f, 4.34023f));
 
         BattleBackGroundState.setBackgroundSrc("Map/scene.j3o");
     }
