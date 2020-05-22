@@ -26,7 +26,7 @@ public class ThirdBackMusic extends BaseAppState {
         BackGround = new AudioNode(app.getAssetManager(), "Sound/Third/third.wav", AudioData.DataType.Stream);
         BackGround.setLooping(true);
         BackGround.setPositional(false);
-        BackGround.setVolume(3f);
+        BackGround.setVolume(2f);
         node.attachChild(BackGround);
 
         BackGround.setLooping(true);
