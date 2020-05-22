@@ -15,6 +15,7 @@ import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.Master1;
+import gamesource.State.CharacterState.enemies.SnowRobotState;
 import gamesource.State.CharacterState.enemies.fifth.flyRobot;
 import gamesource.State.CharacterState.enemies.fifth.plane;
 import gamesource.State.CharacterState.enemies.fifth.walkRobot;
@@ -78,10 +79,10 @@ public class FifthState extends BaseAppState {
     private flyRobot robot2=new flyRobot(new Vector3f(0,0,0),2.2f);
     private flyRobot robot3=new flyRobot(new Vector3f(-12.852558f, -33.24f, -13.446446f),-2.4f,-3f,3,0,2,9);
     private flyRobot robot4=new flyRobot(new Vector3f(-17.62852f, -33.24f, 0.89568424f),-0.9f,3f,3,0,2,11);
-    private flyRobot robot5=new flyRobot(new Vector3f(18.963163f, -33.24f, 0.511641f),1.3f,0f,3,0,2,7);
+    private SnowRobotState robot5=new SnowRobotState(new Vector3f(18.963163f, -33.24f, 0.511641f),1.3f);
     private walkRobot robot6=new walkRobot(new Vector3f(34.28899f, -21.72f, -57.356865f),4.7f,15,0,0,40);
     private walkRobot robot7=new walkRobot(new Vector3f(9.650833f, -10.199997f, -36.951283f),-0.6f,8,-8,0,7);
-    private flyRobot robot8=new flyRobot(new Vector3f(-26.445934f, 1.3200009f, -3.8378994f),-0.3f,0f,3,0,1,18);
+    private SnowRobotState robot8=new SnowRobotState(new Vector3f(-26.445934f, 1.3200009f, -3.8378994f),-0.3f);
     private lizardState lizard=new lizardState(new Vector3f(6.345871f, 16.74f, -24.815386f),-0.3f);
     private Master1 master=new Master1(new Vector3f(9.348317f, 16.739998f, -24.272078f),-0.3f);
     private StartTalk st=new StartTalk();
@@ -537,8 +538,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RampageRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
-                            new RampageRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                            new RampageRobot(80, "Enemies/snowRobot/snowRobot.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
+                            new RampageRobot(80, "Enemies/snowRobot/snowRobot.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot5);
                     states.remove(robot5);
@@ -594,8 +595,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RampageRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
-                            new RampageRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                            new RampageRobot(75, "Enemies/snowRobot/snowRobot.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
+                            new RampageRobot(75, "Enemies/snowRobot/snowRobot.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot8);
                     states.remove(robot8);
