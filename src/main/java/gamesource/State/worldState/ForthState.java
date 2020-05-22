@@ -20,6 +20,7 @@ import gamesource.State.CharacterState.enemies.RedSkeletonState;
 import gamesource.State.CharacterState.enemies.forth.BossKnight;
 import gamesource.State.CharacterState.enemies.forth.StoneMan;
 import gamesource.State.CharacterState.enemies.forth.boss;
+import gamesource.State.SpecialEffect.FifthOtherSpecial;
 import gamesource.State.SpecialEffect.ThirdWorldLight;
 import gamesource.State.SpecialEffect.Water;
 import gamesource.State.SpecialEffect.makeCross;
@@ -81,6 +82,7 @@ public class ForthState extends BaseAppState {
     private StartTalk st=new StartTalk();
     private ForthBackMusic music=new ForthBackMusic();
     private BoundingVolume maj;
+    private FifthOtherSpecial effect=new FifthOtherSpecial();
 
     private float time=0;
 
@@ -141,6 +143,8 @@ public class ForthState extends BaseAppState {
         states.add(c2);
         state.attach(music);
         states.add(music);
+        state.attach(effect);
+        states.add(effect);
         //state.attach(water);
         state.attach(new SkyBox());
 

@@ -19,10 +19,7 @@ import gamesource.State.CharacterState.enemies.fifth.flyRobot;
 import gamesource.State.CharacterState.enemies.fifth.plane;
 import gamesource.State.CharacterState.enemies.fifth.walkRobot;
 import gamesource.State.CharacterState.firstWorldCharacter.lizardState;
-import gamesource.State.SpecialEffect.FirstWorldOtherSpecial;
-import gamesource.State.SpecialEffect.ThirdWorldLight;
-import gamesource.State.SpecialEffect.Water;
-import gamesource.State.SpecialEffect.makeCross;
+import gamesource.State.SpecialEffect.*;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
@@ -98,8 +95,7 @@ public class FifthState extends BaseAppState {
     private MenuAppState menuState;
     private makeCross cross;
     private ThirdWorldLight light=new ThirdWorldLight();
-    private Water water=new Water(22);
-    private FirstWorldOtherSpecial effect=new FirstWorldOtherSpecial();
+    private FifthOtherSpecial effect=new FifthOtherSpecial();
 
     private ArrayList<BaseAppState> states=new ArrayList<BaseAppState>();
 

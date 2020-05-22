@@ -57,7 +57,7 @@ public class App extends SimpleApplication {
         bullet.getPhysicsSpace().setGravity(new Vector3f(0, -9.81f, 0));
 
         FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
-        fpp.setNumSamples(4);
+        fpp.setNumSamples(16);
         viewPort.addProcessor(fpp);
         stateManager.attach(new MajorActor());
         stateManager.attach(new InputAppState());
@@ -71,7 +71,7 @@ public class App extends SimpleApplication {
         f3 = new ThirdState();
         f4 = new ForthState();
         f5 = new FifthState();
-        stateManager.attach(f5);
+        stateManager.attach(f4);
         //stateManager.getState(SecondState.class).setEnabled(false);
         //f2.setEnabled(false);
         //stateManager.attach(f2);
@@ -117,7 +117,7 @@ public class App extends SimpleApplication {
         bullet.getPhysicsSpace().setGravity(new Vector3f(0,-9.81f,0));
         //stateManager.attach(new QuadState());*/
         //bullet.setDebugEnabled(true);                     //这个功能为调试模式
-        stateManager.attach(f4);
+        stateManager.attach(f1);
 
         //stateManager.attach(new FirstWorldLight(0));
         //addLight(fpp);

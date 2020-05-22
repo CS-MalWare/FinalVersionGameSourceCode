@@ -82,6 +82,7 @@ public class ThirdState extends BaseAppState {
     private MushroomBug bu2 = new MushroomBug(new Vector3f(-61.74419f, 4.1799035f, -12.796891f),4f);
     private FishBoss boss=new FishBoss(new Vector3f(-71.28984f, -2.5547683f, 37.708557f),2);
     private ThirdBackMusic music=new ThirdBackMusic();
+    private ThirdOtherSpecial effect=new ThirdOtherSpecial();
     //private Fish6State fish5_1 =new Fish6State(new Vector3f(5,30,0));
 
     private StartTalk st = new StartTalk();
@@ -97,7 +98,7 @@ public class ThirdState extends BaseAppState {
     private MenuAppState menuState;
     private makeCross cross;
     private ThirdWorldLight light = new ThirdWorldLight();
-    private Water water = new Water(22);
+    private ThirdWater water = new ThirdWater(22);
 
     private ArrayList<BaseAppState> states = new ArrayList<BaseAppState>();
 
@@ -124,6 +125,8 @@ public class ThirdState extends BaseAppState {
         states.add(cross);
         state.attach(fish1_1);
         states.add(fish1_1);
+        state.attach(effect);
+        states.add(effect);
         state.attach(fish1_2);
         states.add(fish1_2);
         state.attach(fish1_3);
