@@ -7,7 +7,7 @@ import com.jme3.audio.AudioData;
 import com.jme3.audio.AudioNode;
 import com.jme3.scene.Node;
 
-public class ForthBackMusic  extends BaseAppState {
+public class FifthBackMusic  extends BaseAppState {
     private AudioNode BackGround;
 
     private SimpleApplication app;
@@ -23,10 +23,10 @@ public class ForthBackMusic  extends BaseAppState {
     private void initAudio() {
 
 
-        BackGround = new AudioNode(app.getAssetManager(), "Sound/forth/forth.wav", AudioData.DataType.Stream);
+        BackGround = new AudioNode(app.getAssetManager(), "Sound/fifth/fifth.wav", AudioData.DataType.Stream);
         BackGround.setLooping(true);
         BackGround.setPositional(false);
-        BackGround.setVolume(2f);
+        BackGround.setVolume(0.3f);
         node.attachChild(BackGround);
 
         BackGround.setLooping(true);
