@@ -591,6 +591,13 @@ public class ForthState extends BaseAppState {
         inputManager.addListener(st,change);
         inputManager.addListener(st,bag);
         inputManager.addListener(st,move);
+        for (BaseAppState baseAppState : states) {
+            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
+                baseAppState.setEnabled(true);
+                //state.detach(baseAppState);
+            }
+
+        }
     }
 
     @Override
