@@ -60,27 +60,27 @@ public class Zac extends Enemy {
             case 0:
                 this.attack();
                 this.newAction();
-                return "boss attack";
+                return "zac attack";
             case 1:
                 this.attack2();
                 this.newAction();
-                return "boss attack";
+                return "zac attack";
             case 2:
                 this.releaseDebuff();
                 this.newAction();
-                return "boss skill";
+                return "zac skill";
             case 3:
                 this.getBlocks();
                 this.newAction();
-                return "boss skill";
+                return "zac skill";
             case 4:
                 this.releaseCurses();
                 this.newAction();
-                return "boss skill";
+                return "zac skill";
             case 5:
                 this.releaseBuff();
                 this.newAction();
-                return "boss skill";
+                return "zac skill";
             default:
                 return "";
         }

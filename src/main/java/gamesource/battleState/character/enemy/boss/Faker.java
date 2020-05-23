@@ -43,27 +43,27 @@ public class Faker extends Enemy {
             case 0:
                 this.attack();
                 this.newAction();
-                return "boss attack";
+                return "faker attack";
             case 1:
                 this.getBlockAndAttack();
                 this.newAction();
-                return "boss attack";
+                return "faker attack";
             case 2:
                 this.attack2();
                 this.newAction();
-                return "boss attack";
+                return "faker attack";
             case 3:
                 this.releaseDebuff();
                 this.newAction();
-                return "boss skill";
+                return "faker skill";
             case 4:
                 this.attack3();
                 this.newAction();
-                return "boss attack";
+                return "faker attack";
             case 5:
                 this.$();
                 this.newAction();
-                return "boss skill";
+                return "faker skill";
             default:
                 return "";
 

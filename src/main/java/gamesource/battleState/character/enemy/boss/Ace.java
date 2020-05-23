@@ -64,31 +64,31 @@ public class Ace extends Enemy {
             case 0:
                 this.attack();
                 this.newAction();
-                return "boss attack";
+                return "ace attack";
             case 1:
                 this.releaseBuff();
                 this.newAction();
-                return "boss skill";
+                return "ace skill";
             case 2:
                 this.releaseDebuff();
                 this.newAction();
-                return "boss skill";
+                return "ace skill";
             case 3:
                 this.getBlocks();
                 this.newAction();
-                return "boss skill";
+                return "ace skill";
             case 4:
                 this.getBlessing();
                 this.newAction();
-                return "boss skill";
+                return "ace skill";
             case 5:
                 this.attack2();
                 this.newAction();
-                return "boss attack";
+                return "ace attack";
             case 6:
                 this.getBlockAndAttack();
                 this.newAction();
-                return "boss attack";
+                return "ace attack";
             default:
                 return "";
 
