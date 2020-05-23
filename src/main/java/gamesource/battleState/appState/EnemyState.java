@@ -346,15 +346,15 @@ public class EnemyState extends BaseAppState {
                 model.scale(0.05f);
                 break;
 
-            case "Enemies/underWater/fish20.j3o":
-            case "Enemies/underWater/fish21.j3o":
-            case "Enemies/underWater/fish22.j3o":
+            case "Enemies/underWater/fish60.j3o":
+            case "Enemies/underWater/fish61.j3o":
+            case "Enemies/underWater/fish62.j3o":
                 model.scale(0.28f);
                 break;
 
-            case "Enemies/underWater/fish30.j3o":
-            case "Enemies/underWater/fish31.j3o":
-            case "Enemies/underWater/fish32.j3o":
+            case "Enemies/underWater/fish50.j3o":
+            case "Enemies/underWater/fish51.j3o":
+            case "Enemies/underWater/fish52.j3o":
                 model.scale(0.6f);
                 break;
             case "Enemies/underWater/hollowKnight0.j3o":

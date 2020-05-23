@@ -70,15 +70,15 @@ public class ThirdState extends BaseAppState {
     private Fish1State fish1_3 = new Fish1State(new Vector3f(56.948456f, 3.351931f, -47.507305f), 3f);
     private Fish1State fish1_4 = new Fish1State(new Vector3f(12.754826f, -3.4226258f, -74.095726f), 1f);
     private Fish1State fish1_5 = new Fish1State(new Vector3f(-50.21668f, -5.0685973f, -71.16844f), 1.5f);
-    private Fish2State fish2_1 = new Fish2State(new Vector3f(77.26708f, 2.1770868f, 0.21428971f), 2f);
-    private Fish2State fish2_2 = new Fish2State(new Vector3f(-68.81787f, -7.400928f, -82.652245f), 3.7f);
-    private Fish2State fish2_3 = new Fish2State(new Vector3f(-104.77109f, -8.663721f, -96.10981f), -3.7f);
-    private Fish2State fish2_4 = new Fish2State(new Vector3f(-108.34749f, -7.848976f, -66.91676f), -5.7f);
-    private Fish2State fish2_5 = new Fish2State(new Vector3f(-95.21405f, -2.9428518f, 2.1157131f), -5.7f);
-    private Fish3State fish3_1 = new Fish3State(new Vector3f(0, 35, 0), 6.4f);
-    private Fish3State fish3_2 = new Fish3State(new Vector3f(-79.33274f, -1.6759943f, 24.259945f), 6.4f);
-    private Fish3State fish3_3 = new Fish3State(new Vector3f(-58.6319f, -1.6084806f, 50.47643f), -6.4f);
-    private Fish3State fish3_4 = new Fish3State(new Vector3f(-80.64096f, -6.567422f, 66.516266f), 3.4f);
+    private Fish6State fish2_1 = new Fish6State(new Vector3f(77.26708f, 2.1770868f, 0.21428971f), 2);
+    private Fish6State fish2_2 = new Fish6State(new Vector3f(-68.81787f, -7.400928f, -82.652245f), 3);
+    private Fish6State fish2_3 = new Fish6State(new Vector3f(-104.77109f, -8.663721f, -96.10981f), -3);
+    private Fish6State fish2_4 = new Fish6State(new Vector3f(-108.34749f, -7.848976f, -66.91676f), -5);
+    private Fish6State fish2_5 = new Fish6State(new Vector3f(-95.21405f, -2.9428518f, 2.1157131f), -5);
+    private Fish5State fish3_1 = new Fish5State(new Vector3f(0, 35, 0), 6);
+    private Fish5State fish3_2 = new Fish5State(new Vector3f(-79.33274f, -1.6759943f, 24.259945f), 6);
+    private Fish5State fish3_3 = new Fish5State(new Vector3f(-58.6319f, -1.6084806f, 50.47643f), -6);
+    private Fish5State fish3_4 = new Fish5State(new Vector3f(-80.64096f, -6.567422f, 66.516266f), 3);
     private MushroomBug bu1 = new MushroomBug(new Vector3f(60.75251f, 4.0023937f, -34.16455f), -4f);
     private MushroomBug bu2 = new MushroomBug(new Vector3f(-61.74419f, 4.1799035f, -12.796891f),4f);
     private FishBoss boss=new FishBoss(new Vector3f(-71.28984f, -2.5547683f, 37.708557f),2);
@@ -450,9 +450,9 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish2_3.get().getCenter());
                     state.detach(fish2_3);
@@ -469,9 +469,9 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish2_4.get().getCenter());
                     state.detach(fish2_4);
@@ -488,9 +488,9 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish2_5.get().getCenter());
                     state.detach(fish2_5);
@@ -507,7 +507,7 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new StrongRobot(80, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                            new StrongRobot(80, "Enemies/underWater/fish5.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish3_1.get().getCenter());
                     state.detach(fish3_1);
@@ -524,7 +524,7 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new StrongRobot(80, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                            new StrongRobot(80, "Enemies/underWater/fish5.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish3_2.get().getCenter());
                     state.detach(fish3_2);
@@ -541,7 +541,7 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new StrongRobot(80, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                            new StrongRobot(80, "Enemies/underWater/fish5.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish3_3.get().getCenter());
                     state.detach(fish3_3);
@@ -558,8 +558,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new StrongRobot(80, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0),
-                            new StrongRobot(80, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                            new StrongRobot(80, "Enemies/underWater/fish5.j3o", 10, 1, 0, 0, 0, 0, 0, 0),
+                            new StrongRobot(80, "Enemies/underWater/fish5.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish3_4.get().getCenter());
                     state.detach(fish3_4);
