@@ -115,7 +115,7 @@ public class Fish6State  extends BaseAppState {
         scene=(Node)robot;
         bip001=(Node)scene.getChild("Armature");
         animControl=bip001.getControl(AnimControl.class);
-        System.out.println(animControl.getAnimationNames());
+        System.out.println(animControl.getAnimationNames()+"fish6");
 
         animChannel=animControl.createChannel();
         animChannel.setAnim("Take 01");

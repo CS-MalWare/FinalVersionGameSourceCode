@@ -547,23 +547,23 @@ public class EnemyState extends BaseAppState {
                 model.move(-0.9f, 0, 0);
                 break;
 
-            case "Enemies/underWater/fish20.j3o":
+            case "Enemies/underWater/fish60.j3o":
                 model.move(-1.5f, 0, 0);
                 break;
-            case "Enemies/underWater/fish21.j3o":
+            case "Enemies/underWater/fish61.j3o":
                 model.move(-1.3f, 0, 0);
                 break;
-            case "Enemies/underWater/fish22.j3o":
+            case "Enemies/underWater/fish62.j3o":
                 model.move(-1.1f, 0, 0);
                 break;
 
-            case "Enemies/underWater/fish30.j3o":
+            case "Enemies/underWater/fish50.j3o":
                 model.move(-1.5f, 0, 0);
                 break;
-            case "Enemies/underWater/fish31.j3o":
+            case "Enemies/underWater/fish51.j3o":
                 model.move(-1.3f, 0, 0);
                 break;
-            case "Enemies/underWater/fish32.j3o":
+            case "Enemies/underWater/fish52.j3o":
                 model.move(-1.1f, 0, 0);
                 break;
 
@@ -890,7 +890,7 @@ public class EnemyState extends BaseAppState {
                 case "Enemies/zhenwang/boss0.j3o":
                     this.rootNode.attachChild(StuxnetStateParticle.getParticle1(app.getAssetManager()));
                     break;
-                case "Enemies/bossKnight/scene0.j3o":
+                case "Enemies/underWater/fishboss0.j3o":
                     break;
             }
         }

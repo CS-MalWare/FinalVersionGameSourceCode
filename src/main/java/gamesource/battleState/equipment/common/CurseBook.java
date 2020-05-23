@@ -3,6 +3,8 @@ package gamesource.battleState.equipment.common;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.character.Enemy;
 import gamesource.battleState.equipment.Equipment;
+import gamesource.battleState.particle.KingSkeletonStateParticle;
+import gamesource.battleState.particle.StuxnetStateParticle;
 
 public class CurseBook extends Equipment {
     private int timeCount = 1;
@@ -14,6 +16,14 @@ public class CurseBook extends Equipment {
     public void fun() {
         if(timeCount<=3){
             for(Enemy enemy: EnemyState.getInstance().getEnemies() ){
+                switch (enemy.getSrc()){
+                    case "Enemies/skeleton/KingSkeleton/KingSkeleton0.j3o":
+                    case "Enemies/zhenwang/boss0.j3o":
+                    case "Enemies/underWater/fishboss0.j3o":
+                        return;
+                    default:
+                        break;
+                }
                 enemy.setHP(1);
             }
             timeCount++;
