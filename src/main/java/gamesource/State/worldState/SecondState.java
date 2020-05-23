@@ -340,7 +340,6 @@ public class SecondState extends BaseAppState {
     }
     public CollisionResults results14(){
         try {
-            maj = major.getMajor();
             BoundingVolume kni = c2.get();
             CollisionResults results = new CollisionResults();
             maj.collideWith(kni, results);
@@ -351,7 +350,6 @@ public class SecondState extends BaseAppState {
     }
     public CollisionResults results15(){
         try {
-            maj = major.getMajor();
             BoundingVolume kni = c3.get();
             CollisionResults results = new CollisionResults();
             maj.collideWith(kni, results);
@@ -382,7 +380,7 @@ public class SecondState extends BaseAppState {
             CollisionResults results14 = results14();
             CollisionResults results15 = results15();
             if (talk.equals(name) && isPressed) {
-                if (results1.size() > 0) {
+                if (results1.size() > 0) {                  //这里是和萨满的对话
                     System.out.println("get");
                     if (canmove == 1) {
                         state.detach(input);
@@ -393,7 +391,7 @@ public class SecondState extends BaseAppState {
                         major.mouseChange();
                         canmove = 1;
                     }
-                } else if (results2.size() > 0) {
+                } else if (results2.size() > 0) {               //这里是和萨满的小姑娘的对话
                     if (canmove == 1) {
                         state.detach(input);
                         major.mouseChange();
@@ -727,6 +725,13 @@ public class SecondState extends BaseAppState {
         inputManager.addListener(st, change);
         inputManager.addListener(st, bag);
         inputManager.addListener(st, move);
+        for (BaseAppState baseAppState : states) {
+            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
+                baseAppState.setEnabled(true);
+                //state.detach(baseAppState);
+            }
+
+        }
     }
 
     @Override

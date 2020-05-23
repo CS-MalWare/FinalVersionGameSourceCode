@@ -16,6 +16,7 @@ import com.jme3.renderer.Camera;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.Master1;
 import gamesource.State.CharacterState.enemies.SnowRobotState;
+import gamesource.State.CharacterState.enemies.fifth.TalkBot;
 import gamesource.State.CharacterState.enemies.fifth.flyRobot;
 import gamesource.State.CharacterState.enemies.fifth.plane;
 import gamesource.State.CharacterState.enemies.fifth.walkRobot;
@@ -74,13 +75,14 @@ public class FifthState extends BaseAppState {
     private plane p2=new plane(new Vector3f(46.47963f, -10.199999f, -7.7142005f),0f,8,0,0);
     private plane p3=new plane(new Vector3f(11.662053f, 1.3200008f, 26.24392f),-1.5f,0,8,0);
     private walkRobot robot1=new walkRobot(new Vector3f(26.040071f, -21.72f, -1.5775526f),3.0f,0,4,0);
-    private flyRobot robot2=new flyRobot(new Vector3f(0,0,0),2.2f);
+    //private flyRobot robot2=new flyRobot(new Vector3f(0,0,0),2.2f);
+    private TalkBot talkbot=new TalkBot(new Vector3f(-6.5753336f, -33.180004f, 3.8230925f),2.2f);
     private flyRobot robot3=new flyRobot(new Vector3f(-12.852558f, -33.24f, -13.446446f),-2.4f,-3f,3,0,2,9);
     private flyRobot robot4=new flyRobot(new Vector3f(-17.62852f, -33.24f, 0.89568424f),-0.9f,3f,3,0,2,11);
-    private SnowRobotState robot5=new SnowRobotState(new Vector3f(18.963163f, -33.24f, 0.511641f),1.3f);
+    private flyRobot robot5=new flyRobot(new Vector3f(18.963163f, -33.24f, 0.511641f),1.5f,0,4,0,2,12);
     private walkRobot robot6=new walkRobot(new Vector3f(34.28899f, -21.72f, -57.356865f),4.7f,15,0,0,40);
     private walkRobot robot7=new walkRobot(new Vector3f(9.650833f, -10.199997f, -36.951283f),-0.6f,8,-8,0,7);
-    private SnowRobotState robot8=new SnowRobotState(new Vector3f(-26.445934f, 1.3200009f, -3.8378994f),-0.3f);
+    private flyRobot robot8=new flyRobot(new Vector3f(-26.445934f, 1.3200009f, -3.8378994f),-0.3f,4,0,0,2,15);
     private lizardState lizard=new lizardState(new Vector3f(6.345871f, 16.74f, -24.815386f),-0.3f);
     private Master1 master=new Master1(new Vector3f(9.348317f, 16.739998f, -24.272078f),-0.3f);
     private StartTalk st=new StartTalk();
@@ -121,10 +123,12 @@ public class FifthState extends BaseAppState {
         states.add(master);
         states.add(cross);
         //state.attach(p1);
+        state.attach(talkbot);
+        states.add(talkbot);
         state.attach(robot1);
         states.add(robot1);
-        state.attach(robot2);
-        states.add(robot2);
+        //state.attach(robot2);
+        //states.add(robot2);
         state.attach(robot3);
         states.add(robot3);
         state.attach(robot4);
@@ -193,7 +197,6 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results2() {
         try {
-            maj = major.getMajor();
             BoundingVolume ske = p2.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -204,7 +207,6 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results3() {
         try {
-            maj = major.getMajor();
             BoundingVolume ske = p3.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -215,7 +217,6 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results4() {
         try {
-            maj = major.getMajor();
             BoundingVolume ske = robot1.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -224,7 +225,7 @@ public class FifthState extends BaseAppState {
             return null;
         }
     }
-    public CollisionResults results5() {
+    /*public CollisionResults results5() {
         try {
             maj = major.getMajor();
             BoundingVolume ske = robot2.get();
@@ -234,10 +235,9 @@ public class FifthState extends BaseAppState {
         } catch (Exception e) {
             return null;
         }
-    }
+    }*/
     public CollisionResults results6() {
         try {
-            maj = major.getMajor();
             BoundingVolume ske = robot3.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -248,7 +248,6 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results7() {
         try {
-            maj = major.getMajor();
             BoundingVolume ske = robot4.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -259,7 +258,6 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results8() {
         try {
-            maj = major.getMajor();
             BoundingVolume ske = robot5.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -270,7 +268,6 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results9() {
         try {
-            maj = major.getMajor();
             BoundingVolume ske = robot6.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -281,7 +278,6 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results10() {
         try {
-            maj = major.getMajor();
             BoundingVolume ske = robot7.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -292,7 +288,6 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results11() {
         try {
-            maj = major.getMajor();
             BoundingVolume ske = robot8.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -303,7 +298,6 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results12(){
         try {
-            maj = major.getMajor();
             BoundingVolume kni = c1.get();
             CollisionResults results = new CollisionResults();
             maj.collideWith(kni, results);
@@ -314,7 +308,6 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results13(){
         try {
-            maj = major.getMajor();
             BoundingVolume kni = c2.get();
             CollisionResults results = new CollisionResults();
             maj.collideWith(kni, results);
@@ -324,7 +317,39 @@ public class FifthState extends BaseAppState {
         }
     }
 
-
+    public CollisionResults results14(){
+        try {
+            ray=major.get();
+            BoundingVolume kni = talkbot.get();
+            CollisionResults results = new CollisionResults();
+            maj.collideWith(kni, results);
+            return results;
+        }catch(Exception e){
+            return null;
+        }
+    }
+    public CollisionResults results15(){
+        try {
+            ray=major.get();
+            BoundingVolume kni = lizard.get();
+            CollisionResults results = new CollisionResults();
+            maj.collideWith(kni, results);
+            return results;
+        }catch(Exception e){
+            return null;
+        }
+    }
+    public CollisionResults results16(){
+        try {
+            ray=major.get();
+            BoundingVolume kni = master.get();
+            CollisionResults results = new CollisionResults();
+            maj.collideWith(kni, results);
+            return results;
+        }catch(Exception e){
+            return null;
+        }
+    }
     class StartTalk implements ActionListener {
         @Override
         public void onAction(String name, boolean isPressed, float tpf) {
@@ -333,7 +358,7 @@ public class FifthState extends BaseAppState {
             CollisionResults results2 = results2();
             CollisionResults results3 = results3();
             CollisionResults results4 = results4();
-            CollisionResults results5 = results5();
+            //CollisionResults results5 = results5();
             CollisionResults results6 = results6();
             CollisionResults results7 = results7();
             CollisionResults results8 = results8();
@@ -342,6 +367,42 @@ public class FifthState extends BaseAppState {
             CollisionResults results11 = results11();
             CollisionResults results12 = results12();
             CollisionResults results13 = results13();
+            CollisionResults results14 = results14();
+            CollisionResults results15 = results15();
+            CollisionResults results16 = results16();
+            if(talk.equals(name)&&isPressed){
+                if(results14.size()>0){             //初始机器人
+                    if (canmove == 1) {
+                        state.detach(input);
+                        major.mouseChange();
+                        canmove = 0;
+                    } else {
+                        state.attach(input);
+                        major.mouseChange();
+                        canmove = 1;
+                    }
+                }else if(results15.size()>0){           //蜥蜴
+                    if (canmove == 1) {
+                        state.detach(input);
+                        major.mouseChange();
+                        canmove = 0;
+                    } else {
+                        state.attach(input);
+                        major.mouseChange();
+                        canmove = 1;
+                    }
+                }else if(results16.size()>0){           //大师
+                    if (canmove == 1) {
+                        state.detach(input);
+                        major.mouseChange();
+                        canmove = 0;
+                    } else {
+                        state.attach(input);
+                        major.mouseChange();
+                        canmove = 1;
+                    }
+                }
+            }
             if (move.equals(name) && isPressed) {
                 if (results1 != null && results1.size() > 0) {
                     battle1 = 0;
@@ -351,8 +412,8 @@ public class FifthState extends BaseAppState {
                     battle1 = 2;
                 } else if (results4 != null && results4.size() > 0) {
                     battle1 = 3;
-                } else if (results5 != null && results5.size() > 0) {
-                    battle1 = 4;
+                //} else if (results5 != null && results5.size() > 0) {
+                //    battle1 = 4;
                 } else if (results6 != null && results6.size() > 0) {
                     battle1 = 5;
                 } else if (results7 != null && results7.size() > 0) {
@@ -468,7 +529,7 @@ public class FifthState extends BaseAppState {
 
                     break;
 
-                case 4:
+                /*case 4:
                     state.detach(input);
                     states.remove(input);
                     inputManager.deleteTrigger(talk, TALK);
@@ -487,7 +548,7 @@ public class FifthState extends BaseAppState {
                     GetCardState.setGoldCountAfterThisBattle(40);
 
                     break;
-
+*/
                 case 5:
                     state.detach(input);
                     states.remove(input);

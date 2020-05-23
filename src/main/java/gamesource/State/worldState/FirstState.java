@@ -466,6 +466,16 @@ public class FirstState extends BaseAppState {
         inputManager.addListener(st, bag);
 
 
+        inputManager.addMapping(move, MOVE);
+        inputManager.addListener(st, move);
+
+        for (BaseAppState baseAppState : states) {
+            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
+                baseAppState.setEnabled(true);
+                //state.detach(baseAppState);
+            }
+
+        }
     }
 
     @Override
@@ -477,7 +487,14 @@ public class FirstState extends BaseAppState {
         inputManager.deleteTrigger(talk, TALK);
         inputManager.deleteTrigger(change, CHANGECAMERA);
         inputManager.deleteTrigger(bag, BAG);
+        inputManager.deleteTrigger(move, MOVE);
+        for (BaseAppState baseAppState : states) {
+            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
+                baseAppState.setEnabled(false);
+                //state.detach(baseAppState);
+            }
 
+        }
         /*major.setEnabled(false);
         king.setEnabled(false);
         //input.setEnabled(false);
