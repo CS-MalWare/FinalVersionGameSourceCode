@@ -55,6 +55,7 @@ public class BattleState extends BaseAppState {
         app.getStateManager().attach(new LeadingActorState());
         app.getStateManager().attach(new BattleBackGroundState());
         app.getStateManager().attach(new LightState());
+        app.getStateManager().attach(new BattleEffect());
 //        app.getStateManager().attach(new FilterAppState());
 
 
@@ -129,6 +130,7 @@ public class BattleState extends BaseAppState {
         stateManager.detach(stateManager.getState(LeadingActorState.class));
         stateManager.detach(stateManager.getState(BattleBackGroundState.class));
         stateManager.detach(stateManager.getState(LightState.class));
+        stateManager.detach(stateManager.getState(BattleEffect.class));
         MainRole.getInstance().endBattle();
     }
 
