@@ -471,6 +471,7 @@ public class ThirdState extends BaseAppState {
                             new Wolfman(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Wolfman(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Wolfman(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+
                     );
                     major.setPlace(fish2_4.get().getCenter());
                     state.detach(fish2_4);
@@ -490,6 +491,7 @@ public class ThirdState extends BaseAppState {
                             new Wolfman(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Wolfman(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Wolfman(45, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+
                     );
                     major.setPlace(fish2_5.get().getCenter());
                     state.detach(fish2_5);
@@ -507,6 +509,7 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
                             new EliteWolfman(80, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+
                     );
                     major.setPlace(fish3_1.get().getCenter());
                     state.detach(fish3_1);
@@ -524,6 +527,7 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
                             new OneEyedWolfman(80, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+
                     );
                     major.setPlace(fish3_2.get().getCenter());
                     state.detach(fish3_2);
@@ -541,6 +545,7 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
                             new EliteWolfman(80, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+
                     );
                     major.setPlace(fish3_3.get().getCenter());
                     state.detach(fish3_3);
@@ -559,6 +564,7 @@ public class ThirdState extends BaseAppState {
                     EnemyState.getInstance().addEnemies(
                             new Wolfman(70, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0),
                             new Wolfman(70, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+
                     );
                     major.setPlace(fish3_4.get().getCenter());
                     state.detach(fish3_4);
