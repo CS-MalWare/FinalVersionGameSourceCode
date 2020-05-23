@@ -1,11 +1,5 @@
 package gamesource.battleState.appState;
 
-import gamesource.battleState.card.AttackCard;
-import gamesource.battleState.card.Card;
-import gamesource.battleState.card.CreateCard;
-import gamesource.battleState.card.SkillCard;
-import gamesource.battleState.character.Enemy;
-import gamesource.battleState.character.MainRole;
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.BaseAppState;
@@ -23,11 +17,16 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.shape.Curve;
 import com.jme3.ui.Picture;
-
-import java.util.ArrayList;
-
+import gamesource.battleState.card.AttackCard;
+import gamesource.battleState.card.Card;
+import gamesource.battleState.card.CreateCard;
+import gamesource.battleState.card.SkillCard;
+import gamesource.battleState.character.Enemy;
+import gamesource.battleState.character.MainRole;
 import gamesource.battleState.control.CardMotionControl;
 import gamesource.battleState.control.UseCardControl;
+
+import java.util.ArrayList;
 
 
 public class HandCardsState extends BaseAppState {
@@ -354,23 +353,23 @@ public class HandCardsState extends BaseAppState {
                         app.getStateManager().getState(DecksState.class).addToDrop(card);
                     app.getStateManager().getState(EnemyState.class).updateHints(true);
                     app.getStateManager().getState(LeadingActorState.class).updateHints();
-                    boolean flag = true;
-                    for (Enemy enemy : app.getStateManager().getState(EnemyState.class).getEnemies()) {
-                        if (enemy.getHP() > 0) {
-                            flag = false;
-                            break;
-                        }
-                    }
-                    if (flag) {
-                        Thread.sleep(300);
-                        // 加载选卡界面和移除主角
-
-                        for(Card x:this.handCards){
-                            x.removeControl(CardMotionControl.class);
-                        }
-                        app.getStateManager().attach(new GetCardState());
-//                        app.getStateManager().detach(app.getStateManager().getState(LeadingActorState.class));
-                    }
+//                    boolean flag = true;
+//                    for (Enemy enemy : app.getStateManager().getState(EnemyState.class).getEnemies()) {
+//                        if (enemy.getHP() > 0) {
+//                            flag = false;
+//                            break;
+//                        }
+//                    }
+//                    if (flag) {
+//                        Thread.sleep(300);
+//                        // 加载选卡界面和移除主角
+//
+//                        for(Card x:this.handCards){
+//                            x.removeControl(CardMotionControl.class);
+//                        }
+//                        app.getStateManager().attach(new GetCardState());
+////                        app.getStateManager().detach(app.getStateManager().getState(LeadingActorState.class));
+//                    }
                     cardUsedCount++;
                 }
             } else {
@@ -417,23 +416,23 @@ public class HandCardsState extends BaseAppState {
                         app.getStateManager().getState(DecksState.class).addToDrop(card);
                     app.getStateManager().getState(EnemyState.class).updateHints(false);
                     app.getStateManager().getState(LeadingActorState.class).updateHints();
-                    boolean flag = true;
-                    for (Enemy enemy : app.getStateManager().getState(EnemyState.class).getEnemies()) {
-                        if (enemy.getHP() > 0) {
-                            flag = false;
-                            break;
-                        }
-                    }
-                    if (flag) {
-                        Thread.sleep(300);
-                        // 加载选卡界面和移除主角
-
-                        for(Card x:this.handCards){
-                            x.removeControl(CardMotionControl.class);
-                        }
-                        app.getStateManager().attach(new GetCardState());
-//                        app.getStateManager().detach(app.getStateManager().getState(LeadingActorState.class));
-                    }
+//                    boolean flag = true;
+//                    for (Enemy enemy : app.getStateManager().getState(EnemyState.class).getEnemies()) {
+//                        if (enemy.getHP() > 0) {
+//                            flag = false;
+//                            break;
+//                        }
+//                    }
+//                    if (flag) {
+//                        Thread.sleep(300);
+//                        // 加载选卡界面和移除主角
+//
+//                        for(Card x:this.handCards){
+//                            x.removeControl(CardMotionControl.class);
+//                        }
+//                        app.getStateManager().attach(new GetCardState());
+////                        app.getStateManager().detach(app.getStateManager().getState(LeadingActorState.class));
+//                    }
                     cardUsedCount++;
 
                 }

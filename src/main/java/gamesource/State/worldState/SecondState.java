@@ -339,23 +339,25 @@ public class SecondState extends BaseAppState {
             return null;
         }
     }
-    public CollisionResults results14(){
+
+    public CollisionResults results14() {
         try {
             BoundingVolume kni = c2.get();
             CollisionResults results = new CollisionResults();
             maj.collideWith(kni, results);
             return results;
-        }catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
-    public CollisionResults results15(){
+
+    public CollisionResults results15() {
         try {
             BoundingVolume kni = c3.get();
             CollisionResults results = new CollisionResults();
             maj.collideWith(kni, results);
             return results;
-        }catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
@@ -427,10 +429,10 @@ public class SecondState extends BaseAppState {
                     battle1 = 9;
                 } else if (results13 != null && results13.size() > 0) {
                     battle1 = 10;
-                } else if(results14!=null&&results14.size()>0){
+                } else if (results14 != null && results14.size() > 0) {
                     System.out.println("chest");
                     c2.open();
-                }else if(results15!=null&&results15.size()>0){
+                } else if (results15 != null && results15.size() > 0) {
                     System.out.println("chest");
                     c3.open();
                 }
@@ -498,8 +500,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RedSlime(24, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                            new Slime(26, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                            new Slime(24, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 2, 0, 0, 0, 0, 0, 0, 0),
+                            new Slime(26, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 3, 0, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(skeleton3);
                     states.remove(skeleton3);
@@ -537,7 +539,7 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new BlackSlime(30, "Enemies/bat/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
+                            new RedSlime(30, "Enemies/bat/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
                             new BlackSlime(40, "Enemies/bat/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(bat1);
@@ -557,8 +559,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RedSlime(35, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 10, 1, 2, 0, 0, 0, 0, 0),
-                            new RedSlime(35, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 10, 1, 2, 0, 0, 0, 0, 0)
+                            new RedSlime(35, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 1, 2, 0, 0, 0, 0, 0),
+                            new BlackSlime(40, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 3, 2, 2, 0, 0, 0, 0, 0)
                     );
                     state.detach(snowRobot1);
                     states.remove(snowRobot1);
@@ -577,7 +579,7 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new KingSlime(150, "Enemies/skeleton/KingSkeleton/kingSkeleton.j3o", 0, 4, 1, 0, 0, 0, 0, 0)
+                            new EliteSlime(85, "Enemies/skeleton/KingSkeleton/kingSkeleton.j3o", 5, 1, 1, 0, 0, 0, 0, 0)
                     );
                     state.detach(skeleton5);
                     states.remove(skeleton5);
@@ -597,8 +599,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new BlackSlime(40, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 5, 0, 3, 0, 0, 0, 0, 0),
-                            new BlackSlime(50, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 5, 0, 2, 0, 0, 0, 0, 0)
+                            new BlackSlime(45, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 5, 0, 3, 0, 0, 0, 0, 0),
+                            new BlackSlime(38, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 5, 0, 2, 0, 0, 0, 0, 0)
                     );
                     state.detach(skeleton6);
                     states.remove(skeleton6);
@@ -616,8 +618,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Slime(30, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 0, 2, 0, 0, 0, 0, 0),
-                            new Slime(45, "Enemies/skeleton/skeleton.j3o", 0, 1, 0, 0, 0, 0, 0, 0)
+                            new RedSlime(40, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 7, 2, 2, 0, 0, 0, 0, 0),
+                            new RedSlime(45, "Enemies/skeleton/skeleton.j3o", 5, 1, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(skeleton7);
                     states.remove(skeleton7);
@@ -635,14 +637,15 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new EliteSlime(90, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 1, 1, 0, 0, 0, 0, 0)
+                            new KingSlime(160, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 5, 1, 1, 0, 0, 0, 0, 0)
                     );
                     state.detach(skeleton8);
                     states.remove(skeleton8);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    GetCardState.setGoldCountAfterThisBattle(70);
+                    GetCardState.setGoldCountAfterThisBattle(120);
+
 
                     break;
                 case 10:
@@ -653,14 +656,14 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new BlackSlime(60, "Enemies/bat/scene.j3o", 5, 2, 2, 0, 1, 0, 0, 0)
+                            new EliteSlime(90, "Enemies/bat/scene.j3o", 10, 3, 3, 1, 1, 0, 0, 0)
                     );
                     state.detach(bat2);
                     states.remove(bat2);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    GetCardState.setGoldCountAfterThisBattle(120);
+                    GetCardState.setGoldCountAfterThisBattle(70);
 
                     break;
 
