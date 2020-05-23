@@ -609,7 +609,7 @@ public class ThirdState extends BaseAppState {
                             new OneEyedWolfman(70, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 1, 0, 0, 0),
                             new OneEyedWolfman(70, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 1, 0, 0, 0)
                     );
-                    major.setPlace(crab1.get().getCenter());
+                    major.setPlace(crab2.get().getCenter());
                     state.detach(crab2);
                     states.remove(crab2);
                     state.attach(new Battle(states));

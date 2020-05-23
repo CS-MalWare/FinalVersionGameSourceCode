@@ -104,6 +104,9 @@ public class MainRole extends Role {
         for (Equipment equipment : equipments) {
             if (equipment.getOpportunity() == Equipment.Opportunity.STARTB)
                 equipment.fun();
+            for (Enemy enemy : EnemyState.getInstance().getEnemies()) {
+                enemy.updateHints();
+            }
         }
 
         this.setStrength(this.strength_);

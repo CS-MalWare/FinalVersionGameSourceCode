@@ -300,7 +300,7 @@ public class LeadingActorState extends BaseAppState {
                     txtB += String.format("Dexterity: %d        ", target.getDexterity());
                     txtB += String.format("Dodge: %d           ", target.getDodge().getTimes());
                     txtB += String.format("Excite: %d          ", target.getStrength());
-                    buffDisplay.setBox(new Rectangle(2, 4, 6, 3));
+                    buffDisplay.setBox(new Rectangle(2, 4.2f, 6, 3));
                     buffDisplay.setQueueBucket(RenderQueue.Bucket.Transparent);
                     buffDisplay.setSize(0.25f);
                     buffDisplay.setText(txtB);
