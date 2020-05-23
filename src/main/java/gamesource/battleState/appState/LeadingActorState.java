@@ -171,6 +171,8 @@ public class LeadingActorState extends BaseAppState {
         MpText.setLocalTranslation(220, 270, 1);
         guiNode.attachChild(MpText);
 
+        System.out.println("current MP:  " + MainRole.getInstance().getMP_current());
+
     }
 
     public static void attack(Boolean isAOE) {

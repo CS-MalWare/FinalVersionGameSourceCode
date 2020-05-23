@@ -3,13 +3,12 @@ package gamesource.battleState.appState;
 import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;
 import com.jme3.animation.LoopMode;
-import com.jme3.bounding.BoundingSphere;
-import gamesource.battleState.character.Enemy;
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.asset.AssetManager;
+import com.jme3.bounding.BoundingSphere;
 import com.jme3.collision.CollisionResults;
 import com.jme3.font.BitmapFont;
 import com.jme3.font.BitmapText;
@@ -30,7 +29,9 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Quad;
-import gamesource.battleState.particle.DamageParticle;
+import gamesource.battleState.card.Card;
+import gamesource.battleState.character.Enemy;
+import gamesource.battleState.control.CardMotionControl;
 import gamesource.battleState.particle.KingSkeletonStateParticle;
 import gamesource.battleState.particle.StuxnetStateParticle;
 
@@ -584,34 +585,34 @@ public class EnemyState extends BaseAppState {
                 model.move(-0.6f, 0.7f, 0);
                 break;
 
-            case "Enemies/underWater/fish50.j3o":
-                model.move(-1.5f, 0, 0);
-                break;
-            case "Enemies/underWater/fish51.j3o":
-                model.move(-1.3f, 0, 0);
-                break;
-            case "Enemies/underWater/fish52.j3o":
-                model.move(-1.1f, 0, 0);
-                break;
-
-            case "Enemies/underWater/fish60.j3o":
-                model.move(-1.3f, 0, 0);
-                break;
-            case "Enemies/underWater/fish61.j3o":
-                model.move(-1.1f, 0, 0);
-                break;
-            case "Enemies/underWater/fish62.j3o":
-                model.move(-0.9f, 0, 0);
-                break;
+//            case "Enemies/underWater/fish50.j3o":
+//                model.move(-1.5f, 0, 0);
+//                break;
+//            case "Enemies/underWater/fish51.j3o":
+//                model.move(-1.3f, 0, 0);
+//                break;
+//            case "Enemies/underWater/fish52.j3o":
+//                model.move(-1.1f, 0, 0);
+//                break;
+//
+//            case "Enemies/underWater/fish60.j3o":
+//                model.move(-1.3f, 0, 0);
+//                break;
+//            case "Enemies/underWater/fish61.j3o":
+//                model.move(-1.1f, 0, 0);
+//                break;
+//            case "Enemies/underWater/fish62.j3o":
+//                model.move(-0.9f, 0, 0);
+//                break;
 
             case "Enemies/underWater/hollowKnight0.j3o":
-                model.move(-1.5f,0,0);
+                model.move(-1.5f, 0, 0);
                 break;
             case "Enemies/underWater/hollowKnight1.j3o":
-                model.move(-1.3f,0,0);
+                model.move(-1.3f, 0, 0);
                 break;
             case "Enemies/underWater/hollowKnight2.j3o":
-                model.move(-1.1f,0,0);
+                model.move(-1.1f, 0, 0);
                 break;
 
             case "Enemies/underWater/mushroom_bug0.j3o":
@@ -906,6 +907,19 @@ public class EnemyState extends BaseAppState {
                 modelPositions.remove(i * 3);
                 modelPositions.remove(i * 3);
             }
+        }
+        if (enemies.size() == 0) {
+            try {
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            // 加载选卡界面和移除主角
+
+            for (Card x : HandCardsState.getInstance().getHandCards()) {
+                x.removeControl(CardMotionControl.class);
+            }
+            app.getStateManager().attach(new GetCardState());
         }
     }
 
