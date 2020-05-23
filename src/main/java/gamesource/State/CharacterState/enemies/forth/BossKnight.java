@@ -71,7 +71,7 @@ public class BossKnight extends BaseAppState {
         skeleton=app.getAssetManager().loadModel("Enemies/bossKnight/scene.j3o");
         skeleton.setName("skeleton");
         skeleton.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
-        skeleton.scale(0.5f);
+        skeleton.scale(1.5f);
         skeleton.rotate(0f,modelY,0f);
         ske=skeleton.getWorldBound();
     }
