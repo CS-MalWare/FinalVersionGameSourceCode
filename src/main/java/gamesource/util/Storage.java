@@ -1,5 +1,6 @@
 package gamesource.util;
 
+import gamesource.State.worldState.*;
 import gamesource.battleState.card.Card;
 import gamesource.battleState.card.neutral.attack.*;
 import gamesource.battleState.card.neutral.skill.*;
@@ -22,13 +23,12 @@ import java.util.ArrayList;
 
 public class Storage {
     // 需要存档的属性一览
-    // 1. 人物最大血量
-    // 2. 人物当前血量
-    // 3. 卡组信息
-    // 4. 金币数量
-    // 5. 人物装备
-    // 6. 人物坐标（需要大🐅的提供人物位置信息）
-    // 7. 打过的怪
+    // 1. 人物最大血量 (已完成)
+    // 2. 人物当前血量 (已完成)
+    // 3. 卡组信息 (已完成)
+    // 4. 金币数量 (已完成)
+    // 5. 人物装备 (已完成)
+    // 7. 能够进入的关卡 (应该算完成了)
 
 
     // 创建存档的方法 返回为true就是存档成功 返回为false就是存档失败
@@ -489,6 +489,14 @@ public class Storage {
                         break;
                 }
             }
+
+            String canGo[] = dataJson.getString("canGo").split("\\|");
+            FirstState.canGo = canGo[0];
+            SecondState.canGo = canGo[1];
+            ThirdState.canGo = canGo[2];
+            ForthState.canGo = canGo[3];
+            FifthState.canGo = canGo[4];
+            SixthState.canGo = canGo[5];
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("没有存档文件");
@@ -525,6 +533,15 @@ public class Storage {
                 tempPath += equipment.getPicName() + "|";
             }
             data += String.format("\"equipments\":\"%s\"\n", tempPath);
+            // 这次用这个变量临时存储能进入的关卡
+            tempPath = "";
+            tempPath += FirstState.canGo+"|";
+            tempPath += SecondState.canGo+"|";
+            tempPath += ThirdState.canGo+"|";
+            tempPath += ForthState.canGo+"|";
+            tempPath += FifthState.canGo+"|";
+            tempPath += SixthState.canGo;
+            data += String.format("\"canGo\":\"%s\"",tempPath);
             data += "}";
             bw.write(data);
             bw.close();

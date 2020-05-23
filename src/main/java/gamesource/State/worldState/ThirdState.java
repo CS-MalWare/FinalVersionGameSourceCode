@@ -34,6 +34,7 @@ import gamesource.uiState.shopstate.ShopAppState;
 import java.util.ArrayList;
 
 public class ThirdState extends BaseAppState {
+    public static String canGo = "cannot"; // 这是用于存档的变量, 大佬们不要改没了
     public final static String talk = "TALK";
     public final static Trigger TALK = new KeyTrigger(KeyInput.KEY_N);
     public final static String change = "CHANGE";
@@ -318,12 +319,12 @@ public class ThirdState extends BaseAppState {
                             new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(fish1_1.get().getCenter());
                     state.detach(fish1_1);
                     states.remove(fish1_1);
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    major.setPlace(fish1_1.get().getCenter());
                     break;
                 case 1:
                     state.detach(input);
@@ -336,9 +337,9 @@ public class ThirdState extends BaseAppState {
                             new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(fish1_2.get().getCenter());
                     state.detach(fish1_2);
                     states.remove(fish1_2);
-                    major.setPlace(fish1_2.get().getCenter());
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -354,9 +355,9 @@ public class ThirdState extends BaseAppState {
                             new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(fish1_3.get().getCenter());
                     state.detach(fish1_3);
                     states.remove(fish1_3);
-                    major.setPlace(fish1_3.get().getCenter());
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -372,10 +373,10 @@ public class ThirdState extends BaseAppState {
                             new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(fish1_4.get().getCenter());
                     state.detach(fish1_4);
                     states.remove(fish1_4);
                     state.attach(new Battle(states));
-                    major.setPlace(fish1_4.get().getCenter());
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     break;
@@ -391,10 +392,10 @@ public class ThirdState extends BaseAppState {
                             new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(fish1_5.get().getCenter());
                     state.detach(fish1_5);
                     states.remove(fish1_5);
                     state.attach(new Battle(states));
-                    major.setPlace(fish1_5.get().getCenter());
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     break;
@@ -411,11 +412,11 @@ public class ThirdState extends BaseAppState {
                             new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(fish2_1.get().getCenter());
                     state.detach(fish2_1);
                     states.remove(fish2_1);
 
                     state.attach(new Battle(states));
-                    major.setPlace(fish2_1.get().getCenter());
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     break;
@@ -432,10 +433,10 @@ public class ThirdState extends BaseAppState {
                             new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(fish2_2.get().getCenter());
                     state.detach(fish2_2);
                     states.remove(fish2_2);
                     state.attach(new Battle(states));
-                    major.setPlace(fish2_2.get().getCenter());
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     break;
@@ -453,9 +454,9 @@ public class ThirdState extends BaseAppState {
                             new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(fish2_3.get().getCenter());
                     state.detach(fish2_3);
                     states.remove(fish2_3);
-                    major.setPlace(fish2_3.get().getCenter());
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -472,9 +473,9 @@ public class ThirdState extends BaseAppState {
                             new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(fish2_4.get().getCenter());
                     state.detach(fish2_4);
                     states.remove(fish2_4);
-                    major.setPlace(fish2_4.get().getCenter());
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -491,10 +492,10 @@ public class ThirdState extends BaseAppState {
                             new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(fish2_5.get().getCenter());
                     state.detach(fish2_5);
                     states.remove(fish2_5);
                     state.attach(new Battle(states));
-                    major.setPlace(fish2_5.get().getCenter());
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     break;
@@ -508,9 +509,9 @@ public class ThirdState extends BaseAppState {
                     EnemyState.getInstance().addEnemies(
                             new StrongRobot(80, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(fish3_1.get().getCenter());
                     state.detach(fish3_1);
                     states.remove(fish3_1);
-                    major.setPlace(fish3_1.get().getCenter());
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -525,9 +526,9 @@ public class ThirdState extends BaseAppState {
                     EnemyState.getInstance().addEnemies(
                             new StrongRobot(80, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(fish3_2.get().getCenter());
                     state.detach(fish3_2);
                     states.remove(fish3_2);
-                    major.setPlace(fish3_2.get().getCenter());
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -542,10 +543,10 @@ public class ThirdState extends BaseAppState {
                     EnemyState.getInstance().addEnemies(
                             new StrongRobot(80, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(fish3_3.get().getCenter());
                     state.detach(fish3_3);
                     states.remove(fish3_3);
                     state.attach(new Battle(states));
-                    major.setPlace(fish3_3.get().getCenter());
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     break;
@@ -560,11 +561,11 @@ public class ThirdState extends BaseAppState {
                             new StrongRobot(80, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0),
                             new StrongRobot(80, "Enemies/underWater/fish3.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(fish3_4.get().getCenter());
                     state.detach(fish3_4);
                     states.remove(fish3_4);
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    major.setPlace(fish3_4.get().getCenter());
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     break;
                 case 14:
@@ -577,11 +578,11 @@ public class ThirdState extends BaseAppState {
                     EnemyState.getInstance().addEnemies(
                             new RampageRobot(110, "Enemies/underWater/drunkCrab.j3o", 10, 0, 0, 0, 1, 0, 0, 0)
                     );
+                    major.setPlace(crab1.get().getCenter());
                     state.detach(crab1);
                     states.remove(crab1);
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    major.setPlace(crab1.get().getCenter());
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     break;
                 case 15:
@@ -594,11 +595,11 @@ public class ThirdState extends BaseAppState {
                     EnemyState.getInstance().addEnemies(
                             new EliteRobot(130, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(crab1.get().getCenter());
                     state.detach(crab2);
                     states.remove(crab2);
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    major.setPlace(crab1.get().getCenter());
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     break;
                 case 16:
@@ -612,10 +613,10 @@ public class ThirdState extends BaseAppState {
                             new StrongRobot(80, "Enemies/underWater/mushroomBug.j3o", 10, 1, 0, 0, 0, 0, 0, 0),
                             new StrongRobot(80, "Enemies/underWater/mushroomBug.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(bu1.get().getCenter());
                     state.detach(bu1);
                     states.remove(bu1);
                     state.attach(new Battle(states));
-                    major.setPlace(bu1.get().getCenter());
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     break;
@@ -630,10 +631,10 @@ public class ThirdState extends BaseAppState {
                             new StrongRobot(80, "Enemies/underWater/mushroomBug.j3o", 10, 1, 0, 0, 0, 0, 0, 0),
                             new StrongRobot(80, "Enemies/underWater/mushroomBug.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
                     );
+                    major.setPlace(bu2.get().getCenter());
                     state.detach(bu2);
                     states.remove(bu2);
                     state.attach(new Battle(states));
-                    major.setPlace(bu1.get().getCenter());
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     break;
@@ -647,10 +648,10 @@ public class ThirdState extends BaseAppState {
                     EnemyState.getInstance().addEnemies(
                             new Faker(150, "Enemies/underWater/fishboss.j3o", 10, 1, 0, 1, 3, 0, 0, 0)
                     );
+                    major.setPlace(boss.get().getCenter());
                     state.detach(boss);
                     states.remove(boss);
                     state.attach(new Battle(states));
-                    major.setPlace(bu1.get().getCenter());
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     break;
@@ -662,13 +663,13 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RampageRobot(200, "Enemies/underWater/drunkCrab.j3o", 10, 0, 0, 0, 1, 0, 0, 0)
+                            new RampageRobot(100, "Enemies/underWater/drunkCrab.j3o", 10, 0, 0, 0, 1, 0, 0, 0)
                     );
+                    major.setPlace(crab3.get().getCenter());
                     state.detach(crab3);
                     states.remove(crab3);
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
-                    major.setPlace(crab1.get().getCenter());
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     break;
                 default:

@@ -38,7 +38,7 @@ import gamesource.util.TalkWithOption;
 import gamesource.util.TalkWithOption.CallType;
 
 public class FirstState extends BaseAppState {
-
+    public static String canGo = "can";// 这是用于存档的变量,大佬们不要改没了
     public final static String talk = "TALK";
     public final static Trigger TALK = new KeyTrigger(KeyInput.KEY_N);
     public final static String change = "CHANGE";

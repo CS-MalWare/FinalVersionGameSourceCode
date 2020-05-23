@@ -198,7 +198,7 @@ public class EnemyState extends BaseAppState {
         for (int i = 0; i < enemies.size(); i++) {
             txtB += String.format("%d. %s\n\n\n", i + 1, enemies.get(i).getNextActionDescription());
         }
-        actionDisplay.setBox(new Rectangle(2, 4, 6, 3));
+        actionDisplay.setBox(new Rectangle(2, 4, 5, 3));
         actionDisplay.setQueueBucket(RenderQueue.Bucket.Transparent);
         actionDisplay.setSize(0.25f);
         actionDisplay.setText(txtB);
