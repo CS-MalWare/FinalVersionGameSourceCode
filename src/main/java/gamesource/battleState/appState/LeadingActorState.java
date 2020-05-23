@@ -6,6 +6,8 @@ import com.jme3.animation.LoopMode;
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.BaseAppState;
+import com.jme3.audio.AudioData;
+import com.jme3.audio.AudioNode;
 import com.jme3.bounding.BoundingSphere;
 import com.jme3.collision.CollisionResults;
 import com.jme3.font.BitmapFont;
@@ -374,6 +376,12 @@ public class LeadingActorState extends BaseAppState {
     public void update(float tpf) {
         super.update(tpf);
         if (this.target.getHP() <= 0 && !flag) {
+            AudioNode audioNode = new AudioNode(app.getAssetManager(),"Sound/Dead/主角死亡.wav", AudioData.DataType.Buffer);
+            audioNode.setLooping(false);
+            audioNode.setPositional(false);
+            audioNode.setVolume(10);
+            rootNode.attachChild(audioNode);
+            audioNode.playInstance();
             BitmapFont fnt = app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
             BitmapText word = new BitmapText(fnt, false);//显示的文字
             word.setText("Game Over");
