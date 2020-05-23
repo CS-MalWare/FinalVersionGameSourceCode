@@ -372,6 +372,12 @@ public class FirstState extends BaseAppState {
                         canmove = 1;
                     }
                 }else if(results8.size()>0){                    //这里是桥上士兵
+                    content.clear();
+                    content.add("Hello");
+                    content.add("We all glad to see you again in King city. After training, there has a great change on your body!");
+                    content.add("We are drilling recruits. Would you be pleasure to give them a lession?");
+                    TalkWithOption talkWithOption = new TalkWithOption("Soldier", content, CallType.SHOP);
+                    state.attach(talkWithOption);
                     if (canmove == 1) {
                         state.detach(input);
                         major.mouseChange();
