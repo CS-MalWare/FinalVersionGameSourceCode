@@ -79,7 +79,7 @@ public class FirstWorldLight extends BaseAppState {
         rootNode.addLight(sun4);
         rootNode.addLight(sun6);
         if (turnOn == 1) {
-            su = new DirectionalLightShadowFilter(manager, 4096*2, 3);
+            su = new DirectionalLightShadowFilter(manager, 1024, 3);
 
             su.setLight(sun);
             x1 = view.getProcessors();

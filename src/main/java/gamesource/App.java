@@ -57,7 +57,7 @@ public class App extends SimpleApplication {
         bullet.getPhysicsSpace().setGravity(new Vector3f(0, -9.81f, 0));
 
         FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
-        fpp.setNumSamples(16);
+        fpp.setNumSamples(4);
         viewPort.addProcessor(fpp);
         stateManager.attach(new MajorActor());
         stateManager.attach(new InputAppState());
@@ -71,7 +71,7 @@ public class App extends SimpleApplication {
         f3 = new ThirdState();
         f4 = new ForthState();
         f5 = new FifthState();
-        stateManager.attach(f5);
+        stateManager.attach(f1);
         //stateManager.getState(SecondState.class).setEnabled(false);
         //f2.setEnabled(false);
         //stateManager.attach(f2);

@@ -30,6 +30,7 @@ import gamesource.State.mapState.FirstWorldState;
 import gamesource.State.mapState.Chest;
 import gamesource.State.mapState.SkyBox;
 import gamesource.State.musicState.FirstBackMusic;
+import gamesource.testState.AxisState;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -123,6 +124,7 @@ public class FirstState extends BaseAppState {
         states.add(menuState);
         cross = state.getState(makeCross.class);
         states.add(cross);
+        state.attach(new AxisState());
         //state.attach(bullet);
         state.attach(f1);
         states.add(f1);
@@ -207,8 +209,8 @@ public class FirstState extends BaseAppState {
         inputManager.addMapping(move, MOVE);
         inputManager.addListener(st, move);
 
-        major.setPlace(new Vector3f(93.51907f, -31.696218f, 18.607859f));
-
+        //major.setPlace(new Vector3f(93.51907f, -31.696218f, 18.607859f));
+        major.setPlace(new Vector3f(0,0,0));
     }
 
     public void change() {
