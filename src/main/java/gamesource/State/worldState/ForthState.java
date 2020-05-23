@@ -35,6 +35,7 @@ import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.battle.Battle;
 import gamesource.battleState.character.enemy.boss.Ace;
 import gamesource.battleState.character.enemy.boss.Zac;
+import gamesource.battleState.character.enemy.dragonWat.DarkDragon;
 import gamesource.battleState.character.enemy.originalForest.*;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
@@ -372,8 +373,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Slime(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                            new Slime(80, "Enemies/forth/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                            new DarkDragon(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new DarkDragon(80, "Enemies/forth/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
                     );
                    // cam.setLocation(new Vector3f(0, 0, 10.3f));
                   //  cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -391,8 +392,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Slime(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                            new Slime(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                            new DarkDragon(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new DarkDragon(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
                     );
                    // cam.setLocation(new Vector3f(0, 0, 10.3f));
                    // cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -409,8 +410,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RedSlime(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                            new Slime(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                            new DarkDragon(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new DarkDragon(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
                     );
                    // cam.setLocation(new Vector3f(0, 0, 10.3f));
                    // cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -446,8 +447,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new BlackSlime(40, "Enemies/bat/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
-                            new BlackSlime(40, "Enemies/bat/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                            new BlackSlime(50, "Enemies/bat/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
+                            new BlackSlime(50, "Enemies/bat/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
                     );
                    // cam.setLocation(new Vector3f(0, 0, 10.3f));
                    // cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -502,8 +503,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Wolfman(80, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 3, 0, 0, 0, 0, 0),
-                            new Wolfman(80, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 2, 0, 0, 0, 0, 0)
+                            new EliteSlime(80, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 3, 0, 0, 0, 0, 0),
+                            new EliteSlime(80, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 2, 0, 0, 0, 0, 0)
                     );
                     //cam.setLocation(new Vector3f(0, 0, 10.3f));
                     //cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -520,7 +521,7 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Zac(200, "Enemies/forth/boss/scene.j3o", 20, 0, 2, 0, 0, 0, 0, 0)
+                            new Zac(160, "Enemies/forth/boss/scene.j3o", 20, 0, 2, 0, 0, 0, 0, 0)
                     );
                     //cam.setLocation(new Vector3f(0, 0, 10.3f));
                     //cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));

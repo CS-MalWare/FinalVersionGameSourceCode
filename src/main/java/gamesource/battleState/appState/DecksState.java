@@ -164,6 +164,18 @@ public class DecksState extends BaseAppState {
             add(new AudioNode(app.getAssetManager(), "Sound/Attack/龙攻击.wav", AudioData.DataType.Buffer));
             add(new AudioNode(app.getAssetManager(), "Sound/Skill/龙技能.wav", AudioData.DataType.Buffer));
             add(new AudioNode(app.getAssetManager(), "Sound/Dead/龙死亡.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/Attack/Ace攻击.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/Attack/Faker攻击.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/Attack/Zac攻击.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/skill/Faker技能.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/skill/Ace技能.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/skill/Zac技能.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/Dead/Faker死亡.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/Dead/Zac人死亡.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/Dead/Ace死亡.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/Attack/震网攻击.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/Skill/震网技能.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/Dead/震网死亡.wav", AudioData.DataType.Buffer));
         }};
         System.out.println(audioNodes.size());
         for (AudioNode an : audioNodes) {
@@ -567,6 +579,24 @@ public class DecksState extends BaseAppState {
                                                 break;
                                             case "dragon skill":
                                                 audioNodes.get(10).playInstance();
+                                                break;
+                                            case "ace attack":
+                                                audioNodes.get(12).playInstance();
+                                                break;
+                                            case "faker attack":
+                                                audioNodes.get(13).playInstance();
+                                                break;
+                                            case "zac attack":
+                                                audioNodes.get(14).playInstance();
+                                                break;
+                                            case "faker skill":
+                                                audioNodes.get(15).playInstance();
+                                                break;
+                                            case "ace skill":
+                                                audioNodes.get(16).playInstance();
+                                                break;
+                                            case "zac skill":
+                                                audioNodes.get(17).playInstance();
                                                 break;
                                             default:
                                                 break;

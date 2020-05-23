@@ -57,15 +57,15 @@ public class ThirdState extends BaseAppState {
     InputAppState input;
     ThirdWorldMap world = new ThirdWorldMap();
     // MajorActor major=new MajorActor(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
-    Chest c1 = new Chest(new Vector3f(-26.21191f, 35.16028f, 18.530737f),5f);
+    Chest c1 = new Chest(new Vector3f(-26.21191f, 35.16028f, 18.530737f), 5f);
     Chest c2 = new Chest(new Vector3f(-85.80681f, -5.9977064f, 60.71085f));
-    Chest c3 = new Chest(new Vector3f(74.26929f, -2.273324f, 37.252453f),-1f);
+    Chest c3 = new Chest(new Vector3f(74.26929f, -2.273324f, 37.252453f), -1f);
 
     //这个地图暂时这5种怪物，想新加new一下加入state里面，构造函数第一个参数是位置，第二个是朝向，进入游戏需要先按c进入第一人称，再按f1来获取玩家坐标
 
     private DrunkCrab crab1 = new DrunkCrab(new Vector3f(86.417725f, 3.0157287f, -5.2350335f), 2f);
-    private DrunkCrab crab2 = new DrunkCrab(new Vector3f(-62.53405f, 3.3551812f, 1.4148519f),3f);
-    private DrunkCrab crab3 = new DrunkCrab(new Vector3f(82.45858f, -3.1019607f, 43.562225f),4f);
+    private DrunkCrab crab2 = new DrunkCrab(new Vector3f(-62.53405f, 3.3551812f, 1.4148519f), 3f);
+    private DrunkCrab crab3 = new DrunkCrab(new Vector3f(82.45858f, -3.1019607f, 43.562225f), 4f);
     private Fish1State fish1_1 = new Fish1State(new Vector3f(93.7314f, -3.7759366f, 27.07812f), 5f);
     private Fish1State fish1_2 = new Fish1State(new Vector3f(46.98013f, 0.9620397f, -0.31717157f), -3f);
     private Fish1State fish1_3 = new Fish1State(new Vector3f(56.948456f, 3.351931f, -47.507305f), 3f);
@@ -81,10 +81,10 @@ public class ThirdState extends BaseAppState {
     private Fish5State fish3_3 = new Fish5State(new Vector3f(-58.6319f, -1.6084806f, 50.47643f), -6);
     private Fish5State fish3_4 = new Fish5State(new Vector3f(-80.64096f, -6.567422f, 66.516266f), 3);
     private MushroomBug bu1 = new MushroomBug(new Vector3f(60.75251f, 4.0023937f, -34.16455f), -4f);
-    private MushroomBug bu2 = new MushroomBug(new Vector3f(-61.74419f, 4.1799035f, -12.796891f),4f);
-    private FishBoss boss=new FishBoss(new Vector3f(-71.28984f, -2.5547683f, 37.708557f),2);
-    private ThirdBackMusic music=new ThirdBackMusic();
-    private ThirdOtherSpecial effect=new ThirdOtherSpecial();
+    private MushroomBug bu2 = new MushroomBug(new Vector3f(-61.74419f, 4.1799035f, -12.796891f), 4f);
+    private FishBoss boss = new FishBoss(new Vector3f(-71.28984f, -2.5547683f, 37.708557f), 2);
+    private ThirdBackMusic music = new ThirdBackMusic();
+    private ThirdOtherSpecial effect = new ThirdOtherSpecial();
     //private Fish6State fish5_1 =new Fish6State(new Vector3f(5,30,0));
 
     private StartTalk st = new StartTalk();
@@ -240,53 +240,53 @@ public class ThirdState extends BaseAppState {
             CollisionResults results9 = results9();
 
             if (move.equals(name) && isPressed) {
-                if (results1_1!=null&&results1_1.size() > 0) {
+                if (results1_1 != null && results1_1.size() > 0) {
                     battle1 = 0;
-                } else if (results1_2!=null&&results1_2.size() > 0) {
+                } else if (results1_2 != null && results1_2.size() > 0) {
                     battle1 = 1;
-                } else if (results1_3!=null&&results1_3.size() > 0) {
+                } else if (results1_3 != null && results1_3.size() > 0) {
                     battle1 = 2;
-                } else if (results1_4!=null&&results1_4.size() > 0) {
+                } else if (results1_4 != null && results1_4.size() > 0) {
                     battle1 = 3;
-                } else if (results1_5!=null&&results1_5.size() > 0) {
+                } else if (results1_5 != null && results1_5.size() > 0) {
                     battle1 = 4;
-                } else if (results2_1!=null&&results2_1.size() > 0) {
+                } else if (results2_1 != null && results2_1.size() > 0) {
                     battle1 = 5;
-                } else if (results2_2!=null&&results2_2.size() > 0) {
+                } else if (results2_2 != null && results2_2.size() > 0) {
                     battle1 = 6;
-                } else if (results2_3!=null&&results2_3.size() > 0) {
+                } else if (results2_3 != null && results2_3.size() > 0) {
                     battle1 = 7;
-                } else if (results2_4!=null&&results2_4.size() > 0) {
+                } else if (results2_4 != null && results2_4.size() > 0) {
                     battle1 = 8;
-                } else if (results2_5!=null&&results2_5.size() > 0) {
+                } else if (results2_5 != null && results2_5.size() > 0) {
                     battle1 = 9;
-                } else if (results3_1!=null&&results3_1.size() > 0) {
+                } else if (results3_1 != null && results3_1.size() > 0) {
                     battle1 = 10;
-                } else if (results3_2!=null&&results3_2.size() > 0) {
+                } else if (results3_2 != null && results3_2.size() > 0) {
                     battle1 = 11;
-                } else if (results3_3!=null&&results3_3.size() > 0) {
+                } else if (results3_3 != null && results3_3.size() > 0) {
                     battle1 = 12;
-                } else if (results3_4!=null&&results3_4.size() > 0) {
+                } else if (results3_4 != null && results3_4.size() > 0) {
                     battle1 = 13;
-                } else if (results4_1!=null&&results4_1.size() > 0) {
+                } else if (results4_1 != null && results4_1.size() > 0) {
                     battle1 = 14;
-                }else if (results4_2!=null&&results4_2.size() > 0) {
+                } else if (results4_2 != null && results4_2.size() > 0) {
                     battle1 = 15;
-                }else if (results4_3!=null&&results4_3.size() > 0) {
+                } else if (results4_3 != null && results4_3.size() > 0) {
                     battle1 = 19;
-                } else if (results5_1!=null&&results5_1.size() > 0) {
+                } else if (results5_1 != null && results5_1.size() > 0) {
                     battle1 = 16;
-                }else if (results5_2!=null&&results5_1.size() > 0) {
+                } else if (results5_2 != null && results5_1.size() > 0) {
                     battle1 = 17;
-                }else if (results6!=null&&results6.size() > 0) {
+                } else if (results6 != null && results6.size() > 0) {
                     battle1 = 18;
-                }else if(results7!=null&&results7.size()>0){
+                } else if (results7 != null && results7.size() > 0) {
                     System.out.println("chest");
                     c1.open();
-                }else if(results8!=null&&results8.size()>0){
+                } else if (results8 != null && results8.size() > 0) {
                     System.out.println("chest");
                     c2.open();
-                }else if(results9!=null&&results9.size()>0){
+                } else if (results9 != null && results9.size() > 0) {
                     System.out.println("chest");
                     c3.open();
                 }
@@ -317,8 +317,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                            new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish1_1.get().getCenter());
                     state.detach(fish1_1);
@@ -335,8 +335,9 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                            new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish1_2.get().getCenter());
                     state.detach(fish1_2);
@@ -353,8 +354,9 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                            new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish1_3.get().getCenter());
                     state.detach(fish1_3);
@@ -371,8 +373,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                            new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish1_4.get().getCenter());
                     state.detach(fish1_4);
@@ -390,8 +392,9 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(75, "Enemies/underWater/fish1.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                            new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish1_5.get().getCenter());
                     state.detach(fish1_5);
@@ -409,9 +412,9 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                            new Wolfman(45, "Enemies/underWater/fish6.j3o", 0, 3, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish6.j3o", 0, 3, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish6.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish2_1.get().getCenter());
                     state.detach(fish2_1);
@@ -430,9 +433,9 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish2.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                            new Wolfman(45, "Enemies/underWater/fish6.j3o", 0, 3, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish6.j3o", 0, 3, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish6.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish2_2.get().getCenter());
                     state.detach(fish2_2);
@@ -451,9 +454,10 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                            new Wolfman(45, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+
                     );
                     major.setPlace(fish2_3.get().getCenter());
                     state.detach(fish2_3);
@@ -470,9 +474,9 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                            new Wolfman(45, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish2_4.get().getCenter());
                     state.detach(fish2_4);
@@ -489,9 +493,9 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(65, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                            new Wolfman(45, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish2_5.get().getCenter());
                     state.detach(fish2_5);
@@ -508,7 +512,9 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new StrongRobot(80, "Enemies/underWater/fish5.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                            new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish3_1.get().getCenter());
                     state.detach(fish3_1);
@@ -525,7 +531,9 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new StrongRobot(80, "Enemies/underWater/fish5.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                            new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish3_2.get().getCenter());
                     state.detach(fish3_2);
@@ -542,7 +550,9 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new StrongRobot(80, "Enemies/underWater/fish5.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                            new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish3_3.get().getCenter());
                     state.detach(fish3_3);
@@ -559,8 +569,9 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new StrongRobot(80, "Enemies/underWater/fish5.j3o", 10, 1, 0, 0, 0, 0, 0, 0),
-                            new StrongRobot(80, "Enemies/underWater/fish5.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                            new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish3_4.get().getCenter());
                     state.detach(fish3_4);
@@ -577,7 +588,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RampageRobot(110, "Enemies/underWater/drunkCrab.j3o", 10, 0, 0, 0, 1, 0, 0, 0)
+                            new OneEyedWolfman(70, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 1, 0, 0, 0),
+                            new OneEyedWolfman(70, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 1, 0, 0, 0)
                     );
                     major.setPlace(crab1.get().getCenter());
                     state.detach(crab1);
@@ -594,7 +606,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new EliteRobot(130, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 0, 0, 0, 0)
+                            new OneEyedWolfman(70, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 1, 0, 0, 0),
+                            new OneEyedWolfman(70, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 1, 0, 0, 0)
                     );
                     major.setPlace(crab1.get().getCenter());
                     state.detach(crab2);
@@ -611,8 +624,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new StrongRobot(80, "Enemies/underWater/mushroomBug.j3o", 10, 1, 0, 0, 0, 0, 0, 0),
-                            new StrongRobot(80, "Enemies/underWater/mushroomBug.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                            new EliteWolfman(100, "Enemies/underWater/mushroomBug.j3o", 10, 3, 0, 0, 0, 0, 0, 0),
+                            new EliteWolfman(100, "Enemies/underWater/mushroomBug.j3o", 10, 3, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(bu1.get().getCenter());
                     state.detach(bu1);
@@ -629,8 +642,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new StrongRobot(80, "Enemies/underWater/mushroomBug.j3o", 10, 1, 0, 0, 0, 0, 0, 0),
-                            new StrongRobot(80, "Enemies/underWater/mushroomBug.j3o", 10, 1, 0, 0, 0, 0, 0, 0)
+                            new EliteWolfman(100, "Enemies/underWater/mushroomBug.j3o", 10, 3, 0, 0, 0, 0, 0, 0),
+                            new EliteWolfman(100, "Enemies/underWater/mushroomBug.j3o", 10, 3, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(bu2.get().getCenter());
                     state.detach(bu2);
@@ -647,7 +660,7 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RampageRobot(150, "Enemies/underWater/fishboss.j3o", 10, 1, 0, 1, 3, 0, 0, 0)
+                            new KingWolfman(200, "Enemies/underWater/fishboss.j3o", 20, 3, 0, 1, 3, 0, 0, 0)
                     );
                     major.setPlace(boss.get().getCenter());
                     state.detach(boss);
@@ -664,7 +677,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RampageRobot(100, "Enemies/underWater/drunkCrab.j3o", 10, 0, 0, 0, 1, 0, 0, 0)
+                            new OneEyedWolfman(70, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 1, 0, 0, 0),
+                            new OneEyedWolfman(70, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 1, 0, 0, 0)
                     );
                     major.setPlace(crab3.get().getCenter());
                     state.detach(crab3);
@@ -877,6 +891,7 @@ public class ThirdState extends BaseAppState {
             return new CollisionResults();
         }
     }
+
     public CollisionResults results5_2() {
         BoundingVolume ske = bu2.get();
         CollisionResults result = new CollisionResults();
@@ -887,6 +902,7 @@ public class ThirdState extends BaseAppState {
             return new CollisionResults();
         }
     }
+
     public CollisionResults results6() {
         BoundingVolume ske = boss.get();
         CollisionResults result = new CollisionResults();
@@ -897,36 +913,39 @@ public class ThirdState extends BaseAppState {
             return new CollisionResults();
         }
     }
-    public CollisionResults results7(){
+
+    public CollisionResults results7() {
         try {
             maj = major.getMajor();
             BoundingVolume kni = c1.get();
             CollisionResults results = new CollisionResults();
             maj.collideWith(kni, results);
             return results;
-        }catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
-    public CollisionResults results8(){
+
+    public CollisionResults results8() {
         try {
             maj = major.getMajor();
             BoundingVolume kni = c2.get();
             CollisionResults results = new CollisionResults();
             maj.collideWith(kni, results);
             return results;
-        }catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
-    public CollisionResults results9(){
+
+    public CollisionResults results9() {
         try {
             maj = major.getMajor();
             BoundingVolume kni = c3.get();
             CollisionResults results = new CollisionResults();
             maj.collideWith(kni, results);
             return results;
-        }catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
