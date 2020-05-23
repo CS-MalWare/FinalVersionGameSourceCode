@@ -15,7 +15,7 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
-public class boss extends BaseAppState {
+public class Boss extends BaseAppState {
     private BulletAppState bullet;
     private Spatial skeleton;
     private CapsuleCollisionShape capsuleShape=new CapsuleCollisionShape();
@@ -57,13 +57,13 @@ public class boss extends BaseAppState {
         skeletonControl.setPhysicsLocation(place);
     }
 
-    public boss(){
+    public Boss(){
 
     }
-    public boss(Vector3f place){
+    public Boss(Vector3f place){
         this.place=place;
     }
-    public boss(Vector3f place, float modelY){
+    public Boss(Vector3f place, float modelY){
         this.place=place;
         this.modelY=modelY;
     }

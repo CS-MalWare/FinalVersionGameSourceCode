@@ -19,7 +19,7 @@ import gamesource.State.CharacterState.enemies.BlueSkeletonState;
 import gamesource.State.CharacterState.enemies.RedSkeletonState;
 import gamesource.State.CharacterState.enemies.forth.BossKnight;
 import gamesource.State.CharacterState.enemies.forth.StoneMan;
-import gamesource.State.CharacterState.enemies.forth.boss;
+import gamesource.State.CharacterState.enemies.forth.Boss;
 import gamesource.State.SpecialEffect.FifthOtherSpecial;
 import gamesource.State.SpecialEffect.ThirdWorldLight;
 import gamesource.State.SpecialEffect.Water;
@@ -36,6 +36,7 @@ import gamesource.battleState.battle.Battle;
 import gamesource.battleState.character.enemy.boss.Ace;
 import gamesource.battleState.character.enemy.boss.Zac;
 import gamesource.battleState.character.enemy.dragonWat.DarkDragon;
+import gamesource.battleState.character.enemy.mechanicalEmpire.*;
 import gamesource.battleState.character.enemy.originalForest.*;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
@@ -71,9 +72,8 @@ public class ForthState extends BaseAppState {
     Chest c2 = new Chest(new Vector3f(-2.0793266f, -11.933819f, -37.70006f),-1f);
 
     private StoneMan man1=new StoneMan(new Vector3f(1.2305703f, -21.918747f, 31.115707f),4.5f,1,0,1);
-    private boss bos=new boss(new Vector3f(0.2364038f, -12.214317f, -34.228657f),3.6f);
+    private Boss bos=new Boss(new Vector3f(0.2364038f, -12.214317f, -34.228657f),3.6f);
     private BatState bat1=new BatState(new Vector3f(-8.639356f, -21.22517f, 19.451141f),-0.5f);
-
     private BatState bat2=new BatState(new Vector3f(-16.774906f, -15.959639f, 18.43346f),1.1f);
     private BatState bat3=new BatState(new Vector3f(-14.036222f, -0.26350462f, -22.96706f),-0.5f);
     private BossKnight knight=new BossKnight(new Vector3f(2.0474744f, -21.482273f, 7.5591955f),-1.2f);
@@ -373,8 +373,9 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new DarkDragon(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                            new DarkDragon(80, "Enemies/forth/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                            new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
+                            new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
+                            new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0)
                     );
                    // cam.setLocation(new Vector3f(0, 0, 10.3f));
                   //  cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -392,8 +393,9 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new DarkDragon(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                            new DarkDragon(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                            new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
+                            new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
+                            new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0)
                     );
                    // cam.setLocation(new Vector3f(0, 0, 10.3f));
                    // cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -410,8 +412,9 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new DarkDragon(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                            new DarkDragon(80, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                            new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
+                            new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
+                            new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0)
                     );
                    // cam.setLocation(new Vector3f(0, 0, 10.3f));
                    // cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -428,8 +431,9 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RedSlime(65, "Enemies/bat/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
-                            new RedSlime(65, "Enemies/bat/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                            new StrongRobot(60, "Enemies/bat/scene.j3o", 15, 0, 0, 0, 5, 2, 0, 0),
+                            new StrongRobot(60, "Enemies/bat/scene.j3o", 15, 0, 0, 0, 5, 2, 0, 0),
+                            new StrongRobot(60, "Enemies/bat/scene.j3o", 15, 0, 0, 0, 5, 2, 0, 0)
                     );
                     //cam.setLocation(new Vector3f(0, 0, 10.3f));
                    // cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -447,8 +451,9 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new BlackSlime(50, "Enemies/bat/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
-                            new BlackSlime(50, "Enemies/bat/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                            new StrongRobot(60, "Enemies/bat/scene.j3o", 15, 0, 0, 0, 5, 2, 0, 0),
+                            new StrongRobot(60, "Enemies/bat/scene.j3o", 15, 0, 0, 0, 5, 2, 0, 0),
+                            new StrongRobot(60, "Enemies/bat/scene.j3o", 15, 0, 0, 0, 5, 2, 0, 0)
                     );
                    // cam.setLocation(new Vector3f(0, 0, 10.3f));
                    // cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -466,7 +471,9 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new EliteSlime(90, "Enemies/bat/scene.j3o", 10, 1, 2, 0, 0, 0, 0, 0)
+                            new StrongRobot(60, "Enemies/bat/scene.j3o", 15, 0, 0, 0, 5, 2, 0, 0),
+                            new StrongRobot(60, "Enemies/bat/scene.j3o", 15, 0, 0, 0, 5, 2, 0, 0),
+                            new StrongRobot(60, "Enemies/bat/scene.j3o", 15, 0, 0, 0, 5, 2, 0, 0)
                     );
                     //cam.setLocation(new Vector3f(0, 0, 10.3f));
                     //cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -484,7 +491,9 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new KingSlime(100, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 4, 1, 0, 0, 0, 0, 0)
+                            new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
+                            new RampageRobot(100, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 4, 1, 0, 0, 0, 0, 0),
+                    new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0)
                     );
                     //cam.setLocation(new Vector3f(0, 0, 10.3f));
                    // cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -503,8 +512,9 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new EliteSlime(80, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 3, 0, 0, 0, 0, 0),
-                            new EliteSlime(80, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 2, 0, 0, 0, 0, 0)
+                            new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
+                            new RampageRobot(100, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 3, 0, 0, 0, 0, 0),
+                            new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0)
                     );
                     //cam.setLocation(new Vector3f(0, 0, 10.3f));
                     //cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -521,7 +531,7 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Zac(160, "Enemies/forth/boss/scene.j3o", 20, 0, 2, 0, 0, 0, 0, 0)
+                            new SteamRobot(300, "Enemies/forth/boss/scene.j3o", 20, 2, 2, 0, 5, 0, 0, 0)
                     );
                     //cam.setLocation(new Vector3f(0, 0, 10.3f));
                     //cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
@@ -538,7 +548,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Ace(135, "Enemies/bossKnight/scene.j3o", 0, 5, 1, 0, 0, 0, 0, 0)
+                            new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
+                            new EliteRobot(100, "Enemies/bossKnight/scene.j3o", 100, 5, 1, 0, 0, 0, 0, 0)
                     );
                     //cam.setLocation(new Vector3f(0, 0, 10.3f));
                     //cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
