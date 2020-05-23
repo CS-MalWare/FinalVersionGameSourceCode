@@ -167,11 +167,11 @@ public class DecksState extends BaseAppState {
             add(new AudioNode(app.getAssetManager(), "Sound/Attack/Ace攻击.wav", AudioData.DataType.Buffer));
             add(new AudioNode(app.getAssetManager(), "Sound/Attack/Faker攻击.wav", AudioData.DataType.Buffer));
             add(new AudioNode(app.getAssetManager(), "Sound/Attack/Zac攻击.wav", AudioData.DataType.Buffer));
-            add(new AudioNode(app.getAssetManager(), "Sound/skill/Faker技能.wav", AudioData.DataType.Buffer));
-            add(new AudioNode(app.getAssetManager(), "Sound/skill/Ace技能.wav", AudioData.DataType.Buffer));
-            add(new AudioNode(app.getAssetManager(), "Sound/skill/Zac技能.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/Skill/Faker技能.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/Skill/Ace技能.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/Skill/Zac技能.wav", AudioData.DataType.Buffer));
             add(new AudioNode(app.getAssetManager(), "Sound/Dead/Faker死亡.wav", AudioData.DataType.Buffer));
-            add(new AudioNode(app.getAssetManager(), "Sound/Dead/Zac人死亡.wav", AudioData.DataType.Buffer));
+            add(new AudioNode(app.getAssetManager(), "Sound/Dead/Zac死亡.wav", AudioData.DataType.Buffer));
             add(new AudioNode(app.getAssetManager(), "Sound/Dead/Ace死亡.wav", AudioData.DataType.Buffer));
             add(new AudioNode(app.getAssetManager(), "Sound/Attack/震网攻击.wav", AudioData.DataType.Buffer));
             add(new AudioNode(app.getAssetManager(), "Sound/Skill/震网技能.wav", AudioData.DataType.Buffer));

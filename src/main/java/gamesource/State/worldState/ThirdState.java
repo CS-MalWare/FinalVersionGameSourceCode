@@ -71,7 +71,7 @@ public class ThirdState extends BaseAppState {
     private Fish1State fish1_4 = new Fish1State(new Vector3f(12.754826f, -3.4226258f, -74.095726f), 1f);
     private Fish4State fish1_5 = new Fish4State(new Vector3f(-50.21668f, -5.0685973f, -71.16844f), 1);
     private Fish5State fish2_1 = new Fish5State(new Vector3f(77.26708f, 2.1770868f, 0.21428971f), 2);
-    private Fish6State fish2_2 = new Fish6State(new Vector3f(-68.81787f, -7.400928f, -82.652245f), 3);
+    private Fish6State fish2_2 = new Fish6State(new Vector3f(46.932377f, -5.108574f, -87.97822f), 3);
     private Fish2State fish2_3 = new Fish2State(new Vector3f(-104.77109f, -8.663721f, -96.10981f), -3.7f);
     private Fish2State fish2_4 = new Fish2State(new Vector3f(-108.34749f, -7.848976f, -66.91676f), -5.7f);
     private Fish2State fish2_5 = new Fish2State(new Vector3f(-95.21405f, -2.9428518f, 2.1157131f), -5.7f);
@@ -389,8 +389,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Wolfman(75, "Enemies/underWater/fish4.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
-                            new Wolfman(75, "Enemies/underWater/fish4.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
+                            new Wolfman(65, "Enemies/underWater/fish4.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
+                            new Wolfman(65, "Enemies/underWater/fish4.j3o", 10, 0, 0, 0, 0, 0, 0, 0)
                     );
                     major.setPlace(fish1_5.get().getCenter());
                     state.detach(fish1_5);
@@ -600,7 +600,7 @@ public class ThirdState extends BaseAppState {
                     EnemyState.getInstance().addEnemies(
                             new KingWolfman(110, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 0, 0, 0, 0)
                     );
-                    major.setPlace(crab1.get().getCenter());
+                    major.setPlace(crab2.get().getCenter());
                     state.detach(crab2);
                     states.remove(crab2);
                     state.attach(new Battle(states));
