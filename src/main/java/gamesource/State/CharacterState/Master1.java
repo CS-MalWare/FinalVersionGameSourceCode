@@ -5,6 +5,7 @@ import com.jme3.animation.AnimControl;
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.BaseAppState;
+import com.jme3.bounding.BoundingVolume;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.bullet.PhysicsSpace;
 import com.jme3.bullet.collision.shapes.CapsuleCollisionShape;
@@ -46,6 +47,8 @@ public class Master1  extends BaseAppState implements ActionListener {
 
     private Vector3f place=new Vector3f(0,0,0);
 
+    private BoundingVolume master;
+
     protected void initialize(Application application){
         app=(SimpleApplication)application;
 
@@ -76,8 +79,13 @@ public class Master1  extends BaseAppState implements ActionListener {
         girl.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
         girl.scale(0.018f);
         girl.rotate(-1.5f,modelY,-0.03f);
-
+        master=girl.getWorldBound();
     }
+
+    public BoundingVolume get(){
+        return master;
+    }
+
     public void initPhysics(){
         bullet=app.getStateManager().getState(BulletAppState.class);
         physics=bullet.getPhysicsSpace();

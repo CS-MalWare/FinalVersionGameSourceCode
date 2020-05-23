@@ -54,7 +54,7 @@ public class FirstState extends BaseAppState {
     soldierState trainSoldier = new soldierState(5, new Vector3f(74.39715f, -27.375854f, -12.961687f), 6f, 2);
     blackBoyState black1 = new blackBoyState(new Vector3f(40.09374f, -15.457153f, -47.101334f), 4.8f);
     girlState girl1 = new girlState(new Vector3f(30.66676f, -17.49788f, -38.046852f), -0.8f);
-    KnightState kinght1 = new KnightState(5, new Vector3f(13.648198f, -9.379812f, -35.002224f), -2.4f);
+    KnightState bridgeKnight = new KnightState(5, new Vector3f(13.648198f, -9.379812f, -35.002224f), -2.4f);
     soldierState bridgeSoldier = new soldierState(5, new Vector3f(10.684639f, -9.582897f, -33.982456f), -2.9f);
     lizardState lizard = new lizardState(new Vector3f(-35.907394f, 3.7558994f, -35.212135f), 0.7f);
     KnightState knight2 = new KnightState(2, new Vector3f(-30.269215f, 3.6953368f, -39.55574f), 0.6f, 2);
@@ -136,8 +136,8 @@ public class FirstState extends BaseAppState {
         states.add(black1);
         state.attach(girl1);
         states.add(girl);
-        state.attach(kinght1);
-        states.add(kinght1);
+        state.attach(bridgeKnight);
+        states.add(bridgeKnight);
         state.attach(bridgeSoldier);
         states.add(bridgeSoldier);
         state.attach(lizard);
@@ -284,7 +284,24 @@ public class FirstState extends BaseAppState {
             return null;
         }
     }
-
+    public CollisionResults collision8() {
+        BoundingVolume train = bridgeSoldier.get();
+        CollisionResults results = new CollisionResults();
+        ray.collideWith(train, results);
+        return results;
+    }
+    public CollisionResults collision9() {
+        BoundingVolume train = bridgeKnight.get();
+        CollisionResults results = new CollisionResults();
+        ray.collideWith(train, results);
+        return results;
+    }
+    public CollisionResults collision10() {
+        BoundingVolume train =master.get();
+        CollisionResults results = new CollisionResults();
+        ray.collideWith(train, results);
+        return results;
+    }
     class StartTalk implements ActionListener {
         ArrayList<String> content = new ArrayList<>();
 
@@ -297,6 +314,9 @@ public class FirstState extends BaseAppState {
             CollisionResults results5 = collision5();
             CollisionResults results6 = collision6();
             CollisionResults results7 = collision7();
+            CollisionResults results8 = collision8();
+            CollisionResults results9 = collision9();
+            CollisionResults results10 = collision10();
             if (talk.equals(name) && isPressed) {
                 //System.out.println("zzzzzz");
                 if (results.size() > 0) {
@@ -340,6 +360,36 @@ public class FirstState extends BaseAppState {
                         canmove = 1;
                     }
                 } else if (results4.size() > 0) {                //这里是训练骑士的对话
+                    if (canmove == 1) {
+                        state.detach(input);
+                        major.mouseChange();
+                        canmove = 0;
+                    } else {
+                        state.attach(input);
+                        major.mouseChange();
+                        canmove = 1;
+                    }
+                }else if(results8.size()>0){                    //这里是桥上士兵
+                    if (canmove == 1) {
+                        state.detach(input);
+                        major.mouseChange();
+                        canmove = 0;
+                    } else {
+                        state.attach(input);
+                        major.mouseChange();
+                        canmove = 1;
+                    }
+                }else if(results9.size()>0){                    //这里是桥上的骑士
+                    if (canmove == 1) {
+                        state.detach(input);
+                        major.mouseChange();
+                        canmove = 0;
+                    } else {
+                        state.attach(input);
+                        major.mouseChange();
+                        canmove = 1;
+                    }
+                }else if(results10.size()>0){                    //这里是新加的法师
                     if (canmove == 1) {
                         state.detach(input);
                         major.mouseChange();
@@ -415,39 +465,7 @@ public class FirstState extends BaseAppState {
         inputManager.addMapping(bag, BAG);
         inputManager.addListener(st, bag);
 
-        //major.setEnabled(false);
-        king.setEnabled(true);
-        //input.setEnabled(false);
-        trainSoldier.setEnabled(true);
-        black1.setEnabled(true);
-        girl1.setEnabled(true);
-        kinght1.setEnabled(true);
-        bridgeSoldier.setEnabled(true);
-        lizard.setEnabled(true);
-        knight2.setEnabled(true);
-        knight3.setEnabled(true);
-        knight4.setEnabled(true);
-        soldier1.setEnabled(true);
-        soldier2.setEnabled(true);
-        soldier3.setEnabled(true);
-        soldier4.setEnabled(true);
-        knight5.setEnabled(true);
-        knight6.setEnabled(true);
-        girl.setEnabled(true);
-        metalKnight.setEnabled(true);
-        boy1.setEnabled(true);
-        s1.setEnabled(true);
-        s2.setEnabled(true);
-        f1.setEnabled(true);
-        p1.setEnabled(true);
-        //bullet.setEnabled(false);
-        c1.setEnabled(true);
-        c2.setEnabled(true);
-        c3.setEnabled(true);
-        x1.setEnabled(true);
-        light.setEnabled(true);
-        special.setEnabled(true);
-        sky.setEnabled(true);
+
     }
 
     @Override
