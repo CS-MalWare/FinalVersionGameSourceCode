@@ -3,8 +3,6 @@ package gamesource.battleState.equipment.common;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.character.Enemy;
 import gamesource.battleState.equipment.Equipment;
-import gamesource.battleState.particle.KingSkeletonStateParticle;
-import gamesource.battleState.particle.StuxnetStateParticle;
 
 public class CurseBook extends Equipment {
     private int timeCount = 1;
@@ -26,6 +24,7 @@ public class CurseBook extends Equipment {
                 }
                 enemy.setHP(1);
             }
+            EnemyState.getInstance().updateHints(true);
             timeCount++;
         }
     }
