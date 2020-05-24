@@ -80,8 +80,8 @@ public class ThirdState extends BaseAppState {
     private Fish5State fish3_2 = new Fish5State(new Vector3f(-79.33274f, -1.6759943f, 24.259945f), 6);
     private Fish5State fish3_3 = new Fish5State(new Vector3f(-58.6319f, -1.6084806f, 50.47643f), -6);
     private Fish5State fish3_4 = new Fish5State(new Vector3f(-80.64096f, -6.567422f, 66.516266f), 3);
-    private MushroomBug bu1 = new MushroomBug(new Vector3f(60.75251f, 4.0023937f, -34.16455f), -4f);
-    private MushroomBug bu2 = new MushroomBug(new Vector3f(-61.74419f, 4.1799035f, -12.796891f), 4f);
+    private MushroomBug bu1 = new MushroomBug(new Vector3f(60.75251f, 4.0023937f, -36.16455f), -4f);
+    private MushroomBug bu2 = new MushroomBug(new Vector3f(-61.74419f, 4.1799035f, -14.796891f), 4f);
     private FishBoss boss = new FishBoss(new Vector3f(-71.28984f, -2.5547683f, 37.708557f), 2);
     private ThirdBackMusic music = new ThirdBackMusic();
     private ThirdOtherSpecial effect = new ThirdOtherSpecial();
@@ -276,7 +276,7 @@ public class ThirdState extends BaseAppState {
                     battle1 = 19;
                 } else if (results5_1 != null && results5_1.size() > 0) {
                     battle1 = 16;
-                } else if (results5_2 != null && results5_1.size() > 0) {
+                } else if (results5_2 != null && results5_2.size() > 0) {
                     battle1 = 17;
                 } else if (results6 != null && results6.size() > 0) {
                     battle1 = 18;
