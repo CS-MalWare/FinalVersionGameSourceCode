@@ -13,7 +13,9 @@ import com.jme3.math.Ray;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import gamesource.State.CharacterState.MajorActor;
+import gamesource.State.CharacterState.enemies.StuxnetState;
 import gamesource.State.CharacterState.enemies.sixth.Master2;
+import gamesource.State.CharacterState.enemies.sixth.darkKnight;
 import gamesource.State.CharacterState.enemies.sixth.darkSolidier;
 import gamesource.State.SpecialEffect.FirstWorldOtherSpecial;
 import gamesource.State.SpecialEffect.ThirdWorldLight;
@@ -40,7 +42,8 @@ public class SixthState extends BaseAppState {
     public final static String move = "MOVE";
     public final static Trigger MOVE = new KeyTrigger(KeyInput.KEY_W);
     private InputManager inputManager;
-    private darkSolidier solidier1=new darkSolidier(5,new Vector3f(49.65925f, -25.159817f, -11.53271f));
+    private darkSolidier solidier1=new darkSolidier(5,new Vector3f(49.65925f, -25.159817f, -11.53271f),1.9f);
+    private darkKnight knight1=new darkKnight(5,new Vector3f(-46.003223f, 4.131584f, -23.703917f),-2.6f);
     private AppStateManager state;
 
     private int canmove = 1;
@@ -69,6 +72,7 @@ public class SixthState extends BaseAppState {
     Water x1 = new Water(-34.4f);
     private FirstWorldOtherSpecial effect = new FirstWorldOtherSpecial();
     private Master2 master = new Master2(new Vector3f(12.150929f, -9.193834f, -33.237625f), -2.6f);
+    private StuxnetState boss=new StuxnetState(new Vector3f(-36.57827f, 2.9845061f, -7.4623866f),-2.6f);
 
     private ArrayList<BaseAppState> states = new ArrayList<BaseAppState>();
 
@@ -100,6 +104,10 @@ public class SixthState extends BaseAppState {
         states.add(master);
         state.attach(solidier1);
         states.add(solidier1);
+        state.attach(knight1);
+        states.add(knight1);
+        state.attach(boss);
+        states.add(boss);
         state.attach(new SkyBox());
 
 

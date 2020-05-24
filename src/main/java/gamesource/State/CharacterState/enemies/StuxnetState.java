@@ -71,7 +71,7 @@ public class StuxnetState extends BaseAppState {
         skeleton=app.getAssetManager().loadModel("Enemies/zhenwang/boss.j3o");
         skeleton.setName("skeleton");
         skeleton.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
-        skeleton.scale(0.075f);
+        skeleton.scale(0.15f);
         skeleton.rotate(0f,modelY,0f);
         ske=skeleton.getWorldBound();
     }
@@ -87,7 +87,7 @@ public class StuxnetState extends BaseAppState {
         radius=0.4f;
         height=0.6f;
 
-        skeleton.move(0.06f,-(height/2+radius)-0.35f,0);
+        skeleton.move(0.06f,-(height/2+radius)+0.1f,0);
 
         character=new Node("Character");
         rootNode.attachChild(character);
