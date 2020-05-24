@@ -41,6 +41,9 @@ import gamesource.battleState.character.enemy.originalForest.*;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
+import gamesource.util.TalkWithOption;
+import gamesource.util.WordWrapForTalk;
+import gamesource.util.TalkWithOption.CallType;
 
 import java.util.ArrayList;
 
@@ -91,7 +94,6 @@ public class FifthState extends BaseAppState {
     private FifthBackMusic music=new FifthBackMusic();
     private BoundingVolume maj;
 
-    private int shadow=1024,open=0;
     private float time=0;
 
     private int chan=0;
@@ -102,6 +104,11 @@ public class FifthState extends BaseAppState {
     private makeCross cross;
     private ThirdWorldLight light=new ThirdWorldLight();
     private FifthOtherSpecial effect=new FifthOtherSpecial();
+
+    private ArrayList<String> content = new ArrayList<>();
+    private ArrayList<String> names = new ArrayList<>();
+    private TalkWithOption talkWithOption;
+    private WordWrapForTalk wordWrapForTalk;
 
     private ArrayList<BaseAppState> states=new ArrayList<BaseAppState>();
 
@@ -152,7 +159,6 @@ public class FifthState extends BaseAppState {
         states.add(p3);
         state.attach(lizard);
         states.add(lizard);
-        light = new ThirdWorldLight(open,shadow);
         state.attach(light);
         states.add(light);
         state.attach(music);
@@ -186,13 +192,7 @@ public class FifthState extends BaseAppState {
         BattleBackGroundState.setBackgroundSrc("Map/fifth.j3o");
     }
 
-    public FifthState(){
 
-    }
-    public FifthState(int shadow,int open){
-        this.shadow=shadow;
-        this.open=open;
-    }
 
     public CollisionResults results1() {
         try {
@@ -382,6 +382,19 @@ public class FifthState extends BaseAppState {
             CollisionResults results16 = results16();
             if(talk.equals(name)&&isPressed){
                 if(results14.size()>0){             //初始机器人
+                    if(!getStateManager().hasState(wordWrapForTalk)){
+                        names.add("Major");
+                        names.add("Robot");
+                        content.add("Where is this?");
+                        content.add("This is core of whole computer, we are shield of this place, but unfortunately, \n"+
+                            "this shield were infected, so you can not get tje final artifact unless you beat them all. \n" +
+                            "Because this is the core of computer, so gravity engine lose his function at here, \n" + 
+                            "you can jump higher than before. There are some people you familiar with is waiting \n" + 
+                            "for you. Please save the computer");
+                        content.add("Computer? You confused me ....");
+                        wordWrapForTalk = new WordWrapForTalk(names, content);
+                        state.attach(wordWrapForTalk);
+                    }
                     if (canmove == 1) {
                         state.detach(input);
                         major.mouseChange();
@@ -392,6 +405,9 @@ public class FifthState extends BaseAppState {
                         canmove = 1;
                     }
                 }else if(results15.size()>0){           //蜥蜴
+                    content.clear();
+                    content.add("Long time no see, you find your own power, do need any new cards and equipment?");
+                    talkWithOption = new TalkWithOption("Lizard", content, CallType.CONFIRM, 5);
                     if (canmove == 1) {
                         state.detach(input);
                         major.mouseChange();
@@ -402,6 +418,9 @@ public class FifthState extends BaseAppState {
                         canmove = 1;
                     }
                 }else if(results16.size()>0){           //大师
+                    content.clear();
+                    content.add("Finally you get here, seems you got all things needed to save world, \n"+
+                        "you may find this place is different, I got know what happened");
                     if (canmove == 1) {
                         state.detach(input);
                         major.mouseChange();
@@ -465,8 +484,6 @@ public class FifthState extends BaseAppState {
                 case 0:
                     state.detach(input);
                     states.remove(input);
-                    bagState.onFight();
-                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -486,8 +503,6 @@ public class FifthState extends BaseAppState {
                 case 1:
                     state.detach(input);
                     states.remove(input);
-                    bagState.onFight();
-                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -507,8 +522,6 @@ public class FifthState extends BaseAppState {
                 case 2:
                     state.detach(input);
                     states.remove(input);
-                    bagState.onFight();
-                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -528,8 +541,6 @@ public class FifthState extends BaseAppState {
                 case 3:
                     state.detach(input);
                     states.remove(input);
-                    bagState.onFight();
-                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -570,8 +581,6 @@ public class FifthState extends BaseAppState {
                 case 5:
                     state.detach(input);
                     states.remove(input);
-                    bagState.onFight();
-                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -592,8 +601,6 @@ public class FifthState extends BaseAppState {
                 case 6:
                     state.detach(input);
                     states.remove(input);
-                    bagState.onFight();
-                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -615,8 +622,6 @@ public class FifthState extends BaseAppState {
                 case 7:
                     state.detach(input);
                     states.remove(input);
-                    bagState.onFight();
-                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -636,8 +641,6 @@ public class FifthState extends BaseAppState {
                 case 8:
                     state.detach(input);
                     states.remove(input);
-                    bagState.onFight();
-                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -657,8 +660,6 @@ public class FifthState extends BaseAppState {
                 case 9:
                     state.detach(input);
                     states.remove(input);
-                    bagState.onFight();
-                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -678,8 +679,6 @@ public class FifthState extends BaseAppState {
                 case 10:
                     state.detach(input);
                     states.remove(input);
-                    bagState.onFight();
-                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
