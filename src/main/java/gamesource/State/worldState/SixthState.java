@@ -29,9 +29,10 @@ import gamesource.State.mapState.SkyBox;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.appState.GetCardState;
 import gamesource.battleState.battle.Battle;
-import gamesource.battleState.character.enemy.originalForest.BlackSlime;
-import gamesource.battleState.character.enemy.originalForest.RedSlime;
-import gamesource.battleState.character.enemy.originalForest.Slime;
+import gamesource.battleState.character.enemy.boss.Ace;
+import gamesource.battleState.character.enemy.boss.Faker;
+import gamesource.battleState.character.enemy.boss.Tuxnet;
+import gamesource.battleState.character.enemy.boss.Zac;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -222,13 +223,13 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Slime(100, "character/Solidier/darksolidier.j3o", 0, 0, 0, 0, 0, 0, 0, 0));
+                            new Zac(500, "character/Solidier/darksolidier.j3o", 5, 1, 2, 0, 0, 0, 0, 0));
                     state.detach(solidier1);
                     states.remove(solidier1);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    GetCardState.setGoldCountAfterThisBattle(25);
+                    GetCardState.setGoldCountAfterThisBattle(200);
 
                     break;
                 case 1:
@@ -239,13 +240,13 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Slime(120, "character/master/Master2.j3o", 0, 0, 0, 0, 0, 0, 0, 0));
+                            new Ace(550, "character/master/Master2.j3o", 0, 1, 1, 0, 0, 0, 0, 0));
                     state.detach(knight1);
                     states.remove(knight1);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    GetCardState.setGoldCountAfterThisBattle(25);
+                    GetCardState.setGoldCountAfterThisBattle(200);
 
                     break;
                 case 2:
@@ -256,14 +257,14 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Slime(150, "character/Knight/darkknight.j3o", 2, 0, 0, 0, 0, 0, 0, 0)
+                            new Faker(600, "character/Knight/darkknight.j3o", 2, 2, 2, 0, 0, 0, 0, 0)
                     );
                     state.detach(master);
                     states.remove(master);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    GetCardState.setGoldCountAfterThisBattle(30);
+                    GetCardState.setGoldCountAfterThisBattle(200);
 
                     break;
                 case 3:
@@ -274,13 +275,13 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RedSlime(200, "Enemies/zhenwang/boss.j3o", 5, 0, 0, 0, 0, 0, 0, 0));
+                            new Tuxnet(1000, "Enemies/zhenwang/boss.j3o", 0, 3, 5, 3, 5, 5, 0, 0));
                     state.detach(boss);
                     states.remove(boss);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    GetCardState.setGoldCountAfterThisBattle(30);
+                    GetCardState.setGoldCountAfterThisBattle(300);
 
                     break;
 
