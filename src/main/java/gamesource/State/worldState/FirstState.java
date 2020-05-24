@@ -31,6 +31,7 @@ import gamesource.State.mapState.Chest;
 import gamesource.State.mapState.SkyBox;
 import gamesource.State.musicState.FirstBackMusic;
 import gamesource.testState.AxisState;
+import gamesource.uiState.SmallMap;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -107,6 +108,10 @@ public class FirstState extends BaseAppState {
     private float time;
 
     private ArrayList<BaseAppState> states = new ArrayList<BaseAppState>();
+
+    private boolean isTalkShow = false;
+    private TalkWithOption talkWithOption;
+    private ArrayList<String> content = new ArrayList<>();
 
     @Override
     protected void initialize(Application application) {
@@ -193,6 +198,8 @@ public class FirstState extends BaseAppState {
         states.add(master);
         state.attach(music);
         states.add(music);
+
+        state.attach(new SmallMap(1600, 900, 200));
 
         this.inputManager = application.getInputManager();
         inputManager.addMapping(talk, TALK);
@@ -305,7 +312,6 @@ public class FirstState extends BaseAppState {
         return results;
     }
     class StartTalk implements ActionListener {
-        ArrayList<String> content = new ArrayList<>();
 
         @Override
         public void onAction(String name, boolean isPressed, float tpf) {
@@ -323,7 +329,16 @@ public class FirstState extends BaseAppState {
                 //System.out.println("zzzzzz");
                 if (results.size() > 0) {
                     //这个函数里写和女王的对话
-                    content.clear();
+                    if(!isTalkShow && !getStateManager().hasState(talkWithOption)){
+                        content.clear();
+                        content.add("My son, you came back and become more powerful than before.");
+                        content.add("I am tired. Maybe this would be a good time for retirement");
+                        content.add("In charge of the country is not an easy thing");
+                        content.add("It took up most of my tine, and now, I want stay with family.");
+                        talkWithOption = new TalkWithOption("Queen", content, CallType.CONFIRM, isTalkShow);
+                        isTalkShow = talkWithOption.isTalkShow();
+                        state.attach(talkWithOption);
+                    }
                     System.out.println("get");
                     if (canmove == 1) {
                         state.detach(input);
@@ -335,12 +350,15 @@ public class FirstState extends BaseAppState {
                         canmove = 1;
                     }
                 } else if (results2.size() > 0) {               //这个是船旁边训练士兵的对话
-                    content.clear();
-                    content.add("Long time to see, my prince, seems like you have finished you trail.");
-                    content.add("We all glad to see you again in King city. After training, there has a great change on your body!");
-                    content.add("We are drilling recruits. Would you be pleasure to give them a lession?");
-                    TalkWithOption talkWithOption = new TalkWithOption("Soldier", content, CallType.SHOP);
-                    state.attach(talkWithOption);
+                    if(!isTalkShow && !getStateManager().hasState(talkWithOption)){
+                        content.clear();
+                        content.add("Long time to see, my prince, seems like you have finished you trail.");
+                        content.add("We all glad to see you again in King city. After training, there has a great change on your body!");
+                        content.add("We are drilling recruits. Would you be pleasure to give them a lession?");
+                        talkWithOption = new TalkWithOption("Soldier", content, CallType.CONFIRM, isTalkShow);
+                        isTalkShow = talkWithOption.isTalkShow();
+                        state.attach(talkWithOption);
+                    }
                     if (canmove == 1) {
                         state.detach(input);
                         major.mouseChange();
@@ -351,7 +369,16 @@ public class FirstState extends BaseAppState {
                         canmove = 1;
                     }
                 } else if (results3.size() > 0) {                //这里是购买商店的对话
-
+                    if(!isTalkShow && !getStateManager().hasState(talkWithOption)){
+                        content.clear();
+                        content.add("Recently, I feel a evil power from supernatural.");
+                        content.add("So I returned the king city as soon as possible.");
+                        content.add("From the result of division, there will be a prince save this world");
+                        content.add("Before save the world, do you needs some new skills?");
+                        talkWithOption = new TalkWithOption("Lizard Mage", content, CallType.SHOP, isTalkShow);
+                        isTalkShow = talkWithOption.isTalkShow();
+                        state.attach(talkWithOption);
+                    }
                     if (canmove == 1) {
                         state.detach(input);
                         major.mouseChange();
@@ -372,12 +399,15 @@ public class FirstState extends BaseAppState {
                         canmove = 1;
                     }
                 }else if(results8.size()>0){                    //这里是桥上士兵
-                    content.clear();
-                    content.add("Hello");
-                    content.add("We all glad to see you again in King city. After training, there has a great change on your body!");
-                    content.add("We are drilling recruits. Would you be pleasure to give them a lession?");
-                    TalkWithOption talkWithOption = new TalkWithOption("Soldier", content, CallType.SHOP);
-                    state.attach(talkWithOption);
+                    if(!isTalkShow && !getStateManager().hasState(talkWithOption)){
+                        content.clear();
+                        content.add("Hello");
+                        content.add("We all glad to see you again in King city. After training, there has a great change on your body!");
+                        content.add("We are drilling recruits. Would you be pleasure to give them a lession?");
+                        talkWithOption = new TalkWithOption("Soldier", content, CallType.FIGHT, isTalkShow);
+                        isTalkShow = talkWithOption.isTalkShow();
+                        state.attach(talkWithOption);
+                    }
                     if (canmove == 1) {
                         state.detach(input);
                         major.mouseChange();
@@ -388,6 +418,14 @@ public class FirstState extends BaseAppState {
                         canmove = 1;
                     }
                 }else if(results9.size()>0){                    //这里是桥上的骑士
+                    if(!isTalkShow && !getStateManager().hasState(talkWithOption)){
+                        content.clear();
+                        content.add("Ahead is the most prosperous part of the King city, with the most richest trade marking and the finest order of knights.");
+                        content.add("If you want to go there, you need to keep your weapon in here");
+                        talkWithOption = new TalkWithOption("Soldier", content, CallType.CONFIRM, isTalkShow);
+                        isTalkShow = talkWithOption.isTalkShow();
+                        state.attach(talkWithOption);
+                    }
                     if (canmove == 1) {
                         state.detach(input);
                         major.mouseChange();
@@ -398,6 +436,7 @@ public class FirstState extends BaseAppState {
                         canmove = 1;
                     }
                 }else if(results10.size()>0){                    //这里是新加的法师
+                    content.clear();
                     if (canmove == 1) {
                         state.detach(input);
                         major.mouseChange();
@@ -445,6 +484,9 @@ public class FirstState extends BaseAppState {
             if (time < 19 && time > 5) {
                 change();
             }
+        }
+        if(isTalkShow){
+            isTalkShow = talkWithOption.isTalkShow();
         }
     }
 
