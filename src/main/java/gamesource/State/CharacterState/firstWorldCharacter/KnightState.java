@@ -276,7 +276,7 @@ public class KnightState extends BaseAppState implements ActionListener {
 
     public void initModel(){
         if(type==1) {
-            Knight = app.getAssetManager().loadModel("character/Knight/blueknight.j3o");
+            Knight = app.getAssetManager().loadModel("character/Knight/blueKnight.j3o");
         }
         else if(type==2){
             Knight = app.getAssetManager().loadModel("character/Knight/goldenknight.j3o");
