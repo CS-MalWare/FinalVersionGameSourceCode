@@ -102,6 +102,7 @@ public class ThirdState extends BaseAppState {
     private ThirdWorldLight light = new ThirdWorldLight();
     private ThirdWater water = new ThirdWater(22);
 
+    private int shadow=1024,open=0;
     private ArrayList<BaseAppState> states = new ArrayList<BaseAppState>();
 
     protected void initialize(Application application) {
@@ -176,6 +177,7 @@ public class ThirdState extends BaseAppState {
         state.attach(crab3);
         states.add(crab3);
 
+        light = new ThirdWorldLight(open,shadow);
         state.attach(light);
         states.add(light);
         state.attach(water);
@@ -207,7 +209,13 @@ public class ThirdState extends BaseAppState {
         major.height(6);
     }
 
+    public ThirdState(){
 
+    }
+    public ThirdState(int shadow,int open){
+        this.shadow=shadow;
+        this.open=open;
+    }
     class StartTalk implements ActionListener {
         @Override
         public void onAction(String name, boolean isPressed, float tpf) {

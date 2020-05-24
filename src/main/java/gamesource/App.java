@@ -70,7 +70,7 @@ public class App extends SimpleApplication {
         stateManager.attach(new ShopAppState());
         stateManager.attach(new MenuAppState());
         stateManager.attach(new makeCross());
-        f1 = new FirstState();
+        f1 = new FirstState(4096,1);
         //stateManager.attach(f1);
         f2 = new SecondState();
         f3 = new ThirdState();
@@ -407,7 +407,7 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) {
 
-        App app = new App(6);
+        App app = new App(1);
         //app.setSettings(settings);
         //app.setShowSettings(false);
         app.start();

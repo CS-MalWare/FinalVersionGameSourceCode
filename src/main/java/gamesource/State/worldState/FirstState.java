@@ -18,10 +18,7 @@ import com.jme3.scene.Node;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.Master1;
 import gamesource.State.CharacterState.firstWorldCharacter.*;
-import gamesource.State.SpecialEffect.FirstWorldLight;
-import gamesource.State.SpecialEffect.FirstWorldOtherSpecial;
-import gamesource.State.SpecialEffect.Water;
-import gamesource.State.SpecialEffect.makeCross;
+import gamesource.State.SpecialEffect.*;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
@@ -100,7 +97,7 @@ public class FirstState extends BaseAppState {
     private AppStateManager state;
 
     private int canmove = 1, chan = 0;
-
+    private int shadow=1024,open=0;
     Ray ray;
 
     BoundingVolume maj;
@@ -189,6 +186,7 @@ public class FirstState extends BaseAppState {
         states.add(c3);
         state.attach(x1);
         states.add(x1);
+        light = new FirstWorldLight(open,shadow);
         state.attach(light);
         states.add(light);
         state.attach(special);
@@ -222,6 +220,13 @@ public class FirstState extends BaseAppState {
         major.height(6);
     }
 
+    public FirstState(){
+
+    }
+    public FirstState(int shadow,int open){
+        this.shadow=shadow;
+        this.open=open;
+    }
     public void change() {
         if (chan == 0) {
             major.mouseChange();

@@ -21,6 +21,7 @@ import gamesource.State.CharacterState.secondWorldCharacter.goblinGirlState;
 import gamesource.State.CharacterState.secondWorldCharacter.shanmanState;
 import gamesource.State.SpecialEffect.SecondWorldLight;
 import gamesource.State.SpecialEffect.SecondWorldOtherSpecial;
+import gamesource.State.SpecialEffect.ThirdWorldLight;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
@@ -118,6 +119,7 @@ public class SecondState extends BaseAppState {
     private MenuAppState menuState;
     private makeCross cross;
 
+    private int shadow=1024,open=0;
     private ArrayList<BaseAppState> states = new ArrayList<BaseAppState>();
     private TalkWithOption talkWithOption;
     private ArrayList<String> content = new ArrayList<>();
@@ -184,6 +186,7 @@ public class SecondState extends BaseAppState {
         states.add(sky);
         state.attach(special);
         states.add(special);
+        light = new SecondWorldLight(open,shadow);
         state.attach(light);
         states.add(light);
 
@@ -205,6 +208,13 @@ public class SecondState extends BaseAppState {
         major.setPlace(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
         BattleBackGroundState.setBackgroundSrc("Map/two/second.j3o");
         major.height(6);
+    }
+        public SecondState(){
+
+        }
+    public SecondState(int shadow,int open){
+        this.shadow=shadow;
+        this.open=open;
     }
 
     public CollisionResults results1() {

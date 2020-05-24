@@ -91,6 +91,7 @@ public class FifthState extends BaseAppState {
     private FifthBackMusic music=new FifthBackMusic();
     private BoundingVolume maj;
 
+    private int shadow=1024,open=0;
     private float time=0;
 
     private int chan=0;
@@ -151,6 +152,7 @@ public class FifthState extends BaseAppState {
         states.add(p3);
         state.attach(lizard);
         states.add(lizard);
+        light = new ThirdWorldLight(open,shadow);
         state.attach(light);
         states.add(light);
         state.attach(music);
@@ -184,7 +186,13 @@ public class FifthState extends BaseAppState {
         BattleBackGroundState.setBackgroundSrc("Map/fifth.j3o");
     }
 
+    public FifthState(){
 
+    }
+    public FifthState(int shadow,int open){
+        this.shadow=shadow;
+        this.open=open;
+    }
 
     public CollisionResults results1() {
         try {

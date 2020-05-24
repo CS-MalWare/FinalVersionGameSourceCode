@@ -94,6 +94,7 @@ public class ForthState extends BaseAppState {
     private ThirdWorldLight light = new ThirdWorldLight();
     private Water water = new Water(22);
 
+    private int shadow=1024,open=0;
     private ArrayList<BaseAppState> states = new ArrayList<BaseAppState>();
 
     protected void initialize(Application application) {
@@ -114,6 +115,8 @@ public class ForthState extends BaseAppState {
         states.add(menuState);
         cross = state.getState(makeCross.class);
         states.add(cross);
+
+        light = new ThirdWorldLight(open,shadow);
         state.attach(light);
         states.add(light);
         state.attach(bos);
@@ -167,6 +170,15 @@ public class ForthState extends BaseAppState {
         BattleBackGroundState.setBackgroundSrc("Map/fourth.j3o");
         major.height(6);
     }
+
+    public ForthState(){
+
+    }
+    public ForthState(int shadow,int open){
+        this.shadow=shadow;
+        this.open=open;
+    }
+
 
     public CollisionResults results1() {
         try {

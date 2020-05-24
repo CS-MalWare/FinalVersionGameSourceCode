@@ -32,6 +32,7 @@ public class ThirdWorldLight extends BaseAppState {
     SafeArrayList<SceneProcessor> x1;
 
     private int turnOn = 0;
+    private int state=1024;
 
     @Override
     protected void initialize(Application application) {
@@ -59,7 +60,7 @@ public class ThirdWorldLight extends BaseAppState {
         //rootNode.addLight(sun4);
         //rootNode.addLight(sun6);
         if (turnOn == 1) {
-            su = new DirectionalLightShadowFilter(manager, 1024, 1);
+            su = new DirectionalLightShadowFilter(manager, state, 1);
 
             su.setLight(sun);
             x1 = view.getProcessors();
@@ -73,6 +74,10 @@ public class ThirdWorldLight extends BaseAppState {
 
     public ThirdWorldLight(int turnOn) {
         this.turnOn = turnOn;
+    }
+    public ThirdWorldLight(int turnOn,int state) {
+        this.turnOn = turnOn;
+        this.state=state;
     }
 
     public ThirdWorldLight() {

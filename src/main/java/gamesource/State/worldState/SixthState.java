@@ -77,12 +77,13 @@ public class SixthState extends BaseAppState {
     private ShopAppState shopState;
     private MenuAppState menuState;
     private makeCross cross;
-    private ThirdWorldLight light = new ThirdWorldLight();
+    private ThirdWorldLight light;
     Water x1 = new Water(-34.4f);
     private FirstWorldOtherSpecial effect = new FirstWorldOtherSpecial();
     private Master2 master = new Master2(new Vector3f(12.150929f, -9.193834f, -33.237625f), -2.6f);
     private StuxnetState boss=new StuxnetState(new Vector3f(-36.57827f, 2.9845061f, -7.4623866f),-2.6f);
 
+    private int shadow=1024,open=0;
     private ArrayList<BaseAppState> states = new ArrayList<BaseAppState>();
 
     protected void initialize(Application application) {
@@ -103,6 +104,7 @@ public class SixthState extends BaseAppState {
         states.add(menuState);
         cross = state.getState(makeCross.class);
         states.add(cross);
+        light = new ThirdWorldLight(open,shadow);
         state.attach(light);
         states.add(light);
         state.attach(effect);
@@ -137,6 +139,14 @@ public class SixthState extends BaseAppState {
         major.setPlace(new Vector3f(0f, 10f, 0f));
         major.height(6);
     }
+    public SixthState(){
+
+    }
+    public SixthState(int shadow,int open){
+        this.shadow=shadow;
+        this.open=open;
+    }
+
     public CollisionResults results1() {
         try {
             maj = major.getMajor();

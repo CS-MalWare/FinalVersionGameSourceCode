@@ -34,6 +34,7 @@ public class FirstWorldLight extends BaseAppState {
     SafeArrayList<SceneProcessor> x1;
 
     private int turnOn = 0;
+    private int state=1024;
 
     @Override
     protected void initialize(Application application) {
@@ -62,6 +63,13 @@ public class FirstWorldLight extends BaseAppState {
         this.turnOn = turnOn;
     }
 
+
+    public FirstWorldLight(int turnOn,int state) {
+        this.turnOn = turnOn;
+        this.state=state;
+    }
+
+
     public FirstWorldLight() {
     }
 
@@ -79,7 +87,7 @@ public class FirstWorldLight extends BaseAppState {
         rootNode.addLight(sun4);
         rootNode.addLight(sun6);
         if (turnOn == 1) {
-            su = new DirectionalLightShadowFilter(manager, 1024, 3);
+            su = new DirectionalLightShadowFilter(manager, state, 3);
 
             su.setLight(sun);
             x1 = view.getProcessors();
