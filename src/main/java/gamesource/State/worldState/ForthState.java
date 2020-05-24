@@ -17,10 +17,10 @@ import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.enemies.BatState;
 import gamesource.State.CharacterState.enemies.BlueSkeletonState;
 import gamesource.State.CharacterState.enemies.RedSkeletonState;
+import gamesource.State.CharacterState.enemies.forth.Boss;
 import gamesource.State.CharacterState.enemies.forth.BossKnight;
 import gamesource.State.CharacterState.enemies.forth.StoneMan;
-import gamesource.State.CharacterState.enemies.forth.Boss;
-import gamesource.State.SpecialEffect.FifthOtherSpecial;
+import gamesource.State.SpecialEffect.FourthWorldOtherSpecial;
 import gamesource.State.SpecialEffect.ThirdWorldLight;
 import gamesource.State.SpecialEffect.Water;
 import gamesource.State.SpecialEffect.makeCross;
@@ -28,17 +28,12 @@ import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
 import gamesource.State.mapState.ForthWorldMap;
-import gamesource.State.mapState.SkyBox;
 import gamesource.State.mapState.skyBox4;
 import gamesource.State.musicState.ForthBackMusic;
 import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.battle.Battle;
-import gamesource.battleState.character.enemy.boss.Ace;
-import gamesource.battleState.character.enemy.boss.Zac;
-import gamesource.battleState.character.enemy.dragonWat.DarkDragon;
 import gamesource.battleState.character.enemy.mechanicalEmpire.*;
-import gamesource.battleState.character.enemy.originalForest.*;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -85,7 +80,8 @@ public class ForthState extends BaseAppState {
     private StartTalk st = new StartTalk();
     private ForthBackMusic music = new ForthBackMusic();
     private BoundingVolume maj;
-    private FifthOtherSpecial effect = new FifthOtherSpecial();
+    private FourthWorldOtherSpecial effect = new FourthWorldOtherSpecial();
+
 
     private float time = 0;
 

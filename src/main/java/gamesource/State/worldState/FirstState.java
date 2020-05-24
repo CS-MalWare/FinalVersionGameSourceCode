@@ -1,7 +1,5 @@
 package gamesource.State.worldState;
 
-import java.util.ArrayList;
-
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
@@ -17,8 +15,8 @@ import com.jme3.input.controls.Trigger;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
-
-import gamesource.State.CharacterState.*;
+import gamesource.State.CharacterState.MajorActor;
+import gamesource.State.CharacterState.Master1;
 import gamesource.State.CharacterState.firstWorldCharacter.*;
 import gamesource.State.SpecialEffect.FirstWorldLight;
 import gamesource.State.SpecialEffect.FirstWorldOtherSpecial;
@@ -26,17 +24,19 @@ import gamesource.State.SpecialEffect.Water;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
-import gamesource.State.mapState.FirstWorldState;
 import gamesource.State.mapState.Chest;
+import gamesource.State.mapState.FirstWorldState;
 import gamesource.State.mapState.SkyBox;
 import gamesource.State.musicState.FirstBackMusic;
-import gamesource.testState.AxisState;
+import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.uiState.SmallMap;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
 import gamesource.util.TalkWithOption;
 import gamesource.util.TalkWithOption.CallType;
+
+import java.util.ArrayList;
 
 public class FirstState extends BaseAppState {
     public static String canGo = "can";// 这是用于存档的变量,大佬们不要改没了
@@ -115,6 +115,7 @@ public class FirstState extends BaseAppState {
 
     @Override
     protected void initialize(Application application) {
+        BattleBackGroundState.setBackgroundSrc("Map/first/ditu.j3o");
         app = (SimpleApplication) application;
         state = application.getStateManager();
         major = state.getState(MajorActor.class);
