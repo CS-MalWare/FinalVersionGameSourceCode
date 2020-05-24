@@ -129,7 +129,7 @@ public class FirstState extends BaseAppState {
         states.add(menuState);
         cross = state.getState(makeCross.class);
         states.add(cross);
-        state.attach(new AxisState());
+        //state.attach(new AxisState());
         //state.attach(bullet);
         state.attach(f1);
         states.add(f1);

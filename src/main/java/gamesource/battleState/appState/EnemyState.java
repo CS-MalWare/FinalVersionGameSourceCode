@@ -918,7 +918,7 @@ public class EnemyState extends BaseAppState {
                     case "Enemies/bossKnight/scene1.j3o":
                     case "Enemies/bossKnight/scene2.j3o":
                     case "Enemies/forth/boss/scene0.j3o":
-                        deadSoundSrc = "Sound/Dead/机器人死亡.wav";
+                        deadSoundSrc = "Sound/Dead/龙死亡.wav";
                         break;
 
 
@@ -931,7 +931,7 @@ public class EnemyState extends BaseAppState {
                     case "Enemies/fifthMap/mech_drone/scene0.j3o":
                     case "Enemies/fifthMap/mech_drone/scene1.j3o":
                     case "Enemies/fifthMap/mech_drone/scene2.j3o":
-                        deadSoundSrc = "Sound/Dead/龙死亡.wav";
+                        deadSoundSrc = "Sound/Dead/机器人死亡.wav";
                         break;
 //                    case "3":
 //                        deadSoundSrc = "Sound/Dead/Zac死亡.wav";

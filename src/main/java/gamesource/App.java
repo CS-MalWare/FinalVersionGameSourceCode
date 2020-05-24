@@ -302,8 +302,38 @@ public class App extends SimpleApplication {
         @Override
         public void onAction(String name, boolean isPressed, float tpf) {
             if (world.equals(name) && isPressed) {
-                stateManager.detach(f1);
-                stateManager.attach(f2);
+                switch(guan){
+                    case 1:
+                        stateManager.detach(f1);
+                        stateManager.attach(f2);
+                        guan=2;
+                        break;
+                    case 2:
+                        stateManager.detach(f2);
+                        stateManager.attach(f3);
+                        guan=3;
+                        break;
+                    case 3:
+                        stateManager.detach(f3);
+                        stateManager.attach(f4);
+                        guan=4;
+                        break;
+                    case 4:
+                        stateManager.detach(f4);
+                        stateManager.attach(f5);
+                        guan=5;
+                        break;
+                    case 5:
+                        stateManager.detach(f5);
+                        stateManager.attach(f6);
+                        guan=6;
+                        break;
+                    case 6:
+                        stateManager.detach(f6);
+                        stateManager.attach(f1);
+                        guan=1;
+                        break;
+                }
                 //f1.setEnabled(false);
                 //f2.setEnabled(true);
                 //System.out.println("zzzzzz");
