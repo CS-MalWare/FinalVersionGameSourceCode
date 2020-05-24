@@ -204,6 +204,7 @@ public class ThirdState extends BaseAppState {
         major.setPlace(new Vector3f(-20.689228f, 28.32263f, 4.34023f));
 
         BattleBackGroundState.setBackgroundSrc("Map/scene.j3o");
+        major.height(6);
     }
 
 

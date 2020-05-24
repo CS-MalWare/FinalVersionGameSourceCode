@@ -168,6 +168,7 @@ public class ForthState extends BaseAppState {
         major.setPlace(new Vector3f(0f, 10f, 0f));
         major.setPlace(new Vector3f(1.5346308f, -18.545364f, 56.147945f));
         BattleBackGroundState.setBackgroundSrc("Map/fourth.j3o");
+        major.height(6);
     }
 
     public CollisionResults results1() {

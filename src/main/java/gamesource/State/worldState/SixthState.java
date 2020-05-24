@@ -26,6 +26,7 @@ import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.FirstWorldState;
 import gamesource.State.mapState.SkyBox;
+import gamesource.State.mapState.skyBox6;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.appState.GetCardState;
 import gamesource.battleState.battle.Battle;
@@ -115,7 +116,7 @@ public class SixthState extends BaseAppState {
         states.add(knight1);
         state.attach(boss);
         states.add(boss);
-        state.attach(new SkyBox());
+        state.attach(new skyBox6());
 
 
         this.inputManager = application.getInputManager();
@@ -133,6 +134,7 @@ public class SixthState extends BaseAppState {
 
         cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
         major.setPlace(new Vector3f(0f, 10f, 0f));
+        major.height(6);
     }
     public CollisionResults results1() {
         try {

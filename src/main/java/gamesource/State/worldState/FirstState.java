@@ -218,6 +218,7 @@ public class FirstState extends BaseAppState {
 
         //major.setPlace(new Vector3f(93.51907f, -31.696218f, 18.607859f));
         major.setPlace(new Vector3f(0,0,0));
+        major.height(6);
     }
 
     public void change() {

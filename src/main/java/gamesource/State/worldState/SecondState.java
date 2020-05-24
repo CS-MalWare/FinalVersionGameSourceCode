@@ -197,6 +197,7 @@ public class SecondState extends BaseAppState {
         cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
         major.setPlace(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
         BattleBackGroundState.setBackgroundSrc("Map/two/second.j3o");
+        major.height(6);
     }
 
     public CollisionResults results1() {
