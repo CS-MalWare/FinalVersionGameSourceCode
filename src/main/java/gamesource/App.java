@@ -31,12 +31,14 @@ import gamesource.uiState.shopstate.ShopAppState;
 public class App extends SimpleApplication {
 
     public final static String world = "WORLD";
+    public int guan=1;
 
     FirstState f1;
     SecondState f2;
     ThirdState f3;
     ForthState f4;
     FifthState f5;
+    SixthState f6;
     private AppStateManager state;
 
 
@@ -71,7 +73,27 @@ public class App extends SimpleApplication {
         f3 = new ThirdState();
         f4 = new ForthState();
         f5 = new FifthState();
-        stateManager.attach(f2);
+        f6=new SixthState();
+        switch(guan){
+            case 1:
+                stateManager.attach(f1);
+                break;
+            case 2:
+                stateManager.attach(f2);
+                break;
+            case 3:
+                stateManager.attach(f3);
+                break;
+            case 4:
+                stateManager.attach(f4);
+                break;
+            case 5:
+                stateManager.attach(f5);
+                break;
+            case 6:
+                stateManager.attach(f6);
+                break;
+        }
         //stateManager.getState(SecondState.class).setEnabled(false);
         //f2.setEnabled(false);
         //stateManager.attach(f2);
@@ -79,6 +101,10 @@ public class App extends SimpleApplication {
 
         inputManager.addMapping(world, new KeyTrigger(KeyInput.KEY_Z));
         inputManager.addListener(new StartTalk(), world);
+    }
+
+    public App(int guan){
+        this.guan=guan;
     }
 
     public void initSecondWorld() {
@@ -289,7 +315,7 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) {
 
-        App app = new App();
+        App app = new App(3);
         //app.setSettings(settings);
         //app.setShowSettings(false);
         app.start();
