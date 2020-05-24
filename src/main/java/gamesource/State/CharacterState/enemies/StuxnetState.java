@@ -55,6 +55,7 @@ public class StuxnetState extends BaseAppState {
 
 
         skeletonControl.setPhysicsLocation(place);
+        ske=skeleton.getWorldBound();
     }
 
     public StuxnetState(){
@@ -73,7 +74,6 @@ public class StuxnetState extends BaseAppState {
         skeleton.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
         skeleton.scale(0.15f);
         skeleton.rotate(0f,modelY,0f);
-        ske=skeleton.getWorldBound();
     }
 
     public BoundingVolume get(){
