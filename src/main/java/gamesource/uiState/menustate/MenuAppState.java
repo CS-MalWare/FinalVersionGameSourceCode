@@ -86,7 +86,12 @@ public class MenuAppState extends BaseAppState{
 
     @Override
     protected void onDisable(){
-        mainWindow.removeFromParent();
+        try {
+            mainWindow.removeFromParent();
+        }
+        catch(NullPointerException ne){
+            ne.printStackTrace();
+        }
     }
 
     private String classToName(Class type){
