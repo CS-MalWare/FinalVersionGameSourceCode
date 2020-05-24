@@ -4,6 +4,7 @@ import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.bounding.BoundingVolume;
+import com.jme3.collision.CollisionResults;
 import com.jme3.input.InputManager;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
@@ -25,6 +26,12 @@ import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.FirstWorldState;
 import gamesource.State.mapState.SkyBox;
+import gamesource.battleState.appState.EnemyState;
+import gamesource.battleState.appState.GetCardState;
+import gamesource.battleState.battle.Battle;
+import gamesource.battleState.character.enemy.originalForest.BlackSlime;
+import gamesource.battleState.character.enemy.originalForest.RedSlime;
+import gamesource.battleState.character.enemy.originalForest.Slime;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -127,12 +134,56 @@ public class SixthState extends BaseAppState {
         cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
         major.setPlace(new Vector3f(0f, 10f, 0f));
     }
-
+    public CollisionResults results1() {
+        try {
+            maj = major.getMajor();
+            BoundingVolume ske = solidier1.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results2() {
+        try {
+            BoundingVolume ske = knight1.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results3() {
+        try {
+            BoundingVolume ske = master.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public CollisionResults results4() {
+        try {
+            BoundingVolume ske = boss.get();
+            CollisionResults result = new CollisionResults();
+            maj.collideWith(ske, result);
+            return result;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
     class StartTalk implements ActionListener {
         @Override
         public void onAction(String name, boolean isPressed, float tpf) {
-
+            int battle1 = -1;
+            CollisionResults results1 = results1();
+            CollisionResults results2 = results2();
+            CollisionResults results3 = results3();
+            CollisionResults results4 = results4();
             if (change.equals(name) && isPressed) {
                 System.out.println("change");
                 major.change();
@@ -148,10 +199,94 @@ public class SixthState extends BaseAppState {
                     canmove = 1;
                 }
             }
+            if (move.equals(name) && isPressed) {
+                if (move.equals(name) && isPressed) {
+                    if (results1 != null && results1.size() > 0) {
+                        battle1 = 0;
+                    } else if (results2 != null && results2.size() > 0) {
+                        battle1 = 1;
+                    } else if (results3 != null && results3.size() > 0) {
+                        battle1 = 2;
+                    } else if (results4 != null && results4.size() > 0) {
+                        battle1 = 3;
+                    }
+                }
 
+            }
+            switch (battle1) {
+                case 0:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Slime(100, "character/Solidier/darksolidier.j3o", 0, 0, 0, 0, 0, 0, 0, 0));
+                    state.detach(solidier1);
+                    states.remove(solidier1);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(25);
 
+                    break;
+                case 1:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Slime(120, "character/master/Master2.j3o", 0, 0, 0, 0, 0, 0, 0, 0));
+                    state.detach(knight1);
+                    states.remove(knight1);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(25);
+
+                    break;
+                case 2:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new Slime(150, "character/Knight/darkknight.j3o", 2, 0, 0, 0, 0, 0, 0, 0)
+                    );
+                    state.detach(master);
+                    states.remove(master);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(30);
+
+                    break;
+                case 3:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new RedSlime(200, "Enemies/zhenwang/boss.j3o", 5, 0, 0, 0, 0, 0, 0, 0));
+                    state.detach(boss);
+                    states.remove(boss);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(30);
+
+                    break;
+
+            }
         }
-    }
+            }
 
     public void change() {
         if (chan == 0) {
