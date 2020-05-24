@@ -320,39 +320,39 @@ public class HandCardsState extends BaseAppState {
 
     //卡牌打出时候的操作
     private void useCard(Card card) throws InterruptedException {
-        if (MainRole.getInstance().decMP(card.getCost())) {
-            if (card.isAOE()) {
-                ArrayList<Enemy> targets = app.getStateManager().getState(EnemyState.class).getEnemies();
-                Enemy[] enermies = targets.toArray(new Enemy[0]);
-                int size0 = handCards.size();
+        synchronized (this) {
+            if (MainRole.getInstance().getMP_current() >= card.getCost()) {
+                if (card.isAOE()) {
+                    ArrayList<Enemy> targets = app.getStateManager().getState(EnemyState.class).getEnemies();
+                    Enemy[] enermies = targets.toArray(new Enemy[0]);
+                    int size0 = handCards.size();
 
-                if (card.use(enermies)) {
-                    Card copyCard = new Card(card.getPath());
-                    copyCard.setImage(app.getAssetManager());
-                    copyCard.setPosition(card.getLocalTranslation().x,card.getLocalTranslation().y);
-                    this.rootNode.attachChild(copyCard);
-                    if (card.getType() == Card.TYPE.ATTACK) {
-                        LeadingActorState.attack(true);
-                        audioAttack4.playInstance();
-                    } else if (card.getType() == Card.TYPE.SKILL) {
-                        audioAttack4.playInstance();
-                        LeadingActorState.releaseSkill();
-                    }
-                    handCards.remove(card);
-                    card.removeFromParent();
+                    if (card.use(enermies)) {
+                        Card copyCard = new Card(card.getPath());
+                        copyCard.setImage(app.getAssetManager());
+                        copyCard.setPosition(card.getLocalTranslation().x, card.getLocalTranslation().y);
+                        this.rootNode.attachChild(copyCard);
+                        if (card.getType() == Card.TYPE.ATTACK) {
+                            LeadingActorState.attack(true);
+                            audioAttack4.playInstance();
+                        } else if (card.getType() == Card.TYPE.SKILL) {
+                            audioAttack4.playInstance();
+                            LeadingActorState.releaseSkill();
+                        }
+                        handCards.remove(card);
+                        card.removeFromParent();
 
-                    UseCardControl useCardControl=new UseCardControl(copyCard);
-                    copyCard.addControl(useCardControl);
+                        UseCardControl useCardControl = new UseCardControl(copyCard);
+                        copyCard.addControl(useCardControl);
 
 //        rootNode.detachChild(card);
-                    int size = handCards.size();
-                    adjustAllCardsPosition(size, size0);
-                    if (card.isExhaust())
-                        app.getStateManager().getState(DecksState.class).addToExhaust(card);
-                    else
-                        app.getStateManager().getState(DecksState.class).addToDrop(card);
-                    app.getStateManager().getState(EnemyState.class).updateHints(true);
-                    app.getStateManager().getState(LeadingActorState.class).updateHints();
+                        int size = handCards.size();
+                        adjustAllCardsPosition(size, size0);
+                        if (card.isExhaust())
+                            app.getStateManager().getState(DecksState.class).addToExhaust(card);
+                        else
+                            app.getStateManager().getState(DecksState.class).addToDrop(card);
+                        app.getStateManager().getState(EnemyState.class).updateHints(true);
 //                    boolean flag = true;
 //                    for (Enemy enemy : app.getStateManager().getState(EnemyState.class).getEnemies()) {
 //                        if (enemy.getHP() > 0) {
@@ -370,52 +370,54 @@ public class HandCardsState extends BaseAppState {
 //                        app.getStateManager().attach(new GetCardState());
 ////                        app.getStateManager().detach(app.getStateManager().getState(LeadingActorState.class));
 //                    }
-                    cardUsedCount++;
-                }
-            } else {
-                int size0 = handCards.size();
-                if (card.use(app.getStateManager().getState(EnemyState.class).getTarget())) {
+                        cardUsedCount++;
+                        MainRole.getInstance().decMP(card.getCost());
+                        app.getStateManager().getState(LeadingActorState.class).updateHints();
 
-                    Card copyCard = new Card(card.getPath());
-                    copyCard.setImage(app.getAssetManager());
-                    copyCard.setPosition(card.getLocalTranslation().x,card.getLocalTranslation().y);
-                    this.rootNode.attachChild(copyCard);
-
-                    if (card.getType() == Card.TYPE.ATTACK) {
-                        LeadingActorState.attack(false);
-                        int damage = ((AttackCard) card).getDamage();
-                        if (damage < 10) {
-                            audioAttack1.playInstance();
-                        } else if (damage < 20) {
-                            audioAttack2.playInstance();
-                        } else {
-                            audioAttack3.playInstance();
-                        }
-                    } else if (card.getType() == Card.TYPE.SKILL) {
-                        LeadingActorState.releaseSkill();
-                        int cost = ((SkillCard) card).getCost();
-                        if (cost < 2) {
-                            audioSkill1.playInstance();
-                        } else {
-                            audioSkill2.playInstance();
-                        }
-                    } else {
-                        audioPower.playInstance();
-                        LeadingActorState.releaseSkill();
                     }
-                    handCards.remove(card);
-                    card.removeFromParent();
-                    UseCardControl useCardControl=new UseCardControl(copyCard);
-                    copyCard.addControl(useCardControl);
+                } else {
+                    int size0 = handCards.size();
+                    if (card.use(app.getStateManager().getState(EnemyState.class).getTarget())) {
+
+                        Card copyCard = new Card(card.getPath());
+                        copyCard.setImage(app.getAssetManager());
+                        copyCard.setPosition(card.getLocalTranslation().x, card.getLocalTranslation().y);
+                        this.rootNode.attachChild(copyCard);
+
+                        if (card.getType() == Card.TYPE.ATTACK) {
+                            LeadingActorState.attack(false);
+                            int damage = ((AttackCard) card).getDamage();
+                            if (damage < 10) {
+                                audioAttack1.playInstance();
+                            } else if (damage < 20) {
+                                audioAttack2.playInstance();
+                            } else {
+                                audioAttack3.playInstance();
+                            }
+                        } else if (card.getType() == Card.TYPE.SKILL) {
+                            LeadingActorState.releaseSkill();
+                            int cost = ((SkillCard) card).getCost();
+                            if (cost < 2) {
+                                audioSkill1.playInstance();
+                            } else {
+                                audioSkill2.playInstance();
+                            }
+                        } else {
+                            audioPower.playInstance();
+                            LeadingActorState.releaseSkill();
+                        }
+                        handCards.remove(card);
+                        card.removeFromParent();
+                        UseCardControl useCardControl = new UseCardControl(copyCard);
+                        copyCard.addControl(useCardControl);
 //        rootNode.detachChild(card);
-                    int size = handCards.size();
-                    adjustAllCardsPosition(size, size0);
-                    if (card.isExhaust())
-                        app.getStateManager().getState(DecksState.class).addToExhaust(card);
-                    else
-                        app.getStateManager().getState(DecksState.class).addToDrop(card);
-                    app.getStateManager().getState(EnemyState.class).updateHints(false);
-                    app.getStateManager().getState(LeadingActorState.class).updateHints();
+                        int size = handCards.size();
+                        adjustAllCardsPosition(size, size0);
+                        if (card.isExhaust())
+                            app.getStateManager().getState(DecksState.class).addToExhaust(card);
+                        else
+                            app.getStateManager().getState(DecksState.class).addToDrop(card);
+                        app.getStateManager().getState(EnemyState.class).updateHints(false);
 //                    boolean flag = true;
 //                    for (Enemy enemy : app.getStateManager().getState(EnemyState.class).getEnemies()) {
 //                        if (enemy.getHP() > 0) {
@@ -433,8 +435,11 @@ public class HandCardsState extends BaseAppState {
 //                        app.getStateManager().attach(new GetCardState());
 ////                        app.getStateManager().detach(app.getStateManager().getState(LeadingActorState.class));
 //                    }
-                    cardUsedCount++;
+                        cardUsedCount++;
+                        MainRole.getInstance().decMP(card.getCost());
+                        app.getStateManager().getState(LeadingActorState.class).updateHints();
 
+                    }
                 }
             }
         }
@@ -705,6 +710,19 @@ public class HandCardsState extends BaseAppState {
             } else if (evt.isReleased()) {
                 //这里处理的是拖动导致的释放卡牌
 
+//           System.out.println("current MP:  " + MainRole.getInstance().getMP_current());
+
+                CollisionResults guiResults = getGuiCollision(evt);
+                if (guiResults.size() > 0) {
+                    Geometry res = guiResults.getClosestCollision().getGeometry();
+                    if (res instanceof Card) {
+                        if (center != null)
+                            center.removeFromParent();
+                        chosen = null;
+                        if (arrow != null)
+                            arrow.removeFromParent();//鼠标释放的时候移除箭头（不论是否选中敌人）
+                    }
+                }
                 if (chosen != null) {
                     try {
                         useCard(chosen);

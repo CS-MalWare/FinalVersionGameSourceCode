@@ -169,9 +169,9 @@ public class soldierState extends BaseAppState implements ActionListener {
 
     public void initModel(){
         if(type==1) {
-            solidier = app.getAssetManager().loadModel("character/solidier/normalSolidier.j3o");
+            solidier = app.getAssetManager().loadModel("character/solidier/solidier.j3o");
         }else if(type==2){
-            solidier = app.getAssetManager().loadModel("character/solidier/goldenSolidier.j3o");
+            solidier = app.getAssetManager().loadModel("character/solidier/goldensolidier.j3o");
         }
         solidier.setName("Solidier");
         solidier.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);

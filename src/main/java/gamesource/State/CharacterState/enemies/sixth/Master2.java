@@ -1,4 +1,4 @@
-package gamesource.State.CharacterState;
+package gamesource.State.CharacterState.enemies.sixth;
 
 import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;

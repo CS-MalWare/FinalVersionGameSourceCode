@@ -4,7 +4,6 @@ import com.jme3.app.Application;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.bounding.BoundingVolume;
-import com.jme3.collision.CollisionResults;
 import com.jme3.input.InputManager;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
@@ -14,19 +13,14 @@ import com.jme3.math.Ray;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import gamesource.State.CharacterState.MajorActor;
-import gamesource.State.CharacterState.Master2;
-import gamesource.State.CharacterState.enemies.fifth.flyRobot;
-import gamesource.State.CharacterState.enemies.fifth.plane;
-import gamesource.State.CharacterState.enemies.fifth.walkRobot;
-import gamesource.State.CharacterState.firstWorldCharacter.lizardState;
+import gamesource.State.CharacterState.enemies.sixth.Master2;
+import gamesource.State.CharacterState.enemies.sixth.darkSolidier;
 import gamesource.State.SpecialEffect.FirstWorldOtherSpecial;
 import gamesource.State.SpecialEffect.ThirdWorldLight;
 import gamesource.State.SpecialEffect.Water;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
-import gamesource.State.mapState.Chest;
-import gamesource.State.mapState.FifthWorldState;
 import gamesource.State.mapState.FirstWorldState;
 import gamesource.State.mapState.SkyBox;
 import gamesource.uiState.bagstate.BagAppState;
@@ -46,7 +40,7 @@ public class SixthState extends BaseAppState {
     public final static String move = "MOVE";
     public final static Trigger MOVE = new KeyTrigger(KeyInput.KEY_W);
     private InputManager inputManager;
-
+    private darkSolidier solidier1=new darkSolidier(5,new Vector3f(49.65925f, -25.159817f, -11.53271f));
     private AppStateManager state;
 
     private int canmove = 1;
@@ -97,9 +91,15 @@ public class SixthState extends BaseAppState {
         cross = state.getState(makeCross.class);
         states.add(cross);
         state.attach(light);
+        states.add(light);
         state.attach(effect);
+        states.add(effect);
         state.attach(x1);
+        states.add(x1);
         state.attach(master);
+        states.add(master);
+        state.attach(solidier1);
+        states.add(solidier1);
         state.attach(new SkyBox());
 
 

@@ -1,6 +1,5 @@
-package gamesource.State.CharacterState.firstWorldCharacter;
+package gamesource.State.CharacterState.enemies.sixth;
 
-import com.github.javaparser.resolution.declarations.ResolvedTypeParameterDeclaration;
 import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;
 import com.jme3.app.Application;
@@ -17,22 +16,25 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
-public class KnightState extends BaseAppState implements ActionListener {
+public class darkSolidier extends BaseAppState implements ActionListener {
     private BulletAppState bullet;
-    private Spatial Knight;
+
+    private Spatial solidier;
     private CapsuleCollisionShape capsuleShape=new CapsuleCollisionShape();
-    private CharacterControl knightControl ;
+    private CharacterControl solidControl ;
     private float stepHeight=0.01f;
     private AnimControl animControl;
     private AnimChannel animChannel;
 
+
     private PhysicsSpace physics;
 
-    private Node rootNode=new Node("Knight");
+    private Node rootNode=new Node("Solidier");
 
     private SimpleApplication app;
 
     private Node character;
+
     private float radius;
 
     private float height;
@@ -43,87 +45,115 @@ public class KnightState extends BaseAppState implements ActionListener {
 
     private float timer=0;
 
-    private int model=1,type=1;
+    private int model=1;
 
     private float rotateX=1f,rotateY=0f,rotateZ=-1f,modelY=5.4f;
 
     private Vector3f place=new Vector3f(0,0,0);
 
-    private BoundingVolume knight;
+    private int type=1;
+
+    private BoundingVolume solid;
 
     protected void initialize(Application application){
         app=(SimpleApplication)application;
-
 
         initModel();
         initPhysics();
 
         initAnim();
 
+        solidControl.setPhysicsLocation(place);
 
-        knightControl.setPhysicsLocation(place);
+        //initKeys();
+        //initChaseCamera();
     }
-
-    public KnightState(int model){
-        //app=(SimpleApplication)application;
+    public darkSolidier(int model){
         this.model=model;
-
     }
-    public KnightState(int model,float rotateX,float rotateY,float rotateZ){
-        this.model=model;
-        this.rotateX=rotateX;
-        this.rotateY=rotateY;
-        this.rotateZ=rotateZ;
-
-    }
-
-    public KnightState(int model,Vector3f place){
-        this.model=model;
-        this.place=place;
-
-    }
-    public KnightState(int model,Vector3f place,float modelY){
-        this.place=place;
-        this.model=model;
-        this.modelY=modelY;
-    }
-    public KnightState(int model,Vector3f place,float modelY,float rotateX,float rotateZ,float rotateY){
-        this.modelY=modelY;
-        this.model=model;
-        this.place=place;
-        this.rotateX=rotateX;
-        this.rotateY=rotateY;
-        this.rotateZ=rotateZ;
-
-    }
-    public KnightState(int model,int type){
-        //app=(SimpleApplication)application;
-        this.model=model;
-        this.type=type;
-    }
-    public KnightState(int model,float rotateX,float rotateY,float rotateZ,int type){
+    public darkSolidier(int model,float rotateX,float rotateY,float rotateZ){
         //app=(SimpleApplication)application;
         this.model=model;
         this.rotateX=rotateX;
         this.rotateY=rotateY;
         this.rotateZ=rotateZ;
-        this.type=type;
 
     }
 
-    public KnightState(int model,Vector3f place,int type){
+    public darkSolidier(int model,Vector3f place){
+        //app=(SimpleApplication)application;
+        this.model=model;
+        this.place=place;
+
+    }
+    public darkSolidier(int model,Vector3f place,float modelY){
+        this.place=place;
+        this.model=model;
+        this.modelY=modelY;
+    }
+    public darkSolidier(int model,Vector3f place,float modelY,float rotateX,float rotateZ,float rotateY){
+        this.model=model;
+        this.place=place;
+        this.modelY=modelY;
+        this.rotateX=rotateX;
+        this.rotateY=rotateY;
+        this.rotateZ=rotateZ;
+
+    }
+    public darkSolidier(int model,int type){
+        //app=(SimpleApplication)application;
+        this.model=model;
+        this.type=type;
+    }
+    public darkSolidier(int model,float rotateX,float rotateY,float rotateZ,int type){
+        //app=(SimpleApplication)application;
+        this.model=model;
+        this.rotateX=rotateX;
+        this.rotateY=rotateY;
+        this.rotateZ=rotateZ;
+        this.type=type;
+
+        //initModel();
+        //initPhysics();
+
+        //initAnim();
+
+        //solidControl.setPhysicsLocation(new Vector3f(75.06459f, -29.602854f, 3.6023405f));
+
+        //model=1;
+        //initKeys();
+        //initChaseCamera();
+    }
+
+    public darkSolidier(int model,Vector3f place,int type){
         //app=(SimpleApplication)application;
         this.model=model;
         this.place=place;
         this.type=type;
+        //initModel();
+        //initPhysics();
+
+        //initAnim();
+
+        //solidControl.setPhysicsLocation(place);
+        //initKeys();
+        //initChaseCamera();
     }
-    public KnightState(int model,Vector3f place,float modelY,int type){
+    public darkSolidier(int model,Vector3f place,float modelY,int type){
         this.place=place;
         this.model=model;
         this.modelY=modelY;
         this.type=type;
+        //initModel();
+        //initPhysics();
+
+        //initAnim();
+
+        //solidControl.setPhysicsLocation(new Vector3f(75.06459f, -29.602854f, 3.6023405f));
+        //initKeys();
+        //initChaseCamera();
     }
-    public KnightState(int model,Vector3f place,float modelY,float rotateX,float rotateZ,float rotateY,int type){
+    public darkSolidier(int model,Vector3f place,float modelY,float rotateX,float rotateZ,float rotateY,int type){
         this.place=place;
         this.model=model;
         this.modelY=modelY;
@@ -132,9 +162,19 @@ public class KnightState extends BaseAppState implements ActionListener {
         this.rotateZ=rotateZ;
         this.type=type;
     }
-    @Override
-    protected void cleanup(Application application) {
 
+
+    public void initModel(){
+        solidier = app.getAssetManager().loadModel("character/solidier/darksolidier.j3o");
+        solidier.setName("Solidier");
+        solidier.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
+        solidier.scale(0.015f);
+        solidier.rotate(-1.5f,modelY,-0.03f);
+        solid=solidier.getWorldBound();
+    }
+
+    public BoundingVolume get(){
+        return solid;
     }
 
     public void initPhysics(){
@@ -144,40 +184,49 @@ public class KnightState extends BaseAppState implements ActionListener {
         radius=0.4f;
         height=0.6f;
 
-        Knight.move(0.06f,-(height/2+radius)+0f,0);
+        solidier.move(0.06f,-(height/2+radius)+0.03f,0);
 
         character=new Node("Character");
         rootNode.attachChild(character);
-        character.attachChild(Knight);
+        character.attachChild(solidier);
 
         capsuleShape=new CapsuleCollisionShape(radius,height,1);
 
-        knightControl=new CharacterControl(capsuleShape,stepHeight);
-        character.addControl(knightControl);
+        solidControl=new CharacterControl(capsuleShape,stepHeight);
+        character.addControl(solidControl);
 
-        knightControl.setFallSpeed(55);
-        knightControl.setPhysicsLocation(new Vector3f(0,height/2+radius,0));
-        knightControl.setGravity(new Vector3f(0,-9.81f,0));
+        solidControl.setFallSpeed(55);
+        solidControl.setPhysicsLocation(new Vector3f(0,height/2+radius,0));
+        solidControl.setGravity(new Vector3f(0,-9.81f,0));
 
-        //physics.add(knightControl);
+        //physics.add(solidControl);
 
 
         character.setLocalTranslation(0, height / 2 + radius, 0);
-        character.move(0.06f,-(height/2+radius)+3,0);
+        character.move(0.06f,-(height/2+radius),0);
+
+
+        character.setLocalTranslation(3.764972f, -4.4763145f, 6.0633626f);
 
         rootNode.attachChild(character);
     }
 
     public void initAnim(){
 
-        scene=(Node)Knight;
+        scene=(Node)solidier;
         bip001=(Node)scene.getChild("Bip001");
         animControl=bip001.getControl(AnimControl.class);
-        System.out.println(animControl.getAnimationNames());
+        //System.out.println(animControl.getAnimationNames());
 
         animChannel=animControl.createChannel();
         animChannel.setAnim("walk");
     }
+
+    @Override
+    protected void cleanup(Application application) {
+
+    }
+
     @Override
     public void update(float tpf){
         if(model==1) {
@@ -188,11 +237,11 @@ public class KnightState extends BaseAppState implements ActionListener {
                 direction.y = 0;
                 direction.normalizeLocal();
                 direction.multLocal(0.01f);
-                knightControl.setWalkDirection(direction);
+                solidControl.setWalkDirection(direction);
                 timer = timer - tpf;
                 if (timer < 6.1) {
                     timer = 0;
-                    Knight.rotate(0, 0f, 3f);
+                    solidier.rotate(0, 0f, 3f);
                 }
             } else {
                 Vector3f direction = new Vector3f(-rotateX, -rotateY,
@@ -201,17 +250,17 @@ public class KnightState extends BaseAppState implements ActionListener {
                 direction.y = 0;
                 direction.normalizeLocal();
                 direction.multLocal(0.01f);
-                knightControl.setWalkDirection(direction);
+                solidControl.setWalkDirection(direction);
                 timer = timer + tpf;
                 if (timer >= 6) {
                     timer = 12;
-                    Knight.rotate(0, 0, -3f);
+                    solidier.rotate(0, 0, -3f);
                 }
             }
         }
         else if(model==2){
             if(timer<3) {
-                //Knight.rotate(rotateX, rotateY, rotateZ);
+                //solidier.rotate(rotateX, rotateY, rotateZ);
                 timer = timer + tpf;
                 attack();
                 if(timer>2.9){
@@ -219,7 +268,7 @@ public class KnightState extends BaseAppState implements ActionListener {
                 }
             }
             else{
-                //.rotate(rotateX, rotateY, rotateZ);
+                //solidier.rotate(rotateX, rotateY, rotateZ);
                 timer = timer - tpf;
                 takeDamage();
                 if(timer<3.1){
@@ -228,7 +277,7 @@ public class KnightState extends BaseAppState implements ActionListener {
             }
         }else if(model==3){
             if(timer>3) {
-                //Knight.rotate(rotateX, rotateY, rotateZ);
+                //solidier.rotate(rotateX, rotateY, rotateZ);
                 timer = timer -tpf;
                 attack2();
                 if(timer<3.1){
@@ -236,7 +285,7 @@ public class KnightState extends BaseAppState implements ActionListener {
                 }
             }
             else{
-                //Knight.rotate(rotateX, rotateY, rotateZ);
+                //solidier.rotate(rotateX, rotateY, rotateZ);
                 timer = timer + tpf;
                 takeDamage2();
                 if(timer>2.9){
@@ -250,6 +299,7 @@ public class KnightState extends BaseAppState implements ActionListener {
         }
         //System.out.println(animChannel.getAnimationName());
     }
+
     protected void attack(){
         if(animChannel.getAnimationName().equals("attack")==false){
             animChannel.setAnim("attack");
@@ -274,35 +324,17 @@ public class KnightState extends BaseAppState implements ActionListener {
         }
     }
 
-    public void initModel(){
-        if(type==1) {
-            Knight = app.getAssetManager().loadModel("character/Knight/blueknight.j3o");
-        }
-        else if(type==2){
-            Knight = app.getAssetManager().loadModel("character/Knight/goldenknight.j3o");
-        }
-        Knight.setName("Knight");
-        Knight.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
-        Knight.scale(0.017f);
-        Knight.rotate(-1.5f,modelY,-0.03f);
-        knight=Knight.getWorldBound();
-    }
-
-    public BoundingVolume get(){
-        return knight;
-    }
     @Override
     protected void onEnable() {
         app.getRootNode().attachChild(this.rootNode);
-        physics.add(knightControl);
-        knight=Knight.getWorldBound();
+        physics.add(solidControl);
     }
 
     @Override
     protected void onDisable() {
+
         this.rootNode.removeFromParent();
-        physics.remove(knightControl);
-        knight=null;
+        physics.remove(solidControl);
     }
 
     @Override

@@ -79,7 +79,7 @@ public class BattleBackGroundState extends BaseAppState {
         rootNode.addLight(sun);
         rootNode.addLight(ambient);*/
         fpp = new FilterPostProcessor(app.getAssetManager());
-        initFpp();
+        //initFpp();
 
         rootNode.attachChild(model1);
     }
