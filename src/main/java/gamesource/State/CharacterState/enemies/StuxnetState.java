@@ -69,7 +69,7 @@ public class StuxnetState extends BaseAppState {
         this.modelY=modelY;
     }
     public void initModel(){
-        skeleton=app.getAssetManager().loadModel("Enemies/zhenwang/boss.j3o");
+        skeleton=app.getAssetManager().loadModel("Enemies/zhenwang/bboss.j3o");
         skeleton.setName("skeleton");
         skeleton.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
         skeleton.scale(0.15f);
