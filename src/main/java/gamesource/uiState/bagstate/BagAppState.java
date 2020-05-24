@@ -365,6 +365,16 @@ public class BagAppState extends BaseAppState{
             }
         }
     }
+
+    public void onFight(){
+        cleanup();
+        app.getInputManager().deleteMapping(bagString);
+    }
+
+    public void exitFight(){
+        app.getInputManager().addMapping(bagString, new KeyTrigger(KeyInput.KEY_B));
+        app.getInputManager().addListener(new BagListener(), bagString);
+    }
     // public void update(float tpf){
     //     if(isShowCards){
     //         for(VersionedReference reference : cardsReference){

@@ -36,6 +36,9 @@ import gamesource.battleState.character.enemy.originalForest.*;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
+import gamesource.util.TalkWithOption;
+import gamesource.util.WordWrapForTalk;
+import gamesource.util.TalkWithOption.CallType;
 
 import java.util.ArrayList;
 
@@ -116,6 +119,10 @@ public class SecondState extends BaseAppState {
     private makeCross cross;
 
     private ArrayList<BaseAppState> states = new ArrayList<BaseAppState>();
+    private TalkWithOption talkWithOption;
+    private ArrayList<String> content = new ArrayList<>();
+    private ArrayList<String> names = new ArrayList<>();
+    private WordWrapForTalk wordWrapForTalk;
 
     protected void initialize(Application application) {
         state = application.getStateManager();
@@ -385,6 +392,20 @@ public class SecondState extends BaseAppState {
             CollisionResults results15 = results15();
             if (talk.equals(name) && isPressed) {
                 if (results1.size() > 0) {                  //这里是和萨满的对话
+                    if(!getStateManager().hasState(wordWrapForTalk)){
+                        content.clear();
+                        names.clear();
+                        names.add("Shaman");
+                        names.add("MajorStar");
+                        content.add("Ohhhh, who are you?");
+                        content.add("I am the prince, where us this place?");
+                        content.add("I never heard you, I never seen the creature like your appearance, you do not belong here!");
+                        content.add("Yeee, master told me that a virus attach the world, and cause distortion of space, I was transferred into here, "+
+                            "I need to clean up all evils and find treasure. Is anything different at here?");   
+                        content.add("A large number of aggresive creatures appeared at here, my people get attacked, please help me");
+                        wordWrapForTalk = new WordWrapForTalk(names, content);
+                        state.attach(wordWrapForTalk);
+                    }
                     System.out.println("get");
                     if (canmove == 1) {
                         state.detach(input);
@@ -396,6 +417,14 @@ public class SecondState extends BaseAppState {
                         canmove = 1;
                     }
                 } else if (results2.size() > 0) {               //这里是和萨满的小姑娘的对话
+                    if(!getStateManager().hasState(talkWithOption)){
+                        content.clear();
+                        content.add("Wow, you are the prince, I never see people like you, please help us, we need you!");
+                        content.add("Here are some equipment and cards, these would strength and power you!");
+                        content.add("Hop you can follow your fate");
+                        talkWithOption = new TalkWithOption("Daughter Of Shama", content, CallType.CONFIRM, false);
+                        state.attach(talkWithOption);
+                    }
                     if (canmove == 1) {
                         state.detach(input);
                         major.mouseChange();

@@ -361,6 +361,16 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         
     }
 
+    public void onFight(){
+        cleanup();
+        app.getInputManager().deleteMapping("shop");
+    }
+
+    public void exitFight(){
+        app.getInputManager().addMapping("shop", new KeyTrigger(KeyInput.KEY_G));
+        app.getInputManager().addListener(new ShopListener(), "shop");
+    }
+
     class ShopListener implements ActionListener{
         public void onAction(String name, boolean isPressed, float tpf){
             if("shop".equals(name) && isPressed && !isMapPressed){
