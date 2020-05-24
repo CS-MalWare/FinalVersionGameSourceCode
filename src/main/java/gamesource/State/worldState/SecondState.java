@@ -487,6 +487,8 @@ public class SecondState extends BaseAppState {
                 case 0:
                     state.detach(input);
                     states.remove(input);
+                    bagState.onFight();
+                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -506,6 +508,8 @@ public class SecondState extends BaseAppState {
                 case 1:
                     state.detach(input);
                     states.remove(input);
+                    bagState.onFight();
+                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -525,6 +529,8 @@ public class SecondState extends BaseAppState {
                 case 2:
                     state.detach(input);
                     states.remove(input);
+                    bagState.onFight();
+                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -544,6 +550,8 @@ public class SecondState extends BaseAppState {
                 case 3:
                     state.detach(input);
                     states.remove(input);
+                    bagState.onFight();
+                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -564,6 +572,8 @@ public class SecondState extends BaseAppState {
                 case 4:
                     state.detach(input);
                     states.remove(input);
+                    bagState.onFight();
+                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -584,6 +594,8 @@ public class SecondState extends BaseAppState {
                 case 5:
                     state.detach(input);
                     states.remove(input);
+                    bagState.onFight();
+                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -604,6 +616,8 @@ public class SecondState extends BaseAppState {
                 case 6:
                     state.detach(input);
                     states.remove(input);
+                    bagState.onFight();
+                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -624,6 +638,8 @@ public class SecondState extends BaseAppState {
                 case 7:
                     state.detach(input);
                     states.remove(input);
+                    bagState.onFight();
+                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -643,6 +659,8 @@ public class SecondState extends BaseAppState {
                 case 8:
                     state.detach(input);
                     states.remove(input);
+                    bagState.onFight();
+                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -662,6 +680,8 @@ public class SecondState extends BaseAppState {
                 case 9:
                     state.detach(input);
                     states.remove(input);
+                    bagState.onFight();
+                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -681,6 +701,8 @@ public class SecondState extends BaseAppState {
                 case 10:
                     state.detach(input);
                     states.remove(input);
+                    bagState.onFight();
+                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);

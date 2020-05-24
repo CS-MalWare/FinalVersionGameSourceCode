@@ -62,10 +62,10 @@ public class BattleState extends BaseAppState {
 
 
         // 改变鼠标图标
-        changeCursor();
+       // changeCursor();
 
         // 注册监听器
-        app.getInputManager().addRawInputListener(inputListener);
+        //app.getInputManager().addRawInputListener(inputListener);
     }
 
 

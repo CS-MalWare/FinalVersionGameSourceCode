@@ -221,6 +221,8 @@ public class SixthState extends BaseAppState {
                 case 0:
                     state.detach(input);
                     states.remove(input);
+                    bagState.onFight();
+                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -238,6 +240,8 @@ public class SixthState extends BaseAppState {
                 case 1:
                     state.detach(input);
                     states.remove(input);
+                    bagState.onFight();
+                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -255,6 +259,8 @@ public class SixthState extends BaseAppState {
                 case 2:
                     state.detach(input);
                     states.remove(input);
+                    bagState.onFight();
+                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
@@ -273,6 +279,8 @@ public class SixthState extends BaseAppState {
                 case 3:
                     state.detach(input);
                     states.remove(input);
+                    bagState.onFight();
+                    shopState.onFight();
                     inputManager.deleteTrigger(talk, TALK);
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);

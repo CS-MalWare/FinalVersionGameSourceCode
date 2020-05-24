@@ -74,9 +74,9 @@ public class Battle extends BaseAppState {
                 baseAppState.setEnabled(false);
                 //state.detach(baseAppState);
             }
-            if((baseAppState instanceof MenuAppState) ||(baseAppState instanceof BagAppState) ||(baseAppState instanceof ShopAppState)){
-                state.detach(baseAppState);
-            }
+            //if((baseAppState instanceof MenuAppState) ||(baseAppState instanceof BagAppState) ||(baseAppState instanceof ShopAppState)){
+           //     state.detach(baseAppState);
+           // }
 
         }
 
@@ -153,8 +153,16 @@ public class Battle extends BaseAppState {
                 baseAppState.setEnabled(true);
                 //state.attach(baseAppState);
             }
-            if((baseAppState instanceof MenuAppState) ||(baseAppState instanceof BagAppState) ||(baseAppState instanceof ShopAppState)){
-                state.detach(baseAppState);
+           // if((baseAppState instanceof MenuAppState) ||(baseAppState instanceof BagAppState) ||(baseAppState instanceof ShopAppState)){
+           //     state.detach(baseAppState);
+            //}
+             if((baseAppState instanceof BagAppState) ){
+                 BagAppState bag= (BagAppState) baseAppState;
+                 bag.exitFight();
+            }
+            if((baseAppState instanceof ShopAppState) ){
+                ShopAppState shop= (ShopAppState) baseAppState;
+                shop.exitFight();
             }
             if((baseAppState instanceof MajorActor)){
                 ((MajorActor) baseAppState).mouseChange();
