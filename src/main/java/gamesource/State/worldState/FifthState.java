@@ -27,6 +27,7 @@ import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
 import gamesource.State.mapState.FifthWorldState;
 import gamesource.State.mapState.SkyBox;
+import gamesource.State.mapState.skyBox5;
 import gamesource.State.musicState.FifthBackMusic;
 import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
