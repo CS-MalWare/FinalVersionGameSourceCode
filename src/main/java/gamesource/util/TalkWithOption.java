@@ -25,16 +25,20 @@ public class TalkWithOption extends BaseAppState{
     private Container window;
     private Label contentLabel;
     private int contentStep;
+    private boolean isTalkShow = false;
+
     public static enum CallType{
         CONFIRM,
-        SHOP
+        SHOP,
+        FIGHT
     }
     private CallType callType;
 
-    public TalkWithOption(String modelName, ArrayList<String> talkContent, CallType callType){
+    public TalkWithOption(String modelName, ArrayList<String> talkContent, CallType callType, boolean isTalkShow){
         this.modelName = modelName;
         this.talkContent = talkContent;
         this.callType = callType;
+        this.isTalkShow = isTalkShow;
     }
 
     @Override
@@ -48,7 +52,7 @@ public class TalkWithOption extends BaseAppState{
 
     @Override
     protected void cleanup(Application application){
-
+        app.getFlyByCamera().setDragToRotate(false);
     }
 
     @Override
@@ -67,6 +71,7 @@ public class TalkWithOption extends BaseAppState{
         
         window.addChild(new ActionButton(new CallMethodAction("Continue", this, "continueToNext")));
         getState(PopupState.class).showPopup(window);
+        isTalkShow = true;
     }
 
     protected void calculatePreferLocation(){
@@ -96,15 +101,29 @@ public class TalkWithOption extends BaseAppState{
             window.addChild(new ActionButton(new CallMethodAction("Yes", this, "confirm")));
         }else if(callType == CallType.SHOP){
             window.addChild(new ActionButton(new CallMethodAction("Open", this, "shop")));
+        }else if(callType == CallType.FIGHT){
+            window.addChild(new ActionButton(new CallMethodAction("Fight", this, "fight")));
         }
     }
 
     public void confirm(){
-        //调用特定的战斗训练场景
+        isTalkShow = false;
+        getState(FirstState.class).getStateManager().detach(TalkWithOption.this);
+        cleanup();
+    }
+
+    public void fight(){
+        isTalkShow = false;
+        //调用战斗场景
     }
 
     public void shop(){
-        getState(FirstWorldState.class).getState(ShopAppState.class).showShop();
-        getState(FirstWorldState.class).getStateManager().detach(TalkWithOption.this);
+        isTalkShow = false;
+        getState(FirstState.class).getState(ShopAppState.class).showShop();
+        getState(FirstState.class).getStateManager().detach(TalkWithOption.this);
+    }
+
+    public boolean isTalkShow(){
+        return isTalkShow;
     }
 }
