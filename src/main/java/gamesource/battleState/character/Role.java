@@ -1,13 +1,11 @@
 package gamesource.battleState.character;
 
-import gamesource.battleState.card.AttackCard;
 import com.jme3.app.SimpleApplication;
+import gamesource.battleState.card.AttackCard.PROPERTY;
 import gamesource.battleState.utils.buffs.Buff;
 import gamesource.battleState.utils.buffs.foreverBuffs.Artifact;
-import gamesource.battleState.utils.buffs.foreverBuffs.Dexterity;
 import gamesource.battleState.utils.buffs.foreverBuffs.Dodge;
 import gamesource.battleState.utils.buffs.limitBuffs.*;
-import gamesource.battleState.card.AttackCard.PROPERTY;
 public class Role {
     public enum ROLE {MAINROLE, NPC, ENEMY}
 
@@ -206,8 +204,10 @@ public class Role {
     // 计算经过buff后的,应该造成的伤害值
     public int computeDamage(int num) {
         num = num + strength + this.atk;
+
         if (this.weak.getDuration() > 0)
             num = (int) (num * 0.75);
+        num = Math.max(num, 1);
         if (this.disarm.getDuration() > 0) {
             float random = (float) (Math.random() * 3);
             if (random < 1) return 1;
