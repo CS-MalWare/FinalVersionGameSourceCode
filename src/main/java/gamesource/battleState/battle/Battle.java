@@ -70,10 +70,8 @@ public class Battle extends BaseAppState {
 
 
         for (BaseAppState baseAppState : State) {
-            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
                 baseAppState.setEnabled(false);
                 //state.detach(baseAppState);
-            }
 
         }
 
@@ -146,10 +144,8 @@ public class Battle extends BaseAppState {
         //app.getRootNode().removeLight(sun);
         //app.getRootNode().removeLight(ambient);
         for (BaseAppState baseAppState : State) {
-            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
                 baseAppState.setEnabled(true);
                 //state.attach(baseAppState);
-            }
             if((baseAppState instanceof MajorActor)){
                 ((MajorActor) baseAppState).mouseChange();
                 ((MajorActor) baseAppState).mouseChange();
