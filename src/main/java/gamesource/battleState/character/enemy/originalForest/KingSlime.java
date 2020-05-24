@@ -59,7 +59,6 @@ public class KingSlime extends Enemy {
     @Override
     protected void attack() {
         this.target.getDamage(computeDamage(35));
-        this.getBuff(new Stun(this, 1));
     }
 
     @Override

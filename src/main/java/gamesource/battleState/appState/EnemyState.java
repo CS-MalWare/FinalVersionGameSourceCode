@@ -8,6 +8,8 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.asset.AssetManager;
+import com.jme3.audio.AudioData;
+import com.jme3.audio.AudioNode;
 import com.jme3.bounding.BoundingSphere;
 import com.jme3.collision.CollisionResults;
 import com.jme3.font.BitmapFont;
@@ -554,27 +556,6 @@ public class EnemyState extends BaseAppState {
             case "Enemies/underWater/fish12.j3o":
                 model.move(-0.9f, 0, 0);
                 break;
-
-//            case "Enemies/underWater/fish60.j3o":
-//                model.move(-1.5f, 0, 0);
-//                break;
-//            case "Enemies/underWater/fish61.j3o":
-//                model.move(-1.3f, 0, 0);
-//                break;
-//            case "Enemies/underWater/fish62.j3o":
-//                model.move(-1.1f, 0, 0);
-//                break;
-//
-//            case "Enemies/underWater/fish50.j3o":
-//                model.move(-1.5f, 0, 0);
-//                break;
-//            case "Enemies/underWater/fish51.j3o":
-//                model.move(-1.3f, 0, 0);
-//                break;
-//            case "Enemies/underWater/fish52.j3o":
-//                model.move(-1.1f, 0, 0);
-//                break;
-
             case "Enemies/underWater/fish40.j3o":
                 model.move(-1f, 0.7f, 0);
                 break;
@@ -584,27 +565,6 @@ public class EnemyState extends BaseAppState {
             case "Enemies/underWater/fish42.j3o":
                 model.move(-0.6f, 0.7f, 0);
                 break;
-
-//            case "Enemies/underWater/fish50.j3o":
-//                model.move(-1.5f, 0, 0);
-//                break;
-//            case "Enemies/underWater/fish51.j3o":
-//                model.move(-1.3f, 0, 0);
-//                break;
-//            case "Enemies/underWater/fish52.j3o":
-//                model.move(-1.1f, 0, 0);
-//                break;
-//
-//            case "Enemies/underWater/fish60.j3o":
-//                model.move(-1.3f, 0, 0);
-//                break;
-//            case "Enemies/underWater/fish61.j3o":
-//                model.move(-1.1f, 0, 0);
-//                break;
-//            case "Enemies/underWater/fish62.j3o":
-//                model.move(-0.9f, 0, 0);
-//                break;
-
             case "Enemies/underWater/hollowKnight0.j3o":
                 model.move(-1.5f, 0, 0);
                 break;
@@ -891,6 +851,92 @@ public class EnemyState extends BaseAppState {
         super.update(tpf);
         for (int i = 0; i < enemies.size(); i++) {
             if (enemies.get(i).getHP() <= 0) {
+
+                // 添加怪物死亡音效
+                String deadSoundSrc = "";
+                switch (enemies.get(i).getSrc()){
+                    case "Enemies/skeleton/skeleton0.j3o":
+                    case "Enemies/skeleton/skeleton1.j3o":
+                    case "Enemies/skeleton/skeleton2.j3o":
+                    case "Enemies/skeleton/greenSkeleton/greenSkeleton0.j3o":
+                    case "Enemies/skeleton/greenSkeleton/greenSkeleton1.j3o":
+                    case "Enemies/skeleton/greenSkeleton/greenSkeleton2.j3o":
+                    case "Enemies/skeleton/blueSkeleton/blueSkeleton0.j3o":
+                    case "Enemies/skeleton/blueSkeleton/blueSkeleton1.j3o":
+                    case "Enemies/skeleton/blueSkeleton/blueSkeleton2.j3o":
+                    case "Enemies/skeleton/redSkeleton/redSkeleton0.j3o":
+                    case "Enemies/skeleton/redSkeleton/redSkeleton1.j3o":
+                    case "Enemies/skeleton/redSkeleton/redSkeleton2.j3o":
+                    case "Enemies/bat/scene0.j3o":
+                    case "Enemies/bat/scene1.j3o":
+                    case "Enemies/bat/scene2.j3o":
+                    case "Enemies/skeleton/KingSkeleton/kingSkeleton0.j3o":
+                        deadSoundSrc = "Sound/Dead/史莱姆死亡.wav";
+                        break;
+
+                    case "Enemies/underWater/fish10.j3o":
+                    case "Enemies/underWater/fish11.j3o":
+                    case "Enemies/underWater/fish12.j3o":
+                    case "Enemies/underWater/fish50.j3o":
+                    case "Enemies/underWater/fish51.j3o":
+                    case "Enemies/underWater/fish52.j3o":
+                    case "Enemies/underWater/fish60.j3o":
+                    case "Enemies/underWater/fish61.j3o":
+                    case "Enemies/underWater/fish62.j3o":
+                    case "Enemies/underWater/drunkCrab0.j3o":
+                    case "Enemies/underWater/drunkCrab1.j3o":
+                    case "Enemies/underWater/drunkCrab2.j3o":
+                    case "Enemies/underWater/mushroomBug0.j3o":
+                    case "Enemies/underWater/mushroomBug1.j3o":
+                    case "Enemies/underWater/mushroomBug2.j3o":
+                    case "Enemies/underWater/fishboss0.j3o":
+                        deadSoundSrc = "Sound/Dead/狼人死亡.wav";
+                        break;
+
+                    case "Enemies/forth/scene0.j3o":
+                    case "Enemies/forth/scene1.j3o":
+                    case "Enemies/forth/scene2.j3o":
+                    case "Enemies/bossKnight/scene0.j3o":
+                    case "Enemies/bossKnight/scene1.j3o":
+                    case "Enemies/bossKnight/scene2.j3o":
+                    case "Enemies/forth/boss/scene0.j3o":
+                        deadSoundSrc = "Sound/Dead/机器人死亡.wav";
+                        break;
+
+
+                    case "Enemies/fifthMap/airplane0.j3o":
+                    case "Enemies/fifthMap/airplane1.j3o":
+                    case "Enemies/fifthMap/airplane2.j3o":
+                    case "Enemies/fifthMap/walking_robot/scene0.j3o":
+                    case "Enemies/fifthMap/walking_robot/scene1.j3o":
+                    case "Enemies/fifthMap/walking_robot/scene2.j3o":
+                    case "Enemies/fifthMap/mech_drone/scene0.j3o":
+                    case "Enemies/fifthMap/mech_drone/scene1.j3o":
+                    case "Enemies/fifthMap/mech_drone/scene2.j3o":
+                        deadSoundSrc = "Sound/Dead/龙死亡.wav";
+                        break;
+//                    case "3":
+//                        deadSoundSrc = "Sound/Dead/Zac死亡.wav";
+//                        break;
+//                    case "3":
+//                        deadSoundSrc = "Sound/Dead/Ace死亡.wav";
+//                        break;
+//                    case "3":
+//                        deadSoundSrc = "Sound/Dead/Faker死亡.wav";
+//                        break;
+//                    case "3":
+//                        deadSoundSrc = "Sound/Dead/震网死亡.wav";
+//                        break;
+
+                }
+
+                AudioNode audioNode = new AudioNode(app.getAssetManager(),deadSoundSrc, AudioData.DataType.Buffer);
+                audioNode.setLooping(false);
+                audioNode.setPositional(false);
+                audioNode.setVolume(10);
+                rootNode.attachChild(audioNode);
+                audioNode.playInstance();
+
                 enemiesModel.get(i).removeFromParent();
                 hpHints.get(i).removeFromParent();
                 blockHints.get(i).removeFromParent();
@@ -932,10 +978,12 @@ public class EnemyState extends BaseAppState {
         this.initEnemies();
         this.initializeHints();
         this.inputManager.addRawInputListener(myRawInputListener);
+
         // 在启动背景的时候吧这个特效加载背景节点上去
         if(this.enemies.size() == 1){//boss 只有一个
+            System.out.println(this.enemies.get(0).getSrc());
             switch (this.enemies.get(0).getSrc()){
-                case "Enemies/skeleton/KingSkeleton/KingSkeleton0.j3o":
+                case "Enemies/skeleton/KingSkeleton/kingSkeleton0.j3o":
                     this.rootNode.attachChild(KingSkeletonStateParticle.getParticle1(app.getAssetManager()));
                     break;
                 case "Enemies/zhenwang/boss0.j3o":
