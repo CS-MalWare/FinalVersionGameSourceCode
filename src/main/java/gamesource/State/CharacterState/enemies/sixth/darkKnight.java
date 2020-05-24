@@ -1,6 +1,5 @@
-package gamesource.State.CharacterState.firstWorldCharacter;
+package gamesource.State.CharacterState.enemies.sixth;
 
-import com.github.javaparser.resolution.declarations.ResolvedTypeParameterDeclaration;
 import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;
 import com.jme3.app.Application;
@@ -17,7 +16,7 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
-public class KnightState extends BaseAppState implements ActionListener {
+public class darkKnight extends BaseAppState implements ActionListener {
     private BulletAppState bullet;
     private Spatial Knight;
     private CapsuleCollisionShape capsuleShape=new CapsuleCollisionShape();
@@ -64,12 +63,12 @@ public class KnightState extends BaseAppState implements ActionListener {
         knightControl.setPhysicsLocation(place);
     }
 
-    public KnightState(int model){
+    public darkKnight(int model){
         //app=(SimpleApplication)application;
         this.model=model;
 
     }
-    public KnightState(int model,float rotateX,float rotateY,float rotateZ){
+    public darkKnight(int model,float rotateX,float rotateY,float rotateZ){
         this.model=model;
         this.rotateX=rotateX;
         this.rotateY=rotateY;
@@ -77,17 +76,17 @@ public class KnightState extends BaseAppState implements ActionListener {
 
     }
 
-    public KnightState(int model,Vector3f place){
+    public darkKnight(int model,Vector3f place){
         this.model=model;
         this.place=place;
 
     }
-    public KnightState(int model,Vector3f place,float modelY){
+    public darkKnight(int model,Vector3f place,float modelY){
         this.place=place;
         this.model=model;
         this.modelY=modelY;
     }
-    public KnightState(int model,Vector3f place,float modelY,float rotateX,float rotateZ,float rotateY){
+    public darkKnight(int model,Vector3f place,float modelY,float rotateX,float rotateZ,float rotateY){
         this.modelY=modelY;
         this.model=model;
         this.place=place;
@@ -96,12 +95,12 @@ public class KnightState extends BaseAppState implements ActionListener {
         this.rotateZ=rotateZ;
 
     }
-    public KnightState(int model,int type){
+    public darkKnight(int model,int type){
         //app=(SimpleApplication)application;
         this.model=model;
         this.type=type;
     }
-    public KnightState(int model,float rotateX,float rotateY,float rotateZ,int type){
+    public darkKnight(int model,float rotateX,float rotateY,float rotateZ,int type){
         //app=(SimpleApplication)application;
         this.model=model;
         this.rotateX=rotateX;
@@ -111,19 +110,19 @@ public class KnightState extends BaseAppState implements ActionListener {
 
     }
 
-    public KnightState(int model,Vector3f place,int type){
+    public darkKnight(int model,Vector3f place,int type){
         //app=(SimpleApplication)application;
         this.model=model;
         this.place=place;
         this.type=type;
     }
-    public KnightState(int model,Vector3f place,float modelY,int type){
+    public darkKnight(int model,Vector3f place,float modelY,int type){
         this.place=place;
         this.model=model;
         this.modelY=modelY;
         this.type=type;
     }
-    public KnightState(int model,Vector3f place,float modelY,float rotateX,float rotateZ,float rotateY,int type){
+    public darkKnight(int model,Vector3f place,float modelY,float rotateX,float rotateZ,float rotateY,int type){
         this.place=place;
         this.model=model;
         this.modelY=modelY;
@@ -275,12 +274,7 @@ public class KnightState extends BaseAppState implements ActionListener {
     }
 
     public void initModel(){
-        if(type==1) {
-            Knight = app.getAssetManager().loadModel("character/Knight/blueknight.j3o");
-        }
-        else if(type==2){
-            Knight = app.getAssetManager().loadModel("character/Knight/goldenknight.j3o");
-        }
+        Knight = app.getAssetManager().loadModel("character/Knight/darkknight.j3o");
         Knight.setName("Knight");
         Knight.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
         Knight.scale(0.017f);
