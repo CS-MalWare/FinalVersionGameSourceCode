@@ -31,7 +31,7 @@ public class SecondWorldMap extends BaseAppState {
 
         physics=bullet.getPhysicsSpace();
 
-        Scene=app.getAssetManager().loadModel("Map/second.j3o");
+        Scene=app.getAssetManager().loadModel("Map/two/second.j3o");
 
         Scene.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
         Scene.scale(2.5f);
