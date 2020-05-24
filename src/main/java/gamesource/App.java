@@ -73,9 +73,6 @@ public class App extends SimpleApplication {
         f3 = new ThirdState();
         f4 = new ForthState();
         f5 = new FifthState();
-<<<<<<< HEAD
-        stateManager.attach(f1);
-=======
         f6=new SixthState();
         switch(guan){
             case 1:
@@ -97,7 +94,6 @@ public class App extends SimpleApplication {
                 stateManager.attach(f6);
                 break;
         }
->>>>>>> 00e16ffe170ef27f9194692a528b82a518c06997
         //stateManager.getState(SecondState.class).setEnabled(false);
         //f2.setEnabled(false);
         //stateManager.attach(f2);
@@ -319,7 +315,7 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) {
 
-        App app = new App(3);
+        App app = new App(6);
         //app.setSettings(settings);
         //app.setShowSettings(false);
         app.start();
