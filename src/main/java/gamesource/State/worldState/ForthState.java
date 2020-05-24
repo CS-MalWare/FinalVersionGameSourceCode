@@ -29,6 +29,7 @@ import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
 import gamesource.State.mapState.ForthWorldMap;
 import gamesource.State.mapState.SkyBox;
+import gamesource.State.mapState.skyBox4;
 import gamesource.State.musicState.ForthBackMusic;
 import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
@@ -148,7 +149,7 @@ public class ForthState extends BaseAppState {
         state.attach(effect);
         states.add(effect);
         //state.attach(water);
-        state.attach(new SkyBox());
+        state.attach(new skyBox4());
 
 
         this.inputManager = application.getInputManager();

@@ -532,7 +532,7 @@ public class Storage {
             for (Equipment equipment : MainRole.getInstance().getEquipments()) {
                 tempPath += equipment.getPicName() + "|";
             }
-            data += String.format("\"equipments\":\"%s\"\n", tempPath);
+            data += String.format("\"equipments\":\"%s\",\n", tempPath);
             // 这次用这个变量临时存储能进入的关卡
             tempPath = "";
             tempPath += FirstState.canGo+"|";
@@ -542,7 +542,7 @@ public class Storage {
             tempPath += FifthState.canGo+"|";
             tempPath += SixthState.canGo;
             data += String.format("\"canGo\":\"%s\"",tempPath);
-            data += "}";
+            data += "\n}";
             bw.write(data);
             bw.close();
         } catch (IOException e) {

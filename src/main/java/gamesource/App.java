@@ -3,10 +3,13 @@ package gamesource;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.bullet.BulletAppState;
+import com.jme3.cursors.plugins.JmeCursor;
 import com.jme3.font.BitmapText;
 import com.jme3.input.KeyInput;
+import com.jme3.input.RawInputListener;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
+import com.jme3.input.event.*;
 import com.jme3.light.DirectionalLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
@@ -101,7 +104,66 @@ public class App extends SimpleApplication {
 
         inputManager.addMapping(world, new KeyTrigger(KeyInput.KEY_Z));
         inputManager.addListener(new StartTalk(), world);
+
+        // 改变鼠标图标
+        changeCursor();
+
+        // 注册监听器
+        getInputManager().addRawInputListener(inputListener);
     }
+
+
+    private void changeCursor() {
+
+        JmeCursor jmeCursor = (JmeCursor) assetManager.loadAsset("Util/cursor/common.cur");
+        getInputManager().setMouseCursor(jmeCursor);
+    }
+
+
+
+
+    private RawInputListener inputListener = new RawInputListener() {
+
+
+        public void onMouseMotionEvent(MouseMotionEvent evt) {
+
+        }
+
+        public void beginInput() {
+        }
+
+        public void endInput() {
+        }
+
+        public void onJoyAxisEvent(JoyAxisEvent evt) {
+        }
+
+        public void onJoyButtonEvent(JoyButtonEvent evt) {
+        }
+
+        public void onMouseButtonEvent(MouseButtonEvent evt) {
+            boolean isPressed = evt.isPressed();
+
+            if (isPressed) {
+                // 显示鼠标位置
+                JmeCursor jmeCursor = (JmeCursor) assetManager.loadAsset("Util/cursor/click.cur");
+                getInputManager().setMouseCursor(jmeCursor);
+            }
+
+            boolean isReleased = evt.isReleased();
+            if (isReleased) {
+                // 显示鼠标位置
+                JmeCursor jmeCursor = (JmeCursor) assetManager.loadAsset("Util/cursor/common.cur");
+                getInputManager().setMouseCursor(jmeCursor);
+            }
+        }
+
+        public void onKeyEvent(KeyInputEvent evt) {
+        }
+
+        public void onTouchEvent(TouchEvent evt) {
+        }
+    };
 
     public App(int guan){
         this.guan=guan;
@@ -345,7 +407,7 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) {
 
-        App app = new App(5);
+        App app = new App(1);
         //app.setSettings(settings);
         //app.setShowSettings(false);
         app.start();
