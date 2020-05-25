@@ -291,13 +291,13 @@ public class GetCardState extends BaseAppState {
                             des.setText(lastEquipment.getDescription());
                             des.setSize(0.2f);
 //                            des.setLocalTranslation(-3.5f, 1.5f, 0);
-                            des.setBox(new Rectangle(-3.5f, 1.5f, 10, 2));
+                            des.setBox(new Rectangle(-3.5f, 2f, 10, 2));
                             des.setQueueBucket(RenderQueue.Bucket.Transparent);
                             title.setText(lastEquipment.getName());
                             title.setSize(0.3f);
                             title.setColor(ColorRGBA.White);
 //                            title.setLocalTranslation(-3.5f, 2f, 0);
-                            title.setBox(new Rectangle(-3.5f, 2f, 5, 2));
+                            title.setBox(new Rectangle(-3.5f, 2.5f, 5, 2));
                             title.setQueueBucket(RenderQueue.Bucket.Transparent);
                             rootNode.attachChild(title);
                             rootNode.attachChild(des);
