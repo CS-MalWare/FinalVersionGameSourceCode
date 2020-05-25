@@ -21,35 +21,34 @@ import com.jme3.scene.shape.Quad;
 import com.jme3.texture.Texture;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.Master1;
-import gamesource.State.CharacterState.enemies.SnowRobotState;
 import gamesource.State.CharacterState.enemies.fifth.TalkBot;
 import gamesource.State.CharacterState.enemies.fifth.flyRobot;
 import gamesource.State.CharacterState.enemies.fifth.plane;
 import gamesource.State.CharacterState.enemies.fifth.walkRobot;
 import gamesource.State.CharacterState.firstWorldCharacter.lizardState;
-import gamesource.State.SpecialEffect.*;
+import gamesource.State.SpecialEffect.FifthOtherSpecial;
+import gamesource.State.SpecialEffect.ThirdWorldLight;
+import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
 import gamesource.State.mapState.FifthWorldState;
-import gamesource.State.mapState.SkyBox;
 import gamesource.State.mapState.skyBox5;
 import gamesource.State.musicState.FifthBackMusic;
 import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.appState.GetCardState;
 import gamesource.battleState.battle.Battle;
-import gamesource.battleState.character.enemy.mechanicalEmpire.RampageRobot;
-import gamesource.battleState.character.enemy.mechanicalEmpire.Robot;
-import gamesource.battleState.character.enemy.mechanicalEmpire.SteamRobot;
-import gamesource.battleState.character.enemy.mechanicalEmpire.StrongRobot;
-import gamesource.battleState.character.enemy.originalForest.*;
+import gamesource.battleState.character.enemy.dragonWat.DarkDragon;
+import gamesource.battleState.character.enemy.dragonWat.EliteDarkDragon;
+import gamesource.battleState.character.enemy.dragonWat.KingDarkDragon;
+import gamesource.battleState.character.enemy.dragonWat.RampageDarkDragon;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
 import gamesource.util.TalkWithOption;
-import gamesource.util.WordWrapForTalk;
 import gamesource.util.TalkWithOption.CallType;
+import gamesource.util.WordWrapForTalk;
 
 import java.util.ArrayList;
 
@@ -519,15 +518,16 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(80, "Enemies/fifthMap/airplane.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(80, "Enemies/fifthMap/airplane.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                            new DarkDragon(80, "Enemies/fifthMap/airplane.j3o", 5, 1, 0, 0, 0, 0, 0, 0),
+                            new DarkDragon(80, "Enemies/fifthMap/airplane.j3o", 5, 1, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(p1);
                     states.remove(p1);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    GetCardState.setGoldCountAfterThisBattle(25);
+                    GetCardState.setGoldCountAfterThisBattle(40);
+
 
                     break;
                 case 1:
@@ -538,15 +538,15 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(80, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(80, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                            new DarkDragon(80, "Enemies/fifthMap/airplane.j3o", 0, 2, 0, 0, 0, 0, 0, 0),
+                            new DarkDragon(80, "Enemies/fifthMap/airplane.j3o", 0, 1, 0, 1, 0, 0, 0, 0)
                     );
                     state.detach(p2);
                     states.remove(p2);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    GetCardState.setGoldCountAfterThisBattle(25);
+                    GetCardState.setGoldCountAfterThisBattle(40);
 
                     break;
                 case 2:
@@ -557,15 +557,16 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Robot(80, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
-                            new Robot(80, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
+                            new DarkDragon(80, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
+                            new RampageDarkDragon(85, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(p3);
                     states.remove(p3);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    GetCardState.setGoldCountAfterThisBattle(30);
+                    GetCardState.setGoldCountAfterThisBattle(40);
+
 
                     break;
                 case 3:
@@ -576,15 +577,15 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new SteamRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
-                            new SteamRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                            new DarkDragon(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 1, 1, 0, 0, 0, 0, 0),
+                            new DarkDragon(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 2, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot1);
                     states.remove(robot1);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    GetCardState.setGoldCountAfterThisBattle(30);
+                    GetCardState.setGoldCountAfterThisBattle(45);
 
                     break;
 
@@ -616,15 +617,14 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new StrongRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
-                            new StrongRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                            new EliteDarkDragon(200, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot3);
                     states.remove(robot3);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    GetCardState.setGoldCountAfterThisBattle(40);
+                    GetCardState.setGoldCountAfterThisBattle(150);
 
                     break;
 
@@ -636,8 +636,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new StrongRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
-                            new StrongRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                            new RampageDarkDragon(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
+                            new RampageDarkDragon(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot4);
                     states.remove(robot4);
@@ -657,15 +657,15 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RampageRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
-                            new RampageRobot(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
+                            new DarkDragon(75, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
+                            new RampageDarkDragon(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot5);
                     states.remove(robot5);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    GetCardState.setGoldCountAfterThisBattle(40);
+                    GetCardState.setGoldCountAfterThisBattle(60);
 
                     break;
                 case 8:
@@ -676,15 +676,15 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RampageRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
-                            new RampageRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                            new RampageDarkDragon(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 2, 1, 0, 0, 0, 0, 0),
+                            new RampageDarkDragon(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 2, 1, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot6);
                     states.remove(robot6);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    GetCardState.setGoldCountAfterThisBattle(30);
+                    GetCardState.setGoldCountAfterThisBattle(70);
 
                     break;
                 case 9:
@@ -695,15 +695,15 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RampageRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
-                            new RampageRobot(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                            new RampageDarkDragon(85, "Enemies/fifthMap/walking_robot/scene.j3o", 10, 2, 1, 0, 0, 0, 0, 0),
+                            new RampageDarkDragon(75, "Enemies/fifthMap/walking_robot/scene.j3o", 10, 3, 1, 0, 0, 0, 0, 0)
                     );
                     state.detach(robot7);
                     states.remove(robot7);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    GetCardState.setGoldCountAfterThisBattle(30);
+                    GetCardState.setGoldCountAfterThisBattle(75);
 
                     break;
                 case 10:
@@ -714,15 +714,15 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new RampageRobot(75, "Enemies/fifthMap/mech_drone/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
-                            new RampageRobot(75, "Enemies/fifthMap/mech_drone/scene.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
+                            new KingDarkDragon(250, "Enemies/fifthMap/mech_drone/scene.j3o", 50, 2, 2, 2, 2, 5, 0, 0)
                     );
                     state.detach(robot8);
                     states.remove(robot8);
                     state.attach(new Battle(states));
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-                    GetCardState.setGoldCountAfterThisBattle(30);
+                    GetCardState.setGoldCountAfterThisBattle(200);
+
 
                     break;
 

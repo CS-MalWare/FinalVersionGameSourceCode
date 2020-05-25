@@ -38,6 +38,7 @@ import gamesource.State.mapState.skyBox4;
 import gamesource.State.musicState.ForthBackMusic;
 import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
+import gamesource.battleState.appState.GetCardState;
 import gamesource.battleState.battle.Battle;
 import gamesource.battleState.character.enemy.mechanicalEmpire.*;
 import gamesource.uiState.bagstate.BagAppState;
@@ -469,6 +470,8 @@ public class ForthState extends BaseAppState {
                     state.detach(man3);
                     states.remove(man3);
                     state.attach(new Battle(states));
+                    GetCardState.setGoldCountAfterThisBattle(45);
+
                     // major.setPlace(man3.get().getCenter());
                     break;
                 case 3:
@@ -490,6 +493,8 @@ public class ForthState extends BaseAppState {
                     state.detach(bat1);
                     states.remove(bat1);
                     state.attach(new Battle(states));
+                    GetCardState.setGoldCountAfterThisBattle(30);
+
                     //major.setPlace(bat1.get().getCenter());
                     break;
 
@@ -512,6 +517,8 @@ public class ForthState extends BaseAppState {
                     state.detach(bat2);
                     states.remove(bat2);
                     state.attach(new Battle(states));
+                    GetCardState.setGoldCountAfterThisBattle(40);
+
                     //major.setPlace(bat2.get().getCenter());
                     break;
 
@@ -534,6 +541,8 @@ public class ForthState extends BaseAppState {
                     state.detach(bat3);
                     states.remove(bat3);
                     state.attach(new Battle(states));
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
                     //major.setPlace(bat3.get().getCenter());
                     break;
 
@@ -556,6 +565,8 @@ public class ForthState extends BaseAppState {
                     state.detach(ske1);
                     states.remove(ske1);
                     state.attach(new Battle(states));
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
                     //major.setPlace(ske1.get().getCenter());
                     break;
 
@@ -579,6 +590,8 @@ public class ForthState extends BaseAppState {
                     state.detach(ske2);
                     states.remove(ske2);
                     state.attach(new Battle(states));
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
                     //major.setPlace(ske2.get().getCenter());
                     break;
                 case 8:
@@ -598,6 +611,8 @@ public class ForthState extends BaseAppState {
                     state.detach(bos);
                     states.remove(bos);
                     state.attach(new Battle(states));
+                    GetCardState.setGoldCountAfterThisBattle(120);
+
                     FifthState.canGo = "can";
                     //major.setPlace(bos.get().getCenter());
                     break;
@@ -619,6 +634,8 @@ public class ForthState extends BaseAppState {
                     state.detach(knight);
                     states.remove(knight);
                     state.attach(new Battle(states));
+                    GetCardState.setGoldCountAfterThisBattle(40);
+
                     //major.setPlace(knight.get().getCenter());
                     break;
 

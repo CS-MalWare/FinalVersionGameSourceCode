@@ -31,7 +31,6 @@ import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.FirstWorldState;
-import gamesource.State.mapState.SkyBox;
 import gamesource.State.mapState.skyBox6;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.appState.GetCardState;
@@ -259,7 +258,7 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Zac(500, "character/Solidier/darksolidier.j3o", 5, 1, 2, 0, 0, 0, 0, 0));
+                            new Zac(350, "character/Solidier/darksolidier.j3o", 5, 1, 2, 0, 0, 0, 0, 0));
                     state.detach(solidier1);
                     states.remove(solidier1);
                     state.attach(new Battle(states));
@@ -278,7 +277,7 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Ace(550, "character/master/Master2.j3o", 0, 1, 1, 0, 0, 0, 0, 0));
+                            new Ace(450, "character/master/Master2.j3o", 0, 1, 1, 0, 0, 0, 0, 0));
                     state.detach(knight1);
                     states.remove(knight1);
                     state.attach(new Battle(states));
@@ -297,7 +296,7 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Faker(600, "character/Knight/darkknight.j3o", 2, 2, 2, 0, 0, 0, 0, 0)
+                            new Faker(400, "character/Knight/darkknight.j3o", 2, 2, 2, 0, 0, 0, 0, 0)
                     );
                     state.detach(master);
                     states.remove(master);
@@ -317,7 +316,7 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Tuxnet(1000, "Enemies/zhenwang/boss.j3o", 0, 3, 5, 3, 5, 5, 0, 0));
+                            new Tuxnet(900, "Enemies/zhenwang/boss.j3o", 0, 3, 5, 3, 5, 5, 0, 0));
                     state.detach(boss);
                     states.remove(boss);
                     state.attach(new Battle(states));

@@ -20,20 +20,25 @@ import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Quad;
 import com.jme3.texture.Texture;
 import gamesource.State.CharacterState.MajorActor;
-import gamesource.State.CharacterState.enemies.*;
 import gamesource.State.CharacterState.enemies.third.*;
-import gamesource.State.SpecialEffect.*;
+import gamesource.State.SpecialEffect.ThirdOtherSpecial;
+import gamesource.State.SpecialEffect.ThirdWater;
+import gamesource.State.SpecialEffect.ThirdWorldLight;
+import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
-import gamesource.State.mapState.*;
+import gamesource.State.mapState.Chest;
+import gamesource.State.mapState.SkyBox;
+import gamesource.State.mapState.ThirdWorldMap;
 import gamesource.State.musicState.ThirdBackMusic;
 import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
+import gamesource.battleState.appState.GetCardState;
 import gamesource.battleState.battle.Battle;
-import gamesource.battleState.card.saber.skill.Rampage;
-import gamesource.battleState.character.enemy.boss.Faker;
-import gamesource.battleState.character.enemy.mechanicalEmpire.*;
-import gamesource.battleState.character.enemy.originalForest.*;
+import gamesource.battleState.character.enemy.originalForest.EliteWolfman;
+import gamesource.battleState.character.enemy.originalForest.KingWolfman;
+import gamesource.battleState.character.enemy.originalForest.OneEyedWolfman;
+import gamesource.battleState.character.enemy.originalForest.Wolfman;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -359,6 +364,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(30);
+
                     break;
                 case 1:
                     state.detach(input);
@@ -380,6 +387,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(30);
+
                     break;
                 case 2:
                     state.detach(input);
@@ -401,6 +410,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(30);
+
                     break;
                 case 3:
                     state.detach(input);
@@ -421,6 +432,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(35);
+
                     break;
 
                 case 4:
@@ -443,6 +456,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(40);
+
                     break;
 
                 case 5:
@@ -466,6 +481,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(35);
+
                     break;
 
                 case 6:
@@ -488,6 +505,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(45);
+
                     break;
 
 
@@ -512,6 +531,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(45);
+
                     break;
                 case 8:
                     state.detach(input);
@@ -533,6 +554,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
                     break;
                 case 9:
                     state.detach(input);
@@ -554,6 +577,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(40);
+
                     break;
                 case 10:
                     state.detach(input);
@@ -575,6 +600,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
                     break;
                 case 11:
                     state.detach(input);
@@ -596,6 +623,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(45);
+
                     break;
                 case 12:
                     state.detach(input);
@@ -617,6 +646,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(40);
+
                     break;
                 case 13:
                     state.detach(input);
@@ -638,6 +669,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(40);
+
                     break;
                 case 14:
                     state.detach(input);
@@ -658,6 +691,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
                     break;
                 case 15:
                     state.detach(input);
@@ -678,6 +713,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(45);
+
                     break;
                 case 16:
                     state.detach(input);
@@ -698,6 +735,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(120);
+
                     break;
                 case 17:
                     state.detach(input);
@@ -718,6 +757,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(120);
+
                     break;
                 case 18:
                     state.detach(input);
@@ -738,6 +779,8 @@ public class ThirdState extends BaseAppState {
                     ForthState.canGo = "can";
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(140);
+
                     break;
                 case 19:
                     state.detach(input);
@@ -758,6 +801,8 @@ public class ThirdState extends BaseAppState {
                     state.attach(new Battle(states));
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
                     break;
                 default:
                     break;
