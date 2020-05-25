@@ -43,7 +43,7 @@ public class Test {
     private static Sprite chapter4 = new Sprite();
     private static Sprite chapter5 = new Sprite();
     private static Sprite chapter6 = new Sprite();
-    private static Sprite chapter7 = new Sprite();
+    //private static Sprite chapter7 = new Sprite();
     private static Sprite character = new Sprite();
 
     private static int chapter = 1;
@@ -61,7 +61,7 @@ public class Test {
         final int screenHeight = 900;
         final int screenWidth = 1600;
 
-        window.create(new VideoMode(screenWidth, screenHeight), "UI test!");
+        window.create(new VideoMode(screenWidth, screenHeight), "Cholera");
         window.setMouseCursorVisible(true);
 
         window.setFramerateLimit(30);
@@ -191,7 +191,7 @@ public class Test {
         chapter4.setPosition(650, 450);
         chapter5.setPosition(700, 350);
         chapter6.setPosition(830, 400);
-        chapter7.setPosition(680, 250);
+        //chapter7.setPosition(680, 250);
 
 
         //Texture_init[] texture_c = new Texture_init[32];
@@ -288,7 +288,7 @@ public class Test {
                 if(click_compute(chapter01, chapter1))
                 {
                     chapter1.setTexture(chapter02);
-                    text_chapter.setString("Chapter: One\nCharacter or boss:\n\tName: queen");
+                    text_chapter.setString("Chapter: One\nCharacter or boss:\n\tName: Merlin");
                     character.setTexture(texture_cha[1]);
 
                 }else
@@ -299,7 +299,7 @@ public class Test {
                 if(click_compute(chapter01, chapter2))
                 {
                     chapter2.setTexture(chapter02);
-                    text_chapter.setString("Chapter: Two\nCharacter or boss:\n\tName: dryad");
+                    text_chapter.setString("Chapter: Two\nCharacter or boss:\n\tName: King Skeleton");
                     character.setTexture(texture_cha[2]);
 
                 }else
@@ -311,7 +311,7 @@ public class Test {
                 {
                     // System.out.println("!!!");
                     chapter3.setTexture(chapter02);
-                    text_chapter.setString("Chapter: Three\nCharacter or boss:\n\tName: water sprite");
+                    text_chapter.setString("Chapter: Three\nCharacter or boss:\n\tName: Water Sprite");
                     character.setTexture(texture_cha[3]);
 
                 }else
@@ -323,7 +323,7 @@ public class Test {
                 {
                     // System.out.println("!!!");
                     chapter4.setTexture(chapter02);
-                    text_chapter.setString("Chapter: Four\nCCharacter or boss:\n\tName: plague doctor");
+                    text_chapter.setString("Chapter: Four\nCCharacter or boss:\n\tName: Tribal Chief");
                     character.setTexture(texture_cha[4]);
 
                 }else
@@ -334,7 +334,7 @@ public class Test {
                 {
                     // System.out.println("!!!");
                     chapter5.setTexture(chapter02);
-                    text_chapter.setString("Chapter: Five\nCharacter or boss:\n\tName: kingknight");
+                    text_chapter.setString("Chapter: Five\nCharacter or boss:\n\tName: Merlin");
                     character.setTexture(texture_cha[5]);
 
                 }else
@@ -345,14 +345,14 @@ public class Test {
                 if(click_compute(chapter01, chapter6))
                 {
                     chapter6.setTexture(chapter02);
-                    text_chapter.setString("Chapter: Six\nCharacter or boss:\n\tName: kingskeleton");
+                    text_chapter.setString("Chapter: Six\nCharacter or boss:\n\tName: Stuxnet");
                     character.setTexture(texture_cha[6]);
                 }else
                 {
                     chapter6.setTexture(chapter01);
                 }
 
-                if(click_compute(chapter01, chapter7))
+                /*if(click_compute(chapter01, chapter7))
                 {
                     chapter7.setTexture(chapter02);
                     text_chapter.setString("Chapter: Seven\nIntroduce: NULL");
@@ -360,7 +360,7 @@ public class Test {
                 }else
                 {
                     chapter7.setTexture(chapter01);
-                }
+                }*/
                 if(click_compute(choose1, resolution1))
                 {
                     resolution1.setTexture(chapter01);
@@ -588,12 +588,12 @@ public class Test {
                             text_chapter_c.setString("You choose chapter: "+ chapter + "\n start the game");
                         }
 
-                        if(click_compute(chapter01, chapter7))
+                        /*if(click_compute(chapter01, chapter7))
                         {
                             chapter = 7;
                             System.out.println(chapter);
                             text_chapter_c.setString("You choose chapter: "+ chapter + "\n start the game");
-                        }
+                        }*/
 
                         if(click_compute(choose1, resolution1))
                         {
@@ -754,10 +754,10 @@ public class Test {
                 {
                     chapter6.setTexture(chapter02);
                 }
-                else if(chapter == 7)
+                /*else if(chapter == 7)
                 {
                     chapter7.setTexture(chapter02);
-                }
+                }*/
 
                 if(screenx == 1920)
                 {
@@ -888,7 +888,7 @@ public class Test {
                 window.draw(chapter4);
                 window.draw(chapter5);
                 window.draw(chapter6);
-                window.draw(chapter7);
+                //window.draw(chapter7);
                 window.draw(character);
                 window.draw(resolution1);
                 window.draw(resolution2);
