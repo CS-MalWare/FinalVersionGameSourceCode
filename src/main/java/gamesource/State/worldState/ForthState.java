@@ -161,6 +161,7 @@ public class ForthState extends BaseAppState {
         //state.attach(water);
         sky=new skyBox4(pic);
         state.attach(sky);
+        states.add(sky);
 
 
         this.inputManager = application.getInputManager();

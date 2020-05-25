@@ -17,6 +17,7 @@ import com.jme3.post.FilterPostProcessor;
 import com.jme3.shadow.DirectionalLightShadowFilter;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.controlState.InputAppState;
+import gamesource.State.mapState.*;
 import gamesource.battleState.appState.BattleState;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.character.MainRole;
@@ -70,7 +71,7 @@ public class Battle extends BaseAppState {
 
 
         for (BaseAppState baseAppState : State) {
-            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
+            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)&&!(baseAppState instanceof SkyBox)&&!(baseAppState instanceof SkyBox2)&&!(baseAppState instanceof skyBox4)&&!(baseAppState instanceof skyBox5)&&!(baseAppState instanceof skyBox6)) {
                 baseAppState.setEnabled(false);
                 //state.detach(baseAppState);
             }
@@ -149,7 +150,7 @@ public class Battle extends BaseAppState {
         //app.getRootNode().removeLight(sun);
         //app.getRootNode().removeLight(ambient);
         for (BaseAppState baseAppState : State) {
-            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
+            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)&&!(baseAppState instanceof SkyBox)&&!(baseAppState instanceof SkyBox2)&&!(baseAppState instanceof skyBox4)&&!(baseAppState instanceof skyBox5)&&!(baseAppState instanceof skyBox6)) {
                 baseAppState.setEnabled(true);
                 //state.attach(baseAppState);
             }

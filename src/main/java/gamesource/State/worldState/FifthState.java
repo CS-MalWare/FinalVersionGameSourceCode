@@ -64,7 +64,7 @@ public class FifthState extends BaseAppState {
     public final static String move="MOVE";
     public final static Trigger MOVE=new KeyTrigger(KeyInput.KEY_W);
     private InputManager inputManager;
-
+    private int shadow=1024,open=0;
     private SimpleApplication app;
     private AppStateManager state;
 
@@ -111,7 +111,7 @@ public class FifthState extends BaseAppState {
     private ShopAppState shopState;
     private MenuAppState menuState;
     private makeCross cross;
-    private ThirdWorldLight light=new ThirdWorldLight();
+    private ThirdWorldLight light;
     private FifthOtherSpecial effect=new FifthOtherSpecial();
 
     private ArrayList<String> content = new ArrayList<>();
@@ -171,6 +171,7 @@ public class FifthState extends BaseAppState {
         states.add(p3);
         state.attach(lizard);
         states.add(lizard);
+        light=new ThirdWorldLight(open,shadow);
         state.attach(light);
         states.add(light);
         state.attach(music);
@@ -207,7 +208,13 @@ public class FifthState extends BaseAppState {
         cross.setEnabled(false);
     }
 
+    public FifthState(){
 
+    }
+    public FifthState(int shadow,int open){
+        this.shadow=shadow;
+        this.open=open;
+    }
 
     public CollisionResults results1() {
         try {

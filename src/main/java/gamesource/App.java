@@ -48,7 +48,7 @@ public class App extends SimpleApplication {
     SixthState f6;
     First t1;
     private AppStateManager state;
-
+    private int shadow=2048,open=1,juchi=4;
 
     /*public App(){
         super(new StatsAppState(),
@@ -67,7 +67,7 @@ public class App extends SimpleApplication {
         bullet.getPhysicsSpace().setGravity(new Vector3f(0, -9.81f, 0));
 
         FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
-        fpp.setNumSamples(16);
+        fpp.setNumSamples(juchi);
         viewPort.addProcessor(fpp);
         makeCross cross=new makeCross();
         stateManager.attach(new MajorActor());
@@ -76,13 +76,13 @@ public class App extends SimpleApplication {
         stateManager.attach(new ShopAppState());
         stateManager.attach(new MenuAppState());
         stateManager.attach(cross);
-        f1 = new FirstState(4096,1);
+        f1 = new FirstState(shadow,open);
         //stateManager.attach(f1);
-        f2 = new SecondState();
-        f3 = new ThirdState();
-        f4 = new ForthState();
-        f5 = new FifthState();
-        f6=new SixthState();
+        f2 = new SecondState(shadow,open);
+        f3 = new ThirdState(shadow,open);
+        f4 = new ForthState(shadow,open);
+        f5 = new FifthState(shadow,open);
+        f6=new SixthState(shadow,open);
         //t1=new First();
         switch(guan){
             case 1:
@@ -176,8 +176,11 @@ public class App extends SimpleApplication {
         }
     };
 
-    public App(int guan){
+    public App(int guan,int shadow,int open,int juchi){
         this.guan=guan;
+        this.shadow=shadow;
+        this.open=open;
+        this.juchi=juchi;
     }
 
     private void initEffect(FilterPostProcessor fpp) {
@@ -334,7 +337,7 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) {
 
-        App app = new App(3);
+        App app = new App(3,1024,1,16);
         //app.setSettings(settings);
         //app.setShowSettings(false);
         app.start();
