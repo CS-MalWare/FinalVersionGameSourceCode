@@ -7,10 +7,16 @@ public class start {
         App app=new App(state,shadow,open,juchi);
         AppSettings settings =new AppSettings(true);
         settings.setTitle("malware");
-        settings.setResolution(1600,900);
-        settings.setFrameRate(frame);
-        settings.setVSync(true);
-        settings.setFullscreen(full);
+        if(full==false) {
+            settings.setResolution(1600, 900);
+            settings.setFrameRate(frame);
+            settings.setVSync(true);
+            settings.setFullscreen(false);
+        }else{
+            settings.setFrameRate(frame);
+            settings.setVSync(true);
+            settings.setFullscreen(true);
+        }
         app.setSettings(settings);
         app.setShowSettings(false);
         app.start();
