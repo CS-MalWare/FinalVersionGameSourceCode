@@ -27,7 +27,6 @@ import gamesource.State.CharacterState.secondWorldCharacter.goblinGirlState;
 import gamesource.State.CharacterState.secondWorldCharacter.shanmanState;
 import gamesource.State.SpecialEffect.SecondWorldLight;
 import gamesource.State.SpecialEffect.SecondWorldOtherSpecial;
-import gamesource.State.SpecialEffect.ThirdWorldLight;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
@@ -44,8 +43,8 @@ import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
 import gamesource.util.TalkWithOption;
-import gamesource.util.WordWrapForTalk;
 import gamesource.util.TalkWithOption.CallType;
+import gamesource.util.WordWrapForTalk;
 
 import java.util.ArrayList;
 
@@ -85,10 +84,11 @@ public class SecondState extends BaseAppState {
     private RedSkeletonState skeleton4 = new RedSkeletonState(new Vector3f(-12.66109f, -26.166546f, 53.731964f), 0.5f);
     private BatState bat1 = new BatState(new Vector3f(-6.6939545f, -29.954361f, 29.743092f), 0.7f);
     private RedSkeletonState snowRobot1 = new RedSkeletonState(new Vector3f(17.560339f, -32.435986f, 35.696587f), -1f);
-    private KingSkeletonState skeleton5 = new KingSkeletonState(new Vector3f(8.058961f, -31.545362f, 17.327284f), -0.7f);
+    private KingSkeletonState skeleton8 = new KingSkeletonState(new Vector3f(7.382364f, -18.829222f, -69.045815f), -0.7f);
     private GreenSkeletonState skeleton6 = new GreenSkeletonState(new Vector3f(-0.22325397f, -19.929562f, -6.269995f), 0.3f);
     private AngrySkeletonState skeleton7 = new AngrySkeletonState(new Vector3f(15.483921f, -24.226637f, -20.16292f), 0.5f);
-    private BlueSkeletonState skeleton8 = new BlueSkeletonState(new Vector3f(7.382364f, -18.829222f, -69.045815f), -0.4f);
+
+    private BlueSkeletonState skeleton5 = new BlueSkeletonState(new Vector3f(8.058961f, -31.545362f, 17.327284f), -0.4f);
     private BatState bat2 = new BatState(new Vector3f(-3.889712f, -18.6719f, -73.689575f), 0f);
 
 
@@ -485,10 +485,14 @@ public class SecondState extends BaseAppState {
                 } else if (results14 != null && results14.size() > 0) {
                     System.out.println("chest");
                     c2.open();
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
                     getApplication().getStateManager().attach(new GetCardState());
                 } else if (results15 != null && results15.size() > 0) {
                     System.out.println("chest");
                     c3.open();
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
                     getApplication().getStateManager().attach(new GetCardState());
                 }
             }
@@ -655,7 +659,7 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new EliteSlime(85, "Enemies/skeleton/KingSkeleton/kingSkeleton.j3o", 5, 1, 1, 0, 0, 0, 0, 0)
+                            new EliteSlime(85, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 5, 1, 1, 0, 0, 0, 0, 0)
                     );
                     state.detach(skeleton5);
                     states.remove(skeleton5);
@@ -719,8 +723,10 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new KingSlime(160, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 5, 1, 1, 0, 0, 0, 0, 0)
+                            new KingSlime(160, "Enemies/skeleton/KingSkeleton/kingSkeleton.j3o", 5, 1, 1, 0, 0, 0, 0, 0)
                     );
+
+
                     state.detach(skeleton8);
                     states.remove(skeleton8);
                     state.attach(new Battle(states));

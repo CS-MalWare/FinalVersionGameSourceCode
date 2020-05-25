@@ -312,14 +312,22 @@ public class ThirdState extends BaseAppState {
                 } else if (results7 != null && results7.size() > 0) {
                     System.out.println("chest");
                     c1.open();
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
+                    getApplication().getStateManager().attach(new GetCardState());
+
                 } else if (results8 != null && results8.size() > 0) {
                     System.out.println("chest");
                     c2.open();
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
                     getApplication().getStateManager().attach(new GetCardState());
 
                 } else if (results9 != null && results9.size() > 0) {
                     System.out.println("chest");
                     c3.open();
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
                     getApplication().getStateManager().attach(new GetCardState());
 
                 }

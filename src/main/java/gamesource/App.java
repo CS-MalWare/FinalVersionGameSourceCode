@@ -4,44 +4,35 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.cursors.plugins.JmeCursor;
-import com.jme3.font.BitmapText;
-import com.jme3.font.Rectangle;
 import com.jme3.input.KeyInput;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.event.*;
-import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.post.FilterPostProcessor;
 import com.jme3.post.filters.*;
-import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Quad;
-import com.jme3.shadow.DirectionalLightShadowRenderer;
 import com.jme3.system.AppSettings;
 import com.jme3.texture.Texture;
 import com.jme3.util.SkyFactory;
-import com.jme3.water.WaterFilter;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.worldState.*;
-import gamesource.battleState.battle.Test;
 import gamesource.testState.First;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
 import gamesource.util.Storage;
-//import jdk.tools.jaotc.Main;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
+
+//import jdk.tools.jaotc.Main;
 
 /**
  * Hello world!
@@ -373,13 +364,13 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) throws IOException {
 
-        App app = new App(5, 2048, 0, 4);
+        App app = new App(2, 2048, 0, 4);
         AppSettings settings = new AppSettings(true);
 
         // 这里是导入地图存档的,导入人物属性存档在 MainRole类中
         //Storage.load();
 
-        settings.setTitle("MALWARE");// 标题
+        settings.setTitle("Cholera");// 标题
         settings.setResolution(1600, 900);// 分辨率
         settings.setFrameRate(100);//限制fps
 //        settings.setIcons(new BufferedImage[]{
