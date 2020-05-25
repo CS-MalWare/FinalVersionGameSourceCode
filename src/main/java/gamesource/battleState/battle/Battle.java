@@ -24,7 +24,6 @@ import gamesource.battleState.character.MainRole;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
-import gamesource.util.Storage;
 
 import java.util.ArrayList;
 
@@ -88,7 +87,7 @@ public class Battle extends BaseAppState {
 
         MainRole mainRole = MainRole.getInstance();
         mainRole.bindApp(app);
-        Storage.load();
+//        Storage.load();
         EnemyState enemyState = EnemyState.getInstance();
 
 
