@@ -25,7 +25,6 @@ import gamesource.State.CharacterState.enemies.fifth.*;
 import gamesource.State.CharacterState.firstWorldCharacter.lizardState;
 import gamesource.State.SpecialEffect.FifthOtherSpecial;
 import gamesource.State.SpecialEffect.FifthWorldLight;
-import gamesource.State.SpecialEffect.ThirdWorldLight;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
@@ -491,10 +490,14 @@ public class FifthState extends BaseAppState {
                 }else if(results12!=null&&results12.size()>0){
                     System.out.println("chest");
                     c1.open();
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
                     getApplication().getStateManager().attach(new GetCardState());
-                }else if(results13!=null&&results13.size()>0){
+                }else if(results13!=null&&results13.size()>0) {
                     System.out.println("chest");
                     c2.open();
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
                     getApplication().getStateManager().attach(new GetCardState());
                 }
             }
