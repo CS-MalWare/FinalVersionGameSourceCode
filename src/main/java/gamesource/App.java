@@ -379,7 +379,7 @@ public class App extends SimpleApplication {
         // 这里是导入地图存档的,导入人物属性存档在 MainRole类中
         //Storage.load();
 
-        settings.setTitle("MALWARE");// 标题
+        settings.setTitle("Cholera");// 标题
         settings.setResolution(1600, 900);// 分辨率
         settings.setFrameRate(100);//限制fps
 //        settings.setIcons(new BufferedImage[]{
