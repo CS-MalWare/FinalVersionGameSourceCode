@@ -226,7 +226,7 @@ public class FirstState extends BaseAppState {
         inputManager.addListener(st, move);
 
         //major.setPlace(new Vector3f(93.51907f, -31.696218f, 18.607859f));
-        major.setPlace(new Vector3f(0,0,0));
+        major.setPlace(new Vector3f(92.35694f, -31.713285f, 17.851564f));
         major.height(6);
     }
 
