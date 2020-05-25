@@ -11,10 +11,15 @@ import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.controls.Trigger;
 import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
+import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.post.FilterPostProcessor;
+import com.jme3.scene.Geometry;
+import com.jme3.scene.Spatial;
+import com.jme3.scene.shape.Quad;
 import com.jme3.shadow.DirectionalLightShadowFilter;
+import com.jme3.texture.Texture;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.mapState.*;
@@ -30,7 +35,7 @@ import java.util.ArrayList;
 
 public class Battle extends BaseAppState {
 
-    private BattleState b1=new BattleState();
+    private BattleState b1;
 
     private SimpleApplication app;
 
@@ -65,9 +70,10 @@ public class Battle extends BaseAppState {
     protected void initialize(Application application) {
 
         state=application.getStateManager();
-        state.attach(b1);
         state.detach(state.getState(FlyCamAppState.class));
         app=(SimpleApplication)application;
+        Spatial pic=getPicture(7);
+        app.getGuiNode().attachChild(pic);
         inputManager=app.getInputManager();
 
 
@@ -81,7 +87,8 @@ public class Battle extends BaseAppState {
            // }
 
         }
-
+        b1=new BattleState(pic);
+        state.attach(b1);
 
         app.getCamera().setLocation(new Vector3f(0,0,10.5f));
         app.getCamera().lookAtDirection(new Vector3f(0,0,-1),new Vector3f(0,1,0));
@@ -108,6 +115,48 @@ public class Battle extends BaseAppState {
 
     }
 
+    private Spatial getPicture(int number) {
+        // 创建一个四边形
+        int x=app.getCamera().getWidth();
+        int y=app.getCamera().getHeight();
+        Quad quad = new Quad(x, y);
+        Geometry geom = new Geometry("Picture", quad);
+        Texture tex;
+        // 加载图片
+        switch(number){
+            case 1:
+                tex =  app.getAssetManager().loadTexture("Map/first.png");
+                break;
+            case 2:
+                tex =  app.getAssetManager().loadTexture("Map/second.png");
+                break;
+            case 3:
+                tex = app.getAssetManager().loadTexture("Map/third.png");
+                break;
+            case 4:
+                tex = app.getAssetManager().loadTexture("Map/forth.png");
+                break;
+            case 5:
+                tex =  app.getAssetManager().loadTexture("Map/fifth.png");
+                break;
+            case 6:
+                tex = app.getAssetManager().loadTexture("Map/sixth.png");
+                break;
+            case 7:
+                tex = app.getAssetManager().loadTexture("Map/fight.png");
+                break;
+            default:
+                tex = app.getAssetManager().loadTexture("Map/first.png");
+        }
+
+        Material mat = new Material( app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+        mat.setTexture("ColorMap", tex);
+
+        // 应用这个材质
+        geom.setMaterial(mat);
+
+        return geom;
+    }
 
 
 

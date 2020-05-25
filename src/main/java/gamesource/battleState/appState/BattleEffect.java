@@ -11,6 +11,7 @@ import com.jme3.post.SceneProcessor;
 import com.jme3.post.filters.*;
 import com.jme3.renderer.ViewPort;
 import com.jme3.scene.Node;
+import com.jme3.scene.Spatial;
 import com.jme3.util.SafeArrayList;
 
 public class BattleEffect extends BaseAppState {
@@ -30,7 +31,7 @@ public class BattleEffect extends BaseAppState {
     LightScatteringFilter lightScattering;
     CartoonEdgeFilter cartoonEdge;
     DepthOfFieldFilter depthOfField;
-
+    Spatial pic;
     @Override
     protected void initialize(Application application) {
 
@@ -57,6 +58,11 @@ public class BattleEffect extends BaseAppState {
             if (x1.get(i) instanceof FilterPostProcessor)
                 fpp = (FilterPostProcessor) x1.get(i);
         }
+        app.getGuiNode().detachChild(pic);
+    }
+
+    public BattleEffect(Spatial pic){
+        this.pic=pic;
     }
 
     @Override
