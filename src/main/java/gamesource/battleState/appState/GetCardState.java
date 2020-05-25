@@ -35,6 +35,7 @@ import gamesource.battleState.card.CreateCard;
 import gamesource.battleState.character.MainRole;
 import gamesource.battleState.equipment.CreateEquipment;
 import gamesource.battleState.equipment.Equipment;
+import gamesource.util.Storage;
 
 import java.util.ArrayList;
 
@@ -424,6 +425,7 @@ public class GetCardState extends BaseAppState {
 
     @Override
     protected void onDisable() {
+        Storage.save();
         this.rootNode.removeFromParent();
         app.getInputManager().removeRawInputListener(mril);
         app.getStateManager().detach(app.getStateManager().getState(BattleState.class));
