@@ -19,7 +19,7 @@ public class StartInterface {
         /*int screenWidth = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int screenHeight=java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
         System.out.println(screenHeight + " " + screenWidth);*/
-        JOptionPane.showMessageDialog(null, "kkk", "111",JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(null, "This game is created by MALWARE team", "Cholera",JOptionPane.PLAIN_MESSAGE);
 
         int num = 0;
         window.create(new VideoMode(1536,864), "Cholera");
