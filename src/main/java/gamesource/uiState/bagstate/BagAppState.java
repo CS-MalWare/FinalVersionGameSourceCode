@@ -45,7 +45,7 @@ public class BagAppState extends BaseAppState{
     private ArrayList<Card> mainRoleCards = MainRole.getInstance().getDeck_();
     private CardUI[] cardUIs = new CardUI[60];
     private CardUI[] cardUIsCopy = new CardUI[60];
-    private CardUI[] casterCardUIs = new CardUI[30];
+    private CardUI[] saberCardUIs = new CardUI[30];
     private CardUI[] neutralCardUIs = new CardUI[30];
     private Container generalBorder;
     private Container centralPart;
@@ -53,8 +53,10 @@ public class BagAppState extends BaseAppState{
     private Container buttomPartContainer;
     private Container pagesContainer;
     private Container leftPart;
+    private ProgressBar progressBar;
+    private Label moneyLabel;
+
     private BagMoney totalMoney = new BagMoney();
-    private BagMoney totalMoneyOfCards = new BagMoney();
     private Styles styles;
     private boolean isOpenBag = false;
     private boolean isShowCards = false;
@@ -77,6 +79,7 @@ public class BagAppState extends BaseAppState{
         BorderLayout borderLayout = new BorderLayout();
         generalBorder.setLayout(borderLayout);
         generalBorder.setLocalTranslation(5, app.getCamera().getHeight()-50, 0);
+        totalMoney.setMoney(MainRole.getInstance().getGold());
     }
 
     protected void showBag(){
@@ -129,16 +132,16 @@ public class BagAppState extends BaseAppState{
         leftPart.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass")).setUserData(LayerComparator.LAYER, 2);
 
         Button general = new Button("General");
-        Button caster = new Button("Caster");
+        Button saber = new Button("Saber");
         Button neutral = new Button("Neutral");
         Button backToStart = new Button("Back");
         //Button saber = new Button("Saber");
 
-        leftPart.addChild(caster);
+        leftPart.addChild(saber);
         leftPart.addChild(neutral);
         //leftPart.addChild(saber);
 
-        caster.addClickCommands(new ShowCaster());
+        saber.addClickCommands(new ShowCaster());
         neutral.addClickCommands(new ShowNeutral());
         general.addClickCommands(new showGeneral());
     }
@@ -147,11 +150,14 @@ public class BagAppState extends BaseAppState{
         Container characterInfo = new Container();
         SpringGridLayout northLayOut = new SpringGridLayout(Axis.X, Axis.Y, FillMode.None, FillMode.None);
         characterInfo.setLayout(northLayOut);
-        ProgressBar progressBar = new ProgressBar("glass");
+        
+        progressBar = new ProgressBar("glass");
         progressBar.getLabel().setText("Health");
         progressBar.setProgressPercent(100);
         characterInfo.addChild(progressBar, 0);
-        Label moneyLabel = characterInfo.addChild(new Label("Money:"), 2);
+        
+        moneyLabel = characterInfo.addChild(new Label("Money:"), 2);
+        moneyLabel.setText("Money: "+totalMoney.getMoney());
         moneyLabel.setSize(new Vector3f(60, 20, 0));
         generalBorder.addChild(characterInfo, Position.North);
     }
@@ -167,7 +173,7 @@ public class BagAppState extends BaseAppState{
 
         for(int i=0; i<cardUIs.length; i++){
             if(mainRoleCards.get(i).getOccupation().equals(OCCUPATION.CASTER)){
-                appendToCasterCardUIs(cardUIs[i]);
+                appendToSaberCardUIs(cardUIs[i]);
             }else{
                 appendToNeutralCardUIs(cardUIs[i]);
             }
@@ -208,7 +214,7 @@ public class BagAppState extends BaseAppState{
         public void execute(Button button){
             centralPart.detachAllChildren();
             pagesContainer.detachAllChildren();
-            cardUIs = casterCardUIs;
+            cardUIs = saberCardUIs;
 
             for(int i=0; i<12; i++){
                 int j = i % 4;
@@ -288,10 +294,6 @@ public class BagAppState extends BaseAppState{
         buttomPartContainer.detachAllChildren();
     }
 
-    public void caculateMoney(int cardsMoney){
-        this.totalMoneyOfCards.setMoney(totalMoneyOfCards.getMoney() + cardsMoney);
-    }
-
     @Override
     protected void cleanup(Application application){
         app.getGuiNode().detachChild(generalBorder);
@@ -348,10 +350,10 @@ public class BagAppState extends BaseAppState{
         }
     }
 
-    public void appendToCasterCardUIs(CardUI cardUI){
-        for(int i=0; i<casterCardUIs.length; i++){
-            if(casterCardUIs[i] == null){
-                casterCardUIs[i] = cardUI;
+    public void appendToSaberCardUIs(CardUI cardUI){
+        for(int i=0; i<saberCardUIs.length; i++){
+            if(saberCardUIs[i] == null){
+                saberCardUIs[i] = cardUI;
                 break;
             }
         }
@@ -375,13 +377,9 @@ public class BagAppState extends BaseAppState{
         app.getInputManager().addMapping(bagString, new KeyTrigger(KeyInput.KEY_B));
         app.getInputManager().addListener(new BagListener(), bagString);
     }
-    // public void update(float tpf){
-    //     if(isShowCards){
-    //         for(VersionedReference reference : cardsReference){
-    //             if(reference.update()){
-
-    //             }
-    //         }
-    //     }
-    // }
+    
+    public void update(float tpf){
+        //totalMoney.setMoney(MainRole.getInstance().getGold());
+        //moneyLabel.setText("Money: " + totalMoney.getMoney());
+    }
 }
