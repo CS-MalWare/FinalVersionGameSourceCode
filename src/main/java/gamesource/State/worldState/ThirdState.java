@@ -316,10 +316,12 @@ public class ThirdState extends BaseAppState {
                     System.out.println("chest");
                     c2.open();
                     getApplication().getStateManager().attach(new GetCardState());
+
                 } else if (results9 != null && results9.size() > 0) {
                     System.out.println("chest");
                     c3.open();
                     getApplication().getStateManager().attach(new GetCardState());
+
                 }
             }
 
