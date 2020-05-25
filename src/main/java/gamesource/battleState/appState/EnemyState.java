@@ -939,7 +939,7 @@ public class EnemyState extends BaseAppState {
                     case "Enemies/fifthMap/mech_drone/scene0.j3o":
                     case "Enemies/fifthMap/mech_drone/scene1.j3o":
                     case "Enemies/fifthMap/mech_drone/scene2.j3o":
-                    case "Enemies/fifthMap/boss/scene.j3o":
+                    case "Enemies/fifthMap/boss/scene0.j3o":
                         deadSoundSrc = "Sound/Dead/机器人死亡.wav";
                         break;
 //                    case "3":
@@ -1016,6 +1016,7 @@ public class EnemyState extends BaseAppState {
                 case "Enemies/skeleton/blueSkeleton/blueSkeleton0.j3o":
                 case "Enemies/forth/boss/scene0.j3o":
                 case "Enemies/underWater/fishboss0.j3o":
+                case "Enemies/fifthMap/boss/scene0.j3o":
                     pe=KingSkeletonStateParticle.getParticle1(app.getAssetManager());
                     this.rootNode.attachChild(pe);
                     break;

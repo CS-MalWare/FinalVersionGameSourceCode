@@ -22,6 +22,7 @@ public class CurseBook extends Equipment {
                     case "character/Solidier/darksolidier.j3o":
                     case "character/master/Master2.j3o":
                     case "character/Knight/darkknight.j3o":
+                    case "Enemies/fifthMap/boss/scene0.j3o":
                         return;
                     default:
                         break;
