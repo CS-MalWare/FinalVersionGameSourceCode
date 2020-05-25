@@ -6,6 +6,7 @@ import com.jme3.material.RenderState;
 import com.jme3.post.FilterPostProcessor;
 import com.jme3.scene.shape.Quad;
 import com.jme3.ui.Picture;
+import gamesource.State.worldState.*;
 import gamesource.battleState.battle.Battle;
 import gamesource.battleState.card.Card;
 import gamesource.battleState.card.CreateCard;
@@ -33,6 +34,7 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import gamesource.battleState.equipment.CreateEquipment;
 import gamesource.battleState.equipment.Equipment;
+import org.lwjgl.Sys;
 
 import java.util.ArrayList;
 
@@ -50,6 +52,8 @@ public class GetCardState extends BaseAppState {
     private ArrayList<Card> card;
     private MyRawInputListener mril;
     private static int getGoldCountAfterThisBattle = 0;
+
+    private String world = "";
 
     @Override
     protected void initialize(Application application) {
@@ -382,13 +386,31 @@ public class GetCardState extends BaseAppState {
 
     @Override
     protected void onEnable() {
+        // 这里是触发宝箱的逻辑
+        if(stateManager.detach(stateManager.getState(FirstState.class))){
+            world = "first";
+        }
+        else if(stateManager.detach(stateManager.getState(SecondState.class))){
+            world = "second";
+        }else if(stateManager.detach(stateManager.getState(ThirdState.class))){
+            world = "third";
+        }else if(stateManager.detach(stateManager.getState(ForthState.class))){
+            world = "forth";
+        }else if(stateManager.detach(stateManager.getState(FifthState.class))){
+            world = "fifth";
+        }
+
         stateManager.detach(stateManager.getState(EnemyState.class));
         stateManager.detach(stateManager.getState(HandCardsState.class));
         stateManager.detach(stateManager.getState(DecksState.class));
         stateManager.detach(stateManager.getState(LeadingActorState.class));
-        FilterPostProcessor fpp = stateManager.getState(BattleBackGroundState.class).getFpp();
-        fpp.removeAllFilters();
-        app.getViewPort().removeProcessor(fpp);
+        try {
+            FilterPostProcessor fpp = stateManager.getState(BattleBackGroundState.class).getFpp();
+            fpp.removeAllFilters();
+            app.getViewPort().removeProcessor(fpp);
+        }catch (NullPointerException npe){
+            System.out.println("从宝箱过来的");
+        }
         stateManager.detach(stateManager.getState(BattleBackGroundState.class));
         app.getRootNode().attachChild(this.rootNode);
         app.getInputManager().addRawInputListener(mril);
@@ -401,6 +423,24 @@ public class GetCardState extends BaseAppState {
         app.getInputManager().removeRawInputListener(mril);
         app.getStateManager().detach(app.getStateManager().getState(BattleState.class));
         app.getStateManager().detach(app.getStateManager().getState(Battle.class));
-
+        switch (world){
+            case "first":
+                app.getStateManager().attach(stateManager.getState(FirstState.class));
+                break;
+            case "second":
+                app.getStateManager().attach(stateManager.getState(SecondState.class));
+                break;
+            case "third":
+                app.getStateManager().attach(stateManager.getState(ThirdState.class));
+                break;
+            case "forth":
+                app.getStateManager().attach(stateManager.getState(ForthState.class));
+                break;
+            case "fifth":
+                app.getStateManager().attach(stateManager.getState(FifthState.class));
+                break;
+            default:
+                break;
+        }
     }
 }

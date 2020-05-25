@@ -27,6 +27,7 @@ import gamesource.State.worldState.*;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
+import gamesource.util.Storage;
 
 /**
  * Hello world!
@@ -159,6 +160,12 @@ public class App extends SimpleApplication {
         }
 
         public void onKeyEvent(KeyInputEvent evt) {
+
+            int keyCode = evt.getKeyCode();
+            boolean isPressed = evt.isPressed();
+             if (keyCode == KeyInput.KEY_I && isPressed) {
+                Storage.save();
+            }
         }
 
         public void onTouchEvent(TouchEvent evt) {
@@ -410,6 +417,7 @@ public class App extends SimpleApplication {
         App app = new App(1);
         //app.setSettings(settings);
         //app.setShowSettings(false);
+//        Storage.load();
         app.start();
 
     }

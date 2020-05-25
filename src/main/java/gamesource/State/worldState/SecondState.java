@@ -44,7 +44,7 @@ import gamesource.util.TalkWithOption.CallType;
 import java.util.ArrayList;
 
 public class SecondState extends BaseAppState {
-    public static String canGo = "cannot"; // 这是用于存档的变量, 大佬们不要改没了
+    public static String canGo = "can"; // 这是用于存档的变量, 大佬们不要改没了
     public final static String talk = "TALK";
     public final static Trigger TALK = new KeyTrigger(KeyInput.KEY_N);
     public final static String change = "CHANGE";
@@ -472,9 +472,11 @@ public class SecondState extends BaseAppState {
                 } else if (results14 != null && results14.size() > 0) {
                     System.out.println("chest");
                     c2.open();
+                    getApplication().getStateManager().attach(new GetCardState());
                 } else if (results15 != null && results15.size() > 0) {
                     System.out.println("chest");
                     c3.open();
+                    getApplication().getStateManager().attach(new GetCardState());
                 }
             }
 
@@ -620,6 +622,7 @@ public class SecondState extends BaseAppState {
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     GetCardState.setGoldCountAfterThisBattle(70);
+                    ThirdState.canGo = "can";
 
                     break;
 

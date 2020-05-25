@@ -713,6 +713,7 @@ public class ThirdState extends BaseAppState {
                     state.detach(boss);
                     states.remove(boss);
                     state.attach(new Battle(states));
+                    ForthState.canGo = "can";
                     cam.setLocation(new Vector3f(0, 0, 10.3f));
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     break;

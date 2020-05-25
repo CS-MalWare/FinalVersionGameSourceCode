@@ -17,6 +17,7 @@ import gamesource.battleState.equipment.epic.*;
 import gamesource.battleState.equipment.legendary.*;
 import gamesource.battleState.equipment.rare.*;
 import org.json.JSONObject;
+import org.lwjgl.Sys;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -202,7 +203,7 @@ public class Storage {
                     case "凯旋":
                         tempCard = new TriumphantReturn();
                         break;
-                    case "负伤打击":
+                    case "负伤强击":
                         tempCard = new WoundedStrike();
                         break;
                     case "逆转反击":
@@ -308,7 +309,7 @@ public class Storage {
                         tempCard = new WhirlingShield();
                         break;
                     default:
-                        System.out.println("随机到了逸润巨佬没有做的卡牌");
+                        System.out.println("随机到了逸润巨佬没有做的卡牌"+cardName);
                         break;
                 }
                 if (upGrade.equals("true")) {
@@ -322,174 +323,173 @@ public class Storage {
 
             // 处理装备加载
             String equipment[] = dataJson.getString("equipments").split("\\|");
-            ArrayList<Equipment> equipmentList = new ArrayList<Equipment>();
             for (String equipmentPath : equipment) {
                 switch (equipmentPath) {
                     case "电池":
-                        equipmentList.add(new Battery());
+                        MainRole.getInstance().getEquipment(new Battery());
                         break;
                     case "生物标本":
-                        equipmentList.add(new BiologicalSample());
+                        MainRole.getInstance().getEquipment(new BiologicalSample());
                         break;
                     case "破损的劳力士":
-                        equipmentList.add(new BrokenRolex());
+                        MainRole.getInstance().getEquipment(new BrokenRolex());
                         break;
                     case "折扣券":
-                        equipmentList.add(new Coupon());
+                        MainRole.getInstance().getEquipment(new Coupon());
                         break;
                     case "诅咒魔法书":
-                        equipmentList.add(new CurseBook());
+                        MainRole.getInstance().getEquipment(new CurseBook());
                         break;
                     case "恶魔之锤":
-                        equipmentList.add(new DemonHammer());
+                        MainRole.getInstance().getEquipment(new DemonHammer());
                         break;
                     case "活力圣瓶":
-                        equipmentList.add(new DynamicAmpulla());
+                        MainRole.getInstance().getEquipment(new DynamicAmpulla());
                         break;
                     case "磨刀石":
-                        equipmentList.add(new KnifeStone());
+                        MainRole.getInstance().getEquipment(new KnifeStone());
                         break;
                     case "骑士手套":
-                        equipmentList.add(new KnightGloves());
+                        MainRole.getInstance().getEquipment(new KnightGloves());
                         break;
                     case "一卡通":
-                        equipmentList.add(new MetroCard());
+                        MainRole.getInstance().getEquipment(new MetroCard());
                         break;
                     case "魔法石":
-                        equipmentList.add(new PhilosopherStone());
+                        MainRole.getInstance().getEquipment(new PhilosopherStone());
                         break;
                     case "毒药丸":
-                        equipmentList.add(new PoisonPill());
+                        MainRole.getInstance().getEquipment(new PoisonPill());
                         break;
                     case "瓜皮":
-                        equipmentList.add(new Rind());
+                        MainRole.getInstance().getEquipment(new Rind());
                         break;
                     case "推销手册":
-                        equipmentList.add(new SellManualOfGSW());
+                        MainRole.getInstance().getEquipment(new SellManualOfGSW());
                         break;
                     case "尖铅笔":
-                        equipmentList.add(new SharpenedPencil());
+                        MainRole.getInstance().getEquipment(new SharpenedPencil());
                         break;
                     case "小盾牌":
-                        equipmentList.add(new SmallShield());
+                        MainRole.getInstance().getEquipment(new SmallShield());
                         break;
                     case "蛇皮袋":
-                        equipmentList.add(new SnakeskinBag());
+                        MainRole.getInstance().getEquipment(new SnakeskinBag());
                         break;
                     case "带刺的毛衣":
-                        equipmentList.add(new SweaterWithThorns());
+                        MainRole.getInstance().getEquipment(new SweaterWithThorns());
                         break;
                     case "阿姆斯特朗回旋炮":
-                        equipmentList.add(new ArmstrongGun());
+                        MainRole.getInstance().getEquipment(new ArmstrongGun());
                         break;
                     case "隐形斗篷":
-                        equipmentList.add(new InvisibilityCloak());
+                        MainRole.getInstance().getEquipment(new InvisibilityCloak());
                         break;
                     case "万花筒":
-                        equipmentList.add(new Kaleidoscope());
+                        MainRole.getInstance().getEquipment(new Kaleidoscope());
                         break;
                     case "阿拉丁神灯":
-                        equipmentList.add(new LampOfAladdin());
+                        MainRole.getInstance().getEquipment(new LampOfAladdin());
                         break;
                     case "FF团的大旗":
-                        equipmentList.add(new TheFlagOfTheFFRegiment());
+                        MainRole.getInstance().getEquipment(new TheFlagOfTheFFRegiment());
                         break;
                     case "五年高考三年模拟":
-                        equipmentList.add(new ThreeYearSimulationFiveYearCollegeEntranceExamination());
+                        MainRole.getInstance().getEquipment(new ThreeYearSimulationFiveYearCollegeEntranceExamination());
                         break;
                     case "高士味的钱包":
-                        equipmentList.add(new WalletOfGSW());
+                        MainRole.getInstance().getEquipment(new WalletOfGSW());
                         break;
                     case "负重":
-                        equipmentList.add(new WeightBearing());
+                        MainRole.getInstance().getEquipment(new WeightBearing());
                         break;
                     case "陈宇轩的女装":
-                        equipmentList.add(new WomenClothesOfCYX());
+                        MainRole.getInstance().getEquipment(new WomenClothesOfCYX());
                         break;
                     case "王逸润的steam账号":
-                        equipmentList.add(new WYRSteamAccount());
+                        MainRole.getInstance().getEquipment(new WYRSteamAccount());
                         break;
                     case "平衡的天秤":
-                        equipmentList.add(new BalancedLibra());
+                        MainRole.getInstance().getEquipment(new BalancedLibra());
                         break;
                     case "春哥甲":
-                        equipmentList.add(new ChunGeAmor());
+                        MainRole.getInstance().getEquipment(new ChunGeAmor());
                         break;
                     case "诅咒的宝箱":
-                        equipmentList.add(new CurseChest());
+                        MainRole.getInstance().getEquipment(new CurseChest());
                         break;
                     case "美杜莎的眼罩":
-                        equipmentList.add(new MedusaEyeMask());
+                        MainRole.getInstance().getEquipment(new MedusaEyeMask());
                         break;
                     case "梅林法袍":
-                        equipmentList.add(new MerlinGown());
+                        MainRole.getInstance().getEquipment(new MerlinGown());
                         break;
                     case "梅林之靴":
-                        equipmentList.add(new MerlinShoes());
+                        MainRole.getInstance().getEquipment(new MerlinShoes());
                         break;
                     case "梅林法杖":
-                        equipmentList.add(new MerlinWand());
+                        MainRole.getInstance().getEquipment(new MerlinWand());
                         break;
                     case "高傲的神话":
-                        equipmentList.add(new TheMythOfPride());
+                        MainRole.getInstance().getEquipment(new TheMythOfPride());
                         break;
                     case "黑暗精灵的短笛":
-                        equipmentList.add(new ThePiccoloOfTheDarkElves());
+                        MainRole.getInstance().getEquipment(new ThePiccoloOfTheDarkElves());
                         break;
                     case "紧身衣":
-                        equipmentList.add(new Tights());
+                        MainRole.getInstance().getEquipment(new Tights());
                         break;
                     case "魅高林的外星人":
-                        equipmentList.add(new AlienwareOfWGL());
+                        MainRole.getInstance().getEquipment(new AlienwareOfWGL());
                         break;
                     case "连击星":
-                        equipmentList.add(new ComboStar());
+                        MainRole.getInstance().getEquipment(new ComboStar());
                         break;
                     case "诅咒的皮带":
-                        equipmentList.add(new CursedBelt());
+                        MainRole.getInstance().getEquipment(new CursedBelt());
                         break;
                     case "陈宇轩的假发":
-                        equipmentList.add(new CYXArtificialHair());
+                        MainRole.getInstance().getEquipment(new CYXArtificialHair());
                         break;
                     case "鬼王披风":
-                        equipmentList.add(new DevilPrinceCloak());
+                        MainRole.getInstance().getEquipment(new DevilPrinceCloak());
                         break;
                     case "任意门":
-                        equipmentList.add(new DimensionDoor());
+                        MainRole.getInstance().getEquipment(new DimensionDoor());
                         break;
                     case "烈火之栗":
-                        equipmentList.add(new FireKernel());
+                        MainRole.getInstance().getEquipment(new FireKernel());
                         break;
                     case "生命之核":
-                        equipmentList.add(new LifeKernel());
+                        MainRole.getInstance().getEquipment(new LifeKernel());
                         break;
                     case "精金之铠":
-                        equipmentList.add(new MetalKernal());
+                        MainRole.getInstance().getEquipment(new MetalKernal());
                         break;
                     case "爆米花":
-                        equipmentList.add(new Popcorn());
+                        MainRole.getInstance().getEquipment(new Popcorn());
                         break;
                     case "橡皮缓冲":
-                        equipmentList.add(new RubberBuffer());
+                        MainRole.getInstance().getEquipment(new RubberBuffer());
                         break;
                     case "海洋之心":
-                        equipmentList.add(new SeaKernel());
+                        MainRole.getInstance().getEquipment(new SeaKernel());
                         break;
                     case "厚土之靴":
-                        equipmentList.add(new SoilKernel());
+                        MainRole.getInstance().getEquipment(new SoilKernel());
                         break;
                     case "便签纸":
-                        equipmentList.add(new StickyNote());
+                        MainRole.getInstance().getEquipment(new StickyNote());
                         break;
                     case "龙牙盾":
-                        equipmentList.add(new TheDragonTeethShield());
+                        MainRole.getInstance().getEquipment(new TheDragonTeethShield());
                         break;
                     default:
-                        System.out.println("此处没有装备");
+                        System.out.println("此处没有装备 "+ equipmentPath);
                         break;
                 }
             }
-
+//            System.out.println(equipmentList);
             String canGo[] = dataJson.getString("canGo").split("\\|");
             FirstState.canGo = canGo[0];
             SecondState.canGo = canGo[1];
@@ -497,6 +497,7 @@ public class Storage {
             ForthState.canGo = canGo[3];
             FifthState.canGo = canGo[4];
             SixthState.canGo = canGo[5];
+            br.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("没有存档文件");
@@ -523,7 +524,7 @@ public class Storage {
                 tempPath += card.isUpgraded() ? "true," : "false,";
                 tempPath += card.getUnchangeName() + "|";
             }
-
+            tempPath = tempPath.substring(0, tempPath.length()-1);
             data += String.format("\"deck\":\"%s\",\n", tempPath);
             data += String.format("\"gold\":\"%s\",\n", MainRole.getInstance().getGold());
 
@@ -531,6 +532,11 @@ public class Storage {
             tempPath = "";
             for (Equipment equipment : MainRole.getInstance().getEquipments()) {
                 tempPath += equipment.getPicName() + "|";
+            }
+            try {
+                tempPath = tempPath.substring(0, tempPath.length() - 1);
+            }catch (StringIndexOutOfBoundsException siobe){
+                System.out.println("存档的时候没有装备");
             }
             data += String.format("\"equipments\":\"%s\",\n", tempPath);
             // 这次用这个变量临时存储能进入的关卡
@@ -552,7 +558,28 @@ public class Storage {
         }
         return true;
     }
+    public static boolean reset(){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("storage.json"));
+            String data = "{\n";
+            data += "\"totalHP\":\"85\",\n";
+            data += "\"HP\":\"85\",\n";
 
+            data += "\"deck\":\"\"false,打击|false,冰魄斩|false,火焰斩|false,撒币|false,光之挥舞|false,裂地斩|false,烈火斩|false,负伤强击|false,格挡|false,格挡|false,格挡|false,格挡|false,格挡|false,魔法盾|false,旋盾|false,治疗\",\n";
+            data += String.format("\"gold\":\"%s\",\n", MainRole.getInstance().getGold());
+
+            data += "\"equipments\":\"\",\n";
+            data += "\"canGo\":\"can|cannot|cannot|cannot|cannot|cannot\"";
+            data += "\n}";
+            bw.write(data);
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("写入出错");
+            return false;
+        }
+        return true;
+    }
     // 测试用的主方法
     public static void main(String[] args) {
         save();
