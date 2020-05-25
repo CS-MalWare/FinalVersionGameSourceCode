@@ -1,25 +1,13 @@
 package gamesource.battleState.appState;
 
-import com.jme3.cursors.plugins.JmeCursor;
-import com.jme3.font.Rectangle;
-import com.jme3.material.Material;
-import com.jme3.material.RenderState;
-import com.jme3.post.FilterPostProcessor;
-import com.jme3.scene.shape.Quad;
-import com.jme3.ui.Picture;
-import gamesource.State.worldState.*;
-import gamesource.battleState.battle.Battle;
-import gamesource.battleState.card.Card;
-import gamesource.battleState.card.CreateCard;
-import gamesource.battleState.character.MainRole;
 import com.jme3.app.Application;
-import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.asset.AssetManager;
 import com.jme3.asset.AssetNotFoundException;
 import com.jme3.collision.CollisionResults;
+import com.jme3.cursors.plugins.JmeCursor;
 import com.jme3.font.BitmapFont;
 import com.jme3.font.BitmapText;
 import com.jme3.font.Rectangle;
@@ -40,6 +28,7 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.shape.Quad;
 import com.jme3.ui.Picture;
+import gamesource.State.CharacterState.MajorActor;
 import gamesource.battleState.battle.Battle;
 import gamesource.battleState.card.Card;
 import gamesource.battleState.card.CreateCard;
@@ -400,7 +389,8 @@ public class GetCardState extends BaseAppState {
     @Override
     protected void onEnable() {
 //        app.getFlyByCamera().setDragToRotate(false);
-        app.getFlyByCamera().setEnabled(false);
+        app.getStateManager().getState(MajorActor.class).mouseChange();
+
         // 这里是触发宝箱的逻辑
 //        if(stateManager.detach(stateManager.getState(FirstState.class))){
 //            world = "first";
@@ -414,7 +404,6 @@ public class GetCardState extends BaseAppState {
 //        }else if(stateManager.detach(stateManager.getState(FifthState.class))){
 //            world = "fifth";
 //        }
-        app.getStateManager().detach(app.getStateManager().getState(FlyCamAppState.class));
 
         stateManager.detach(stateManager.getState(EnemyState.class));
         stateManager.detach(stateManager.getState(HandCardsState.class));
@@ -435,12 +424,11 @@ public class GetCardState extends BaseAppState {
 
     @Override
     protected void onDisable() {
-        app.getFlyByCamera().setEnabled(true);
         this.rootNode.removeFromParent();
         app.getInputManager().removeRawInputListener(mril);
         app.getStateManager().detach(app.getStateManager().getState(BattleState.class));
         app.getStateManager().detach(app.getStateManager().getState(Battle.class));
-        app.getStateManager().attach(new FlyCamAppState());
+        app.getStateManager().getState(MajorActor.class).mouseChange();
         //        switch (world){
         //        switch (world){
 //            case "first":
