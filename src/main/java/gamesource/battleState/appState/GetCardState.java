@@ -387,18 +387,18 @@ public class GetCardState extends BaseAppState {
     @Override
     protected void onEnable() {
         // 这里是触发宝箱的逻辑
-        if(stateManager.detach(stateManager.getState(FirstState.class))){
-            world = "first";
-        }
-        else if(stateManager.detach(stateManager.getState(SecondState.class))){
-            world = "second";
-        }else if(stateManager.detach(stateManager.getState(ThirdState.class))){
-            world = "third";
-        }else if(stateManager.detach(stateManager.getState(ForthState.class))){
-            world = "forth";
-        }else if(stateManager.detach(stateManager.getState(FifthState.class))){
-            world = "fifth";
-        }
+//        if(stateManager.detach(stateManager.getState(FirstState.class))){
+//            world = "first";
+//        }
+//        else if(stateManager.detach(stateManager.getState(SecondState.class))){
+//            world = "second";
+//        }else if(stateManager.detach(stateManager.getState(ThirdState.class))){
+//            world = "third";
+//        }else if(stateManager.detach(stateManager.getState(ForthState.class))){
+//            world = "forth";
+//        }else if(stateManager.detach(stateManager.getState(FifthState.class))){
+//            world = "fifth";
+//        }
 
         stateManager.detach(stateManager.getState(EnemyState.class));
         stateManager.detach(stateManager.getState(HandCardsState.class));
@@ -423,24 +423,24 @@ public class GetCardState extends BaseAppState {
         app.getInputManager().removeRawInputListener(mril);
         app.getStateManager().detach(app.getStateManager().getState(BattleState.class));
         app.getStateManager().detach(app.getStateManager().getState(Battle.class));
-        switch (world){
-            case "first":
-                app.getStateManager().attach(stateManager.getState(FirstState.class));
-                break;
-            case "second":
-                app.getStateManager().attach(stateManager.getState(SecondState.class));
-                break;
-            case "third":
-                app.getStateManager().attach(stateManager.getState(ThirdState.class));
-                break;
-            case "forth":
-                app.getStateManager().attach(stateManager.getState(ForthState.class));
-                break;
-            case "fifth":
-                app.getStateManager().attach(stateManager.getState(FifthState.class));
-                break;
-            default:
-                break;
-        }
+//        switch (world){
+//            case "first":
+//                app.getStateManager().attach(stateManager.getState(FirstState.class));
+//                break;
+//            case "second":
+//                app.getStateManager().attach(stateManager.getState(SecondState.class));
+//                break;
+//            case "third":
+//                app.getStateManager().attach(stateManager.getState(ThirdState.class));
+//                break;
+//            case "forth":
+//                app.getStateManager().attach(stateManager.getState(ForthState.class));
+//                break;
+//            case "fifth":
+//                app.getStateManager().attach(stateManager.getState(FifthState.class));
+//                break;
+//            default:
+//                break;
+//        }
     }
 }

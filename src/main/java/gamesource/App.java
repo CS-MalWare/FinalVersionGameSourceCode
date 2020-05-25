@@ -177,6 +177,9 @@ public class App extends SimpleApplication {
              if (keyCode == KeyInput.KEY_I && isPressed) {
                 Storage.save();
             }
+             else if (keyCode == KeyInput.KEY_U && isPressed) {
+                 Storage.reset();
+             }
         }
 
         public void onTouchEvent(TouchEvent evt) {
