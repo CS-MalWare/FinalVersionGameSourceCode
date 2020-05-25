@@ -79,6 +79,8 @@ public class MainRole extends Role {
         this.untreatable = false;
         this.freeCard = false;
         this.equipments = new ArrayList<Equipment>();
+
+        this.deck_.add(new SnakeSkinOperation());
         this.deck_.add(new Slash());
         this.deck_.add(new IceSlash());
         this.deck_.add(new FireSlash());
@@ -467,8 +469,18 @@ public class MainRole extends Role {
         } else {
             DecksState deckState = app.getStateManager().getState(DecksState.class);
             HandCardsState handCardsState = app.getStateManager().getState(HandCardsState.class);
+            ArrayList<Card> handCards = handCardsState.getHandCards();
+            ArrayList<Card> etherealCard = new ArrayList<Card>();
+            for (Card card : handCards) {
+                if (card.isEthereal()) {
+                    etherealCard.add(card);
+                    handCards.remove(card);
+                }
+            }
             deckState.addToDrop(handCardsState.getHandCards().toArray(new Card[0]));
+            deckState.addToExhaust(etherealCard.toArray(new Card[0]));
             handCardsState.getHandCards().clear();
+            etherealCard.clear();
         }
 
     }
