@@ -27,6 +27,7 @@ import gamesource.State.CharacterState.enemies.fifth.plane;
 import gamesource.State.CharacterState.enemies.fifth.walkRobot;
 import gamesource.State.CharacterState.firstWorldCharacter.lizardState;
 import gamesource.State.SpecialEffect.FifthOtherSpecial;
+import gamesource.State.SpecialEffect.FifthWorldLight;
 import gamesource.State.SpecialEffect.ThirdWorldLight;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
