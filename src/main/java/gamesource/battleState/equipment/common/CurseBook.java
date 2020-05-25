@@ -18,6 +18,7 @@ public class CurseBook extends Equipment {
                     case "Enemies/skeleton/blueSkeleton/blueSkeleton0.j3o":
                     case "Enemies/zhenwang/boss0.j3o":
                     case "Enemies/underWater/fishboss0.j3o":
+                    case "Enemies/skeleton/KingSkeleton/kingSkeleton.j3o":
                         return;
                     default:
                         break;
