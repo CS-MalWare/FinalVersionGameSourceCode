@@ -149,6 +149,10 @@ public class MainRole extends Role {
         return true;
     }
 
+    public void removeCard(Card card) {
+        this.deck_.remove(card);
+    }
+
     //每回合开始时候的抽牌
     public void startTurn() {
 
@@ -470,17 +474,17 @@ public class MainRole extends Role {
             DecksState deckState = app.getStateManager().getState(DecksState.class);
             HandCardsState handCardsState = app.getStateManager().getState(HandCardsState.class);
             ArrayList<Card> handCards = handCardsState.getHandCards();
-            ArrayList<Card> etherealCard = new ArrayList<Card>();
-            for (Card card : handCards) {
-                if (card.isEthereal()) {
-                    etherealCard.add(card);
-                    handCards.remove(card);
-                }
-            }
+//            ArrayList<Card> etherealCard = new ArrayList<Card>();
+//            for (Card card : handCards) {
+//                if (card.isEthereal()) {
+//                    etherealCard.add(card);
+//                    handCards.remove(card);
+//                }
+//            }
             deckState.addToDrop(handCardsState.getHandCards().toArray(new Card[0]));
-            deckState.addToExhaust(etherealCard.toArray(new Card[0]));
+//            deckState.addToExhaust(etherealCard.toArray(new Card[0]));
             handCardsState.getHandCards().clear();
-            etherealCard.clear();
+//            etherealCard.clear();
         }
 
     }
