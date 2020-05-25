@@ -12,6 +12,7 @@ import com.jme3.audio.AudioData;
 import com.jme3.audio.AudioNode;
 import com.jme3.bounding.BoundingSphere;
 import com.jme3.collision.CollisionResults;
+import com.jme3.effect.ParticleEmitter;
 import com.jme3.font.BitmapFont;
 import com.jme3.font.BitmapText;
 import com.jme3.font.Rectangle;
@@ -50,7 +51,7 @@ public class EnemyState extends BaseAppState {
     private ArrayList<Float> hpPositions;
     private ArrayList<Integer> modelPositions;
     private ArrayList<Float> blockPositions;
-
+    private ParticleEmitter pe;
     private ArrayList<AnimChannel> animChannels;  // 用于播放动画
     private ArrayList<AnimControl> animControls;  // 用于播放动画
 
@@ -403,6 +404,10 @@ public class EnemyState extends BaseAppState {
             case "Enemies/fifthMap/airplane2.j3o":
                 model.scale(0.07f);
                 break;
+            case "Enemies/fifthMap/boss/scene0.j3o":
+                model.scale(0.013f);
+                model.rotate(0,3.7f,0);
+                break;
             default:
                 break;
         }
@@ -410,6 +415,9 @@ public class EnemyState extends BaseAppState {
 
     private void setModelPos(Spatial model) {
         switch (model.getName()) {
+            case "Enemies/fifthMap/boss/scene0.j3o":
+                model.move(0.5f, 0.1f, 0);
+                break;
             case "Enemies/fifthMap/airplane0.j3o":
                 model.move(-1f, 0.2f, 0);
                 break;
@@ -931,6 +939,7 @@ public class EnemyState extends BaseAppState {
                     case "Enemies/fifthMap/mech_drone/scene0.j3o":
                     case "Enemies/fifthMap/mech_drone/scene1.j3o":
                     case "Enemies/fifthMap/mech_drone/scene2.j3o":
+                    case "Enemies/fifthMap/boss/scene0.j3o":
                         deadSoundSrc = "Sound/Dead/机器人死亡.wav";
                         break;
 //                    case "3":
@@ -993,6 +1002,9 @@ public class EnemyState extends BaseAppState {
 
     @Override
     protected void onEnable() {
+        if(pe!=null)
+            pe.removeFromParent();
+        
         this.initEnemies();
         this.initializeHints();
         this.inputManager.addRawInputListener(myRawInputListener);
@@ -1001,13 +1013,16 @@ public class EnemyState extends BaseAppState {
         if(this.enemies.size() == 1){//boss 只有一个
             System.out.println(this.enemies.get(0).getSrc());
             switch (this.enemies.get(0).getSrc()){
-                case "Enemies/skeleton/KingSkeleton/kingSkeleton0.j3o":
-                    this.rootNode.attachChild(KingSkeletonStateParticle.getParticle1(app.getAssetManager()));
+                case "Enemies/skeleton/blueSkeleton/blueSkeleton0.j3o":
+                case "Enemies/forth/boss/scene0.j3o":
+                case "Enemies/underWater/fishboss0.j3o":
+                case "Enemies/fifthMap/boss/scene0.j3o":
+                    pe=KingSkeletonStateParticle.getParticle1(app.getAssetManager());
+                    this.rootNode.attachChild(pe);
                     break;
                 case "Enemies/zhenwang/boss0.j3o":
-                    this.rootNode.attachChild(StuxnetStateParticle.getParticle1(app.getAssetManager()));
-                    break;
-                case "Enemies/underWater/fishboss0.j3o":
+                    pe=StuxnetStateParticle.getParticle1(app.getAssetManager());
+                    this.rootNode.attachChild(pe);
                     break;
             }
         }

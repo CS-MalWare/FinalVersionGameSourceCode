@@ -4,13 +4,11 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.cursors.plugins.JmeCursor;
-import com.jme3.font.BitmapText;
 import com.jme3.input.KeyInput;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.event.*;
-import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
@@ -19,27 +17,22 @@ import com.jme3.post.filters.*;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Quad;
-import com.jme3.shadow.DirectionalLightShadowRenderer;
 import com.jme3.system.AppSettings;
 import com.jme3.texture.Texture;
 import com.jme3.util.SkyFactory;
-import com.jme3.water.WaterFilter;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.worldState.*;
-import gamesource.battleState.battle.Test;
 import gamesource.testState.First;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
 import gamesource.util.Storage;
-import sun.applet.Main;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
+
+//import jdk.tools.jaotc.Main;
 
 /**
  * Hello world!
@@ -47,7 +40,7 @@ import java.io.IOException;
 public class App extends SimpleApplication {
 
     public final static String world = "WORLD";
-    public int guan=1;
+    public static int guan = 2;
 
     FirstState f1;
     SecondState f2;
@@ -57,7 +50,7 @@ public class App extends SimpleApplication {
     SixthState f6;
     First t1;
     private AppStateManager state;
-    private int shadow=2048,open=1,juchi=4;
+    private int shadow = 2048, open = 1, juchi = 4;
 
     /*public App(){
         super(new StatsAppState(),
@@ -78,22 +71,22 @@ public class App extends SimpleApplication {
         FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
         fpp.setNumSamples(juchi);
         viewPort.addProcessor(fpp);
-        makeCross cross=new makeCross();
+        makeCross cross = new makeCross();
         stateManager.attach(new MajorActor());
         stateManager.attach(new InputAppState());
         stateManager.attach(new BagAppState());
         stateManager.attach(new ShopAppState());
         stateManager.attach(new MenuAppState());
         stateManager.attach(cross);
-        f1 = new FirstState(shadow,open);
+        f1 = new FirstState(shadow, open);
         //stateManager.attach(f1);
-        f2 = new SecondState(shadow,open);
-        f3 = new ThirdState(shadow,open);
-        f4 = new ForthState(shadow,open);
-        f5 = new FifthState(shadow,open);
-        f6=new SixthState(shadow,open);
+        f2 = new SecondState(shadow, open);
+        f3 = new ThirdState(shadow, open);
+        f4 = new ForthState(shadow, open);
+        f5 = new FifthState(shadow, open);
+        f6 = new SixthState(shadow, open);
         //t1=new First();
-        switch(guan){
+        switch (guan) {
             case 1:
                 stateManager.attach(f1);
                 break;
@@ -140,13 +133,13 @@ public class App extends SimpleApplication {
     }
 
 
-
-
     private RawInputListener inputListener = new RawInputListener() {
 
 
-        public void onMouseMotionEvent(MouseMotionEvent evt) {
+//        BitmapText msg = new BitmapText(getAssetManager().loadFont("Interface/Fonts/Default.fnt"), false);
 
+        public void onMouseMotionEvent(MouseMotionEvent evt) {
+//            msg.removeFromParent();
         }
 
         public void beginInput() {
@@ -182,23 +175,27 @@ public class App extends SimpleApplication {
 
             int keyCode = evt.getKeyCode();
             boolean isPressed = evt.isPressed();
-             if (keyCode == KeyInput.KEY_I && isPressed) {
+            if (keyCode == KeyInput.KEY_I && isPressed) {
                 Storage.save();
+//                msg.setText("Saving success!");
+//                msg.setSize(0.2f);
+//                msg.setBox(new Rectangle(-3.5f, 2f, 10, 2));
+//                msg.setQueueBucket(RenderQueue.Bucket.Transparent);
+//                rootNode.attachChild(msg);
+            } else if (keyCode == KeyInput.KEY_U && isPressed) {
+                Storage.reset();
             }
-             else if (keyCode == KeyInput.KEY_U && isPressed) {
-                 Storage.reset();
-             }
         }
 
         public void onTouchEvent(TouchEvent evt) {
         }
     };
 
-    public App(int guan,int shadow,int open,int juchi){
-        this.guan=guan;
-        this.shadow=shadow;
-        this.open=open;
-        this.juchi=juchi;
+    public App(int guan, int shadow, int open, int juchi) {
+        this.guan = guan;
+        this.shadow = shadow;
+        this.open = open;
+        this.juchi = juchi;
     }
 
     private void initEffect(FilterPostProcessor fpp) {
@@ -271,36 +268,48 @@ public class App extends SimpleApplication {
         @Override
         public void onAction(String name, boolean isPressed, float tpf) {
             if (world.equals(name) && isPressed) {
-                switch(guan){
+                switch (guan) {
                     case 1:
-                        stateManager.detach(f1);
-                        stateManager.attach(f2);
-                        guan=2;
+                        if (SecondState.canGo.equals("can")) {
+                            stateManager.detach(f1);
+                            stateManager.attach(f2);
+                            guan = 2;
+                        }
                         break;
                     case 2:
-                        stateManager.detach(f2);
-                        stateManager.attach(f3);
-                        guan=3;
+                        if (ThirdState.canGo.equals("can")) {
+                            stateManager.detach(f2);
+                            stateManager.attach(f3);
+                            guan = 3;
+                        }
                         break;
                     case 3:
-                        stateManager.detach(f3);
-                        stateManager.attach(f4);
-                        guan=4;
+                        if (ForthState.canGo.equals("can")) {
+                            stateManager.detach(f3);
+                            stateManager.attach(f4);
+                            guan = 4;
+                        }
                         break;
                     case 4:
-                        stateManager.detach(f4);
-                        stateManager.attach(f5);
-                        guan=5;
+                        if (FifthState.canGo.equals("can")) {
+                            stateManager.detach(f4);
+                            stateManager.attach(f5);
+                            guan = 5;
+                        }
                         break;
                     case 5:
-                        stateManager.detach(f5);
-                        stateManager.attach(f6);
-                        guan=6;
+                        if (SixthState.canGo.equals("can")) {
+                            stateManager.detach(f5);
+                            stateManager.attach(f6);
+                            guan = 6;
+                        }
                         break;
                     case 6:
-                        stateManager.detach(f6);
-                        stateManager.attach(f1);
-                        guan=1;
+                        if (FifthState.canGo.equals("can")) {
+                            stateManager.detach(f6);
+                            stateManager.attach(f1);
+                            guan = 1;
+                        }
                         break;
                 }
                 //f1.setEnabled(false);
@@ -314,15 +323,15 @@ public class App extends SimpleApplication {
 
     private Spatial getPicture(int number) {
         // 创建一个四边形
-        int x=cam.getWidth();
-        int y=cam.getHeight();
+        int x = cam.getWidth();
+        int y = cam.getHeight();
         Quad quad = new Quad(x, y);
         Geometry geom = new Geometry("Picture", quad);
         Texture tex;
         // 加载图片
-        switch(number){
+        switch (number) {
             case 1:
-                 tex = assetManager.loadTexture("Map/first.png");
+                tex = assetManager.loadTexture("Map/first.png");
                 break;
             case 2:
                 tex = assetManager.loadTexture("Map/second.png");
@@ -355,14 +364,17 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) throws IOException {
 
-        App app = new App(6 ,1024,0,4);
+        App app = new App(2, 2048, 0, 4);
         AppSettings settings = new AppSettings(true);
 
-        settings.setTitle("MALWARE");// 标题
+        // 这里是导入地图存档的,导入人物属性存档在 MainRole类中
+        Storage.load();
+
+        settings.setTitle("Cholera");// 标题
         settings.setResolution(1600, 900);// 分辨率
         settings.setFrameRate(100);//限制fps
-        settings.setIcons(new BufferedImage[]{
-                ImageIO.read(Main.class.getResource( "/Map/icon.png" ))});
+//        settings.setIcons(new BufferedImage[]{
+//                ImageIO.read(Main.class.getResource( "/Map/icon.png" ))});
         app.setSettings(settings);
         app.setShowSettings(false);
         //app.setShowSettings(false);

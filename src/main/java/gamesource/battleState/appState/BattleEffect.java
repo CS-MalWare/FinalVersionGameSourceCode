@@ -11,6 +11,7 @@ import com.jme3.post.SceneProcessor;
 import com.jme3.post.filters.*;
 import com.jme3.renderer.ViewPort;
 import com.jme3.scene.Node;
+import com.jme3.scene.Spatial;
 import com.jme3.util.SafeArrayList;
 
 public class BattleEffect extends BaseAppState {
@@ -30,7 +31,7 @@ public class BattleEffect extends BaseAppState {
     LightScatteringFilter lightScattering;
     CartoonEdgeFilter cartoonEdge;
     DepthOfFieldFilter depthOfField;
-
+    Spatial pic;
     @Override
     protected void initialize(Application application) {
 
@@ -39,12 +40,12 @@ public class BattleEffect extends BaseAppState {
         bloom.setBlurScale(0.2f);
         fog = new FogFilter(ColorRGBA.White, 0.7f, 250f);
         sunDir = new Vector3f(-1, -2, -3);
-        lightScattering = new LightScatteringFilter(sunDir.mult(-3000));
-        cartoonEdge = new CartoonEdgeFilter();
-        cartoonEdge.setDepthSensitivity(0.4f);
-        cartoonEdge.setEdgeIntensity(0.55f);
-        cartoonEdge.setEdgeWidth(0.55f);
-        cartoonEdge.setNormalThreshold(0.55f);
+//        lightScattering = new LightScatteringFilter(sunDir.mult(-3000));
+//        cartoonEdge = new CartoonEdgeFilter();
+//        cartoonEdge.setDepthSensitivity(0.4f);
+//        cartoonEdge.setEdgeIntensity(0.55f);
+//        cartoonEdge.setEdgeWidth(0.55f);
+//        cartoonEdge.setNormalThreshold(0.55f);
         depthOfField = new DepthOfFieldFilter();
         depthOfField.setFocusDistance(0);
         depthOfField.setFocusRange(25);
@@ -57,6 +58,11 @@ public class BattleEffect extends BaseAppState {
             if (x1.get(i) instanceof FilterPostProcessor)
                 fpp = (FilterPostProcessor) x1.get(i);
         }
+        app.getGuiNode().detachChild(pic);
+    }
+
+    public BattleEffect(Spatial pic){
+        this.pic=pic;
     }
 
     @Override
@@ -66,7 +72,7 @@ public class BattleEffect extends BaseAppState {
 
     @Override
     protected void onEnable() {
-        fpp.addFilter(cartoonEdge);
+//        fpp.addFilter(cartoonEdge);
         fpp.addFilter(depthOfField);
         fpp.addFilter(fog);
         fpp.addFilter(bloom);
@@ -74,7 +80,7 @@ public class BattleEffect extends BaseAppState {
 
     @Override
     protected void onDisable() {
-        fpp.removeFilter(cartoonEdge);
+//        fpp.removeFilter(cartoonEdge);
         fpp.removeFilter(depthOfField);
         fpp.removeFilter(fog);
         fpp.removeFilter(bloom);

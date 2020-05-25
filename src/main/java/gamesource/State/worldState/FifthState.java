@@ -21,14 +21,10 @@ import com.jme3.scene.shape.Quad;
 import com.jme3.texture.Texture;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.Master1;
-import gamesource.State.CharacterState.enemies.fifth.TalkBot;
-import gamesource.State.CharacterState.enemies.fifth.flyRobot;
-import gamesource.State.CharacterState.enemies.fifth.plane;
-import gamesource.State.CharacterState.enemies.fifth.walkRobot;
+import gamesource.State.CharacterState.enemies.fifth.*;
 import gamesource.State.CharacterState.firstWorldCharacter.lizardState;
 import gamesource.State.SpecialEffect.FifthOtherSpecial;
 import gamesource.State.SpecialEffect.FifthWorldLight;
-import gamesource.State.SpecialEffect.ThirdWorldLight;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
@@ -99,6 +95,7 @@ public class FifthState extends BaseAppState {
     private lizardState lizard=new lizardState(new Vector3f(6.345871f, 16.74f, -24.815386f),-0.3f);
     private Master1 master=new Master1(new Vector3f(9.348317f, 16.739998f, -24.272078f),-0.3f);
     private StartTalk st=new StartTalk();
+    private robotBoss boss=new robotBoss(new Vector3f(15.845064f, 16.679998f, -29.330456f),-1.4f);
     private FifthBackMusic music=new FifthBackMusic();
     private BoundingVolume maj;
     private skyBox5 sky;
@@ -182,6 +179,8 @@ public class FifthState extends BaseAppState {
         states.add(c1);
         state.attach(c2);
         states.add(c2);
+        state.attach(boss);
+        states.add(boss);
         //state.attach(water);
         sky=new skyBox5(pic);
         state.attach(sky);
@@ -354,7 +353,7 @@ public class FifthState extends BaseAppState {
             ray=major.get();
             BoundingVolume kni = talkbot.get();
             CollisionResults results = new CollisionResults();
-            maj.collideWith(kni, results);
+            ray.collideWith(kni, results);
             return results;
         }catch(Exception e){
             return null;
@@ -362,10 +361,9 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results15(){
         try {
-            ray=major.get();
             BoundingVolume kni = lizard.get();
             CollisionResults results = new CollisionResults();
-            maj.collideWith(kni, results);
+            ray.collideWith(kni, results);
             return results;
         }catch(Exception e){
             return null;
@@ -373,8 +371,17 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results16(){
         try {
-            ray=major.get();
             BoundingVolume kni = master.get();
+            CollisionResults results = new CollisionResults();
+            ray.collideWith(kni, results);
+            return results;
+        }catch(Exception e){
+            return null;
+        }
+    }
+    public CollisionResults results17(){
+        try {
+            BoundingVolume kni = boss.get();
             CollisionResults results = new CollisionResults();
             maj.collideWith(kni, results);
             return results;
@@ -402,6 +409,7 @@ public class FifthState extends BaseAppState {
             CollisionResults results14 = results14();
             CollisionResults results15 = results15();
             CollisionResults results16 = results16();
+            CollisionResults results17 = results17();
             if(talk.equals(name)&&isPressed){
                 if(results14.size()>0){             //初始机器人
                     if(!getStateManager().hasState(wordWrapForTalk)){
@@ -477,13 +485,20 @@ public class FifthState extends BaseAppState {
                     battle1 = 9;
                 } else if (results11 != null && results11.size() > 0) {
                     battle1 = 10;
-                } else if(results12!=null&&results12.size()>0){
+                } else if (results17 != null && results17.size() > 0) {
+                    battle1 = 11;
+                }else if(results12!=null&&results12.size()>0){
                     System.out.println("chest");
                     c1.open();
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
                     getApplication().getStateManager().attach(new GetCardState());
-                }else if(results13!=null&&results13.size()>0){
+                }else if(results13!=null&&results13.size()>0) {
                     System.out.println("chest");
                     c2.open();
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
+                    getApplication().getStateManager().attach(new GetCardState());
                 }
             }
 
@@ -726,7 +741,26 @@ public class FifthState extends BaseAppState {
 
 
                     break;
+                case 11:
+                    state.detach(input);
+                    states.remove(input);
+                    inputManager.deleteTrigger(talk, TALK);
+                    inputManager.deleteTrigger(change, CHANGECAMERA);
+                    inputManager.deleteTrigger(bag, BAG);
+                    inputManager.deleteTrigger(move, MOVE);
+                    EnemyState.getInstance().addEnemies(
+                            new KingDarkDragon(250, "Enemies/fifthMap/boss/scene.j3o", 50, 2, 2, 2, 2, 5, 0, 0)
+                    );
+                    SixthState.canGo = "can";
+                    state.detach(boss);
+                    states.remove(boss);
+                    state.attach(new Battle(states));
+//                    cam.setLocation(new Vector3f(0, 0, 10.3f));
+//                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
+                    GetCardState.setGoldCountAfterThisBattle(200);
 
+
+                    break;
                 default:
                     break;
 

@@ -26,7 +26,10 @@ import gamesource.State.CharacterState.enemies.RedSkeletonState;
 import gamesource.State.CharacterState.enemies.forth.Boss;
 import gamesource.State.CharacterState.enemies.forth.BossKnight;
 import gamesource.State.CharacterState.enemies.forth.StoneMan;
-import gamesource.State.SpecialEffect.*;
+import gamesource.State.SpecialEffect.ForthWorldLight;
+import gamesource.State.SpecialEffect.FourthWorldOtherSpecial;
+import gamesource.State.SpecialEffect.Water;
+import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
@@ -387,9 +390,15 @@ public class ForthState extends BaseAppState {
                 } else if (results11 != null && results11.size() > 0) {
                     System.out.println("chest");
                     c1.open();
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
+                    getApplication().getStateManager().attach(new GetCardState());
                 } else if (results12 != null && results12.size() > 0) {
                     System.out.println("chest");
                     c2.open();
+                    GetCardState.setGoldCountAfterThisBattle(50);
+
+                    getApplication().getStateManager().attach(new GetCardState());
                 }
             }
 

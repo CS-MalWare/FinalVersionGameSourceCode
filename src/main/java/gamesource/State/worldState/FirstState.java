@@ -31,6 +31,7 @@ import gamesource.State.mapState.FirstWorldState;
 import gamesource.State.mapState.SkyBox;
 import gamesource.State.musicState.FirstBackMusic;
 import gamesource.battleState.appState.BattleBackGroundState;
+import gamesource.battleState.appState.GetCardState;
 import gamesource.uiState.SmallMap;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
@@ -229,7 +230,7 @@ public class FirstState extends BaseAppState {
         inputManager.addListener(st, move);
 
         //major.setPlace(new Vector3f(93.51907f, -31.696218f, 18.607859f));
-        major.setPlace(new Vector3f(0,0,0));
+        major.setPlace(new Vector3f(92.35694f, -31.713285f, 17.851564f));
         major.height(6);
     }
 
@@ -494,12 +495,15 @@ public class FirstState extends BaseAppState {
                 if (results5 != null && results5.size() > 0) {
                     System.out.println("chest");
                     c1.open();
+                    getApplication().getStateManager().attach(new GetCardState());
                 } else if (results6 != null && results6.size() > 0) {
                     System.out.println("chest");
                     c2.open();
+                    getApplication().getStateManager().attach(new GetCardState());
                 } else if (results7 != null && results7.size() > 0) {
                     System.out.println("chest");
                     c3.open();
+                    getApplication().getStateManager().attach(new GetCardState());
                 }
             }
         }

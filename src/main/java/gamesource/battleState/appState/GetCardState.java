@@ -1,16 +1,5 @@
 package gamesource.battleState.appState;
 
-import com.jme3.font.Rectangle;
-import com.jme3.material.Material;
-import com.jme3.material.RenderState;
-import com.jme3.post.FilterPostProcessor;
-import com.jme3.scene.shape.Quad;
-import com.jme3.ui.Picture;
-import gamesource.State.worldState.*;
-import gamesource.battleState.battle.Battle;
-import gamesource.battleState.card.Card;
-import gamesource.battleState.card.CreateCard;
-import gamesource.battleState.character.MainRole;
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
@@ -18,23 +7,35 @@ import com.jme3.app.state.BaseAppState;
 import com.jme3.asset.AssetManager;
 import com.jme3.asset.AssetNotFoundException;
 import com.jme3.collision.CollisionResults;
+import com.jme3.cursors.plugins.JmeCursor;
 import com.jme3.font.BitmapFont;
 import com.jme3.font.BitmapText;
+import com.jme3.font.Rectangle;
 import com.jme3.input.InputManager;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.event.*;
+import com.jme3.material.Material;
+import com.jme3.material.RenderState;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
+import com.jme3.post.FilterPostProcessor;
 import com.jme3.renderer.Camera;
 import com.jme3.renderer.ViewPort;
 import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
+import com.jme3.scene.shape.Quad;
+import com.jme3.ui.Picture;
+import gamesource.State.CharacterState.MajorActor;
+import gamesource.battleState.battle.Battle;
+import gamesource.battleState.card.Card;
+import gamesource.battleState.card.CreateCard;
+import gamesource.battleState.character.MainRole;
 import gamesource.battleState.equipment.CreateEquipment;
 import gamesource.battleState.equipment.Equipment;
-import org.lwjgl.Sys;
+import gamesource.util.Storage;
 
 import java.util.ArrayList;
 
@@ -259,6 +260,8 @@ public class GetCardState extends BaseAppState {
          */
         @Override
         public void onMouseMotionEvent(MouseMotionEvent evt) {
+            JmeCursor jmeCursor = (JmeCursor) app.getAssetManager().loadAsset("Util/cursor/click.cur");
+            app.getInputManager().setMouseCursor(jmeCursor);
             CollisionResults results = getGuiCollision(evt);
 
             if (results.size() > 0) {
@@ -278,13 +281,13 @@ public class GetCardState extends BaseAppState {
                             des.setText(lastEquipment.getDescription());
                             des.setSize(0.2f);
 //                            des.setLocalTranslation(-3.5f, 1.5f, 0);
-                            des.setBox(new Rectangle(-3.5f, 1.5f, 10, 2));
+                            des.setBox(new Rectangle(-3.5f, 2f, 10, 2));
                             des.setQueueBucket(RenderQueue.Bucket.Transparent);
                             title.setText(lastEquipment.getName());
                             title.setSize(0.3f);
                             title.setColor(ColorRGBA.White);
 //                            title.setLocalTranslation(-3.5f, 2f, 0);
-                            title.setBox(new Rectangle(-3.5f, 2f, 5, 2));
+                            title.setBox(new Rectangle(-3.5f, 2.5f, 5, 2));
                             title.setQueueBucket(RenderQueue.Bucket.Transparent);
                             rootNode.attachChild(title);
                             rootNode.attachChild(des);
@@ -386,6 +389,9 @@ public class GetCardState extends BaseAppState {
 
     @Override
     protected void onEnable() {
+//        app.getFlyByCamera().setDragToRotate(false);
+        app.getStateManager().getState(MajorActor.class).mouseChange();
+
         // 这里是触发宝箱的逻辑
 //        if(stateManager.detach(stateManager.getState(FirstState.class))){
 //            world = "first";
@@ -419,11 +425,14 @@ public class GetCardState extends BaseAppState {
 
     @Override
     protected void onDisable() {
+        Storage.save();
         this.rootNode.removeFromParent();
         app.getInputManager().removeRawInputListener(mril);
         app.getStateManager().detach(app.getStateManager().getState(BattleState.class));
         app.getStateManager().detach(app.getStateManager().getState(Battle.class));
-//        switch (world){
+        app.getStateManager().getState(MajorActor.class).mouseChange();
+        //        switch (world){
+        //        switch (world){
 //            case "first":
 //                app.getStateManager().attach(stateManager.getState(FirstState.class));
 //                break;

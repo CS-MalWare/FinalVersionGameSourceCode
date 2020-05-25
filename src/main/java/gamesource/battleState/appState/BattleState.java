@@ -13,6 +13,7 @@ import com.jme3.input.KeyInput;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.event.*;
 import com.jme3.math.Vector3f;
+import com.jme3.scene.Spatial;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.enemies.AngrySkeletonState;
 import gamesource.State.CharacterState.enemies.GreenSkeletonState;
@@ -45,6 +46,7 @@ public class BattleState extends BaseAppState {
 
     private AppStateManager state;
     private SimpleApplication app;
+    private Spatial pic;
 
     @Override
     protected void initialize(Application app) {
@@ -60,7 +62,7 @@ public class BattleState extends BaseAppState {
         app.getStateManager().attach(new BattleBackGroundState());
         app.getStateManager().attach(new LightState());
         // 暂时去掉了老高的战斗特效,因为不知道为什么会出现框框在血量等的周围
-        app.getStateManager().attach(new BattleEffect());
+        app.getStateManager().attach(new BattleEffect(pic));
 //        app.getStateManager().attach(new FilterAppState());
 
 
@@ -72,6 +74,9 @@ public class BattleState extends BaseAppState {
         app.getInputManager().addRawInputListener(inputListener);
     }
 
+    public BattleState(Spatial pic){
+        this.pic=pic;
+    }
 
     private void changeCursor() {
 
@@ -119,7 +124,7 @@ public class BattleState extends BaseAppState {
         }
 
         public void onKeyEvent(KeyInputEvent evt) {
-            if (evt.getKeyCode() == KeyInput.KEY_S) {
+            if (evt.getKeyCode() == KeyInput.KEY_K) {
                 ArrayList<Enemy> enemies = EnemyState.getInstance().getEnemies();
                 for (Enemy enemy : enemies) {
                     enemy.getDamage(100);
