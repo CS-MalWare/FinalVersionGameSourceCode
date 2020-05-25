@@ -565,7 +565,7 @@ public class Storage {
             data += "\"totalHP\":\"85\",\n";
             data += "\"HP\":\"85\",\n";
 
-            data += "\"deck\":\"\"false,打击|false,冰魄斩|false,火焰斩|false,撒币|false,光之挥舞|false,裂地斩|false,烈火斩|false,负伤强击|false,格挡|false,格挡|false,格挡|false,格挡|false,格挡|false,魔法盾|false,旋盾|false,治疗\",\n";
+            data += "\"deck\":\"false,打击|false,冰魄斩|false,火焰斩|false,撒币|false,光之挥舞|false,裂地斩|false,烈火斩|false,负伤强击|false,格挡|false,格挡|false,格挡|false,格挡|false,格挡|false,魔法盾|false,旋盾|false,治疗\",\n";
             data += String.format("\"gold\":\"%s\",\n", MainRole.getInstance().getGold());
 
             data += "\"equipments\":\"\",\n";
