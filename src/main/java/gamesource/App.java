@@ -127,7 +127,7 @@ public class App extends SimpleApplication {
         // 注册监听器
         getInputManager().addRawInputListener(inputListener);
 
-        Spatial pic=getPicture(guan);
+        Spatial pic = getPicture(guan);
         //guiNode.attachChild(pic);
         cross.setEnabled(false);
     }
@@ -355,7 +355,7 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) throws IOException {
 
-        App app = new App(6 ,1024,1,16);
+        App app = new App(6 ,1024,0,4);
         AppSettings settings = new AppSettings(true);
 
         settings.setTitle("MALWARE");// 标题
