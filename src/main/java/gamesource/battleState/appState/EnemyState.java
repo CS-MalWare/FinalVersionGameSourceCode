@@ -408,6 +408,10 @@ public class EnemyState extends BaseAppState {
                 model.scale(0.013f);
                 model.rotate(0,3.7f,0);
                 break;
+            case "character/solidier/darksolidier0.j3o":
+                model.scale(0.02f);
+                model.rotate(0.1f,3.7f,12f);
+                break;
             default:
                 break;
         }
@@ -415,6 +419,9 @@ public class EnemyState extends BaseAppState {
 
     private void setModelPos(Spatial model) {
         switch (model.getName()) {
+            case "character/solidier/darksolidier0.j3o":
+                model.move(-1f, 0.2f, 0);
+                break;
             case "Enemies/fifthMap/boss/scene0.j3o":
                 model.move(0.5f, 0.1f, 0);
                 break;

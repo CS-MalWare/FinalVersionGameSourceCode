@@ -256,7 +256,7 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Zac(350, "character/Solidier/darksolidier.j3o", 5, 1, 2, 0, 0, 0, 0, 0));
+                            new Zac(350, "character/solidier/darksolidier.j3o", 5, 1, 2, 0, 0, 0, 0, 0));
                     state.detach(solidier1);
                     states.remove(solidier1);
                     state.attach(new Battle(states));
