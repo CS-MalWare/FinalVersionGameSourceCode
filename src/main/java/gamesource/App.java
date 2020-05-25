@@ -4,11 +4,13 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.cursors.plugins.JmeCursor;
+import com.jme3.font.BitmapText;
 import com.jme3.input.KeyInput;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.event.*;
+import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
@@ -17,8 +19,10 @@ import com.jme3.post.filters.*;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Quad;
+import com.jme3.shadow.DirectionalLightShadowRenderer;
 import com.jme3.texture.Texture;
 import com.jme3.util.SkyFactory;
+import com.jme3.water.WaterFilter;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
@@ -170,11 +174,12 @@ public class App extends SimpleApplication {
 
             int keyCode = evt.getKeyCode();
             boolean isPressed = evt.isPressed();
-            if (keyCode == KeyInput.KEY_I && isPressed) {
+             if (keyCode == KeyInput.KEY_I && isPressed) {
                 Storage.save();
-            } else if (keyCode == KeyInput.KEY_U && isPressed) {
-                Storage.reset();
             }
+             else if (keyCode == KeyInput.KEY_U && isPressed) {
+                 Storage.reset();
+             }
         }
 
         public void onTouchEvent(TouchEvent evt) {
@@ -309,7 +314,7 @@ public class App extends SimpleApplication {
         // 加载图片
         switch(number){
             case 1:
-                tex = assetManager.loadTexture("Map/first.png");
+                 tex = assetManager.loadTexture("Map/first.png");
                 break;
             case 2:
                 tex = assetManager.loadTexture("Map/second.png");
@@ -342,7 +347,7 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) {
 
-        App app = new App(2, 1024, 1, 16);
+        App app = new App(6 ,1024,1,16);
         //app.setSettings(settings);
         //app.setShowSettings(false);
 //        Storage.load();

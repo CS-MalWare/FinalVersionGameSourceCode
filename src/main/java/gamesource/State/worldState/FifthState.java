@@ -110,7 +110,7 @@ public class FifthState extends BaseAppState {
     private ShopAppState shopState;
     private MenuAppState menuState;
     private makeCross cross;
-    private ThirdWorldLight light;
+    private FifthWorldLight light;
     private FifthOtherSpecial effect=new FifthOtherSpecial();
 
     private ArrayList<String> content = new ArrayList<>();
@@ -170,7 +170,7 @@ public class FifthState extends BaseAppState {
         states.add(p3);
         state.attach(lizard);
         states.add(lizard);
-        light=new ThirdWorldLight(open,shadow);
+        light=new FifthWorldLight(open,shadow);
         state.attach(light);
         states.add(light);
         state.attach(music);

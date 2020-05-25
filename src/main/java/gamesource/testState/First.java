@@ -12,9 +12,14 @@ import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.controls.Trigger;
+import com.jme3.material.Material;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector3f;
+import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
+import com.jme3.scene.Spatial;
+import com.jme3.scene.shape.Quad;
+import com.jme3.texture.Texture;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.Master1;
 import gamesource.State.CharacterState.firstWorldCharacter.*;
@@ -75,7 +80,7 @@ public class First extends BaseAppState {
     Chest c2 = new Chest(new Vector3f(-15.538464f, -2.8196087f, -60.361416f));
     Chest c3 = new Chest(new Vector3f(-26.772413f, 6.3929253f, -8.448748f), 2.9f);
     ThirdWater x1 = new ThirdWater(-34.4f);
-    FirstWorldLight light = new FirstWorldLight(1);
+    SixthWorldLight light = new SixthWorldLight(1);
     FirstWorldOtherSpecial special = new FirstWorldOtherSpecial();
     SkyBox sky ;
     private Master1 master = new Master1(new Vector3f(-42.829556f, 4.341275f, -10.886024f), -2.9f);
@@ -112,6 +117,8 @@ public class First extends BaseAppState {
         BattleBackGroundState.setBackgroundSrc("Map/first/ditu.j3o");
         app = (SimpleApplication) application;
         state = application.getStateManager();
+        Spatial pic=getPicture(5);
+        app.getGuiNode().attachChild(pic);
         //state.attach(new AxisState());
         //state.attach(bullet);
         state.attach(f1);
@@ -119,9 +126,9 @@ public class First extends BaseAppState {
         //stateManager.attach(new AxisState());
         state.attach(p1);
         states.add(p1);
-        light=new FirstWorldLight(1,4096*2);
+        light=new SixthWorldLight(1,4096*2);
         state.attach(light);
-        //state.attach(new skyBox6());
+        state.attach(new skyBox6(pic));
         state.attach(x1);
         state.attach(special);
     }
@@ -200,5 +207,44 @@ public class First extends BaseAppState {
         light.setEnabled(false);
         special.setEnabled(false);
         sky.setEnabled(false);*/
+    }
+    private Spatial getPicture(int number) {
+        // 创建一个四边形
+        int x=app.getCamera().getWidth();
+        int y=app.getCamera().getHeight();
+        Quad quad = new Quad(x, y);
+        Geometry geom = new Geometry("Picture", quad);
+        Texture tex;
+        // 加载图片
+        switch(number){
+            case 1:
+                tex =  app.getAssetManager().loadTexture("Map/first.png");
+                break;
+            case 2:
+                tex =  app.getAssetManager().loadTexture("Map/second.png");
+                break;
+            case 3:
+                tex = app.getAssetManager().loadTexture("Map/third.png");
+                break;
+            case 4:
+                tex = app.getAssetManager().loadTexture("Map/forth.png");
+                break;
+            case 5:
+                tex =  app.getAssetManager().loadTexture("Map/fifth.png");
+                break;
+            case 6:
+                tex = app.getAssetManager().loadTexture("Map/sixth.png");
+                break;
+            default:
+                tex = app.getAssetManager().loadTexture("Map/first.png");
+        }
+
+        Material mat = new Material( app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+        mat.setTexture("ColorMap", tex);
+
+        // 应用这个材质
+        geom.setMaterial(mat);
+
+        return geom;
     }
 }

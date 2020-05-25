@@ -26,10 +26,7 @@ import gamesource.State.CharacterState.enemies.RedSkeletonState;
 import gamesource.State.CharacterState.enemies.forth.Boss;
 import gamesource.State.CharacterState.enemies.forth.BossKnight;
 import gamesource.State.CharacterState.enemies.forth.StoneMan;
-import gamesource.State.SpecialEffect.FourthWorldOtherSpecial;
-import gamesource.State.SpecialEffect.ThirdWorldLight;
-import gamesource.State.SpecialEffect.Water;
-import gamesource.State.SpecialEffect.makeCross;
+import gamesource.State.SpecialEffect.*;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
@@ -100,7 +97,7 @@ public class ForthState extends BaseAppState {
     private ShopAppState shopState;
     private MenuAppState menuState;
     private makeCross cross;
-    private ThirdWorldLight light = new ThirdWorldLight();
+    private ForthWorldLight light ;
     private Water water = new Water(22);
 
     private int shadow=1024,open=0;
@@ -128,7 +125,7 @@ public class ForthState extends BaseAppState {
         cross = state.getState(makeCross.class);
         states.add(cross);
 
-        light = new ThirdWorldLight(open,shadow);
+        light = new ForthWorldLight(open,shadow);
         state.attach(light);
         states.add(light);
         state.attach(bos);

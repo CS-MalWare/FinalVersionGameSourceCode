@@ -13,11 +13,8 @@ import com.jme3.renderer.ViewPort;
 import com.jme3.scene.Node;
 import com.jme3.shadow.DirectionalLightShadowFilter;
 import com.jme3.util.SafeArrayList;
-import sun.plugin2.util.ColorUtil;
 
-import java.awt.*;
-
-public class ThirdWorldLight extends BaseAppState {
+public class ForthWorldLight  extends BaseAppState {
     DirectionalLight sun = new DirectionalLight();
     DirectionalLight sun1 = new DirectionalLight();
     DirectionalLight sun3 = new DirectionalLight();
@@ -43,13 +40,15 @@ public class ThirdWorldLight extends BaseAppState {
         rootNode = app.getRootNode();
         manager = app.getAssetManager();
         view = app.getViewPort();
-        sun.setDirection(new Vector3f(-1, -2, -3));
+        sun.setDirection(new Vector3f(-1, -10, -1));
 
 
         sun3.setDirection(new Vector3f(-1, 0, 0));
         sun4.setDirection(new Vector3f(1, 0, 0));
         sun6.setDirection(new Vector3f(0, 0, 1));
-        sun.setColor(ColorRGBA.White.mult(0.97f));
+        ColorRGBA c1=new ColorRGBA(0.2f,0.2f,0.03f,1f);
+
+        sun.setColor(c1.mult(0.97f));
         sun1.setColor(ColorRGBA.White.mult(0.97f));
         sun3.setColor(ColorRGBA.White.mult(0.3f));
         sun4.setColor(ColorRGBA.White.mult(0.3f));
@@ -73,15 +72,15 @@ public class ThirdWorldLight extends BaseAppState {
         }
     }
 
-    public ThirdWorldLight(int turnOn) {
+    public ForthWorldLight(int turnOn) {
         this.turnOn = turnOn;
     }
-    public ThirdWorldLight(int turnOn,int state) {
+    public ForthWorldLight(int turnOn,int state) {
         this.turnOn = turnOn;
         this.state=state;
     }
 
-    public ThirdWorldLight() {
+    public ForthWorldLight() {
     }
 
     @Override
