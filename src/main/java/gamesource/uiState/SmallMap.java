@@ -66,7 +66,6 @@ public class SmallMap extends BaseAppState{
 
     @Override
     protected void cleanup(Application application){
-        app.getGuiNode().detachChild(window);
         app.getFlyByCamera().setDragToRotate(false);
     }
 
@@ -118,6 +117,7 @@ public class SmallMap extends BaseAppState{
                 isShowMap = true;
             }else if("map".equals(name) && isPressed && isShowMap){
                 isShowMap = false;
+                app.getGuiNode().detachChild(window);
                 cleanup();
             }
         }

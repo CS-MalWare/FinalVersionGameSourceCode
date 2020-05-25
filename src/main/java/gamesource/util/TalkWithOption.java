@@ -29,7 +29,6 @@ public class TalkWithOption extends BaseAppState{
     private Container window;
     private Label contentLabel;
     private int contentStep;
-    private boolean isTalkShow = false;
     private int stage;
 
     public static enum CallType{
@@ -73,11 +72,10 @@ public class TalkWithOption extends BaseAppState{
         contentLabel = window.addChild(new Label(talkContent.get(contentStep)));
         contentLabel.setMaxWidth(400);
         calculatePreferLocation();
-        window.setAlpha(1f);
+        window.setAlpha(2f);
         
         window.addChild(new ActionButton(new CallMethodAction("Continue", this, "continueToNext")));
         getState(PopupState.class).showPopup(window);
-        isTalkShow = true;
     }
 
     protected void calculatePreferLocation(){
@@ -93,15 +91,30 @@ public class TalkWithOption extends BaseAppState{
     public void continueToNext(){
         if(contentStep == talkContent.size() - 1){
             switch(stage){
-                case 1: getState(FirstState.class).getStateManager().detach(TalkWithOption.this);
-                case 2: getState(SecondState.class).getStateManager().detach(TalkWithOption.this);
-                case 3: getState(ThirdState.class).getStateManager().detach(TalkWithOption.this);
-                case 4: getState(ForthState.class).getStateManager().detach(TalkWithOption.this);
-                case 5: getState(FifthState.class).getStateManager().detach(TalkWithOption.this);
+                case 1: 
+                app.getGuiNode().detachChild(window);
+                getState(FirstState.class).getStateManager().detach(TalkWithOption.this); break;
+                
+                case 2: 
+                app.getGuiNode().detachChild(window);
+                getState(SecondState.class).getStateManager().detach(TalkWithOption.this); break;
+                
+                case 3: 
+                app.getGuiNode().detachChild(window);
+                getState(ThirdState.class).getStateManager().detach(TalkWithOption.this); break;
+                
+                case 4: 
+                app.getGuiNode().detachChild(window);
+                getState(ForthState.class).getStateManager().detach(TalkWithOption.this); break;
+                
+                case 5: 
+                app.getGuiNode().detachChild(window);
+                getState(FifthState.class).getStateManager().detach(TalkWithOption.this); break;
             }
         }else{
             contentStep ++;
             contentLabel.setText(talkContent.get(contentStep));
+            contentLabel.setFontSize(18f);
             if(contentStep == talkContent.size() - 1){
                 optionState();
             }
@@ -121,65 +134,72 @@ public class TalkWithOption extends BaseAppState{
     }
 
     public void confirm(){
-        isTalkShow = false;
         switch(stage){
             case 1:
+            app.getGuiNode().detachChild(window);
             getState(FirstState.class).getStateManager().detach(TalkWithOption.this);
             cleanup();
+            break;
 
             case 2:
+            app.getGuiNode().detachChild(window);
             getState(SecondState.class).getStateManager().detach(TalkWithOption.this);
             cleanup();
+            break;
 
             case 3:
+            app.getGuiNode().detachChild(window);
             getState(ThirdState.class).getStateManager().detach(TalkWithOption.this);
             cleanup();
+            break;
 
             case 4:
+            app.getGuiNode().detachChild(window);
             getState(ForthState.class).getStateManager().detach(TalkWithOption.this);
             cleanup();
+            break;
 
             case 5:
+            app.getGuiNode().detachChild(window);
             getState(FifthState.class).getStateManager().detach(TalkWithOption.this);
             cleanup();
+            break;
         }
     }
 
     public void fight(){
-        isTalkShow = false;
         //调用战斗场景
     }
 
     public void shop(){
-        isTalkShow = false;
         switch(stage){
             case 1:
             getState(FirstState.class).getState(ShopAppState.class).showShop();
             getState(FirstState.class).getStateManager().detach(TalkWithOption.this);
+            break;
 
             case 2:
             getState(SecondState.class).getState(ShopAppState.class).showShop();
             getState(SecondState.class).getStateManager().detach(TalkWithOption.this);
+            break;
 
             case 3:
             getState(ThirdState.class).getState(ShopAppState.class).showShop();
             getState(ThirdState.class).getStateManager().detach(TalkWithOption.this);
+            break;
             
             case 4:
             getState(ForthState.class).getState(ShopAppState.class).showShop();
             getState(ForthState.class).getStateManager().detach(TalkWithOption.this);
+            break;
 
             case 5:
             getState(FifthState.class).getState(ShopAppState.class).showShop();
             getState(FifthState.class).getStateManager().detach(TalkWithOption.this);
+            break;
         }
     }
 
     public void save(){
-        isTalkShow = false;
-    }
-
-    public boolean isTalkShow(){
-        return isTalkShow;
     }
 }
