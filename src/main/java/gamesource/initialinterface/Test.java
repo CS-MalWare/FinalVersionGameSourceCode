@@ -1,8 +1,6 @@
 package gamesource.initialinterface;
 //import com.sun.xml.internal.bind.v2.model.annotation.RuntimeAnnotationReader;
 import gamesource.State.worldState.*;
-import gamesource.initialinterface.Texture_init;
-import gamesource.initialinterface.User_data;
 import org.jsfml.graphics.*;
 import org.jsfml.system.Vector2f;
 import org.jsfml.system.Vector2i;
@@ -51,10 +49,8 @@ public class Test {
     private static Sprite character = new Sprite();
 
     private static int chapter = 1;
-    private static int screen_x = 1920;
-    private static int screen_y = 1080;
-    public static int screenx = 1920;
-    public static int screeny = 1080;
+    public static int screenx = 1600;
+    public static int screeny = 900;
     public static String aliase = "2x";
     public static int frame_user = 60;
     public static String shadow_user = "low";
@@ -93,10 +89,10 @@ public class Test {
         final Text shadow_info = set_text("Shadow: " + shadow_user, 1250, screenHeight - 150, 20);
 
         final Text text_resolution = set_text("Resolution:", 40, 653, 20);
-        final Text text_resolution1 = set_text("1920*1080", 240, 658, 15);
-        final Text text_resolution2 = set_text("1600*900", 440, 658, 15);
+        final Text text_resolution1 = set_text("1920*1080", 840, 658, 15);
+        final Text text_resolution2 = set_text("1600*900", 240, 658, 15);
         final Text text_resolution3 = set_text("1400*1050", 640, 658, 15);
-        final Text text_resolution4 = set_text("full", 840, 658, 15);
+        final Text text_resolution4 = set_text("full", 440, 658, 15);
 
         final Text text_frame = set_text("Frame:", 40, 713, 20);
         final Text text_frame1 = set_text("30", 240, 718, 15);
@@ -166,10 +162,10 @@ public class Test {
         shadow3.setTexture(choose1);
         shadow4.setTexture(choose1);
 
-        resolution1.setPosition(200, 650);
-        resolution2.setPosition(400, 650);
+        resolution1.setPosition(800, 650);
+        resolution2.setPosition(200, 650);
         resolution3.setPosition(600, 650);
-        resolution4.setPosition(800, 650);
+        resolution4.setPosition(400, 650);
         frame1.setPosition(200, 710);
         frame2.setPosition(300, 710);
         frame3.setPosition(400, 710);
@@ -655,6 +651,7 @@ public class Test {
                         {
                             screenx = 1600;
                             screeny = 900;
+                            full = false;
                             resolution_info.setString("Resolution: " + screenx + "*" +  screeny);
                         }
 
@@ -668,6 +665,8 @@ public class Test {
                         if(click_compute(choose1, resolution4))
                         {
                             full = true;
+                            screenx = 0;
+                            screeny = 0;
                             resolution_info.setString("Resolution: full screen");
                         }
 
@@ -826,7 +825,7 @@ public class Test {
                     text_resolution3.setColor(Color.RED);
 
                 }
-                else if(screenx == 800)
+                if(full)
                 {
                     resolution4.setTexture(chapter01);
                     text_resolution4.setColor(Color.RED);
@@ -910,9 +909,9 @@ public class Test {
                 window.draw(text_chapter);
                 window.draw(text_chapter_c);
                 window.draw(text_resolution);
-                window.draw(text_resolution1);
+                //window.draw(text_resolution1);
                 window.draw(text_resolution2);
-                window.draw(text_resolution3);
+                //window.draw(text_resolution3);
                 window.draw(text_resolution4);
                 window.draw(text_frame);
                 window.draw(text_frame1);
@@ -942,9 +941,9 @@ public class Test {
                 window.draw(chapter6);
                // window.draw(chapter7);
 
-                window.draw(resolution1);
+               // window.draw(resolution1);
                 window.draw(resolution2);
-                window.draw(resolution3);
+               // window.draw(resolution3);
                 window.draw(resolution4);
                 window.draw(frame1);
                 window.draw(frame2);

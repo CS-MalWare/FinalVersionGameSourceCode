@@ -425,6 +425,7 @@ public class GetCardState extends BaseAppState {
 
     @Override
     protected void onDisable() {
+        MainRole.getInstance().getGold(getGoldCountAfterThisBattle);
         Storage.save();
         this.rootNode.removeFromParent();
         app.getInputManager().removeRawInputListener(mril);

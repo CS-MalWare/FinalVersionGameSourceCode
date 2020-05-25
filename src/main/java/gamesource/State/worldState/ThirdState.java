@@ -39,6 +39,7 @@ import gamesource.battleState.character.enemy.originalForest.EliteWolfman;
 import gamesource.battleState.character.enemy.originalForest.KingWolfman;
 import gamesource.battleState.character.enemy.originalForest.OneEyedWolfman;
 import gamesource.battleState.character.enemy.originalForest.Wolfman;
+import gamesource.uiState.SmallMap;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -113,6 +114,8 @@ public class ThirdState extends BaseAppState {
     private ShopAppState shopState;
     private MenuAppState menuState;
     private makeCross cross;
+    private SmallMap smallMap;
+
     private ThirdWorldLight light = new ThirdWorldLight();
     private ThirdWater water = new ThirdWater(22);
 
@@ -207,6 +210,9 @@ public class ThirdState extends BaseAppState {
         state.attach(sky);
         states.add(sky);
 
+        smallMap = new SmallMap(1600, 900, 200);
+        state.attach(smallMap);
+        states.add(smallMap);
 
         this.inputManager = application.getInputManager();
         inputManager.addMapping(talk, TALK);

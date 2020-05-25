@@ -47,6 +47,7 @@ public class SmallMap extends BaseAppState{
 
     @Override
     protected void initialize(Application application){
+        System.out.println("Small Map Get");
         app = (SimpleApplication) application;
         GuiGlobals.initialize(app);
         BaseStyles.loadGlassStyle();
@@ -59,7 +60,7 @@ public class SmallMap extends BaseAppState{
         // mapTexture.getImage().setWidth(size);
         // mapTexture.getImage().setHeight(size);
         // window.setBackground(new QuadBackgroundComponent(mapTexture));
-        app.getInputManager().addMapping("map", new KeyTrigger(KeyInput.KEY_L));
+        app.getInputManager().addMapping("map", new KeyTrigger(KeyInput.KEY_M));
         app.getInputManager().addListener(new SmallMapListener(), "map");
     }
 
@@ -76,7 +77,6 @@ public class SmallMap extends BaseAppState{
 
     @Override
     protected void onDisable(){
-        window.removeFromParent();
     }
 
     protected void calculatePreferLocation(){
@@ -93,8 +93,9 @@ public class SmallMap extends BaseAppState{
         }
     }
 
-    class SmallMapListener implements ActionListener{
+    public class SmallMapListener implements ActionListener{
         public void onAction(String name, boolean isPressed, float tpf){
+            System.out.println("Get Map");
             if("map".equals(name) && isPressed && !isShowMap){
                 app.getFlyByCamera().setDragToRotate(true);
 

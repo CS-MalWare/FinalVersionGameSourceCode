@@ -8,6 +8,7 @@ import org.jsfml.graphics.Texture;
 import org.jsfml.window.ContextActivationException;
 import org.jsfml.window.Window;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class Main_test
