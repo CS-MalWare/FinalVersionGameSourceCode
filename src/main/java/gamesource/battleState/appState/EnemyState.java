@@ -410,7 +410,7 @@ public class EnemyState extends BaseAppState {
                 break;
             case "character/solidier/darksolidier0.j3o":
                 model.scale(0.02f);
-                model.rotate(0.1f,3.7f,12f);
+                model.rotate(0,0,0);
                 break;
             default:
                 break;

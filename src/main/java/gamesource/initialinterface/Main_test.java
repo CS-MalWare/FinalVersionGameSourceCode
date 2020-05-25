@@ -99,9 +99,9 @@ public class Main_test
         start();
         gamesource.start st = new gamesource.start();
         if(shadow_bool)
-            st.Start(User_data.getScreenx(), User_data.getScreeny(), User_data.getFrame_user(), User_data.getChapter(),shadow, 1, alias, User_data.getFull());
+            st.Start(User_data.getFrame_user(), User_data.getChapter(),shadow, 1, alias, User_data.getFull());
         else
-            st.Start(User_data.getScreenx(), User_data.getScreeny(), User_data.getFrame_user(), User_data.getChapter(),0, 0, alias, User_data.getFull());
+            st.Start(User_data.getFrame_user(), User_data.getChapter(),0, 0, alias, User_data.getFull());
 
 
     }
