@@ -29,6 +29,7 @@ import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.FirstWorldState;
 import gamesource.State.mapState.skyBox6;
+import gamesource.State.musicState.SixthBackMusic;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.appState.GetCardState;
 import gamesource.battleState.battle.Battle;
@@ -87,6 +88,7 @@ public class SixthState extends BaseAppState {
     private Master2 master = new Master2(new Vector3f(12.150929f, -9.193834f, -33.237625f), -2.6f);
     private StuxnetState boss=new StuxnetState(new Vector3f(-36.57827f, 2.9845061f, -7.4623866f),-2.6f);
     private skyBox6 sky;
+    private SixthBackMusic music=new SixthBackMusic();
     private int shadow=1024,open=0;
     private ArrayList<BaseAppState> states = new ArrayList<BaseAppState>();
 
@@ -129,6 +131,8 @@ public class SixthState extends BaseAppState {
         sky=new skyBox6(pic);
         state.attach(sky);
         states.add(sky);
+        state.attach(music);
+        states.add(music);
 
 
         this.inputManager = application.getInputManager();
