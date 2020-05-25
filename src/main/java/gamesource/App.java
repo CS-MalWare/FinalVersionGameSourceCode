@@ -355,7 +355,7 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) throws IOException {
 
-        App app = new App(6 ,1024,1,16);
+        App app = new App(5 ,1024,0,16);
         AppSettings settings = new AppSettings(true);
 
         settings.setTitle("MALWARE");// 标题

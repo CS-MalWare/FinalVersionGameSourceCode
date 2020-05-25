@@ -40,13 +40,13 @@ public class FifthWorldLight extends BaseAppState {
         rootNode = app.getRootNode();
         manager = app.getAssetManager();
         view = app.getViewPort();
-        sun.setDirection(new Vector3f(-1, -10, -1));
+        sun.setDirection(new Vector3f(-3, -5, -2));
 
 
         sun3.setDirection(new Vector3f(-1, 0, 0));
         sun4.setDirection(new Vector3f(1, 0, 0));
         sun6.setDirection(new Vector3f(0, 0, 1));
-        sun.setColor(ColorRGBA.White.mult(0.87f));
+        sun.setColor(ColorRGBA.White.mult(0.97f));
         sun1.setColor(ColorRGBA.White.mult(0.97f));
         sun3.setColor(ColorRGBA.White.mult(0.3f));
         sun4.setColor(ColorRGBA.White.mult(0.3f));
