@@ -40,6 +40,7 @@ import gamesource.battleState.character.enemy.dragonWat.DarkDragon;
 import gamesource.battleState.character.enemy.dragonWat.EliteDarkDragon;
 import gamesource.battleState.character.enemy.dragonWat.KingDarkDragon;
 import gamesource.battleState.character.enemy.dragonWat.RampageDarkDragon;
+import gamesource.uiState.SmallMap;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -108,6 +109,8 @@ public class FifthState extends BaseAppState {
     private ShopAppState shopState;
     private MenuAppState menuState;
     private makeCross cross;
+    private SmallMap smallMap;
+
     private FifthWorldLight light;
     private FifthOtherSpecial effect=new FifthOtherSpecial();
 
@@ -186,6 +189,9 @@ public class FifthState extends BaseAppState {
         state.attach(sky);
         states.add(sky);
 
+        smallMap = new SmallMap(1600, 900, 200);
+        state.attach(smallMap);
+        states.add(smallMap);
 
         this.inputManager=application.getInputManager();
         inputManager.addMapping(talk,TALK);
