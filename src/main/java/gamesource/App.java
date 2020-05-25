@@ -11,11 +11,14 @@ import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.event.*;
 import com.jme3.light.DirectionalLight;
+import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.post.FilterPostProcessor;
 import com.jme3.post.filters.*;
+import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
+import com.jme3.scene.shape.Quad;
 import com.jme3.shadow.DirectionalLightShadowRenderer;
 import com.jme3.texture.Texture;
 import com.jme3.util.SkyFactory;
@@ -24,6 +27,7 @@ import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.worldState.*;
+import gamesource.testState.First;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -42,6 +46,7 @@ public class App extends SimpleApplication {
     ForthState f4;
     FifthState f5;
     SixthState f6;
+    First t1;
     private AppStateManager state;
 
 
@@ -62,14 +67,15 @@ public class App extends SimpleApplication {
         bullet.getPhysicsSpace().setGravity(new Vector3f(0, -9.81f, 0));
 
         FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
-        fpp.setNumSamples(4);
+        fpp.setNumSamples(16);
         viewPort.addProcessor(fpp);
+        makeCross cross=new makeCross();
         stateManager.attach(new MajorActor());
         stateManager.attach(new InputAppState());
         stateManager.attach(new BagAppState());
         stateManager.attach(new ShopAppState());
         stateManager.attach(new MenuAppState());
-        stateManager.attach(new makeCross());
+        stateManager.attach(cross);
         f1 = new FirstState(4096,1);
         //stateManager.attach(f1);
         f2 = new SecondState();
@@ -77,6 +83,7 @@ public class App extends SimpleApplication {
         f4 = new ForthState();
         f5 = new FifthState();
         f6=new SixthState();
+        //t1=new First();
         switch(guan){
             case 1:
                 stateManager.attach(f1);
@@ -104,12 +111,16 @@ public class App extends SimpleApplication {
 
         inputManager.addMapping(world, new KeyTrigger(KeyInput.KEY_Z));
         inputManager.addListener(new StartTalk(), world);
-
+        //flyCam.setMoveSpeed(70);
         // 改变鼠标图标
         changeCursor();
 
         // 注册监听器
         getInputManager().addRawInputListener(inputListener);
+
+        Spatial pic=getPicture(guan);
+        //guiNode.attachChild(pic);
+        cross.setEnabled(false);
     }
 
 
@@ -167,131 +178,6 @@ public class App extends SimpleApplication {
 
     public App(int guan){
         this.guan=guan;
-    }
-
-    public void initSecondWorld() {
-        stateManager.attach(new SecondState());
-        stateManager.attach(new BagAppState());
-        stateManager.attach(new ShopAppState());
-        stateManager.attach(new MenuAppState());
-        FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
-        addLight(fpp);
-        skyBox2();
-        makeCross();
-        initEffect(fpp);
-    }
-
-    public void initFirstWorld() {
-        /*BulletAppState bullet=new BulletAppState();         //现在为为世界添加物理引擎的测试情况
-        stateManager.attach(bullet);
-        stateManager.attach(new FirstWorldState());
-        //stateManager.attach(new AxisState());
-        stateManager.attach(new InputAppState());
-        stateManager.attach(new PositionInputState());
-        stateManager.attach(new MajorActor());
-        stateManager.attach(new soldierState(1,new Vector3f(75.06459f, -29.602854f, 3.6023405f)));
-        stateManager.attach(new soldierState(2,new Vector3f(76.39369f, -25.91693f, -11.675956f),6f,2));
-        stateManager.attach(new soldierState(3,new Vector3f(75.281975f, -27.164389f, -10.233985f),2.6f));
-        stateManager.attach(new soldierState(4,new Vector3f(62.556515f, -26.660355f, -18.043798f),2.6f));
-        stateManager.attach(new KnightState(1,new Vector3f(-46.05996f, 6.526695f, -26.613733f),1.4f,-1,0,1));
-        stateManager.attach(new KnightState(1,new Vector3f(-46.07412f, 5.8200717f, -29.27783f),4.6f,1,0,-1,2));
-        stateManager.attach(new girlState(new Vector3f(70.15531f, -27.27989f, -18.333033f),-0.3f));
-        stateManager.attach(new metalKnightState(new Vector3f(64.4272f, -25.418774f, -20.45753f),-1.45f));
-        stateManager.attach(new blackBoyState(new Vector3f(64.8886f, -26.233301f, -9.080749f),2.4f));
-        stateManager.attach(new BagAppState());
-        stateManager.attach(new shovelKnight(new Vector3f(-35.924995f, 7.3355093f, -13.190997f),4.4f));
-        stateManager.attach(new shovelKnight(new Vector3f(-40.020714f, 5.764501f, -9.103482f),3.4f));
-        stateManager.attach(new KingState(new Vector3f(-39.032665f, 4.674482f, -12.373539f),3.9f));
-        bullet.getPhysicsSpace().setGravity(new Vector3f(0,-9.81f,0));
-        //stateManager.attach(new QuadState());*/
-        //bullet.setDebugEnabled(true);                     //这个功能为调试模式
-        stateManager.attach(f1);
-
-        //stateManager.attach(new FirstWorldLight(0));
-        //addLight(fpp);
-        flyCam.setMoveSpeed(30);
-        //stateManager.attach(new FirstWorldOtherSpecial());
-        //initCamera();
-        //skyBox();
-        //initWater(fpp);
-        stateManager.attach(new makeCross());
-        //makeCross();
-        //initEffect(fpp);
-    }
-
-
-    private Spatial makeCross() {
-
-        BitmapText text = guiFont.createLabel("+");
-        text.setColor(ColorRGBA.Red);
-
-        float x = (cam.getWidth() - text.getLineWidth()) * 0.5f;
-        float y = (cam.getHeight() + text.getLineHeight()) * 0.5f;
-        text.setLocalTranslation(x, y, 0);
-
-        guiNode.attachChild(text);
-
-        return text;
-    }
-
-
-    public void addLight(FilterPostProcessor fpp) {
-        // 定向光
-        DirectionalLight sun = new DirectionalLight();
-        sun.setDirection(new Vector3f(-1, -2, -3));
-
-
-        DirectionalLight sun1 = new DirectionalLight();
-        //sun.setDirection(new Vector3f(0, 0, -1));
-        DirectionalLight sun3 = new DirectionalLight();
-        sun3.setDirection(new Vector3f(-1, 0, 0));
-        DirectionalLight sun4 = new DirectionalLight();
-        sun4.setDirection(new Vector3f(1, 0, 0));
-        DirectionalLight sun6 = new DirectionalLight();
-        sun6.setDirection(new Vector3f(0, 0, 1));
-
-
-        sun.setColor(ColorRGBA.White.mult(1.07f));
-        sun1.setColor(ColorRGBA.White.mult(1.07f));
-        sun3.setColor(ColorRGBA.White.mult(0.4f));
-        sun4.setColor(ColorRGBA.White.mult(0.4f));
-        sun6.setColor(ColorRGBA.White.mult(0.4f));
-
-        rootNode.addLight(sun);
-        rootNode.addLight(sun1);
-        rootNode.addLight(sun3);
-        rootNode.addLight(sun4);
-        rootNode.addLight(sun6);
-        DirectionalLightShadowRenderer su = new DirectionalLightShadowRenderer(assetManager, 4096, 3);
-        su.setLight(sun);
-        viewPort.addProcessor(su);
-        //su.setEnabled(true);
-        //fpp.addFilter(su);
-
-    }
-
- /*   private void initCamera(){
-        flyCam.setEnabled(true);
-        flyCam.setMoveSpeed(10f);
-
-        cam.setLocation(new Vector3f(1,2,3));
-        cam.lookAt(new Vector3f(0,0.5f,0),new Vector3f(0,1,0));
-    }*/
-
-    private void initWater(FilterPostProcessor fpp) {
-        //FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
-        //viewPort.addProcessor(fpp);
-
-        // 水
-        WaterFilter waterFilter = new WaterFilter();
-        //waterFilter.setCenter(new Vector3f(0, -5, 0));
-        waterFilter.setRadius(350);// 水面半径
-        waterFilter.setWaterHeight(-34.4f);// 水面高度
-        waterFilter.setWaterTransparency(0.2f);// 透明度
-        waterFilter.setShapeType(WaterFilter.AreaShape.Circular);
-        waterFilter.setWaterColor(new ColorRGBA(0.4314f, 0.9373f, 0.8431f, 1f));// 水面颜色
-
-        fpp.addFilter(waterFilter);
     }
 
     private void initEffect(FilterPostProcessor fpp) {
@@ -405,9 +291,50 @@ public class App extends SimpleApplication {
         }
     }
 
+    private Spatial getPicture(int number) {
+        // 创建一个四边形
+        int x=cam.getWidth();
+        int y=cam.getHeight();
+        Quad quad = new Quad(x, y);
+        Geometry geom = new Geometry("Picture", quad);
+        Texture tex;
+        // 加载图片
+        switch(number){
+            case 1:
+                 tex = assetManager.loadTexture("Map/first.png");
+                break;
+            case 2:
+                tex = assetManager.loadTexture("Map/second.png");
+                break;
+            case 3:
+                tex = assetManager.loadTexture("Map/third.png");
+                break;
+            case 4:
+                tex = assetManager.loadTexture("Map/forth.png");
+                break;
+            case 5:
+                tex = assetManager.loadTexture("Map/fifth.png");
+                break;
+            case 6:
+                tex = assetManager.loadTexture("Map/sixth.png");
+                break;
+            default:
+                tex = assetManager.loadTexture("Map/first.png");
+        }
+
+        Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+        mat.setTexture("ColorMap", tex);
+
+        // 应用这个材质
+        geom.setMaterial(mat);
+
+        return geom;
+    }
+
+
     public static void main(String[] args) {
 
-        App app = new App(1);
+        App app = new App(3);
         //app.setSettings(settings);
         //app.setShowSettings(false);
         app.start();

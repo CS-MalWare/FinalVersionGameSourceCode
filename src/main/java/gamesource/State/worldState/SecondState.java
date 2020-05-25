@@ -1,6 +1,7 @@
 package gamesource.State.worldState;
 
 import com.jme3.app.Application;
+import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
 import com.jme3.bounding.BoundingVolume;
@@ -11,9 +12,14 @@ import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.controls.Trigger;
+import com.jme3.material.Material;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
+import com.jme3.scene.Geometry;
+import com.jme3.scene.Spatial;
+import com.jme3.scene.shape.Quad;
+import com.jme3.texture.Texture;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.enemies.*;
 import gamesource.State.CharacterState.enemies.forth.BossKnight;
@@ -55,6 +61,7 @@ public class SecondState extends BaseAppState {
     public final static Trigger MOVE = new KeyTrigger(KeyInput.KEY_W);
     private InputManager inputManager;
 
+    private SimpleApplication app;
     private AppStateManager state;
 
     private int canmove = 1;
@@ -100,7 +107,7 @@ public class SecondState extends BaseAppState {
 
 //    private StuxnetState boss = new StuxnetState();
 
-    private SkyBox2 sky = new SkyBox2();
+    private SkyBox2 sky ;
 
     private SecondWorldLight light = new SecondWorldLight();
 
@@ -113,6 +120,7 @@ public class SecondState extends BaseAppState {
     private float time = 0;
 
     private int chan = 0;
+    private int Cro=0;
 
     private BagAppState bagState;
     private ShopAppState shopState;
@@ -128,7 +136,10 @@ public class SecondState extends BaseAppState {
 
     protected void initialize(Application application) {
         state = application.getStateManager();
+        app = (SimpleApplication) application;
         cam = application.getCamera();
+        Spatial pic=getPicture(2);
+        app.getGuiNode().attachChild(pic);
         state.attach(world);
         states.add(world);
         input = state.getState(InputAppState.class);
@@ -182,6 +193,7 @@ public class SecondState extends BaseAppState {
         states.add(c2);
         state.attach(c3);
         states.add(c3);
+        sky=new SkyBox2(pic);
         state.attach(sky);
         states.add(sky);
         state.attach(special);
@@ -208,6 +220,7 @@ public class SecondState extends BaseAppState {
         major.setPlace(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
         BattleBackGroundState.setBackgroundSrc("Map/two/second.j3o");
         major.height(6);
+        cross.setEnabled(false);
     }
         public SecondState(){
 
@@ -481,6 +494,13 @@ public class SecondState extends BaseAppState {
             if (change.equals(name) && isPressed) {
                 System.out.println("change");
                 major.change();
+                if(Cro==0){
+                    cross.setEnabled(true);
+                    Cro=1;
+                }else{
+                    cross.setEnabled(false);
+                    Cro=0;
+                }
             }
             if (bag.equals(name) && isPressed) {
                 if (canmove == 1) {
@@ -757,9 +777,52 @@ public class SecondState extends BaseAppState {
             time = time + tpf;
             if (time < 25 && time > 5) {
                 change();
+                cross.setEnabled(false);
             }
         }
     }
+
+
+    private Spatial getPicture(int number) {
+        // 创建一个四边形
+        int x=app.getCamera().getWidth();
+        int y=app.getCamera().getHeight();
+        Quad quad = new Quad(x, y);
+        Geometry geom = new Geometry("Picture", quad);
+        Texture tex;
+        // 加载图片
+        switch(number){
+            case 1:
+                tex =  app.getAssetManager().loadTexture("Map/first.png");
+                break;
+            case 2:
+                tex =  app.getAssetManager().loadTexture("Map/second.png");
+                break;
+            case 3:
+                tex = app.getAssetManager().loadTexture("Map/third.png");
+                break;
+            case 4:
+                tex = app.getAssetManager().loadTexture("Map/forth.png");
+                break;
+            case 5:
+                tex =  app.getAssetManager().loadTexture("Map/fifth.png");
+                break;
+            case 6:
+                tex = app.getAssetManager().loadTexture("Map/sixth.png");
+                break;
+            default:
+                tex = app.getAssetManager().loadTexture("Map/first.png");
+        }
+
+        Material mat = new Material( app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+        mat.setTexture("ColorMap", tex);
+
+        // 应用这个材质
+        geom.setMaterial(mat);
+
+        return geom;
+    }
+
 
     @Override
     protected void cleanup(Application application) {
