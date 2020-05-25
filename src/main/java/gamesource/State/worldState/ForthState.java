@@ -598,6 +598,7 @@ public class ForthState extends BaseAppState {
                     state.detach(bos);
                     states.remove(bos);
                     state.attach(new Battle(states));
+                    FifthState.canGo = "can";
                     //major.setPlace(bos.get().getCenter());
                     break;
                 case 9:

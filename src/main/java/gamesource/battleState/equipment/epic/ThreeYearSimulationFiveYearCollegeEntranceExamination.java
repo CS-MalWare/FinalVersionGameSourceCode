@@ -11,7 +11,7 @@ public class ThreeYearSimulationFiveYearCollegeEntranceExamination extends Equip
     private int count;
 
     public ThreeYearSimulationFiveYearCollegeEntranceExamination() {
-        super("Three year simulation, five year college entrance examination", "五年高考三年模拟", "When picking, change all rare cards in the card deck to normal ones and randomly turn them into other ones", EquipmentDegree.EPIC, Opportunity.GET);
+        super("Five, Three", "五年高考三年模拟", "When picking, change all rare cards in the card deck to normal ones and randomly turn them into other ones", EquipmentDegree.EPIC, Opportunity.GET);
         count = 0;
     }
 
