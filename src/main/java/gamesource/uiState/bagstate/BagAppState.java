@@ -1,6 +1,9 @@
 package gamesource.uiState.bagstate;
 
 import java.util.ArrayList;
+
+import javax.swing.SpringLayout;
+
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.BaseAppState;
@@ -78,7 +81,7 @@ public class BagAppState extends BaseAppState{
         generalBorder = new Container("glass");
         BorderLayout borderLayout = new BorderLayout();
         generalBorder.setLayout(borderLayout);
-        generalBorder.setLocalTranslation(5, app.getCamera().getHeight()-50, 0);
+        generalBorder.setLocalTranslation(5, app.getCamera().getHeight(), 0);
         totalMoney.setMoney(MainRole.getInstance().getGold());
     }
 
@@ -117,8 +120,10 @@ public class BagAppState extends BaseAppState{
 
         centralPart = new Container("glass");
         generalBorder.addChild(centralPart, Position.Center);
-        centralPart.setLocalTranslation(200, app.getCamera().getHeight() - 100, 0);
-
+        centralPart.setLocalTranslation(200, app.getCamera().getHeight() - 50, 0);
+ 
+        pagesContainer = new Container("glass");
+        generalBorder.addChild(pagesContainer, Position.South);
         //尝试在界面中添加主角有点失败，稍后解决
         //Spatial mainCharacter = app.getAssetManager().loadModel("/LeadingActor/MajorActor4.j3o");
         //app.getGuiNode().attachChild(mainCharacter);
@@ -139,11 +144,13 @@ public class BagAppState extends BaseAppState{
 
         leftPart.addChild(saber);
         leftPart.addChild(neutral);
+        leftPart.addChild(backToStart);
         //leftPart.addChild(saber);
 
-        saber.addClickCommands(new ShowCaster());
+        saber.addClickCommands(new ShowSaber());
         neutral.addClickCommands(new ShowNeutral());
         general.addClickCommands(new showGeneral());
+        backToStart.addClickCommands(new BackToStart());
     }
 
     public void showMoney(){
@@ -171,23 +178,44 @@ public class BagAppState extends BaseAppState{
         cardUIs = cardArrayReader.CardArrayToCardUIs();
         System.arraycopy(cardUIs, 0, cardUIsCopy, 0, cardUIs.length);
 
-        for(int i=0; i<cardUIs.length; i++){
-            if(mainRoleCards.get(i).getOccupation().equals(OCCUPATION.CASTER)){
+        for(int i=0; i<mainRoleCards.size(); i++){
+            if(mainRoleCards.get(i).getOccupation() == OCCUPATION.SABER){
                 appendToSaberCardUIs(cardUIs[i]);
             }else{
                 appendToNeutralCardUIs(cardUIs[i]);
             }
         }
+        
+        if(getCardUIsLength() > 12){
+            pagesContainer.setLayout(new SpringGridLayout(Axis.X, Axis.Y, FillMode.None, FillMode.None));
+            
+            int pageNumber = getCardUIsLength() % 12;
+            for(int i=1; i<=pageNumber; i++){
+                Button button = pagesContainer.addChild(new Button(String.valueOf(i)));
+                button.addClickCommands(new PageButtonClick());
+            }
+        }
 
-        for(int i=0; i<cardUIs.length; i++){
-            int j = i % 6;
-            int z = (i - j)/6;
+        for(int i=0; i<12; i++){
+            int j = i % 4;
+            int z = (i - j)/4;
             cardUIs[i].addAction(new CardsButtonClick());
             cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
                 //cardUI.getCheckBox().setTextHAlignment(HAlignment.Center);
             VersionedReference<Boolean> reference = cardUIs[i].getCheckBox().getModel().createReference();
             cardsReference[i] = reference;
         }
+    }
+
+    public int getCardUIsLength(){
+        int length = 0;
+        for(int i=0; i<cardUIs.length; i++){
+            if(cardUIs[i] == null){
+                length = i;
+                break;
+            }
+        }
+        return length;
     }
 
     private class showGeneral implements Command<Button>{
@@ -210,40 +238,60 @@ public class BagAppState extends BaseAppState{
         }
     } 
     
-    private class ShowCaster implements Command<Button>{
+    private class ShowSaber implements Command<Button>{
         public void execute(Button button){
-            centralPart.detachAllChildren();
-            pagesContainer.detachAllChildren();
-            cardUIs = saberCardUIs;
+            if(saberCardUIs[0] == null){
+                Label infoLabel = new Label("You have no saber cards!");
+                infoLabel.setFontSize(20f);
+                infoLabel.setAlpha(2f);
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+                centralPart.addChild(infoLabel);
+            }else{
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+                cardUIs = saberCardUIs;
+                int pageNumber = getCardUIsLength() % 12;
 
-            for(int i=0; i<12; i++){
-                int j = i % 4;
-                int z = (i - j)/4;
-                cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
-            }
+                for(int i=0; i<12; i++){
+                    int j = i % 4;
+                    int z = (i - j)/4;
+                    cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                }
 
-            for(int i=1; i<=2; i++){
-                Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
-                pageButton.addClickCommands(new PageButtonClick());
+                for(int i=1; i<=pageNumber; i++){
+                    Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                    pageButton.addClickCommands(new PageButtonClick());
+                }
             }
         }
     }
 
     private class ShowNeutral implements Command<Button>{
         public void execute(Button button){
-            centralPart.detachAllChildren();
-            pagesContainer.detachAllChildren();
-            cardUIs = neutralCardUIs;
+            if(neutralCardUIs[0] == null){
+                Label infoLabel = new Label("You have no neutral cards!");
+                infoLabel.setAlpha(2f);
+                infoLabel.setFontSize(20f);
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+                centralPart.addChild(infoLabel);
+            }else{
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+                cardUIs = neutralCardUIs;
+                int pageNumber = getCardUIsLength() % 12;
 
-            for(int i=0; i<12; i++){
-                int j = i % 4;
-                int z = (i - j) / 4;
-                cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
-            }
+                for(int i=0; i<12; i++){
+                    int j = i % 4;
+                    int z = (i - j) / 4;
+                    cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                }
 
-            for(int i=1; i<=2; i++){
-                Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
-                pageButton.addClickCommands(new PageButtonClick());
+                for(int i=1; i<=pageNumber; i++){
+                    Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                    pageButton.addClickCommands(new PageButtonClick());
+                }
             }
         }
     }

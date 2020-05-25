@@ -35,10 +35,12 @@ public class makeCross extends BaseAppState {
     @Override
     protected void onEnable() {
         app.getGuiNode().attachChild(text);
+        System.out.println("text");
     }
 
     @Override
     protected void onDisable() {
         app.getGuiNode().detachChild(text);
+        System.out.println("nonononononononon");
     }
 }

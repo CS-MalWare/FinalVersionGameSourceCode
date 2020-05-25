@@ -14,6 +14,7 @@ public class skyBox6 extends BaseAppState {
     private Node rootNode;
     private SimpleApplication app;
 
+    private Spatial pic;
     @Override
     protected void initialize(Application application) {
         app=(SimpleApplication)application;
@@ -25,8 +26,12 @@ public class skyBox6 extends BaseAppState {
         Texture down = application.getAssetManager().loadTexture("skyBox/six/down.jpg");
         sky = SkyFactory.createSky(application.getAssetManager(), west, east, north, south, up, down);
         rootNode=app.getRootNode();
+        app.getGuiNode().detachChild(pic);
     }
 
+    public skyBox6(Spatial pic){
+        this.pic=pic;
+    }
     @Override
     protected void cleanup(Application application) {
 

@@ -42,7 +42,7 @@ public class ThirdWater extends BaseAppState {
         water.setWaterTransparency(Transparency);
         water.setShapeType(WaterFilter.AreaShape.Circular);
         water.setWaterColor(color);
-        water.setUnderWaterFogDistance(150);
+        water.setUnderWaterFogDistance(170);
 
     }
 
