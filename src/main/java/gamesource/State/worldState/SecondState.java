@@ -39,6 +39,7 @@ import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.appState.GetCardState;
 import gamesource.battleState.battle.Battle;
 import gamesource.battleState.character.enemy.originalForest.*;
+import gamesource.uiState.SmallMap;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -126,6 +127,7 @@ public class SecondState extends BaseAppState {
     private ShopAppState shopState;
     private MenuAppState menuState;
     private makeCross cross;
+    private SmallMap smallMap;
 
     private int shadow=1024,open=0;
     private ArrayList<BaseAppState> states = new ArrayList<BaseAppState>();
@@ -201,7 +203,9 @@ public class SecondState extends BaseAppState {
         light = new SecondWorldLight(open,shadow);
         state.attach(light);
         states.add(light);
-
+        smallMap = new SmallMap(1600, 900, 200);
+        state.attach(smallMap);
+        states.add(smallMap);
 
         this.inputManager = application.getInputManager();
         inputManager.addMapping(talk, TALK);
