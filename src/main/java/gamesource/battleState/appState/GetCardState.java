@@ -1,17 +1,7 @@
 package gamesource.battleState.appState;
 
-import com.jme3.font.Rectangle;
-import com.jme3.material.Material;
-import com.jme3.material.RenderState;
-import com.jme3.post.FilterPostProcessor;
-import com.jme3.scene.shape.Quad;
-import com.jme3.ui.Picture;
-import gamesource.State.worldState.*;
-import gamesource.battleState.battle.Battle;
-import gamesource.battleState.card.Card;
-import gamesource.battleState.card.CreateCard;
-import gamesource.battleState.character.MainRole;
 import com.jme3.app.Application;
+import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
@@ -20,21 +10,30 @@ import com.jme3.asset.AssetNotFoundException;
 import com.jme3.collision.CollisionResults;
 import com.jme3.font.BitmapFont;
 import com.jme3.font.BitmapText;
+import com.jme3.font.Rectangle;
 import com.jme3.input.InputManager;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.event.*;
+import com.jme3.material.Material;
+import com.jme3.material.RenderState;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
+import com.jme3.post.FilterPostProcessor;
 import com.jme3.renderer.Camera;
 import com.jme3.renderer.ViewPort;
 import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
+import com.jme3.scene.shape.Quad;
+import com.jme3.ui.Picture;
+import gamesource.battleState.battle.Battle;
+import gamesource.battleState.card.Card;
+import gamesource.battleState.card.CreateCard;
+import gamesource.battleState.character.MainRole;
 import gamesource.battleState.equipment.CreateEquipment;
 import gamesource.battleState.equipment.Equipment;
-import org.lwjgl.Sys;
 
 import java.util.ArrayList;
 
@@ -399,6 +398,7 @@ public class GetCardState extends BaseAppState {
 //        }else if(stateManager.detach(stateManager.getState(FifthState.class))){
 //            world = "fifth";
 //        }
+        app.getStateManager().detach(app.getStateManager().getState(FlyCamAppState.class));
 
         stateManager.detach(stateManager.getState(EnemyState.class));
         stateManager.detach(stateManager.getState(HandCardsState.class));
@@ -423,7 +423,9 @@ public class GetCardState extends BaseAppState {
         app.getInputManager().removeRawInputListener(mril);
         app.getStateManager().detach(app.getStateManager().getState(BattleState.class));
         app.getStateManager().detach(app.getStateManager().getState(Battle.class));
-//        switch (world){
+        app.getStateManager().attach(new FlyCamAppState());
+        //        switch (world){
+        //        switch (world){
 //            case "first":
 //                app.getStateManager().attach(stateManager.getState(FirstState.class));
 //                break;
