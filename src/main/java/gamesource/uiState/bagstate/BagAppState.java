@@ -1,6 +1,9 @@
 package gamesource.uiState.bagstate;
 
 import java.util.ArrayList;
+
+import javax.swing.SpringLayout;
+
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.BaseAppState;
@@ -45,7 +48,7 @@ public class BagAppState extends BaseAppState{
     private ArrayList<Card> mainRoleCards = MainRole.getInstance().getDeck_();
     private CardUI[] cardUIs = new CardUI[60];
     private CardUI[] cardUIsCopy = new CardUI[60];
-    private CardUI[] casterCardUIs = new CardUI[30];
+    private CardUI[] saberCardUIs = new CardUI[30];
     private CardUI[] neutralCardUIs = new CardUI[30];
     private Container generalBorder;
     private Container centralPart;
@@ -53,8 +56,10 @@ public class BagAppState extends BaseAppState{
     private Container buttomPartContainer;
     private Container pagesContainer;
     private Container leftPart;
+    private ProgressBar progressBar;
+    private Label moneyLabel;
+
     private BagMoney totalMoney = new BagMoney();
-    private BagMoney totalMoneyOfCards = new BagMoney();
     private Styles styles;
     private boolean isOpenBag = false;
     private boolean isShowCards = false;
@@ -76,7 +81,8 @@ public class BagAppState extends BaseAppState{
         generalBorder = new Container("glass");
         BorderLayout borderLayout = new BorderLayout();
         generalBorder.setLayout(borderLayout);
-        generalBorder.setLocalTranslation(5, app.getCamera().getHeight()-50, 0);
+        generalBorder.setLocalTranslation(5, app.getCamera().getHeight(), 0);
+        totalMoney.setMoney(MainRole.getInstance().getGold());
     }
 
     protected void showBag(){
@@ -114,8 +120,10 @@ public class BagAppState extends BaseAppState{
 
         centralPart = new Container("glass");
         generalBorder.addChild(centralPart, Position.Center);
-        centralPart.setLocalTranslation(200, app.getCamera().getHeight() - 100, 0);
-
+        centralPart.setLocalTranslation(200, app.getCamera().getHeight() - 50, 0);
+ 
+        pagesContainer = new Container("glass");
+        generalBorder.addChild(pagesContainer, Position.South);
         //尝试在界面中添加主角有点失败，稍后解决
         //Spatial mainCharacter = app.getAssetManager().loadModel("/LeadingActor/MajorActor4.j3o");
         //app.getGuiNode().attachChild(mainCharacter);
@@ -129,29 +137,34 @@ public class BagAppState extends BaseAppState{
         leftPart.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass")).setUserData(LayerComparator.LAYER, 2);
 
         Button general = new Button("General");
-        Button caster = new Button("Caster");
+        Button saber = new Button("Saber");
         Button neutral = new Button("Neutral");
         Button backToStart = new Button("Back");
         //Button saber = new Button("Saber");
 
-        leftPart.addChild(caster);
+        leftPart.addChild(saber);
         leftPart.addChild(neutral);
+        leftPart.addChild(backToStart);
         //leftPart.addChild(saber);
 
-        caster.addClickCommands(new ShowCaster());
+        saber.addClickCommands(new ShowSaber());
         neutral.addClickCommands(new ShowNeutral());
         general.addClickCommands(new showGeneral());
+        backToStart.addClickCommands(new BackToStart());
     }
 
     public void showMoney(){
         Container characterInfo = new Container();
         SpringGridLayout northLayOut = new SpringGridLayout(Axis.X, Axis.Y, FillMode.None, FillMode.None);
         characterInfo.setLayout(northLayOut);
-        ProgressBar progressBar = new ProgressBar("glass");
+        
+        progressBar = new ProgressBar("glass");
         progressBar.getLabel().setText("Health");
         progressBar.setProgressPercent(100);
         characterInfo.addChild(progressBar, 0);
-        Label moneyLabel = characterInfo.addChild(new Label("Money:"), 2);
+        
+        moneyLabel = characterInfo.addChild(new Label("Money:"), 2);
+        moneyLabel.setText("Money: "+totalMoney.getMoney());
         moneyLabel.setSize(new Vector3f(60, 20, 0));
         generalBorder.addChild(characterInfo, Position.North);
     }
@@ -165,23 +178,44 @@ public class BagAppState extends BaseAppState{
         cardUIs = cardArrayReader.CardArrayToCardUIs();
         System.arraycopy(cardUIs, 0, cardUIsCopy, 0, cardUIs.length);
 
-        for(int i=0; i<cardUIs.length; i++){
-            if(mainRoleCards.get(i).getOccupation().equals(OCCUPATION.CASTER)){
-                appendToCasterCardUIs(cardUIs[i]);
+        for(int i=0; i<mainRoleCards.size(); i++){
+            if(mainRoleCards.get(i).getOccupation() == OCCUPATION.SABER){
+                appendToSaberCardUIs(cardUIs[i]);
             }else{
                 appendToNeutralCardUIs(cardUIs[i]);
             }
         }
+        
+        if(getCardUIsLength() > 12){
+            pagesContainer.setLayout(new SpringGridLayout(Axis.X, Axis.Y, FillMode.None, FillMode.None));
+            
+            int pageNumber = getCardUIsLength() % 12;
+            for(int i=1; i<=pageNumber; i++){
+                Button button = pagesContainer.addChild(new Button(String.valueOf(i)));
+                button.addClickCommands(new PageButtonClick());
+            }
+        }
 
-        for(int i=0; i<cardUIs.length; i++){
-            int j = i % 6;
-            int z = (i - j)/6;
+        for(int i=0; i<12; i++){
+            int j = i % 4;
+            int z = (i - j)/4;
             cardUIs[i].addAction(new CardsButtonClick());
             cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
                 //cardUI.getCheckBox().setTextHAlignment(HAlignment.Center);
             VersionedReference<Boolean> reference = cardUIs[i].getCheckBox().getModel().createReference();
             cardsReference[i] = reference;
         }
+    }
+
+    public int getCardUIsLength(){
+        int length = 0;
+        for(int i=0; i<cardUIs.length; i++){
+            if(cardUIs[i] == null){
+                length = i;
+                break;
+            }
+        }
+        return length;
     }
 
     private class showGeneral implements Command<Button>{
@@ -204,40 +238,60 @@ public class BagAppState extends BaseAppState{
         }
     } 
     
-    private class ShowCaster implements Command<Button>{
+    private class ShowSaber implements Command<Button>{
         public void execute(Button button){
-            centralPart.detachAllChildren();
-            pagesContainer.detachAllChildren();
-            cardUIs = casterCardUIs;
+            if(saberCardUIs[0] == null){
+                Label infoLabel = new Label("You have no saber cards!");
+                infoLabel.setFontSize(20f);
+                infoLabel.setAlpha(2f);
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+                centralPart.addChild(infoLabel);
+            }else{
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+                cardUIs = saberCardUIs;
+                int pageNumber = getCardUIsLength() % 12;
 
-            for(int i=0; i<12; i++){
-                int j = i % 4;
-                int z = (i - j)/4;
-                cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
-            }
+                for(int i=0; i<12; i++){
+                    int j = i % 4;
+                    int z = (i - j)/4;
+                    cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                }
 
-            for(int i=1; i<=2; i++){
-                Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
-                pageButton.addClickCommands(new PageButtonClick());
+                for(int i=1; i<=pageNumber; i++){
+                    Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                    pageButton.addClickCommands(new PageButtonClick());
+                }
             }
         }
     }
 
     private class ShowNeutral implements Command<Button>{
         public void execute(Button button){
-            centralPart.detachAllChildren();
-            pagesContainer.detachAllChildren();
-            cardUIs = neutralCardUIs;
+            if(neutralCardUIs[0] == null){
+                Label infoLabel = new Label("You have no neutral cards!");
+                infoLabel.setAlpha(2f);
+                infoLabel.setFontSize(20f);
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+                centralPart.addChild(infoLabel);
+            }else{
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+                cardUIs = neutralCardUIs;
+                int pageNumber = getCardUIsLength() % 12;
 
-            for(int i=0; i<12; i++){
-                int j = i % 4;
-                int z = (i - j) / 4;
-                cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
-            }
+                for(int i=0; i<12; i++){
+                    int j = i % 4;
+                    int z = (i - j) / 4;
+                    cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                }
 
-            for(int i=1; i<=2; i++){
-                Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
-                pageButton.addClickCommands(new PageButtonClick());
+                for(int i=1; i<=pageNumber; i++){
+                    Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                    pageButton.addClickCommands(new PageButtonClick());
+                }
             }
         }
     }
@@ -286,10 +340,6 @@ public class BagAppState extends BaseAppState{
 
     public void refreshPage(CardUI[] cardUIs){
         buttomPartContainer.detachAllChildren();
-    }
-
-    public void caculateMoney(int cardsMoney){
-        this.totalMoneyOfCards.setMoney(totalMoneyOfCards.getMoney() + cardsMoney);
     }
 
     @Override
@@ -348,10 +398,10 @@ public class BagAppState extends BaseAppState{
         }
     }
 
-    public void appendToCasterCardUIs(CardUI cardUI){
-        for(int i=0; i<casterCardUIs.length; i++){
-            if(casterCardUIs[i] == null){
-                casterCardUIs[i] = cardUI;
+    public void appendToSaberCardUIs(CardUI cardUI){
+        for(int i=0; i<saberCardUIs.length; i++){
+            if(saberCardUIs[i] == null){
+                saberCardUIs[i] = cardUI;
                 break;
             }
         }
@@ -375,13 +425,9 @@ public class BagAppState extends BaseAppState{
         app.getInputManager().addMapping(bagString, new KeyTrigger(KeyInput.KEY_B));
         app.getInputManager().addListener(new BagListener(), bagString);
     }
-    // public void update(float tpf){
-    //     if(isShowCards){
-    //         for(VersionedReference reference : cardsReference){
-    //             if(reference.update()){
-
-    //             }
-    //         }
-    //     }
-    // }
+    
+    public void update(float tpf){
+        //totalMoney.setMoney(MainRole.getInstance().getGold());
+        //moneyLabel.setText("Money: " + totalMoney.getMoney());
+    }
 }
