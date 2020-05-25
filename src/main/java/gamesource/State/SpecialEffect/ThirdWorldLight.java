@@ -14,8 +14,6 @@ import com.jme3.scene.Node;
 import com.jme3.shadow.DirectionalLightShadowFilter;
 import com.jme3.util.SafeArrayList;
 
-import java.awt.*;
-
 public class ThirdWorldLight extends BaseAppState {
     DirectionalLight sun = new DirectionalLight();
     DirectionalLight sun1 = new DirectionalLight();

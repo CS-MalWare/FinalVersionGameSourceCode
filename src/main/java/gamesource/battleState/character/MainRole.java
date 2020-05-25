@@ -79,7 +79,6 @@ public class MainRole extends Role {
         this.untreatable = false;
         this.freeCard = false;
         this.equipments = new ArrayList<Equipment>();
-
         this.deck_.add(new SnakeSkinOperation());
         this.deck_.add(new Slash());
         this.deck_.add(new IceSlash());
@@ -147,6 +146,10 @@ public class MainRole extends Role {
             equipment.fun();
         }
         return true;
+    }
+
+    public void removeCard(Card card) {
+        this.deck_.remove(card);
     }
 
     //每回合开始时候的抽牌
@@ -265,9 +268,9 @@ public class MainRole extends Role {
         bleeding.setDuration(0);
         artifact.setTimes(0);
         dodge.setTimes(0);
-        dexterity=0;
-        strength=0;
-        atk=0;
+        dexterity = 0;
+        strength = 0;
+        atk = 0;
 
         // 人物被动"苟"
         this.treat((int) (0.1 * (this.getTotalHP() - this.getHP())));
@@ -470,17 +473,14 @@ public class MainRole extends Role {
             DecksState deckState = app.getStateManager().getState(DecksState.class);
             HandCardsState handCardsState = app.getStateManager().getState(HandCardsState.class);
             ArrayList<Card> handCards = handCardsState.getHandCards();
-            ArrayList<Card> etherealCard = new ArrayList<Card>();
             for (Card card : handCards) {
                 if (card.isEthereal()) {
-                    etherealCard.add(card);
-                    handCards.remove(card);
+                    deckState.addToExhaust(card);
+                } else {
+                    deckState.addToDrop(card);
                 }
             }
-            deckState.addToDrop(handCardsState.getHandCards().toArray(new Card[0]));
-            deckState.addToExhaust(etherealCard.toArray(new Card[0]));
             handCardsState.getHandCards().clear();
-            etherealCard.clear();
         }
 
     }

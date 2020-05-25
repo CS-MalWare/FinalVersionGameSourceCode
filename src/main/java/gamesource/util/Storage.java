@@ -1,6 +1,6 @@
 package gamesource.util;
 
-import gamesource.App.*;
+import gamesource.App;
 import gamesource.State.worldState.*;
 import gamesource.battleState.card.Card;
 import gamesource.battleState.card.neutral.attack.*;
@@ -487,14 +487,6 @@ public class Storage {
                         break;
                 }
             }
-//            System.out.println(equipmentList);
-            String canGo[] = dataJson.getString("canGo").split("\\|");
-            FirstState.canGo = canGo[0];
-            SecondState.canGo = canGo[1];
-            ThirdState.canGo = canGo[2];
-            ForthState.canGo = canGo[3];
-            FifthState.canGo = canGo[4];
-            SixthState.canGo = canGo[5];
             br.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -570,14 +562,14 @@ public class Storage {
             }catch (StringIndexOutOfBoundsException siobe){
                 System.out.println("存档的时候没有装备");
             }
-            data += String.format("\"equipments\":\"%s\",\n", tempPath);
+            data += String.format("\"equipments\":\"%s\"", tempPath);
             data += "\n}";
             bw.write(data);
             bw.close();
 
             // 用于存档关卡信息
             bw = new BufferedWriter(new FileWriter("storageLevel.json"));
-            data = "";
+            data = "{\n";
             // 这次用这个变量临时存储能进入的关卡
             tempPath = "";
             tempPath += FirstState.canGo+"|";
@@ -586,7 +578,7 @@ public class Storage {
             tempPath += ForthState.canGo+"|";
             tempPath += FifthState.canGo+"|";
             tempPath += SixthState.canGo;
-            data += String.format("\"canGo\":\"%s\"\n",tempPath);
+            data += String.format("\"canGo\":\"%s\",\n",tempPath);
             data += String.format("\"current\":\"%d\"", App.guan);
             data += "\n}";
             bw.write(data);
