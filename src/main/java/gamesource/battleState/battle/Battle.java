@@ -88,7 +88,7 @@ public class Battle extends BaseAppState {
 
         MainRole mainRole = MainRole.getInstance();
         mainRole.bindApp(app);
-        Storage.load();
+        Storage.loadCharacter();
         EnemyState enemyState = EnemyState.getInstance();
 
 

@@ -39,7 +39,7 @@ import gamesource.util.Storage;
 public class App extends SimpleApplication {
 
     public final static String world = "WORLD";
-    public int guan=1;
+    public static int guan=2;
 
     FirstState f1;
     SecondState f2;
@@ -265,34 +265,46 @@ public class App extends SimpleApplication {
             if (world.equals(name) && isPressed) {
                 switch(guan){
                     case 1:
-                        stateManager.detach(f1);
-                        stateManager.attach(f2);
-                        guan=2;
+                        if(SecondState.canGo.equals("can")) {
+                            stateManager.detach(f1);
+                            stateManager.attach(f2);
+                            guan = 2;
+                        }
                         break;
                     case 2:
-                        stateManager.detach(f2);
-                        stateManager.attach(f3);
-                        guan=3;
+                        if(ThirdState.canGo.equals("can")) {
+                            stateManager.detach(f2);
+                            stateManager.attach(f3);
+                            guan = 3;
+                        }
                         break;
                     case 3:
-                        stateManager.detach(f3);
-                        stateManager.attach(f4);
-                        guan=4;
+                        if(ForthState.canGo.equals("can")) {
+                            stateManager.detach(f3);
+                            stateManager.attach(f4);
+                            guan = 4;
+                        }
                         break;
                     case 4:
-                        stateManager.detach(f4);
-                        stateManager.attach(f5);
-                        guan=5;
+                        if(FifthState.canGo.equals("can")) {
+                            stateManager.detach(f4);
+                            stateManager.attach(f5);
+                            guan = 5;
+                        }
                         break;
                     case 5:
-                        stateManager.detach(f5);
-                        stateManager.attach(f6);
-                        guan=6;
+                        if(SixthState.canGo.equals("can")) {
+                            stateManager.detach(f5);
+                            stateManager.attach(f6);
+                            guan = 6;
+                        }
                         break;
                     case 6:
-                        stateManager.detach(f6);
-                        stateManager.attach(f1);
-                        guan=1;
+                        if(FifthState.canGo.equals("can")) {
+                            stateManager.detach(f6);
+                            stateManager.attach(f1);
+                            guan = 1;
+                        }
                         break;
                 }
                 //f1.setEnabled(false);
@@ -347,7 +359,7 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) {
 
-        App app = new App(6 ,1024,1,16);
+        App app = new App(2 ,4096,1,16);
         //app.setSettings(settings);
         //app.setShowSettings(false);
 //        Storage.load();

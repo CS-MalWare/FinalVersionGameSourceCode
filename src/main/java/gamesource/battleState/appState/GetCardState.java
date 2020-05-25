@@ -1,5 +1,6 @@
 package gamesource.battleState.appState;
 
+import com.jme3.cursors.plugins.JmeCursor;
 import com.jme3.font.Rectangle;
 import com.jme3.material.Material;
 import com.jme3.material.RenderState;
@@ -259,6 +260,8 @@ public class GetCardState extends BaseAppState {
          */
         @Override
         public void onMouseMotionEvent(MouseMotionEvent evt) {
+            JmeCursor jmeCursor = (JmeCursor) app.getAssetManager().loadAsset("Util/cursor/click.cur");
+            app.getInputManager().setMouseCursor(jmeCursor);
             CollisionResults results = getGuiCollision(evt);
 
             if (results.size() > 0) {
@@ -386,6 +389,8 @@ public class GetCardState extends BaseAppState {
 
     @Override
     protected void onEnable() {
+//        app.getFlyByCamera().setDragToRotate(false);
+        app.getFlyByCamera().setEnabled(false);
         // 这里是触发宝箱的逻辑
 //        if(stateManager.detach(stateManager.getState(FirstState.class))){
 //            world = "first";
@@ -419,6 +424,7 @@ public class GetCardState extends BaseAppState {
 
     @Override
     protected void onDisable() {
+        app.getFlyByCamera().setEnabled(true);
         this.rootNode.removeFromParent();
         app.getInputManager().removeRawInputListener(mril);
         app.getStateManager().detach(app.getStateManager().getState(BattleState.class));

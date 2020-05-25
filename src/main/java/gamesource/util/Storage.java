@@ -1,5 +1,6 @@
 package gamesource.util;
 
+import gamesource.App.*;
 import gamesource.State.worldState.*;
 import gamesource.battleState.card.Card;
 import gamesource.battleState.card.neutral.attack.*;
@@ -17,7 +18,6 @@ import gamesource.battleState.equipment.epic.*;
 import gamesource.battleState.equipment.legendary.*;
 import gamesource.battleState.equipment.rare.*;
 import org.json.JSONObject;
-import org.lwjgl.Sys;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -31,9 +31,7 @@ public class Storage {
     // 5. 人物装备 (已完成)
     // 7. 能够进入的关卡 (应该算完成了)
 
-
-    // 创建存档的方法 返回为true就是存档成功 返回为false就是存档失败
-    public static boolean load() {
+    public static boolean loadCharacter(){
         try {
             BufferedReader br = new BufferedReader(new FileReader("storage.json"));
             String str = null;// 预留的用于读取存档的变量
@@ -508,11 +506,45 @@ public class Storage {
             return false;
         }
         return true;
+
     }
 
     // 加载存档的方法 返回为true就是加载成功 返回为false就是加载失败
+    public static boolean load() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("storageLevel.json"));
+            String str = null;// 预留的用于读取存档的变量
+            String data = "";// 用于暂存json字符串数据的变量
+            while ((str = br.readLine()) != null) {
+                data += str + '\n';
+            }
+            JSONObject dataJson = new JSONObject(data);
+//            System.out.println(equipmentList);
+            String canGo[] = dataJson.getString("canGo").split("\\|");
+            FirstState.canGo = canGo[0];
+            SecondState.canGo = canGo[1];
+            ThirdState.canGo = canGo[2];
+            ForthState.canGo = canGo[3];
+            FifthState.canGo = canGo[4];
+            SixthState.canGo = canGo[5];
+            App.guan = dataJson.getInt("current");
+            br.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("没有存档文件");
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("读取出错");
+            return false;
+        }
+        return true;
+    }
+
+    // 创建存档的方法 返回为true就是存档成功 返回为false就是存档失败
     public static boolean save() {
         try {
+            // 用于存档人物信息
             BufferedWriter bw = new BufferedWriter(new FileWriter("storage.json"));
             String data = "{\n";
             data += String.format("\"totalHP\":\"%s\",\n", MainRole.getInstance().getTotalHP());
@@ -539,6 +571,13 @@ public class Storage {
                 System.out.println("存档的时候没有装备");
             }
             data += String.format("\"equipments\":\"%s\",\n", tempPath);
+            data += "\n}";
+            bw.write(data);
+            bw.close();
+
+            // 用于存档关卡信息
+            bw = new BufferedWriter(new FileWriter("storageLevel.json"));
+            data = "";
             // 这次用这个变量临时存储能进入的关卡
             tempPath = "";
             tempPath += FirstState.canGo+"|";
@@ -547,7 +586,8 @@ public class Storage {
             tempPath += ForthState.canGo+"|";
             tempPath += FifthState.canGo+"|";
             tempPath += SixthState.canGo;
-            data += String.format("\"canGo\":\"%s\"",tempPath);
+            data += String.format("\"canGo\":\"%s\"\n",tempPath);
+            data += String.format("\"current\":\"%d\"", App.guan);
             data += "\n}";
             bw.write(data);
             bw.close();
@@ -558,6 +598,7 @@ public class Storage {
         }
         return true;
     }
+    // 如果重新创建游戏一定要调用这个方法
     public static boolean reset(){
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("storage.json"));
@@ -569,7 +610,8 @@ public class Storage {
             data += String.format("\"gold\":\"%s\",\n", MainRole.getInstance().getGold());
 
             data += "\"equipments\":\"\",\n";
-            data += "\"canGo\":\"can|cannot|cannot|cannot|cannot|cannot\"";
+            data += "\"canGo\":\"can|can|cannot|cannot|cannot|cannot\"\n";
+            data += "\"current\":\"1\"";
             data += "\n}";
             bw.write(data);
             bw.close();
