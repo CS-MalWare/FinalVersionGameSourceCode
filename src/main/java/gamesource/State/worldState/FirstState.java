@@ -31,6 +31,7 @@ import gamesource.State.mapState.FirstWorldState;
 import gamesource.State.mapState.SkyBox;
 import gamesource.State.musicState.FirstBackMusic;
 import gamesource.battleState.appState.BattleBackGroundState;
+import gamesource.battleState.appState.GetCardState;
 import gamesource.uiState.SmallMap;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
@@ -490,12 +491,15 @@ public class FirstState extends BaseAppState {
                 if (results5 != null && results5.size() > 0) {
                     System.out.println("chest");
                     c1.open();
+                    getApplication().getStateManager().attach(new GetCardState());
                 } else if (results6 != null && results6.size() > 0) {
                     System.out.println("chest");
                     c2.open();
+                    getApplication().getStateManager().attach(new GetCardState());
                 } else if (results7 != null && results7.size() > 0) {
                     System.out.println("chest");
                     c3.open();
+                    getApplication().getStateManager().attach(new GetCardState());
                 }
             }
         }

@@ -387,9 +387,11 @@ public class ForthState extends BaseAppState {
                 } else if (results11 != null && results11.size() > 0) {
                     System.out.println("chest");
                     c1.open();
+                    getApplication().getStateManager().attach(new GetCardState());
                 } else if (results12 != null && results12.size() > 0) {
                     System.out.println("chest");
                     c2.open();
+                    getApplication().getStateManager().attach(new GetCardState());
                 }
             }
 

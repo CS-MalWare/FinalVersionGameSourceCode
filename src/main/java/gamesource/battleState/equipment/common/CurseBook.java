@@ -15,7 +15,7 @@ public class CurseBook extends Equipment {
         if(timeCount<=3){
             for(Enemy enemy: EnemyState.getInstance().getEnemies() ){
                 switch (enemy.getSrc()){
-                    case "Enemies/skeleton/KingSkeleton/KingSkeleton0.j3o":
+                    case "Enemies/skeleton/blueSkeleton/blueSkeleton0.j3o":
                     case "Enemies/zhenwang/boss0.j3o":
                     case "Enemies/underWater/fishboss0.j3o":
                         return;
