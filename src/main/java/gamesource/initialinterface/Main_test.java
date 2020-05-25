@@ -67,8 +67,8 @@ public class Main_test
         start();
         System.out.println("Interrupt!");
         gamesource.start st = new gamesource.start();
-        System.out.println("kkk" + User_data.getScreenx()+ User_data.getScreeny()+ User_data.getFrame_user()+ User_data.getChapter());
-        st.Start(User_data.getScreenx(), User_data.getScreeny(), User_data.getFrame_user(), User_data.getChapter());
+        //System.out.println("kkk" + User_data.getScreenx()+ User_data.getScreeny()+ User_data.getFrame_user()+ User_data.getChapter());
+        //st.Start(User_data.getScreenx(), User_data.getScreeny(), User_data.getFrame_user(), User_data.getChapter());
 
     }
     public static void cartoon(Texture[] texture_cartoon, Sprite cartoon, RenderWindow window){
