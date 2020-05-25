@@ -63,19 +63,51 @@ public class Main_test
         t2.run();
     }
     public static void main(String[] argcs) throws IOException, InterruptedException, ContextActivationException {
+        int shadow;
+        int alias;
+        boolean shadow_bool = true;
+        if(User_data.getShadow_user().equals("high"))
+        {
+            shadow = 8192;
+        }
+        else if(User_data.getShadow_user().equals("medium"))
+        {
+            shadow = 4096;
+        }
+        else if(User_data.getShadow_user().equals("low"))
+        {
+            shadow = 1024;
+        }
+        else
+        {
+            shadow_bool = false;
+            shadow = 0;
+        }
 
+        if(User_data.getAliase().equals("16x"))
+        {
+            alias = 16;
+        }
+        else if(User_data.getAliase().equals("8x"))
+        {
+            alias = 8;
+        }
+        else
+        {
+            alias = 4;
+        }
         start();
-        System.out.println("Interrupt!");
         gamesource.start st = new gamesource.start();
-        //System.out.println("kkk" + User_data.getScreenx()+ User_data.getScreeny()+ User_data.getFrame_user()+ User_data.getChapter());
-        //st.Start(User_data.getScreenx(), User_data.getScreeny(), User_data.getFrame_user(), User_data.getChapter());
+        if(shadow_bool)
+            st.Start(User_data.getScreenx(), User_data.getScreeny(), User_data.getFrame_user(), User_data.getChapter(),shadow, 1, alias, User_data.getFull());
+        else
+            st.Start(User_data.getScreenx(), User_data.getScreeny(), User_data.getFrame_user(), User_data.getChapter(),0, 0, alias, User_data.getFull());
+
 
     }
     public static void cartoon(Texture[] texture_cartoon, Sprite cartoon, RenderWindow window){
-            while(window.isOpen() && gamesource.initialinterface.Test.init){
-                //
+            while(window.isOpen()){
                 for (int i = 1; i <= 31; i++) {
-                    //System.out.println("dd");
                     cartoon.setTexture(texture_cartoon[i]);
 
                     try {

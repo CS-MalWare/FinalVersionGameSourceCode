@@ -133,14 +133,18 @@ public class StartInterface {
                     if(click_compute(texture_start_released, start_button))
                     {
                         start_button.setTexture(texture_start_released);
+                        gamesource.util.Storage.reset();
                         window.setVisible(false);
-                        //Thread.sleep(1 * 1000);
                         window.close();
 
                     }
                     if(click_compute(texture_white_released, white_button))
                     {
                         white_button.setTexture(texture_white_released);
+                        gamesource.util.Storage.load();
+                        window.setVisible(false);
+                        window.close();
+
                     }
                     if(click_compute(texture_black_released, black_button))
                     {

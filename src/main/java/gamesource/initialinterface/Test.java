@@ -1,5 +1,6 @@
 package gamesource.initialinterface;
 //import com.sun.xml.internal.bind.v2.model.annotation.RuntimeAnnotationReader;
+import gamesource.State.worldState.*;
 import gamesource.initialinterface.Texture_init;
 import gamesource.initialinterface.User_data;
 import org.jsfml.graphics.*;
@@ -8,6 +9,8 @@ import org.jsfml.system.Vector2i;
 import org.jsfml.window.*;
 import org.jsfml.window.event.Event;
 import org.jsfml.window.event.KeyEvent;
+
+import javax.swing.*;
 import java.io.IOException;
 import java.nio.file.Paths;
 
@@ -17,6 +20,7 @@ public class Test {
     public static Texture_init[] texture_c = new Texture_init[32];
     public static Texture[] texture_cartoon = new Texture[32];
     public static boolean init = true;
+    private static boolean full = false;
     private static Sprite resolution1 = new Sprite();
     private static Sprite resolution2 = new Sprite();
     private static Sprite resolution3 = new Sprite();
@@ -43,7 +47,7 @@ public class Test {
     private static Sprite chapter4 = new Sprite();
     private static Sprite chapter5 = new Sprite();
     private static Sprite chapter6 = new Sprite();
-    //private static Sprite chapter7 = new Sprite();
+    private static Sprite chapter7 = new Sprite();
     private static Sprite character = new Sprite();
 
     private static int chapter = 1;
@@ -61,7 +65,7 @@ public class Test {
         final int screenHeight = 900;
         final int screenWidth = 1600;
 
-        window.create(new VideoMode(screenWidth, screenHeight), "Cholera");
+        window.create(new VideoMode(screenWidth, screenHeight), "UI test!");
         window.setMouseCursorVisible(true);
 
         window.setFramerateLimit(30);
@@ -82,17 +86,17 @@ public class Test {
 
         final Text text_start = set_text("Choose the chapter\nstart the game!", 1250, 30, 20);
         final Text text_chapter = set_text("Chapter: have not chosen\nIntroduce: NULL", 1250, 250, 20);
-        final Text text_chapter_c = set_text("You choose chapter: NULL", 1250, screenHeight - 400, 20);
-        final Text resolution_info = set_text("Resolution: " + screenx + "*" +  screeny, 1250, screenHeight - 350, 20);
-        final Text frame_info = set_text("Frame: " + frame_user, 1250, screenHeight - 300, 20);
-        final Text aliasing_info = set_text("Aliasing: " + aliase, 1250, screenHeight - 250, 20);
-        final Text shadow_info = set_text("Shadow: " + shadow_user, 1250, screenHeight - 200, 20);
+        final Text text_chapter_c = set_text("You choose chapter: NULL", 1250, screenHeight - 350, 20);
+        final Text resolution_info = set_text("Resolution: " + screenx + "*" +  screeny, 1250, screenHeight - 300, 20);
+        final Text frame_info = set_text("Frame: " + frame_user, 1250, screenHeight - 250, 20);
+        final Text aliasing_info = set_text("Aliasing: " + aliase, 1250, screenHeight - 200, 20);
+        final Text shadow_info = set_text("Shadow: " + shadow_user, 1250, screenHeight - 150, 20);
 
         final Text text_resolution = set_text("Resolution:", 40, 653, 20);
         final Text text_resolution1 = set_text("1920*1080", 240, 658, 15);
         final Text text_resolution2 = set_text("1600*900", 440, 658, 15);
         final Text text_resolution3 = set_text("1400*1050", 640, 658, 15);
-        final Text text_resolution4 = set_text("800*600", 840, 658, 15);
+        final Text text_resolution4 = set_text("full", 840, 658, 15);
 
         final Text text_frame = set_text("Frame:", 40, 713, 20);
         final Text text_frame1 = set_text("30", 240, 718, 15);
@@ -191,7 +195,7 @@ public class Test {
         chapter4.setPosition(650, 450);
         chapter5.setPosition(700, 350);
         chapter6.setPosition(830, 400);
-        //chapter7.setPosition(680, 250);
+        chapter7.setPosition(680, 250);
 
 
         //Texture_init[] texture_c = new Texture_init[32];
@@ -275,8 +279,12 @@ public class Test {
                                           Text text_shadow4, Text resolution_info, Text frame_info, Text aliasing_info,
                                           Text shadow_info) throws ContextActivationException, InterruptedException {
         {
-
-
+            String canGochapter1 = "can";
+            String canGochapter2 = SecondState.canGo;
+            String canGochapter3 = ThirdState.canGo;
+            String canGochapter4 = ForthState.canGo;
+            String canGochapter5 = FifthState.canGo;
+            String canGochapter6 = SixthState.canGo;
             while (window.isOpen()) {
                 window.clear(Color.WHITE);
                 if (click_compute(texture_start_released, start_button)) {
@@ -288,7 +296,14 @@ public class Test {
                 if(click_compute(chapter01, chapter1))
                 {
                     chapter1.setTexture(chapter02);
-                    text_chapter.setString("Chapter: One\nCharacter or boss:\n\tName: Merlin");
+                    if(canGochapter1.equals("can")) {
+                        text_chapter.setString("Chapter: One  unlocked!\nCharacter:\n\tName: Merlin");
+                        init = true;
+                    }
+                    else {
+                        text_chapter.setString("Chapter: One  locked!\nCharacter:\n\tName: Merlin");
+                        init = false;
+                    }
                     character.setTexture(texture_cha[1]);
 
                 }else
@@ -299,7 +314,14 @@ public class Test {
                 if(click_compute(chapter01, chapter2))
                 {
                     chapter2.setTexture(chapter02);
-                    text_chapter.setString("Chapter: Two\nCharacter or boss:\n\tName: King Skeleton");
+                    if(canGochapter2.equals("can")) {
+                        text_chapter.setString("Chapter: Two  unlocked\nCharacter or boss:\n\tName: King Skeleton");
+                        init = true;
+                    }
+                    else {
+                        text_chapter.setString("Chapter: Two  locked!\nCharacter:\n\tName: King Skeleton");
+                        init = false;
+                    }
                     character.setTexture(texture_cha[2]);
 
                 }else
@@ -309,9 +331,15 @@ public class Test {
 
                 if(click_compute(chapter01, chapter3))
                 {
-                    // System.out.println("!!!");
                     chapter3.setTexture(chapter02);
-                    text_chapter.setString("Chapter: Three\nCharacter or boss:\n\tName: Water Sprite");
+                    if(canGochapter3.equals("can")) {
+                        text_chapter.setString("Chapter: Three unlocked\nCharacter or boss:\n\tName: water sprite");
+                        init = true;
+                    }
+                    else {
+                        text_chapter.setString("Chapter: Three  locked!\nCharacter:\n\tName: water sprite");
+                        init = false;
+                    }
                     character.setTexture(texture_cha[3]);
 
                 }else
@@ -323,7 +351,15 @@ public class Test {
                 {
                     // System.out.println("!!!");
                     chapter4.setTexture(chapter02);
-                    text_chapter.setString("Chapter: Four\nCCharacter or boss:\n\tName: Tribal Chief");
+                    if(canGochapter4.equals("can")) {
+                        text_chapter.setString("Chapter: Four unlocked\nCCharacter or boss:\n\tName: Tribal Chief");
+                        init = true;
+                    }
+                    else {
+                        text_chapter.setString("Chapter: Four locked\nCCharacter or boss:\n\tName: Tribal Chief");
+                        init = false;
+                    }
+
                     character.setTexture(texture_cha[4]);
 
                 }else
@@ -334,7 +370,15 @@ public class Test {
                 {
                     // System.out.println("!!!");
                     chapter5.setTexture(chapter02);
-                    text_chapter.setString("Chapter: Five\nCharacter or boss:\n\tName: Merlin");
+                    if(canGochapter5.equals("can")) {
+                        text_chapter.setString("Chapter: Five unlocked\nCharacter or boss:\n\tName: Merlin");
+                        init = true;
+                    }
+                    else {
+                        text_chapter.setString("Chapter: Five locked\nCharacter or boss:\n\tName: Merlin");
+                        init = false;
+                    }
+
                     character.setTexture(texture_cha[5]);
 
                 }else
@@ -345,14 +389,21 @@ public class Test {
                 if(click_compute(chapter01, chapter6))
                 {
                     chapter6.setTexture(chapter02);
-                    text_chapter.setString("Chapter: Six\nCharacter or boss:\n\tName: Stuxnet");
+                    if(canGochapter6.equals("can")) {
+                        text_chapter.setString("Chapter: Six unlocked\nCharacter or boss:\n\tName: Stuxnet");
+                        init = true;
+                    }
+                    else {
+                        text_chapter.setString("Chapter: Six locked\nCCharacter or boss:\n\tName: kingskeleton");
+                        init = false;
+                    }
                     character.setTexture(texture_cha[6]);
                 }else
                 {
                     chapter6.setTexture(chapter01);
                 }
 
-                /*if(click_compute(chapter01, chapter7))
+                if(click_compute(chapter01, chapter7))
                 {
                     chapter7.setTexture(chapter02);
                     text_chapter.setString("Chapter: Seven\nIntroduce: NULL");
@@ -360,7 +411,7 @@ public class Test {
                 }else
                 {
                     chapter7.setTexture(chapter01);
-                }*/
+                }
                 if(click_compute(choose1, resolution1))
                 {
                     resolution1.setTexture(chapter01);
@@ -541,11 +592,9 @@ public class Test {
 
                 for (Event event : window.pollEvents()) {
                     if (event.type == Event.Type.CLOSED) {
-                        init = false;
-                        System.out.println("jjj");
                         Thread.interrupted();
                         window.close();
-                        init = false;
+                        System.exit(0);
                     }
 
 
@@ -588,12 +637,12 @@ public class Test {
                             text_chapter_c.setString("You choose chapter: "+ chapter + "\n start the game");
                         }
 
-                        /*if(click_compute(chapter01, chapter7))
+                        if(click_compute(chapter01, chapter7))
                         {
                             chapter = 7;
                             System.out.println(chapter);
                             text_chapter_c.setString("You choose chapter: "+ chapter + "\n start the game");
-                        }*/
+                        }
 
                         if(click_compute(choose1, resolution1))
                         {
@@ -618,9 +667,8 @@ public class Test {
 
                         if(click_compute(choose1, resolution4))
                         {
-                            screenx = 800;
-                            screeny = 600;
-                            resolution_info.setString("Resolution: " + screenx + "*" +  screeny);
+                            full = true;
+                            resolution_info.setString("Resolution: full screen");
                         }
 
 
@@ -706,8 +754,7 @@ public class Test {
                         if (click_compute(texture_start_released, start_button)) {
                             start_button.setTexture(texture_start_pressed);
                             User_data user_data = new User_data();
-                            user_data.passData(chapter, screenx, screeny, aliase, frame_user, shadow_user);
-                            init = false;
+                            user_data.passData(chapter, screenx, screeny, aliase, frame_user, shadow_user, full);
                             /*Thread.sleep(2 * 1000);
                             window.setVisible(false);
                             Thread.sleep(1 * 1000);
@@ -720,11 +767,15 @@ public class Test {
                     if (event.type == Event.Type.MOUSE_BUTTON_RELEASED) {
                         if (click_compute(texture_start_released, start_button)) {
                             start_button.setTexture(texture_start_released);
+                            if(!init)
+                            {
+                                JOptionPane.showMessageDialog(null, "Chapter " + chapter + " is locked\n Choose again!", "You choose the locked chapter",JOptionPane.PLAIN_MESSAGE);
+                                continue;
+                            }
                             Thread.sleep(2 * 1000);
                             window.setVisible(false);
                             Thread.sleep(1 * 1000);
                             window.close();
-                            init = false;
                         }
                     }
 
@@ -754,10 +805,10 @@ public class Test {
                 {
                     chapter6.setTexture(chapter02);
                 }
-                /*else if(chapter == 7)
+                else if(chapter == 7)
                 {
                     chapter7.setTexture(chapter02);
-                }*/
+                }
 
                 if(screenx == 1920)
                 {
@@ -855,6 +906,7 @@ public class Test {
 
                 window.draw(map2);
                 window.draw(cartoon);
+                window.draw(character);
                 window.draw(text_chapter);
                 window.draw(text_chapter_c);
                 window.draw(text_resolution);
@@ -888,8 +940,8 @@ public class Test {
                 window.draw(chapter4);
                 window.draw(chapter5);
                 window.draw(chapter6);
-                //window.draw(chapter7);
-                window.draw(character);
+               // window.draw(chapter7);
+
                 window.draw(resolution1);
                 window.draw(resolution2);
                 window.draw(resolution3);
