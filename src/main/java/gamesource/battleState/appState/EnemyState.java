@@ -412,6 +412,12 @@ public class EnemyState extends BaseAppState {
                 model.scale(0.02f);
                 model.rotate(0,0,0);
                 break;
+            case "character/Knight/darkknight0.j3o":
+                model.scale(0.02f);
+                break;
+            case "character/master/Master20.j3o":
+                model.scale(0.02f);
+                break;
             default:
                 break;
         }
@@ -419,6 +425,12 @@ public class EnemyState extends BaseAppState {
 
     private void setModelPos(Spatial model) {
         switch (model.getName()) {
+            case "character/master/Master20.j3o":
+                model.move(-1f, 0.2f, 0);
+                break;
+            case "character/Knight/darkknight0.j3o":
+                model.move(-1f, 0.2f, 0);
+                break;
             case "character/solidier/darksolidier0.j3o":
                 model.move(-1f, 0.2f, 0);
                 break;
