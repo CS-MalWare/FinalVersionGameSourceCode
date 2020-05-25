@@ -495,6 +495,7 @@ public class FifthState extends BaseAppState {
                 }else if(results13!=null&&results13.size()>0){
                     System.out.println("chest");
                     c2.open();
+                    getApplication().getStateManager().attach(new GetCardState());
                 }
             }
 

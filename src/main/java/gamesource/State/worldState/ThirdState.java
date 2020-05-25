@@ -315,9 +315,13 @@ public class ThirdState extends BaseAppState {
                 } else if (results8 != null && results8.size() > 0) {
                     System.out.println("chest");
                     c2.open();
+                    getApplication().getStateManager().attach(new GetCardState());
+
                 } else if (results9 != null && results9.size() > 0) {
                     System.out.println("chest");
                     c3.open();
+                    getApplication().getStateManager().attach(new GetCardState());
+
                 }
             }
 
@@ -772,7 +776,7 @@ public class ThirdState extends BaseAppState {
                     EnemyState.getInstance().addEnemies(
                             new KingWolfman(200, "Enemies/underWater/fishboss.j3o", 20, 3, 0, 1, 3, 0, 0, 0)
                     );
-                    major.setPlace(boss.get().getCenter());
+//                    major.setPlace(boss.get().getCenter());
                     state.detach(boss);
                     states.remove(boss);
                     state.attach(new Battle(states));

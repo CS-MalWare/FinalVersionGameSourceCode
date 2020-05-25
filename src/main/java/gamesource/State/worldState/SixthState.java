@@ -145,7 +145,8 @@ public class SixthState extends BaseAppState {
         inputManager.addListener(st, move);
 
         cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-        major.setPlace(new Vector3f(0f, 10f, 0f));
+        //major.setPlace(new Vector3f(0f, 10f, 0f));
+        major.setPlace(new Vector3f(92.35694f, -31.713285f, 17.851564f));
         major.height(6);
         cross.setEnabled(false);
     }

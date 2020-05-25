@@ -642,7 +642,6 @@ public class SecondState extends BaseAppState {
 //                    cam.setLocation(new Vector3f(0, 0, 10.3f));
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     GetCardState.setGoldCountAfterThisBattle(70);
-                    ThirdState.canGo = "can";
 
                     break;
 
@@ -729,6 +728,7 @@ public class SecondState extends BaseAppState {
 //                    cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     GetCardState.setGoldCountAfterThisBattle(120);
 
+                    ThirdState.canGo = "can";
 
                     break;
                 case 10:

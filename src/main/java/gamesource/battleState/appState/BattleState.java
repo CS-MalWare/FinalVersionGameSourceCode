@@ -119,7 +119,7 @@ public class BattleState extends BaseAppState {
         }
 
         public void onKeyEvent(KeyInputEvent evt) {
-            if (evt.getKeyCode() == KeyInput.KEY_S) {
+            if (evt.getKeyCode() == KeyInput.KEY_K) {
                 ArrayList<Enemy> enemies = EnemyState.getInstance().getEnemies();
                 for (Enemy enemy : enemies) {
                     enemy.getDamage(100);
