@@ -8,6 +8,8 @@ import org.jsfml.window.ContextActivationException;
 import org.jsfml.window.Mouse;
 import org.jsfml.window.VideoMode;
 import org.jsfml.window.event.Event;
+
+import javax.swing.*;
 import java.nio.file.Paths;
 import java.io.IOException;
 
@@ -17,6 +19,8 @@ public class StartInterface {
         /*int screenWidth = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int screenHeight=java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
         System.out.println(screenHeight + " " + screenWidth);*/
+        JOptionPane.showMessageDialog(null, "kkk", "111",JOptionPane.PLAIN_MESSAGE);
+
         int num = 0;
         window.create(new VideoMode(1536,864), "Cholera");
         window.setMouseCursorVisible(true);
@@ -63,7 +67,6 @@ public class StartInterface {
         white_button.setPosition(800,400);
         Sprite black_button = new Sprite(texture_black_released);
         black_button.setPosition(800,550);
-
 
         //Main loop
         while(window.isOpen()) {
