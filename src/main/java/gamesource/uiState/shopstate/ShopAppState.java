@@ -116,8 +116,12 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         
         Button cards = new Button("Cards");
         Button equipments = new Button("Equipments");
+        Button health = new Button("Health");
+
         leftPart.addChild(cards, 2, 0);
         leftPart.addChild(equipments, 3, 0);
+        leftPart.addChild(health, 4, 0);
+
         leftPartContainer = new Container("glass");
         leftPartContainer.addChild(leftPart);
         general.addChild(leftPartContainer, Position.West);
@@ -130,6 +134,7 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         general.addChild(buttomPartContainer, Position.South);
 
         cards.addClickCommands(new CardsDirectoryClick());
+        health.addClickCommands(new HealthClick());
         general.setAlpha(2f);
     }
 
@@ -328,6 +333,17 @@ public class ShopAppState extends BaseAppState implements ActionListener{
                 }
             }
         }    
+    }
+
+    private class HealthClick implements Command<Button>{
+        public void execute(Button button){
+            centralPart.detachAllChildren();
+            pagesContainer.detachAllChildren();
+
+            IconComponent medicine = new IconComponent("Util/medicine.jpg");
+            CardUI healMedicine = new CardUI(medicine, "Medicine", 100, "Get 100 point health back");
+            healMedicine.addToContainer(centralPart, 0, 0);
+        }
     }
 
     public void refreshPage(CardUI[] cardUIs){

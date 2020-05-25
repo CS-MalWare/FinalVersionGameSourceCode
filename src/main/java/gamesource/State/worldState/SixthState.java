@@ -145,8 +145,8 @@ public class SixthState extends BaseAppState {
         inputManager.addListener(st, move);
 
         cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-        //major.setPlace(new Vector3f(0f, 10f, 0f));
-        major.setPlace(new Vector3f(92.35694f, -31.713285f, 17.851564f));
+        major.setPlace(new Vector3f(12.901182f, -9.024441f, -25.671635f));
+        //major.setPlace(new Vector3f(92.35694f, -31.713285f, 17.851564f));
         major.height(6);
         cross.setEnabled(false);
     }
@@ -256,7 +256,7 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Zac(350, "character/Solidier/darksolidier.j3o", 5, 1, 2, 0, 0, 0, 0, 0));
+                            new Zac(350, "character/solidier/darksolidier.j3o", 5, 1, 2, 0, 0, 0, 0, 0));
                     state.detach(solidier1);
                     states.remove(solidier1);
                     state.attach(new Battle(states));

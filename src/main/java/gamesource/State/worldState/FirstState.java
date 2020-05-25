@@ -94,6 +94,7 @@ public class FirstState extends BaseAppState {
     private ShopAppState shopState;
     private MenuAppState menuState;
     private makeCross cross;
+    private SmallMap smallMap;
 
     StartTalk st = new StartTalk();
 
@@ -137,6 +138,7 @@ public class FirstState extends BaseAppState {
         cross = state.getState(makeCross.class);
         states.add(cross);
         cross.setEnabled(false);
+        
         //state.attach(new AxisState());
         //state.attach(bullet);
         state.attach(f1);
@@ -208,7 +210,9 @@ public class FirstState extends BaseAppState {
         states.add(master);
         state.attach(music);
         states.add(music);
-        state.attach(new SmallMap(1600, 900, 200));
+        smallMap = new SmallMap(1600, 900, 200);
+        state.attach(smallMap);
+        states.add(smallMap);
 
         this.inputManager = application.getInputManager();
         inputManager.addMapping(talk, TALK);
@@ -524,7 +528,7 @@ public class FirstState extends BaseAppState {
         System.out.println("first clean");
 
         for (int i = 0; i < states.size(); i++) {
-            if (!(states.get(i) instanceof MajorActor) && !(states.get(i) instanceof InputAppState) && !(states.get(i) instanceof MenuAppState) && !(states.get(i) instanceof BagAppState) && !(states.get(i) instanceof ShopAppState) && !(states.get(i) instanceof makeCross)) {
+            if (!(states.get(i) instanceof MajorActor) && !(states.get(i) instanceof InputAppState) && !(states.get(i) instanceof MenuAppState) && !(states.get(i) instanceof BagAppState) && !(states.get(i) instanceof ShopAppState) && !(states.get(i) instanceof makeCross) && !(states.get(i) instanceof SmallMap)) {
                 state.detach(states.get(i));
             }
         }
@@ -548,7 +552,7 @@ public class FirstState extends BaseAppState {
         inputManager.addListener(st, move);
 
         for (BaseAppState baseAppState : states) {
-            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
+            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState) && !(baseAppState instanceof SmallMap)) {
                 baseAppState.setEnabled(true);
                 //state.detach(baseAppState);
             }
@@ -606,7 +610,7 @@ public class FirstState extends BaseAppState {
         inputManager.deleteTrigger(bag, BAG);
         inputManager.deleteTrigger(move, MOVE);
         for (BaseAppState baseAppState : states) {
-            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
+            if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState) && !(baseAppState instanceof SmallMap)) {
                 baseAppState.setEnabled(false);
                 //state.detach(baseAppState);
             }

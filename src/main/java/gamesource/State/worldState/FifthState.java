@@ -751,6 +751,7 @@ public class FifthState extends BaseAppState {
                     EnemyState.getInstance().addEnemies(
                             new KingDarkDragon(250, "Enemies/fifthMap/boss/scene.j3o", 50, 2, 2, 2, 2, 5, 0, 0)
                     );
+                    SixthState.canGo = "can";
                     state.detach(boss);
                     states.remove(boss);
                     state.attach(new Battle(states));
