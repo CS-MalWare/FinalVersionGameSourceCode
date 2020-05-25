@@ -126,6 +126,9 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         general.addChild(centralPart, Position.Center);
         centralPart.setLocalTranslation(200, app.getCamera().getHeight() - 50, 0);
         
+        buttomPartContainer = new Container("glass");
+        general.addChild(buttomPartContainer, Position.South);
+
         cards.addClickCommands(new CardsDirectoryClick());
         general.setAlpha(2f);
     }
@@ -133,7 +136,6 @@ public class ShopAppState extends BaseAppState implements ActionListener{
     public void showCards(Container centralPart){
         System.out.println(cardUIs.length);
        if(cardUIs.length > 12){
-            buttomPartContainer = new Container();
             pagesContainer = new Container();
             pagesContainer.setLayout(new SpringGridLayout(Axis.X, Axis.Y, FillMode.None, FillMode.None));
             general.addChild(buttomPartContainer, Position.South);
