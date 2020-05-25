@@ -347,7 +347,7 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) {
 
-        App app = new App(3,1024,1,16);
+        App app = new App(6 ,1024,1,16);
         //app.setSettings(settings);
         //app.setShowSettings(false);
 //        Storage.load();
