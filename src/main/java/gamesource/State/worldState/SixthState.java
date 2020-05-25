@@ -145,8 +145,8 @@ public class SixthState extends BaseAppState {
         inputManager.addListener(st, move);
 
         cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
-        major.setPlace(new Vector3f(12.901182f, -9.024441f, -25.671635f));
-        //major.setPlace(new Vector3f(92.35694f, -31.713285f, 17.851564f));
+        //major.setPlace(new Vector3f(12.901182f, -9.024441f, -25.671635f));
+        major.setPlace(new Vector3f(92.35694f, -31.713285f, 17.851564f));
         major.height(6);
         cross.setEnabled(false);
     }
@@ -275,7 +275,7 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Ace(450, "character/master/Master2.j3o", 0, 1, 1, 0, 0, 0, 0, 0));
+                            new Ace(450, "character/Knight/darkknight.j3o", 0, 1, 1, 0, 0, 0, 0, 0));
                     state.detach(knight1);
                     states.remove(knight1);
                     state.attach(new Battle(states));
@@ -294,7 +294,7 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
                     EnemyState.getInstance().addEnemies(
-                            new Faker(400, "character/Knight/darkknight.j3o", 2, 2, 2, 0, 0, 0, 0, 0)
+                            new Faker(400, "character/master/Master2.j3o", 2, 2, 2, 0, 0, 0, 0, 0)
                     );
                     state.detach(master);
                     states.remove(master);
