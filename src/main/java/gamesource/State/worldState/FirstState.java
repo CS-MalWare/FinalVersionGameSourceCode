@@ -342,7 +342,7 @@ public class FirstState extends BaseAppState {
                         content.add("I am tired. Maybe this would be a good time for retirement");
                         content.add("In charge of the country is not an easy thing");
                         content.add("It took up most of my tine, and now, I want stay with family.");
-                        talkWithOption = new TalkWithOption("Queen", content, CallType.CONFIRM, isTalkShow);
+                        talkWithOption = new TalkWithOption("Queen", content, CallType.CONFIRM, 1);
                         isTalkShow = talkWithOption.isTalkShow();
                         state.attach(talkWithOption);
                     }
@@ -362,7 +362,7 @@ public class FirstState extends BaseAppState {
                         content.add("Long time to see, my prince, seems like you have finished you trail.");
                         content.add("We all glad to see you again in King city. After training, there has a great change on your body!");
                         content.add("We are drilling recruits. Would you be pleasure to give them a lession?");
-                        talkWithOption = new TalkWithOption("Soldier", content, CallType.CONFIRM, isTalkShow);
+                        talkWithOption = new TalkWithOption("Soldier", content, CallType.CONFIRM, 1);
                         isTalkShow = talkWithOption.isTalkShow();
                         state.attach(talkWithOption);
                     }
@@ -382,7 +382,7 @@ public class FirstState extends BaseAppState {
                         content.add("So I returned the king city as soon as possible.");
                         content.add("From the result of division, there will be a prince save this world");
                         content.add("Before save the world, do you needs some new skills?");
-                        talkWithOption = new TalkWithOption("Lizard Mage", content, CallType.SHOP, isTalkShow);
+                        talkWithOption = new TalkWithOption("Lizard Mage", content, CallType.SHOP, 1);
                         isTalkShow = talkWithOption.isTalkShow();
                         state.attach(talkWithOption);
                     }
@@ -411,7 +411,7 @@ public class FirstState extends BaseAppState {
                         content.add("Hello");
                         content.add("We all glad to see you again in King city. After training, there has a great change on your body!");
                         content.add("We are drilling recruits. Would you be pleasure to give them a lession?");
-                        talkWithOption = new TalkWithOption("Soldier", content, CallType.FIGHT, isTalkShow);
+                        talkWithOption = new TalkWithOption("Soldier", content, CallType.FIGHT, 1);
                         isTalkShow = talkWithOption.isTalkShow();
                         state.attach(talkWithOption);
                     }
@@ -429,7 +429,7 @@ public class FirstState extends BaseAppState {
                         content.clear();
                         content.add("Ahead is the most prosperous part of the King city, with the most richest trade marking and the finest order of knights.");
                         content.add("If you want to go there, you need to keep your weapon in here");
-                        talkWithOption = new TalkWithOption("Soldier", content, CallType.CONFIRM, isTalkShow);
+                        talkWithOption = new TalkWithOption("Soldier", content, CallType.CONFIRM, 1);
                         isTalkShow = talkWithOption.isTalkShow();
                         state.attach(talkWithOption);
                     }

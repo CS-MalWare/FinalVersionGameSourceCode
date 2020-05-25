@@ -432,7 +432,7 @@ public class SecondState extends BaseAppState {
                         content.add("Wow, you are the prince, I never see people like you, please help us, we need you!");
                         content.add("Here are some equipment and cards, these would strength and power you!");
                         content.add("Hop you can follow your fate");
-                        talkWithOption = new TalkWithOption("Daughter Of Shama", content, CallType.CONFIRM, false);
+                        talkWithOption = new TalkWithOption("Daughter Of Shama", content, CallType.CONFIRM, 2);
                         state.attach(talkWithOption);
                     }
                     if (canmove == 1) {
