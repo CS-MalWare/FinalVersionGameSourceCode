@@ -167,7 +167,7 @@ public class ForthState extends BaseAppState {
         state.attach(sky);
         states.add(sky);
 
-        smallMap = new SmallMap(1600, 900, 200);
+        smallMap = new SmallMap(1600, 900, 400);
         state.attach(smallMap);
         states.add(smallMap);
 
