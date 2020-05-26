@@ -135,6 +135,7 @@ public class SecondState extends BaseAppState {
     private ArrayList<String> content = new ArrayList<>();
     private ArrayList<String> names = new ArrayList<>();
     private WordWrapForTalk wordWrapForTalk;
+    private boolean isTalkShow = false;
 
     protected void initialize(Application application) {
         state = application.getStateManager();
@@ -419,7 +420,7 @@ public class SecondState extends BaseAppState {
             CollisionResults results15 = results15();
             if (talk.equals(name) && isPressed) {
                 if (results1.size() > 0) {                  //这里是和萨满的对话
-                    if(!getStateManager().hasState(wordWrapForTalk)){
+                    if(!getStateManager().hasState(wordWrapForTalk) && !isTalkShow){
                         content.clear();
                         names.clear();
                         names.add("Shaman");
@@ -430,8 +431,13 @@ public class SecondState extends BaseAppState {
                         content.add("Yeee, master told me that a virus attach the world, and cause distortion of space, I was transferred into here, "+
                             "I need to clean up all evils and find treasure. Is anything different at here?");   
                         content.add("A large number of aggresive creatures appeared at here, my people get attacked, please help me");
-                        wordWrapForTalk = new WordWrapForTalk(names, content);
+                        wordWrapForTalk = new WordWrapForTalk(names, content, 2);
                         state.attach(wordWrapForTalk);
+                        isTalkShow = true;
+                    }else if(isTalkShow && getStateManager().hasState(wordWrapForTalk)){
+                        getStateManager().detach(wordWrapForTalk);
+                        app.getFlyByCamera().setDragToRotate(false);
+                        isTalkShow = false;
                     }
                     System.out.println("get");
                     if (canmove == 1) {
@@ -444,13 +450,18 @@ public class SecondState extends BaseAppState {
                         canmove = 1;
                     }
                 } else if (results2.size() > 0) {               //这里是和萨满的小姑娘的对话
-                    if(!getStateManager().hasState(talkWithOption)){
+                    if(!getStateManager().hasState(talkWithOption) && !isTalkShow){
                         content.clear();
                         content.add("Wow, you are the prince, I never see people like you, please help us, we need you!");
                         content.add("Here are some equipment and cards, these would strength and power you!");
                         content.add("Hop you can follow your fate");
                         talkWithOption = new TalkWithOption("Daughter Of Shama", content, CallType.CONFIRM, 2);
                         state.attach(talkWithOption);
+                        isTalkShow = true;
+                    }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        getStateManager().detach(talkWithOption);
+                        app.getFlyByCamera().setDragToRotate(false);
+                        isTalkShow = false;
                     }
                     if (canmove == 1) {
                         state.detach(input);
