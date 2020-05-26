@@ -239,11 +239,11 @@ public class Test {
 
     }
 
-    public static void test()
+/*    public static void test()
     {
         while(true)
             System.out.println("Test!");
-    }
+    }*/
 
 /*    public static void cartoon(Texture[] texture_cartoon, Sprite cartoon){
         while (true) {
