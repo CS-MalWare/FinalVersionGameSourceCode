@@ -64,6 +64,7 @@ public class FirstWorldState extends BaseAppState {
     protected void onEnable() {
 
         app.getRootNode().attachChild(this.rootNode);
+        physics.add(landScape);
     }
 
     @Override

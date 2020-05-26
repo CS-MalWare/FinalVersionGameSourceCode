@@ -24,6 +24,7 @@ import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.worldState.*;
+import gamesource.battleState.character.MainRole;
 import gamesource.testState.First;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
@@ -71,13 +72,13 @@ public class App extends SimpleApplication {
         FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
         fpp.setNumSamples(juchi);
         viewPort.addProcessor(fpp);
-        makeCross cross = new makeCross();
-        stateManager.attach(new MajorActor());
-        stateManager.attach(new InputAppState());
         stateManager.attach(new BagAppState());
         stateManager.attach(new ShopAppState());
         stateManager.attach(new MenuAppState());
+        makeCross cross = new makeCross();
         stateManager.attach(cross);
+        stateManager.attach(new MajorActor());
+        stateManager.attach(new InputAppState());
         f1 = new FirstState(shadow, open);
         //stateManager.attach(f1);
         f2 = new SecondState(shadow, open);
@@ -363,8 +364,8 @@ public class App extends SimpleApplication {
 
 
     public static void main(String[] args) throws IOException {
-
-        App app = new App(5, 2048, 0, 4);
+        MainRole.getInstance();
+        App app = new App(2, 2048, 0, 4);
         AppSettings settings = new AppSettings(true);
 
         // 这里是导入地图存档的,导入人物属性存档在 MainRole类中

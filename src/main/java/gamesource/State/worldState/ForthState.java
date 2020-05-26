@@ -675,7 +675,7 @@ public class ForthState extends BaseAppState {
     public void update(float tpf) {
         if (chan == 0) {
             time = time + tpf;
-            if (time < 25 && time > 5) {
+            if (time < 60 && time > 10) {
                 change();
                 cross.setEnabled(false);
             }
