@@ -53,7 +53,7 @@ public class GetCardState extends BaseAppState {
     private ArrayList<Card> card;
     private MyRawInputListener mril;
     private static int getGoldCountAfterThisBattle = 0;
-
+    private boolean canStorage;
     private String world = "";
 
     @Override
@@ -389,6 +389,7 @@ public class GetCardState extends BaseAppState {
 
     @Override
     protected void onEnable() {
+        canStorage = true;
 //        app.getFlyByCamera().setDragToRotate(false);
         app.getStateManager().getState(MajorActor.class).mouseChange();
 
@@ -416,6 +417,7 @@ public class GetCardState extends BaseAppState {
             app.getViewPort().removeProcessor(fpp);
         }catch (NullPointerException npe){
             System.out.println("从宝箱过来的");
+            canStorage = false;
         }
         stateManager.detach(stateManager.getState(BattleBackGroundState.class));
         app.getRootNode().attachChild(this.rootNode);
@@ -426,7 +428,9 @@ public class GetCardState extends BaseAppState {
     @Override
     protected void onDisable() {
         MainRole.getInstance().getGold(getGoldCountAfterThisBattle);
-        Storage.save();
+        // TODO 通过完善宝箱获取卡来修复这个bug
+        if(canStorage)
+            Storage.save();
         this.rootNode.removeFromParent();
         app.getInputManager().removeRawInputListener(mril);
         app.getStateManager().detach(app.getStateManager().getState(BattleState.class));
