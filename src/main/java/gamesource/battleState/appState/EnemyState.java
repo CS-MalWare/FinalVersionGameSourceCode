@@ -37,6 +37,9 @@ import gamesource.battleState.character.Enemy;
 import gamesource.battleState.control.CardMotionControl;
 import gamesource.battleState.particle.KingSkeletonStateParticle;
 import gamesource.battleState.particle.StuxnetStateParticle;
+import truetypefont.TrueTypeFont;
+import truetypefont.TrueTypeKey;
+import truetypefont.TrueTypeLoader;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -215,15 +218,21 @@ public class EnemyState extends BaseAppState {
         int index = 0;
         //为每个敌人添加血量
         BitmapFont fnt = this.assetManager.loadFont("Interface/Fonts/Default.fnt");
+        app.getAssetManager().registerLoader(TrueTypeLoader.class,"ttf");
+        TrueTypeKey ttk=new TrueTypeKey("Util/MTCORSVA.TTF",0,64);
+        TrueTypeFont font =(TrueTypeFont)assetManager.loadAsset(ttk);
         for (Enemy enemy : enemies) {
-            BitmapText hpHint = new BitmapText(fnt, false);
+            /*BitmapText hpHint = new BitmapText(fnt, false);
             hpHint.setBox(new Rectangle(hpPositions.get(2 * index), hpPositions.get(2 * index + 1), 6, 3));
             hpHint.setQueueBucket(RenderQueue.Bucket.Transparent);
             hpHint.setSize(0.3f);
             hpHint.setColor(ColorRGBA.Red);
-            hpHint.setText(String.format("HP: %s/%s", enemy.getHP(), enemy.getTotalHP()));
-            rootNode.attachChild(hpHint);
-            hpHints.add(hpHint);
+            hpHint.setText(String.format("HP: %s/%s", enemy.getHP(), enemy.getTotalHP()));*/
+            String content=String.format("HP: %s/%s", enemy.getHP(), enemy.getTotalHP());
+            Geometry text=font.getBitmapGeom(content,0,ColorRGBA.Red);
+            text.setLocalTranslation(0, 0,0);
+            app.getGuiNode().attachChild(text);
+            //hpHints.add(hpHint);
             BitmapText blockHint = new BitmapText(fnt, false);
             blockHint.setBox(new Rectangle(blockPositions.get(2 * index), blockPositions.get(2 * index + 1), 6, 3));
             blockHint.setQueueBucket(RenderQueue.Bucket.Transparent);
