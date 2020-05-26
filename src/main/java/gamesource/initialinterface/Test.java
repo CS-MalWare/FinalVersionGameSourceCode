@@ -61,7 +61,7 @@ public class Test {
         final int screenHeight = 900;
         final int screenWidth = 1600;
 
-        window.create(new VideoMode(screenWidth, screenHeight), "UI test!");
+        window.create(new VideoMode(screenWidth, screenHeight), "Cholera");
         window.setMouseCursorVisible(true);
 
         window.setFramerateLimit(30);
