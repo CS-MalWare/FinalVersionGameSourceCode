@@ -61,6 +61,7 @@ public class BattleState extends BaseAppState {
         app.getStateManager().attach(new LeadingActorState());
         app.getStateManager().attach(new BattleBackGroundState());
         app.getStateManager().attach(new LightState());
+        app.getStateManager().attach(new board());
         // 暂时去掉了老高的战斗特效,因为不知道为什么会出现框框在血量等的周围
         app.getStateManager().attach(new BattleEffect(pic));
 //        app.getStateManager().attach(new FilterAppState());
@@ -124,7 +125,7 @@ public class BattleState extends BaseAppState {
         }
 
         public void onKeyEvent(KeyInputEvent evt) {
-            if (evt.getKeyCode() == KeyInput.KEY_K) {
+            if (evt.getKeyCode() == KeyInput.KEY_K && evt.isPressed()) {
                 ArrayList<Enemy> enemies = EnemyState.getInstance().getEnemies();
                 for (Enemy enemy : enemies) {
                     enemy.getDamage(100);
@@ -148,6 +149,7 @@ public class BattleState extends BaseAppState {
         stateManager.detach(stateManager.getState(BattleBackGroundState.class));
         stateManager.detach(stateManager.getState(LightState.class));
         stateManager.detach(stateManager.getState(BattleEffect.class));
+        stateManager.detach(stateManager.getState(board.class));
         MainRole.getInstance().endBattle();
     }
 
