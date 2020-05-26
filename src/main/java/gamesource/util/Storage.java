@@ -17,7 +17,9 @@ import gamesource.battleState.equipment.common.*;
 import gamesource.battleState.equipment.epic.*;
 import gamesource.battleState.equipment.legendary.*;
 import gamesource.battleState.equipment.rare.*;
+import org.json.JSONException;
 import org.json.JSONObject;
+import org.lwjgl.Sys;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -496,6 +498,9 @@ public class Storage {
             e.printStackTrace();
             System.out.println("读取出错");
             return false;
+        } catch (JSONException je){
+            je.printStackTrace();
+            System.out.println("存档格式非法");
         }
         return true;
 

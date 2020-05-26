@@ -18,7 +18,6 @@ import com.simsilica.lemur.Label;
 import com.simsilica.lemur.VAlignment;
 import com.simsilica.lemur.component.IconComponent;
 import com.simsilica.lemur.component.QuadBackgroundComponent;
-import com.simsilica.lemur.component.TbtQuadBackgroundComponent;
 import com.simsilica.lemur.event.ConsumingMouseListener;
 import com.simsilica.lemur.event.MouseEventControl;
 import com.simsilica.lemur.event.PopupState;
@@ -33,13 +32,13 @@ public class SmallMap extends BaseAppState{
     private Container window;
     private Container point;
     private SimpleApplication app;
-    private int width;
-    private int height;
-    private int size;
+    private float width;
+    private float height;
+    private float size;
     private MajorActor majorActor;
     private boolean isShowMap = false;
     
-    public SmallMap(int width, int height, int size){
+    public SmallMap(float width, float height, float size){
         this.width = width;
         this.height = height;
         this.size = size;
@@ -66,7 +65,6 @@ public class SmallMap extends BaseAppState{
 
     @Override
     protected void cleanup(Application application){
-        app.getGuiNode().detachChild(window);
         app.getFlyByCamera().setDragToRotate(false);
     }
 
@@ -89,8 +87,17 @@ public class SmallMap extends BaseAppState{
    
     public void update(float tpf){
         if(isShowMap){
-            point.setLocalTranslation(majorActor.getX(), majorActor.getY(), 200);
+            point.setLocalTranslation(getMapCenter().x + majorActor.getX(), getMapCenter().y + majorActor.getY(), getMapCenter().z + majorActor.getZ());
         }
+    }
+
+    public Vector3f getMapCenter(){
+        Vector3f center = new Vector3f();
+        center.x = window.getLocalTranslation().getX() + size * 0.5f;
+        center.y = window.getLocalTranslation().getY() - size * 0.5f;
+        center.z = window.getLocalTranslation().getZ() + size * 0.5f;
+
+        return center;
     }
 
     public class SmallMapListener implements ActionListener{
@@ -111,13 +118,15 @@ public class SmallMap extends BaseAppState{
                 calculatePreferLocation();
 
                 point = new Container();
-                point.setBackground(new QuadBackgroundComponent(new ColorRGBA(0f, 0f, 1f, 1f)));
+                point.setBackground(new QuadBackgroundComponent(new ColorRGBA(0f, 0f, 1f, 1f), 5, 5, 0.02f, false));
                 app.getGuiNode().attachChild(point);
 
                 app.getGuiNode().attachChild(window);
                 isShowMap = true;
             }else if("map".equals(name) && isPressed && isShowMap){
                 isShowMap = false;
+                app.getGuiNode().detachChild(window);
+                app.getGuiNode().detachChild(point);
                 cleanup();
             }
         }

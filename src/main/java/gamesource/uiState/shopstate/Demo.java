@@ -136,8 +136,8 @@ public class Demo extends SimpleApplication{
 
         Container testPanel = new Container();
         testPanel.setPreferredSize(new Vector3f(200, 200, 0));
-        testPanel.setBackground(TbtQuadBackgroundComponent.create("textures/bench_mat_baseColor.png", 
-            2, 2, 2, 3, 3, 0, false));
+        //testPanel.setBackground(TbtQuadBackgroundComponent.create("textures/bench_mat_baseColor.png", 
+           // 2, 2, 2, 3, 3, 0, false));
         Label test = testPanel.addChild(new Label("Border Test"));
         test.setShadowColor(ColorRGBA.Red);
 

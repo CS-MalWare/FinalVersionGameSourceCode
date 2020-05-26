@@ -203,7 +203,7 @@ public class SecondState extends BaseAppState {
         light = new SecondWorldLight(open,shadow);
         state.attach(light);
         states.add(light);
-        smallMap = new SmallMap(1600, 900, 200);
+        smallMap = new SmallMap(1600, 900, 400);
         state.attach(smallMap);
         states.add(smallMap);
 

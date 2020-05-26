@@ -953,27 +953,32 @@ public class EnemyState extends BaseAppState {
                     case "Enemies/fifthMap/boss/scene0.j3o":
                         deadSoundSrc = "Sound/Dead/机器人死亡.wav";
                         break;
-//                    case "3":
-//                        deadSoundSrc = "Sound/Dead/Zac死亡.wav";
-//                        break;
-//                    case "3":
-//                        deadSoundSrc = "Sound/Dead/Ace死亡.wav";
-//                        break;
-//                    case "3":
-//                        deadSoundSrc = "Sound/Dead/Faker死亡.wav";
-//                        break;
-//                    case "3":
-//                        deadSoundSrc = "Sound/Dead/震网死亡.wav";
-//                        break;
+                    case "character/solidier/darksolidier0.j3o":
+                        deadSoundSrc = "Sound/Dead/Zac死亡.wav";
+                        break;
+                    case "character/Knight/darkknight0.j3o":
+                        deadSoundSrc = "Sound/Dead/Ace死亡.wav";
+                        break;
+                    case "character/master/Master20.j3o":
+                        deadSoundSrc = "Sound/Dead/Faker死亡.wav";
+                        break;
+                    case "Enemies/zhenwang/boss0.j3o":
+                        deadSoundSrc = "Sound/Dead/震网死亡.wav";
+                        break;
 
                 }
 
-                AudioNode audioNode = new AudioNode(app.getAssetManager(),deadSoundSrc, AudioData.DataType.Buffer);
-                audioNode.setLooping(false);
-                audioNode.setPositional(false);
-                audioNode.setVolume(10);
-                rootNode.attachChild(audioNode);
-                audioNode.playInstance();
+                try {
+                    AudioNode audioNode = new AudioNode(app.getAssetManager(), deadSoundSrc, AudioData.DataType.Buffer);
+                    audioNode.setLooping(false);
+                    audioNode.setPositional(false);
+                    audioNode.setVolume(10);
+                    rootNode.attachChild(audioNode);
+                    audioNode.playInstance();
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
 
                 enemiesModel.get(i).removeFromParent();
                 hpHints.get(i).removeFromParent();
@@ -1024,7 +1029,7 @@ public class EnemyState extends BaseAppState {
         if(this.enemies.size() == 1){//boss 只有一个
             System.out.println(this.enemies.get(0).getSrc());
             switch (this.enemies.get(0).getSrc()){
-                case "Enemies/skeleton/blueSkeleton/blueSkeleton0.j3o":
+                case "Enemies/skeleton/KingSkeleton/kingSkeleton0.j3o":
                 case "Enemies/forth/boss/scene0.j3o":
                 case "Enemies/underWater/fishboss0.j3o":
                 case "Enemies/fifthMap/boss/scene0.j3o":

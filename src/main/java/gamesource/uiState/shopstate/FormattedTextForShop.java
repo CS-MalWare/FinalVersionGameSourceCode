@@ -107,9 +107,9 @@ public class FormattedTextForShop extends BaseAppState{
     public void update(float tpf){
         if(reference.update()){
             if(isInteger(reference.get().getText())){
-            numberOfBuy = Integer.parseInt(reference.get().getText());
-            restNumber.setText("Rest Number: " + (10 - numberOfBuy) + "/10");
-            totalCost.setText("Total Cost: " + numberOfBuy * cost);
+                numberOfBuy = Integer.parseInt(reference.get().getText());
+                restNumber.setText("Rest Number: " + (10 - numberOfBuy) + "/10");
+                totalCost.setText("Total Cost: " + numberOfBuy * cost);
             }
         }
     }
