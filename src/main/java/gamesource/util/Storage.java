@@ -19,7 +19,6 @@ import gamesource.battleState.equipment.legendary.*;
 import gamesource.battleState.equipment.rare.*;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.lwjgl.Sys;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -167,9 +166,6 @@ public class Storage {
                     case "瞬斩":
                         tempCard = new InstantSlash();
                         break;
-                    case "光剑斩":
-                        tempCard = new LightChoppingSword();
-                        break;
                     case "光之挥舞":
                         tempCard = new LightSlash();
                         break;
@@ -308,8 +304,11 @@ public class Storage {
                     case "旋盾":
                         tempCard = new WhirlingShield();
                         break;
+                    case "光斩剑":
+                        tempCard = new LightChoppingSword();
+                        break;
                     default:
-                        System.out.println("随机到了逸润巨佬没有做的卡牌"+cardName);
+                        System.out.println("随机到了逸润巨佬没有做的卡牌" + cardName);
                         break;
                 }
                 if (upGrade.equals("true")) {
