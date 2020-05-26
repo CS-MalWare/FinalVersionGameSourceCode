@@ -243,7 +243,7 @@ public class EnemyState extends BaseAppState {
         //为每个敌人添加血量
         BitmapFont fnt = this.assetManager.loadFont("Interface/Fonts/Default.fnt");
         app.getAssetManager().registerLoader(TrueTypeLoader.class,"ttf");
-        TrueTypeKey ttk=new TrueTypeKey("Util/MTCORSVA.TTF",1,40);
+        TrueTypeKey ttk=new TrueTypeKey("Util/MTCORSVA.TTF",1,32);
         TrueTypeFont font =(TrueTypeFont)assetManager.loadAsset(ttk);
         for (Enemy enemy : enemies) {
             /*BitmapText hpHint = new BitmapText(fnt, false);
@@ -278,7 +278,7 @@ public class EnemyState extends BaseAppState {
         int index = 0;
         BitmapFont fnt = assetManager.loadFont("Interface/Fonts/Default.fnt");
         app.getAssetManager().registerLoader(TrueTypeLoader.class,"ttf");
-        TrueTypeKey ttk=new TrueTypeKey("Util/MTCORSVA.TTF",1,40);
+        TrueTypeKey ttk=new TrueTypeKey("Util/MTCORSVA.TTF",1,32);
         TrueTypeFont font =(TrueTypeFont)assetManager.loadAsset(ttk);
         if (isAOE) {
             for (Enemy enemy : enemies) {
@@ -348,6 +348,10 @@ public class EnemyState extends BaseAppState {
 
     public void addEnemies(Enemy... enemies) {
         this.enemies.addAll(Arrays.asList(enemies));
+    }
+
+    public int  size(){
+        return enemies.size();
     }
 
     private void setModelSize(Spatial model) {

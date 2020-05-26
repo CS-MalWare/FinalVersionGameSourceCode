@@ -62,6 +62,7 @@ public class BattleState extends BaseAppState {
         app.getStateManager().attach(new BattleBackGroundState());
         app.getStateManager().attach(new LightState());
         app.getStateManager().attach(new board());
+        //app.getStateManager().attach(new board2(EnemyState.getInstance().size()));        //效果不好暂时取消
         // 暂时去掉了老高的战斗特效,因为不知道为什么会出现框框在血量等的周围
         app.getStateManager().attach(new BattleEffect(pic));
 //        app.getStateManager().attach(new FilterAppState());
