@@ -380,7 +380,7 @@ public class App extends SimpleApplication {
         app.setShowSettings(false);
         //settings.setFullscreen(true);
         //app.setShowSettings(false);
-//        Storage.load();
+        Storage.load();
         app.start();
 
     }

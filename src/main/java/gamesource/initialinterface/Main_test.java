@@ -99,11 +99,11 @@ public class Main_test
         }
         start();
         gamesource.start st = new gamesource.start();
-        if(shadow_bool) {
-            //st.Start(User_data.getFrame_user(), User_data.getChapter(),shadow, 1, alias, User_data.getFull());
-        }else {
-            //st.Start(User_data.getFrame_user(), User_data.getChapter(),0, 0, alias, User_data.getFull());
-        }
+        System.out.println(User_data.getChapter() + "sfiaofia");
+        if(shadow_bool)
+            st.Start(User_data.getFrame_user(), User_data.getChapter(),shadow, 1, alias, User_data.getFull());
+        else
+            st.Start(User_data.getFrame_user(), User_data.getChapter(),0, 0, alias, User_data.getFull());
 
     }
     public static void cartoon(Texture[] texture_cartoon, Sprite cartoon, RenderWindow window){
