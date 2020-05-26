@@ -335,6 +335,7 @@ public class darkSolidier extends BaseAppState implements ActionListener {
 
         this.rootNode.removeFromParent();
         physics.remove(solidControl);
+        solid=null;
     }
 
     @Override
