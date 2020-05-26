@@ -28,6 +28,7 @@ public class WordWrapForTalk extends BaseAppState{
     private ArrayList<String> modelName;
     private int contentStep;
     private int stage;
+    private ActionButton continueButton;
 
     public WordWrapForTalk(ArrayList<String> modelName, ArrayList<String> talkContent, int stage){
         this.talkContent = talkContent;
@@ -44,8 +45,6 @@ public class WordWrapForTalk extends BaseAppState{
     @Override
     protected void cleanup(Application application){
         app.getFlyByCamera().setDragToRotate(false);
-        app.getInputManager().setCursorVisible(false);
-        app.getFlyByCamera().setEnabled(true);
     }
 
     @Override
@@ -62,7 +61,7 @@ public class WordWrapForTalk extends BaseAppState{
         contentLabel.setMaxWidth(400);
         calculatePreferLocation();
 
-        window.addChild(new ActionButton(new CallMethodAction("Continue", this, "continueToNext")));
+        continueButton = window.addChild(new ActionButton(new CallMethodAction("Continue", this, "continueToNext")));
         window.setAlpha(2f);
         getState(PopupState.class).showPopup(window);
     }
@@ -79,48 +78,18 @@ public class WordWrapForTalk extends BaseAppState{
 
     public void continueToNext(){
         if(contentStep == talkContent.size() - 1){
-            switch(stage){
-                case 1:
-                getState(PopupState.class).closePopup(window);
-                getState(FirstState.class).getStateManager().detach(WordWrapForTalk.this); 
-                cleanup();
-                break;
-            
-                case 2:
-                getState(PopupState.class).closePopup(window);
-                getState(SecondState.class).getStateManager().detach(WordWrapForTalk.this); 
-                cleanup();
-                break;
-
-                case 3:
-                getState(PopupState.class).closePopup(window);
-                getState(ThirdState.class).getStateManager().detach(WordWrapForTalk.this);
-                cleanup();
-                break;
-
-                case 4:
-                getState(PopupState.class).closePopup(window);
-                getState(ForthState.class).getStateManager().detach(WordWrapForTalk.this);
-                cleanup();
-                break;
-
-                case 5:
-                getState(PopupState.class).closePopup(window);
-                getState(FifthState.class).getStateManager().detach(WordWrapForTalk.this);
-                cleanup();
-                break;
-
-                case 6:
-                getState(PopupState.class).closePopup(window);
-                getState(SixthState.class).getStateManager().detach(WordWrapForTalk.this);
-                cleanup();
-                break;
-            }
+            Label endLabel = new Label("Press N to Exit...");
+            window.addChild(endLabel);
+            window.removeChild(continueButton);
         }else{
             contentStep ++;
             modelNameLabel.setText(getAnotherNmae());
             contentLabel.setText(talkContent.get(contentStep));
         }
+    }
+
+    public Container getWindow(){
+        return window;
     }
 
     public String getAnotherNmae(){

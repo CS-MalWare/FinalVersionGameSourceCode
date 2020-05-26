@@ -14,12 +14,15 @@ import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.controls.Trigger;
 import com.jme3.material.Material;
 import com.jme3.math.Ray;
+import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Quad;
 import com.jme3.texture.Texture;
+import com.simsilica.lemur.event.PopupState;
+
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.enemies.*;
 import gamesource.State.CharacterState.enemies.forth.BossKnight;
@@ -204,7 +207,7 @@ public class SecondState extends BaseAppState {
         light = new SecondWorldLight(open,shadow);
         state.attach(light);
         states.add(light);
-        smallMap = new SmallMap(1600, 900, 400);
+        smallMap = new SmallMap(1600, 900, new Vector2f(300, 840), 2);
         state.attach(smallMap);
         states.add(smallMap);
 
@@ -435,6 +438,7 @@ public class SecondState extends BaseAppState {
                         state.attach(wordWrapForTalk);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(wordWrapForTalk)){
+                        wordWrapForTalk.getStateManager().getState(PopupState.class).closePopup(wordWrapForTalk.getWindow());
                         getStateManager().detach(wordWrapForTalk);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
@@ -459,6 +463,7 @@ public class SecondState extends BaseAppState {
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
@@ -802,6 +807,12 @@ public class SecondState extends BaseAppState {
             if (time < 60 && time > 10) {
                 change();
                 cross.setEnabled(false);
+            }
+        }
+
+        if(isTalkShow){
+            if(!getStateManager().hasState(wordWrapForTalk) && !getStateManager().hasState(talkWithOption)){
+                isTalkShow = false;
             }
         }
     }

@@ -13,6 +13,7 @@ import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.controls.Trigger;
 import com.jme3.material.Material;
 import com.jme3.math.Ray;
+import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import com.jme3.scene.Geometry;
@@ -190,7 +191,7 @@ public class FifthState extends BaseAppState {
         state.attach(sky);
         states.add(sky);
 
-        smallMap = new SmallMap(1600, 900, 400);
+        smallMap = new SmallMap(1600, 900, new Vector2f(400, 400), 5);
         state.attach(smallMap);
         states.add(smallMap);
 

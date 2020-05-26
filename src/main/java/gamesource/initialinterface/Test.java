@@ -65,13 +65,6 @@ public class Test {
         window.setMouseCursorVisible(true);
 
         window.setFramerateLimit(30);
-        /*Context context = Context.getContext();
-        try {
-            context.setActive(true);
-        }catch (Exception e)
-        {
-            System.out.println(e);
-        }*/
 
         Font freeSans = new Font();
         try {
@@ -294,11 +287,9 @@ public class Test {
                     chapter1.setTexture(chapter02);
                     if(canGochapter1.equals("can")) {
                         text_chapter.setString("Chapter: One  unlocked\nCharacter:\n\tName: Merlin");
-                        init = true;
                     }
                     else {
                         text_chapter.setString("Chapter: One  locked\nCharacter:\n\tName: Merlin");
-                        init = false;
                     }
                     character.setTexture(texture_cha[1]);
 
@@ -312,11 +303,10 @@ public class Test {
                     chapter2.setTexture(chapter02);
                     if(canGochapter2.equals("can")) {
                         text_chapter.setString("Chapter: Two  unlocked\nCharacter or boss:\n\tName: King Skeleton");
-                        init = true;
+
                     }
                     else {
                         text_chapter.setString("Chapter: Two  locked!\nCharacter:\n\tName: King Skeleton");
-                        init = false;
                     }
                     character.setTexture(texture_cha[2]);
 
@@ -330,11 +320,9 @@ public class Test {
                     chapter3.setTexture(chapter02);
                     if(canGochapter3.equals("can")) {
                         text_chapter.setString("Chapter: Three unlocked\nCharacter or boss:\n\tName: Mutant Mermaid");
-                        init = true;
                     }
                     else {
-                        text_chapter.setString("Chapter: Three  locked\nCharacter:\n\tName: Mutant Mermaid");
-                        init = false;
+                        text_chapter.setString("Chapter: Three  locked!\nCharacter:\n\tName: Mutant Mermaid");
                     }
                     character.setTexture(texture_cha[3]);
 
@@ -349,11 +337,9 @@ public class Test {
                     chapter4.setTexture(chapter02);
                     if(canGochapter4.equals("can")) {
                         text_chapter.setString("Chapter: Four unlocked\nCCharacter or boss:\n\tName: Tribal Chief");
-                        init = true;
                     }
                     else {
                         text_chapter.setString("Chapter: Four locked\nCCharacter or boss:\n\tName: Tribal Chief");
-                        init = false;
                     }
 
                     character.setTexture(texture_cha[4]);
@@ -368,11 +354,9 @@ public class Test {
                     chapter5.setTexture(chapter02);
                     if(canGochapter5.equals("can")) {
                         text_chapter.setString("Chapter: Five unlocked\nCharacter or boss:\n\tName: Tyrannosaurus");
-                        init = true;
                     }
                     else {
                         text_chapter.setString("Chapter: Five locked\nCharacter or boss:\n\tName: Tyrannosaurus");
-                        init = false;
                     }
 
                     character.setTexture(texture_cha[5]);
@@ -387,11 +371,9 @@ public class Test {
                     chapter6.setTexture(chapter02);
                     if(canGochapter6.equals("can")) {
                         text_chapter.setString("Chapter: Six unlocked\nCharacter or boss:\n\tName: Stuxnet");
-                        init = true;
                     }
                     else {
                         text_chapter.setString("Chapter: Six locked\nCCharacter or boss:\n\tName: Stuxnet");
-                        init = false;
                     }
                     character.setTexture(texture_cha[6]);
                 }else
@@ -598,36 +580,84 @@ public class Test {
 
                         if(click_compute(chapter01, chapter1))
                         {
+                            if(canGochapter1.equals("can")) {
+                                text_chapter.setString("Chapter: One  unlocked\nCharacter:\n\tName: Merlin");
+                                init = true;
+                            }
+                            else {
+                                text_chapter.setString("Chapter: One  locked\nCharacter:\n\tName: Merlin");
+                                init = false;
+                            }
                             chapter = 1;
                             System.out.println(chapter);
                             text_chapter_c.setString("You choose chapter: "+ chapter + "\n start the game");
                         }
                         if(click_compute(chapter01, chapter2))
                         {
+                            if(canGochapter2.equals("can")) {
+                                text_chapter.setString("Chapter: Two  unlocked\nCharacter or boss:\n\tName: King Skeleton");
+                                init = true;
+                            }
+                            else {
+                                text_chapter.setString("Chapter: Two  locked\nCharacter:\n\tName: King Skeleton");
+                                init = false;
+                            }
                             chapter = 2;
                             System.out.println(chapter);
                             text_chapter_c.setString("You choose chapter: "+ chapter + "\n start the game");
                         }
                         if(click_compute(chapter01, chapter3))
                         {
+                            if(canGochapter3.equals("can")) {
+                                text_chapter.setString("Chapter: Three unlocked\nCharacter or boss:\n\tName: Mutant Mermaid");
+                                init = true;
+                            }
+                            else {
+                                text_chapter.setString("Chapter: Three  locked!\nCharacter:\n\tName: Mutant Mermaid");
+                                init = false;
+                            }
                             chapter = 3;
                             System.out.println(chapter);
                             text_chapter_c.setString("You choose chapter:"+ chapter + "\nstart the game");
                         }
                         if(click_compute(chapter01, chapter4))
                         {
+                            if(canGochapter4.equals("can")) {
+                                text_chapter.setString("Chapter: Four unlocked\nCCharacter or boss:\n\tName: Tribal Chief");
+                                init = true;
+                            }
+                            else {
+                                text_chapter.setString("Chapter: Four locked\nCCharacter or boss:\n\tName: Tribal Chief");
+                                init = false;
+                            }
                             chapter = 4;
                             System.out.println(chapter);
                             text_chapter_c.setString("You choose chapter: "+ chapter + "\n start the game");
                         }
                         if(click_compute(chapter01, chapter5))
                         {
+                            if(canGochapter5.equals("can")) {
+                                text_chapter.setString("Chapter: Five unlocked\nCharacter or boss:\n\tName: Tyrannosaurus");
+                                init = true;
+                            }
+                            else {
+                                text_chapter.setString("Chapter: Five locked\nCharacter or boss:\n\tName: Tyrannosaurus");
+                                init = false;
+                            }
                             chapter = 5;
                             System.out.println(chapter);
                             text_chapter_c.setString("You choose chapter: "+ chapter + "\n start the game");
                         }
                         if(click_compute(chapter01, chapter6))
                         {
+                            if(canGochapter6.equals("can")) {
+                                text_chapter.setString("Chapter: Six unlocked\nCharacter or boss:\n\tName: Stuxnet");
+                                init = true;
+                            }
+                            else {
+                                text_chapter.setString("Chapter: Six locked\nCCharacter or boss:\n\tName: Stuxnet");
+                                init = false;
+                            }
                             chapter = 6;
                             System.out.println(chapter);
                             text_chapter_c.setString("You choose chapter: "+ chapter + "\n start the game");
@@ -804,10 +834,10 @@ public class Test {
                 {
                     chapter6.setTexture(chapter02);
                 }
-                else if(chapter == 7)
+                /*else if(chapter == 7)
                 {
                     chapter7.setTexture(chapter02);
-                }
+                }*/
 
                 if(screenx == 1920)
                 {

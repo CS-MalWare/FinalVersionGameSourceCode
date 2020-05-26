@@ -14,6 +14,7 @@ import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.controls.Trigger;
 import com.jme3.material.Material;
 import com.jme3.math.Ray;
+import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
@@ -210,7 +211,7 @@ public class FirstState extends BaseAppState {
         states.add(master);
         state.attach(music);
         states.add(music);
-        smallMap = new SmallMap(1600, 900, 400);
+        smallMap = new SmallMap(1600, 900, new Vector2f(400, 400), 1);
         state.attach(smallMap);
         states.add(smallMap);
 

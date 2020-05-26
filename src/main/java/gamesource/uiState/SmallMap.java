@@ -34,14 +34,16 @@ public class SmallMap extends BaseAppState{
     private SimpleApplication app;
     private float width;
     private float height;
-    private float size;
+    private Vector2f size;
     private MajorActor majorActor;
     private boolean isShowMap = false;
+    private int stage;
     
-    public SmallMap(float width, float height, float size){
+    public SmallMap(float width, float height, Vector2f size, int stage){
         this.width = width;
         this.height = height;
         this.size = size;
+        this.stage = stage;
     }
 
     @Override
@@ -78,9 +80,9 @@ public class SmallMap extends BaseAppState{
     }
 
     protected void calculatePreferLocation(){
-        float x = width - size - 50;
-        float y = height - size - 50;
-
+        float x = width - size.getX() - 20;
+        float y = size.getY() - 20;
+        System.out.println("x: " + x + "  " + "y: " + y);
         window.setLocalTranslation(x, y, 200);
     }
 
@@ -93,9 +95,9 @@ public class SmallMap extends BaseAppState{
 
     public Vector3f getMapCenter(){
         Vector3f center = new Vector3f();
-        center.x = window.getLocalTranslation().getX() + size * 0.5f;
-        center.y = window.getLocalTranslation().getY() - size * 0.5f;
-        center.z = window.getLocalTranslation().getZ() + size * 0.5f;
+        center.x = window.getLocalTranslation().getX() + size.x * 0.5f;
+        center.y = window.getLocalTranslation().getY() - size.y * 0.5f;
+        center.z = window.getLocalTranslation().getZ();
 
         return center;
     }
@@ -110,11 +112,52 @@ public class SmallMap extends BaseAppState{
                 Label map = window.addChild(new Label("Map", new ElementId("window.title.label")));
                 MouseEventControl.addListenersToSpatial(window, ConsumingMouseListener.INSTANCE);
                 
-                IconComponent iconComponent = new IconComponent("SmallMap.png");
-                iconComponent.setIconSize(new Vector2f(size, size));
-                iconComponent.setHAlignment(HAlignment.Center);
-                iconComponent.setVAlignment(VAlignment.Bottom);
-                map.setIcon(iconComponent);
+                IconComponent iconComponent;
+                switch(stage){
+                    case 1:
+                        iconComponent = new IconComponent("SmallMap.png");
+                        iconComponent.setIconSize(size);
+                        iconComponent.setHAlignment(HAlignment.Center);
+                        iconComponent.setVAlignment(VAlignment.Bottom);
+                        map.setIcon(iconComponent);
+                        break;
+                    case 2:
+                        iconComponent = new IconComponent("Util/secondnew.png");
+                        iconComponent.setIconSize(size);
+                        iconComponent.setHAlignment(HAlignment.Center);
+                        iconComponent.setVAlignment(VAlignment.Top);
+                        map.setIcon(iconComponent);
+                        break;
+                    case 3:
+                        iconComponent = new IconComponent("Util/thirdnew.png");
+                        iconComponent.setIconSize(size);
+                        iconComponent.setHAlignment(HAlignment.Center);
+                        iconComponent.setVAlignment(VAlignment.Bottom);
+                        map.setIcon(iconComponent);
+                        break;
+                    case 4:
+                        iconComponent = new IconComponent("Util/forth.png");
+                        iconComponent.setIconSize(size);
+                        iconComponent.setHAlignment(HAlignment.Center);
+                        iconComponent.setVAlignment(VAlignment.Bottom);
+                        map.setIcon(iconComponent);
+                        break;
+                    case 5:
+                        iconComponent = new IconComponent("Util/fifth.png");
+                        iconComponent.setIconSize(size);
+                        iconComponent.setHAlignment(HAlignment.Center);
+                        iconComponent.setVAlignment(VAlignment.Bottom);
+                        map.setIcon(iconComponent);
+                        break;
+                    case 6:
+                        iconComponent = new IconComponent("Util/six.png");
+                        iconComponent.setIconSize(size);
+                        iconComponent.setHAlignment(HAlignment.Center);
+                        iconComponent.setVAlignment(VAlignment.Bottom);
+                        map.setIcon(iconComponent);
+                        break;
+                }
+                
                 calculatePreferLocation();
 
                 point = new Container();
