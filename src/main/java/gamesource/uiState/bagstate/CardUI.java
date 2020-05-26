@@ -12,6 +12,10 @@ public class CardUI {
     private Checkbox checkbox = new Checkbox("name");
     private String description;
 
+    public CardUI(){
+        
+    }
+
     public CardUI(IconComponent iconComponent, Button button, BagMoney money, Checkbox checkbox, String description){
         this.button = button;
         this.money = money;

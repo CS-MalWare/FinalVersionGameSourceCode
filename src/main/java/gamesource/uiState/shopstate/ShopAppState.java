@@ -70,6 +70,8 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         BorderLayout borderLayout = new BorderLayout();
         general.setLayout(borderLayout);
         general.setLocalTranslation(5, app.getCamera().getHeight()-50, 0);
+     
+        app.getInputManager().setCursorVisible(false);
 
         for(int i=0; i < 20; i++){
             saberCard = CreateCard.getRandomCard(OCCUPATION.SABER);
@@ -284,10 +286,14 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         
             Button cards = new Button("Cards");
             Button equipments = new Button("Equipments");
+            Button health = new Button("Health");
+
             leftPart.addChild(cards, 2, 0);
             leftPart.addChild(equipments, 3, 0);
+            leftPart.addChild(health, 4, 0);
 
             cards.addClickCommands(new CardsDirectoryClick());
+            health.addClickCommands(new HealthClick());
         }
     }
 

@@ -83,6 +83,8 @@ public class BagAppState extends BaseAppState{
         generalBorder.setLayout(borderLayout);
         generalBorder.setLocalTranslation(5, app.getCamera().getHeight(), 0);
         totalMoney.setMoney(MainRole.getInstance().getGold());
+
+        app.getInputManager().setCursorVisible(false);
     }
 
     protected void showBag(){
