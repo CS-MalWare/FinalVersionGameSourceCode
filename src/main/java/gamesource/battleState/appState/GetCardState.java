@@ -14,8 +14,6 @@ import com.jme3.font.Rectangle;
 import com.jme3.input.InputManager;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.event.*;
-import com.jme3.material.Material;
-import com.jme3.material.RenderState;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector2f;
@@ -26,7 +24,6 @@ import com.jme3.renderer.ViewPort;
 import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
-import com.jme3.scene.shape.Quad;
 import com.jme3.ui.Picture;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.battleState.battle.Battle;
@@ -94,30 +91,30 @@ public class GetCardState extends BaseAppState {
 
         // 提示获得的金币数量
         BitmapText goldCount = new BitmapText(fnt, false);//显示的文字
-        goldCount.setText(String.format("Get %d gold",getGoldCountAfterThisBattle));
+        goldCount.setText(String.format("Get %d gold", getGoldCountAfterThisBattle));
         goldCount.setColor(ColorRGBA.Red);
         goldCount.setSize(0.4f);
-        goldCount.setLocalTranslation(-0.5f, 4f, 0);
+        goldCount.setLocalTranslation(-0.5f, 4f, -1);
         rootNode.attachChild(goldCount);
 
-              //   如果想要黑色背景,就取消这段注释
-        Material mat = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-        mat.setColor("Color", new ColorRGBA(0f, 0f, 0f, 0.1f));// 镜面反射时，高光的颜色。
-        // 应用材质。
-        Geometry geom = new Geometry("选卡界面", new Quad(1600, 900));
-        geom.setMaterial(mat);
-
-        // 使物体看起来透明
-        mat.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
-        geom.setQueueBucket(RenderQueue.Bucket.Transparent);
-        geom.center();
+        //   如果想要黑色背景,就取消这段注释
+//        Material mat = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+//        mat.setColor("Color", new ColorRGBA(0f, 0f, 0f, 0.1f));// 镜面反射时，高光的颜色。
+//        // 应用材质。
+//        Geometry geom = new Geometry("选卡界面", new Quad(1600, 900));
+//        geom.setMaterial(mat);
+//
+//        // 使物体看起来透明
+//        mat.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
+//        geom.setQueueBucket(RenderQueue.Bucket.Transparent);
+//        geom.center();
 
         // 跳过按钮
         Picture skip = new Picture("跳过");
         skip.setWidth(200);
         skip.setHeight(80);
         skip.setImage(app.getAssetManager(), "Util/跳过.png", true);
-        skip.setLocalTranslation(1300, 20, 1);
+        skip.setLocalTranslation(1300, 20, -1);
         rootNode.attachChild(skip);
 
         try {// 因为懒惰的逸润巨佬卡牌没有做完会爆错，所以这里有个TRY-CATCH
@@ -139,15 +136,15 @@ public class GetCardState extends BaseAppState {
         // 10%概率获得装备
 //        if (Math.random() < 0.1f) {
             Equipment equipment = CreateEquipment.getRandomEquipment();
-            equipment.setImage(app.getAssetManager());//将装备添加进Assetmanager
-            equipment.setLocalTranslation(750f, 700, 1);
-            rootNode.attachChild(equipment);
+        equipment.setImage(app.getAssetManager());//将装备添加进Assetmanager
+        equipment.setLocalTranslation(750f, 700, -1);
+        rootNode.attachChild(equipment);
 //        }
 
 
         rootNode.attachChild(word);
 
-        rootNode.attachChild(geom);
+//        rootNode.attachChild(geom);
 
 
     }
@@ -169,7 +166,7 @@ public class GetCardState extends BaseAppState {
 // 生成射线
 //        Node guiNode = app.getGuiNode();//GUInode 包含了所有图形对象
 
-        Ray ray = new Ray(new Vector3f(x, y, 10), dir);
+        Ray ray = new Ray(new Vector3f(x, y, 1), dir);
         CollisionResults results = new CollisionResults();
         rootNode.collideWith(ray, results);//检测guinode 中所有图形对象 和 ray 的碰撞
 
@@ -180,14 +177,14 @@ public class GetCardState extends BaseAppState {
         closest.setWidth((float) (HandCardsState.cardWidth * 1.25));
         closest.setHeight((float) (HandCardsState.cardHeight * 1.25));
         Vector3f location = closest.getLocalTranslation();
-        closest.setLocalTranslation(location.x, location.y, 1);//通过竖坐标增加来使得图片在前显示
+        closest.setLocalTranslation(location.x, location.y, -1);//通过竖坐标增加来使得图片在前显示
         //放大这个离鼠标最近的图片
 
         if (img != null) {
             img.setWidth((float) HandCardsState.cardWidth);
             img.setHeight((float) HandCardsState.cardHeight);
             location = img.getLocalTranslation();
-            img.setLocalTranslation(location.x, location.y, 0);//图片还原
+            img.setLocalTranslation(location.x, location.y, -1);//图片还原
         }
     }
 
@@ -195,7 +192,7 @@ public class GetCardState extends BaseAppState {
         img.setWidth((float) HandCardsState.cardWidth);
         img.setHeight((float) HandCardsState.cardHeight);
         Vector3f location = img.getLocalTranslation();
-        img.setLocalTranslation(location.x, location.y, 0);
+        img.setLocalTranslation(location.x, location.y, -1);
     }
 
     private CollisionResults getGuiCollision(MouseButtonEvent evt) {
@@ -417,10 +414,10 @@ public class GetCardState extends BaseAppState {
             app.getViewPort().removeProcessor(fpp);
         }catch (NullPointerException npe){
             System.out.println("从宝箱过来的");
-            canStorage = false;
+//            canStorage = false;
         }
         stateManager.detach(stateManager.getState(BattleBackGroundState.class));
-        app.getRootNode().attachChild(this.rootNode);
+        app.getGuiNode().attachChild(this.rootNode);
         app.getInputManager().addRawInputListener(mril);
 
     }
