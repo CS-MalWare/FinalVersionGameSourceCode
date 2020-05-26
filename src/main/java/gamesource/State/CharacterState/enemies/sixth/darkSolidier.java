@@ -214,7 +214,7 @@ public class darkSolidier extends BaseAppState implements ActionListener {
     public void initAnim(){
 
         scene=(Node)solidier;
-        bip001=(Node)scene.getChild("Bip001");
+        bip001=(Node)scene.getChild("bip001");
         animControl=bip001.getControl(AnimControl.class);
         //System.out.println(animControl.getAnimationNames());
 
