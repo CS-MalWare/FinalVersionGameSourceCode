@@ -293,11 +293,11 @@ public class Test {
                 {
                     chapter1.setTexture(chapter02);
                     if(canGochapter1.equals("can")) {
-                        text_chapter.setString("Chapter: One  unlocked!\nCharacter:\n\tName: Merlin");
+                        text_chapter.setString("Chapter: One  unlocked\nCharacter:\n\tName: Merlin");
                         init = true;
                     }
                     else {
-                        text_chapter.setString("Chapter: One  locked!\nCharacter:\n\tName: Merlin");
+                        text_chapter.setString("Chapter: One  locked\nCharacter:\n\tName: Merlin");
                         init = false;
                     }
                     character.setTexture(texture_cha[1]);
@@ -329,11 +329,11 @@ public class Test {
                 {
                     chapter3.setTexture(chapter02);
                     if(canGochapter3.equals("can")) {
-                        text_chapter.setString("Chapter: Three unlocked\nCharacter or boss:\n\tName: water sprite");
+                        text_chapter.setString("Chapter: Three unlocked\nCharacter or boss:\n\tName: Mutant Mermaid");
                         init = true;
                     }
                     else {
-                        text_chapter.setString("Chapter: Three  locked!\nCharacter:\n\tName: water sprite");
+                        text_chapter.setString("Chapter: Three  locked\nCharacter:\n\tName: Mutant Mermaid");
                         init = false;
                     }
                     character.setTexture(texture_cha[3]);
@@ -367,11 +367,11 @@ public class Test {
                     // System.out.println("!!!");
                     chapter5.setTexture(chapter02);
                     if(canGochapter5.equals("can")) {
-                        text_chapter.setString("Chapter: Five unlocked\nCharacter or boss:\n\tName: Merlin");
+                        text_chapter.setString("Chapter: Five unlocked\nCharacter or boss:\n\tName: Tyrannosaurus");
                         init = true;
                     }
                     else {
-                        text_chapter.setString("Chapter: Five locked\nCharacter or boss:\n\tName: Merlin");
+                        text_chapter.setString("Chapter: Five locked\nCharacter or boss:\n\tName: Tyrannosaurus");
                         init = false;
                     }
 
@@ -390,7 +390,7 @@ public class Test {
                         init = true;
                     }
                     else {
-                        text_chapter.setString("Chapter: Six locked\nCCharacter or boss:\n\tName: kingskeleton");
+                        text_chapter.setString("Chapter: Six locked\nCCharacter or boss:\n\tName: Stuxnet");
                         init = false;
                     }
                     character.setTexture(texture_cha[6]);
@@ -399,7 +399,7 @@ public class Test {
                     chapter6.setTexture(chapter01);
                 }
 
-                if(click_compute(chapter01, chapter7))
+                /*if(click_compute(chapter01, chapter7))
                 {
                     chapter7.setTexture(chapter02);
                     text_chapter.setString("Chapter: Seven\nIntroduce: NULL");
@@ -407,7 +407,7 @@ public class Test {
                 }else
                 {
                     chapter7.setTexture(chapter01);
-                }
+                }*/
                 if(click_compute(choose1, resolution1))
                 {
                     resolution1.setTexture(chapter01);
@@ -633,12 +633,12 @@ public class Test {
                             text_chapter_c.setString("You choose chapter: "+ chapter + "\n start the game");
                         }
 
-                        if(click_compute(chapter01, chapter7))
+                        /*if(click_compute(chapter01, chapter7))
                         {
                             chapter = 7;
                             System.out.println(chapter);
                             text_chapter_c.setString("You choose chapter: "+ chapter + "\n start the game");
-                        }
+                        }*/
 
                         if(click_compute(choose1, resolution1))
                         {
