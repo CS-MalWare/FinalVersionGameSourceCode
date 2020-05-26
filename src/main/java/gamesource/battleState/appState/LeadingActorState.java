@@ -119,7 +119,7 @@ public class LeadingActorState extends BaseAppState {
 
     public void initializeHints() {
         app.getAssetManager().registerLoader(TrueTypeLoader.class,"ttf");
-        TrueTypeKey ttk=new TrueTypeKey("Util/MTCORSVA.TTF",1,40);
+        TrueTypeKey ttk=new TrueTypeKey("Util/MTCORSVA.TTF",1,32);
         TrueTypeFont font =(TrueTypeFont)app.getAssetManager().loadAsset(ttk);
         /*hpHint = new BitmapText(fnt, false);
         hpHint.setBox(new Rectangle(-3.9f, 1.6f, 6, 3));
@@ -130,7 +130,7 @@ public class LeadingActorState extends BaseAppState {
         rootNode.attachChild(hpHint);*/
         String content=String.format("HP: %d/%d", this.target.getHP(), this.target.getTotalHP());
         hpHint=font.getBitmapGeom(content,0,ColorRGBA.Red);
-        hpHint.setLocalTranslation(500,580,0);
+        hpHint.setLocalTranslation(400,580,0);
         guiNode.attachChild(hpHint);
 
         /*blHint = new BitmapText(fnt, false);
@@ -142,7 +142,7 @@ public class LeadingActorState extends BaseAppState {
         rootNode.attachChild(blHint);*/
         String blockcontent=String.format("Blocks: %d", this.target.getBlock());
         blHint=font.getBitmapGeom(blockcontent,0,ColorRGBA.Blue);
-        blHint.setLocalTranslation(500,320,0);
+        blHint.setLocalTranslation(400,320,0);
         guiNode.attachChild(blHint);
 
         // 添加MP显示的图片与文字
