@@ -89,7 +89,7 @@ public class DecksState extends BaseAppState {
         dropDeckPic = new Picture("弃牌堆");
         dropDeckPic.setImage(app.getAssetManager(), "Util/弃牌堆.png", true);
         endTurn = new Picture("结束回合");
-        endTurn.setImage(app.getAssetManager(), "Util/结束.png", true);
+        endTurn.setImage(app.getAssetManager(), "Util/结束new.png", true);
 
 
         drawDeckPic.setPosition(30, 20);
