@@ -20,6 +20,8 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Quad;
 import com.jme3.texture.Texture;
+import com.simsilica.lemur.event.PopupState;
+
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.enemies.*;
 import gamesource.State.CharacterState.enemies.forth.BossKnight;
@@ -435,6 +437,7 @@ public class SecondState extends BaseAppState {
                         state.attach(wordWrapForTalk);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(wordWrapForTalk)){
+                        wordWrapForTalk.getStateManager().getState(PopupState.class).closePopup(wordWrapForTalk.getWindow());
                         getStateManager().detach(wordWrapForTalk);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
@@ -459,6 +462,7 @@ public class SecondState extends BaseAppState {
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
@@ -802,6 +806,12 @@ public class SecondState extends BaseAppState {
             if (time < 60 && time > 10) {
                 change();
                 cross.setEnabled(false);
+            }
+        }
+
+        if(isTalkShow){
+            if(!getStateManager().hasState(wordWrapForTalk) && !getStateManager().hasState(talkWithOption)){
+                isTalkShow = false;
             }
         }
     }

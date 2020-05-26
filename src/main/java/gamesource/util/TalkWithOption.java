@@ -58,7 +58,6 @@ public class TalkWithOption extends BaseAppState{
     @Override
     protected void cleanup(Application application){
         app.getFlyByCamera().setDragToRotate(false);
-        app.getInputManager().setCursorVisible(false);
     }
 
     @Override
@@ -212,5 +211,9 @@ public class TalkWithOption extends BaseAppState{
     }
 
     public void save(){
+    }
+
+    public Container getWindow(){
+        return window;
     }
 }
