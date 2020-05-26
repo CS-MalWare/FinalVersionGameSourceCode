@@ -89,6 +89,7 @@ public class SmallMap extends BaseAppState{
     public void update(float tpf){
         if(isShowMap){
             point.setLocalTranslation(majorActor.getX(), majorActor.getY(), 200);
+            System.out.println(majorActor.getX() + "  " + majorActor.getY());
         }
     }
 

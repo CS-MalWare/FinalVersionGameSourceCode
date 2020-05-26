@@ -537,6 +537,12 @@ public class FirstState extends BaseAppState {
                 cross.setEnabled(false);
             }
         }
+
+        if(isTalkShow){
+            if(!getStateManager().hasState(talkWithOption)){
+                isTalkShow = false;
+            }
+        }
     }
 
 
