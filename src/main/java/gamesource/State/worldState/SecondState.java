@@ -788,7 +788,7 @@ public class SecondState extends BaseAppState {
     public void update(float tpf) {
         if (chan == 0) {
             time = time + tpf;
-            if (time < 25 && time > 5) {
+            if (time < 45 && time > 7) {
                 change();
                 cross.setEnabled(false);
             }
