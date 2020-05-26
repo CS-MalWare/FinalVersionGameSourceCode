@@ -71,13 +71,13 @@ public class App extends SimpleApplication {
         FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
         fpp.setNumSamples(juchi);
         viewPort.addProcessor(fpp);
-        makeCross cross = new makeCross();
-        stateManager.attach(new MajorActor());
-        stateManager.attach(new InputAppState());
         stateManager.attach(new BagAppState());
         stateManager.attach(new ShopAppState());
         stateManager.attach(new MenuAppState());
+        makeCross cross = new makeCross();
         stateManager.attach(cross);
+        stateManager.attach(new MajorActor());
+        stateManager.attach(new InputAppState());
         f1 = new FirstState(shadow, open);
         //stateManager.attach(f1);
         f2 = new SecondState(shadow, open);
