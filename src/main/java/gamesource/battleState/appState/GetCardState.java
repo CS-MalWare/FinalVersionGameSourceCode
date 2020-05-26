@@ -9,13 +9,9 @@ import com.jme3.asset.AssetNotFoundException;
 import com.jme3.collision.CollisionResults;
 import com.jme3.cursors.plugins.JmeCursor;
 import com.jme3.font.BitmapFont;
-import com.jme3.font.BitmapText;
-import com.jme3.font.Rectangle;
 import com.jme3.input.InputManager;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.event.*;
-import com.jme3.material.Material;
-import com.jme3.material.RenderState;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector2f;
@@ -23,10 +19,8 @@ import com.jme3.math.Vector3f;
 import com.jme3.post.FilterPostProcessor;
 import com.jme3.renderer.Camera;
 import com.jme3.renderer.ViewPort;
-import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
-import com.jme3.scene.shape.Quad;
 import com.jme3.ui.Picture;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.battleState.battle.Battle;
@@ -36,6 +30,8 @@ import gamesource.battleState.character.MainRole;
 import gamesource.battleState.equipment.CreateEquipment;
 import gamesource.battleState.equipment.Equipment;
 import gamesource.util.Storage;
+import truetypefont.TrueTypeFont;
+import truetypefont.TrueTypeKey;
 
 import java.util.ArrayList;
 
@@ -56,6 +52,8 @@ public class GetCardState extends BaseAppState {
     private boolean canStorage;
     private String world = "";
 
+    private TrueTypeFont font;
+
     @Override
     protected void initialize(Application application) {
         this.app = (SimpleApplication) getApplication();
@@ -72,52 +70,53 @@ public class GetCardState extends BaseAppState {
         }};
 
         // start ----- 卡牌去重
-        while(card.get(0).getCardName().equals(card.get(1).getCardName())){
+        while (card.get(0).getCardName().equals(card.get(1).getCardName())) {
             card.set(1, CreateCard.getRandomCard(Math.random() < 0.7 ? SABER : NEUTRAL));
         }
-        while(card.get(0).getCardName().equals(card.get(2).getCardName())){
-            card.set(2,CreateCard.getRandomCard(Math.random() < 0.7 ? SABER : NEUTRAL));
+        while (card.get(0).getCardName().equals(card.get(2).getCardName())) {
+            card.set(2, CreateCard.getRandomCard(Math.random() < 0.7 ? SABER : NEUTRAL));
         }
-        while(card.get(1).getCardName().equals(card.get(2).getCardName())){
+        while (card.get(1).getCardName().equals(card.get(2).getCardName())) {
             card.set(2, CreateCard.getRandomCard(Math.random() < 0.7 ? SABER : NEUTRAL));
         }
         // end ----- 卡牌去重
+        // 创建字体 (例如：楷书)
+        TrueTypeKey ttk = new TrueTypeKey("Util/font.ttf", // 字体
+                1, // 字形：0 普通、1 粗体、2 斜体
+                32);// 字号
+        font = (TrueTypeFont) this.app.getAssetManager().loadAsset(ttk);
+
 
         BitmapFont fnt = app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
-        BitmapText word = new BitmapText(fnt, false);//显示的文字
-        word.setText("Please choose one card. You can use the card in continue battles.");
-        word.setColor(ColorRGBA.White);
-        word.setSize(0.3f);
-//        word.setLocalTranslation(-2.5f, -2.5f, 0);
-        word.setBox(new Rectangle(-2.5f, -2.5f, 9, 2));
-        word.setQueueBucket(RenderQueue.Bucket.Transparent);
+        Geometry word = font.getBitmapGeom("Please choose one card or equipment. You can use the card in continue battles.", 0, ColorRGBA.Red);
+
+        word.setLocalTranslation(200, 850, 0);
+
 
         // 提示获得的金币数量
-        BitmapText goldCount = new BitmapText(fnt, false);//显示的文字
-        goldCount.setText(String.format("Get %d gold",getGoldCountAfterThisBattle));
-        goldCount.setColor(ColorRGBA.Red);
-        goldCount.setSize(0.4f);
-        goldCount.setLocalTranslation(-0.5f, 4f, 0);
+        Geometry goldCount = font.getBitmapGeom(String.format("Get %d gold", getGoldCountAfterThisBattle), 0, ColorRGBA.Orange);
+
+        goldCount.setLocalTranslation(700, 800, 0);
         rootNode.attachChild(goldCount);
 
-              //   如果想要黑色背景,就取消这段注释
-        Material mat = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-        mat.setColor("Color", new ColorRGBA(0f, 0f, 0f, 0.1f));// 镜面反射时，高光的颜色。
-        // 应用材质。
-        Geometry geom = new Geometry("选卡界面", new Quad(1600, 900));
-        geom.setMaterial(mat);
-
-        // 使物体看起来透明
-        mat.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
-        geom.setQueueBucket(RenderQueue.Bucket.Transparent);
-        geom.center();
+        //   如果想要黑色背景,就取消这段注释
+//        Material mat = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+//        mat.setColor("Color", new ColorRGBA(0f, 0f, 0f, 0.1f));// 镜面反射时，高光的颜色。
+//        // 应用材质。
+//        Geometry geom = new Geometry("选卡界面", new Quad(1600, 900));
+//        geom.setMaterial(mat);
+//
+//        // 使物体看起来透明
+//        mat.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
+//        geom.setQueueBucket(RenderQueue.Bucket.Transparent);
+//        geom.center();
 
         // 跳过按钮
         Picture skip = new Picture("跳过");
         skip.setWidth(200);
         skip.setHeight(80);
         skip.setImage(app.getAssetManager(), "Util/跳过.png", true);
-        skip.setLocalTranslation(1300, 20, 1);
+        skip.setLocalTranslation(1300, 20, -1);
         rootNode.attachChild(skip);
 
         try {// 因为懒惰的逸润巨佬卡牌没有做完会爆错，所以这里有个TRY-CATCH
@@ -138,22 +137,24 @@ public class GetCardState extends BaseAppState {
 
         // 10%概率获得装备
 //        if (Math.random() < 0.1f) {
-            Equipment equipment = CreateEquipment.getRandomEquipment();
-            equipment.setImage(app.getAssetManager());//将装备添加进Assetmanager
-            equipment.setLocalTranslation(750f, 700, 1);
-            rootNode.attachChild(equipment);
+        Equipment equipment = CreateEquipment.getRandomEquipment();
+        equipment.setImage(app.getAssetManager());//将装备添加进Assetmanager
+        equipment.setLocalTranslation(750f, 700, -1);
+        rootNode.attachChild(equipment);
 //        }
 
 
         rootNode.attachChild(word);
 
-        rootNode.attachChild(geom);
+//        rootNode.attachChild(geom);
 
 
     }
-    public static void setGoldCountAfterThisBattle(int goldCount){
+
+    public static void setGoldCountAfterThisBattle(int goldCount) {
         getGoldCountAfterThisBattle = goldCount;
     }
+
     private CollisionResults getGuiCollision(MouseMotionEvent evt) {
         int x = evt.getX();//得到鼠标的横坐标
         int y = evt.getY();//得到鼠标的纵坐标
@@ -169,7 +170,7 @@ public class GetCardState extends BaseAppState {
 // 生成射线
 //        Node guiNode = app.getGuiNode();//GUInode 包含了所有图形对象
 
-        Ray ray = new Ray(new Vector3f(x, y, 10), dir);
+        Ray ray = new Ray(new Vector3f(x, y, 1), dir);
         CollisionResults results = new CollisionResults();
         rootNode.collideWith(ray, results);//检测guinode 中所有图形对象 和 ray 的碰撞
 
@@ -180,14 +181,14 @@ public class GetCardState extends BaseAppState {
         closest.setWidth((float) (HandCardsState.cardWidth * 1.25));
         closest.setHeight((float) (HandCardsState.cardHeight * 1.25));
         Vector3f location = closest.getLocalTranslation();
-        closest.setLocalTranslation(location.x, location.y, 1);//通过竖坐标增加来使得图片在前显示
+        closest.setLocalTranslation(location.x, location.y, -1);//通过竖坐标增加来使得图片在前显示
         //放大这个离鼠标最近的图片
 
         if (img != null) {
             img.setWidth((float) HandCardsState.cardWidth);
             img.setHeight((float) HandCardsState.cardHeight);
             location = img.getLocalTranslation();
-            img.setLocalTranslation(location.x, location.y, 0);//图片还原
+            img.setLocalTranslation(location.x, location.y, -1);//图片还原
         }
     }
 
@@ -195,7 +196,7 @@ public class GetCardState extends BaseAppState {
         img.setWidth((float) HandCardsState.cardWidth);
         img.setHeight((float) HandCardsState.cardHeight);
         Vector3f location = img.getLocalTranslation();
-        img.setLocalTranslation(location.x, location.y, 0);
+        img.setLocalTranslation(location.x, location.y, -1);
     }
 
     private CollisionResults getGuiCollision(MouseButtonEvent evt) {
@@ -244,9 +245,8 @@ public class GetCardState extends BaseAppState {
         Card last = CreateCard.createCard("null", Card.TYPE.ATTACK);//上次划过的图片
 
         Equipment lastEquipment = null;
-        BitmapFont fnt1 = app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
-        BitmapText des = new BitmapText(fnt1, false);//显示的文字
-        BitmapText title = new BitmapText(fnt1, false);//显示的文字
+        Geometry des;
+        Geometry title;
 
         /**
          * 键盘输入事件
@@ -278,17 +278,14 @@ public class GetCardState extends BaseAppState {
                         if (lastEquipment != closestEquipment) {
                             enlargeEquipment(lastEquipment, closestEquipment);//放大选中图片
                             lastEquipment = closestEquipment;
-                            des.setText(lastEquipment.getDescription());
-                            des.setSize(0.2f);
-//                            des.setLocalTranslation(-3.5f, 1.5f, 0);
-                            des.setBox(new Rectangle(-3.5f, 2f, 10, 2));
-                            des.setQueueBucket(RenderQueue.Bucket.Transparent);
-                            title.setText(lastEquipment.getName());
-                            title.setSize(0.3f);
-                            title.setColor(ColorRGBA.White);
-//                            title.setLocalTranslation(-3.5f, 2f, 0);
-                            title.setBox(new Rectangle(-3.5f, 2.5f, 5, 2));
-                            title.setQueueBucket(RenderQueue.Bucket.Transparent);
+                            if (des != null)
+                                des.removeFromParent();
+                            if (title != null)
+                                title.removeFromParent();
+                            des = font.getBitmapGeom(lastEquipment.getDescription(), 0, ColorRGBA.Green);
+                            des.setLocalTranslation(400, 600, 0);
+                            title = font.getBitmapGeom(lastEquipment.getName(), 0, ColorRGBA.Green);
+                            title.setLocalTranslation(650, 650, 0);
                             rootNode.attachChild(title);
                             rootNode.attachChild(des);
                         }
@@ -415,12 +412,12 @@ public class GetCardState extends BaseAppState {
             FilterPostProcessor fpp = stateManager.getState(BattleBackGroundState.class).getFpp();
             fpp.removeAllFilters();
             app.getViewPort().removeProcessor(fpp);
-        }catch (NullPointerException npe){
+        } catch (NullPointerException npe) {
             System.out.println("从宝箱过来的");
-            canStorage = false;
+//            canStorage = false;
         }
         stateManager.detach(stateManager.getState(BattleBackGroundState.class));
-        app.getRootNode().attachChild(this.rootNode);
+        app.getGuiNode().attachChild(this.rootNode);
         app.getInputManager().addRawInputListener(mril);
 
     }
@@ -429,7 +426,7 @@ public class GetCardState extends BaseAppState {
     protected void onDisable() {
         MainRole.getInstance().getGold(getGoldCountAfterThisBattle);
         // TODO 通过完善宝箱获取卡来修复这个bug
-        if(canStorage)
+        if (canStorage)
             Storage.save();
         this.rootNode.removeFromParent();
         app.getInputManager().removeRawInputListener(mril);
