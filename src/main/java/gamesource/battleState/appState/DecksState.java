@@ -598,6 +598,12 @@ public class DecksState extends BaseAppState {
                                             case "zac skill":
                                                 audioNodes.get(17).playInstance();
                                                 break;
+                                            case "boss attack":
+                                                audioNodes.get(20).playInstance();
+                                                break;
+                                            case "boss skill":
+                                                audioNodes.get(21).playInstance();
+                                                break;
                                             default:
                                                 break;
                                         }
