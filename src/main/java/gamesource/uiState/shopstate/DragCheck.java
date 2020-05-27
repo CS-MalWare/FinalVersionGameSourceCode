@@ -56,7 +56,7 @@ public class DragCheck extends BaseAppState{
 
         label = dragWindow.addChild(new Label("Do you make sure you want to buy these cards ? It will cost " + totalCost + "\nYou have "+ MainRole.getInstance().getGold()));
         actionButton = dragWindow.addChild(new ActionButton(new CallMethodAction(this, "Confirm")));
-        dragWindow.setLocalTranslation(600, 700, 100);
+        calculatePreferLocation();
         dragWindow.setAlpha(10f);
         label.setFontSize(18f);
         getState(PopupState.class).showPopup(dragWindow);

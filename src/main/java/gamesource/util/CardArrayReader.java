@@ -45,6 +45,31 @@ public class CardArrayReader {
         return cardUIs;
     }
 
+    public static CardUI[] cardArrayToCardUIs(ArrayList<Card> cardsEx){
+        CardUI cardUI;
+        cardUIs = null;
+        cardUIs = new CardUI[cardsEx.size()];
+        for(int it = 0; it < cardsEx.size(); it++){
+            IconComponent iconComponent = new IconComponent(cardsEx.get(it).getPath());
+            iconComponent.setIconScale(0.3f);
+            if(cardsEx.get(it).getRarity() == RARITY.RARE){
+                cardUI = new CardUI(iconComponent, cardsEx.get(it).getName(), 200, 
+                    new Checkbox("Buy"), cardsEx.get(it).getDescription());
+                cardUIs[it] = cardUI;
+            }else if(cardsEx.get(it).getRarity() == RARITY.COMMON){
+                cardUI = new CardUI(iconComponent, cardsEx.get(it).getName(), 50, cardsEx.get(it).getDescription());
+                cardUIs[it] = cardUI;
+            }else if(cardsEx.get(it).getRarity() == RARITY.LEGENDARY){
+                cardUI = new CardUI(iconComponent, cardsEx.get(it).getName(), 250, cardsEx.get(it).getDescription());
+                cardUIs[it] = cardUI;
+            }else if(cardsEx.get(it).getRarity() == RARITY.EPIC){
+                cardUI = new CardUI(iconComponent, cardsEx.get(it).getCardName(), 100, cardsEx.get(it).getDescription());
+                cardUIs[it] = cardUI;
+            }
+        }
+        return cardUIs;
+    }
+
     public static CardUI cardToCardUI(Card card){
         IconComponent iconComponent = new IconComponent(card.getPath());
         iconComponent.setIconScale(0.3f);
