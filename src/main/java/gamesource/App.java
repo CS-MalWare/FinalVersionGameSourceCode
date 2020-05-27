@@ -377,9 +377,9 @@ public class App extends SimpleApplication {
 //        settings.setIcons(new BufferedImage[]{
 //                ImageIO.read(Main.class.getResource( "/Map/icon.png" ))});
         app.setSettings(settings);
+        //app.setShowSettings(true);
+        settings.setFullscreen(true);
         app.setShowSettings(false);
-        //settings.setFullscreen(true);
-        //app.setShowSettings(false);
         //Storage.load();
         app.start();
 
