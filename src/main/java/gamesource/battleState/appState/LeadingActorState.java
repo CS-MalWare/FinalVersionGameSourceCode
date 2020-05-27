@@ -32,6 +32,7 @@ import com.jme3.ui.Picture;
 import gamesource.battleState.character.MainRole;
 import gamesource.battleState.particle.MPParticle;
 import gamesource.util.Storage;
+import org.lwjgl.Sys;
 import truetypefont.TrueTypeFont;
 import truetypefont.TrueTypeKey;
 import truetypefont.TrueTypeLoader;
@@ -310,9 +311,9 @@ public class LeadingActorState extends BaseAppState {
                 if (target != null) {
                     EnemyState.getInstance().removeAction();
 //                    buffDisplayBoard.setLocalTranslation(2, 2, -1);
-                    Material mt = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-                    mt.setColor("Color", ColorRGBA.Brown);
-                    mt.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
+//                    Material mt = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+//                    mt.setColor("Color", ColorRGBA.Brown);
+//                    mt.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
 //                    buffDisplayBoard.setQueueBucket(RenderQueue.Bucket.Transparent);
 //                    buffDisplayBoard.setMaterial(mt);
 //                    rootNode.attachChild(buffDisplayBoard);
@@ -355,7 +356,17 @@ public class LeadingActorState extends BaseAppState {
 
         public void onMouseButtonEvent(MouseButtonEvent evt) {
             //如果是鼠标按下去
-
+            CollisionResults results = getRootCollision(evt);
+            if (results.size() > 0) {
+                if(results.getClosestCollision().getGeometry().getName().equals("gameover")){
+                    try {
+                        new Thread().sleep(3000);
+                        System.exit(0);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
         }
 
         @Override
@@ -417,34 +428,29 @@ public class LeadingActorState extends BaseAppState {
             audioNode.setVolume(10);
             rootNode.attachChild(audioNode);
             audioNode.playInstance();
-//            BitmapFont fnt = app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
-//            BitmapText word = new BitmapText(fnt, false);//显示的文字
-//            word.setText("Game Over");
-//            word.setSize(1);
-//            word.setLocalTranslation(-2.5f, 0.5f, 0);
-//            Material mat = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-//            mat.setColor("Color", new ColorRGBA(1f, 1f, 1f, 0.01f));// 镜面反射时，高光的颜色。
-//
-//            // 应用材质。
-//            Geometry geom = new Geometry("结束界面", new Quad(1600, 900));
-//            geom.setMaterial(mat);
-//
-//            // 使物体看起来透明
-//            mat.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
-//            geom.setQueueBucket(RenderQueue.Bucket.Transparent);
-//
-//            geom.center();
-//            rootNode.attachChild(word);
-//            rootNode.attachChild(geom);
-            try {
-                gamesource.initialinterface.Main_test.start_game();
-                System.exit(0);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            BitmapFont fnt = app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
+            BitmapText word = new BitmapText(fnt, false);//显示的文字
+            word.setText("Game Over");
+            word.setSize(1);
+            word.setLocalTranslation(-2.5f, 0.5f, 0);
+            Material mat = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+            mat.setColor("Color", new ColorRGBA(1f, 1f, 1f, 0.01f));// 镜面反射时，高光的颜色。
+
+            // 应用材质。
+            Geometry geom = new Geometry("gameover", new Quad(1600, 900));
+            geom.setMaterial(mat);
+
+            // 使物体看起来透明
+            mat.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
+            geom.setQueueBucket(RenderQueue.Bucket.Transparent);
+
+            geom.center();
+            rootNode.attachChild(word);
+            rootNode.attachChild(geom);
             app.getStateManager().detach(app.getStateManager().getState(DecksState.class));
             app.getStateManager().detach(app.getStateManager().getState(HandCardsState.class));
             flag=true;
+
         }
 
     }
