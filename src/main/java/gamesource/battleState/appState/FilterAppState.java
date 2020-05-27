@@ -11,7 +11,7 @@ import com.jme3.post.FilterPostProcessor;
 import com.jme3.post.SceneProcessor;
 import com.jme3.renderer.ViewPort;
 
-
+// 滤镜模块
 public class FilterAppState extends BaseAppState {
 
     private AssetManager assetManager;

@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import static gamesource.battleState.card.Card.OCCUPATION.NEUTRAL;
 import static gamesource.battleState.card.Card.OCCUPATION.SABER;
 
+// 基本作用同GetCardState
 public class GetEquipmentState extends BaseAppState {
     private SimpleApplication app;
     private Node rootNode = new Node("GetCardState");

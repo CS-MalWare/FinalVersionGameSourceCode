@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import static gamesource.battleState.card.Card.OCCUPATION.NEUTRAL;
 import static gamesource.battleState.card.Card.OCCUPATION.SABER;
 
+// 获取卡牌的state
 public class GetCardState extends BaseAppState {
     private SimpleApplication app;
     private Node rootNode = new Node("GetCardState");
@@ -155,6 +156,7 @@ public class GetCardState extends BaseAppState {
         getGoldCountAfterThisBattle = goldCount;
     }
 
+    // 主要用来判断鼠标碰撞到guiNode
     private CollisionResults getGuiCollision(MouseMotionEvent evt) {
         int x = evt.getX();//得到鼠标的横坐标
         int y = evt.getY();//得到鼠标的纵坐标

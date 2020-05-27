@@ -36,7 +36,7 @@ import truetypefont.TrueTypeKey;
 import truetypefont.TrueTypeLoader;
 
 import java.util.ArrayList;
-
+// 主角模型在战斗中的模组
 public class LeadingActorState extends BaseAppState {
     private AnimControl animControl;
     private static AnimChannel animChannel;
@@ -300,7 +300,7 @@ public class LeadingActorState extends BaseAppState {
         }
 
         /**
-         * 鼠标输入事件
+         * 将鼠标移到主角身上,显示提示
          */
         @Override
         public void onMouseMotionEvent(MouseMotionEvent evt) {
@@ -404,6 +404,7 @@ public class LeadingActorState extends BaseAppState {
 
     private boolean flag=false;
 
+    // 刷新提示和判断是否游戏失败
     @Override
     public void update(float tpf) {
         super.update(tpf);

@@ -25,7 +25,7 @@ import gamesource.battleState.character.Enemy;
 import gamesource.battleState.character.MainRole;
 
 import java.util.ArrayList;
-
+// 战斗场景的加载
 public class BattleState extends BaseAppState {
 
     MajorActor major = new MajorActor(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
@@ -62,14 +62,8 @@ public class BattleState extends BaseAppState {
         app.getStateManager().attach(new BattleBackGroundState());
         app.getStateManager().attach(new LightState());
         //app.getStateManager().attach(new board2(EnemyState.getInstance().size()));        //效果不好暂时取消
-        // 暂时去掉了老高的战斗特效,因为不知道为什么会出现框框在血量等的周围
         app.getStateManager().attach(new BattleEffect(pic));
 //        app.getStateManager().attach(new FilterAppState());
-
-
-
-        // 改变鼠标图标
-       // changeCursor();
 
         // 注册监听器
         app.getInputManager().addRawInputListener(inputListener);
@@ -87,7 +81,7 @@ public class BattleState extends BaseAppState {
 
 
 
-
+// 增加作弊按钮
     private RawInputListener inputListener = new RawInputListener() {
 
 
@@ -108,20 +102,7 @@ public class BattleState extends BaseAppState {
         }
 
         public void onMouseButtonEvent(MouseButtonEvent evt) {
-//            boolean isPressed = evt.isPressed();
-//
-//            if (isPressed) {
-//                // 显示鼠标位置
-//                JmeCursor jmeCursor = (JmeCursor) app.getAssetManager().loadAsset("Util/cursor/click.cur");
-//                app.getInputManager().setMouseCursor(jmeCursor);
-//            }
-//
-//            boolean isReleased = evt.isReleased();
-//            if (isReleased) {
-//                // 显示鼠标位置
-//                JmeCursor jmeCursor = (JmeCursor) app.getAssetManager().loadAsset("Util/cursor/common.cur");
-//                app.getInputManager().setMouseCursor(jmeCursor);
-//            }
+
         }
 
         public void onKeyEvent(KeyInputEvent evt) {
@@ -141,6 +122,7 @@ public class BattleState extends BaseAppState {
 
     @Override
     protected void cleanup(Application app) {
+
         AppStateManager stateManager = app.getStateManager();
         stateManager.detach(stateManager.getState(StatsAppState.class));
         stateManager.detach(stateManager.getState(AudioListenerState.class));

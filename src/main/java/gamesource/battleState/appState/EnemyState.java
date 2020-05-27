@@ -42,13 +42,14 @@ import truetypefont.TrueTypeLoader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+// 敌人类的模块
 public class EnemyState extends BaseAppState {
     private SimpleApplication app;
     private Node rootNode = new Node("EnemyState");  //主节点
-    private ArrayList<Enemy> enemies;
-    private ArrayList<Spatial> enemiesModel;
-    private ArrayList<Geometry> hpHints;
-    private ArrayList<Geometry> blockHints;
+    private ArrayList<Enemy> enemies;  //敌人类
+    private ArrayList<Spatial> enemiesModel; //敌人模型
+    private ArrayList<Geometry> hpHints; // hp提示
+    private ArrayList<Geometry> blockHints; // 格挡提示
     private ArrayList<Float> hpPositions;
     private ArrayList<Float> hpPositionsnew;
     private ArrayList<Integer> modelPositions;
@@ -76,6 +77,7 @@ public class EnemyState extends BaseAppState {
     protected BitmapText actionDisplay;
 //    private Geometry displayBoard;
 
+    // 初始化一些位置信息
     public EnemyState() {
         enemies = new ArrayList<Enemy>();
         hpHints = new ArrayList<Geometry>();
@@ -244,6 +246,7 @@ public class EnemyState extends BaseAppState {
         actionDisplay.removeFromParent();
     }
 
+    // 展示敌人的意图,及是马上进行的行动
     public void displayAction() {
         removeAction();
         String txtB = "";
@@ -295,6 +298,7 @@ public class EnemyState extends BaseAppState {
         }
     }
 
+    // 更新敌人的血量和护甲的提示
     public void updateHints(boolean isAOE) {
         int index = 0;
         BitmapFont fnt = assetManager.loadFont("Interface/Fonts/Default.fnt");
@@ -366,7 +370,7 @@ public class EnemyState extends BaseAppState {
         }
     }
 
-
+    // 设置敌人
     public void addEnemies(Enemy... enemies) {
         this.enemies.addAll(Arrays.asList(enemies));
     }
@@ -375,6 +379,7 @@ public class EnemyState extends BaseAppState {
         return enemies.size();
     }
 
+    // 为导入的每个模型定制大小
     private void setModelSize(Spatial model) {
         switch (model.getName()) {
             case "Enemies/Dragon/Dragon/dragon0.obj":
@@ -502,6 +507,7 @@ public class EnemyState extends BaseAppState {
         }
     }
 
+    // 为导入的每个模型定制位置
     private void setModelPos(Spatial model) {
         switch (model.getName()) {
             case "character/master/Master20.j3o":
@@ -720,6 +726,8 @@ public class EnemyState extends BaseAppState {
         }
     }
 
+
+    // 初始化敌人,包括将敌人类和展示出来的模型绑定,初始化模型,将模型加到适合的位置
     public void initEnemies() {
         int i = 0;
         for (Enemy enemy : this.enemies) {
@@ -741,6 +749,8 @@ public class EnemyState extends BaseAppState {
 
 
             try {
+
+                // 尝试为一些有动画的模型加载动画
                 Node scene = (Node) model;
                 Node bip001 = (Node) scene.getChild("bip001");
 
@@ -764,6 +774,7 @@ public class EnemyState extends BaseAppState {
                 System.out.println(e);
             }
 
+            // 使用包围体去检测碰撞
             model.setModelBound(new BoundingSphere());// 使用包围球
             model.updateModelBound();// 更新包围球
             this.enemiesModel.add(model);
@@ -785,6 +796,7 @@ public class EnemyState extends BaseAppState {
         return ray;
     }
 
+    // 判断鼠标与敌人模型的碰撞
     private CollisionResults getRootCollision(MouseButtonEvent evt) {
         Ray ray = getRay(evt);
         CollisionResults results = new CollisionResults();
@@ -805,7 +817,7 @@ public class EnemyState extends BaseAppState {
         ray.setDirection(dir);
         return ray;
     }
-
+    // 判断鼠标与敌人模型的碰撞
     private CollisionResults getGuiCollision(MouseMotionEvent evt) {
         Ray ray = getRay(evt);
         CollisionResults results = new CollisionResults();
@@ -847,6 +859,8 @@ public class EnemyState extends BaseAppState {
                 }
                 index++;
             }
+
+            // 当鼠标移到敌人身上的时候,显示敌人的属性
             if (index < enemiesModel.size() && results.size() > 0) {
                 Geometry res = results.getClosestCollision().getGeometry();
                 if (!res.getName().equals("BitmapFont")) {
@@ -1070,7 +1084,7 @@ public class EnemyState extends BaseAppState {
                 catch (Exception e){
                     e.printStackTrace();
                 }
-
+                // 移除敌人
                 enemiesModel.get(i).removeFromParent();
                 hpHints.get(i).removeFromParent();
                 blockHints.get(i).removeFromParent();
@@ -1088,6 +1102,8 @@ public class EnemyState extends BaseAppState {
                 modelPositions.remove(i * 3);
             }
         }
+
+        // 结束战斗的判断
         if (enemies.size() == 0) {
             app.getGuiNode().detachAllChildren();
             // 加载选卡界面和移除主角
@@ -1144,6 +1160,8 @@ public class EnemyState extends BaseAppState {
 
     @Override
     protected void onDisable() {
+
+        // 解除模块的时候,解除所有相关组件
         removeAction();
         if(this.buffDisplay!=null)
             this.buffDisplay.removeFromParent();
