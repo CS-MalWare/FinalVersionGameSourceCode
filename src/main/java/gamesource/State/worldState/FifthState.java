@@ -465,7 +465,7 @@ public class FifthState extends BaseAppState {
                         wordWrapForTalk = new WordWrapForTalk(names, content, 5);
                         state.attach(wordWrapForTalk);
                         isTalkShow = true;
-                    }else if(!getStateManager().hasState(wordWrapForTalk) && isTalkShow){
+                    }else if(getStateManager().hasState(wordWrapForTalk) && isTalkShow){
                         wordWrapForTalk.getStateManager().getState(PopupState.class).closePopup(wordWrapForTalk.getWindow());
                         getStateManager().detach(wordWrapForTalk);
                         app.getFlyByCamera().setDragToRotate(false);

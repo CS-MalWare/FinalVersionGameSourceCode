@@ -63,10 +63,17 @@ public class TabTextForBag extends BaseAppState{
         statusLabel.setInsets(new Insets3f(2, 5, 2, 5));
 
         window.addChild(new ActionButton(new CallMethodAction("Close", window, "removeFromParent")));
-        window.setLocalTranslation(400, 400, 100);
+        calculatePreferLocation();
         getState(PopupState.class).showPopup(window, closeCommand);
         window.scale(1.2f);
         window.setAlpha(2f);
+    }
+
+    public void calculatePreferLocation(){
+        float xOfWindow = getState(BagAppState.class).getWindow().getPreferredSize().x +
+            getState(BagAppState.class).getWindow().getLocalTranslation().x;
+        float yOfWindow = getState(BagAppState.class).getWindow().getLocalTranslation().y;
+        window.setLocalTranslation(xOfWindow, yOfWindow, 100);
     }
 
     @Override
