@@ -95,7 +95,7 @@ public class ThirdState extends BaseAppState {
     private Fish6State fish2_3 = new Fish6State(new Vector3f(-104.77109f, -8.663721f, -96.10981f), -3);
     private Fish6State fish2_4 = new Fish6State(new Vector3f(-108.34749f, -7.848976f, -66.91676f), -5);
     private Fish6State fish2_5 = new Fish6State(new Vector3f(-95.21405f, -2.9428518f, 2.1157131f), -5);
-    private Fish5State fish3_1 = new Fish5State(new Vector3f(0, 35, 0), 6);
+    //private Fish5State fish3_1 = new Fish5State(new Vector3f(0, 35, 0), 6);
     private Fish5State fish3_2 = new Fish5State(new Vector3f(-79.33274f, -1.6759943f, 24.259945f), 6);
     private Fish5State fish3_3 = new Fish5State(new Vector3f(-58.6319f, -1.6084806f, 50.47643f), -6);
     private Fish5State fish3_4 = new Fish5State(new Vector3f(-80.64096f, -6.567422f, 66.516266f), 3);
@@ -124,7 +124,7 @@ public class ThirdState extends BaseAppState {
     private SmallMap smallMap;
 
     private ThirdWorldLight light = new ThirdWorldLight();
-    private ThirdWater water = new ThirdWater(22);
+    private ThirdWater water = new ThirdWater(15);
 
     private int shadow=1024,open=0;
     private ArrayList<BaseAppState> states = new ArrayList<BaseAppState>();
@@ -175,8 +175,8 @@ public class ThirdState extends BaseAppState {
         states.add(fish2_4);
         state.attach(fish2_5);
         states.add(fish2_5);
-        state.attach(fish3_1);
-        states.add(fish3_1);
+        //state.attach(fish3_1);
+        //states.add(fish3_1);
         state.attach(fish3_2);
         states.add(fish3_2);
         state.attach(fish3_3);
@@ -272,7 +272,7 @@ public class ThirdState extends BaseAppState {
             CollisionResults results2_3 = results2_3();
             CollisionResults results2_4 = results2_4();
             CollisionResults results2_5 = results2_5();
-            CollisionResults results3_1 = results3_1();
+            //CollisionResults results3_1 = results3_1();
             CollisionResults results3_2 = results3_2();
             CollisionResults results3_3 = results3_3();
             CollisionResults results3_4 = results3_4();
@@ -311,9 +311,9 @@ public class ThirdState extends BaseAppState {
                     battle1 = 8;
                 } else if (results2_5 != null && results2_5.size() > 0) {
                     battle1 = 9;
-                } else if (results3_1 != null && results3_1.size() > 0) {
+                } /*else if (results3_1 != null && results3_1.size() > 0) {
                     battle1 = 10;
-                } else if (results3_2 != null && results3_2.size() > 0) {
+                } */else if (results3_2 != null && results3_2.size() > 0) {
                     battle1 = 11;
                 } else if (results3_3 != null && results3_3.size() > 0) {
                     battle1 = 12;
@@ -640,7 +640,7 @@ public class ThirdState extends BaseAppState {
                     GetCardState.setGoldCountAfterThisBattle(40);
 
                     break;
-                case 10:
+                /*case 10:
                     state.detach(input);
                     states.remove(input);
                     bagState.onFight();
@@ -662,7 +662,7 @@ public class ThirdState extends BaseAppState {
                     cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
                     GetCardState.setGoldCountAfterThisBattle(50);
 
-                    break;
+                    break;*/
                 case 11:
                     state.detach(input);
                     states.remove(input);
@@ -981,7 +981,7 @@ public class ThirdState extends BaseAppState {
         }
     }
 
-    public CollisionResults results3_1() {
+    /*public CollisionResults results3_1() {
         BoundingVolume ske = fish3_1.get();
         CollisionResults result = new CollisionResults();
         try {
@@ -990,7 +990,7 @@ public class ThirdState extends BaseAppState {
         } catch (NullPointerException npe) {
             return new CollisionResults();
         }
-    }
+    }*/
 
     public CollisionResults results3_2() {
         BoundingVolume ske = fish3_2.get();

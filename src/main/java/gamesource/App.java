@@ -425,7 +425,7 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) throws IOException {
         MainRole.getInstance();
-        App app = new App(1, 2048, 0, 4);
+        App app = new App(3, 4096, 1, 4);
         AppSettings settings = new AppSettings(true);
 
         // 这里是导入地图存档的,导入人物属性存档在 MainRole类中
