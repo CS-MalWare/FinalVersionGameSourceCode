@@ -24,7 +24,10 @@ import com.jme3.texture.Texture;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.Master1;
 import gamesource.State.CharacterState.firstWorldCharacter.*;
-import gamesource.State.SpecialEffect.*;
+import gamesource.State.SpecialEffect.FirstWorldLight;
+import gamesource.State.SpecialEffect.FirstWorldOtherSpecial;
+import gamesource.State.SpecialEffect.Water;
+import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.Chest;
@@ -561,6 +564,8 @@ public class FirstState extends BaseAppState {
 
     @Override
     protected void onEnable() {
+        BattleBackGroundState.setBackgroundSrc("Map/first/ditu.j3o");
+
         inputManager.addMapping(talk, TALK);
         inputManager.addListener(st, talk);
 
@@ -585,6 +590,7 @@ public class FirstState extends BaseAppState {
     }
     private Spatial getPicture(int number) {
         // 创建一个四边形
+
         int x=app.getCamera().getWidth();
         int y=app.getCamera().getHeight();
         Quad quad = new Quad(x, y);
