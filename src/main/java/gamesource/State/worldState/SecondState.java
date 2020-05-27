@@ -938,7 +938,12 @@ public class SecondState extends BaseAppState {
         inputManager.addListener(st, move);
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
-                baseAppState.setEnabled(true);
+                try {
+                    baseAppState.setEnabled(true);
+                }
+                catch (NullPointerException npe){
+                    npe.printStackTrace();
+                }
                 //state.detach(baseAppState);
             }
 
