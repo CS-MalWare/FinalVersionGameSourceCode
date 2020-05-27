@@ -32,6 +32,7 @@ import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.FirstWorldState;
 import gamesource.State.mapState.skyBox6;
 import gamesource.State.musicState.SixthBackMusic;
+import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.appState.GetCardState;
 import gamesource.battleState.battle.Battle;
@@ -103,6 +104,8 @@ public class SixthState extends BaseAppState {
     private ArrayList<BaseAppState> states = new ArrayList<BaseAppState>();
 
     protected void initialize(Application application) {
+        BattleBackGroundState.setBackgroundSrc("Map/first/ditu.j3o");
+
         app = (SimpleApplication) application;
         state = application.getStateManager();
         cam = application.getCamera();
@@ -461,6 +464,8 @@ public class SixthState extends BaseAppState {
 
     @Override
     protected void onEnable() {
+        BattleBackGroundState.setBackgroundSrc("Map/first/ditu.j3o");
+
         inputManager.addMapping(talk, TALK);
         inputManager.addMapping(change, CHANGECAMERA);
         inputManager.addMapping(bag, BAG);
@@ -481,7 +486,6 @@ public class SixthState extends BaseAppState {
 
     @Override
     protected void onDisable() {
-
         System.out.println("second disable");
         inputManager.removeListener(st);
         inputManager.deleteTrigger(talk, TALK);
