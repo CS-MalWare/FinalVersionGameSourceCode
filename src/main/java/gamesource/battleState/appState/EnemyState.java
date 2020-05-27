@@ -119,6 +119,17 @@ public class EnemyState extends BaseAppState {
             add(1400f);
             add(580f);
         }};
+        blockPositionsnews = new ArrayList<Float>() {{
+            //每个护甲提示的x y坐标
+            add(1000f);
+            add(320f);
+
+            add(1200f);
+            add(320f);
+
+            add(1400f);
+            add(320f);
+        }};
         blockPositions = new ArrayList<Float>() {{
             //每个护甲提示的x y坐标
             add(2f);
@@ -1078,12 +1089,13 @@ public class EnemyState extends BaseAppState {
             }
         }
         if (enemies.size() == 0) {
+            app.getGuiNode().detachAllChildren();
+            // 加载选卡界面和移除主角
             try {
                 Thread.sleep(300);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            // 加载选卡界面和移除主角
 
             for (Card x : HandCardsState.getInstance().getHandCards()) {
                 x.removeControl(CardMotionControl.class);

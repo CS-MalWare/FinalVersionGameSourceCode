@@ -615,7 +615,7 @@ public class Storage {
             bw = new BufferedWriter(new FileWriter("storageLevel.json"));
             data = "{\n";
             // 这次用这个变量临时存储能进入的关卡
-            data += "\"canGo\":\"can|can|cannot|cannot|cannot|cannot\",\n";
+            data += "\"canGo\":\"can|cannot|cannot|cannot|cannot|cannot\",\n";
             data += "\"current\":\"1\"";
             data += "\n}";
             bw.write(data);
