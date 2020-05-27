@@ -1,6 +1,5 @@
 package gamesource.battleState.card.saber.skill;
 
-import gamesource.battleState.card.AttackCard;
 import gamesource.battleState.card.SkillCard;
 import gamesource.battleState.character.MainRole;
 import gamesource.battleState.character.Role;
@@ -31,6 +30,28 @@ public class NuclearShield extends SkillCard {
 
     @Override
     public boolean use(Role... targets) {
+        MainRole mainRole = MainRole.getInstance();
+        boolean flag = false;
+        if (mainRole.getHP() < mainRole.getTotalHP() * 0.2) {
+            flag = true;
+        }
+        if (!upgraded) {
+            mainRole.gainBlock(20);
+        } else {
+            mainRole.gainBlock(25);
+        }
+        if (flag) {
+            if (!upgraded) {
+                mainRole.gainBlock(20);
+            } else {
+                mainRole.gainBlock(25);
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean use(Role target) {
         MainRole mainRole = MainRole.getInstance();
         boolean flag = false;
         if (mainRole.getHP() < mainRole.getTotalHP() * 0.2) {
