@@ -798,12 +798,10 @@ public class BagAppState extends BaseAppState{
     }
 
     public void cleanArray(EquipmentUI[] eUis){
-        eUis = null;
         eUis = new EquipmentUI[20];
     }
 
     public void cleanArray(CardUI[] cUis){
-        cUis = null;
         cUis = new CardUI[30];
     }
 
