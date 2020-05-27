@@ -306,7 +306,7 @@ public class Test {
 
                     }
                     else {
-                        text_chapter.setString("Chapter: Two  locked!\nCharacter:\n\tName: King Skeleton");
+                        text_chapter.setString("Chapter: Two  locked\nCharacter:\n\tName: King Skeleton");
                     }
                     character.setTexture(texture_cha[2]);
 

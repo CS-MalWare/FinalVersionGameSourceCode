@@ -59,6 +59,10 @@ public class ForthState extends BaseAppState {
     public final static Trigger BAG = new KeyTrigger(KeyInput.KEY_B);
     public final static String move = "MOVE";
     public final static Trigger MOVE = new KeyTrigger(KeyInput.KEY_W);
+    public final static String menu = "MENU";
+    public final static Trigger MENU = new KeyTrigger(KeyInput.KEY_V);
+    public final static String map = "MAP";
+    public final static Trigger MAP = new KeyTrigger(KeyInput.KEY_M);
     private InputManager inputManager;
 
     private SimpleApplication app;
@@ -184,6 +188,13 @@ public class ForthState extends BaseAppState {
 
         inputManager.addMapping(move, MOVE);
         inputManager.addListener(st, move);
+
+        inputManager.addMapping(menu, MENU);
+        inputManager.addListener(st,menu);
+
+
+        inputManager.addMapping(map, MAP);
+        inputManager.addListener(st, map);
 
         cam.lookAtDirection(new Vector3f(0, 0, -1), new Vector3f(0, 1, 0));
         major.setPlace(new Vector3f(0f, 10f, 0f));
@@ -420,6 +431,28 @@ public class ForthState extends BaseAppState {
                     canmove = 1;
                 }
             }
+            if (map.equals(name) && isPressed) {
+                if (canmove == 1) {
+                    state.detach(input);
+                    major.mouseChange();
+                    canmove = 0;
+                } else {
+                    state.attach(input);
+                    major.mouseChange();
+                    canmove = 1;
+                }
+            }
+            if (menu.equals(name) && isPressed) {
+                if (canmove == 1) {
+                    state.detach(input);
+                    major.mouseChange();
+                    canmove = 0;
+                } else {
+                    state.attach(input);
+                    major.mouseChange();
+                    canmove = 1;
+                }
+            }
             switch (battle1) {
                 case 0:
                     state.detach(input);
@@ -440,6 +473,8 @@ public class ForthState extends BaseAppState {
                     state.detach(man1);
                     states.remove(man1);
                     state.attach(new Battle(states));
+                    GetCardState.setGoldCountAfterThisBattle(45);
+
                     //  major.setPlace(man1.get().getCenter());
 
                     break;
@@ -462,6 +497,8 @@ public class ForthState extends BaseAppState {
                     state.detach(man2);
                     states.remove(man2);
                     state.attach(new Battle(states));
+                    GetCardState.setGoldCountAfterThisBattle(45);
+
                     // major.setPlace(man2.get().getCenter());
                     break;
                 case 2:

@@ -8,7 +8,6 @@ import com.jme3.asset.AssetManager;
 import com.jme3.asset.AssetNotFoundException;
 import com.jme3.collision.CollisionResults;
 import com.jme3.cursors.plugins.JmeCursor;
-import com.jme3.font.BitmapFont;
 import com.jme3.input.InputManager;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.event.*;
@@ -32,6 +31,7 @@ import gamesource.battleState.equipment.Equipment;
 import gamesource.util.Storage;
 import truetypefont.TrueTypeFont;
 import truetypefont.TrueTypeKey;
+import truetypefont.TrueTypeLoader;
 
 import java.util.ArrayList;
 
@@ -57,6 +57,7 @@ public class GetCardState extends BaseAppState {
     @Override
     protected void initialize(Application application) {
         this.app = (SimpleApplication) getApplication();
+        app.getAssetManager().registerLoader(TrueTypeLoader.class, "ttf");
         this.assetManager = app.getAssetManager();
         this.stateManager = app.getStateManager();
         this.inputManager = app.getInputManager();
@@ -83,11 +84,10 @@ public class GetCardState extends BaseAppState {
         // 创建字体 (例如：楷书)
         TrueTypeKey ttk = new TrueTypeKey("Util/font.ttf", // 字体
                 1, // 字形：0 普通、1 粗体、2 斜体
-                32);// 字号
+                28);// 字号
         font = (TrueTypeFont) this.app.getAssetManager().loadAsset(ttk);
 
 
-        BitmapFont fnt = app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
         Geometry word = font.getBitmapGeom("Please choose one card or equipment. You can use the card in continue battles.", 0, ColorRGBA.Red);
 
         word.setLocalTranslation(200, 850, 0);
@@ -119,7 +119,7 @@ public class GetCardState extends BaseAppState {
         skip.setLocalTranslation(1300, 20, -1);
         rootNode.attachChild(skip);
 
-        try {// 因为懒惰的逸润巨佬卡牌没有做完会爆错，所以这里有个TRY-CATCH
+        try {// 因为卡牌没有做完会爆错，所以这里有个TRY-CATCH
 
             int count = 0;
             for (Card card : card) {
@@ -132,7 +132,7 @@ public class GetCardState extends BaseAppState {
 
             }
         } catch (AssetNotFoundException e) {
-            System.out.println("逸润巨佬快加上这个卡：" + e.getMessage());
+            System.out.println("this bug belong to WYR：" + e.getMessage());
         }
 
         // 10%概率获得装备
@@ -413,7 +413,7 @@ public class GetCardState extends BaseAppState {
             fpp.removeAllFilters();
             app.getViewPort().removeProcessor(fpp);
         } catch (NullPointerException npe) {
-            System.out.println("从宝箱过来的");
+            System.out.println("from box");
 //            canStorage = false;
         }
         stateManager.detach(stateManager.getState(BattleBackGroundState.class));
@@ -425,8 +425,8 @@ public class GetCardState extends BaseAppState {
     @Override
     protected void onDisable() {
         MainRole.getInstance().getGold(getGoldCountAfterThisBattle);
-        // TODO 通过完善宝箱获取卡来修复这个bug
-        if (canStorage)
+//        // TODO 通过完善宝箱获取卡来修复这个bug
+//        if (canStorage)
             Storage.save();
         this.rootNode.removeFromParent();
         app.getInputManager().removeRawInputListener(mril);

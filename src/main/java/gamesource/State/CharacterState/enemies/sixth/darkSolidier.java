@@ -328,6 +328,7 @@ public class darkSolidier extends BaseAppState implements ActionListener {
     protected void onEnable() {
         app.getRootNode().attachChild(this.rootNode);
         physics.add(solidControl);
+        solid=solidier.getWorldBound();
     }
 
     @Override
