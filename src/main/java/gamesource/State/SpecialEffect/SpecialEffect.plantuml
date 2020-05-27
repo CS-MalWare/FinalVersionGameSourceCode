@@ -1,0 +1,406 @@
+@startuml
+
+title __SPECIALEFFECT's Class Diagram__\n
+
+  namespace gamesource {
+    namespace State {
+      namespace SpecialEffect {
+        class gamesource.State.SpecialEffect.FifthOtherSpecial {
+            ~ bloom : BloomFilter
+            ~ cartoonEdge : CartoonEdgeFilter
+            ~ depthOfField : DepthOfFieldFilter
+            ~ fog : FogFilter
+            ~ lightScattering : LightScatteringFilter
+            ~ sunDir : Vector3f
+            ~ x1 : SafeArrayList<SceneProcessor>
+            - app : SimpleApplication
+            - fpp : FilterPostProcessor
+            - manager : AssetManager
+            - rootNode : Node
+            - view : ViewPort
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace SpecialEffect {
+        class gamesource.State.SpecialEffect.FifthWorldLight {
+            ~ su : DirectionalLightShadowFilter
+            ~ sun : DirectionalLight
+            ~ sun1 : DirectionalLight
+            ~ sun3 : DirectionalLight
+            ~ sun4 : DirectionalLight
+            ~ sun6 : DirectionalLight
+            ~ x1 : SafeArrayList<SceneProcessor>
+            - app : SimpleApplication
+            - fpp : FilterPostProcessor
+            - manager : AssetManager
+            - rootNode : Node
+            - state : int
+            - turnOn : int
+            - view : ViewPort
+            + FifthWorldLight()
+            + FifthWorldLight()
+            + FifthWorldLight()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace SpecialEffect {
+        class gamesource.State.SpecialEffect.FirstWorldLight {
+            ~ su : DirectionalLightShadowFilter
+            ~ sun : DirectionalLight
+            ~ sun1 : DirectionalLight
+            ~ sun3 : DirectionalLight
+            ~ sun4 : DirectionalLight
+            ~ sun6 : DirectionalLight
+            ~ x1 : SafeArrayList<SceneProcessor>
+            - app : SimpleApplication
+            - fpp : FilterPostProcessor
+            - manager : AssetManager
+            - rootNode : Node
+            - state : int
+            - turnOn : int
+            - view : ViewPort
+            + FirstWorldLight()
+            + FirstWorldLight()
+            + FirstWorldLight()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace SpecialEffect {
+        class gamesource.State.SpecialEffect.FirstWorldOtherSpecial {
+            ~ bloom : BloomFilter
+            ~ cartoonEdge : CartoonEdgeFilter
+            ~ depthOfField : DepthOfFieldFilter
+            ~ fog : FogFilter
+            ~ lightScattering : LightScatteringFilter
+            ~ sunDir : Vector3f
+            ~ x1 : SafeArrayList<SceneProcessor>
+            - app : SimpleApplication
+            - fpp : FilterPostProcessor
+            - manager : AssetManager
+            - rootNode : Node
+            - view : ViewPort
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace SpecialEffect {
+        class gamesource.State.SpecialEffect.ForthWorldLight {
+            ~ su : DirectionalLightShadowFilter
+            ~ sun : DirectionalLight
+            ~ sun1 : DirectionalLight
+            ~ sun3 : DirectionalLight
+            ~ sun4 : DirectionalLight
+            ~ sun6 : DirectionalLight
+            ~ x1 : SafeArrayList<SceneProcessor>
+            - app : SimpleApplication
+            - fpp : FilterPostProcessor
+            - manager : AssetManager
+            - rootNode : Node
+            - state : int
+            - turnOn : int
+            - view : ViewPort
+            + ForthWorldLight()
+            + ForthWorldLight()
+            + ForthWorldLight()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace SpecialEffect {
+        class gamesource.State.SpecialEffect.FourthWorldOtherSpecial {
+            ~ bloom : BloomFilter
+            ~ cartoonEdge : CartoonEdgeFilter
+            ~ depthOfField : DepthOfFieldFilter
+            ~ fog : FogFilter
+            ~ lightScattering : LightScatteringFilter
+            ~ sunDir : Vector3f
+            ~ x1 : SafeArrayList<SceneProcessor>
+            - app : SimpleApplication
+            - fpp : FilterPostProcessor
+            - manager : AssetManager
+            - rootNode : Node
+            - view : ViewPort
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace SpecialEffect {
+        class gamesource.State.SpecialEffect.SecondWorldLight {
+            ~ su : DirectionalLightShadowFilter
+            ~ sun : DirectionalLight
+            ~ sun1 : DirectionalLight
+            ~ sun3 : DirectionalLight
+            ~ sun4 : DirectionalLight
+            ~ sun6 : DirectionalLight
+            ~ x1 : SafeArrayList<SceneProcessor>
+            - app : SimpleApplication
+            - fpp : FilterPostProcessor
+            - manager : AssetManager
+            - rootNode : Node
+            - state : int
+            - turnOn : int
+            - view : ViewPort
+            + SecondWorldLight()
+            + SecondWorldLight()
+            + SecondWorldLight()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace SpecialEffect {
+        class gamesource.State.SpecialEffect.SecondWorldOtherSpecial {
+            ~ bloom : BloomFilter
+            ~ cartoonEdge : CartoonEdgeFilter
+            ~ depthOfField : DepthOfFieldFilter
+            ~ fog : FogFilter
+            ~ lightScattering : LightScatteringFilter
+            ~ sunDir : Vector3f
+            ~ x1 : SafeArrayList<SceneProcessor>
+            - app : SimpleApplication
+            - fpp : FilterPostProcessor
+            - manager : AssetManager
+            - rootNode : Node
+            - view : ViewPort
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace SpecialEffect {
+        class gamesource.State.SpecialEffect.SixthWorldLight {
+            ~ su : DirectionalLightShadowFilter
+            ~ sun : DirectionalLight
+            ~ sun1 : DirectionalLight
+            ~ sun3 : DirectionalLight
+            ~ sun4 : DirectionalLight
+            ~ sun6 : DirectionalLight
+            ~ x1 : SafeArrayList<SceneProcessor>
+            - app : SimpleApplication
+            - fpp : FilterPostProcessor
+            - manager : AssetManager
+            - rootNode : Node
+            - state : int
+            - turnOn : int
+            - view : ViewPort
+            + SixthWorldLight()
+            + SixthWorldLight()
+            + SixthWorldLight()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace SpecialEffect {
+        class gamesource.State.SpecialEffect.ThirdOtherSpecial {
+            ~ bloom : BloomFilter
+            ~ cartoonEdge : CartoonEdgeFilter
+            ~ depthOfField : DepthOfFieldFilter
+            ~ lightScattering : LightScatteringFilter
+            ~ sunDir : Vector3f
+            ~ x1 : SafeArrayList<SceneProcessor>
+            - app : SimpleApplication
+            - fpp : FilterPostProcessor
+            - manager : AssetManager
+            - rootNode : Node
+            - view : ViewPort
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace SpecialEffect {
+        class gamesource.State.SpecialEffect.ThirdWater {
+            ~ water : WaterFilter
+            ~ x1 : SafeArrayList<SceneProcessor>
+            - Transparency : float
+            - app : SimpleApplication
+            - color : ColorRGBA
+            - fpp : FilterPostProcessor
+            - height : float
+            - view : ViewPort
+            + ThirdWater()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace SpecialEffect {
+        class gamesource.State.SpecialEffect.ThirdWorldLight {
+            ~ su : DirectionalLightShadowFilter
+            ~ sun : DirectionalLight
+            ~ sun1 : DirectionalLight
+            ~ sun3 : DirectionalLight
+            ~ sun4 : DirectionalLight
+            ~ sun6 : DirectionalLight
+            ~ x1 : SafeArrayList<SceneProcessor>
+            - app : SimpleApplication
+            - fpp : FilterPostProcessor
+            - manager : AssetManager
+            - rootNode : Node
+            - state : int
+            - turnOn : int
+            - view : ViewPort
+            + ThirdWorldLight()
+            + ThirdWorldLight()
+            + ThirdWorldLight()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace SpecialEffect {
+        class gamesource.State.SpecialEffect.Water {
+            ~ water : WaterFilter
+            ~ x1 : SafeArrayList<SceneProcessor>
+            - Transparency : float
+            - app : SimpleApplication
+            - color : ColorRGBA
+            - fpp : FilterPostProcessor
+            - height : float
+            - view : ViewPort
+            + Water()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace SpecialEffect {
+        class gamesource.State.SpecialEffect.makeCross {
+            - app : SimpleApplication
+            - fnt : BitmapFont
+            - text : BitmapText
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  gamesource.State.SpecialEffect.FifthOtherSpecial -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.SpecialEffect.FifthWorldLight -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.SpecialEffect.FirstWorldLight -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.SpecialEffect.FirstWorldOtherSpecial -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.SpecialEffect.ForthWorldLight -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.SpecialEffect.FourthWorldOtherSpecial -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.SpecialEffect.SecondWorldLight -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.SpecialEffect.SecondWorldOtherSpecial -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.SpecialEffect.SixthWorldLight -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.SpecialEffect.ThirdOtherSpecial -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.SpecialEffect.ThirdWater -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.SpecialEffect.ThirdWorldLight -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.SpecialEffect.Water -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.SpecialEffect.makeCross -up-|> com.jme3.app.state.BaseAppState
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

@@ -1,0 +1,469 @@
+@startuml
+
+title __SHOPSTATE's Class Diagram__\n
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.Demo {
+            - alphReference : VersionedReference<Double>
+            - blueReference : VersionedReference<Double>
+            - boxColor : ColorRGBA
+            - greenReference : VersionedReference<Double>
+            - redReference : VersionedReference<Double>
+            - references : VersionedReference[]
+            - showFpsReference : VersionedReference<Boolean>
+            - showStatesReference : VersionedReference<Boolean>
+            - strInsertText : String
+            - test : Panel
+            - tf : TextField
+            {static} + main()
+            + simpleInitApp()
+            + simpleUpdate()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.DragCheck {
+            - actionButton : ActionButton
+            - dragWindow : Container
+            - label : Label
+            - numberOfBuy : int
+            - totalCost : int
+            - totalMoney : int
+            + DragCheck()
+            + OK()
+            + calculatePreferLocation()
+            # Confirm()
+            # cleanup()
+            # createAllDrag()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.DragCheck.CloseCommand {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.EquipmentUI {
+            - button : Button
+            - description : String
+            + EquipmentUI()
+            + EquipmentUI()
+            + EquipmentUI()
+            + addAction()
+            + addToButtonContainer()
+            + equals()
+            + equals()
+            + getButton()
+            + getCardMoney()
+            + getDescription()
+            + setDescription()
+            + setMoney()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.FormattedTextForShop {
+            - cost : int
+            - numberOfBuy : int
+            - reference : VersionedReference<DocumentModel>
+            - restNumber : Label
+            - totalCost : Label
+            - totalMoney : int
+            - window : Container
+            + FormattedTextForShop()
+            + calculatePreferLocation()
+            + getWindow()
+            {static} + isInteger()
+            + update()
+            # Buy()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.FormattedTextForShop.CloseCommand {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.ShopAppState {
+            - app : SimpleApplication
+            - buttomPartContainer : Container
+            {static} - cardUIs : CardUI[]
+            - cardUIsCopy : CardUI[]
+            {static} - cards : Card[]
+            - centralPart : Container
+            {static} - equipmentUIs : EquipmentUI[]
+            - equipmentUIsCopy : EquipmentUI[]
+            {static} - equipments : Equipment[]
+            - general : Container
+            - isMapPressed : boolean
+            - leftPart : Container
+            - leftPartContainer : Container
+            - neutralCardUIs : CardUI[]
+            - pagesContainer : Container
+            - saberCardUIs : CardUI[]
+            {static} - shopString : String
+            - stateManager : AppStateManager
+            - styles : Styles
+            + caculateMoney()
+            + detachShop()
+            + exitFight()
+            + getGeneral()
+            {static} + getShopCard()
+            {static} + getShopCardUIs()
+            {static} + getShopEquipment()
+            {static} + getShopEquipmentUIs()
+            + initialize()
+            + onAction()
+            + onFight()
+            + refreshPage()
+            + showCards()
+            + showCardsType()
+            + showEquipments()
+            + showShop()
+            # cleanup()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.ShopAppState.BackToStart {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.ShopAppState.CardsButtonClick {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.ShopAppState.CardsDirectoryClick {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.ShopAppState.CloseCommand {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.ShopAppState.EquipmentCardsClick {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.ShopAppState.EquipmentClick {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.ShopAppState.HealthClick {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.ShopAppState.PageButtonClick {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.ShopAppState.PageButtonClickForEquip {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.ShopAppState.ShopListener {
+            + onAction()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.ShopAppState.ShowGeneral {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.ShopAppState.ShowNeutral {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.ShopAppState.ShowSaber {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.ShopMoney {
+            - currentMoney : int
+            - totalMoney : int
+            - totalMoneyOfCards : int
+            + ShopMoney()
+            + ShopMoney()
+            + addToCardsMoney()
+            + getMoney()
+            + getTotalMoney()
+            + getTotalMoneyOfCards()
+            + setMoney()
+            + setTotalMoney()
+            + setTotalMoneyOfCards()
+            + update()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.TabTextForShop {
+            - message1 : String
+            - message2 : String
+            - message3 : String
+            - selectionRef : VersionedReference<Tab>
+            - statusLabel : Label
+            - tab1 : String
+            - tab2 : String
+            - tab3 : String
+            - tabs : TabbedPanel
+            - window : Container
+            + TabTextForShop()
+            + calculatePreferLocation()
+            + getWindow()
+            + update()
+            # BuyCard()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+            # setTabContents()
+            - TabTextForShop()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.TabTextForShop.Builder {
+            - message1 : String
+            - message2 : String
+            - message3 : String
+            - tab1 : String
+            - tab2 : String
+            - tab3 : String
+            + Builder()
+            + build()
+            + setMessage1()
+            + setMessage2()
+            + setMessage3()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace shopstate {
+        class gamesource.uiState.shopstate.TabTextForShop.CloseCommand {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  gamesource.uiState.shopstate.Demo -up-|> com.jme3.app.SimpleApplication
+  gamesource.uiState.shopstate.DragCheck -up-|> com.jme3.app.state.BaseAppState
+  gamesource.uiState.shopstate.DragCheck o-- gamesource.uiState.bagstate.CardUI : cardUI
+  gamesource.uiState.shopstate.DragCheck o-- gamesource.uiState.shopstate.DragCheck.CloseCommand : closeCommand
+  gamesource.uiState.shopstate.DragCheck o-- gamesource.uiState.shopstate.EquipmentUI : equipmentUI
+  gamesource.uiState.shopstate.DragCheck +-down- gamesource.uiState.shopstate.DragCheck.CloseCommand
+  gamesource.uiState.shopstate.DragCheck.CloseCommand .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.shopstate.EquipmentUI o-- gamesource.uiState.shopstate.ShopMoney : shopMoney
+  gamesource.uiState.shopstate.FormattedTextForShop -up-|> com.jme3.app.state.BaseAppState
+  gamesource.uiState.shopstate.FormattedTextForShop o-- gamesource.uiState.bagstate.CardUI : cardUI
+  gamesource.uiState.shopstate.FormattedTextForShop o-- gamesource.uiState.shopstate.FormattedTextForShop.CloseCommand : closeCommand
+  gamesource.uiState.shopstate.FormattedTextForShop o-- gamesource.uiState.shopstate.EquipmentUI : equipmentUI
+  gamesource.uiState.shopstate.FormattedTextForShop +-down- gamesource.uiState.shopstate.FormattedTextForShop.CloseCommand
+  gamesource.uiState.shopstate.FormattedTextForShop.CloseCommand .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.shopstate.ShopAppState .up.|> com.jme3.input.controls.ActionListener
+  gamesource.uiState.shopstate.ShopAppState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.uiState.shopstate.ShopAppState o-- gamesource.battleState.equipment.Equipment : commonEquipment
+  gamesource.uiState.shopstate.ShopAppState o-- gamesource.battleState.card.Card : neutralCard
+  gamesource.uiState.shopstate.ShopAppState o-- gamesource.battleState.card.Card : saberCard
+  gamesource.uiState.shopstate.ShopAppState o-- gamesource.uiState.shopstate.ShopMoney : shopMoney
+  gamesource.uiState.shopstate.ShopAppState +-down- gamesource.uiState.shopstate.ShopAppState.BackToStart
+  gamesource.uiState.shopstate.ShopAppState +-down- gamesource.uiState.shopstate.ShopAppState.CardsButtonClick
+  gamesource.uiState.shopstate.ShopAppState +-down- gamesource.uiState.shopstate.ShopAppState.CardsDirectoryClick
+  gamesource.uiState.shopstate.ShopAppState +-down- gamesource.uiState.shopstate.ShopAppState.CloseCommand
+  gamesource.uiState.shopstate.ShopAppState +-down- gamesource.uiState.shopstate.ShopAppState.EquipmentCardsClick
+  gamesource.uiState.shopstate.ShopAppState +-down- gamesource.uiState.shopstate.ShopAppState.EquipmentClick
+  gamesource.uiState.shopstate.ShopAppState +-down- gamesource.uiState.shopstate.ShopAppState.HealthClick
+  gamesource.uiState.shopstate.ShopAppState +-down- gamesource.uiState.shopstate.ShopAppState.PageButtonClick
+  gamesource.uiState.shopstate.ShopAppState +-down- gamesource.uiState.shopstate.ShopAppState.PageButtonClickForEquip
+  gamesource.uiState.shopstate.ShopAppState +-down- gamesource.uiState.shopstate.ShopAppState.ShopListener
+  gamesource.uiState.shopstate.ShopAppState +-down- gamesource.uiState.shopstate.ShopAppState.ShowGeneral
+  gamesource.uiState.shopstate.ShopAppState +-down- gamesource.uiState.shopstate.ShopAppState.ShowNeutral
+  gamesource.uiState.shopstate.ShopAppState +-down- gamesource.uiState.shopstate.ShopAppState.ShowSaber
+  gamesource.uiState.shopstate.ShopAppState.BackToStart .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.shopstate.ShopAppState.CardsButtonClick .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.shopstate.ShopAppState.CardsDirectoryClick .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.shopstate.ShopAppState.CloseCommand .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.shopstate.ShopAppState.EquipmentCardsClick .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.shopstate.ShopAppState.EquipmentClick .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.shopstate.ShopAppState.HealthClick .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.shopstate.ShopAppState.PageButtonClick .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.shopstate.ShopAppState.PageButtonClickForEquip .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.shopstate.ShopAppState.ShopListener .up.|> com.jme3.input.controls.ActionListener
+  gamesource.uiState.shopstate.ShopAppState.ShowGeneral .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.shopstate.ShopAppState.ShowNeutral .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.shopstate.ShopAppState.ShowSaber .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.shopstate.ShopMoney .up.|> gamesource.util.Money
+  gamesource.uiState.shopstate.TabTextForShop -up-|> com.jme3.app.state.BaseAppState
+  gamesource.uiState.shopstate.TabTextForShop o-- gamesource.uiState.bagstate.CardUI : cardUI
+  gamesource.uiState.shopstate.TabTextForShop o-- gamesource.uiState.shopstate.TabTextForShop.CloseCommand : closeCommand
+  gamesource.uiState.shopstate.TabTextForShop o-- gamesource.uiState.shopstate.EquipmentUI : equipmentUI
+  gamesource.uiState.shopstate.TabTextForShop +-down- gamesource.uiState.shopstate.TabTextForShop.Builder
+  gamesource.uiState.shopstate.TabTextForShop +-down- gamesource.uiState.shopstate.TabTextForShop.CloseCommand
+  gamesource.uiState.shopstate.TabTextForShop.Builder o-- gamesource.uiState.bagstate.CardUI : cardUI
+  gamesource.uiState.shopstate.TabTextForShop.Builder o-- gamesource.uiState.shopstate.EquipmentUI : equipmentUI
+  gamesource.uiState.shopstate.TabTextForShop.CloseCommand .up.|> com.simsilica.lemur.Command
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

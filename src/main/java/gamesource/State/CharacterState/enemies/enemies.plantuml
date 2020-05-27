@@ -1,0 +1,410 @@
+@startuml
+
+title __ENEMIES's Class Diagram__\n
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          class gamesource.State.CharacterState.enemies.AngrySkeletonState {
+              - animChannel : AnimChannel
+              - animControl : AnimControl
+              - app : SimpleApplication
+              - bip001 : Node
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - rotateX : float
+              - rotateY : float
+              - rotateZ : float
+              - scene : Node
+              - ske : BoundingVolume
+              - skeleton : Spatial
+              - skeletonControl : CharacterControl
+              - stepHeight : float
+              + AngrySkeletonState()
+              + AngrySkeletonState()
+              + AngrySkeletonState()
+              + get()
+              + initAnim()
+              + initModel()
+              + initPhysics()
+              # cleanup()
+              # initialize()
+              # onDisable()
+              # onEnable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          class gamesource.State.CharacterState.enemies.BatState {
+              - animChannel : AnimChannel
+              - animControl : AnimControl
+              - app : SimpleApplication
+              - bip001 : Node
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - rotateX : float
+              - rotateY : float
+              - rotateZ : float
+              - scene : Node
+              - ske : BoundingVolume
+              - skeleton : Spatial
+              - skeletonControl : CharacterControl
+              - stepHeight : float
+              + BatState()
+              + BatState()
+              + BatState()
+              + get()
+              + initModel()
+              + initPhysics()
+              # cleanup()
+              # initialize()
+              # onDisable()
+              # onEnable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          class gamesource.State.CharacterState.enemies.BlueSkeletonState {
+              - animChannel : AnimChannel
+              - animControl : AnimControl
+              - app : SimpleApplication
+              - bip001 : Node
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - rotateX : float
+              - rotateY : float
+              - rotateZ : float
+              - scene : Node
+              - ske : BoundingVolume
+              - skeleton : Spatial
+              - skeletonControl : CharacterControl
+              - stepHeight : float
+              + BlueSkeletonState()
+              + BlueSkeletonState()
+              + BlueSkeletonState()
+              + get()
+              + initAnim()
+              + initModel()
+              + initPhysics()
+              # cleanup()
+              # initialize()
+              # onDisable()
+              # onEnable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          class gamesource.State.CharacterState.enemies.GreenSkeletonState {
+              - animChannel : AnimChannel
+              - animControl : AnimControl
+              - app : SimpleApplication
+              - bip001 : Node
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - rotateX : float
+              - rotateY : float
+              - rotateZ : float
+              - scene : Node
+              - ske : BoundingVolume
+              - skeleton : Spatial
+              - skeletonControl : CharacterControl
+              - stepHeight : float
+              + GreenSkeletonState()
+              + GreenSkeletonState()
+              + GreenSkeletonState()
+              + get()
+              + initAnim()
+              + initModel()
+              + initPhysics()
+              # cleanup()
+              # initialize()
+              # onDisable()
+              # onEnable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          class gamesource.State.CharacterState.enemies.KingSkeletonState {
+              - animChannel : AnimChannel
+              - animControl : AnimControl
+              - app : SimpleApplication
+              - bip001 : Node
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - rotateX : float
+              - rotateY : float
+              - rotateZ : float
+              - scene : Node
+              - ske : BoundingVolume
+              - skeleton : Spatial
+              - skeletonControl : CharacterControl
+              - stepHeight : float
+              + KingSkeletonState()
+              + KingSkeletonState()
+              + KingSkeletonState()
+              + get()
+              + initAnim()
+              + initModel()
+              + initPhysics()
+              # cleanup()
+              # initialize()
+              # onDisable()
+              # onEnable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          class gamesource.State.CharacterState.enemies.RedSkeletonState {
+              - animChannel : AnimChannel
+              - animControl : AnimControl
+              - app : SimpleApplication
+              - bip001 : Node
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - rotateX : float
+              - rotateY : float
+              - rotateZ : float
+              - scene : Node
+              - ske : BoundingVolume
+              - skeleton : Spatial
+              - skeletonControl : CharacterControl
+              - stepHeight : float
+              + RedSkeletonState()
+              + RedSkeletonState()
+              + RedSkeletonState()
+              + get()
+              + initAnim()
+              + initModel()
+              + initPhysics()
+              # cleanup()
+              # initialize()
+              # onDisable()
+              # onEnable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          class gamesource.State.CharacterState.enemies.SnowRobotState {
+              - animChannel : AnimChannel
+              - animControl : AnimControl
+              - app : SimpleApplication
+              - bip001 : Node
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - rotateX : float
+              - rotateY : float
+              - rotateZ : float
+              - scene : Node
+              - ske : BoundingVolume
+              - skeleton : Spatial
+              - skeletonControl : CharacterControl
+              - stepHeight : float
+              + SnowRobotState()
+              + SnowRobotState()
+              + SnowRobotState()
+              + get()
+              + initModel()
+              + initPhysics()
+              # cleanup()
+              # initialize()
+              # onDisable()
+              # onEnable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          class gamesource.State.CharacterState.enemies.StuxnetState {
+              - animChannel : AnimChannel
+              - animControl : AnimControl
+              - app : SimpleApplication
+              - bip001 : Node
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - rotateX : float
+              - rotateY : float
+              - rotateZ : float
+              - scene : Node
+              - ske : BoundingVolume
+              - skeleton : Spatial
+              - skeletonControl : CharacterControl
+              - stepHeight : float
+              + StuxnetState()
+              + StuxnetState()
+              + StuxnetState()
+              + get()
+              + initModel()
+              + initPhysics()
+              # cleanup()
+              # initialize()
+              # onDisable()
+              # onEnable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          class gamesource.State.CharacterState.enemies.planState {
+              - app : SimpleApplication
+              - bip001 : Node
+              - boy : Spatial
+              - boyControl : CharacterControl
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - lizard : BoundingVolume
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - scene : Node
+              - stepHeight : float
+              + get()
+              + initModel()
+              + initPhysics()
+              + planState()
+              + planState()
+              + planState()
+              # cleanup()
+              # initialize()
+              # onDisable()
+              # onEnable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  gamesource.State.CharacterState.enemies.AngrySkeletonState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.BatState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.BlueSkeletonState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.GreenSkeletonState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.KingSkeletonState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.RedSkeletonState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.SnowRobotState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.StuxnetState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.planState -up-|> com.jme3.app.state.BaseAppState
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

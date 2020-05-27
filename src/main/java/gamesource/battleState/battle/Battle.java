@@ -60,6 +60,10 @@ public class Battle extends BaseAppState {
     public final static String move="MOVE";
     public final static Trigger MOVE=new KeyTrigger(KeyInput.KEY_W);
 
+    public final static String menu = "MENU";
+    public final static Trigger MENU = new KeyTrigger(KeyInput.KEY_V);
+    public final static String map = "MAP";
+    public final static Trigger MAP = new KeyTrigger(KeyInput.KEY_M);
     private InputManager inputManager;
 
     public Battle(){}
@@ -232,5 +236,9 @@ public class Battle extends BaseAppState {
         inputManager.addMapping(change,CHANGECAMERA);
         inputManager.addMapping(bag,BAG);
         inputManager.addMapping(move,MOVE);
+        inputManager.addMapping(menu, MENU);
+
+
+        inputManager.addMapping(map, MAP);
     }
 }

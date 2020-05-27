@@ -603,6 +603,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Slime(20, "Enemies/skeleton/skeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
                             new Slime(15, "Enemies/skeleton/skeleton.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
@@ -624,6 +626,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Slime(20, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
                             new Slime(16, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
@@ -645,6 +649,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Slime(24, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 2, 0, 0, 0, 0, 0, 0, 0),
                             new Slime(26, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 3, 0, 0, 0, 0, 0, 0, 0)
@@ -666,6 +672,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new RedSlime(30, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 0, 0, 0, 0, 0, 0),
                             new RedSlime(25, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 0, 0, 0, 0, 0, 0)
@@ -688,6 +696,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new RedSlime(30, "Enemies/bat/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
                             new BlackSlime(40, "Enemies/bat/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
@@ -710,6 +720,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new RedSlime(35, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 1, 2, 0, 0, 0, 0, 0),
                             new BlackSlime(40, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 3, 2, 2, 0, 0, 0, 0, 0)
@@ -732,6 +744,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new EliteSlime(85, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 5, 1, 1, 0, 0, 0, 0, 0)
                     );
@@ -754,6 +768,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new BlackSlime(45, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 5, 0, 3, 0, 0, 0, 0, 0),
                             new BlackSlime(38, "Enemies/skeleton/greenSkeleton/greenSkeleton.j3o", 5, 0, 2, 0, 0, 0, 0, 0)
@@ -775,6 +791,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new RedSlime(40, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 7, 2, 2, 0, 0, 0, 0, 0),
                             new RedSlime(45, "Enemies/skeleton/skeleton.j3o", 5, 1, 0, 0, 0, 0, 0, 0)
@@ -796,6 +814,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new KingSlime(160, "Enemies/skeleton/KingSkeleton/kingSkeleton.j3o", 5, 1, 1, 0, 0, 0, 0, 0)
                     );
@@ -820,6 +840,8 @@ public class SecondState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new EliteSlime(90, "Enemies/bat/scene.j3o", 10, 3, 3, 1, 1, 0, 0, 0)
                     );
@@ -956,6 +978,12 @@ public class SecondState extends BaseAppState {
         inputManager.addListener(st, change);
         inputManager.addListener(st, bag);
         inputManager.addListener(st, move);
+        inputManager.addMapping(menu, MENU);
+        inputManager.addListener(st,menu);
+
+
+        inputManager.addMapping(map, MAP);
+        inputManager.addListener(st, map);
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
                 try {
@@ -979,6 +1007,8 @@ public class SecondState extends BaseAppState {
         inputManager.deleteTrigger(change, CHANGECAMERA);
         inputManager.deleteTrigger(bag, BAG);
         inputManager.deleteTrigger(move, MOVE);
+        inputManager.deleteTrigger(menu, MENU);
+        inputManager.deleteTrigger(map, MAP);
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
                 baseAppState.setEnabled(false);

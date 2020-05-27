@@ -1,0 +1,603 @@
+@startuml
+
+title __APPSTATE's Class Diagram__\n
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.BattleBackGroundState {
+          - app : SimpleApplication
+          {static} - backgroundSrc : String
+          - fpp : FilterPostProcessor
+          - rootNode : Node
+          + getFpp()
+          + initFpp()
+          {static} + setBackgroundSrc()
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.BattleEffect {
+          ~ bloom : BloomFilter
+          ~ cartoonEdge : CartoonEdgeFilter
+          ~ depthOfField : DepthOfFieldFilter
+          ~ fog : FogFilter
+          ~ lightScattering : LightScatteringFilter
+          ~ pic : Spatial
+          ~ sunDir : Vector3f
+          ~ x1 : SafeArrayList<SceneProcessor>
+          - app : SimpleApplication
+          - fpp : FilterPostProcessor
+          - manager : AssetManager
+          - rootNode : Node
+          - view : ViewPort
+          + BattleEffect()
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.BattleState {
+          ~ bullet : BulletAppState
+          - app : SimpleApplication
+          - inputListener : RawInputListener
+          - pic : Spatial
+          - state : AppStateManager
+          + BattleState()
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+          - changeCursor()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.Board {
+          - app : SimpleApplication
+          - geom : Geometry
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.Board2 {
+          - app : SimpleApplication
+          - blgeom1 : Geometry
+          - blgeom2 : Geometry
+          - blgeom3 : Geometry
+          - blgeomMajor : Geometry
+          - geom1 : Geometry
+          - geom2 : Geometry
+          - geom3 : Geometry
+          - geomMajor : Geometry
+          - number : int
+          + Board2()
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.DecksState {
+          {static} + BOLD : int
+          {static} + CLICK : String
+          {static} + FONT_SIZE : int
+          {static} + ITALIC : int
+          {static} + PLAIN : int
+          ~ font : TrueTypeFont
+          - app : SimpleApplication
+          - audioNodes : ArrayList<AudioNode>
+          - drawDeck : ArrayList<Card>
+          - drawDeckPic : Picture
+          - drawNum : int
+          - drawText : Geometry
+          - dropDeck : ArrayList<Card>
+          - dropDeckPic : Picture
+          - dropNum : int
+          - dropText : Geometry
+          - endTurn : Picture
+          - exhaustDeck : ArrayList<Card>
+          - exhaustDeckPic : Picture
+          - exhaustNum : int
+          - exhaustText : Geometry
+          {static} - instance : DecksState
+          - positionX : int[]
+          - positionY : int[]
+          - rootNode : Node
+          - showDeck : ArrayList<Card>
+          + addToDraw()
+          + addToDraw()
+          + addToDrop()
+          + addToExhaust()
+          + drawCard()
+          + getDrawDeck()
+          + getDrawNum()
+          + getDropDeck()
+          + getDropNum()
+          + getExhaustDeck()
+          + getExhaustNum()
+          {static} + getInstance()
+          + hideCards()
+          + setImages()
+          + showCards()
+          + updateDrawNum()
+          + updateDropNum()
+          + updateExhaustNum()
+          + updateNum()
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+          - getGuiCollision()
+          - getGuiCollision()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.DecksState.MyInputListener {
+          ~ font : TrueTypeFont
+          ~ ttk : TrueTypeKey
+          - enemyActionAudio : String
+          - isDrawDeckShow : Boolean
+          - isDropDeckShow : Boolean
+          - isExhuastDeckShow : Boolean
+          - text : Geometry
+          + beginInput()
+          + endInput()
+          + onJoyAxisEvent()
+          + onJoyButtonEvent()
+          + onKeyEvent()
+          + onMouseButtonEvent()
+          + onMouseMotionEvent()
+          + onTouchEvent()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.EnemyState {
+          {static} + lock : boolean
+          # actionDisplay : BitmapText
+          ~ buffDisplay : BitmapText
+          ~ fnt : BitmapFont
+          ~ q : Quad
+          - animChannels : ArrayList<AnimChannel>
+          - animControls : ArrayList<AnimControl>
+          - app : SimpleApplication
+          - assetManager : AssetManager
+          - blockHints : ArrayList<Geometry>
+          - blockPositions : ArrayList<Float>
+          - blockPositionsnews : ArrayList<Float>
+          - camera : Camera
+          - chosen : Geometry
+          - enemies : ArrayList<Enemy>
+          - enemiesModel : ArrayList<Spatial>
+          - hpHints : ArrayList<Geometry>
+          - hpPositions : ArrayList<Float>
+          - hpPositionsnew : ArrayList<Float>
+          - inputManager : InputManager
+          {static} - instance : EnemyState
+          - modelPositions : ArrayList<Integer>
+          - pe : ParticleEmitter
+          - rootNode : Node
+          - simpleApp : SimpleApplication
+          - stateManager : AppStateManager
+          - targetID : int
+          - viewPort : ViewPort
+          + EnemyState()
+          + addEnemies()
+          + displayAction()
+          + getAnimChannels()
+          + getAnimControls()
+          + getChosen()
+          + getEnemies()
+          {static} + getInstance()
+          + getTarget()
+          + initEnemies()
+          + initializeHints()
+          + removeAction()
+          + size()
+          + update()
+          + updateHints()
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+          - getGuiCollision()
+          - getRay()
+          - getRay()
+          - getRootCollision()
+          - setModelPos()
+          - setModelSize()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.EnemyState.MyRawInputListener {
+          - buffDisplayBoard : Geometry
+          + beginInput()
+          + endInput()
+          + onJoyAxisEvent()
+          + onJoyButtonEvent()
+          + onKeyEvent()
+          + onMouseButtonEvent()
+          + onMouseMotionEvent()
+          + onTouchEvent()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.FilterAppState {
+          - assetManager : AssetManager
+          - filtersToAdd : List<Filter>
+          - filtersToRemove : List<Filter>
+          - fpp : FilterPostProcessor
+          - viewPort : ViewPort
+          + add()
+          + remove()
+          + update()
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+          - addFilters()
+          - removeFilters()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.GetCardState {
+          - app : SimpleApplication
+          - assetManager : AssetManager
+          - camera : Camera
+          - canStorage : boolean
+          - card : ArrayList<Card>
+          - font : TrueTypeFont
+          {static} - getGoldCountAfterThisBattle : int
+          - inputManager : InputManager
+          - rootNode : Node
+          - stateManager : AppStateManager
+          - viewPort : ViewPort
+          - world : String
+          + finish()
+          {static} + setGoldCountAfterThisBattle()
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+          - enlargeCard()
+          - enlargeEquipment()
+          - getGuiCollision()
+          - getGuiCollision()
+          - recoverCard()
+          - recoverEquipment()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.GetCardState.MyRawInputListener {
+          ~ des : Geometry
+          ~ title : Geometry
+          + beginInput()
+          + endInput()
+          + onJoyAxisEvent()
+          + onJoyButtonEvent()
+          + onKeyEvent()
+          + onMouseButtonEvent()
+          + onMouseMotionEvent()
+          + onTouchEvent()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.GetEquipmentState {
+          - app : SimpleApplication
+          - assetManager : AssetManager
+          - camera : Camera
+          - equipments : ArrayList<Equipment>
+          {static} - getGoldCountAfterThisBattle : int
+          - inputManager : InputManager
+          - rootNode : Node
+          - stateManager : AppStateManager
+          - viewPort : ViewPort
+          + finish()
+          {static} + setGetGoldCountAfterThisBattle()
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+          - enlargeEquipment()
+          - getGuiCollision()
+          - getGuiCollision()
+          - recoverEquipment()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.GetEquipmentState.MyRawInputListener {
+          ~ des : BitmapText
+          ~ fnt : BitmapFont
+          ~ title : BitmapText
+          + beginInput()
+          + endInput()
+          + onJoyAxisEvent()
+          + onJoyButtonEvent()
+          + onKeyEvent()
+          + onMouseButtonEvent()
+          + onMouseMotionEvent()
+          + onTouchEvent()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.HandCardsState {
+          {static} + cardHeight : double
+          {static} + cardWidth : double
+          {static} + height : double
+          {static} + width : double
+          ~ audioAttack1 : AudioNode
+          ~ audioAttack2 : AudioNode
+          ~ audioAttack3 : AudioNode
+          ~ audioAttack4 : AudioNode
+          ~ audioPower : AudioNode
+          ~ audioSkill1 : AudioNode
+          ~ audioSkill2 : AudioNode
+          ~ bgm : AudioNode
+          - app : SimpleApplication
+          - arrow : Geometry
+          - cardUsedCount : int
+          - handCards : ArrayList<Card>
+          - horizontalDiff : double
+          {static} - instance : HandCardsState
+          - positions : double[][][]
+          {static} - ratio : float
+          - rootNode : Node
+          - rotateRate_left : float
+          - rotateRate_right : float
+          - spline : Spline
+          - startPoint : Vector3f
+          - top : double
+          - verticalDiff_left : double
+          - verticalDiff_right : double
+          + addToHand()
+          + addToHand()
+          + addToHand()
+          + addToHand()
+          + drawCards()
+          + getCardUsedCount()
+          + getHandCards()
+          {static} + getInstance()
+          + getRootNode()
+          {static} + main()
+          + setCardUsedCount()
+          # cleanup()
+          # computePosition()
+          # createArrow()
+          # initialize()
+          # moveArrow()
+          # newCard()
+          # onDisable()
+          # onEnable()
+          - adjustAllCardsPosition()
+          - enlargeCard()
+          - getGuiCollision()
+          - getGuiCollision()
+          - putCardCenter()
+          - recoverCard()
+          - useCard()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.HandCardsState.MyRawInputListener {
+          + beginInput()
+          + endInput()
+          + onJoyAxisEvent()
+          + onJoyButtonEvent()
+          + onKeyEvent()
+          + onMouseButtonEvent()
+          + onMouseMotionEvent()
+          + onTouchEvent()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.LeadingActorState {
+          ~ blHint : Geometry
+          ~ fnt : BitmapFont
+          ~ font : TrueTypeFont
+          ~ hpHint : Geometry
+          ~ ttk : TrueTypeKey
+          - MpPic : Picture
+          - MpText : Geometry
+          - actors : ArrayList<MainRole>
+          {static} - animChannel : AnimChannel
+          - animControl : AnimControl
+          - app : SimpleApplication
+          - chosen : Geometry
+          - flag : boolean
+          - guiNode : Node
+          - model1 : Spatial
+          - myRawInputListener : RawInputListener
+          - rootNode : Node
+          + addActor()
+          {static} + attack()
+          + end()
+          {static} + getAnimChannel()
+          + getAnimControl()
+          + getChosen()
+          {static} + getDamage()
+          {static} + getDeBuff()
+          + initializeHints()
+          {static} + releaseSkill()
+          + update()
+          + updateHints()
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+          - getGuiCollision()
+          - getRootCollision()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.LeadingActorState.MyRawInputListener {
+          ~ fnt : BitmapFont
+          ~ q : Quad
+          - buffDisplay : BitmapText
+          + beginInput()
+          + endInput()
+          + onJoyAxisEvent()
+          + onJoyButtonEvent()
+          + onKeyEvent()
+          + onMouseButtonEvent()
+          + onMouseMotionEvent()
+          + onTouchEvent()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.appState {
+      class gamesource.battleState.appState.LightState {
+          ~ su : DirectionalLightShadowFilter
+          ~ sun : DirectionalLight
+          ~ sun1 : DirectionalLight
+          ~ sun3 : DirectionalLight
+          ~ sun4 : DirectionalLight
+          ~ sun6 : DirectionalLight
+          ~ x1 : SafeArrayList<SceneProcessor>
+          - app : SimpleApplication
+          - fpp : FilterPostProcessor
+          - manager : AssetManager
+          - rootNode : Node
+          - turnOn : int
+          - view : ViewPort
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+      }
+    }
+  }
+  
+
+  gamesource.battleState.appState.BattleBackGroundState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.battleState.appState.BattleEffect -up-|> com.jme3.app.state.BaseAppState
+  gamesource.battleState.appState.BattleState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.battleState.appState.BattleState o-- gamesource.State.CharacterState.MajorActor : major
+  gamesource.battleState.appState.BattleState o-- gamesource.State.CharacterState.secondWorldCharacter.goblinGirlState : girl
+  gamesource.battleState.appState.BattleState o-- gamesource.State.controlState.InputAppState : input
+  gamesource.battleState.appState.BattleState o-- gamesource.State.CharacterState.secondWorldCharacter.shanmanState : shanman
+  gamesource.battleState.appState.BattleState o-- gamesource.State.CharacterState.enemies.AngrySkeletonState : skeleton1
+  gamesource.battleState.appState.BattleState o-- gamesource.State.CharacterState.enemies.GreenSkeletonState : skeleton2
+  gamesource.battleState.appState.BattleState o-- gamesource.State.mapState.SecondWorldMap : world
+  gamesource.battleState.appState.Board -up-|> com.jme3.app.state.BaseAppState
+  gamesource.battleState.appState.Board2 -up-|> com.jme3.app.state.BaseAppState
+  gamesource.battleState.appState.DecksState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.battleState.appState.DecksState o-- gamesource.battleState.appState.DecksState.MyInputListener : myActionListener
+  gamesource.battleState.appState.DecksState +-down- gamesource.battleState.appState.DecksState.MyInputListener
+  gamesource.battleState.appState.DecksState.MyInputListener .up.|> com.jme3.input.RawInputListener
+  gamesource.battleState.appState.EnemyState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.battleState.appState.EnemyState o-- gamesource.battleState.appState.EnemyState.MyRawInputListener : myRawInputListener
+  gamesource.battleState.appState.EnemyState o-- gamesource.battleState.character.Enemy : target
+  gamesource.battleState.appState.EnemyState +-down- gamesource.battleState.appState.EnemyState.MyRawInputListener
+  gamesource.battleState.appState.EnemyState.MyRawInputListener .up.|> com.jme3.input.RawInputListener
+  gamesource.battleState.appState.FilterAppState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.battleState.appState.GetCardState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.battleState.appState.GetCardState o-- gamesource.battleState.appState.GetCardState.MyRawInputListener : mril
+  gamesource.battleState.appState.GetCardState +-down- gamesource.battleState.appState.GetCardState.MyRawInputListener
+  gamesource.battleState.appState.GetCardState.MyRawInputListener .up.|> com.jme3.input.RawInputListener
+  gamesource.battleState.appState.GetCardState.MyRawInputListener o-- gamesource.battleState.card.Card : last
+  gamesource.battleState.appState.GetCardState.MyRawInputListener o-- gamesource.battleState.equipment.Equipment : lastEquipment
+  gamesource.battleState.appState.GetEquipmentState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.battleState.appState.GetEquipmentState o-- gamesource.battleState.appState.GetEquipmentState.MyRawInputListener : mril
+  gamesource.battleState.appState.GetEquipmentState +-down- gamesource.battleState.appState.GetEquipmentState.MyRawInputListener
+  gamesource.battleState.appState.GetEquipmentState.MyRawInputListener .up.|> com.jme3.input.RawInputListener
+  gamesource.battleState.appState.GetEquipmentState.MyRawInputListener o-- gamesource.battleState.equipment.Equipment : last
+  gamesource.battleState.appState.HandCardsState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.battleState.appState.HandCardsState o-- gamesource.battleState.appState.HandCardsState.MyRawInputListener : cardListener
+  gamesource.battleState.appState.HandCardsState o-- gamesource.battleState.card.Card : chosen
+  gamesource.battleState.appState.HandCardsState +-down- gamesource.battleState.appState.HandCardsState.MyRawInputListener
+  gamesource.battleState.appState.HandCardsState.MyRawInputListener .up.|> com.jme3.input.RawInputListener
+  gamesource.battleState.appState.HandCardsState.MyRawInputListener o-- gamesource.battleState.card.Card : center
+  gamesource.battleState.appState.HandCardsState.MyRawInputListener o-- gamesource.battleState.card.Card : last
+  gamesource.battleState.appState.LeadingActorState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.battleState.appState.LeadingActorState o-- gamesource.battleState.character.MainRole : target
+  gamesource.battleState.appState.LeadingActorState +-down- gamesource.battleState.appState.LeadingActorState.MyRawInputListener
+  gamesource.battleState.appState.LeadingActorState.MyRawInputListener .up.|> com.jme3.input.RawInputListener
+  gamesource.battleState.appState.LightState -up-|> com.jme3.app.state.BaseAppState
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

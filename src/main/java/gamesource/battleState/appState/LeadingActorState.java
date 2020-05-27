@@ -36,6 +36,7 @@ import truetypefont.TrueTypeFont;
 import truetypefont.TrueTypeKey;
 import truetypefont.TrueTypeLoader;
 
+import java.io.IOException;
 import java.util.ArrayList;
 // 主角模型在战斗中的模组
 public class LeadingActorState extends BaseAppState {
@@ -439,7 +440,7 @@ public class LeadingActorState extends BaseAppState {
             try {
                 gamesource.initialinterface.Main_test.start_game();
                 System.exit(0);
-            } catch (InterruptedException e) {
+            } catch (InterruptedException | IOException e) {
                 e.printStackTrace();
             }
             app.getStateManager().detach(app.getStateManager().getState(DecksState.class));

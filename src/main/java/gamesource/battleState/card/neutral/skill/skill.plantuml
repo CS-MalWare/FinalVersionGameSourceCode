@@ -1,0 +1,239 @@
+@startuml
+
+title __SKILL's Class Diagram__\n
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace neutral.skill {
+        class gamesource.battleState.card.neutral.skill.Bomb {
+            + Bomb()
+            + Bomb()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace neutral.skill {
+        class gamesource.battleState.card.neutral.skill.ChargeMoney {
+            + ChargeMoney()
+            + ChargeMoney()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace neutral.skill {
+        class gamesource.battleState.card.neutral.skill.Crouch {
+            + Crouch()
+            + Crouch()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace neutral.skill {
+        class gamesource.battleState.card.neutral.skill.Crystallization {
+            + Crystallization()
+            + Crystallization()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace neutral.skill {
+        class gamesource.battleState.card.neutral.skill.Enchantment {
+            + Enchantment()
+            + Enchantment()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace neutral.skill {
+        class gamesource.battleState.card.neutral.skill.Intelligent {
+            + Intelligent()
+            + Intelligent()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace neutral.skill {
+        class gamesource.battleState.card.neutral.skill.PickAndTease {
+            + PickAndTease()
+            + PickAndTease()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace neutral.skill {
+        class gamesource.battleState.card.neutral.skill.SecretAttack {
+            + SecretAttack()
+            + SecretAttack()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace neutral.skill {
+        class gamesource.battleState.card.neutral.skill.SecretPower {
+            + SecretPower()
+            + SecretPower()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace neutral.skill {
+        class gamesource.battleState.card.neutral.skill.SecretSkill {
+            + SecretSkill()
+            + SecretSkill()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace neutral.skill {
+        class gamesource.battleState.card.neutral.skill.ShieldWall {
+            + ShieldWall()
+            + ShieldWall()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace neutral.skill {
+        class gamesource.battleState.card.neutral.skill.Tenacity {
+            + Tenacity()
+            + Tenacity()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace neutral.skill {
+        class gamesource.battleState.card.neutral.skill.Twice {
+            + Twice()
+            + Twice()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace neutral.skill {
+        class gamesource.battleState.card.neutral.skill.Unyielding {
+            + Unyielding()
+            + Unyielding()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace neutral.skill {
+        class gamesource.battleState.card.neutral.skill.Winding {
+            + Winding()
+            + Winding()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  gamesource.battleState.card.neutral.skill.Bomb -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.neutral.skill.ChargeMoney -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.neutral.skill.Crouch -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.neutral.skill.Crystallization -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.neutral.skill.Enchantment -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.neutral.skill.Intelligent -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.neutral.skill.PickAndTease -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.neutral.skill.SecretAttack -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.neutral.skill.SecretPower -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.neutral.skill.SecretSkill -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.neutral.skill.ShieldWall -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.neutral.skill.Tenacity -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.neutral.skill.Twice -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.neutral.skill.Unyielding -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.neutral.skill.Winding -up-|> gamesource.battleState.card.SkillCard
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

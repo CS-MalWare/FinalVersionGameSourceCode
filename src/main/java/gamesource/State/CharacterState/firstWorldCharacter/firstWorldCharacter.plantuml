@@ -1,0 +1,386 @@
+@startuml
+
+title __FIRSTWORLDCHARACTER's Class Diagram__\n
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace firstWorldCharacter {
+          class gamesource.State.CharacterState.firstWorldCharacter.KingState {
+              - King : Spatial
+              - app : SimpleApplication
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - king : BoundingVolume
+              - kingControl : CharacterControl
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - stepHeight : float
+              + KingState()
+              + KingState()
+              + KingState()
+              + get()
+              + initModel()
+              + initPhysics()
+              # cleanup()
+              # initialize()
+              # onDisable()
+              # onEnable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace firstWorldCharacter {
+          class gamesource.State.CharacterState.firstWorldCharacter.KnightState {
+              - Knight : Spatial
+              - animChannel : AnimChannel
+              - animControl : AnimControl
+              - app : SimpleApplication
+              - bip001 : Node
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - knight : BoundingVolume
+              - knightControl : CharacterControl
+              - model : int
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - rotateX : float
+              - rotateY : float
+              - rotateZ : float
+              - scene : Node
+              - stepHeight : float
+              - timer : float
+              - type : int
+              + KnightState()
+              + KnightState()
+              + KnightState()
+              + KnightState()
+              + KnightState()
+              + KnightState()
+              + KnightState()
+              + KnightState()
+              + KnightState()
+              + KnightState()
+              + get()
+              + initAnim()
+              + initModel()
+              + initPhysics()
+              + onAction()
+              + update()
+              # attack()
+              # attack2()
+              # cleanup()
+              # idle()
+              # initialize()
+              # onDisable()
+              # onEnable()
+              # takeDamage()
+              # takeDamage2()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace firstWorldCharacter {
+          class gamesource.State.CharacterState.firstWorldCharacter.blackBoyState {
+              - animChannel : AnimChannel
+              - animControl : AnimControl
+              - app : SimpleApplication
+              - bip001 : Node
+              - boy : Spatial
+              - boyControl : CharacterControl
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - rotateX : float
+              - rotateY : float
+              - rotateZ : float
+              - scene : Node
+              - stepHeight : float
+              + blackBoyState()
+              + blackBoyState()
+              + blackBoyState()
+              + initAnim()
+              + initModel()
+              + initPhysics()
+              + onAction()
+              # cleanup()
+              # initialize()
+              # onDisable()
+              # onEnable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace firstWorldCharacter {
+          class gamesource.State.CharacterState.firstWorldCharacter.girlState {
+              - animChannel : AnimChannel
+              - animControl : AnimControl
+              - app : SimpleApplication
+              - bip001 : Node
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - girl : Spatial
+              - girlControl : CharacterControl
+              - height : float
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - rotateX : float
+              - rotateY : float
+              - rotateZ : float
+              - scene : Node
+              - stepHeight : float
+              + girlState()
+              + girlState()
+              + girlState()
+              + initAnim()
+              + initModel()
+              + initPhysics()
+              + onAction()
+              # cleanup()
+              # initialize()
+              # onDisable()
+              # onEnable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace firstWorldCharacter {
+          class gamesource.State.CharacterState.firstWorldCharacter.lizardState {
+              - app : SimpleApplication
+              - bip001 : Node
+              - boy : Spatial
+              - boyControl : CharacterControl
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - lizard : BoundingVolume
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - scene : Node
+              - stepHeight : float
+              + get()
+              + initModel()
+              + initPhysics()
+              + lizardState()
+              + lizardState()
+              + lizardState()
+              # cleanup()
+              # initialize()
+              # onDisable()
+              # onEnable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace firstWorldCharacter {
+          class gamesource.State.CharacterState.firstWorldCharacter.metalKnightState {
+              - animChannel : AnimChannel
+              - animControl : AnimControl
+              - app : SimpleApplication
+              - bip001 : Node
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - knight : Spatial
+              - knightControl : CharacterControl
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - rotateX : float
+              - rotateY : float
+              - rotateZ : float
+              - scene : Node
+              - stepHeight : float
+              + initAnim()
+              + initModel()
+              + initPhysics()
+              + metalKnightState()
+              + metalKnightState()
+              + metalKnightState()
+              + onAction()
+              # cleanup()
+              # initialize()
+              # onDisable()
+              # onEnable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace firstWorldCharacter {
+          class gamesource.State.CharacterState.firstWorldCharacter.shovelKnight {
+              - Knight : Spatial
+              - app : SimpleApplication
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - knightControl : CharacterControl
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - stepHeight : float
+              + initModel()
+              + initPhysics()
+              + shovelKnight()
+              + shovelKnight()
+              + shovelKnight()
+              # cleanup()
+              # initialize()
+              # onDisable()
+              # onEnable()
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace firstWorldCharacter {
+          class gamesource.State.CharacterState.firstWorldCharacter.soldierState {
+              - animChannel : AnimChannel
+              - animControl : AnimControl
+              - app : SimpleApplication
+              - bip001 : Node
+              - bullet : BulletAppState
+              - capsuleShape : CapsuleCollisionShape
+              - character : Node
+              - height : float
+              - model : int
+              - modelY : float
+              - physics : PhysicsSpace
+              - place : Vector3f
+              - radius : float
+              - rootNode : Node
+              - rotateX : float
+              - rotateY : float
+              - rotateZ : float
+              - scene : Node
+              - solid : BoundingVolume
+              - solidControl : CharacterControl
+              - solidier : Spatial
+              - stepHeight : float
+              - timer : float
+              - type : int
+              + get()
+              + initAnim()
+              + initModel()
+              + initPhysics()
+              + onAction()
+              + soldierState()
+              + soldierState()
+              + soldierState()
+              + soldierState()
+              + soldierState()
+              + soldierState()
+              + soldierState()
+              + soldierState()
+              + soldierState()
+              + soldierState()
+              + update()
+              # attack()
+              # attack2()
+              # cleanup()
+              # idle()
+              # initialize()
+              # onDisable()
+              # onEnable()
+              # takeDamage()
+              # takeDamage2()
+          }
+        }
+      }
+    }
+  }
+  
+
+  gamesource.State.CharacterState.firstWorldCharacter.KingState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.firstWorldCharacter.KnightState .up.|> com.jme3.input.controls.ActionListener
+  gamesource.State.CharacterState.firstWorldCharacter.KnightState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.firstWorldCharacter.blackBoyState .up.|> com.jme3.input.controls.ActionListener
+  gamesource.State.CharacterState.firstWorldCharacter.blackBoyState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.firstWorldCharacter.girlState .up.|> com.jme3.input.controls.ActionListener
+  gamesource.State.CharacterState.firstWorldCharacter.girlState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.firstWorldCharacter.lizardState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.firstWorldCharacter.metalKnightState .up.|> com.jme3.input.controls.ActionListener
+  gamesource.State.CharacterState.firstWorldCharacter.metalKnightState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.firstWorldCharacter.shovelKnight -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.firstWorldCharacter.soldierState .up.|> com.jme3.input.controls.ActionListener
+  gamesource.State.CharacterState.firstWorldCharacter.soldierState -up-|> com.jme3.app.state.BaseAppState
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

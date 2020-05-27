@@ -1,0 +1,341 @@
+@startuml
+
+title __TESTSTATE's Class Diagram__\n
+
+  namespace gamesource {
+    namespace testState {
+      class gamesource.testState.AxisState {
+          - app : SimpleApplication
+          - assetManager : AssetManager
+          - rootNode : Node
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+          - createArrow()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace testState {
+      class gamesource.testState.CharacterAppState {
+          - animChannel : AnimChannel
+          - animControl : AnimControl
+          - assetManager : AssetManager
+          - bip001 : Node
+          - cam : Camera
+          - camDir : Vector3f
+          - camNode : Node
+          - camRot : Quaternion
+          - character : Node
+          - height : float
+          - inputManager : InputManager
+          - model : Spatial
+          - player : CharacterControl
+          - radius : float
+          - scene : Node
+          - stateManager : AppStateManager
+          - stepHeight : float
+          - walkDir : Vector3f
+          + idle()
+          + jump()
+          + onAnimChange()
+          + onAnimCycleDone()
+          + update()
+          + walk()
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+          - initAnimation()
+          - initCharacter()
+          - initChaseCamera()
+          - initPhysics()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace testState {
+      class gamesource.testState.CubeAppState {
+          - ambient : AmbientLight
+          - assetManager : AssetManager
+          - point : PointLight
+          - rootNode : Node
+          - sun : DirectionalLight
+          - sunDirection : Vector3f
+          + getRootNode()
+          + getSunDirection()
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+          - getMaterial()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace testState {
+      class gamesource.testState.First {
+          {static} + BAG : Trigger
+          {static} + CHANGECAMERA : Trigger
+          {static} + MOVE : Trigger
+          {static} + TALK : Trigger
+          {static} + bag : String
+          {static} + canGo : String
+          {static} + change : String
+          {static} + move : String
+          {static} + talk : String
+          ~ bullet : BulletAppState
+          ~ maj : BoundingVolume
+          ~ ray : Ray
+          - app : SimpleApplication
+          - canmove : int
+          - chan : int
+          - content : ArrayList<String>
+          - inputManager : InputManager
+          - isTalkShow : boolean
+          - open : int
+          - rootNode : Node
+          - shadow : int
+          - state : AppStateManager
+          - states : ArrayList<BaseAppState>
+          - time : float
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+          - getPicture()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace testState {
+      class gamesource.testState.FontTest {
+          {static} + BOLD : int
+          {static} + FONT_SIZE : int
+          {static} + ITALIC : int
+          {static} + PLAIN : int
+          {static} + main()
+          + simpleInitApp()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace testState {
+      class gamesource.testState.HelloPicking {
+          {static} + CHANGE_CAM_MODE : String
+          {static} + PICKING : String
+          - cross : Spatial
+          - flag : Spatial
+          - ray : Ray
+          + HelloPicking()
+          {static} + main()
+          + onAction()
+          + simpleInitApp()
+          - makeCross()
+          - makeFlag()
+          - pick()
+          - print()
+          - updateRay()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace testState {
+      class gamesource.testState.QuadState {
+          - app : SimpleApplication
+          - assetManager : AssetManager
+          - boxCollisionShape : BoxCollisionShape
+          - physicsSpace : PhysicsSpace
+          - rigidBodyFloor : RigidBodyControl
+          - rootNode : Node
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace testState {
+      class gamesource.testState.SceneState {
+          - application : SimpleApplication
+          - nodes : HashMap<String, Node>
+          + addNode()
+          + clean()
+          + cleanup()
+          + getNode()
+          + initialize()
+          + setEnabled()
+          + update()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace testState {
+      class gamesource.testState.TestCollisionWith {
+          - green : Geometry
+          - pink : Geometry
+          + TestCollisionWith()
+          + beginInput()
+          + endInput()
+          {static} + main()
+          + onJoyAxisEvent()
+          + onJoyButtonEvent()
+          + onKeyEvent()
+          + onMouseButtonEvent()
+          + onMouseMotionEvent()
+          + onTouchEvent()
+          + simpleInitApp()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace testState {
+      class gamesource.testState.TestMotion {
+          {static} ~ SCALE_FACTOR : float
+          {static} ~ WayPoints : float[]
+          - active : boolean
+          - motionControl : MotionEvent
+          - motionPath : MotionPath
+          - player : Spatial
+          - playing : boolean
+          - stage : Spatial
+          {static} + main()
+          + simpleInitApp()
+          - initInputs()
+          - initLights()
+          - initMotionPath()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace testState {
+      class gamesource.testState.musicState {
+          {static} + STOPMUSIC : Trigger
+          {static} + stop : String
+          {static} - SHOOT : String
+          - STOP : int
+          - audioNature : AudioNode
+          {static} + main()
+          + simpleInitApp()
+          + simpleUpdate()
+          - initAudio()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace testState {
+      class gamesource.testState.musicState.stopmusic {
+          + onAction()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace testState {
+      class gamesource.testState.test3 {
+          {static} - WALK : String
+          - animChannel : AnimChannel
+          - animControl : AnimControl
+          - isWalking : boolean
+          - spatial : Spatial
+          {static} + main()
+          + simpleInitApp()
+          - initCamera()
+          - initLight()
+          - initScene()
+      }
+    }
+  }
+  
+
+  gamesource.testState.AxisState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.testState.CharacterAppState .up.|> com.jme3.animation.AnimEventListener
+  gamesource.testState.CharacterAppState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.testState.CubeAppState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.testState.First -up-|> com.jme3.app.state.BaseAppState
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.blackBoyState : black1
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.blackBoyState : boy1
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.KnightState : bridgeKnight
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.soldierState : bridgeSoldier
+  gamesource.testState.First o-- gamesource.State.mapState.Chest : c1
+  gamesource.testState.First o-- gamesource.State.mapState.Chest : c2
+  gamesource.testState.First o-- gamesource.State.mapState.Chest : c3
+  gamesource.testState.First o-- gamesource.State.mapState.FirstWorldState : f1
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.girlState : girl
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.girlState : girl1
+  gamesource.testState.First o-- gamesource.State.controlState.InputAppState : input
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.KingState : king
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.KnightState : knight2
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.KnightState : knight3
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.KnightState : knight4
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.KnightState : knight5
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.KnightState : knight6
+  gamesource.testState.First o-- gamesource.State.SpecialEffect.SixthWorldLight : light
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.lizardState : lizard
+  gamesource.testState.First o-- gamesource.State.CharacterState.MajorActor : major
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.metalKnightState : metalKnight
+  gamesource.testState.First o-- gamesource.State.musicState.FirstBackMusic : music
+  gamesource.testState.First o-- gamesource.State.controlState.PositionInputState : p1
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.shovelKnight : s1
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.shovelKnight : s2
+  gamesource.testState.First o-- gamesource.State.mapState.SkyBox : sky
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.soldierState : soldier1
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.soldierState : soldier2
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.soldierState : soldier3
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.soldierState : soldier4
+  gamesource.testState.First o-- gamesource.State.SpecialEffect.FirstWorldOtherSpecial : special
+  gamesource.testState.First o-- gamesource.State.CharacterState.firstWorldCharacter.soldierState : trainSoldier
+  gamesource.testState.First o-- gamesource.State.SpecialEffect.ThirdWater : x1
+  gamesource.testState.First o-- gamesource.uiState.bagstate.BagAppState : bagState
+  gamesource.testState.First o-- gamesource.State.SpecialEffect.makeCross : cross
+  gamesource.testState.First o-- gamesource.State.CharacterState.Master1 : master
+  gamesource.testState.First o-- gamesource.uiState.menustate.MenuAppState : menuState
+  gamesource.testState.First o-- gamesource.uiState.shopstate.ShopAppState : shopState
+  gamesource.testState.First o-- gamesource.util.TalkWithOption : talkWithOption
+  gamesource.testState.FontTest -up-|> com.jme3.app.SimpleApplication
+  gamesource.testState.HelloPicking .up.|> com.jme3.input.controls.ActionListener
+  gamesource.testState.HelloPicking -up-|> com.jme3.app.SimpleApplication
+  gamesource.testState.QuadState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.testState.SceneState -up-|> com.jme3.app.state.AbstractAppState
+  gamesource.testState.TestCollisionWith .up.|> com.jme3.input.RawInputListener
+  gamesource.testState.TestCollisionWith -up-|> com.jme3.app.SimpleApplication
+  gamesource.testState.TestMotion -up-|> com.jme3.app.SimpleApplication
+  gamesource.testState.musicState -up-|> com.jme3.app.SimpleApplication
+  gamesource.testState.musicState +-down- gamesource.testState.musicState.stopmusic
+  gamesource.testState.musicState.stopmusic .up.|> com.jme3.input.controls.ActionListener
+  gamesource.testState.test3 -up-|> com.jme3.app.SimpleApplication
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

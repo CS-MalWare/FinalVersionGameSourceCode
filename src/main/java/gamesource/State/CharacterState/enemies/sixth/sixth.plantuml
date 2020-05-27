@@ -1,0 +1,193 @@
+@startuml
+
+title __SIXTH's Class Diagram__\n
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace sixth {
+            class gamesource.State.CharacterState.enemies.sixth.Master2 {
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - girl : Spatial
+                - girlControl : CharacterControl
+                - height : float
+                - master : BoundingVolume
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - radius : float
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - stepHeight : float
+                + Master2()
+                + Master2()
+                + Master2()
+                + get()
+                + initAnim()
+                + initModel()
+                + initPhysics()
+                + onAction()
+                # cleanup()
+                # initialize()
+                # onDisable()
+                # onEnable()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace sixth {
+            class gamesource.State.CharacterState.enemies.sixth.darkKnight {
+                - Knight : Spatial
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - knight : BoundingVolume
+                - knightControl : CharacterControl
+                - model : int
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - radius : float
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - stepHeight : float
+                - timer : float
+                - type : int
+                + darkKnight()
+                + darkKnight()
+                + darkKnight()
+                + darkKnight()
+                + darkKnight()
+                + darkKnight()
+                + darkKnight()
+                + darkKnight()
+                + darkKnight()
+                + darkKnight()
+                + get()
+                + initAnim()
+                + initModel()
+                + initPhysics()
+                + onAction()
+                + update()
+                # attack()
+                # attack2()
+                # cleanup()
+                # idle()
+                # initialize()
+                # onDisable()
+                # onEnable()
+                # takeDamage()
+                # takeDamage2()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace sixth {
+            class gamesource.State.CharacterState.enemies.sixth.darkSolidier {
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - model : int
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - radius : float
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - solid : BoundingVolume
+                - solidControl : CharacterControl
+                - solidier : Spatial
+                - stepHeight : float
+                - timer : float
+                - type : int
+                + darkSolidier()
+                + darkSolidier()
+                + darkSolidier()
+                + darkSolidier()
+                + darkSolidier()
+                + darkSolidier()
+                + darkSolidier()
+                + darkSolidier()
+                + darkSolidier()
+                + darkSolidier()
+                + get()
+                + initAnim()
+                + initModel()
+                + initPhysics()
+                + onAction()
+                + update()
+                # attack()
+                # attack2()
+                # cleanup()
+                # idle()
+                # initialize()
+                # onDisable()
+                # onEnable()
+                # takeDamage()
+                # takeDamage2()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  gamesource.State.CharacterState.enemies.sixth.Master2 .up.|> com.jme3.input.controls.ActionListener
+  gamesource.State.CharacterState.enemies.sixth.Master2 -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.sixth.darkKnight .up.|> com.jme3.input.controls.ActionListener
+  gamesource.State.CharacterState.enemies.sixth.darkKnight -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.sixth.darkSolidier .up.|> com.jme3.input.controls.ActionListener
+  gamesource.State.CharacterState.enemies.sixth.darkSolidier -up-|> com.jme3.app.state.BaseAppState
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

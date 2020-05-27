@@ -1,0 +1,646 @@
+@startuml
+
+title __WORLDSTATE's Class Diagram__\n
+
+  namespace gamesource {
+    namespace State {
+      namespace worldState {
+        class gamesource.State.worldState.FifthState {
+            {static} + BAG : Trigger
+            {static} + CHANGECAMERA : Trigger
+            {static} + MAP : Trigger
+            {static} + MENU : Trigger
+            {static} + MOVE : Trigger
+            {static} + TALK : Trigger
+            {static} + bag : String
+            {static} + canGo : String
+            {static} + change : String
+            {static} + map : String
+            {static} + menu : String
+            {static} + move : String
+            {static} + talk : String
+            ~ ray : Ray
+            - Cro : int
+            - app : SimpleApplication
+            - cam : Camera
+            - canmove : int
+            - chan : int
+            - content : ArrayList<String>
+            - fly : int
+            - inputManager : InputManager
+            - isTalkShow : boolean
+            - maj : BoundingVolume
+            - names : ArrayList<String>
+            - open : int
+            - shadow : int
+            - state : AppStateManager
+            - states : ArrayList<BaseAppState>
+            - time : float
+            + FifthState()
+            + FifthState()
+            + change()
+            + results1()
+            + results10()
+            + results11()
+            + results12()
+            + results13()
+            + results14()
+            + results15()
+            + results16()
+            + results17()
+            + results2()
+            + results3()
+            + results4()
+            + results6()
+            + results7()
+            + results8()
+            + results9()
+            + update()
+            # cancel()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+            - getPicture()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace worldState {
+        class gamesource.State.worldState.FifthState.StartTalk {
+            + onAction()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace worldState {
+        class gamesource.State.worldState.FirstState {
+            {static} + BAG : Trigger
+            {static} + CHANGECAMERA : Trigger
+            {static} + MAP : Trigger
+            {static} + MENU : Trigger
+            {static} + MOVE : Trigger
+            {static} + TALK : Trigger
+            {static} + bag : String
+            {static} + canGo : String
+            {static} + change : String
+            {static} + map : String
+            {static} + menu : String
+            {static} + move : String
+            {static} + talk : String
+            ~ bullet : BulletAppState
+            ~ maj : BoundingVolume
+            ~ ray : Ray
+            - Cro : int
+            - app : SimpleApplication
+            - canmove : int
+            - chan : int
+            - content : ArrayList<String>
+            - fly : int
+            - inputManager : InputManager
+            - isTalkShow : boolean
+            - open : int
+            - rootNode : Node
+            - shadow : int
+            - state : AppStateManager
+            - states : ArrayList<BaseAppState>
+            - time : float
+            + FirstState()
+            + FirstState()
+            + change()
+            + collision()
+            + collision10()
+            + collision2()
+            + collision3()
+            + collision4()
+            + collision8()
+            + collision9()
+            + update()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+            - getPicture()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace worldState {
+        class gamesource.State.worldState.FirstState.StartTalk {
+            + onAction()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace worldState {
+        class gamesource.State.worldState.ForthState {
+            {static} + BAG : Trigger
+            {static} + CHANGECAMERA : Trigger
+            {static} + MAP : Trigger
+            {static} + MENU : Trigger
+            {static} + MOVE : Trigger
+            {static} + TALK : Trigger
+            {static} + bag : String
+            {static} + canGo : String
+            {static} + change : String
+            {static} + map : String
+            {static} + menu : String
+            {static} + move : String
+            {static} + talk : String
+            ~ ray : Ray
+            - Cro : int
+            - app : SimpleApplication
+            - cam : Camera
+            - canmove : int
+            - chan : int
+            - fly : int
+            - inputManager : InputManager
+            - maj : BoundingVolume
+            - open : int
+            - shadow : int
+            - state : AppStateManager
+            - states : ArrayList<BaseAppState>
+            - time : float
+            + ForthState()
+            + ForthState()
+            + change()
+            + results1()
+            + results10()
+            + results11()
+            + results12()
+            + results2()
+            + results3()
+            + results4()
+            + results5()
+            + results6()
+            + results7()
+            + results8()
+            + results9()
+            + update()
+            # cancel()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+            - getPicture()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace worldState {
+        class gamesource.State.worldState.ForthState.StartTalk {
+            + onAction()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace worldState {
+        class gamesource.State.worldState.SecondState {
+            {static} + BAG : Trigger
+            {static} + CHANGECAMERA : Trigger
+            {static} + MAP : Trigger
+            {static} + MENU : Trigger
+            {static} + MOVE : Trigger
+            {static} + TALK : Trigger
+            {static} + bag : String
+            {static} + canGo : String
+            {static} + change : String
+            {static} + map : String
+            {static} + menu : String
+            {static} + move : String
+            {static} + talk : String
+            ~ bullet : BulletAppState
+            ~ ray : Ray
+            - Cro : int
+            - app : SimpleApplication
+            - cam : Camera
+            - canmove : int
+            - chan : int
+            - content : ArrayList<String>
+            - fly : int
+            - inputManager : InputManager
+            - isTalkShow : boolean
+            - maj : BoundingVolume
+            - names : ArrayList<String>
+            - open : int
+            - shadow : int
+            - state : AppStateManager
+            - states : ArrayList<BaseAppState>
+            - time : float
+            + SecondState()
+            + SecondState()
+            + change()
+            + results1()
+            + results10()
+            + results11()
+            + results12()
+            + results13()
+            + results14()
+            + results15()
+            + results2()
+            + results3()
+            + results4()
+            + results5()
+            + results6()
+            + results7()
+            + results8()
+            + results9()
+            + update()
+            # cancel()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+            - getPicture()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace worldState {
+        class gamesource.State.worldState.SecondState.StartTalk {
+            + onAction()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace worldState {
+        class gamesource.State.worldState.SixthState {
+            {static} + BAG : Trigger
+            {static} + CHANGECAMERA : Trigger
+            {static} + MAP : Trigger
+            {static} + MENU : Trigger
+            {static} + MOVE : Trigger
+            {static} + TALK : Trigger
+            {static} + bag : String
+            {static} + canGo : String
+            {static} + change : String
+            {static} + map : String
+            {static} + menu : String
+            {static} + move : String
+            {static} + talk : String
+            ~ ray : Ray
+            - Cro : int
+            - app : SimpleApplication
+            - cam : Camera
+            - canmove : int
+            - chan : int
+            - fly : int
+            - inputManager : InputManager
+            - maj : BoundingVolume
+            - open : int
+            - shadow : int
+            - state : AppStateManager
+            - states : ArrayList<BaseAppState>
+            - time : float
+            + SixthState()
+            + SixthState()
+            + change()
+            + results1()
+            + results2()
+            + results3()
+            + results4()
+            + update()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+            - getPicture()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace worldState {
+        class gamesource.State.worldState.SixthState.StartTalk {
+            + onAction()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace worldState {
+        class gamesource.State.worldState.ThirdState {
+            {static} + BAG : Trigger
+            {static} + CHANGECAMERA : Trigger
+            {static} + MAP : Trigger
+            {static} + MENU : Trigger
+            {static} + MOVE : Trigger
+            {static} + TALK : Trigger
+            {static} + bag : String
+            {static} + canGo : String
+            {static} + change : String
+            {static} + map : String
+            {static} + menu : String
+            {static} + move : String
+            {static} + talk : String
+            ~ ray : Ray
+            - Cro : int
+            - app : SimpleApplication
+            - cam : Camera
+            - canmove : int
+            - chan : int
+            - fly : int
+            - inputManager : InputManager
+            - maj : BoundingVolume
+            - open : int
+            - shadow : int
+            - state : AppStateManager
+            - states : ArrayList<BaseAppState>
+            - time : float
+            + ThirdState()
+            + ThirdState()
+            + change()
+            + results1_1()
+            + results1_2()
+            + results1_3()
+            + results1_4()
+            + results1_5()
+            + results2_1()
+            + results2_2()
+            + results2_3()
+            + results2_4()
+            + results2_5()
+            + results3_1()
+            + results3_2()
+            + results3_3()
+            + results3_4()
+            + results4_1()
+            + results4_2()
+            + results4_3()
+            + results5_1()
+            + results5_2()
+            + results6()
+            + results7()
+            + results8()
+            + results9()
+            + update()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+            - getPicture()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace worldState {
+        class gamesource.State.worldState.ThirdState.StartTalk {
+            + onAction()
+        }
+      }
+    }
+  }
+  
+
+  gamesource.State.worldState.FifthState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.worldState.FifthState o-- gamesource.State.mapState.Chest : c1
+  gamesource.State.worldState.FifthState o-- gamesource.State.mapState.Chest : c2
+  gamesource.State.worldState.FifthState o-- gamesource.State.controlState.InputAppState : input
+  gamesource.State.worldState.FifthState o-- gamesource.State.CharacterState.MajorActor : major
+  gamesource.State.worldState.FifthState o-- gamesource.State.mapState.FifthWorldState : world
+  gamesource.State.worldState.FifthState o-- gamesource.uiState.bagstate.BagAppState : bagState
+  gamesource.State.worldState.FifthState o-- gamesource.State.CharacterState.enemies.fifth.robotBoss : boss
+  gamesource.State.worldState.FifthState o-- gamesource.State.SpecialEffect.makeCross : cross
+  gamesource.State.worldState.FifthState o-- gamesource.State.SpecialEffect.FifthOtherSpecial : effect
+  gamesource.State.worldState.FifthState o-- gamesource.State.SpecialEffect.FifthWorldLight : light
+  gamesource.State.worldState.FifthState o-- gamesource.State.CharacterState.firstWorldCharacter.lizardState : lizard
+  gamesource.State.worldState.FifthState o-- gamesource.State.CharacterState.Master1 : master
+  gamesource.State.worldState.FifthState o-- gamesource.uiState.menustate.MenuAppState : menuState
+  gamesource.State.worldState.FifthState o-- gamesource.State.musicState.FifthBackMusic : music
+  gamesource.State.worldState.FifthState o-- gamesource.State.CharacterState.enemies.fifth.plane : p1
+  gamesource.State.worldState.FifthState o-- gamesource.State.CharacterState.enemies.fifth.plane : p2
+  gamesource.State.worldState.FifthState o-- gamesource.State.CharacterState.enemies.fifth.plane : p3
+  gamesource.State.worldState.FifthState o-- gamesource.State.CharacterState.enemies.fifth.walkRobot : robot1
+  gamesource.State.worldState.FifthState o-- gamesource.State.CharacterState.enemies.fifth.flyRobot : robot3
+  gamesource.State.worldState.FifthState o-- gamesource.State.CharacterState.enemies.fifth.flyRobot : robot4
+  gamesource.State.worldState.FifthState o-- gamesource.State.CharacterState.enemies.fifth.flyRobot : robot5
+  gamesource.State.worldState.FifthState o-- gamesource.State.CharacterState.enemies.fifth.walkRobot : robot6
+  gamesource.State.worldState.FifthState o-- gamesource.State.CharacterState.enemies.fifth.walkRobot : robot7
+  gamesource.State.worldState.FifthState o-- gamesource.State.CharacterState.enemies.fifth.flyRobot : robot8
+  gamesource.State.worldState.FifthState o-- gamesource.uiState.shopstate.ShopAppState : shopState
+  gamesource.State.worldState.FifthState o-- gamesource.State.mapState.skyBox5 : sky
+  gamesource.State.worldState.FifthState o-- gamesource.uiState.SmallMap : smallMap
+  gamesource.State.worldState.FifthState o-- gamesource.State.worldState.FifthState.StartTalk : st
+  gamesource.State.worldState.FifthState o-- gamesource.util.TalkWithOption : talkWithOption
+  gamesource.State.worldState.FifthState o-- gamesource.State.CharacterState.enemies.fifth.TalkBot : talkbot
+  gamesource.State.worldState.FifthState o-- gamesource.util.WordWrapForTalk : wordWrapForTalk
+  gamesource.State.worldState.FifthState +-down- gamesource.State.worldState.FifthState.StartTalk
+  gamesource.State.worldState.FifthState.StartTalk .up.|> com.jme3.input.controls.ActionListener
+  gamesource.State.worldState.FirstState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.blackBoyState : black1
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.blackBoyState : boy1
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.KnightState : bridgeKnight
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.soldierState : bridgeSoldier
+  gamesource.State.worldState.FirstState o-- gamesource.State.mapState.FirstWorldState : f1
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.girlState : girl
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.girlState : girl1
+  gamesource.State.worldState.FirstState o-- gamesource.State.controlState.InputAppState : input
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.KingState : king
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.KnightState : knight2
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.KnightState : knight3
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.KnightState : knight4
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.KnightState : knight5
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.KnightState : knight6
+  gamesource.State.worldState.FirstState o-- gamesource.State.SpecialEffect.FirstWorldLight : light
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.lizardState : lizard
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.MajorActor : major
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.metalKnightState : metalKnight
+  gamesource.State.worldState.FirstState o-- gamesource.State.musicState.FirstBackMusic : music
+  gamesource.State.worldState.FirstState o-- gamesource.State.controlState.PositionInputState : p1
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.shovelKnight : s1
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.shovelKnight : s2
+  gamesource.State.worldState.FirstState o-- gamesource.State.mapState.SkyBox : sky
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.soldierState : soldier1
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.soldierState : soldier2
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.soldierState : soldier3
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.soldierState : soldier4
+  gamesource.State.worldState.FirstState o-- gamesource.State.SpecialEffect.FirstWorldOtherSpecial : special
+  gamesource.State.worldState.FirstState o-- gamesource.State.worldState.FirstState.StartTalk : st
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.firstWorldCharacter.soldierState : trainSoldier
+  gamesource.State.worldState.FirstState o-- gamesource.State.SpecialEffect.Water : x1
+  gamesource.State.worldState.FirstState o-- gamesource.uiState.bagstate.BagAppState : bagState
+  gamesource.State.worldState.FirstState o-- gamesource.State.SpecialEffect.makeCross : cross
+  gamesource.State.worldState.FirstState o-- gamesource.State.CharacterState.Master1 : master
+  gamesource.State.worldState.FirstState o-- gamesource.uiState.menustate.MenuAppState : menuState
+  gamesource.State.worldState.FirstState o-- gamesource.uiState.shopstate.ShopAppState : shopState
+  gamesource.State.worldState.FirstState o-- gamesource.uiState.SmallMap : smallMap
+  gamesource.State.worldState.FirstState o-- gamesource.util.TalkWithOption : talkWithOption
+  gamesource.State.worldState.FirstState +-down- gamesource.State.worldState.FirstState.StartTalk
+  gamesource.State.worldState.FirstState.StartTalk .up.|> com.jme3.input.controls.ActionListener
+  gamesource.State.worldState.ForthState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.worldState.ForthState o-- gamesource.State.mapState.Chest : c1
+  gamesource.State.worldState.ForthState o-- gamesource.State.mapState.Chest : c2
+  gamesource.State.worldState.ForthState o-- gamesource.State.controlState.InputAppState : input
+  gamesource.State.worldState.ForthState o-- gamesource.State.CharacterState.MajorActor : major
+  gamesource.State.worldState.ForthState o-- gamesource.State.mapState.ForthWorldMap : world
+  gamesource.State.worldState.ForthState o-- gamesource.uiState.bagstate.BagAppState : bagState
+  gamesource.State.worldState.ForthState o-- gamesource.State.CharacterState.enemies.BatState : bat1
+  gamesource.State.worldState.ForthState o-- gamesource.State.CharacterState.enemies.BatState : bat2
+  gamesource.State.worldState.ForthState o-- gamesource.State.CharacterState.enemies.BatState : bat3
+  gamesource.State.worldState.ForthState o-- gamesource.State.CharacterState.enemies.forth.Boss : bos
+  gamesource.State.worldState.ForthState o-- gamesource.State.SpecialEffect.makeCross : cross
+  gamesource.State.worldState.ForthState o-- gamesource.State.SpecialEffect.FourthWorldOtherSpecial : effect
+  gamesource.State.worldState.ForthState o-- gamesource.State.CharacterState.enemies.forth.BossKnight : knight
+  gamesource.State.worldState.ForthState o-- gamesource.State.SpecialEffect.ForthWorldLight : light
+  gamesource.State.worldState.ForthState o-- gamesource.State.CharacterState.enemies.forth.StoneMan : man1
+  gamesource.State.worldState.ForthState o-- gamesource.State.CharacterState.enemies.forth.StoneMan : man2
+  gamesource.State.worldState.ForthState o-- gamesource.State.CharacterState.enemies.forth.StoneMan : man3
+  gamesource.State.worldState.ForthState o-- gamesource.uiState.menustate.MenuAppState : menuState
+  gamesource.State.worldState.ForthState o-- gamesource.State.musicState.ForthBackMusic : music
+  gamesource.State.worldState.ForthState o-- gamesource.uiState.shopstate.ShopAppState : shopState
+  gamesource.State.worldState.ForthState o-- gamesource.State.CharacterState.enemies.BlueSkeletonState : ske1
+  gamesource.State.worldState.ForthState o-- gamesource.State.CharacterState.enemies.RedSkeletonState : ske2
+  gamesource.State.worldState.ForthState o-- gamesource.State.mapState.skyBox4 : sky
+  gamesource.State.worldState.ForthState o-- gamesource.uiState.SmallMap : smallMap
+  gamesource.State.worldState.ForthState o-- gamesource.State.worldState.ForthState.StartTalk : st
+  gamesource.State.worldState.ForthState o-- gamesource.State.SpecialEffect.Water : water
+  gamesource.State.worldState.ForthState +-down- gamesource.State.worldState.ForthState.StartTalk
+  gamesource.State.worldState.ForthState.StartTalk .up.|> com.jme3.input.controls.ActionListener
+  gamesource.State.worldState.SecondState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.worldState.SecondState o-- gamesource.State.mapState.Chest : c2
+  gamesource.State.worldState.SecondState o-- gamesource.State.mapState.Chest : c3
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.MajorActor : major
+  gamesource.State.worldState.SecondState o-- gamesource.uiState.bagstate.BagAppState : bagState
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.enemies.BatState : bat
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.enemies.BatState : bat1
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.enemies.BatState : bat2
+  gamesource.State.worldState.SecondState o-- gamesource.State.SpecialEffect.makeCross : cross
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.secondWorldCharacter.goblinGirlState : girl
+  gamesource.State.worldState.SecondState o-- gamesource.State.controlState.InputAppState : input
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.enemies.forth.BossKnight : knight
+  gamesource.State.worldState.SecondState o-- gamesource.State.SpecialEffect.SecondWorldLight : light
+  gamesource.State.worldState.SecondState o-- gamesource.uiState.menustate.MenuAppState : menuState
+  gamesource.State.worldState.SecondState o-- gamesource.State.musicState.SecondBackMusic : music
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.secondWorldCharacter.shanmanState : shanman
+  gamesource.State.worldState.SecondState o-- gamesource.uiState.shopstate.ShopAppState : shopState
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.enemies.AngrySkeletonState : skeleton1
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.enemies.GreenSkeletonState : skeleton2
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.enemies.BlueSkeletonState : skeleton3
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.enemies.RedSkeletonState : skeleton4
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.enemies.BlueSkeletonState : skeleton5
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.enemies.GreenSkeletonState : skeleton6
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.enemies.AngrySkeletonState : skeleton7
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.enemies.KingSkeletonState : skeleton8
+  gamesource.State.worldState.SecondState o-- gamesource.State.mapState.SkyBox2 : sky
+  gamesource.State.worldState.SecondState o-- gamesource.uiState.SmallMap : smallMap
+  gamesource.State.worldState.SecondState o-- gamesource.State.CharacterState.enemies.RedSkeletonState : snowRobot1
+  gamesource.State.worldState.SecondState o-- gamesource.State.SpecialEffect.SecondWorldOtherSpecial : special
+  gamesource.State.worldState.SecondState o-- gamesource.State.worldState.SecondState.StartTalk : st
+  gamesource.State.worldState.SecondState o-- gamesource.util.TalkWithOption : talkWithOption
+  gamesource.State.worldState.SecondState o-- gamesource.util.WordWrapForTalk : wordWrapForTalk
+  gamesource.State.worldState.SecondState o-- gamesource.State.mapState.SecondWorldMap : world
+  gamesource.State.worldState.SecondState +-down- gamesource.State.worldState.SecondState.StartTalk
+  gamesource.State.worldState.SecondState.StartTalk .up.|> com.jme3.input.controls.ActionListener
+  gamesource.State.worldState.SixthState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.worldState.SixthState o-- gamesource.State.controlState.InputAppState : input
+  gamesource.State.worldState.SixthState o-- gamesource.State.CharacterState.MajorActor : major
+  gamesource.State.worldState.SixthState o-- gamesource.State.mapState.FirstWorldState : world
+  gamesource.State.worldState.SixthState o-- gamesource.State.SpecialEffect.Water : x1
+  gamesource.State.worldState.SixthState o-- gamesource.uiState.bagstate.BagAppState : bagState
+  gamesource.State.worldState.SixthState o-- gamesource.State.CharacterState.enemies.StuxnetState : boss
+  gamesource.State.worldState.SixthState o-- gamesource.State.SpecialEffect.makeCross : cross
+  gamesource.State.worldState.SixthState o-- gamesource.State.SpecialEffect.FirstWorldOtherSpecial : effect
+  gamesource.State.worldState.SixthState o-- gamesource.State.CharacterState.enemies.sixth.darkKnight : knight1
+  gamesource.State.worldState.SixthState o-- gamesource.State.SpecialEffect.SixthWorldLight : light
+  gamesource.State.worldState.SixthState o-- gamesource.State.CharacterState.enemies.sixth.Master2 : master
+  gamesource.State.worldState.SixthState o-- gamesource.uiState.menustate.MenuAppState : menuState
+  gamesource.State.worldState.SixthState o-- gamesource.State.musicState.SixthBackMusic : music
+  gamesource.State.worldState.SixthState o-- gamesource.uiState.shopstate.ShopAppState : shopState
+  gamesource.State.worldState.SixthState o-- gamesource.State.mapState.skyBox6 : sky
+  gamesource.State.worldState.SixthState o-- gamesource.uiState.SmallMap : smallMap
+  gamesource.State.worldState.SixthState o-- gamesource.State.CharacterState.enemies.sixth.darkSolidier : solidier1
+  gamesource.State.worldState.SixthState o-- gamesource.State.worldState.SixthState.StartTalk : st
+  gamesource.State.worldState.SixthState +-down- gamesource.State.worldState.SixthState.StartTalk
+  gamesource.State.worldState.SixthState.StartTalk .up.|> com.jme3.input.controls.ActionListener
+  gamesource.State.worldState.ThirdState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.worldState.ThirdState o-- gamesource.State.mapState.Chest : c1
+  gamesource.State.worldState.ThirdState o-- gamesource.State.mapState.Chest : c2
+  gamesource.State.worldState.ThirdState o-- gamesource.State.mapState.Chest : c3
+  gamesource.State.worldState.ThirdState o-- gamesource.State.controlState.InputAppState : input
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.MajorActor : major
+  gamesource.State.worldState.ThirdState o-- gamesource.State.mapState.ThirdWorldMap : world
+  gamesource.State.worldState.ThirdState o-- gamesource.uiState.bagstate.BagAppState : bagState
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.FishBoss : boss
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.MushroomBug : bu1
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.MushroomBug : bu2
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.DrunkCrab : crab1
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.DrunkCrab : crab2
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.DrunkCrab : crab3
+  gamesource.State.worldState.ThirdState o-- gamesource.State.SpecialEffect.makeCross : cross
+  gamesource.State.worldState.ThirdState o-- gamesource.State.SpecialEffect.ThirdOtherSpecial : effect
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.Fish1State : fish1_1
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.Fish1State : fish1_2
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.Fish1State : fish1_3
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.Fish1State : fish1_4
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.Fish1State : fish1_5
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.Fish6State : fish2_1
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.Fish6State : fish2_2
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.Fish6State : fish2_3
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.Fish6State : fish2_4
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.Fish6State : fish2_5
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.Fish5State : fish3_1
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.Fish5State : fish3_2
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.Fish5State : fish3_3
+  gamesource.State.worldState.ThirdState o-- gamesource.State.CharacterState.enemies.third.Fish5State : fish3_4
+  gamesource.State.worldState.ThirdState o-- gamesource.State.SpecialEffect.ThirdWorldLight : light
+  gamesource.State.worldState.ThirdState o-- gamesource.uiState.menustate.MenuAppState : menuState
+  gamesource.State.worldState.ThirdState o-- gamesource.State.musicState.ThirdBackMusic : music
+  gamesource.State.worldState.ThirdState o-- gamesource.uiState.shopstate.ShopAppState : shopState
+  gamesource.State.worldState.ThirdState o-- gamesource.State.mapState.SkyBox : sky
+  gamesource.State.worldState.ThirdState o-- gamesource.uiState.SmallMap : smallMap
+  gamesource.State.worldState.ThirdState o-- gamesource.State.worldState.ThirdState.StartTalk : st
+  gamesource.State.worldState.ThirdState o-- gamesource.State.SpecialEffect.ThirdWater : water
+  gamesource.State.worldState.ThirdState +-down- gamesource.State.worldState.ThirdState.StartTalk
+  gamesource.State.worldState.ThirdState.StartTalk .up.|> com.jme3.input.controls.ActionListener
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

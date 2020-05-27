@@ -1,0 +1,308 @@
+@startuml
+
+title __BAGSTATE's Class Diagram__\n
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.BagAppState {
+            - app : SimpleApplication
+            {static} - bagString : String
+            - buttomPartContainer : Container
+            - cardUIs : CardUI[]
+            - cardUIsCopy : CardUI[]
+            - cardsReference : VersionedReference[]
+            - centralPart : Container
+            - generalBorder : Container
+            - inputManager : InputManager
+            - isFirstOpen : boolean
+            - isOpenBag : boolean
+            - isShowCards : boolean
+            - leftPart : Container
+            - leftPartContainer : Container
+            - mainRoleCards : ArrayList<Card>
+            - moneyLabel : Label
+            - neutralCardUIs : CardUI[]
+            - pagesContainer : Container
+            - progressBar : ProgressBar
+            - saberCardUIs : CardUI[]
+            - styles : Styles
+            + appendToNeutralCardUIs()
+            + appendToSaberCardUIs()
+            + detachBag()
+            + exitFight()
+            + getCardUIsLength()
+            + initialize()
+            + onFight()
+            + refreshPage()
+            + showCards()
+            + showCardsType()
+            + showMoney()
+            + update()
+            # cleanup()
+            # onDisable()
+            # onEnable()
+            # showBag()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.BagAppState.BackToStart {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.BagAppState.BagListener {
+            + onAction()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.BagAppState.CardsButtonClick {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.BagAppState.CardsDirectoryClick {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.BagAppState.PageButtonClick {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.BagAppState.ShowNeutral {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.BagAppState.ShowSaber {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.BagAppState.showGeneral {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.BagMoney {
+            - currentMoney : int
+            + BagMoney()
+            + getMoney()
+            + setMoney()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.CardUI {
+            - button : Button
+            - checkbox : Checkbox
+            - description : String
+            + CardUI()
+            + CardUI()
+            + CardUI()
+            + CardUI()
+            + CardUI()
+            + addAction()
+            + addButtonToContainer()
+            + addToContainer()
+            + equals()
+            + equals()
+            + getButton()
+            + getCardMoney()
+            + getCheckBox()
+            + getDescription()
+            + setDescription()
+            + setMoney()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.TabTextForBag {
+            - message1 : String
+            - message2 : String
+            - message3 : String
+            - selectionRef : VersionedReference<Tab>
+            - statusLabel : Label
+            - tab1 : String
+            - tab2 : String
+            - tab3 : String
+            - tabs : TabbedPanel
+            - window : Container
+            + TabTextForBag()
+            + update()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+            # setTabContents()
+            - TabTextForBag()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.TabTextForBag.Builder {
+            - message1 : String
+            - message2 : String
+            - message3 : String
+            - tab1 : String
+            - tab2 : String
+            - tab3 : String
+            + Builder()
+            + build()
+            + setMessage1()
+            + setMessage3()
+            + setMessgae2()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.TabTextForBag.CloseCommand {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.Test {
+            - container : Container
+            - location : Vector3f
+            {static} + main()
+            + simpleInitApp()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace bagstate {
+        class gamesource.uiState.bagstate.Test.Click {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  gamesource.uiState.bagstate.BagAppState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.uiState.bagstate.BagAppState o-- gamesource.util.CardArrayReader : cardArrayReader
+  gamesource.uiState.bagstate.BagAppState o-- gamesource.uiState.bagstate.BagMoney : totalMoney
+  gamesource.uiState.bagstate.BagAppState +-down- gamesource.uiState.bagstate.BagAppState.BackToStart
+  gamesource.uiState.bagstate.BagAppState +-down- gamesource.uiState.bagstate.BagAppState.BagListener
+  gamesource.uiState.bagstate.BagAppState +-down- gamesource.uiState.bagstate.BagAppState.CardsButtonClick
+  gamesource.uiState.bagstate.BagAppState +-down- gamesource.uiState.bagstate.BagAppState.CardsDirectoryClick
+  gamesource.uiState.bagstate.BagAppState +-down- gamesource.uiState.bagstate.BagAppState.PageButtonClick
+  gamesource.uiState.bagstate.BagAppState +-down- gamesource.uiState.bagstate.BagAppState.ShowNeutral
+  gamesource.uiState.bagstate.BagAppState +-down- gamesource.uiState.bagstate.BagAppState.ShowSaber
+  gamesource.uiState.bagstate.BagAppState +-down- gamesource.uiState.bagstate.BagAppState.showGeneral
+  gamesource.uiState.bagstate.BagAppState.BackToStart .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.bagstate.BagAppState.BagListener .up.|> com.jme3.input.controls.ActionListener
+  gamesource.uiState.bagstate.BagAppState.CardsButtonClick .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.bagstate.BagAppState.CardsDirectoryClick .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.bagstate.BagAppState.PageButtonClick .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.bagstate.BagAppState.ShowNeutral .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.bagstate.BagAppState.ShowSaber .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.bagstate.BagAppState.showGeneral .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.bagstate.BagMoney .up.|> gamesource.util.Money
+  gamesource.uiState.bagstate.CardUI o-- gamesource.uiState.bagstate.BagMoney : money
+  gamesource.uiState.bagstate.TabTextForBag -up-|> com.jme3.app.state.BaseAppState
+  gamesource.uiState.bagstate.TabTextForBag o-- gamesource.uiState.bagstate.CardUI : cardUI
+  gamesource.uiState.bagstate.TabTextForBag o-- gamesource.uiState.bagstate.TabTextForBag.CloseCommand : closeCommand
+  gamesource.uiState.bagstate.TabTextForBag +-down- gamesource.uiState.bagstate.TabTextForBag.Builder
+  gamesource.uiState.bagstate.TabTextForBag +-down- gamesource.uiState.bagstate.TabTextForBag.CloseCommand
+  gamesource.uiState.bagstate.TabTextForBag.Builder o-- gamesource.uiState.bagstate.CardUI : cardUI
+  gamesource.uiState.bagstate.TabTextForBag.CloseCommand .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.bagstate.Test -up-|> com.jme3.app.SimpleApplication
+  gamesource.uiState.bagstate.Test +-down- gamesource.uiState.bagstate.Test.Click
+  gamesource.uiState.bagstate.Test.Click .up.|> com.simsilica.lemur.Command
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

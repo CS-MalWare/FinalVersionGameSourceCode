@@ -1,0 +1,180 @@
+@startuml
+
+title __LIMITBUFFS's Class Diagram__\n
+
+  namespace gamesource {
+    namespace battleState.utils.buffs {
+      namespace limitBuffs {
+        class gamesource.battleState.utils.buffs.limitBuffs.Bleeding {
+            + Bleeding()
+            + getFunc()
+            + triggerFunc()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.utils.buffs {
+      namespace limitBuffs {
+        class gamesource.battleState.utils.buffs.limitBuffs.Disarm {
+            + Disarm()
+            + getFunc()
+            + triggerFunc()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.utils.buffs {
+      namespace limitBuffs {
+        class gamesource.battleState.utils.buffs.limitBuffs.Erode {
+            + Erode()
+            + getFunc()
+            + triggerFunc()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.utils.buffs {
+      namespace limitBuffs {
+        class gamesource.battleState.utils.buffs.limitBuffs.Excite {
+            - currentDraw : int
+            + Excite()
+            + getFunc()
+            + triggerFunc()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.utils.buffs {
+      namespace limitBuffs {
+        class gamesource.battleState.utils.buffs.limitBuffs.Intangible {
+            + Intangible()
+            + getFunc()
+            + triggerFunc()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.utils.buffs {
+      namespace limitBuffs {
+        class gamesource.battleState.utils.buffs.limitBuffs.Poison {
+            + Poison()
+            + getFunc()
+            + triggerFunc()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.utils.buffs {
+      namespace limitBuffs {
+        class gamesource.battleState.utils.buffs.limitBuffs.Sheild {
+            + Sheild()
+            + getFunc()
+            + triggerFunc()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.utils.buffs {
+      namespace limitBuffs {
+        class gamesource.battleState.utils.buffs.limitBuffs.Silence {
+            + Silence()
+            + getFunc()
+            + triggerFunc()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.utils.buffs {
+      namespace limitBuffs {
+        class gamesource.battleState.utils.buffs.limitBuffs.Stun {
+            + Stun()
+            + getFunc()
+            + triggerFunc()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.utils.buffs {
+      namespace limitBuffs {
+        class gamesource.battleState.utils.buffs.limitBuffs.Vulnerable {
+            + Vulnerable()
+            + getFunc()
+            + triggerFunc()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.utils.buffs {
+      namespace limitBuffs {
+        class gamesource.battleState.utils.buffs.limitBuffs.Weak {
+            + Weak()
+            + getFunc()
+            + triggerFunc()
+        }
+      }
+    }
+  }
+  
+
+  gamesource.battleState.utils.buffs.limitBuffs.Bleeding .up.|> gamesource.battleState.utils.buffs.BuffFunction
+  gamesource.battleState.utils.buffs.limitBuffs.Bleeding -up-|> gamesource.battleState.utils.buffs.LimitBuff
+  gamesource.battleState.utils.buffs.limitBuffs.Disarm .up.|> gamesource.battleState.utils.buffs.BuffFunction
+  gamesource.battleState.utils.buffs.limitBuffs.Disarm -up-|> gamesource.battleState.utils.buffs.LimitBuff
+  gamesource.battleState.utils.buffs.limitBuffs.Erode .up.|> gamesource.battleState.utils.buffs.BuffFunction
+  gamesource.battleState.utils.buffs.limitBuffs.Erode -up-|> gamesource.battleState.utils.buffs.LimitBuff
+  gamesource.battleState.utils.buffs.limitBuffs.Excite .up.|> gamesource.battleState.utils.buffs.BuffFunction
+  gamesource.battleState.utils.buffs.limitBuffs.Excite -up-|> gamesource.battleState.utils.buffs.LimitBuff
+  gamesource.battleState.utils.buffs.limitBuffs.Intangible .up.|> gamesource.battleState.utils.buffs.BuffFunction
+  gamesource.battleState.utils.buffs.limitBuffs.Intangible -up-|> gamesource.battleState.utils.buffs.LimitBuff
+  gamesource.battleState.utils.buffs.limitBuffs.Poison .up.|> gamesource.battleState.utils.buffs.BuffFunction
+  gamesource.battleState.utils.buffs.limitBuffs.Poison -up-|> gamesource.battleState.utils.buffs.LimitBuff
+  gamesource.battleState.utils.buffs.limitBuffs.Sheild .up.|> gamesource.battleState.utils.buffs.BuffFunction
+  gamesource.battleState.utils.buffs.limitBuffs.Sheild -up-|> gamesource.battleState.utils.buffs.LimitBuff
+  gamesource.battleState.utils.buffs.limitBuffs.Silence .up.|> gamesource.battleState.utils.buffs.BuffFunction
+  gamesource.battleState.utils.buffs.limitBuffs.Silence -up-|> gamesource.battleState.utils.buffs.LimitBuff
+  gamesource.battleState.utils.buffs.limitBuffs.Stun .up.|> gamesource.battleState.utils.buffs.BuffFunction
+  gamesource.battleState.utils.buffs.limitBuffs.Stun -up-|> gamesource.battleState.utils.buffs.LimitBuff
+  gamesource.battleState.utils.buffs.limitBuffs.Vulnerable .up.|> gamesource.battleState.utils.buffs.BuffFunction
+  gamesource.battleState.utils.buffs.limitBuffs.Vulnerable -up-|> gamesource.battleState.utils.buffs.LimitBuff
+  gamesource.battleState.utils.buffs.limitBuffs.Weak .up.|> gamesource.battleState.utils.buffs.BuffFunction
+  gamesource.battleState.utils.buffs.limitBuffs.Weak -up-|> gamesource.battleState.utils.buffs.LimitBuff
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

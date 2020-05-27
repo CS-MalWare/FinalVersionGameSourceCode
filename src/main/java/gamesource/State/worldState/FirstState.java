@@ -648,6 +648,12 @@ public class FirstState extends BaseAppState {
 
         inputManager.addMapping(move, MOVE);
         inputManager.addListener(st, move);
+        inputManager.addMapping(menu, MENU);
+        inputManager.addListener(st,menu);
+
+
+        inputManager.addMapping(map, MAP);
+        inputManager.addListener(st, map);
 
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState) && !(baseAppState instanceof SmallMap)) {
@@ -708,6 +714,8 @@ public class FirstState extends BaseAppState {
         inputManager.deleteTrigger(change, CHANGECAMERA);
         inputManager.deleteTrigger(bag, BAG);
         inputManager.deleteTrigger(move, MOVE);
+        inputManager.deleteTrigger(menu, MENU);
+        inputManager.deleteTrigger(map, MAP);
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState) && !(baseAppState instanceof SmallMap)) {
                 baseAppState.setEnabled(false);

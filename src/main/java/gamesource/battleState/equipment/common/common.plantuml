@@ -1,0 +1,258 @@
+@startuml
+
+title __COMMON's Class Diagram__\n
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.Battery {
+            - turnCount : int
+            + Battery()
+            + fun()
+            + resetBuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.BiologicalSample {
+            + BiologicalSample()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.BrokenRolex {
+            + BrokenRolex()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.Coupon {
+            + Coupon()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.CurseBook {
+            - timeCount : int
+            + CurseBook()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.DemonHammer {
+            - firstTime : boolean
+            + DemonHammer()
+            + fun()
+            + resetBuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.DynamicAmpulla {
+            + DynamicAmpulla()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.KnifeStone {
+            + KnifeStone()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.KnightGloves {
+            - firstTurn : boolean
+            + KnightGloves()
+            + fun()
+            + resetBuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.MetroCard {
+            + MetroCard()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.PhilosopherStone {
+            + PhilosopherStone()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.PoisonPill {
+            + PoisonPill()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.Rind {
+            + Rind()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.SellManualOfGSW {
+            - canUse : boolean
+            + SellManualOfGSW()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.SharpenedPencil {
+            - attCount : int
+            + SharpenedPencil()
+            + fun()
+            + resetBuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.SmallShield {
+            + SmallShield()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.SnakeskinBag {
+            + SnakeskinBag()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace common {
+        class gamesource.battleState.equipment.common.SweaterWithThorns {
+            + SweaterWithThorns()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  gamesource.battleState.equipment.common.Battery -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.BiologicalSample -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.BrokenRolex -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.Coupon -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.CurseBook -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.DemonHammer -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.DynamicAmpulla -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.KnifeStone -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.KnightGloves -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.MetroCard -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.PhilosopherStone -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.PoisonPill -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.Rind -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.SellManualOfGSW -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.SharpenedPencil -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.SmallShield -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.SnakeskinBag -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.common.SweaterWithThorns -up-|> gamesource.battleState.equipment.Equipment
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
