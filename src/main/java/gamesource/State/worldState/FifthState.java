@@ -506,8 +506,8 @@ public class FifthState extends BaseAppState {
                 }else if(results16.size()>0){           //大师
                     if(!isTalkShow && !getStateManager().hasState(talkWithOption)){
                         content.clear();
-                        content.add("Finally you get here, seems you got all things needed to save world, \n"+
-                            "you may find this place is different, I got know what happened");
+                        content.add("Finally you get here, seems you got all things needed to save world,");
+                        content.add("you may find this place is different, I got know what happened");
                         talkWithOption = new TalkWithOption("Master", content, CallType.CONFIRM, 5, states);
                         state.attach(talkWithOption);
                         isTalkShow = true;
