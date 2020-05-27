@@ -28,33 +28,33 @@ public class StartInterface {
         //load resources
         Text text_start = set_text("Choose the chapter and start the game!");
 
-        Texture_init main = new Texture_init("src/main/java/gamesource/Interface/images/main.png");
+        Texture_init main = new Texture_init("src/main/java/gamesource/initialinterface/images/main.png");
         Texture background = main.get_texture();
 
-        Texture_init texture = new Texture_init("src/main/java/gamesource/Interface/images/1.png");
+        Texture_init texture = new Texture_init("src/main/java/gamesource/initialinterface/images/1.png");
         Texture texture_start_released = texture.get_texture();
 
-        texture = new Texture_init("src/main/java/gamesource/Interface/images/2.png");
+        texture = new Texture_init("src/main/java/gamesource/initialinterface/images/2.png");
         Texture texture_start_pressed = texture.get_texture();
 
-        texture = new Texture_init("src/main/java/gamesource/Interface/images/22.png");
+        texture = new Texture_init("src/main/java/gamesource/initialinterface/images/22.png");
         Texture texture_white_pressed = texture.get_texture();
 
-        texture = new Texture_init("src/main/java/gamesource/Interface/images/11.png");
+        texture = new Texture_init("src/main/java/gamesource/initialinterface/images/11.png");
         Texture texture_white_released = texture.get_texture();
 
-        texture = new Texture_init("src/main/java/gamesource/Interface/images/222.png");
+        texture = new Texture_init("src/main/java/gamesource/initialinterface/images/222.png");
         Texture texture_black_released = texture.get_texture();
 
-        texture = new Texture_init("src/main/java/gamesource/Interface/images/111.png");
+        texture = new Texture_init("src/main/java/gamesource/initialinterface/images/111.png");
         Texture texture_black_pressed = texture.get_texture();
 
         Music music = new Music();
-        music.openFromFile (Paths.get("src/main/java/gamesource/Interface/BGM/1.wav"));
+        music.openFromFile (Paths.get("src/main/java/gamesource/initialinterface/BGM/1.wav"));
         Music click = new Music();
-        click.openFromFile (Paths.get("src/main/java/gamesource/Interface/BGM/click.wav"));
+        click.openFromFile (Paths.get("src/main/java/gamesource/initialinterface/BGM/click.wav"));
         Music move = new Music();
-        move.openFromFile (Paths.get("src/main/java/gamesource/Interface/BGM/move.wav"));
+        move.openFromFile (Paths.get("src/main/java/gamesource/initialinterface/BGM/move.wav"));
         music.setLoop(true);
         music.play();
 
@@ -193,7 +193,7 @@ public class StartInterface {
     {
         Font freeSans = new Font();
         try {
-            freeSans.loadFromFile(Paths.get("src/main/java/gamesource/Interface/fonts/LUCON.TTF"));
+            freeSans.loadFromFile(Paths.get("src/main/java/gamesource/initialinterface/fonts/LUCON.TTF"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
