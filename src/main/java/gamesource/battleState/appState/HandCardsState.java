@@ -1,5 +1,6 @@
 package gamesource.battleState.appState;
 
+import com.jme3.animation.LoopMode;
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.BaseAppState;
@@ -339,6 +340,20 @@ public class HandCardsState extends BaseAppState {
                             audioAttack4.playInstance();
                             LeadingActorState.releaseSkill();
                         }
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    Thread.sleep(1000);
+                                } catch (InterruptedException e) {
+                                }
+                                try {
+                                    LeadingActorState.getAnimChannel().setAnim("idle");
+                                    LeadingActorState.getAnimChannel().setLoopMode(LoopMode.Loop);
+                                } catch (Exception e) {
+                                }
+                            }
+                        }).start();
                         handCards.remove(card);
                         card.removeFromParent();
 
@@ -406,6 +421,21 @@ public class HandCardsState extends BaseAppState {
                             audioPower.playInstance();
                             LeadingActorState.releaseSkill();
                         }
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    Thread.sleep(1000);
+                                } catch (InterruptedException e) {
+                                }
+                                try {
+                                    LeadingActorState.getAnimChannel().setAnim("idle");
+                                    LeadingActorState.getAnimChannel().setLoopMode(LoopMode.Loop);
+                                } catch (Exception e) {
+                                }
+                            }
+                        }).start();
+
                         handCards.remove(card);
                         card.removeFromParent();
                         UseCardControl useCardControl = new UseCardControl(copyCard);

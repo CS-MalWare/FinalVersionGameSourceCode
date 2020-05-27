@@ -90,7 +90,8 @@ public class LeadingActorState extends BaseAppState {
         animChannel.setAnim("walk");
         animChannel.setLoopMode(LoopMode.DontLoop);
 
-
+        animChannel.setAnim("idle");
+        animChannel.setLoopMode(LoopMode.Loop);
         System.out.println(model1.getName());
         model1.setName("LeadingActor/leader.j3o");
         model1.scale(0.03f);// 按比例缩小
@@ -272,6 +273,14 @@ public class LeadingActorState extends BaseAppState {
         CollisionResults results = new CollisionResults();
         model1.getWorldBound().collideWith(ray, results);//检测guinode 中所有图形对象 和 ray 的碰撞
         return results;
+    }
+
+    public AnimControl getAnimControl() {
+        return animControl;
+    }
+
+    public static AnimChannel getAnimChannel() {
+        return animChannel;
     }
 
     class MyRawInputListener implements RawInputListener {

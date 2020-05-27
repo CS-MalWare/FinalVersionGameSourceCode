@@ -365,7 +365,7 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) throws IOException {
         MainRole.getInstance();
-        App app = new App(2, 2048, 0, 4);
+        App app = new App(6, 2048, 0, 4);
         AppSettings settings = new AppSettings(true);
 
         // 这里是导入地图存档的,导入人物属性存档在 MainRole类中
@@ -378,7 +378,7 @@ public class App extends SimpleApplication {
 //                ImageIO.read(Main.class.getResource( "/Map/icon.png" ))});
         app.setSettings(settings);
         //app.setShowSettings(true);
-        settings.setFullscreen(true);
+//        settings.setFullscreen(true);
         app.setShowSettings(false);
         //Storage.load();
         app.start();

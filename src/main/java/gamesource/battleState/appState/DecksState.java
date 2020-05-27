@@ -3,9 +3,6 @@ package gamesource.battleState.appState;
 import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;
 import com.jme3.animation.LoopMode;
-import gamesource.battleState.card.Card;
-import gamesource.battleState.character.Enemy;
-import gamesource.battleState.character.MainRole;
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.BaseAppState;
@@ -22,6 +19,9 @@ import com.jme3.renderer.Camera;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.ui.Picture;
+import gamesource.battleState.card.Card;
+import gamesource.battleState.character.Enemy;
+import gamesource.battleState.character.MainRole;
 import gamesource.battleState.equipment.Equipment;
 import truetypefont.TrueTypeFont;
 import truetypefont.TrueTypeKey;
@@ -89,7 +89,7 @@ public class DecksState extends BaseAppState {
         dropDeckPic = new Picture("弃牌堆");
         dropDeckPic.setImage(app.getAssetManager(), "Util/弃牌堆.png", true);
         endTurn = new Picture("结束回合");
-        endTurn.setImage(app.getAssetManager(), "Util/结束new.png", true);
+        endTurn.setImage(app.getAssetManager(), "Util/结束.png", true);
 
 
         drawDeckPic.setPosition(30, 20);
@@ -612,19 +612,25 @@ public class DecksState extends BaseAppState {
                                     app.getStateManager().getState(EnemyState.class).updateHints(true);
                                     app.getStateManager().getState(LeadingActorState.class).updateHints();
 
-                                    if(i<animChannels.size()){
+                                    if(i<animChannels.size()) {
                                         animChannels.get(i).setAnim(animControls.get(i).getAnimationNames().toArray()[0].toString());
-                                        // TODO 待统一动画名字
 //                                EnemyState.getInstance().getAnimChannels().get(i).setAnim("代命名");
 
                                         animChannels.get(i).setLoopMode(LoopMode.DontLoop);
+
+                                        try {
+                                            animChannels.get(i).setAnim("attack");
+                                            animChannels.get(i).setLoopMode(LoopMode.DontLoop);
+                                        } catch (Exception e) {
+
+                                        }
                                     }
 
                                     i++;
                                 }
                                 // 停顿一下,假装在加载（逸润巨佬还是高明）
                                 try {
-                                    Thread.sleep(300);
+                                    Thread.sleep(20);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
@@ -632,14 +638,32 @@ public class DecksState extends BaseAppState {
                                 MainRole.getInstance().startTurn();
                                 app.getStateManager().getState(HandCardsState.class).setCardUsedCount(0);
                                 app.getStateManager().getState(LeadingActorState.class).updateHints();
-                                if(MainRole.getInstance().getStun().getDuration()>0){
-                                    flag=true;
+                                LeadingActorState.getAnimChannel().setAnim("idle");
+                                LeadingActorState.getAnimChannel().setLoopMode(LoopMode.Loop);
+                                if (MainRole.getInstance().getStun().getDuration() > 0) {
+                                    flag = true;
                                     continue;
                                 }
                                 // 将本回合内中已打出的牌清0
-                                flag=false;
-                            }while(flag);
-
+                                flag = false;
+                            } while (flag);
+                            ArrayList<AnimChannel> animChannels = app.getStateManager().getState(EnemyState.class).getAnimChannels();
+                            for (final AnimChannel animChannel : animChannels) {
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            Thread.sleep(1000);
+                                        } catch (InterruptedException e) {
+                                        }
+                                        try {
+                                            animChannel.setAnim("idle");
+                                            animChannel.setLoopMode(LoopMode.Loop);
+                                        } catch (Exception e) {
+                                        }
+                                    }
+                                }).start();
+                            }
                             break;
                         default:
                             isExhuastDeckShow = false;
