@@ -22,6 +22,8 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Quad;
 import com.jme3.texture.Texture;
+import com.simsilica.lemur.event.PopupState;
+
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.Master1;
 import gamesource.State.CharacterState.firstWorldCharacter.*;
@@ -377,11 +379,12 @@ public class FirstState extends BaseAppState {
                         content.add("I am tired. Maybe this would be a good time for retirement");
                         content.add("In charge of the country is not an easy thing");
                         content.add("It took up most of my tine, and now, I want stay with family.");
-                        talkWithOption = new TalkWithOption("Queen", content, CallType.CONFIRM, 1);
+                        talkWithOption = new TalkWithOption("Queen", content, CallType.CONFIRM, 1, states);
                         state.attach(talkWithOption);
                         isTalkShow = true;
                         SecondState.canGo = "can";
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
@@ -402,10 +405,11 @@ public class FirstState extends BaseAppState {
                         content.add("Long time to see, my prince, seems like you have finished you trail.");
                         content.add("We all glad to see you again in King city. After training, there has a great change on your body!");
                         content.add("We are drilling recruits. Would you be pleasure to give them a lession?");
-                        talkWithOption = new TalkWithOption("Soldier", content, CallType.CONFIRM, 1);
+                        talkWithOption = new TalkWithOption("Soldier", content, CallType.CONFIRM, 1, states);
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
@@ -426,10 +430,13 @@ public class FirstState extends BaseAppState {
                         content.add("So I returned the king city as soon as possible.");
                         content.add("From the result of division, there will be a prince save this world");
                         content.add("Before save the world, do you needs some new skills?");
-                        talkWithOption = new TalkWithOption("Lizard Mage", content, CallType.SHOP, 1);
+                        content.add("I have mastered a new skill which can provide goods you want from remote!");
+                        content.add("After conversation, you can press 'G' to get help from Lizard Mage!!!");
+                        talkWithOption = new TalkWithOption("Lizard Mage", content, CallType.CONFIRM, 1, states);
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = true;
@@ -456,13 +463,17 @@ public class FirstState extends BaseAppState {
                 }else if(results8.size()>0){                    //这里是桥上士兵
                     if(!isTalkShow && !getStateManager().hasState(talkWithOption)){
                         content.clear();
-                        content.add("Hello");
-                        content.add("We all glad to see you again in King city. After training, there has a great change on your body!");
-                        content.add("We are drilling recruits. Would you be pleasure to give them a lession?");
-                        talkWithOption = new TalkWithOption("Soldier", content, CallType.FIGHT, 1);
+                        content.add("Ahead is the most prosperous part of the key city, with the most richest \n"+
+                            "trade marking and the finest marking and the finest order of knights, ");
+                        content.add("If you want to go there, you need to keep you weapon in here ...");
+                        content.add("Wait! You are my prince, please forgive me, it is a long time haven't see you, " +
+                            "the Queen misses you so much, lizard traders from fat just arrived King City");
+                        content.add("He may own something you need!");
+                        talkWithOption = new TalkWithOption("Soldier", content, CallType.CONFIRM, 1, states);
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
@@ -481,10 +492,11 @@ public class FirstState extends BaseAppState {
                         content.clear();
                         content.add("Ahead is the most prosperous part of the King city, with the most richest trade marking and the finest order of knights.");
                         content.add("If you want to go there, you need to keep your weapon in here");
-                        talkWithOption = new TalkWithOption("Soldier", content, CallType.CONFIRM, 1);
+                        talkWithOption = new TalkWithOption("Soldier", content, CallType.CONFIRM, 1, states);
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;

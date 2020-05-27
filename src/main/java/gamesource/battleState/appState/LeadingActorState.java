@@ -37,6 +37,7 @@ import truetypefont.TrueTypeFont;
 import truetypefont.TrueTypeKey;
 import truetypefont.TrueTypeLoader;
 
+import java.io.IOException;
 import java.util.ArrayList;
 // 主角模型在战斗中的模组
 public class LeadingActorState extends BaseAppState {
