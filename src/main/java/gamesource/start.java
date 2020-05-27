@@ -31,7 +31,7 @@ public class start {
         //Storage.load();
 
         settings.setTitle("Cholera");// 标题
-        settings.setResolution(1600, 900);// 分辨率
+        settings.setResolution(1920, 1080);// 分辨率
         settings.setFrameRate(100);//限制fps
 //        settings.setIcons(new BufferedImage[]{
 //                ImageIO.read(Main.class.getResource( "/Map/icon.png" ))});
