@@ -3,8 +3,12 @@ package gamesource;
 import com.jme3.system.AppSettings;
 import gamesource.util.Storage;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
 public class start {
-    public  void Start(int frame,int state,int shadow,int open,int juchi,boolean full){
+    public  void Start(int frame,int state,int shadow,int open,int juchi,boolean full) throws IOException {
         if(full==true) {
             App app = new App(state, shadow, open, juchi);
             AppSettings settings = new AppSettings(true);
@@ -15,8 +19,8 @@ public class start {
             settings.setTitle("Cholera");// 标题
             settings.setResolution(1920, 1080);// 分辨率
             settings.setFrameRate(frame);//限制fps
-//        settings.setIcons(new BufferedImage[]{
-//                ImageIO.read(Main.class.getResource( "/Map/icon.png" ))});
+       settings.setIcons(new BufferedImage[]{
+               ImageIO.read(App.class.getResource( "/Map/icon.png" ))});
             app.setSettings(settings);
             settings.setFullscreen(full);
             app.setShowSettings(false);
@@ -33,8 +37,8 @@ public class start {
             settings.setTitle("Cholera");// 标题
             settings.setResolution(1600, 900);// 分辨率
             settings.setFrameRate(frame);//限制fps
-//        settings.setIcons(new BufferedImage[]{
-//                ImageIO.read(Main.class.getResource( "/Map/icon.png" ))});
+       settings.setIcons(new BufferedImage[]{
+               ImageIO.read(App.class.getResource( "/Map/icon.png" ))});
             app.setSettings(settings);
             settings.setFullscreen(false);
             app.setShowSettings(false);

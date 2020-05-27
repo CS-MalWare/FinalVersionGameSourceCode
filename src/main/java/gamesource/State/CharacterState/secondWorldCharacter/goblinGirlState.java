@@ -82,7 +82,7 @@ public class goblinGirlState extends BaseAppState {
         radius=0.4f;
         height=0.6f;
 
-        boy.move(0.06f,-(height/2+radius)-0.2f,0);
+        boy.move(0.06f,-(height/2+radius)+0.05f,0);
 
         character=new Node("Character");
         rootNode.attachChild(character);

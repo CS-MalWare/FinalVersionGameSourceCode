@@ -62,7 +62,7 @@ public class Main_test
      * Get the parameters from the class User_data and pass them
      */
 
-    public static void start_game() throws InterruptedException {
+    public static void start_game() throws InterruptedException, IOException {
         int shadow;
         int alias;
         boolean shadow_bool = true;
@@ -106,7 +106,7 @@ public class Main_test
         else
             st.Start(User_data.getFrame_user(), User_data.getChapter(),0, 0, alias, User_data.getFull());
     }
-    public static void main(String[] argcs) throws InterruptedException, ContextActivationException {
+    public static void main(String[] argcs) throws InterruptedException, ContextActivationException, IOException {
         /*int shadow;
         int alias;
         boolean shadow_bool = true;
