@@ -1078,12 +1078,13 @@ public class EnemyState extends BaseAppState {
             }
         }
         if (enemies.size() == 0) {
+            app.getGuiNode().detachAllChildren();
+            // 加载选卡界面和移除主角
             try {
                 Thread.sleep(300);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            // 加载选卡界面和移除主角
 
             for (Card x : HandCardsState.getInstance().getHandCards()) {
                 x.removeControl(CardMotionControl.class);
