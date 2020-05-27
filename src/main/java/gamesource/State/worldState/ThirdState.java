@@ -414,6 +414,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
                             new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
@@ -436,6 +438,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
                             new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
@@ -459,6 +463,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
                             new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
@@ -482,6 +488,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
                             new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
@@ -505,6 +513,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
                             new Wolfman(30, "Enemies/underWater/fish1.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
@@ -529,6 +539,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Wolfman(45, "Enemies/underWater/fish6.j3o", 0, 3, 0, 0, 0, 0, 0, 0),
                             new Wolfman(45, "Enemies/underWater/fish6.j3o", 0, 3, 0, 0, 0, 0, 0, 0),
@@ -554,6 +566,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Wolfman(45, "Enemies/underWater/fish6.j3o", 0, 3, 0, 0, 0, 0, 0, 0),
                             new Wolfman(45, "Enemies/underWater/fish6.j3o", 0, 3, 0, 0, 0, 0, 0, 0),
@@ -579,6 +593,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Wolfman(45, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Wolfman(45, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
@@ -603,6 +619,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Wolfman(45, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Wolfman(45, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
@@ -626,6 +644,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Wolfman(45, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Wolfman(45, "Enemies/underWater/fish6.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
@@ -672,6 +692,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
@@ -695,6 +717,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
@@ -718,6 +742,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
                             new Wolfman(45, "Enemies/underWater/fish5.j3o", 10, 0, 0, 0, 0, 0, 0, 0),
@@ -741,6 +767,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new OneEyedWolfman(70, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 1, 0, 0, 0),
                             new OneEyedWolfman(70, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 1, 0, 0, 0)
@@ -763,6 +791,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new OneEyedWolfman(70, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 1, 0, 0, 0),
                             new OneEyedWolfman(70, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 1, 0, 0, 0)
@@ -785,6 +815,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new EliteWolfman(100, "Enemies/underWater/mushroomBug.j3o", 10, 3, 0, 0, 0, 0, 0, 0),
                             new EliteWolfman(100, "Enemies/underWater/mushroomBug.j3o", 10, 3, 0, 0, 0, 0, 0, 0)
@@ -807,6 +839,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new EliteWolfman(100, "Enemies/underWater/mushroomBug.j3o", 10, 3, 0, 0, 0, 0, 0, 0),
                             new EliteWolfman(100, "Enemies/underWater/mushroomBug.j3o", 10, 3, 0, 0, 0, 0, 0, 0)
@@ -829,6 +863,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new KingWolfman(200, "Enemies/underWater/fishboss.j3o", 20, 3, 0, 1, 3, 0, 0, 0)
                     );
@@ -851,6 +887,8 @@ public class ThirdState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new OneEyedWolfman(70, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 1, 0, 0, 0),
                             new OneEyedWolfman(70, "Enemies/underWater/drunkCrab.j3o", 10, 2, 0, 0, 1, 0, 0, 0)
@@ -1175,7 +1213,9 @@ public class ThirdState extends BaseAppState {
         inputManager.addListener(st, talk);
         inputManager.addListener(st, change);
         inputManager.addListener(st, bag);
-        inputManager.addListener(st, move);
+
+        inputManager.deleteTrigger(menu, MENU);
+        inputManager.deleteTrigger(map, MAP);
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
                 baseAppState.setEnabled(true);
@@ -1233,6 +1273,12 @@ public class ThirdState extends BaseAppState {
         inputManager.deleteTrigger(change, CHANGECAMERA);
         inputManager.deleteTrigger(bag, BAG);
         inputManager.deleteTrigger(move, MOVE);
+        inputManager.addMapping(menu, MENU);
+        inputManager.addListener(st,menu);
+
+
+        inputManager.addMapping(map, MAP);
+        inputManager.addListener(st, map);
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
                 baseAppState.setEnabled(false);

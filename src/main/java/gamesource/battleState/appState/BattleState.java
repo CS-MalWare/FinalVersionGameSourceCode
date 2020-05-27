@@ -12,6 +12,8 @@ import com.jme3.cursors.plugins.JmeCursor;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.event.*;
 import com.jme3.math.Vector3f;
+import com.jme3.scene.Geometry;
+import com.jme3.scene.Spatial;
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.enemies.AngrySkeletonState;
 import gamesource.State.CharacterState.enemies.GreenSkeletonState;
@@ -41,6 +43,7 @@ public class BattleState extends BaseAppState {
 
     private AppStateManager state;
     private SimpleApplication app;
+    private Spatial pic;
 
     @Override
     protected void initialize(Application app) {
@@ -55,18 +58,17 @@ public class BattleState extends BaseAppState {
         app.getStateManager().attach(new LeadingActorState());
         app.getStateManager().attach(new BattleBackGroundState());
         app.getStateManager().attach(new LightState());
-        app.getStateManager().attach(new BattleEffect());
+        //app.getStateManager().attach(new board2(EnemyState.getInstance().size()));        //效果不好暂时取消
+        app.getStateManager().attach(new BattleEffect(pic));
 //        app.getStateManager().attach(new FilterAppState());
-
-
-
-        // 改变鼠标图标
-        changeCursor();
 
         // 注册监听器
         app.getInputManager().addRawInputListener(inputListener);
     }
 
+    public BattleState(Spatial pic){
+        this.pic=pic;
+    }
 
     private void changeCursor() {
 

@@ -471,6 +471,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
                             new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
@@ -495,6 +497,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
                             new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
@@ -518,6 +522,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
                             new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
@@ -541,6 +547,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new StrongRobot(60, "Enemies/bat/scene.j3o", 15, 0, 0, 0, 5, 2, 0, 0),
                             new StrongRobot(60, "Enemies/bat/scene.j3o", 15, 0, 0, 0, 5, 2, 0, 0),
@@ -565,6 +573,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new StrongRobot(60, "Enemies/bat/scene.j3o", 15, 0, 0, 0, 5, 2, 0, 0),
                             new StrongRobot(60, "Enemies/bat/scene.j3o", 15, 0, 0, 0, 5, 2, 0, 0),
@@ -589,6 +599,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new StrongRobot(60, "Enemies/bat/scene.j3o", 15, 0, 0, 0, 5, 2, 0, 0),
                             new StrongRobot(60, "Enemies/bat/scene.j3o", 15, 0, 0, 0, 5, 2, 0, 0),
@@ -613,6 +625,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
                             new RampageRobot(100, "Enemies/skeleton/blueSkeleton/blueSkeleton.j3o", 0, 4, 1, 0, 0, 0, 0, 0),
@@ -638,6 +652,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
                             new RampageRobot(100, "Enemies/skeleton/redSkeleton/redSkeleton.j3o", 5, 0, 3, 0, 0, 0, 0, 0),
@@ -661,6 +677,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new SteamRobot(300, "Enemies/forth/boss/scene.j3o", 20, 2, 2, 0, 5, 0, 0, 0)
                     );
@@ -683,6 +701,8 @@ public class ForthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Robot(45, "Enemies/forth/scene.j3o", 0, 0, 0, 0, 5, 0, 0, 0),
                             new EliteRobot(100, "Enemies/bossKnight/scene.j3o", 100, 5, 1, 0, 0, 0, 0, 0)
@@ -795,6 +815,12 @@ public class ForthState extends BaseAppState {
         inputManager.addListener(st, change);
         inputManager.addListener(st, bag);
         inputManager.addListener(st, move);
+        inputManager.addMapping(menu, MENU);
+        inputManager.addListener(st,menu);
+
+
+        inputManager.addMapping(map, MAP);
+        inputManager.addListener(st, map);
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
                 baseAppState.setEnabled(true);
@@ -813,6 +839,8 @@ public class ForthState extends BaseAppState {
         inputManager.deleteTrigger(change, CHANGECAMERA);
         inputManager.deleteTrigger(bag, BAG);
         inputManager.deleteTrigger(move, MOVE);
+        inputManager.deleteTrigger(menu, MENU);
+        inputManager.deleteTrigger(map, MAP);
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
                 baseAppState.setEnabled(false);

@@ -615,6 +615,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new DarkDragon(80, "Enemies/fifthMap/airplane.j3o", 5, 1, 0, 0, 0, 0, 0, 0),
                             new DarkDragon(80, "Enemies/fifthMap/airplane.j3o", 5, 1, 0, 0, 0, 0, 0, 0)
@@ -635,6 +637,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new DarkDragon(80, "Enemies/fifthMap/airplane.j3o", 0, 2, 0, 0, 0, 0, 0, 0),
                             new DarkDragon(80, "Enemies/fifthMap/airplane.j3o", 0, 1, 0, 1, 0, 0, 0, 0)
@@ -654,6 +658,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new DarkDragon(80, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0),
                             new RampageDarkDragon(85, "Enemies/fifthMap/airplane.j3o", 0, 0, 0, 0, 0, 0, 0, 0)
@@ -674,6 +680,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new DarkDragon(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 1, 1, 0, 0, 0, 0, 0),
                             new DarkDragon(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 2, 0, 0, 0, 0, 0, 0)
@@ -714,6 +722,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new EliteDarkDragon(200, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0)
                     );
@@ -733,6 +743,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new RampageDarkDragon(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
                             new RampageDarkDragon(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
@@ -754,6 +766,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new DarkDragon(75, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 1, 0, 0, 0, 0, 0, 0),
                             new RampageDarkDragon(80, "Enemies/fifthMap/mech_drone/scene.j3o", 0, 3, 0, 0, 0, 0, 0, 0)
@@ -773,6 +787,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new RampageDarkDragon(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 2, 1, 0, 0, 0, 0, 0),
                             new RampageDarkDragon(75, "Enemies/fifthMap/walking_robot/scene.j3o", 5, 2, 1, 0, 0, 0, 0, 0)
@@ -792,6 +808,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new RampageDarkDragon(85, "Enemies/fifthMap/walking_robot/scene.j3o", 10, 2, 1, 0, 0, 0, 0, 0),
                             new RampageDarkDragon(75, "Enemies/fifthMap/walking_robot/scene.j3o", 10, 3, 1, 0, 0, 0, 0, 0)
@@ -811,6 +829,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new KingDarkDragon(250, "Enemies/fifthMap/mech_drone/scene.j3o", 50, 2, 2, 2, 2, 5, 0, 0)
                     );
@@ -830,6 +850,8 @@ public class FifthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new KingDarkDragon(250, "Enemies/fifthMap/boss/scene.j3o", 50, 2, 2, 2, 2, 5, 0, 0)
                     );
@@ -942,6 +964,12 @@ public class FifthState extends BaseAppState {
         inputManager.addListener(st,change);
         inputManager.addListener(st,bag);
         inputManager.addListener(st,move);
+        inputManager.addMapping(menu, MENU);
+        inputManager.addListener(st,menu);
+
+
+        inputManager.addMapping(map, MAP);
+        inputManager.addListener(st, map);
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
                 baseAppState.setEnabled(true);
@@ -960,6 +988,8 @@ public class FifthState extends BaseAppState {
         inputManager.deleteTrigger(change, CHANGECAMERA);
         inputManager.deleteTrigger(bag, BAG);
         inputManager.deleteTrigger(move,MOVE);
+        inputManager.deleteTrigger(menu, MENU);
+        inputManager.deleteTrigger(map, MAP);
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
                 baseAppState.setEnabled(false);

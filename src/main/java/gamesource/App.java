@@ -106,6 +106,9 @@ public class App extends SimpleApplication {
                 f6 = new SixthState(shadow, open);
                 stateManager.attach(f6);
                 break;
+            case 7:
+                SeventhState f7=new SeventhState(shadow,open);
+                stateManager.attach(f7);
         }
         //stateManager.getState(SecondState.class).setEnabled(false);
         //f2.setEnabled(false);
@@ -424,7 +427,7 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) throws IOException {
         MainRole.getInstance();
-        App app = new App(3, 4096, 1, 4);
+        App app = new App(2, 4096, 0, 1);
         AppSettings settings = new AppSettings(true);
 
         // 这里是导入地图存档的,导入人物属性存档在 MainRole类中
@@ -435,10 +438,11 @@ public class App extends SimpleApplication {
         settings.setFrameRate(100);//限制fps
 //        settings.setIcons(new BufferedImage[]{
 //                ImageIO.read(Main.class.getResource( "/Map/icon.png" ))});
+        settings.setSamples(1);
         app.setSettings(settings);
         //app.setShowSettings(true);
 //        settings.setFullscreen(true);
-        app.setShowSettings(false);
+        //app.setShowSettings(false);
         //Storage.load();
         app.start();
 

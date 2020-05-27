@@ -49,7 +49,6 @@ public class FirstWorldLight extends BaseAppState {
         sun4.setDirection(new Vector3f(1, 0, 0));
         sun6.setDirection(new Vector3f(0, 0, 1));
 
-
         sun.setColor(ColorRGBA.White.mult(0.97f));
         sun1.setColor(ColorRGBA.White.mult(0.97f));
         sun3.setColor(ColorRGBA.White.mult(0.4f));

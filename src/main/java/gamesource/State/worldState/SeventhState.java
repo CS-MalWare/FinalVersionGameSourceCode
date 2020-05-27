@@ -31,22 +31,19 @@ import gamesource.State.SpecialEffect.Water;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.controlState.PositionInputState;
-import gamesource.State.mapState.Chest;
 import gamesource.State.mapState.FirstWorldState;
 import gamesource.State.mapState.SkyBox;
 import gamesource.State.musicState.FirstBackMusic;
 import gamesource.battleState.appState.BattleBackGroundState;
-import gamesource.battleState.appState.GetCardState;
 import gamesource.uiState.SmallMap;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
 import gamesource.util.TalkWithOption;
-import gamesource.util.TalkWithOption.CallType;
 
 import java.util.ArrayList;
 
-public class FirstState extends BaseAppState {
+public class SeventhState extends BaseAppState {
     public static String canGo = "can";// 这是用于存档的变量,大佬们不要改没了
     public final static String talk = "TALK";
     public final static Trigger TALK = new KeyTrigger(KeyInput.KEY_N);
@@ -64,24 +61,26 @@ public class FirstState extends BaseAppState {
     private InputManager inputManager;
 
     MajorActor major;
-    KingState king = new KingState(new Vector3f(-39.032665f, 4.674482f, -12.373539f), 3.9f);
+    KingState king = new KingState(new Vector3f(-39.032665f, 4.674482f, -12.373539f), 4.3f);
     InputAppState input;
     soldierState trainSoldier = new soldierState(5, new Vector3f(74.39715f, -27.375854f, -12.961687f), 6f, 2);
-    blackBoyState black1 = new blackBoyState(new Vector3f(40.09374f, -15.457153f, -47.101334f), 4.8f);
     girlState girl1 = new girlState(new Vector3f(30.66676f, -17.49788f, -38.046852f), -0.8f);
-    KnightState bridgeKnight = new KnightState(5, new Vector3f(13.648198f, -9.379812f, -35.002224f), -2.4f);
-    soldierState bridgeSoldier = new soldierState(5, new Vector3f(10.684639f, -9.582897f, -33.982456f), -2.9f);
-    lizardState lizard = new lizardState(new Vector3f(-35.907394f, 3.7558994f, -35.212135f), 0.7f);
-    KnightState knight2 = new KnightState(2, new Vector3f(-30.269215f, 3.6953368f, -39.55574f), 0.6f, 2);
-    KnightState knight3 = new KnightState(3, new Vector3f(-30.080694f, 3.7788515f, -37.448612f), 3.5f, 1);
-    KnightState knight4 = new KnightState(5, new Vector3f(-32.802486f, 3.7768545f, -36.82728f), 0.9f, 2);
+    KnightState knight2 = new KnightState(2, new Vector3f(-30.269215f, 3.6953368f, -39.55574f), 2.1f, 2);
+    KnightState knight3 = new KnightState(3, new Vector3f(-30.080694f, 3.7788515f, -37.448612f), 2.2f, 1);
+    KnightState knight4 = new KnightState(5, new Vector3f(-51.185917f, 4.0807734f, -15.632022f), 2.2f, 2);
+    KnightState bridgeKnight = new KnightState(5, new Vector3f(-48.703007f, 5.015172f, -10.933982f), 2.3f);
+    soldierState bridgeSoldier = new soldierState(5, new Vector3f(-49.20796f, 4.715569f, -13.518127f), 2.1f);
+    lizardState lizard = new lizardState(new Vector3f(-46.110508f, 4.7068315f, -12.008309f), 2.9f);
+    blackBoyState black1 = new blackBoyState(new Vector3f(-48.370106f, 4.2267914f, -17.703886f), 0.9f);
+    soldierState soldier6 = new soldierState(5, new Vector3f(-50.940468f, 4.607802f, -11.950516f), 2.6f, 2);
     soldierState soldier1 = new soldierState(1, new Vector3f(75.06459f, -29.602854f, 3.6023405f));
     soldierState soldier2 = new soldierState(2, new Vector3f(76.39369f, -25.91693f, -11.675956f), 6f);
     soldierState soldier3 = new soldierState(3, new Vector3f(75.281975f, -27.164389f, -10.233985f), 2.6f, 2);
+    girlState girl = new girlState(new Vector3f(-44.83667f, 4.0626507f, -16.635683f), -0.3f);
+
     soldierState soldier4 = new soldierState(4, new Vector3f(62.556515f, -26.660355f, -18.043798f), 2.6f);
     KnightState knight5 = new KnightState(1, new Vector3f(-46.05996f, 6.526695f, -26.613733f), 1.4f, -1, 0, 1);
     KnightState knight6 = new KnightState(1, new Vector3f(-46.07412f, 5.8200717f, -29.27783f), 4.6f, 1, 0, -1, 2);
-    girlState girl = new girlState(new Vector3f(70.15531f, -27.27989f, -18.333033f), -0.3f);
     metalKnightState metalKnight = new metalKnightState(new Vector3f(64.4272f, -25.418774f, -20.45753f), -1.45f);
     blackBoyState boy1 = new blackBoyState(new Vector3f(64.8886f, -26.233301f, -9.080749f), 2.4f);
     shovelKnight s1 = new shovelKnight(new Vector3f(-35.924995f, 7.3355093f, -13.190997f), 4.4f);
@@ -89,14 +88,14 @@ public class FirstState extends BaseAppState {
     FirstWorldState f1 = new FirstWorldState();
     PositionInputState p1 = new PositionInputState();
     BulletAppState bullet = new BulletAppState();         //现在为为世界添加物理引擎的测试情况
-//    Chest c1 = new Chest(new Vector3f(62.722965f, -26.72887f, 9.268448f));
+    //    Chest c1 = new Chest(new Vector3f(62.722965f, -26.72887f, 9.268448f));
 //    Chest c2 = new Chest(new Vector3f(-15.538464f, -2.8196087f, -60.361416f));
 //    Chest c3 = new Chest(new Vector3f(-26.772413f, 6.3929253f, -8.448748f), 2.9f);
     Water x1 = new Water(-34.4f);
     FirstWorldLight light = new FirstWorldLight(1);
     FirstWorldOtherSpecial special = new FirstWorldOtherSpecial();
     SkyBox sky;
-    private Master1 master = new Master1(new Vector3f(-42.829556f, 4.341275f, -10.886024f), -2.9f);
+    private Master1 master = new Master1(new Vector3f(-42.829556f, 4.341275f, -10.886024f), 3.9f);
     FirstBackMusic music=new FirstBackMusic();
 
 
@@ -149,7 +148,7 @@ public class FirstState extends BaseAppState {
         cross = state.getState(makeCross.class);
         states.add(cross);
         cross.setEnabled(true);
-        
+
         //state.attach(new AxisState());
         //state.attach(bullet);
         state.attach(f1);
@@ -176,6 +175,9 @@ public class FirstState extends BaseAppState {
         states.add(knight3);
         state.attach(knight4);
         states.add(knight4);
+
+        state.attach(soldier6);
+        states.add(soldier6);
         state.attach(soldier1);
         states.add(soldier1);
         state.attach(soldier2);
@@ -249,16 +251,16 @@ public class FirstState extends BaseAppState {
         inputManager.addListener(st, map);
 
         //major.setPlace(new Vector3f(93.51907f, -31.696218f, 18.607859f));
-        major.setPlace(new Vector3f(92.35694f, -31.713285f, 17.851564f));
+        major.setPlace(new Vector3f(-46.11014f, 4.358172f, -14.546469f));
         major.height(6);
         major.change2();
         state.detach(state.getState(FlyCamAppState.class));
     }
 
-    public FirstState(){
+    public SeventhState(){
 
     }
-    public FirstState(int shadow,int open){
+    public SeventhState(int shadow,int open){
         this.shadow=shadow;
         this.open=open;
     }
@@ -302,7 +304,7 @@ public class FirstState extends BaseAppState {
         return results;
     }
 
-//    public CollisionResults collision5() {
+    //    public CollisionResults collision5() {
 //        try {
 //            maj = major.getMajor();
 //            BoundingVolume kni = c1.get();
@@ -361,9 +363,6 @@ public class FirstState extends BaseAppState {
             CollisionResults results2 = collision2();
             CollisionResults results3 = collision3();
             CollisionResults results4 = collision4();
-//            CollisionResults results5 = collision5();
-//            CollisionResults results6 = collision6();
-//            CollisionResults results7 = collision7();
             CollisionResults results8 = collision8();
             CollisionResults results9 = collision9();
             CollisionResults results10 = collision10();
@@ -377,7 +376,7 @@ public class FirstState extends BaseAppState {
                         content.add("I am tired. Maybe this would be a good time for retirement");
                         content.add("In charge of the country is not an easy thing");
                         content.add("It took up most of my tine, and now, I want stay with family.");
-                        talkWithOption = new TalkWithOption("Queen", content, CallType.CONFIRM, 1);
+                        talkWithOption = new TalkWithOption("Queen", content, TalkWithOption.CallType.CONFIRM, 1);
                         state.attach(talkWithOption);
                         isTalkShow = true;
                         SecondState.canGo = "can";
@@ -402,7 +401,7 @@ public class FirstState extends BaseAppState {
                         content.add("Long time to see, my prince, seems like you have finished you trail.");
                         content.add("We all glad to see you again in King city. After training, there has a great change on your body!");
                         content.add("We are drilling recruits. Would you be pleasure to give them a lession?");
-                        talkWithOption = new TalkWithOption("Soldier", content, CallType.CONFIRM, 1);
+                        talkWithOption = new TalkWithOption("Soldier", content, TalkWithOption.CallType.CONFIRM, 1);
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
@@ -426,7 +425,7 @@ public class FirstState extends BaseAppState {
                         content.add("So I returned the king city as soon as possible.");
                         content.add("From the result of division, there will be a prince save this world");
                         content.add("Before save the world, do you needs some new skills?");
-                        talkWithOption = new TalkWithOption("Lizard Mage", content, CallType.SHOP, 1);
+                        talkWithOption = new TalkWithOption("Lizard Mage", content, TalkWithOption.CallType.SHOP, 1);
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
@@ -459,7 +458,7 @@ public class FirstState extends BaseAppState {
                         content.add("Hello");
                         content.add("We all glad to see you again in King city. After training, there has a great change on your body!");
                         content.add("We are drilling recruits. Would you be pleasure to give them a lession?");
-                        talkWithOption = new TalkWithOption("Soldier", content, CallType.FIGHT, 1);
+                        talkWithOption = new TalkWithOption("Soldier", content, TalkWithOption.CallType.FIGHT, 1);
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
@@ -481,7 +480,7 @@ public class FirstState extends BaseAppState {
                         content.clear();
                         content.add("Ahead is the most prosperous part of the King city, with the most richest trade marking and the finest order of knights.");
                         content.add("If you want to go there, you need to keep your weapon in here");
-                        talkWithOption = new TalkWithOption("Soldier", content, CallType.CONFIRM, 1);
+                        talkWithOption = new TalkWithOption("Soldier", content, TalkWithOption.CallType.CONFIRM, 1);
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
@@ -636,12 +635,6 @@ public class FirstState extends BaseAppState {
 
         inputManager.addMapping(move, MOVE);
         inputManager.addListener(st, move);
-        inputManager.addMapping(menu, MENU);
-        inputManager.addListener(st,menu);
-
-
-        inputManager.addMapping(map, MAP);
-        inputManager.addListener(st, map);
 
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState) && !(baseAppState instanceof SmallMap)) {
@@ -702,8 +695,6 @@ public class FirstState extends BaseAppState {
         inputManager.deleteTrigger(change, CHANGECAMERA);
         inputManager.deleteTrigger(bag, BAG);
         inputManager.deleteTrigger(move, MOVE);
-        inputManager.deleteTrigger(menu, MENU);
-        inputManager.deleteTrigger(map, MAP);
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState) && !(baseAppState instanceof SmallMap)) {
                 baseAppState.setEnabled(false);
