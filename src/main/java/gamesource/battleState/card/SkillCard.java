@@ -2,6 +2,7 @@ package gamesource.battleState.card;
 
 import gamesource.battleState.character.Role;
 
+// 技能卡类
 public abstract class SkillCard extends Card {
     private int block;
 

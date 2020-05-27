@@ -132,6 +132,7 @@ public class Card extends Picture {
     }
 
 
+    // 实际为卡牌初始化图片
     public void setImage(AssetManager assetManager) {
 
         super.setImage(assetManager, this.path, true);
@@ -139,7 +140,7 @@ public class Card extends Picture {
         this.setWidth(200);
     }
 
-
+    // 将卡牌旋转角度初始化
     public void reset() {
         this.setLocalRotation(new Quaternion());
     }

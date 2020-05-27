@@ -5,7 +5,7 @@ import gamesource.battleState.character.Enemy;
 import gamesource.battleState.character.MainRole;
 import gamesource.battleState.character.Role;
 
-
+// 攻击卡,主要用于造成伤害
 public abstract class AttackCard extends Card {
     protected int damage;
     protected int times;
@@ -60,7 +60,7 @@ public abstract class AttackCard extends Card {
         return true;
     }
 
-
+    // 对单个敌人造成伤害
     public boolean use(Role target) {
 
         if (!(target instanceof Enemy)) {
