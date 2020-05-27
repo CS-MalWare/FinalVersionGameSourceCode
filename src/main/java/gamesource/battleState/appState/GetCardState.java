@@ -8,7 +8,6 @@ import com.jme3.asset.AssetManager;
 import com.jme3.asset.AssetNotFoundException;
 import com.jme3.collision.CollisionResults;
 import com.jme3.cursors.plugins.JmeCursor;
-import com.jme3.font.BitmapFont;
 import com.jme3.input.InputManager;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.event.*;
@@ -32,6 +31,7 @@ import gamesource.battleState.equipment.Equipment;
 import gamesource.util.Storage;
 import truetypefont.TrueTypeFont;
 import truetypefont.TrueTypeKey;
+import truetypefont.TrueTypeLoader;
 
 import java.util.ArrayList;
 
@@ -57,6 +57,7 @@ public class GetCardState extends BaseAppState {
     @Override
     protected void initialize(Application application) {
         this.app = (SimpleApplication) getApplication();
+        app.getAssetManager().registerLoader(TrueTypeLoader.class, "ttf");
         this.assetManager = app.getAssetManager();
         this.stateManager = app.getStateManager();
         this.inputManager = app.getInputManager();
@@ -87,7 +88,6 @@ public class GetCardState extends BaseAppState {
         font = (TrueTypeFont) this.app.getAssetManager().loadAsset(ttk);
 
 
-        BitmapFont fnt = app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
         Geometry word = font.getBitmapGeom("Please choose one card or equipment. You can use the card in continue battles.", 0, ColorRGBA.Red);
 
         word.setLocalTranslation(200, 850, 0);
