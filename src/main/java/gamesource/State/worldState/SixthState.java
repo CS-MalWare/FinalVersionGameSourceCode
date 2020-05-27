@@ -136,15 +136,15 @@ public class SixthState extends BaseAppState {
         states.add(knight1);
         state.attach(boss);
         states.add(boss);
-        sky=new skyBox6(pic);
-        state.attach(sky);
-        states.add(sky);
         state.attach(music);
         states.add(music);
 
         smallMap = new SmallMap(1600, 900, new Vector2f(400, 400), 6);
         state.attach(smallMap);
         states.add(smallMap);
+        sky=new skyBox6(pic);
+        state.attach(sky);
+        states.add(sky);
 
         this.inputManager = application.getInputManager();
         inputManager.addMapping(talk, TALK);
@@ -387,11 +387,24 @@ public class SixthState extends BaseAppState {
     }
 
     public void update(float tpf) {
-        if (chan == 0) {
+        /*if (chan == 0) {
             time = time + tpf;
             if (time < 60 && time > 10) {
                 change();
                 cross.setEnabled(false);
+            }
+        }*/
+        if(chan==0) {
+            try {
+                time = time + tpf;
+                if (sky.finish() == 1) {
+                    if (time < 60 && time > 5) {
+                        change();
+                        cross.setEnabled(false);
+                    }
+                }
+            }catch (Exception e){
+
             }
         }
     }

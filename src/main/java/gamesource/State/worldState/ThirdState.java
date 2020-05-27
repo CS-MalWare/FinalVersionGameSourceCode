@@ -211,13 +211,13 @@ public class ThirdState extends BaseAppState {
         states.add(music);
         //state.attach(fish5_1);
         //states.add(fish5_1);
-        sky=new SkyBox(pic);
-        state.attach(sky);
-        states.add(sky);
 
         smallMap = new SmallMap(1600, 900, new Vector2f(400, 400), 3);
         state.attach(smallMap);
         states.add(smallMap);
+        sky=new SkyBox(pic);
+        state.attach(sky);
+        states.add(sky);
 
         this.inputManager = application.getInputManager();
         inputManager.addMapping(talk, TALK);
@@ -1132,11 +1132,24 @@ public class ThirdState extends BaseAppState {
     }
 
     public void update(float tpf) {
-        if (chan == 0) {
+        /*if (chan == 0) {
             time = time + tpf;
             if (time < 60 && time > 10) {
                 change();
                 cross.setEnabled(false);
+            }
+        }*/
+        if(chan==0) {
+            try {
+                time = time + tpf;
+                if (sky.finish() == 1) {
+                    if (time < 60 && time > 5) {
+                        change();
+                        cross.setEnabled(false);
+                    }
+                }
+            }catch (Exception e){
+
             }
         }
     }

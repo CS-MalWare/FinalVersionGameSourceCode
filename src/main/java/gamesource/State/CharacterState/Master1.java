@@ -150,6 +150,7 @@ public class Master1  extends BaseAppState implements ActionListener {
     protected void onEnable() {
         app.getRootNode().attachChild(this.rootNode);
         physics.add(girlControl);
+        System.out.println("model finish");
     }
 
     @Override

@@ -203,9 +203,6 @@ public class SecondState extends BaseAppState {
         states.add(c2);
         state.attach(c3);
         states.add(c3);
-        sky=new SkyBox2(pic);
-        state.attach(sky);
-        states.add(sky);
         state.attach(special);
         states.add(special);
         light = new SecondWorldLight(open,shadow);
@@ -214,6 +211,9 @@ public class SecondState extends BaseAppState {
         smallMap = new SmallMap(1600, 900, new Vector2f(300, 840), 2);
         state.attach(smallMap);
         states.add(smallMap);
+        sky=new SkyBox2(pic);
+        state.attach(sky);
+        states.add(sky);
 
         this.inputManager = application.getInputManager();
         inputManager.addMapping(talk, TALK);
@@ -849,11 +849,24 @@ public class SecondState extends BaseAppState {
     }
 
     public void update(float tpf) {
-        if (chan == 0) {
+        /*if (chan == 0) {
             time = time + tpf;
             if (time < 60 && time > 10) {
                 change();
                 cross.setEnabled(false);
+            }
+        }*/
+        if(chan==0) {
+            try {
+                time = time + tpf;
+                if (sky.finish() == 1) {
+                    if (time < 60 && time > 5) {
+                        change();
+                        cross.setEnabled(false);
+                    }
+                }
+            }catch (Exception e){
+
             }
         }
 

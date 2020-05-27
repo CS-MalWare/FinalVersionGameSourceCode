@@ -191,13 +191,13 @@ public class FifthState extends BaseAppState {
         state.attach(boss);
         states.add(boss);
         //state.attach(water);
-        sky=new skyBox5(pic);
-        state.attach(sky);
-        states.add(sky);
 
         smallMap = new SmallMap(1600, 900, new Vector2f(400, 400), 5);
         state.attach(smallMap);
         states.add(smallMap);
+        sky=new skyBox5(pic);
+        state.attach(sky);
+        states.add(sky);
 
         this.inputManager=application.getInputManager();
         inputManager.addMapping(talk,TALK);
@@ -859,11 +859,24 @@ public class FifthState extends BaseAppState {
     }
 
     public void update(float tpf){
-        if(chan==0) {
+        /*if (chan == 0) {
             time = time + tpf;
             if (time < 60 && time > 10) {
                 change();
                 cross.setEnabled(false);
+            }
+        }*/
+        if(chan==0) {
+            try {
+                time = time + tpf;
+                if (sky.finish() == 1) {
+                    if (time < 60 && time > 5) {
+                        change();
+                        cross.setEnabled(false);
+                    }
+                }
+            }catch (Exception e){
+
             }
         }
     }

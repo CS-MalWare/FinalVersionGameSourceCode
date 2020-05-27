@@ -80,31 +80,31 @@ public class App extends SimpleApplication {
         stateManager.attach(cross);
         stateManager.attach(new MajorActor());
         stateManager.attach(new InputAppState());
-        f1 = new FirstState(shadow, open);
         //stateManager.attach(f1);
-        f2 = new SecondState(shadow, open);
-        f3 = new ThirdState(shadow, open);
-        f4 = new ForthState(shadow, open);
-        f5 = new FifthState(shadow, open);
-        f6 = new SixthState(shadow, open);
         //t1=new First();
         switch (guan) {
             case 1:
+                f1 = new FirstState(shadow, open);
                 stateManager.attach(f1);
                 break;
             case 2:
+                f2 = new SecondState(shadow, open);
                 stateManager.attach(f2);
                 break;
             case 3:
+                f3 = new ThirdState(shadow, open);
                 stateManager.attach(f3);
                 break;
             case 4:
+                f4 = new ForthState(shadow, open);
                 stateManager.attach(f4);
                 break;
             case 5:
+                f5 = new FifthState(shadow, open);
                 stateManager.attach(f5);
                 break;
             case 6:
+                f6 = new SixthState(shadow, open);
                 stateManager.attach(f6);
                 break;
         }
@@ -276,6 +276,7 @@ public class App extends SimpleApplication {
                     case 1:
                         if (SecondState.canGo.equals("can")) {
                             stateManager.detach(f1);
+                            f2=new SecondState();
                             stateManager.attach(f2);
                             guan = 2;
                         }
@@ -283,6 +284,7 @@ public class App extends SimpleApplication {
                     case 2:
                         if (ThirdState.canGo.equals("can")) {
                             stateManager.detach(f2);
+                            f3=new ThirdState();
                             stateManager.attach(f3);
                             guan = 3;
                         }
@@ -290,6 +292,7 @@ public class App extends SimpleApplication {
                     case 3:
                         if (ForthState.canGo.equals("can")) {
                             stateManager.detach(f3);
+                            f4=new ForthState();
                             stateManager.attach(f4);
                             guan = 4;
                         }
@@ -297,6 +300,7 @@ public class App extends SimpleApplication {
                     case 4:
                         if (FifthState.canGo.equals("can")) {
                             stateManager.detach(f4);
+                            f5=new FifthState();
                             stateManager.attach(f5);
                             guan = 5;
                         }
@@ -304,6 +308,7 @@ public class App extends SimpleApplication {
                     case 5:
                         if (SixthState.canGo.equals("can")) {
                             stateManager.detach(f5);
+                            f6=new SixthState();
                             stateManager.attach(f6);
                             guan = 6;
                         }
@@ -311,6 +316,7 @@ public class App extends SimpleApplication {
                     case 6:
                         if (FifthState.canGo.equals("can")) {
                             stateManager.detach(f6);
+                            f6=new SixthState();
                             stateManager.attach(f1);
                             guan = 1;
                         }
@@ -326,6 +332,7 @@ public class App extends SimpleApplication {
                     case 1:
                         if (SixthState.canGo.equals("can")) {
                             stateManager.detach(f1);
+                            f6=new SixthState();
                             stateManager.attach(f6);
                             guan = 6;
                         }
@@ -333,6 +340,7 @@ public class App extends SimpleApplication {
                     case 2:
                         if (FirstState.canGo.equals("can")) {
                             stateManager.detach(f2);
+                            f1=new FirstState();
                             stateManager.attach(f1);
                             guan = 1;
                         }
@@ -340,6 +348,7 @@ public class App extends SimpleApplication {
                     case 3:
                         if (SecondState.canGo.equals("can")) {
                             stateManager.detach(f3);
+                            f2=new SecondState();
                             stateManager.attach(f2);
                             guan = 2;
                         }
@@ -347,6 +356,7 @@ public class App extends SimpleApplication {
                     case 4:
                         if (ThirdState.canGo.equals("can")) {
                             stateManager.detach(f4);
+                            f3=new ThirdState();
                             stateManager.attach(f3);
                             guan = 3;
                         }
@@ -354,6 +364,7 @@ public class App extends SimpleApplication {
                     case 5:
                         if (ForthState.canGo.equals("can")) {
                             stateManager.detach(f5);
+                            f4=new ForthState();
                             stateManager.attach(f4);
                             guan = 4;
                         }
@@ -361,6 +372,7 @@ public class App extends SimpleApplication {
                     case 6:
                         if (FifthState.canGo.equals("can")) {
                             stateManager.detach(f6);
+                            f5=new FifthState();
                             stateManager.attach(f5);
                             guan = 5;
                         }
@@ -413,7 +425,7 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) throws IOException {
         MainRole.getInstance();
-        App app = new App(2, 2048, 0, 4);
+        App app = new App(1, 2048, 0, 4);
         AppSettings settings = new AppSettings(true);
 
         // 这里是导入地图存档的,导入人物属性存档在 MainRole类中
