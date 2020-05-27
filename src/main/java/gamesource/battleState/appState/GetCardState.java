@@ -132,7 +132,7 @@ public class GetCardState extends BaseAppState {
 
             }
         } catch (AssetNotFoundException e) {
-            System.out.println("逸润巨佬快加上这个卡：" + e.getMessage());
+            System.out.println("this bug belong to WYR：" + e.getMessage());
         }
 
         // 10%概率获得装备
@@ -413,7 +413,7 @@ public class GetCardState extends BaseAppState {
             fpp.removeAllFilters();
             app.getViewPort().removeProcessor(fpp);
         } catch (NullPointerException npe) {
-            System.out.println("从宝箱过来的");
+            System.out.println("from box");
 //            canStorage = false;
         }
         stateManager.detach(stateManager.getState(BattleBackGroundState.class));
@@ -425,8 +425,8 @@ public class GetCardState extends BaseAppState {
     @Override
     protected void onDisable() {
         MainRole.getInstance().getGold(getGoldCountAfterThisBattle);
-        // TODO 通过完善宝箱获取卡来修复这个bug
-        if (canStorage)
+//        // TODO 通过完善宝箱获取卡来修复这个bug
+//        if (canStorage)
             Storage.save();
         this.rootNode.removeFromParent();
         app.getInputManager().removeRawInputListener(mril);
