@@ -441,9 +441,8 @@ public class BagAppState extends BaseAppState{
             moneyLabel.setText("Money: " + totalMoney.getMoney());
             progressBar.setProgressPercent(MainRole.getInstance().getHP() / MainRole.getInstance().getTotalHP());
 
-            cardArrayReader = new CardArrayReader(MainRole.getInstance().getDeck_());
             cardUIs = cardArrayReader.CardArrayToCardUIs();
-            System.arraycopy(cardUIs, 0, cardUIsCopy, 0, cardUIs.length);
+            System.arraycopy(cardUIs, 0, cardUIsCopy, 0, getCardUIsLength());
         }
     }
 }
