@@ -113,6 +113,7 @@ public class StartInterface {
                 if(event.type == Event.Type.CLOSED) {
                     //The user pressed the close button
                     window.close();
+                    System.exit(0);
                 }
                 if(event.type == Event.Type.MOUSE_BUTTON_PRESSED){
                     if(click_compute(texture_start_released, start_button))

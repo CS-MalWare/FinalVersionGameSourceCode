@@ -23,7 +23,7 @@ public class Board extends BaseAppState {
         geom = new Geometry("window frame", new Quad(6.1f, 3));
         geom.setMaterial(mat);
 
-        geom.move(1.8f, 1.7f, -0.8f);
+        geom.move(1.8f, 1.6f, -0.8f);
     }
 
     @Override
