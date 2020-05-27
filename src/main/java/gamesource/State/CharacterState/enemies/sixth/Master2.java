@@ -151,6 +151,7 @@ public class Master2 extends BaseAppState implements ActionListener {
     protected void onEnable() {
         app.getRootNode().attachChild(this.rootNode);
         physics.add(girlControl);
+        master=girl.getWorldBound();
     }
 
     @Override

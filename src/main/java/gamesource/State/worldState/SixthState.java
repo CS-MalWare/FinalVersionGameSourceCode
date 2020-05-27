@@ -250,6 +250,7 @@ public class SixthState extends BaseAppState {
                     if (results1 != null && results1.size() > 0) {
                         battle1 = 0;
                     } else if (results2 != null && results2.size() > 0) {
+                        System.out.println("battle+battle");
                         battle1 = 1;
                     } else if (results3 != null && results3.size() > 0) {
                         battle1 = 2;
