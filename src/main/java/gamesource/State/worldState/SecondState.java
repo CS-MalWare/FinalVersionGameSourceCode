@@ -130,7 +130,7 @@ public class SecondState extends BaseAppState {
     private float time = 0;
 
     private int chan = 0;
-    private int Cro=0;
+    private int Cro=1;
 
     private BagAppState bagState;
     private ShopAppState shopState;
@@ -242,7 +242,6 @@ public class SecondState extends BaseAppState {
         major.setPlace(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
         BattleBackGroundState.setBackgroundSrc("Map/two/second.j3o");
         major.height(6);
-        cross.setEnabled(false);
         state.detach(state.getState(FlyCamAppState.class));
         major.change2();
     }

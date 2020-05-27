@@ -69,7 +69,7 @@ public class SixthState extends BaseAppState {
     private int canmove = 1;
     private int fly=0;
 
-    private int Cro=0;
+    private int Cro=1;
     Ray ray;
 
     private Camera cam;
@@ -172,7 +172,6 @@ public class SixthState extends BaseAppState {
         //major.setPlace(new Vector3f(12.901182f, -9.024441f, -25.671635f));
         major.setPlace(new Vector3f(92.35694f, -31.713285f, 17.851564f));
         major.height(6);
-        cross.setEnabled(false);
         state.detach(state.getState(FlyCamAppState.class));
         major.change2();
     }

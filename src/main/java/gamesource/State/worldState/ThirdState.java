@@ -116,7 +116,7 @@ public class ThirdState extends BaseAppState {
 
     private int chan = 0;
 
-    private int Cro=0;
+    private int Cro=1;
     private BagAppState bagState;
     private ShopAppState shopState;
     private MenuAppState menuState;
@@ -247,7 +247,6 @@ public class ThirdState extends BaseAppState {
 
         BattleBackGroundState.setBackgroundSrc("Map/scene.j3o");
         major.height(6);
-        cross.setEnabled(false);
         state.detach(state.getState(FlyCamAppState.class));
         major.change2();
     }

@@ -102,7 +102,7 @@ public class ForthState extends BaseAppState {
     private float time = 0;
 
     private int chan = 0;
-    private int Cro=0;
+    private int Cro=1;
 
     private BagAppState bagState;
     private ShopAppState shopState;
@@ -203,7 +203,6 @@ public class ForthState extends BaseAppState {
         major.setPlace(new Vector3f(1.5346308f, -18.545364f, 56.147945f));
         BattleBackGroundState.setBackgroundSrc("Map/fourth.j3o");
         major.height(6);
-        cross.setEnabled(false);
 
         state.detach(state.getState(FlyCamAppState.class));
         major.change2();

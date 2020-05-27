@@ -72,7 +72,7 @@ public class FifthState extends BaseAppState {
     private AppStateManager state;
 
     private int canmove=1;
-    private int Cro=0;
+    private int Cro=1;
 
     Ray ray;
 
@@ -226,7 +226,6 @@ public class FifthState extends BaseAppState {
         major.setPlace(new Vector3f(0f, 0f, 0f));
         major.height(22f);
         BattleBackGroundState.setBackgroundSrc("Map/fifth.j3o");
-        cross.setEnabled(false);
         state.detach(state.getState(FlyCamAppState.class));
         major.change2();
     }

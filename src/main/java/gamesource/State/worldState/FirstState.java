@@ -115,7 +115,7 @@ public class FirstState extends BaseAppState {
 
     private int canmove = 1, chan = 0;
     private int shadow=1024,open=0;
-    private int Cro=0;
+    private int Cro=1;
     private int fly=0;
     Ray ray;
 
@@ -148,7 +148,7 @@ public class FirstState extends BaseAppState {
         states.add(menuState);
         cross = state.getState(makeCross.class);
         states.add(cross);
-        cross.setEnabled(false);
+        cross.setEnabled(true);
         
         //state.attach(new AxisState());
         //state.attach(bullet);
@@ -518,7 +518,7 @@ public class FirstState extends BaseAppState {
                 }
                 System.out.println("change");
                 major.change();
-                if(Cro==1){
+                if(Cro==0){
                     cross.setEnabled(true);
                     Cro=1;
                 }else{
