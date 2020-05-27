@@ -285,7 +285,7 @@ public class GetCardState extends BaseAppState {
                             des = font.getBitmapGeom(lastEquipment.getDescription(), 0, ColorRGBA.Green);
                             des.setLocalTranslation(200, 600, 0);
                             title = font.getBitmapGeom(lastEquipment.getName(), 0, ColorRGBA.Green);
-                            title.setLocalTranslation(450, 650, 0);
+                            title.setLocalTranslation(650, 650, 0);
                             rootNode.attachChild(title);
                             rootNode.attachChild(des);
                         }
