@@ -1,0 +1,232 @@
+@startuml
+
+title __RARE's Class Diagram__\n
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.AlienwareOfWGL {
+            - turnCount : int
+            + AlienwareOfWGL()
+            + fun()
+            + resetBuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.BlueTramcer {
+            + BlueTramcer()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.CYXArtificialHair {
+            + CYXArtificialHair()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.ComboStar {
+            - useCount : int
+            + ComboStar()
+            + fun()
+            + resetBuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.CursedBelt {
+            + CursedBelt()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.DevilPrinceCloak {
+            + DevilPrinceCloak()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.DimensionDoor {
+            - canResetBattle : boolean
+            + DimensionDoor()
+            + fun()
+            + resetBuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.FireKernel {
+            + FireKernel()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.LifeKernel {
+            + LifeKernel()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.MetalKernal {
+            + MetalKernal()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.Popcorn {
+            + Popcorn()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.RubberBuffer {
+            - firstInjured : boolean
+            + RubberBuffer()
+            + fun()
+            + resetBuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.SeaKernel {
+            + SeaKernel()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.SoilKernel {
+            + SoilKernel()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.StickyNote {
+            - firstTurn : boolean
+            + StickyNote()
+            + fun()
+            + resetBuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.equipment {
+      namespace rare {
+        class gamesource.battleState.equipment.rare.TheDragonTeethShield {
+            + TheDragonTeethShield()
+            + fun()
+        }
+      }
+    }
+  }
+  
+
+  gamesource.battleState.equipment.rare.AlienwareOfWGL -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.rare.BlueTramcer -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.rare.CYXArtificialHair -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.rare.ComboStar -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.rare.CursedBelt -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.rare.DevilPrinceCloak -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.rare.DimensionDoor -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.rare.FireKernel -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.rare.LifeKernel -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.rare.MetalKernal -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.rare.Popcorn -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.rare.RubberBuffer -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.rare.SeaKernel -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.rare.SoilKernel -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.rare.StickyNote -up-|> gamesource.battleState.equipment.Equipment
+  gamesource.battleState.equipment.rare.TheDragonTeethShield -up-|> gamesource.battleState.equipment.Equipment
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

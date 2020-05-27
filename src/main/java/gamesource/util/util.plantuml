@@ -1,0 +1,210 @@
+@startuml
+
+title __UTIL's Class Diagram__\n
+
+  namespace gamesource {
+    namespace util {
+      class gamesource.util.CardArrayReader {
+          {static} - cardUIs : CardUI[]
+          {static} - cards : ArrayList<Card>
+          + CardArrayReader()
+          + CardArrayReader()
+          + CardArrayToCardUIs()
+          {static} + cardToCardUI()
+          {static} + findCardByCardUIs()
+          + findCardByUI()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace util {
+      class gamesource.util.EquipmentArrayReader {
+          {static} - equipmentUIs : EquipmentUI[]
+          {static} - equipments : ArrayList<Equipment>
+          + EquipmentArrayReader()
+          + EquipmentArrayReader()
+          {static} + equipmentToUI()
+          {static} + findEquipByUIs()
+          + findEquipmentByUI()
+          + toEquipmentUIs()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace util {
+      interface gamesource.util.Money {
+          {static} + money : int
+          {abstract} + getMoney()
+          {abstract} + setMoney()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace util {
+      class gamesource.util.MySlider {
+          {static} + DOWN_ID : String
+          {static} + ELEMENT_ID : String
+          {static} + RANGE_ID : String
+          {static} + THUMB_ID : String
+          {static} + UP_ID : String
+          - axis : Axis
+          - borderLayout : BorderLayout
+          - container : Container
+          - decremnet : Button
+          - delta : double
+          - increment : Button
+          - model : RangedValueModel
+          - range : Panel
+          - state : VersionedReference<Double>
+          - thumb : Button
+          + MySlider()
+          + MySlider()
+          + getModel()
+          + getValueForLocation()
+          + initializeDefaultStyles()
+          + updateLogicalState()
+          # resetStateView()
+          # setupCommands()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace util {
+      class gamesource.util.MySlider.ButtonDragger {
+          - drag : Vector2f
+          - startPercent : double
+          + cursorButtonEvent()
+          + cursorMoved()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace util {
+      class gamesource.util.MySlider.ChangeValueCommand {
+          - scale : double
+          + ChangeValueCommand()
+          + execute()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace util {
+      class gamesource.util.MySlider.ReshapeListener {
+          + reshape()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace util {
+      class gamesource.util.Storage {
+          {static} + load()
+          {static} + loadCharacter()
+          {static} + main()
+          {static} + reset()
+          {static} + save()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace util {
+      class gamesource.util.TalkWithOption {
+          - app : SimpleApplication
+          - contentLabel : Label
+          - contentStep : int
+          - modelName : String
+          - stage : int
+          - talkContent : ArrayList<String>
+          - window : Container
+          + TalkWithOption()
+          + confirm()
+          + continueToNext()
+          + fight()
+          + getWindow()
+          + optionState()
+          + save()
+          + shop()
+          # calculatePreferLocation()
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace util {
+      enum CallType {
+        CONFIRM
+        FIGHT
+        SAVE
+        SHOP
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace util {
+      class gamesource.util.WordWrapForTalk {
+          - app : SimpleApplication
+          - contentLabel : Label
+          - contentStep : int
+          - continueButton : ActionButton
+          - modelName : ArrayList<String>
+          - modelNameLabel : Label
+          - stage : int
+          - talkContent : ArrayList<String>
+          - window : Container
+          + WordWrapForTalk()
+          + continueToNext()
+          + getAnotherNmae()
+          + getWindow()
+          # calculatePreferLocation()
+          # cleanup()
+          # initialize()
+          # onDisable()
+          # onEnable()
+      }
+    }
+  }
+  
+
+  gamesource.util.MySlider -up-|> com.simsilica.lemur.Panel
+  gamesource.util.MySlider +-down- gamesource.util.MySlider.ButtonDragger
+  gamesource.util.MySlider +-down- gamesource.util.MySlider.ChangeValueCommand
+  gamesource.util.MySlider +-down- gamesource.util.MySlider.ReshapeListener
+  gamesource.util.MySlider.ButtonDragger -up-|> com.simsilica.lemur.event.DefaultCursorListener
+  gamesource.util.MySlider.ChangeValueCommand .up.|> com.simsilica.lemur.Command
+  gamesource.util.MySlider.ReshapeListener -up-|> com.simsilica.lemur.core.AbstractGuiControlListener
+  gamesource.util.TalkWithOption -up-|> com.jme3.app.state.BaseAppState
+  gamesource.util.TalkWithOption o-- gamesource.util.TalkWithOption.CallType : callType
+  gamesource.util.TalkWithOption +-down- gamesource.util.TalkWithOption.CallType
+  gamesource.util.WordWrapForTalk -up-|> com.jme3.app.state.BaseAppState
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
