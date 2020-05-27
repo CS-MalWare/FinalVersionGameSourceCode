@@ -322,7 +322,7 @@ public class Test {
                         text_chapter.setString("Chapter: Three unlocked\nCharacter or boss:\n\tName: Mutant Mermaid");
                     }
                     else {
-                        text_chapter.setString("Chapter: Three  locked\nCharacter:\n\tName: Mutant Mermaid");
+                        text_chapter.setString("Chapter: Three  locked!\nCharacter:\n\tName: Mutant Mermaid");
                     }
                     character.setTexture(texture_cha[3]);
 
