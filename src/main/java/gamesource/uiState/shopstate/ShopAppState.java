@@ -58,7 +58,7 @@ public class ShopAppState extends BaseAppState implements ActionListener{
     private Equipment commonEquipment;
 
     @Override
-    public void initialize(Application application){//测试的时候先是启动加载，稍后会做出更新
+    public void initialize(Application application){
         app = (SimpleApplication) application;
         GuiGlobals.initialize(app);
         BaseStyles.loadGlassStyle();
@@ -416,12 +416,22 @@ public class ShopAppState extends BaseAppState implements ActionListener{
     private class HealthClick implements Command<Button>{
         public void execute(Button button){
             centralPart.detachAllChildren();
-            pagesContainer.detachAllChildren();
+            if(pagesContainer != null){
+                pagesContainer.detachAllChildren();
+            }
 
             IconComponent medicine = new IconComponent("Util/medicine.jpg");
             medicine.setIconScale(0.8f);
-            CardUI healMedicine = new CardUI(medicine, "Medicine", 100, "Get 100 point health back");
-            healMedicine.addToContainer(centralPart, 0, 0);
+            CardUI healMedicine = new CardUI(medicine, "Medicine", 100, "Get 20 point health back");
+            healMedicine.addButtonToContainer(centralPart, 0, 0);
+            healMedicine.addAction(new Heal());
+        }
+    }
+
+    private class Heal implements Command<Button>{
+        public void execute(Button button){
+            HealCheck healCheck = new HealCheck(50, "You will Cost 50 to get 20 point health!");
+            getStateManager().attach(healCheck);
         }
     }
 

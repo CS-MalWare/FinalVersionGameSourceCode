@@ -37,7 +37,11 @@ import com.simsilica.lemur.style.Styles;
 
 import gamesource.battleState.card.Card;
 import gamesource.battleState.card.Card.OCCUPATION;
+import gamesource.battleState.card.Card.RARITY;
 import gamesource.battleState.character.MainRole;
+import gamesource.battleState.equipment.Equipment;
+import gamesource.battleState.equipment.Equipment.EquipmentDegree;
+import gamesource.uiState.shopstate.EquipmentUI;
 import gamesource.util.*;
 
 public class BagAppState extends BaseAppState{
@@ -46,14 +50,21 @@ public class BagAppState extends BaseAppState{
     private final static String bagString = "Bag";
     private VersionedReference[] cardsReference = new VersionedReference[100];
     private ArrayList<Card> mainRoleCards = MainRole.getInstance().getDeck_();
-    private CardArrayReader cardArrayReader = new CardArrayReader(MainRole.getInstance().getDeck_());
+    private ArrayList<Equipment> mainRoleEquipments = MainRole.getInstance().getEquipments();
+
     private CardUI[] cardUIs = new CardUI[60];
     private CardUI[] cardUIsCopy = new CardUI[60];
     private CardUI[] saberCardUIs = new CardUI[30];
     private CardUI[] neutralCardUIs = new CardUI[30];
+    
+    private EquipmentUI[] equipmentUIs = new EquipmentUI[80];
+    private EquipmentUI[] rareEquipmentUIs = new EquipmentUI[20];
+    private EquipmentUI[] commonEquipmentUIs = new EquipmentUI[20];
+    private EquipmentUI[] epicEquipmentUIs = new EquipmentUI[20];
+    private EquipmentUI[] legeEquipmentUIs = new EquipmentUI[20];
+
     private Container generalBorder;
     private Container centralPart;
-    private Container leftPartContainer;
     private Container buttomPartContainer;
     private Container pagesContainer;
     private Container leftPart;
@@ -116,9 +127,9 @@ public class BagAppState extends BaseAppState{
         Button equipments = new Button("Equipments");
         leftPart.addChild(cards, 2, 0);
         leftPart.addChild(equipments, 3, 0);
-        leftPartContainer = new Container("glass");
-        leftPartContainer.addChild(leftPart);
-        generalBorder.addChild(leftPartContainer, Position.West);
+        //leftPartContainer = new Container("glass");
+        //leftPartContainer.addChild(leftPart);
+        generalBorder.addChild(leftPart, Position.West);
         //cards.addClickCommands();
 
         centralPart = new Container("glass");
@@ -130,7 +141,8 @@ public class BagAppState extends BaseAppState{
         //尝试在界面中添加主角有点失败，稍后解决
         //Spatial mainCharacter = app.getAssetManager().loadModel("/LeadingActor/MajorActor4.j3o");
         //app.getGuiNode().attachChild(mainCharacter);
-        cards.addClickCommands(new CardsDirectoryClick());        
+        cards.addClickCommands(new CardsDirectoryClick());   
+        equipments.addClickCommands(new EquipmentClick());     
         generalBorder.setAlpha(2f);
     }
 
@@ -177,8 +189,12 @@ public class BagAppState extends BaseAppState{
     }
 
     public void showCards(Container centralPart){
-        cardUIs = cardArrayReader.CardArrayToCardUIs();
+        cardUIs = CardArrayReader.cardArrayToCardUIs(MainRole.getInstance().getDeck_());
         System.arraycopy(cardUIs, 0, cardUIsCopy, 0, cardUIs.length);
+        mainRoleCards = MainRole.getInstance().getDeck_();
+
+        cleanArray(neutralCardUIs);
+        cleanArray(saberCardUIs);
 
         for(int i=0; i<mainRoleCards.size(); i++){
             if(mainRoleCards.get(i).getOccupation() == OCCUPATION.SABER){
@@ -196,7 +212,7 @@ public class BagAppState extends BaseAppState{
         int pageNumber = (getCardUIsLength() - getCardUIsLength() % 12) / 12 + 1;
         for(int i=1; i<=pageNumber; i++){
             Button button = pagesContainer.addChild(new Button(String.valueOf(i)));
-            button.addClickCommands(new PageButtonClick());
+            button.addClickCommands(new PageButtonClick(null));
         }
         
 
@@ -214,7 +230,68 @@ public class BagAppState extends BaseAppState{
         }
     }
 
+    public void showEquipments(Container centralPart){
+        equipmentUIs = EquipmentArrayReader.toEquipmentUIs(MainRole.getInstance().getEquipments());
+        mainRoleEquipments = MainRole.getInstance().getEquipments();
+        
+        cleanArray(commonEquipmentUIs);
+        cleanArray(rareEquipmentUIs);
+        cleanArray(epicEquipmentUIs);
+        cleanArray(legeEquipmentUIs);
+
+        for(int i=0; i<mainRoleEquipments.size(); i++){
+            if(mainRoleEquipments.get(i).getDegree() == EquipmentDegree.COMMON){
+                appendToCommonEquipmentUIs(equipmentUIs[i]);
+            }else if(mainRoleEquipments.get(i).getDegree() == EquipmentDegree.EPIC){
+                appendToEpicEquipmentUIs(equipmentUIs[i]);
+            }else if(mainRoleEquipments.get(i).getDegree() == EquipmentDegree.LEGENDARY){
+                appendToLegeEquipmentUIs(equipmentUIs[i]);
+            }else if(mainRoleEquipments.get(i).getDegree() == EquipmentDegree.RARE){
+                appendToRareEquipmentUIs(equipmentUIs[i]);
+            }
+        }
+
+        pagesContainer = new Container();
+        pagesContainer.setLayout(new SpringGridLayout(Axis.X, Axis.Y, FillMode.None, FillMode.None));
+        buttomPartContainer.setLayout(new SpringGridLayout(Axis.Y, Axis.Y));
+        buttomPartContainer.addChild(pagesContainer);
+    }
+
+
     public int getCardUIsLength(){
+        int length = 0;
+        for(int i=0; i<cardUIs.length; i++){
+            if(cardUIs[i] == null){
+                length = i;
+                break;
+            }
+        }
+        return length;
+    }
+
+    public int getArrayLength(CardUI[] cUis){
+        int length = 0;
+        for(int i=0; i< cUis.length; i++){
+            if(cUis[i] == null){
+                length = i;
+                break;
+            }
+        }
+        return length;
+    }
+
+    public int getArrayLength(EquipmentUI[] eUis){
+        int length = 0;
+        for(int i=0; i< eUis.length; i++){
+            if(eUis[i] == null){
+                length = i;
+                break;
+            }
+        }
+        return length;
+    }
+
+    public int getEquipmentUIsLength(){
         int length = 0;
         for(int i=0; i<cardUIs.length; i++){
             if(cardUIs[i] == null){
@@ -239,38 +316,44 @@ public class BagAppState extends BaseAppState{
 
             for(int i=1; i<pageNumber; i++){
                 Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
-                pageButton.addClickCommands(new PageButtonClick());
+                pageButton.addClickCommands(new PageButtonClick(null));
             }
         }
     } 
     
     private class ShowSaber implements Command<Button>{
         public void execute(Button button){
+            int saberLength = getArrayLength(saberCardUIs);
             if(saberCardUIs[0] == null){
                 Label infoLabel = new Label("You have no saber cards!");
                 infoLabel.setFontSize(20f);
                 infoLabel.setAlpha(2f);
                 centralPart.detachAllChildren();
-                if(pagesContainer != null){
-                    pagesContainer.detachAllChildren();
-                }
+                pagesContainer.detachAllChildren();
+                
                 centralPart.addChild(infoLabel);
             }else{
                 centralPart.detachAllChildren();
-                if(pagesContainer != null){
-                    pagesContainer.detachAllChildren();
-                }
-                int pageNumber = (getCardUIsLength() - getCardUIsLength() % 12) / 12 + 1;
+                pagesContainer.detachAllChildren();
+                int pageNumber = (saberLength - saberLength % 12) / 12 + 1;
 
-                for(int i=0; i<12; i++){
-                    int j = i % 4;
-                    int z = (i - j)/4;
-                    cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
-                }
+                if(saberLength < 12){
+                    for(int i=0; i<saberLength; i++){
+                        int j = i % 4;
+                        int z = (i - j) / 4;
+                        saberCardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                    }
+                }else{
+                    for(int i=0; i<12; i++){
+                        int j = i % 4;
+                        int z = (i - j)/4;
+                        saberCardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                    }
 
-                for(int i=1; i<=pageNumber; i++){
-                    Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
-                    pageButton.addClickCommands(new PageButtonClick());
+                    for(int i=1; i<=pageNumber; i++){
+                        Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                        pageButton.addClickCommands(new PageButtonClick(OCCUPATION.SABER));
+                    }
                 }
             }
         }
@@ -278,6 +361,7 @@ public class BagAppState extends BaseAppState{
 
     private class ShowNeutral implements Command<Button>{
         public void execute(Button button){
+            int neutralLength = getArrayLength(neutralCardUIs);
             if(neutralCardUIs[0] == null){
                 Label infoLabel = new Label("You have no neutral cards!");
                 infoLabel.setAlpha(2f);
@@ -288,17 +372,177 @@ public class BagAppState extends BaseAppState{
             }else{
                 centralPart.detachAllChildren();
                 pagesContainer.detachAllChildren();
-                int pageNumber = (getCardUIsLength() - getCardUIsLength() % 12) / 12 + 1;
+                int pageNumber = (neutralLength - neutralLength % 12) / 12 + 1;
 
-                for(int i=0; i<12; i++){
-                    int j = i % 4;
-                    int z = (i - j) / 4;
-                    cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                if(neutralLength < 12){
+                    for(int i=0; i<neutralLength; i++){
+                        int j = i % 4;
+                        int z = (i - j) / 4;
+                        neutralCardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                    }
+                }else{
+                    for(int i=0; i<12; i++){
+                        int j = i % 4;
+                        int z = (i - j) / 4;
+                        neutralCardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                    }
+
+                    for(int i=1; i<=pageNumber; i++){
+                        Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                        pageButton.addClickCommands(new PageButtonClick(OCCUPATION.NEUTRAL));
+                    }
                 }
+            }
+        }
+    }
 
-                for(int i=1; i<=pageNumber; i++){
-                    Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
-                    pageButton.addClickCommands(new PageButtonClick());
+    private class ShowCommon implements Command<Button>{
+        public void execute(Button button){
+            int commonLength = getArrayLength(commonEquipmentUIs);
+            if(commonEquipmentUIs[0] == null){
+                Label infoLabel = new Label("You have no common equipments!");
+                infoLabel.setAlpha(2f);
+                infoLabel.setFontSize(20f);
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+                centralPart.addChild(infoLabel);
+            }else{
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+
+                int pageNumber = (commonLength - commonLength % 12) / 12 + 1;
+
+                if(commonLength < 12){
+                    for(int i=0; i<commonLength; i++){
+                        int j = i % 4;
+                        int z = (i - j) / 4;
+                        commonEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }
+                }else{
+                    for(int i=0; i<12; i++){
+                        int j = i % 4;
+                        int z = (i - j) / 4;
+                        commonEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }
+
+                    for(int i=1; i<=pageNumber; i++){
+                        Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                        pageButton.addClickCommands(new PageButtonClickForEquip(EquipmentDegree.COMMON));
+                    }
+                }
+            }
+        }
+    }
+
+    private class ShowEpic implements Command<Button>{
+        public void execute(Button button){
+            int epicLength = getArrayLength(epicEquipmentUIs);
+            if(epicEquipmentUIs[0] == null){
+                Label infoLabel = new Label("You have no epic equipments!");
+                infoLabel.setAlpha(2f);
+                infoLabel.setFontSize(20f);
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+                centralPart.addChild(infoLabel);
+            }else{
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+
+                int pageNumber = (epicLength - epicLength % 12) / 12 + 1;
+
+                if(epicLength < 12){
+                    for(int i=0; i<epicLength; i++){
+                        int j = i % 4;
+                        int z = (i - j) / 4;
+                        epicEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }
+                }else{
+                    for(int i=0; i<12; i++){
+                        int j = i % 4;
+                        int z = (i - j) / 4;
+                        epicEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }
+
+                    for(int i=1; i<=pageNumber; i++){
+                        Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                        pageButton.addClickCommands(new PageButtonClickForEquip(EquipmentDegree.EPIC));
+                    }
+                }
+            }
+        }
+    }
+
+    private class ShowRare implements Command<Button>{
+        public void execute(Button button){
+            int rareLength = getArrayLength(rareEquipmentUIs);
+            if(rareEquipmentUIs[0] == null){
+                Label infoLabel = new Label("You have no rare equipments!");
+                infoLabel.setAlpha(2f);
+                infoLabel.setFontSize(20f);
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+                centralPart.addChild(infoLabel);
+            }else{
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+
+                int pageNumber = (rareLength - rareLength % 12) / 12 + 1;
+
+                if(rareLength < 12){
+                    for(int i=0; i<rareLength; i++){
+                        int j = i % 4;
+                        int z = (i - j) / 4;
+                        rareEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }
+                }else{
+                    for(int i=0; i<12; i++){
+                        int j = i % 4;
+                        int z = (i - j) / 4;
+                        rareEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }
+
+                    for(int i=1; i<=pageNumber; i++){
+                        Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                        pageButton.addClickCommands(new PageButtonClickForEquip(EquipmentDegree.RARE));
+                    }
+                }
+            }
+        }
+    }
+
+    private class ShowLege implements Command<Button>{
+        public void execute(Button button){
+            int legeLength = getArrayLength(legeEquipmentUIs);
+            if(epicEquipmentUIs[0] == null){
+                Label infoLabel = new Label("You have no legendary equipments!");
+                infoLabel.setAlpha(2f);
+                infoLabel.setFontSize(20f);
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+                centralPart.addChild(infoLabel);
+            }else{
+                centralPart.detachAllChildren();
+                pagesContainer.detachAllChildren();
+
+                int pageNumber = (legeLength - legeLength % 12) / 12 + 1;
+
+                if(legeLength < 12){
+                    for(int i=0; i<legeLength; i++){
+                        int j = i % 4;
+                        int z = (i - j) / 4;
+                        legeEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }
+                }else{
+                    for(int i=0; i<12; i++){
+                        int j = i % 4;
+                        int z = (i - j) / 4;
+                        legeEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }
+
+                    for(int i=1; i<=pageNumber; i++){
+                        Button pageButton = pagesContainer.addChild(new Button(String.valueOf(i)));
+                        pageButton.addClickCommands(new PageButtonClickForEquip(EquipmentDegree.LEGENDARY));
+                    }
                 }
             }
         }
@@ -321,10 +565,17 @@ public class BagAppState extends BaseAppState{
             leftPart.addChild(equipments, 3, 0);
 
             cards.addClickCommands(new CardsDirectoryClick());
+            equipments.addClickCommands(new EquipmentClick());
         }
     }
 
     private class PageButtonClick implements Command<Button>{
+        private OCCUPATION type;
+
+        public PageButtonClick(OCCUPATION type){
+            this.type = type;
+        }
+
         public void execute(Button button){
             int pageIndex = Integer.parseInt(button.getText());
 
@@ -334,14 +585,99 @@ public class BagAppState extends BaseAppState{
                     int index = i - 12*(pageIndex-1);
                     int j = index % 4;
                     int z = (index - j)/4;
-                    cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                    if(type == OCCUPATION.NEUTRAL){
+                        neutralCardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                    }else if(type == OCCUPATION.SABER){
+                        saberCardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                    }else{
+                        cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                    }
                 }
             }else{
                 for(int i = 12*(pageIndex - 1); i<12*pageIndex; i++){
                     int index = i - 12*(pageIndex - 1);
                     int j = index % 4;
                     int z = (index - j)/4;
-                    cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                    if(type == OCCUPATION.NEUTRAL){
+                        neutralCardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                    }else if(type == OCCUPATION.SABER){
+                        saberCardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                    }else{
+                        cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
+                    }
+                }
+            }
+        }
+    }
+
+    private class EquipmentClick implements Command<Button>{
+        public void execute(Button button){
+            detachBag();
+            leftPart.setBackground(new QuadBackgroundComponent(new ColorRGBA(0, 0.5f, 0.5f, 0.5f), 5, 5, 0.02f, false));
+            leftPart.addChild(new Label("Bag", new ElementId("header"), "glass"));
+            leftPart.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass")).setUserData(LayerComparator.LAYER, 2);
+            
+            Button common = new Button("Common");
+            Button epic = new Button("Epic");
+            Button lege = new Button("Legendary");
+            Button rare = new Button("Rare");
+            Button backToStart = new Button("Back");
+
+            leftPart.addChild(common);
+            leftPart.addChild(epic);
+            leftPart.addChild(rare);
+            leftPart.addChild(lege);
+            leftPart.addChild(backToStart);
+
+            common.addClickCommands(new ShowCommon());
+            epic.addClickCommands(new ShowEpic());
+            rare.addClickCommands(new ShowRare());
+            lege.addClickCommands(new ShowLege());
+            backToStart.addClickCommands(new BackToStart());
+
+            showEquipments(centralPart);
+        }
+    }
+
+    private class PageButtonClickForEquip implements Command<Button>{
+        private EquipmentDegree type;
+        public PageButtonClickForEquip(EquipmentDegree type){
+            this.type = type;
+        }
+        
+        public void execute(Button button){
+            int pageIndex = Integer.parseInt(button.getText());
+
+            centralPart.detachAllChildren();
+            if(getEquipmentUIsLength() <= 12*pageIndex){
+                for(int i = 12*(pageIndex -1); i<getEquipmentUIsLength(); i++){
+                    int index = i-12*(pageIndex-1);
+                    int j = index % 4;
+                    int z = (index - j)/4;
+                    if(type == EquipmentDegree.COMMON){
+                        commonEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }else if(type == EquipmentDegree.EPIC){
+                        epicEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }else if(type == EquipmentDegree.RARE){
+                        rareEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }else if(type == EquipmentDegree.LEGENDARY){
+                        legeEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }
+                }
+            }else{
+                for(int i = 12*(pageIndex - 1); i<12*pageIndex; i++){
+                    int index = i - 12*(pageIndex - 1);
+                    int j = index % 4;
+                    int z = (index - j)/4;
+                    if(type == EquipmentDegree.COMMON){
+                        commonEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }else if(type == EquipmentDegree.EPIC){
+                        epicEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }else if(type == EquipmentDegree.RARE){
+                        rareEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }else if(type == EquipmentDegree.LEGENDARY){
+                        legeEquipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                    }
                 }
             }
         }
@@ -425,6 +761,52 @@ public class BagAppState extends BaseAppState{
         }
     }
 
+    public void appendToRareEquipmentUIs(EquipmentUI equipmentUI){
+        for(int i=0; i<rareEquipmentUIs.length; i++){
+            if(rareEquipmentUIs[i] == null){
+                rareEquipmentUIs[i] = equipmentUI;
+                break;
+            }
+        }
+    }
+
+    public void appendToCommonEquipmentUIs(EquipmentUI equipmentUI){
+        for(int i=0; i<commonEquipmentUIs.length; i++){
+            if(commonEquipmentUIs[i] == null){
+                commonEquipmentUIs[i] = equipmentUI;
+                break;
+            }
+        }
+    }
+
+    public void appendToEpicEquipmentUIs(EquipmentUI equipmentUI){
+        for(int i=0; i<epicEquipmentUIs.length; i++){
+            if(epicEquipmentUIs[i] == null){
+                epicEquipmentUIs[i] = equipmentUI;
+                break;
+            }
+        }
+    }
+
+    public void appendToLegeEquipmentUIs(EquipmentUI equipmentUI){
+        for(int i=0; i < legeEquipmentUIs.length; i++){
+            if(legeEquipmentUIs[i] == null){
+                legeEquipmentUIs[i] = equipmentUI;
+                break;
+            }
+        }
+    }
+
+    public void cleanArray(EquipmentUI[] eUis){
+        eUis = null;
+        eUis = new EquipmentUI[20];
+    }
+
+    public void cleanArray(CardUI[] cUis){
+        cUis = null;
+        cUis = new CardUI[30];
+    }
+
     public void onFight(){
         cleanup();
         app.getInputManager().deleteMapping(bagString);
@@ -440,9 +822,6 @@ public class BagAppState extends BaseAppState{
             totalMoney.setMoney(MainRole.getInstance().getGold());
             moneyLabel.setText("Money: " + totalMoney.getMoney());
             progressBar.setProgressPercent(MainRole.getInstance().getHP() / MainRole.getInstance().getTotalHP());
-
-            cardUIs = cardArrayReader.CardArrayToCardUIs();
-            System.arraycopy(cardUIs, 0, cardUIsCopy, 0, getCardUIsLength());
         }
     }
 }

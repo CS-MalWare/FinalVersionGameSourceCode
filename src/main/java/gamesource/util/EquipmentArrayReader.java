@@ -23,13 +23,26 @@ public class EquipmentArrayReader {
     public EquipmentUI[] toEquipmentUIs(){
         for(int it = 0; it < equipments.size(); it++){
             IconComponent iconComponent = new IconComponent(equipments.get(it).getImgSrc());
-            iconComponent.setIconScale(0.3f);
+            iconComponent.setIconScale(0.8f);
             EquipmentUI equipmentUI = new EquipmentUI(iconComponent, equipments.get(it).getName(), equipments.get(it).getDegree(), 
                 equipments.get(it).getDescription());
             equipmentUIs[it] = equipmentUI;
         }
         return equipmentUIs;
     }
+
+    public static EquipmentUI[] toEquipmentUIs(ArrayList<Equipment> equipmentsArray){
+        equipmentUIs = null;
+        equipmentUIs = new EquipmentUI[equipmentsArray.size()];
+        for(int i = 0; i<equipmentsArray.size(); i++){
+            IconComponent iconComponent = new IconComponent(equipmentsArray.get(i).getImgSrc());
+            iconComponent.setIconScale(0.8f);
+            EquipmentUI equipmentUI = new EquipmentUI(iconComponent, equipmentsArray.get(i).getName(), 
+                equipmentsArray.get(i).getDegree(), equipmentsArray.get(i).getDescription());
+            equipmentUIs[i] = equipmentUI;
+        }
+        return equipmentUIs;
+    } 
 
     public static EquipmentUI equipmentToUI(Equipment equipment){
         IconComponent iconComponent = new IconComponent(equipment.getImgSrc());
