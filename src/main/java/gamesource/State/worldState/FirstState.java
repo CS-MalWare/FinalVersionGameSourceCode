@@ -55,6 +55,11 @@ public class FirstState extends BaseAppState {
     public final static Trigger BAG = new KeyTrigger(KeyInput.KEY_B);
     public final static String move = "MOVE";
     public final static Trigger MOVE = new KeyTrigger(KeyInput.KEY_W);
+
+    public final static String menu = "MENU";
+    public final static Trigger MENU = new KeyTrigger(KeyInput.KEY_V);
+    public final static String map = "MAP";
+    public final static Trigger MAP = new KeyTrigger(KeyInput.KEY_M);
     private InputManager inputManager;
 
     MajorActor major;
@@ -233,6 +238,14 @@ public class FirstState extends BaseAppState {
         inputManager.addMapping(move, MOVE);
         inputManager.addListener(st, move);
 
+
+        inputManager.addMapping(menu, MENU);
+        inputManager.addListener(st,menu);
+
+
+        inputManager.addMapping(map, MAP);
+        inputManager.addListener(st, map);
+
         //major.setPlace(new Vector3f(93.51907f, -31.696218f, 18.607859f));
         major.setPlace(new Vector3f(92.35694f, -31.713285f, 17.851564f));
         major.height(6);
@@ -363,6 +376,7 @@ public class FirstState extends BaseAppState {
                         talkWithOption = new TalkWithOption("Queen", content, CallType.CONFIRM, 1);
                         state.attach(talkWithOption);
                         isTalkShow = true;
+                        SecondState.canGo = "can";
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
@@ -502,6 +516,28 @@ public class FirstState extends BaseAppState {
                 }else{
                     cross.setEnabled(false);
                     Cro=0;
+                }
+            }
+            if (map.equals(name) && isPressed) {
+                if (canmove == 1) {
+                    state.detach(input);
+                    major.mouseChange();
+                    canmove = 0;
+                } else {
+                    state.attach(input);
+                    major.mouseChange();
+                    canmove = 1;
+                }
+            }
+            if (menu.equals(name) && isPressed) {
+                if (canmove == 1) {
+                    state.detach(input);
+                    major.mouseChange();
+                    canmove = 0;
+                } else {
+                    state.attach(input);
+                    major.mouseChange();
+                    canmove = 1;
                 }
             }
             if (bag.equals(name) && isPressed) {
