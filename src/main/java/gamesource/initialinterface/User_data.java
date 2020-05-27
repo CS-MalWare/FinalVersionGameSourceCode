@@ -1,11 +1,10 @@
 package gamesource.initialinterface;
 
-//import javax.xml.soap.Text;
-
+/*
+ * the class is used to store the data of user selects
+ */
 public class User_data
 {
-
-
     public static int chapter = 0;
     public static int screenx = 1920;
     public static int screeny = 1080;
@@ -26,6 +25,7 @@ public class User_data
         return 0;
     }
 
+    //the next functions are used to pass all of the data of the users to start the game
     public static int getChapter() {
         return chapter;
     }
