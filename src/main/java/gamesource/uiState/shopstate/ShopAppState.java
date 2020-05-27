@@ -253,19 +253,19 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         leftPart.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass")).setUserData(LayerComparator.LAYER, 2);
 
         Button general = new Button("General");
-        Button caster = new Button("Saber");
+        Button saber = new Button("Saber");
         Button neutral = new Button("Neutral");
         Button backToStart = new Button("Back");
         //Button saber = new Button("Saber");
 
         leftPart.addChild(general);
-        leftPart.addChild(caster);
+        leftPart.addChild(saber);
         leftPart.addChild(neutral);
         leftPart.addChild(backToStart);
         //leftPart.addChild(saber);
 
         general.addClickCommands(new ShowGeneral());
-        caster.addClickCommands(new ShowCaster());
+        saber.addClickCommands(new ShowSaber());
         neutral.addClickCommands(new ShowNeutral());
         backToStart.addClickCommands(new BackToStart());
     }
@@ -301,7 +301,7 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         }
     }
 
-    private class ShowCaster implements Command<Button>{
+    private class ShowSaber implements Command<Button>{
         public void execute(Button button){
             centralPart.detachAllChildren();
             pagesContainer.detachAllChildren();

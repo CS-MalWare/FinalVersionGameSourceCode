@@ -12,13 +12,6 @@ import com.simsilica.lemur.Label;
 import com.simsilica.lemur.event.PopupState;
 import com.simsilica.lemur.style.ElementId;
 
-import gamesource.State.worldState.FifthState;
-import gamesource.State.worldState.FirstState;
-import gamesource.State.worldState.ForthState;
-import gamesource.State.worldState.SecondState;
-import gamesource.State.worldState.SixthState;
-import gamesource.State.worldState.ThirdState;
-
 public class WordWrapForTalk extends BaseAppState{
     private SimpleApplication app;
     private Container window;

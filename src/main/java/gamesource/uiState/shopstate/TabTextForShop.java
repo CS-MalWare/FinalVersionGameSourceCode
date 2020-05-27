@@ -52,7 +52,7 @@ public class TabTextForShop extends BaseAppState{
     @Override
     protected void onEnable(){
         window = new Container();
-        window.addChild(new Label("Card Details", new ElementId("window.title.label")));
+        window.addChild(new Label("Goods Details", new ElementId("window.title.label")));
         MouseEventControl.addListenersToSpatial(window, ConsumingMouseListener.INSTANCE);
 
         tabs = window.addChild(new TabbedPanel());
