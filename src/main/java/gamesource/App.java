@@ -327,42 +327,42 @@ public class App extends SimpleApplication {
                         if (SecondState.canGo.equals("can")) {
                             stateManager.detach(f1);
                             stateManager.attach(f6);
-                            guan = 2;
+                            guan = 6;
                         }
                         break;
                     case 2:
                         if (ThirdState.canGo.equals("can")) {
                             stateManager.detach(f2);
                             stateManager.attach(f1);
-                            guan = 3;
+                            guan = 1;
                         }
                         break;
                     case 3:
                         if (ForthState.canGo.equals("can")) {
                             stateManager.detach(f3);
                             stateManager.attach(f2);
-                            guan = 4;
+                            guan =2;
                         }
                         break;
                     case 4:
                         if (FifthState.canGo.equals("can")) {
                             stateManager.detach(f4);
                             stateManager.attach(f3);
-                            guan = 5;
+                            guan = 3;
                         }
                         break;
                     case 5:
                         if (SixthState.canGo.equals("can")) {
                             stateManager.detach(f5);
                             stateManager.attach(f4);
-                            guan = 6;
+                            guan = 4;
                         }
                         break;
                     case 6:
                         if (FifthState.canGo.equals("can")) {
                             stateManager.detach(f6);
                             stateManager.attach(f5);
-                            guan = 1;
+                            guan = 5;
                         }
                         break;
                 }
@@ -428,7 +428,7 @@ public class App extends SimpleApplication {
         //app.setShowSettings(true);
 //        settings.setFullscreen(true);
         app.setShowSettings(false);
-        Storage.load();
+        //Storage.load();
         app.start();
 
     }
