@@ -1,0 +1,204 @@
+@startuml
+
+title __CHARACTER's Class Diagram__\n
+
+  namespace gamesource {
+    namespace battleState.character {
+      abstract class gamesource.battleState.character.Enemy {
+          # hints : String[]
+          # nextActionIndex : int
+          # nextActionSet : String[]
+          # specialStatus : String
+          + Enemy()
+          + Enemy()
+          {abstract} + enemyAction()
+          + getNextActionDescription()
+          + getNextActionIndex()
+          + getNextActionSet()
+          + newAction()
+          + setNextActionIndex()
+          + treat()
+          {abstract} + updateHints()
+          {abstract} # attack()
+          {abstract} # getBlessing()
+          {abstract} # getBlockAndAttack()
+          {abstract} # getBlocks()
+          {abstract} # releaseBuff()
+          {abstract} # releaseCurses()
+          {abstract} # releaseDebuff()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.character {
+      class gamesource.battleState.character.MainRole {
+          + cardEffects : ArrayList<String>
+          + cardEffectsMap : HashMap<String, Integer>
+          + deck : ArrayList<Card>
+          + equipments : ArrayList<Equipment>
+          - MP_current : int
+          - MP_max : int
+          - deck_ : ArrayList<Card>
+          - dexterity_ : int
+          - draw : int
+          - draw_ : int
+          - freeCard : boolean
+          - gold : int
+          {static} - instance : MainRole
+          - keepCard : boolean
+          - potionBag : int
+          - strength_ : int
+          - untreatable : boolean
+          + MainRole()
+          + addCardEffect()
+          + computeDamage()
+          + decMP()
+          + drawCards()
+          + drawCards()
+          + endBattle()
+          + endTurn()
+          + gainMP()
+          + getCard()
+          + getDamage()
+          + getDeck_()
+          + getDexterityForever()
+          + getEquipment()
+          + getEquipments()
+          + getGold()
+          + getGold()
+          {static} + getInstance()
+          + getMP_current()
+          + getMP_max()
+          + getStrengthForever()
+          + isFreeCard()
+          + isUntreatable()
+          + removeCard()
+          + setDeck_()
+          + setDexterityForever()
+          + setEquipments()
+          + setFreeCard()
+          + setGold()
+          + setKeepCard()
+          + setMP_current()
+          + setMP_max()
+          + setStrengthForever()
+          + setUntreatable()
+          + startBattle()
+          + startTurn()
+          + treat()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.character {
+      class gamesource.battleState.character.Role {
+          # HP : int
+          # app : SimpleApplication
+          # atk : int
+          # block : int
+          # dexterity : int
+          # src : String
+          # strength : int
+          # totalHP : int
+          - multiplyingDealDamage : double
+          - multiplyingGetBlock : double
+          - multiplyingGetDamage : double
+          + Role()
+          + bindApp()
+          + computeBlock()
+          + computeDamage()
+          + computeDamage()
+          + endTurn()
+          + gainBlock()
+          + getApp()
+          + getArtifact()
+          + getAtk()
+          + getBleeding()
+          + getBlock()
+          + getBuff()
+          + getDamage()
+          + getDexterity()
+          + getDisarm()
+          + getDodge()
+          + getErode()
+          + getExcite()
+          + getHP()
+          + getIntangible()
+          + getMultiplyingDealDamage()
+          + getMultiplyingGetBlock()
+          + getMultiplyingGetDamage()
+          + getPoison()
+          + getProperty()
+          + getRole()
+          + getSheild()
+          + getSilence()
+          + getSrc()
+          + getStrength()
+          + getStun()
+          + getTotalHP()
+          + getTrueDamage()
+          + getVulnerable()
+          + getWeak()
+          + isRestrain()
+          + setAtk()
+          + setBlock()
+          + setDexterity()
+          + setHP()
+          + setMultiplyingDealDamage()
+          + setMultiplyingGetBlock()
+          + setMultiplyingGetDamage()
+          + setRole()
+          + setSrc()
+          + setStrength()
+          + setTotalHP()
+          + startTurn()
+          + treat()
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.character {
+      enum ROLE {
+        ENEMY
+        MAINROLE
+        NPC
+      }
+    }
+  }
+  
+
+  gamesource.battleState.character.Enemy -up-|> gamesource.battleState.character.Role
+  gamesource.battleState.character.Enemy o-- gamesource.battleState.character.MainRole : target
+  gamesource.battleState.character.MainRole -up-|> gamesource.battleState.character.Role
+  gamesource.battleState.character.Role o-- gamesource.battleState.utils.buffs.foreverBuffs.Artifact : artifact
+  gamesource.battleState.character.Role o-- gamesource.battleState.utils.buffs.limitBuffs.Bleeding : bleeding
+  gamesource.battleState.character.Role o-- gamesource.battleState.utils.buffs.limitBuffs.Disarm : disarm
+  gamesource.battleState.character.Role o-- gamesource.battleState.utils.buffs.foreverBuffs.Dodge : dodge
+  gamesource.battleState.character.Role o-- gamesource.battleState.utils.buffs.limitBuffs.Erode : erode
+  gamesource.battleState.character.Role o-- gamesource.battleState.utils.buffs.limitBuffs.Excite : excite
+  gamesource.battleState.character.Role o-- gamesource.battleState.utils.buffs.limitBuffs.Intangible : intangible
+  gamesource.battleState.character.Role o-- gamesource.battleState.utils.buffs.limitBuffs.Poison : poison
+  gamesource.battleState.character.Role o-- gamesource.battleState.card.AttackCard.PROPERTY : property
+  gamesource.battleState.character.Role o-- gamesource.battleState.character.Role.ROLE : role
+  gamesource.battleState.character.Role o-- gamesource.battleState.utils.buffs.limitBuffs.Sheild : shield
+  gamesource.battleState.character.Role o-- gamesource.battleState.utils.buffs.limitBuffs.Silence : silence
+  gamesource.battleState.character.Role o-- gamesource.battleState.utils.buffs.limitBuffs.Stun : stun
+  gamesource.battleState.character.Role o-- gamesource.battleState.utils.buffs.limitBuffs.Vulnerable : vulnerable
+  gamesource.battleState.character.Role o-- gamesource.battleState.utils.buffs.limitBuffs.Weak : weak
+  gamesource.battleState.character.Role +-down- gamesource.battleState.character.Role.ROLE
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

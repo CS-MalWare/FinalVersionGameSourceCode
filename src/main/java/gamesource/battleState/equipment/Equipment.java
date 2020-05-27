@@ -7,6 +7,7 @@ import com.jme3.ui.Picture;
 
 import java.util.ArrayList;
 
+// 装备类
 public  class Equipment extends Picture {
     public static enum EquipmentDegree {COMMON, RARE, EPIC, LEGENDARY}
     //装备触发的时机，分为以下几个时机

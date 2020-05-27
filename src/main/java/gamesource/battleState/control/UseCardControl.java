@@ -9,7 +9,7 @@ import com.jme3.scene.control.AbstractControl;
 
 
 /**
- * 这是一个运动控件，其作用是让模型朝目标点直线运动。
+ * 使用卡牌后卡牌的移动
  *
  */
 public class UseCardControl extends AbstractControl {

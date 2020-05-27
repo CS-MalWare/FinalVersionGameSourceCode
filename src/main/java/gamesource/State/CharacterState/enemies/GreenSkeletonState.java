@@ -139,7 +139,7 @@ public class GreenSkeletonState extends BaseAppState {
         animChannel.setAnim("mage_attack_2");
 
 
-        animChannel.setLoopMode(LoopMode.DontLoop);
+        animChannel.setLoopMode(LoopMode.Loop);
     }
     @Override
     protected void cleanup(Application application) {

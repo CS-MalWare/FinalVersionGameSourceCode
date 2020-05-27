@@ -313,6 +313,8 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Zac(350, "character/solidier/darksolidier.j3o", 5, 1, 2, 0, 0, 0, 0, 0));
                     state.detach(solidier1);
@@ -332,6 +334,8 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Ace(450, "character/Knight/darkknight.j3o", 0, 1, 1, 0, 0, 0, 0, 0));
                     state.detach(knight1);
@@ -351,6 +355,8 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Faker(400, "character/master/Master2.j3o", 2, 2, 2, 0, 0, 0, 0, 0)
                     );
@@ -371,6 +377,8 @@ public class SixthState extends BaseAppState {
                     inputManager.deleteTrigger(change, CHANGECAMERA);
                     inputManager.deleteTrigger(bag, BAG);
                     inputManager.deleteTrigger(move, MOVE);
+                    inputManager.deleteTrigger(menu, MENU);
+                    inputManager.deleteTrigger(map, MAP);
                     EnemyState.getInstance().addEnemies(
                             new Tuxnet(900, "Enemies/zhenwang/boss.j3o", 0, 3, 5, 3, 5, 5, 0, 0));
                     state.detach(boss);
@@ -475,6 +483,12 @@ public class SixthState extends BaseAppState {
         inputManager.addListener(st, change);
         inputManager.addListener(st, bag);
         inputManager.addListener(st, move);
+        inputManager.addMapping(menu, MENU);
+        inputManager.addListener(st,menu);
+
+
+        inputManager.addMapping(map, MAP);
+        inputManager.addListener(st, map);
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
                 baseAppState.setEnabled(true);
@@ -492,6 +506,8 @@ public class SixthState extends BaseAppState {
         inputManager.deleteTrigger(change, CHANGECAMERA);
         inputManager.deleteTrigger(bag, BAG);
         inputManager.deleteTrigger(move, MOVE);
+        inputManager.deleteTrigger(menu, MENU);
+        inputManager.deleteTrigger(map, MAP);
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
                 baseAppState.setEnabled(false);

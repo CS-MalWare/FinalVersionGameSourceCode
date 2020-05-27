@@ -1,0 +1,214 @@
+@startuml
+
+title __ORIGINALFOREST's Class Diagram__\n
+
+  namespace gamesource {
+    namespace battleState.character {
+      namespace enemy.originalForest {
+        class gamesource.battleState.character.enemy.originalForest.BlackSlime {
+            + BlackSlime()
+            + enemyAction()
+            + startTurn()
+            + updateHints()
+            # attack()
+            # getBlessing()
+            # getBlockAndAttack()
+            # getBlocks()
+            # releaseBuff()
+            # releaseCurses()
+            # releaseDebuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.character {
+      namespace enemy.originalForest {
+        class gamesource.battleState.character.enemy.originalForest.EliteSlime {
+            + EliteSlime()
+            + enemyAction()
+            + startTurn()
+            + updateHints()
+            # attack()
+            # getBlessing()
+            # getBlockAndAttack()
+            # getBlocks()
+            # releaseBuff()
+            # releaseCurses()
+            # releaseDebuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.character {
+      namespace enemy.originalForest {
+        class gamesource.battleState.character.enemy.originalForest.EliteWolfman {
+            - isWake : boolean
+            + EliteWolfman()
+            + enemyAction()
+            + startTurn()
+            + updateHints()
+            # attack()
+            # getBlessing()
+            # getBlockAndAttack()
+            # getBlocks()
+            # releaseBuff()
+            # releaseCurses()
+            # releaseDebuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.character {
+      namespace enemy.originalForest {
+        class gamesource.battleState.character.enemy.originalForest.KingSlime {
+            + KingSlime()
+            + enemyAction()
+            + startTurn()
+            + updateHints()
+            # attack()
+            # getBlessing()
+            # getBlockAndAttack()
+            # getBlocks()
+            # releaseBuff()
+            # releaseCurses()
+            # releaseDebuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.character {
+      namespace enemy.originalForest {
+        class gamesource.battleState.character.enemy.originalForest.KingWolfman {
+            - canIncreaseStrength : boolean
+            + KingWolfman()
+            + enemyAction()
+            + startTurn()
+            + updateHints()
+            # attack()
+            # getBlessing()
+            # getBlockAndAttack()
+            # getBlocks()
+            # releaseBuff()
+            # releaseCurses()
+            # releaseDebuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.character {
+      namespace enemy.originalForest {
+        class gamesource.battleState.character.enemy.originalForest.OneEyedWolfman {
+            + OneEyedWolfman()
+            + enemyAction()
+            + startTurn()
+            + updateHints()
+            # attack()
+            # getBlessing()
+            # getBlockAndAttack()
+            # getBlocks()
+            # releaseBuff()
+            # releaseCurses()
+            # releaseDebuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.character {
+      namespace enemy.originalForest {
+        class gamesource.battleState.character.enemy.originalForest.RedSlime {
+            + RedSlime()
+            + enemyAction()
+            + startTurn()
+            + updateHints()
+            # attack()
+            # getBlessing()
+            # getBlockAndAttack()
+            # getBlocks()
+            # releaseBuff()
+            # releaseCurses()
+            # releaseDebuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.character {
+      namespace enemy.originalForest {
+        class gamesource.battleState.character.enemy.originalForest.Slime {
+            + Slime()
+            + enemyAction()
+            + startTurn()
+            + updateHints()
+            # attack()
+            # getBlessing()
+            # getBlockAndAttack()
+            # getBlocks()
+            # releaseBuff()
+            # releaseCurses()
+            # releaseDebuff()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.character {
+      namespace enemy.originalForest {
+        class gamesource.battleState.character.enemy.originalForest.Wolfman {
+            + Wolfman()
+            + enemyAction()
+            + startTurn()
+            + updateHints()
+            # attack()
+            # getBlessing()
+            # getBlockAndAttack()
+            # getBlocks()
+            # releaseBuff()
+            # releaseCurses()
+            # releaseDebuff()
+        }
+      }
+    }
+  }
+  
+
+  gamesource.battleState.character.enemy.originalForest.BlackSlime -up-|> gamesource.battleState.character.Enemy
+  gamesource.battleState.character.enemy.originalForest.EliteSlime -up-|> gamesource.battleState.character.Enemy
+  gamesource.battleState.character.enemy.originalForest.EliteWolfman -up-|> gamesource.battleState.character.Enemy
+  gamesource.battleState.character.enemy.originalForest.KingSlime -up-|> gamesource.battleState.character.Enemy
+  gamesource.battleState.character.enemy.originalForest.KingWolfman -up-|> gamesource.battleState.character.Enemy
+  gamesource.battleState.character.enemy.originalForest.OneEyedWolfman -up-|> gamesource.battleState.character.Enemy
+  gamesource.battleState.character.enemy.originalForest.RedSlime -up-|> gamesource.battleState.character.Enemy
+  gamesource.battleState.character.enemy.originalForest.Slime -up-|> gamesource.battleState.character.Enemy
+  gamesource.battleState.character.enemy.originalForest.Wolfman -up-|> gamesource.battleState.character.Enemy
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

@@ -42,16 +42,15 @@ public class FirstWorldLight extends BaseAppState {
         rootNode = app.getRootNode();
         manager = app.getAssetManager();
         view = app.getViewPort();
-        sun.setDirection(new Vector3f(-1, -2, -3));
+        sun.setDirection(new Vector3f(-1, -2, 1.25f));
 
 
         sun3.setDirection(new Vector3f(-1, 0, 0));
         sun4.setDirection(new Vector3f(1, 0, 0));
         sun6.setDirection(new Vector3f(0, 0, 1));
 
-
-        sun.setColor(ColorRGBA.White.mult(1.07f));
-        sun1.setColor(ColorRGBA.White.mult(1.07f));
+        sun.setColor(ColorRGBA.White.mult(0.97f));
+        sun1.setColor(ColorRGBA.White.mult(0.97f));
         sun3.setColor(ColorRGBA.White.mult(0.4f));
         sun4.setColor(ColorRGBA.White.mult(0.4f));
         sun6.setColor(ColorRGBA.White.mult(0.4f));

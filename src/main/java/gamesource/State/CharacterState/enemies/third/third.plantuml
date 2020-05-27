@@ -1,0 +1,448 @@
+@startuml
+
+title __THIRD's Class Diagram__\n
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace third {
+            class gamesource.State.CharacterState.enemies.third.DrunkCrab {
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - radius : float
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - ske : BoundingVolume
+                - skeleton : Spatial
+                - skeletonControl : CharacterControl
+                - stepHeight : float
+                + DrunkCrab()
+                + DrunkCrab()
+                + DrunkCrab()
+                + get()
+                + initModel()
+                + initPhysics()
+                # cleanup()
+                # initialize()
+                # onDisable()
+                # onEnable()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace third {
+            class gamesource.State.CharacterState.enemies.third.Fish1State {
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - radius : float
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - ske : BoundingVolume
+                - skeleton : Spatial
+                - skeletonControl : CharacterControl
+                - stepHeight : float
+                + Fish1State()
+                + Fish1State()
+                + Fish1State()
+                + get()
+                + initModel()
+                + initPhysics()
+                # cleanup()
+                # initialize()
+                # onDisable()
+                # onEnable()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace third {
+            class gamesource.State.CharacterState.enemies.third.Fish2State {
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - radius : float
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - ske : BoundingVolume
+                - skeleton : Spatial
+                - skeletonControl : CharacterControl
+                - stepHeight : float
+                + Fish2State()
+                + Fish2State()
+                + Fish2State()
+                + get()
+                + initModel()
+                + initPhysics()
+                # cleanup()
+                # initialize()
+                # onDisable()
+                # onEnable()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace third {
+            class gamesource.State.CharacterState.enemies.third.Fish3State {
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - radius : float
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - ske : BoundingVolume
+                - skeleton : Spatial
+                - skeletonControl : CharacterControl
+                - stepHeight : float
+                + Fish3State()
+                + Fish3State()
+                + Fish3State()
+                + get()
+                + initModel()
+                + initPhysics()
+                # cleanup()
+                # initialize()
+                # onDisable()
+                # onEnable()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace third {
+            class gamesource.State.CharacterState.enemies.third.Fish4State {
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - model : int
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - plane : BoundingVolume
+                - radius : float
+                - robot : Spatial
+                - robotControl : CharacterControl
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - stepHeight : float
+                - timer : float
+                - type : int
+                + Fish4State()
+                + Fish4State()
+                + Fish4State()
+                + get()
+                + initAnim()
+                + initModel()
+                + initPhysics()
+                + update()
+                # cleanup()
+                # initialize()
+                # onDisable()
+                # onEnable()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace third {
+            class gamesource.State.CharacterState.enemies.third.Fish5State {
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - model : int
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - plane : BoundingVolume
+                - radius : float
+                - robot : Spatial
+                - robotControl : CharacterControl
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - stepHeight : float
+                - timer : float
+                - type : int
+                + Fish5State()
+                + Fish5State()
+                + Fish5State()
+                + get()
+                + initAnim()
+                + initModel()
+                + initPhysics()
+                + update()
+                # cleanup()
+                # initialize()
+                # onDisable()
+                # onEnable()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace third {
+            class gamesource.State.CharacterState.enemies.third.Fish6State {
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - model : int
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - plane : BoundingVolume
+                - radius : float
+                - robot : Spatial
+                - robotControl : CharacterControl
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - stepHeight : float
+                - timer : float
+                - type : int
+                + Fish6State()
+                + Fish6State()
+                + Fish6State()
+                + get()
+                + initAnim()
+                + initModel()
+                + initPhysics()
+                + update()
+                # cleanup()
+                # initialize()
+                # onDisable()
+                # onEnable()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace third {
+            class gamesource.State.CharacterState.enemies.third.FishBoss {
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - model : int
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - plane : BoundingVolume
+                - radius : float
+                - robot : Spatial
+                - robotControl : CharacterControl
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - stepHeight : float
+                - timer : float
+                - type : int
+                + FishBoss()
+                + FishBoss()
+                + FishBoss()
+                + get()
+                + initAnim()
+                + initModel()
+                + initPhysics()
+                + update()
+                # cleanup()
+                # initialize()
+                # onDisable()
+                # onEnable()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace third {
+            class gamesource.State.CharacterState.enemies.third.MushroomBug {
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - radius : float
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - ske : BoundingVolume
+                - skeleton : Spatial
+                - skeletonControl : CharacterControl
+                - stepHeight : float
+                + MushroomBug()
+                + MushroomBug()
+                + MushroomBug()
+                + get()
+                + initModel()
+                + initPhysics()
+                # cleanup()
+                # initialize()
+                # onDisable()
+                # onEnable()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  gamesource.State.CharacterState.enemies.third.DrunkCrab -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.third.Fish1State -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.third.Fish2State -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.third.Fish3State -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.third.Fish4State -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.third.Fish5State -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.third.Fish6State -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.third.FishBoss -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.third.MushroomBug -up-|> com.jme3.app.state.BaseAppState
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
