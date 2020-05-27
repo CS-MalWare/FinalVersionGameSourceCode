@@ -509,6 +509,7 @@ public class FifthState extends BaseAppState {
                             "you may find this place is different, I got know what happened");
                         isTalkShow = true;
                     }else if (isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
