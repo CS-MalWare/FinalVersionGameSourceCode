@@ -495,7 +495,7 @@ public class EnemyState extends BaseAppState {
             case "character/Knight/darkknight0.j3o":
             case "character/master/Master20.j3o":
                 model.scale(0.02f);
-                model.rotate(-1.5f, 1f, -0.7f);
+                model.rotate(-1.5f, 4.8f, -1f);
                 break;
             default:
                 break;
@@ -507,10 +507,10 @@ public class EnemyState extends BaseAppState {
             case "character/master/Master20.j3o":
             case "character/Knight/darkknight0.j3o":
             case "character/solidier/darksolidier0.j3o":
-                model.move(-1f, -0.4f, 0);
+                model.move(-0.6f, 0.08f, 0);
                 break;
             case "Enemies/fifthMap/boss/scene0.j3o":
-                model.move(0.5f, 0.1f, 0);
+                model.move(-0.2f, 0.3f, 0);
                 break;
             case "Enemies/fifthMap/airplane0.j3o":
                 model.move(-1f, 0.2f, 0);
@@ -1089,12 +1089,13 @@ public class EnemyState extends BaseAppState {
             }
         }
         if (enemies.size() == 0) {
+            app.getGuiNode().detachAllChildren();
+            // 加载选卡界面和移除主角
             try {
                 Thread.sleep(300);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            // 加载选卡界面和移除主角
 
             for (Card x : HandCardsState.getInstance().getHandCards()) {
                 x.removeControl(CardMotionControl.class);
