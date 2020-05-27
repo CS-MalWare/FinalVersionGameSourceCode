@@ -1,17 +1,17 @@
 package gamesource.initialinterface;
-//import com.sun.xml.internal.bind.v2.model.annotation.RuntimeAnnotationReader;
 import gamesource.State.worldState.*;
 import org.jsfml.graphics.*;
 import org.jsfml.system.Vector2f;
 import org.jsfml.system.Vector2i;
 import org.jsfml.window.*;
 import org.jsfml.window.event.Event;
-import org.jsfml.window.event.KeyEvent;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.nio.file.Paths;
 
+/*
+ * This class is used for the control panel
+ */
 public class Test {
     public static RenderWindow window = new RenderWindow();
     public static Sprite cartoon = new Sprite();
@@ -19,26 +19,34 @@ public class Test {
     public static Texture[] texture_cartoon = new Texture[32];
     public static boolean init = true;
     private static boolean full = false;
+
+    // the icon used to choose the resolution
     private static Sprite resolution1 = new Sprite();
     private static Sprite resolution2 = new Sprite();
     private static Sprite resolution3 = new Sprite();
     private static Sprite resolution4 = new Sprite();
+
+    // the icon used to choose the frame
     private static Sprite frame1 = new Sprite();
     private static Sprite frame2 = new Sprite();
     private static Sprite frame3 = new Sprite();
+
+    //the icons used to choose the anti-aliasing
     private static Sprite aliasing1 = new Sprite();
     private static Sprite aliasing2 = new Sprite();
     private static Sprite aliasing3 = new Sprite();
     private static Sprite aliasing4 = new Sprite();
     private static Sprite aliasing5 = new Sprite();
     private static Sprite aliasing6 = new Sprite();
+
+    // the icons used to set the shadow
     private static Sprite shadow1 = new Sprite();
     private static Sprite shadow2 = new Sprite();
     private static Sprite shadow3 = new Sprite();
     private static Sprite shadow4 = new Sprite();
-
-    private static Sprite map1 = new Sprite();
     private static Sprite map2 = new Sprite();
+
+    // the icons used to choose the maps
     private static Sprite chapter1 = new Sprite();
     private static Sprite chapter2 = new Sprite();
     private static Sprite chapter3 = new Sprite();
@@ -49,30 +57,31 @@ public class Test {
     private static Sprite character = new Sprite();
 
     private static int chapter = 1;
+
+    //set the size of the window and other features
     public static int screenx = 1600;
     public static int screeny = 900;
     public static String aliase = "2x";
     public static int frame_user = 60;
     public static String shadow_user = "low";
-    //private static  Texture[] texture_cartoon = new Texture[32];
-    public static void run() throws IOException, InterruptedException, ContextActivationException {
-        /*final int screenWidth = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
-        final int screenHeight = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;*/
+
+    public static void run() throws InterruptedException, ContextActivationException {
         final int screenHeight = 900;
         final int screenWidth = 1600;
 
+        //init the window
         window.create(new VideoMode(screenWidth, screenHeight), "Cholera");
         window.setMouseCursorVisible(true);
-
         window.setFramerateLimit(30);
 
+        //load the font from local
         Font freeSans = new Font();
         try {
             freeSans.loadFromFile(Paths.get("src/main/resources/fonts/LUCON.TTF"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
+        // the texts used to view for the settings the users have chosen
         final Text text_start = set_text("Choose the chapter\nstart the game!", 1250, 30, 20);
         final Text text_chapter = set_text("Chapter: have not chosen\nIntroduce: NULL", 1250, 250, 20);
         final Text text_chapter_c = set_text("You choose chapter: NULL", 1250, screenHeight - 350, 20);
@@ -81,6 +90,7 @@ public class Test {
         final Text aliasing_info = set_text("Aliasing: " + aliase, 1250, screenHeight - 200, 20);
         final Text shadow_info = set_text("Shadow: " + shadow_user, 1250, screenHeight - 150, 20);
 
+        //the icons
         final Text text_resolution = set_text("Resolution:", 40, 653, 20);
         final Text text_resolution1 = set_text("1920*1080", 840, 658, 15);
         final Text text_resolution2 = set_text("1600*900", 240, 658, 15);
@@ -106,6 +116,7 @@ public class Test {
         final Text text_shadow3 = set_text("medium", 640, 838, 15);
         final Text text_shadow4 = set_text("high", 840, 838, 15);
 
+        //the icons of the start icon
         Texture_init texture = new Texture_init("src/main/resources/images/start1.png");
         final Texture texture_start_released = texture.get_texture();
         texture = new Texture_init("src/main/resources/images/start2.png");
@@ -113,7 +124,7 @@ public class Test {
         final Sprite start_button = new Sprite(texture_start_released);
         start_button.setPosition(screenWidth - 200, screenHeight - 100);
 
-
+        // the picture to view the main boss in the chapter
         Texture_init[] texture_chi = new Texture_init[7];
         final Texture[] texture_cha = new Texture[7];
         for(int i = 0; i <= 6; i++)
@@ -125,16 +136,13 @@ public class Test {
         character.setPosition(1300, 350);
         character.setTexture(texture_cha[0]);
 
-        /*Texture_init map1_ini = new Texture_init("src/images/map3.png");
-        Texture map1_t = map1_ini.get_texture();
-        map1.setTexture(map1_t);
-        map1.setPosition(400, 100);*/
-
+        // the map in the center used to choose the map or the chapter
         Texture_init map2_ini = new Texture_init("src/main/resources/images/666.png");
         Texture map2_t = map2_ini.get_texture();
         map2.setTexture(map2_t);
         map2.setPosition(20, 20);
 
+        // set the icons for the users to choose
         Texture_init resolution_ini = new Texture_init("src/main/resources/images/choose1.png");
         final Texture choose1 = resolution_ini.get_texture();
         resolution1.setTexture(choose1);
@@ -155,6 +163,7 @@ public class Test {
         shadow3.setTexture(choose1);
         shadow4.setTexture(choose1);
 
+        //set the position of these icons
         resolution1.setPosition(800, 650);
         resolution2.setPosition(200, 650);
         resolution3.setPosition(600, 650);
@@ -168,12 +177,13 @@ public class Test {
         aliasing4.setPosition(500, 770);
         aliasing5.setPosition(600, 770);
         aliasing6.setPosition(700, 770);
-
         shadow1.setPosition(200, 830);
         shadow2.setPosition(400, 830);
         shadow3.setPosition(600, 830);
         shadow4.setPosition(800, 830);
 
+
+        //set the icons for users to choose the chapters
         Texture_init chapter01_ini = new Texture_init("src/main/resources/images/chpter1.png");
         final Texture chapter01_t = chapter01_ini.get_texture();
         Texture_init chapter02_ini = new Texture_init("src/main/resources/images/chpter2.png");
@@ -186,9 +196,7 @@ public class Test {
         chapter6.setPosition(830, 400);
         chapter7.setPosition(680, 250);
 
-
-        //Texture_init[] texture_c = new Texture_init[32];
-        //final Texture[] texture_cartoon = new Texture[32];
+        // init the pictures of the cartoons
         for(int i = 1; i <= 31; i++)
         {
             String path = "src/main/resources/cartoon/k" + String.valueOf(i) + ".png";
@@ -196,17 +204,16 @@ public class Test {
             texture_cartoon[i] = texture_c[i].get_texture();
         }
 
+        //init the cartoon and set the position
         cartoon = new Sprite(texture_cartoon[1]);
-
         cartoon.setPosition(screenWidth - 350, 55);
 
-
+        // set the black background of the interface
         final RectangleShape rect2 = new RectangleShape(new Vector2f(screenWidth, screenHeight));
-
         rect2.setFillColor(Color.BLACK);
-
         rect2.setPosition(0, 0);
 
+        // use the function to set the background and other components of the crontrol panel
         background_control(screenWidth, screenHeight,  rect2, texture_start_released,
                 texture_start_pressed, text_start, text_chapter_c, text_chapter, start_button,
                 cartoon, texture_cha, chapter01_t, chapter02_t, choose1, text_resolution
@@ -216,45 +223,12 @@ public class Test {
                 text_aliasing5, text_aliasing6,
                 text_shadow, text_shadow1, text_shadow2, text_shadow3, text_shadow4,
                 resolution_info, frame_info, aliasing_info, shadow_info);
-
-
-
-        /*Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                cartoon(texture_cartoon, cartoon);
-
-            }
-        },"t2");*/
-        //t2.start();
-        //t1.start();
-
-
     }
 
-/*    public static void test()
-    {
-        while(true)
-            System.out.println("Test!");
-    }*/
-
-/*    public static void cartoon(Texture[] texture_cartoon, Sprite cartoon){
-        while (true) {
-            for (int i = 1; i <= 31; i++) {
-                System.out.println("dd");
-                cartoon.setTexture(texture_cartoon[i]);
-
-                try {
-                    Thread.sleep(20);
-                }
-                catch (InterruptedException e)
-                {
-                    ;
-                }
-            }
-        }
-    }*/
-
+    /*
+     * Parameters: all the icons and others set before
+     * It is used to set the background and listen to the action of the mouse
+     */
     public static void background_control(int screenWidth, int screenHeight, RectangleShape rect2,
                                           Texture texture_start_released, Texture texture_start_pressed,
                                           Text text_start, Text text_chapter_c, Text text_chapter, Sprite start_button,
@@ -268,20 +242,24 @@ public class Test {
                                           Text text_shadow4, Text resolution_info, Text frame_info, Text aliasing_info,
                                           Text shadow_info) throws ContextActivationException, InterruptedException {
         {
+            // these strings are used to decide if the chapter is unlocked
             String canGochapter1 = "can";
             String canGochapter2 = SecondState.canGo;
             String canGochapter3 = ThirdState.canGo;
             String canGochapter4 = ForthState.canGo;
             String canGochapter5 = FifthState.canGo;
             String canGochapter6 = SixthState.canGo;
+
             while (window.isOpen()) {
+
+                //clear the window
                 window.clear(Color.WHITE);
                 if (click_compute(texture_start_released, start_button)) {
                     text_start.setString("Start the game");
                 } else {
                     text_start.setString("Choose the chapter\nstart the game!");
                 }
-
+                // if the mouse is in the position of some icons, it will activate  some events
                 if(click_compute(chapter01, chapter1))
                 {
                     chapter1.setTexture(chapter02);
@@ -306,7 +284,7 @@ public class Test {
 
                     }
                     else {
-                        text_chapter.setString("Chapter: Two  locked\nCharacter:\n\tName: King Skeleton");
+                        text_chapter.setString("Chapter: Two  locked!\nCharacter:\n\tName: King Skeleton");
                     }
                     character.setTexture(texture_cha[2]);
 
@@ -322,7 +300,7 @@ public class Test {
                         text_chapter.setString("Chapter: Three unlocked\nCharacter or boss:\n\tName: Mutant Mermaid");
                     }
                     else {
-                        text_chapter.setString("Chapter: Three  locked\nCharacter:\n\tName: Mutant Mermaid");
+                        text_chapter.setString("Chapter: Three  locked!\nCharacter:\n\tName: Mutant Mermaid");
                     }
                     character.setTexture(texture_cha[3]);
 
@@ -333,7 +311,6 @@ public class Test {
 
                 if(click_compute(chapter01, chapter4))
                 {
-                    // System.out.println("!!!");
                     chapter4.setTexture(chapter02);
                     if(canGochapter4.equals("can")) {
                         text_chapter.setString("Chapter: Four unlocked\nCCharacter or boss:\n\tName: Tribal Chief");
@@ -350,7 +327,6 @@ public class Test {
                 }
                 if(click_compute(chapter01, chapter5))
                 {
-                    // System.out.println("!!!");
                     chapter5.setTexture(chapter02);
                     if(canGochapter5.equals("can")) {
                         text_chapter.setString("Chapter: Five unlocked\nCharacter or boss:\n\tName: Tyrannosaurus");
@@ -783,16 +759,14 @@ public class Test {
                         if (click_compute(texture_start_released, start_button)) {
                             start_button.setTexture(texture_start_pressed);
                             User_data user_data = new User_data();
-                            user_data.passData(chapter, screenx, screeny, aliase, frame_user, shadow_user, full);
-                            /*Thread.sleep(2 * 1000);
-                            window.setVisible(false);
-                            Thread.sleep(1 * 1000);
-                            window.close();*/
 
+                            // pass the data to the User_data, then pass them to init the game
+                            user_data.passData(chapter, screenx, screeny, aliase, frame_user, shadow_user, full);
                         }
 
                     }
 
+                    // if the start botton is released, start the game
                     if (event.type == Event.Type.MOUSE_BUTTON_RELEASED) {
                         if (click_compute(texture_start_released, start_button)) {
                             start_button.setTexture(texture_start_released);
@@ -810,6 +784,7 @@ public class Test {
 
                 }
 
+                // set the character picture of the chapter
                 if(chapter == 1)
                 {
                     chapter1.setTexture(chapter02);
@@ -928,6 +903,8 @@ public class Test {
                     shadow4.setTexture(chapter01);
                     text_shadow4.setColor(Color.RED);
                 }
+
+                //draw all of the elements on the window
                 window.draw(rect2);
 
                 window.draw(start_button);
@@ -992,10 +969,14 @@ public class Test {
                 window.display();
 
             }
-
         }
     }
 
+    /*
+     *parameters: Texture, Sprite
+     * It will compute if the position of Mouse is on the icon
+     * The size of the icon and the position of mouse is got to compute
+     */
     public static boolean click_compute(Texture texture, Sprite button)
     {
         Vector2i verctor_mouse = Mouse.getPosition(window);
@@ -1015,6 +996,10 @@ public class Test {
         return false;
     }
 
+    /*
+     *parameters: String
+     * This function abstract the method from jsfml to set the text in the interface
+     */
     public static Text set_text(String string, int screen_x, int screen_y, int size)
     {
         Font freeSans = new Font();

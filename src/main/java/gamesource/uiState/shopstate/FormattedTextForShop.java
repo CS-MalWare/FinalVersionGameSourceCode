@@ -124,4 +124,8 @@ public class FormattedTextForShop extends BaseAppState{
         Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
         return pattern.matcher(string).matches();
     }
+
+    public Container getWindow(){
+        return window; 
+    }
 }

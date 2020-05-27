@@ -628,7 +628,7 @@ public class DecksState extends BaseAppState {
 
                                     i++;
                                 }
-                                // 停顿一下,假装在加载（逸润巨佬还是高明）
+                                // 停顿一下,假装在加载（yr巨佬还是高明）
                                 try {
                                     Thread.sleep(20);
                                 } catch (InterruptedException e) {
