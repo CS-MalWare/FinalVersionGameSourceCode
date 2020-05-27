@@ -31,13 +31,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-
+// 牌组相关的模组加载
 public class DecksState extends BaseAppState {
     private static DecksState instance = null;
 
-    private Picture drawDeckPic;
-    private Picture exhaustDeckPic;
-    private Picture dropDeckPic;
+    private Picture drawDeckPic;  // 抽牌堆图片
+    private Picture exhaustDeckPic; // 消耗堆图片
+    private Picture dropDeckPic; // 弃牌堆图片
     private SimpleApplication app;
     private Node rootNode;
 
@@ -45,9 +45,9 @@ public class DecksState extends BaseAppState {
     private int drawNum = 10;
     private int dropNum = 10;
     private int exhaustNum = 1;
-    private Geometry drawText;
-    private Geometry dropText;
-    private Geometry exhaustText;
+    private Geometry drawText; // 抽牌堆提示文字
+    private Geometry dropText; // 弃牌堆提示文字
+    private Geometry exhaustText; // 消耗堆提示文字
     public final static int PLAIN = 0;// 普通
     public final static int BOLD = 1;// 粗体
     public final static int ITALIC = 2;// 斜体
@@ -178,6 +178,8 @@ public class DecksState extends BaseAppState {
             add(new AudioNode(app.getAssetManager(), "Sound/Dead/震网死亡.wav", AudioData.DataType.Buffer));
         }};
         System.out.println(audioNodes.size());
+
+        // 设置声音的基本属性
         for (AudioNode an : audioNodes) {
             an.setLooping(false);
             an.setPositional(false);
@@ -186,6 +188,7 @@ public class DecksState extends BaseAppState {
         }
     }
 
+    // 为所有card类初始化图片
     public void setImages(SimpleApplication app) {
         for (Card card : drawDeck) {
             card.setImage(app.getAssetManager());
@@ -243,6 +246,7 @@ public class DecksState extends BaseAppState {
         return drawNum;
     }
 
+    // 更新抽牌堆提示
     public void updateDrawNum() {
         this.drawNum = drawDeck.size();
         this.drawText.removeFromParent();
@@ -260,6 +264,7 @@ public class DecksState extends BaseAppState {
 
     }
 
+    // 更新弃牌堆提示
     public void updateDropNum() {
         this.dropNum = dropDeck.size();
         this.dropText.removeFromParent();
@@ -273,9 +278,11 @@ public class DecksState extends BaseAppState {
     }
 
     public int getExhaustNum() {
+
         return exhaustNum;
     }
 
+    // 更新消耗堆提示
     public void updateExhaustNum() {
         this.exhaustNum = exhaustDeck.size();
         this.exhaustText.removeFromParent();
@@ -288,7 +295,7 @@ public class DecksState extends BaseAppState {
         this.rootNode.attachChild(exhaustText);
     }
 
-
+    // 更新全部牌堆提示
     public void updateNum() {
         this.updateDrawNum();
         this.updateDropNum();
@@ -345,7 +352,7 @@ public class DecksState extends BaseAppState {
         this.updateDrawNum();
     }
 
-
+    // 加入抽牌堆
     public void addToDraw(ArrayList<Card> cards) {
 
         for (Card card : cards) {
@@ -357,7 +364,7 @@ public class DecksState extends BaseAppState {
         this.updateDrawNum();
     }
 
-
+    // 加入消耗堆
     public void addToExhaust(Card... cards) {
         for (Card card : cards) {
             card.reset();
@@ -367,6 +374,7 @@ public class DecksState extends BaseAppState {
         this.updateExhaustNum();
     }
 
+    // 加入弃牌堆
     public void addToDrop(Card... cards) {
         for (Card card : cards) {
             card.reset();
@@ -389,6 +397,7 @@ public class DecksState extends BaseAppState {
         return dropDeck;
     }
 
+    // 展示卡组
     public void showCards(ArrayList<Card> cards) {
         this.hideCards();
         for (int index = 0; index < cards.size(); index++) {
@@ -413,6 +422,7 @@ public class DecksState extends BaseAppState {
         this.showDeck.clear();
     }
 
+    // 获取碰撞
     private CollisionResults getGuiCollision(MouseButtonEvent evt) {
         int x = evt.getX();//得到鼠标的横坐标
         int y = evt.getY();//得到鼠标的纵坐标
@@ -435,7 +445,7 @@ public class DecksState extends BaseAppState {
         return results;
     }
 
-
+    // 获取碰撞
     private CollisionResults getGuiCollision(MouseMotionEvent evt) {
         int x = evt.getX();//得到鼠标的横坐标
         int y = evt.getY();//得到鼠标的纵坐标
@@ -518,7 +528,10 @@ public class DecksState extends BaseAppState {
                 if (guiResults.size() > 0) {
                     Geometry res = guiResults.getClosestCollision().getGeometry();
 
+                    // 根据图片名字进行相应的鼠标操作
                     switch (res.getName()) {
+                        // 展示牌堆操作
+
                         case "抽牌堆":
                             if (!isDrawDeckShow) showCards(drawDeck);
                             else hideCards();
@@ -540,6 +553,8 @@ public class DecksState extends BaseAppState {
                             isDrawDeckShow = false;
                             isDropDeckShow = false;
                             break;
+
+                            // 结束回合操作
                         case "结束回合":
                             boolean flag= false;
                             do{
@@ -555,6 +570,8 @@ public class DecksState extends BaseAppState {
                                     if(enemy.getStun().getDuration()==0){
                                         enemy.startTurn();
                                         enemyActionAudio = enemy.enemyAction();
+
+                                        // 根据敌人的行动提示,播放一些音效
                                         switch (enemyActionAudio){
                                             case "slime attack":
                                                 audioNodes.get(0).playInstance();
@@ -607,11 +624,44 @@ public class DecksState extends BaseAppState {
                                             default:
                                                 break;
                                         }
+                                        new Thread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                try {
+                                                    Thread.sleep(500);
+                                                } catch (InterruptedException e) {
+                                                }
+                                                try {
+                                                    app.getCamera().setLocation(new Vector3f(0.15f,0.15f,10.5f));
+                                                    Thread.sleep(70);
+                                                    System.out.println("changeCam");
+                                                } catch (Exception e) {
+                                                }try {
+                                                    app.getCamera().setLocation(new Vector3f(-0.15f,-0.15f,10.5f));
+                                                    Thread.sleep(70);
+                                                } catch (Exception e) {
+                                                }try {
+                                                    app.getCamera().setLocation(new Vector3f(0.15f,-0.15f,10.5f));
+                                                    Thread.sleep(70);
+                                                } catch (Exception e) {
+                                                }try {
+                                                    app.getCamera().setLocation(new Vector3f(-0.15f,0.15f,10.5f));
+                                                    Thread.sleep(70);
+                                                } catch (Exception e) {
+                                                }try {
+                                                    app.getCamera().setLocation(new Vector3f(0,0,10.5f));
+                                                    Thread.sleep(70);
+                                                } catch (Exception e) {
+                                                }
+                                            }
+                                        }).start();
                                     }
                                     enemy.endTurn();
+                                    // 更新敌人和主角的格挡和血量
                                     app.getStateManager().getState(EnemyState.class).updateHints(true);
                                     app.getStateManager().getState(LeadingActorState.class).updateHints();
 
+                                    // 尝试播放动画
                                     if(i<animChannels.size()) {
                                         animChannels.get(i).setAnim(animControls.get(i).getAnimationNames().toArray()[0].toString());
 //                                EnemyState.getInstance().getAnimChannels().get(i).setAnim("代命名");
@@ -640,6 +690,7 @@ public class DecksState extends BaseAppState {
                                 app.getStateManager().getState(LeadingActorState.class).updateHints();
                                 LeadingActorState.getAnimChannel().setAnim("idle");
                                 LeadingActorState.getAnimChannel().setLoopMode(LoopMode.Loop);
+                                // 判断是否眩晕,如果眩晕,则敌人再次行动
                                 if (MainRole.getInstance().getStun().getDuration() > 0) {
                                     flag = true;
                                     continue;
@@ -648,6 +699,7 @@ public class DecksState extends BaseAppState {
                                 flag = false;
                             } while (flag);
                             ArrayList<AnimChannel> animChannels = app.getStateManager().getState(EnemyState.class).getAnimChannels();
+                            // 尝试在敌人攻击后, 将状态恢复到idle
                             for (final AnimChannel animChannel : animChannels) {
                                 new Thread(new Runnable() {
                                     @Override
@@ -671,6 +723,8 @@ public class DecksState extends BaseAppState {
                             isDropDeckShow = false;
                             hideCards();
                     }
+
+                    // 使得重复点击不会出bug
                     if (res == drawText) {
                         if (!isDrawDeckShow) showCards(drawDeck);
                         else hideCards();

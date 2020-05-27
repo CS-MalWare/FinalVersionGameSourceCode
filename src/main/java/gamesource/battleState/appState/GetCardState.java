@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import static gamesource.battleState.card.Card.OCCUPATION.NEUTRAL;
 import static gamesource.battleState.card.Card.OCCUPATION.SABER;
 
+// 获取卡牌的state
 public class GetCardState extends BaseAppState {
     private SimpleApplication app;
     private Node rootNode = new Node("GetCardState");
@@ -84,7 +85,7 @@ public class GetCardState extends BaseAppState {
         // 创建字体 (例如：楷书)
         TrueTypeKey ttk = new TrueTypeKey("Util/font.ttf", // 字体
                 1, // 字形：0 普通、1 粗体、2 斜体
-                28);// 字号
+                24);// 字号
         font = (TrueTypeFont) this.app.getAssetManager().loadAsset(ttk);
 
 
@@ -155,6 +156,7 @@ public class GetCardState extends BaseAppState {
         getGoldCountAfterThisBattle = goldCount;
     }
 
+    // 主要用来判断鼠标碰撞到guiNode
     private CollisionResults getGuiCollision(MouseMotionEvent evt) {
         int x = evt.getX();//得到鼠标的横坐标
         int y = evt.getY();//得到鼠标的纵坐标
@@ -283,7 +285,7 @@ public class GetCardState extends BaseAppState {
                             if (title != null)
                                 title.removeFromParent();
                             des = font.getBitmapGeom(lastEquipment.getDescription(), 0, ColorRGBA.Green);
-                            des.setLocalTranslation(400, 600, 0);
+                            des.setLocalTranslation(200, 600, 0);
                             title = font.getBitmapGeom(lastEquipment.getName(), 0, ColorRGBA.Green);
                             title.setLocalTranslation(650, 650, 0);
                             rootNode.attachChild(title);
@@ -324,16 +326,19 @@ public class GetCardState extends BaseAppState {
             //如果是鼠标按下去
 
             if (evt.isPressed()) {
+                System.out.println("Mouse press");
 //                System.out.println(evt.getX());
 //                System.out.println(evt.getY());
                 //获得当前鼠标选中的位置
                 CollisionResults guiResults = getGuiCollision(evt);
+                System.out.println(guiResults);
                 if (guiResults.size() > 0) {
                     // 获得离射线原点最近的交点所在的图片
                     Geometry res = guiResults.getClosestCollision().getGeometry();
-
+                    System.out.println("Click sth");
                     if (res instanceof Card) {
 //                        System.out.println((Card)res);
+                        System.out.println("choose card");
                         MainRole.getInstance().getCard((Card) res);
                         res.removeFromParent();
                         // 完成操作，删除这个 state
@@ -342,6 +347,7 @@ public class GetCardState extends BaseAppState {
                         if (res instanceof Equipment) {
 //                        System.out.println((Card)res);
                             // 将装备加入到玩家手中
+                            System.out.println("choose equipment");
                             MainRole.getInstance().getEquipment((Equipment) res);
                             res.removeFromParent();
                             // 完成操作，删除这个 state

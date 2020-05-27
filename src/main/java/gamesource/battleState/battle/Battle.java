@@ -33,6 +33,8 @@ import gamesource.util.Storage;
 
 import java.util.ArrayList;
 
+
+// 留给其他开发者的接口,调用即开始战斗
 public class Battle extends BaseAppState {
 
     private BattleState b1;

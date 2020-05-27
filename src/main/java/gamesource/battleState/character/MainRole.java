@@ -140,7 +140,11 @@ public class MainRole extends Role {
             if (e.getName().equals(equipment.getName()))
                 return false;
         }
-        equipment.setImage(app.getAssetManager());
+        try {
+            equipment.setImage(app.getAssetManager());
+        }catch (NullPointerException npe){
+            npe.printStackTrace();
+        }
         this.equipments.add(equipment);
         if (equipment.getOpportunity() == Equipment.Opportunity.GET) {
             equipment.fun();

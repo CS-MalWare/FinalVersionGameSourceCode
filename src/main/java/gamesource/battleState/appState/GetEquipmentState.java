@@ -1,5 +1,11 @@
 package gamesource.battleState.appState;
 
+import com.jme3.post.FilterPostProcessor;
+import com.jme3.ui.Picture;
+import gamesource.battleState.battle.Battle;
+import gamesource.battleState.card.Card;
+import gamesource.battleState.card.CreateCard;
+import gamesource.battleState.character.MainRole;
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
@@ -33,6 +39,10 @@ import gamesource.battleState.equipment.Equipment;
 
 import java.util.ArrayList;
 
+import static gamesource.battleState.card.Card.OCCUPATION.NEUTRAL;
+import static gamesource.battleState.card.Card.OCCUPATION.SABER;
+
+// 基本作用同GetCardState
 public class GetEquipmentState extends BaseAppState {
     private SimpleApplication app;
     private Node rootNode = new Node("GetCardState");

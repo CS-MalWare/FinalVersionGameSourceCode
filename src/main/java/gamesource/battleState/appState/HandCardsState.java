@@ -29,7 +29,7 @@ import gamesource.battleState.control.UseCardControl;
 
 import java.util.ArrayList;
 
-
+// 手牌相关模组
 public class HandCardsState extends BaseAppState {
     private SimpleApplication app;
     //    private double height = app.getCamera().getHeight();
@@ -238,7 +238,7 @@ public class HandCardsState extends BaseAppState {
         app.getInputManager().removeRawInputListener(cardListener);
     }
 
-
+// 增加到手牌
     public void addToHand(ArrayList<Card> cards, boolean withAdjust) {
         int size0 = handCards.size();//获取当前还没有抽卡的手牌数量
         this.handCards.addAll(cards);
@@ -319,7 +319,7 @@ public class HandCardsState extends BaseAppState {
         }
     }
 
-    //卡牌打出时候的操作
+    //卡牌打出时候的操作,使用卡牌,生成相应效果,并且做出动作
     private void useCard(Card card) throws InterruptedException {
         synchronized (this) {
             if (MainRole.getInstance().getMP_current() >= card.getCost()) {
@@ -335,10 +335,72 @@ public class HandCardsState extends BaseAppState {
                         this.rootNode.attachChild(copyCard);
                         if (card.getType() == Card.TYPE.ATTACK) {
                             LeadingActorState.attack(true);
+                            System.out.println("action");
                             audioAttack4.playInstance();
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        Thread.sleep(50);
+                                    } catch (InterruptedException e) {
+                                    }
+                                    try {
+                                        app.getCamera().setLocation(new Vector3f(0.15f,0.15f,10.5f));
+                                        Thread.sleep(50);
+                                        System.out.println("changeCam");
+                                    } catch (Exception e) {
+                                    }try {
+                                        app.getCamera().setLocation(new Vector3f(-0.15f,-0.15f,10.5f));
+                                        Thread.sleep(50);
+                                    } catch (Exception e) {
+                                    }try {
+                                        app.getCamera().setLocation(new Vector3f(0.15f,-0.15f,10.5f));
+                                        Thread.sleep(50);
+                                    } catch (Exception e) {
+                                    }try {
+                                        app.getCamera().setLocation(new Vector3f(-0.15f,0.15f,10.5f));
+                                        Thread.sleep(50);
+                                    } catch (Exception e) {
+                                    }try {
+                                        app.getCamera().setLocation(new Vector3f(0,0,10.5f));
+                                        Thread.sleep(50);
+                                    } catch (Exception e) {
+                                    }
+                                }
+                            }).start();
                         } else if (card.getType() == Card.TYPE.SKILL) {
                             audioAttack4.playInstance();
                             LeadingActorState.releaseSkill();
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        Thread.sleep(50);
+                                    } catch (InterruptedException e) {
+                                    }
+                                    try {
+                                        app.getCamera().setLocation(new Vector3f(0.15f,0.15f,10.5f));
+                                        Thread.sleep(50);
+                                    } catch (Exception e) {
+                                    }try {
+                                        app.getCamera().setLocation(new Vector3f(-0.15f,-0.15f,10.5f));
+                                        Thread.sleep(50);
+                                    } catch (Exception e) {
+                                    }try {
+                                        app.getCamera().setLocation(new Vector3f(0.15f,-0.15f,10.5f));
+                                        Thread.sleep(50);
+                                    } catch (Exception e) {
+                                    }try {
+                                        app.getCamera().setLocation(new Vector3f(-0.15f,0.15f,10.5f));
+                                        Thread.sleep(50);
+                                    } catch (Exception e) {
+                                    }try {
+                                        app.getCamera().setLocation(new Vector3f(0,0,10.5f));
+                                        Thread.sleep(50);
+                                    } catch (Exception e) {
+                                    }
+                                }
+                            }).start();
                         }
                         new Thread(new Runnable() {
                             @Override
@@ -403,11 +465,101 @@ public class HandCardsState extends BaseAppState {
                             LeadingActorState.attack(false);
                             int damage = ((AttackCard) card).getDamage();
                             if (damage < 10) {
-                                audioAttack1.playInstance();
+                                audioAttack1.playInstance();new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            Thread.sleep(500);
+                                        } catch (InterruptedException e) {
+                                        }
+                                        try {
+                                            app.getCamera().setLocation(new Vector3f(0.15f,0.15f,10.5f));
+                                            Thread.sleep(70);
+                                            System.out.println("changeCam");
+                                        } catch (Exception e) {
+                                        }try {
+                                            app.getCamera().setLocation(new Vector3f(-0.15f,-0.15f,10.5f));
+                                            Thread.sleep(70);
+                                        } catch (Exception e) {
+                                        }try {
+                                            app.getCamera().setLocation(new Vector3f(0.15f,-0.15f,10.5f));
+                                            Thread.sleep(70);
+                                        } catch (Exception e) {
+                                        }try {
+                                            app.getCamera().setLocation(new Vector3f(-0.15f,0.15f,10.5f));
+                                            Thread.sleep(70);
+                                        } catch (Exception e) {
+                                        }try {
+                                            app.getCamera().setLocation(new Vector3f(0,0,10.5f));
+                                            Thread.sleep(70);
+                                        } catch (Exception e) {
+                                        }
+                                    }
+                                }).start();
                             } else if (damage < 20) {
-                                audioAttack2.playInstance();
+                                audioAttack2.playInstance();new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            Thread.sleep(500);
+                                        } catch (InterruptedException e) {
+                                        }
+                                        try {
+                                            app.getCamera().setLocation(new Vector3f(0.25f,0.25f,10.5f));
+                                            Thread.sleep(70);
+                                            System.out.println("changeCam");
+                                        } catch (Exception e) {
+                                        }try {
+                                            app.getCamera().setLocation(new Vector3f(-0.25f,-0.25f,10.5f));
+                                            Thread.sleep(70);
+                                        } catch (Exception e) {
+                                        }try {
+                                            app.getCamera().setLocation(new Vector3f(0.25f,-0.25f,10.5f));
+                                            Thread.sleep(70);
+                                        } catch (Exception e) {
+                                        }try {
+                                            app.getCamera().setLocation(new Vector3f(-0.25f,0.25f,10.5f));
+                                            Thread.sleep(70);
+                                        } catch (Exception e) {
+                                        }try {
+                                            app.getCamera().setLocation(new Vector3f(0,0,10.5f));
+                                            Thread.sleep(70);
+                                        } catch (Exception e) {
+                                        }
+                                    }
+                                }).start();
                             } else {
-                                audioAttack3.playInstance();
+                                audioAttack3.playInstance();new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            Thread.sleep(500);
+                                        } catch (InterruptedException e) {
+                                        }
+                                        try {
+                                            app.getCamera().setLocation(new Vector3f(0.4f,0.4f,10.5f));
+                                            Thread.sleep(70);
+                                            System.out.println("changeCam");
+                                        } catch (Exception e) {
+                                        }try {
+                                            app.getCamera().setLocation(new Vector3f(-0.4f,-0.4f,10.5f));
+                                            Thread.sleep(70);
+                                        } catch (Exception e) {
+                                        }try {
+                                            app.getCamera().setLocation(new Vector3f(0.4f,-0.4f,10.5f));
+                                            Thread.sleep(70);
+                                        } catch (Exception e) {
+                                        }try {
+                                            app.getCamera().setLocation(new Vector3f(-0.4f,0.4f,10.5f));
+                                            Thread.sleep(70);
+                                        } catch (Exception e) {
+                                        }try {
+                                            app.getCamera().setLocation(new Vector3f(0,0,10.5f));
+                                            Thread.sleep(70);
+                                        } catch (Exception e) {
+                                        }
+                                    }
+                                }).start();
                             }
                         } else if (card.getType() == Card.TYPE.SKILL) {
                             LeadingActorState.releaseSkill();
@@ -419,7 +571,37 @@ public class HandCardsState extends BaseAppState {
                             }
                         } else {
                             audioPower.playInstance();
-                            LeadingActorState.releaseSkill();
+                            LeadingActorState.releaseSkill();new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        Thread.sleep(500);
+                                    } catch (InterruptedException e) {
+                                    }
+                                    try {
+                                        app.getCamera().setLocation(new Vector3f(0.15f,0.15f,10.5f));
+                                        Thread.sleep(70);
+                                        System.out.println("changeCam");
+                                    } catch (Exception e) {
+                                    }try {
+                                        app.getCamera().setLocation(new Vector3f(-0.15f,-0.15f,10.5f));
+                                        Thread.sleep(70);
+                                    } catch (Exception e) {
+                                    }try {
+                                        app.getCamera().setLocation(new Vector3f(0.15f,-0.15f,10.5f));
+                                        Thread.sleep(70);
+                                    } catch (Exception e) {
+                                    }try {
+                                        app.getCamera().setLocation(new Vector3f(-0.15f,0.15f,10.5f));
+                                        Thread.sleep(70);
+                                    } catch (Exception e) {
+                                    }try {
+                                        app.getCamera().setLocation(new Vector3f(0,0,10.5f));
+                                        Thread.sleep(70);
+                                    } catch (Exception e) {
+                                    }
+                                }
+                            }).start();
                         }
                         new Thread(new Runnable() {
                             @Override

@@ -9,6 +9,7 @@ import gamesource.battleState.card.saber.power.HideTheSword;
 import gamesource.battleState.card.saber.power.ManaBoost;
 import gamesource.battleState.card.saber.skill.*;
 
+// 主要用于随机获取卡牌
 public class CreateCard {
 
     // 获得普通卡的概率为55%

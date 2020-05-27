@@ -1,6 +1,7 @@
 package gamesource.State.worldState;
 
 import com.jme3.app.Application;
+import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
@@ -31,6 +32,7 @@ import gamesource.State.controlState.PositionInputState;
 import gamesource.State.mapState.FirstWorldState;
 import gamesource.State.mapState.skyBox6;
 import gamesource.State.musicState.SixthBackMusic;
+import gamesource.battleState.appState.BattleBackGroundState;
 import gamesource.battleState.appState.EnemyState;
 import gamesource.battleState.appState.GetCardState;
 import gamesource.battleState.battle.Battle;
@@ -66,8 +68,9 @@ public class SixthState extends BaseAppState {
 
     private SimpleApplication app;
     private int canmove = 1;
+    private int fly=0;
 
-    private int Cro=0;
+    private int Cro=1;
     Ray ray;
 
     private Camera cam;
@@ -101,6 +104,8 @@ public class SixthState extends BaseAppState {
     private ArrayList<BaseAppState> states = new ArrayList<BaseAppState>();
 
     protected void initialize(Application application) {
+        BattleBackGroundState.setBackgroundSrc("Map/first/ditu.j3o");
+
         app = (SimpleApplication) application;
         state = application.getStateManager();
         cam = application.getCamera();
@@ -136,15 +141,15 @@ public class SixthState extends BaseAppState {
         states.add(knight1);
         state.attach(boss);
         states.add(boss);
-        sky=new skyBox6(pic);
-        state.attach(sky);
-        states.add(sky);
         state.attach(music);
         states.add(music);
 
         smallMap = new SmallMap(1600, 900, new Vector2f(400, 400), 6);
         state.attach(smallMap);
         states.add(smallMap);
+        sky=new skyBox6(pic);
+        state.attach(sky);
+        states.add(sky);
 
         this.inputManager = application.getInputManager();
         inputManager.addMapping(talk, TALK);
@@ -170,7 +175,8 @@ public class SixthState extends BaseAppState {
         //major.setPlace(new Vector3f(12.901182f, -9.024441f, -25.671635f));
         major.setPlace(new Vector3f(92.35694f, -31.713285f, 17.851564f));
         major.height(6);
-        cross.setEnabled(false);
+        state.detach(state.getState(FlyCamAppState.class));
+        major.change2();
     }
     public SixthState(){
 
@@ -235,6 +241,10 @@ public class SixthState extends BaseAppState {
             CollisionResults results3 = results3();
             CollisionResults results4 = results4();
             if (change.equals(name) && isPressed) {
+                if(fly==0){
+                    state.attach(new FlyCamAppState());
+                    fly++;
+                }
                 System.out.println("change");
                 major.change();
                 if(Cro==0){
@@ -387,13 +397,26 @@ public class SixthState extends BaseAppState {
     }
 
     public void update(float tpf) {
-        if (chan == 0) {
+        /*if (chan == 0) {
             time = time + tpf;
             if (time < 60 && time > 10) {
                 change();
                 cross.setEnabled(false);
             }
-        }
+        }*/
+        /*if(chan==0) {
+            try {
+                time = time + tpf;
+                if (sky.finish() == 1) {
+                    if (time < 60 && time > 5) {
+                        change();
+                        cross.setEnabled(false);
+                    }
+                }
+            }catch (Exception e){
+
+            }
+        }*/
     }
     private Spatial getPicture(int number) {
         // 创建一个四边形
@@ -441,6 +464,8 @@ public class SixthState extends BaseAppState {
 
     @Override
     protected void onEnable() {
+        BattleBackGroundState.setBackgroundSrc("Map/first/ditu.j3o");
+
         inputManager.addMapping(talk, TALK);
         inputManager.addMapping(change, CHANGECAMERA);
         inputManager.addMapping(bag, BAG);
@@ -461,7 +486,6 @@ public class SixthState extends BaseAppState {
 
     @Override
     protected void onDisable() {
-
         System.out.println("second disable");
         inputManager.removeListener(st);
         inputManager.deleteTrigger(talk, TALK);

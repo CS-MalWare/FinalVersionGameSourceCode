@@ -11,11 +11,12 @@ import com.jme3.post.filters.FogFilter;
 import com.jme3.post.ssao.SSAOFilter;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
-
+// 初始化战斗场景的背景
 public class BattleBackGroundState extends BaseAppState {
     private SimpleApplication app;
     private Node rootNode = new Node("Map");
 
+    // 战斗场景背景的模型路径
     private static String backgroundSrc = "Map/first/ditu.j3o";
 
     private FilterPostProcessor fpp;
@@ -24,6 +25,8 @@ public class BattleBackGroundState extends BaseAppState {
         this.app = (SimpleApplication) getApplication();
         Spatial model1 = application.getAssetManager().loadModel(backgroundSrc);
         System.out.println(model1.getName());
+
+        // 为每个背景模型都定制一下位置，把战斗时候的场景移动到某一个位置
         switch (backgroundSrc){
             case "Map/first/ditu.j3o":
                 model1.setName("Map");
@@ -63,27 +66,13 @@ public class BattleBackGroundState extends BaseAppState {
         }
 
 
-//        model1.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
-
-      /*  DirectionalLight sun = new DirectionalLight();
-        sun.setDirection(new Vector3f(2, 1, -3));
-
-        // 环境光
-        AmbientLight ambient = new AmbientLight();
-
-        // 调整光照亮度
-        ColorRGBA lightColor = new ColorRGBA();
-        sun.setColor(lightColor.mult(0.8f));
-        ambient.setColor(lightColor.mult(1));
-        // #3 将模型和光源添加到场景图中
-        rootNode.addLight(sun);
-        rootNode.addLight(ambient);*/
         fpp = new FilterPostProcessor(app.getAssetManager());
         //initFpp();
 
         rootNode.attachChild(model1);
     }
 
+    // 可以为战斗场景增加一些滤镜特效
     public void initFpp(){
         // 初始化滤镜处理器
         switch (backgroundSrc){

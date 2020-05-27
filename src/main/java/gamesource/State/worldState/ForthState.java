@@ -1,6 +1,7 @@
 package gamesource.State.worldState;
 
 import com.jme3.app.Application;
+import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
@@ -96,11 +97,12 @@ public class ForthState extends BaseAppState {
     private BoundingVolume maj;
     private FourthWorldOtherSpecial effect = new FourthWorldOtherSpecial();
     private skyBox4 sky;
+    private int fly=0;
 
     private float time = 0;
 
     private int chan = 0;
-    private int Cro=0;
+    private int Cro=1;
 
     private BagAppState bagState;
     private ShopAppState shopState;
@@ -168,13 +170,13 @@ public class ForthState extends BaseAppState {
         state.attach(effect);
         states.add(effect);
         //state.attach(water);
-        sky=new skyBox4(pic);
-        state.attach(sky);
-        states.add(sky);
 
         smallMap = new SmallMap(1600, 900, new Vector2f(400, 1120), 4);
         state.attach(smallMap);
         states.add(smallMap);
+        sky=new skyBox4(pic);
+        state.attach(sky);
+        states.add(sky);
 
         this.inputManager = application.getInputManager();
         inputManager.addMapping(talk, TALK);
@@ -201,7 +203,9 @@ public class ForthState extends BaseAppState {
         major.setPlace(new Vector3f(1.5346308f, -18.545364f, 56.147945f));
         BattleBackGroundState.setBackgroundSrc("Map/fourth.j3o");
         major.height(6);
-        cross.setEnabled(false);
+
+        state.detach(state.getState(FlyCamAppState.class));
+        major.change2();
     }
 
     public ForthState(){
@@ -374,6 +378,10 @@ public class ForthState extends BaseAppState {
             CollisionResults results11 = results11();
             CollisionResults results12 = results12();
             if (change.equals(name) && isPressed) {
+                if(fly==0){
+                    state.attach(new FlyCamAppState());
+                    fly++;
+                }
                 System.out.println("change");
                 major.change();
                 if(Cro==0){
@@ -711,13 +719,26 @@ public class ForthState extends BaseAppState {
     }
 
     public void update(float tpf) {
-        if (chan == 0) {
+        /*if (chan == 0) {
             time = time + tpf;
             if (time < 60 && time > 10) {
                 change();
                 cross.setEnabled(false);
             }
-        }
+        }*/
+        /*if(chan==0) {
+            try {
+                time = time + tpf;
+                if (sky.finish() == 1) {
+                    if (time < 60 && time > 5) {
+                        change();
+                        cross.setEnabled(false);
+                    }
+                }
+            }catch (Exception e){
+
+            }
+        }*/
     }
     private Spatial getPicture(int number) {
         // 创建一个四边形

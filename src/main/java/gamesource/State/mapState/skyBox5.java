@@ -15,6 +15,7 @@ public class skyBox5 extends BaseAppState {
     private SimpleApplication app;
 
     private Spatial pic;
+    private int finish=0;
     @Override
     protected void initialize(Application application) {
         app=(SimpleApplication)application;
@@ -27,6 +28,10 @@ public class skyBox5 extends BaseAppState {
         sky = SkyFactory.createSky(application.getAssetManager(), west, east, north, south, up, down);
         rootNode=app.getRootNode();
         app.getGuiNode().detachChild(pic);
+        finish=1;
+    }
+    public int finish(){
+        return finish;
     }
 
     public skyBox5(Spatial pic){

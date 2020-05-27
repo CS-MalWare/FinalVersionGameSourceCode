@@ -6,7 +6,7 @@ import gamesource.battleState.equipment.Equipment;
 public class WeightBearing extends Equipment {
 
     public WeightBearing() {
-        super("Weight-Bearing", "负重", "At the beginning of the fight, gain -1 __strength -1 dexterity", EquipmentDegree.EPIC, Opportunity.STARTB);
+        super("Weight-Bearing", "负重", "At the beginning of the fight, gain -1 strength -1 dexterity", EquipmentDegree.EPIC, Opportunity.STARTB);
 
     }
 

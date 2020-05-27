@@ -1,6 +1,7 @@
 package gamesource.State.worldState;
 
 import com.jme3.app.Application;
+import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
@@ -88,9 +89,9 @@ public class FirstState extends BaseAppState {
     FirstWorldState f1 = new FirstWorldState();
     PositionInputState p1 = new PositionInputState();
     BulletAppState bullet = new BulletAppState();         //现在为为世界添加物理引擎的测试情况
-    Chest c1 = new Chest(new Vector3f(62.722965f, -26.72887f, 9.268448f));
-    Chest c2 = new Chest(new Vector3f(-15.538464f, -2.8196087f, -60.361416f));
-    Chest c3 = new Chest(new Vector3f(-26.772413f, 6.3929253f, -8.448748f), 2.9f);
+//    Chest c1 = new Chest(new Vector3f(62.722965f, -26.72887f, 9.268448f));
+//    Chest c2 = new Chest(new Vector3f(-15.538464f, -2.8196087f, -60.361416f));
+//    Chest c3 = new Chest(new Vector3f(-26.772413f, 6.3929253f, -8.448748f), 2.9f);
     Water x1 = new Water(-34.4f);
     FirstWorldLight light = new FirstWorldLight(1);
     FirstWorldOtherSpecial special = new FirstWorldOtherSpecial();
@@ -114,7 +115,8 @@ public class FirstState extends BaseAppState {
 
     private int canmove = 1, chan = 0;
     private int shadow=1024,open=0;
-    private int Cro=0;
+    private int Cro=1;
+    private int fly=0;
     Ray ray;
 
     BoundingVolume maj;
@@ -146,7 +148,7 @@ public class FirstState extends BaseAppState {
         states.add(menuState);
         cross = state.getState(makeCross.class);
         states.add(cross);
-        cross.setEnabled(false);
+        cross.setEnabled(true);
         
         //state.attach(new AxisState());
         //state.attach(bullet);
@@ -199,12 +201,12 @@ public class FirstState extends BaseAppState {
         states.add(s2);
         state.attach(king);
         states.add(king);
-        state.attach(c1);
-        states.add(c1);
-        state.attach(c2);
-        states.add(c2);
-        state.attach(c3);
-        states.add(c3);
+//        state.attach(c1);
+//        states.add(c1);
+//        state.attach(c2);
+//        states.add(c2);
+//        state.attach(c3);
+//        states.add(c3);
         state.attach(x1);
         states.add(x1);
         light = new FirstWorldLight(open,shadow);
@@ -212,13 +214,13 @@ public class FirstState extends BaseAppState {
         states.add(light);
         state.attach(special);
         states.add(special);
-        sky=new SkyBox(pic);
-        state.attach(sky);
-        states.add(sky);
         state.attach(master);
         states.add(master);
         state.attach(music);
         states.add(music);
+        sky=new SkyBox(pic);
+        state.attach(sky);
+        states.add(sky);
         smallMap = new SmallMap(1600, 900, new Vector2f(400, 400), 1);
         state.attach(smallMap);
         states.add(smallMap);
@@ -249,6 +251,8 @@ public class FirstState extends BaseAppState {
         //major.setPlace(new Vector3f(93.51907f, -31.696218f, 18.607859f));
         major.setPlace(new Vector3f(92.35694f, -31.713285f, 17.851564f));
         major.height(6);
+        major.change2();
+        state.detach(state.getState(FlyCamAppState.class));
     }
 
     public FirstState(){
@@ -298,39 +302,39 @@ public class FirstState extends BaseAppState {
         return results;
     }
 
-    public CollisionResults collision5() {
-        try {
-            maj = major.getMajor();
-            BoundingVolume kni = c1.get();
-            CollisionResults results = new CollisionResults();
-            maj.collideWith(kni, results);
-            return results;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    public CollisionResults collision6() {
-        try {
-            BoundingVolume kni = c2.get();
-            CollisionResults results = new CollisionResults();
-            maj.collideWith(kni, results);
-            return results;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    public CollisionResults collision7() {
-        try {
-            BoundingVolume kni = c3.get();
-            CollisionResults results = new CollisionResults();
-            maj.collideWith(kni, results);
-            return results;
-        } catch (Exception e) {
-            return null;
-        }
-    }
+//    public CollisionResults collision5() {
+//        try {
+//            maj = major.getMajor();
+//            BoundingVolume kni = c1.get();
+//            CollisionResults results = new CollisionResults();
+//            maj.collideWith(kni, results);
+//            return results;
+//        } catch (Exception e) {
+//            return null;
+//        }
+//    }
+//
+//    public CollisionResults collision6() {
+//        try {
+//            BoundingVolume kni = c2.get();
+//            CollisionResults results = new CollisionResults();
+//            maj.collideWith(kni, results);
+//            return results;
+//        } catch (Exception e) {
+//            return null;
+//        }
+//    }
+//
+//    public CollisionResults collision7() {
+//        try {
+//            BoundingVolume kni = c3.get();
+//            CollisionResults results = new CollisionResults();
+//            maj.collideWith(kni, results);
+//            return results;
+//        } catch (Exception e) {
+//            return null;
+//        }
+//    }
     public CollisionResults collision8() {
         BoundingVolume train = bridgeSoldier.get();
         CollisionResults results = new CollisionResults();
@@ -357,9 +361,9 @@ public class FirstState extends BaseAppState {
             CollisionResults results2 = collision2();
             CollisionResults results3 = collision3();
             CollisionResults results4 = collision4();
-            CollisionResults results5 = collision5();
-            CollisionResults results6 = collision6();
-            CollisionResults results7 = collision7();
+//            CollisionResults results5 = collision5();
+//            CollisionResults results6 = collision6();
+//            CollisionResults results7 = collision7();
             CollisionResults results8 = collision8();
             CollisionResults results9 = collision9();
             CollisionResults results10 = collision10();
@@ -508,6 +512,10 @@ public class FirstState extends BaseAppState {
                 }
             }
             if (change.equals(name) && isPressed) {
+                if(fly==0){
+                    state.attach(new FlyCamAppState());
+                    fly++;
+                }
                 System.out.println("change");
                 major.change();
                 if(Cro==0){
@@ -551,32 +559,45 @@ public class FirstState extends BaseAppState {
                     canmove = 1;
                 }
             }
-            if (move.equals(name) && isPressed) {
-                if (results5 != null && results5.size() > 0) {
-                    System.out.println("chest");
-                    c1.open();
-                    getApplication().getStateManager().attach(new GetCardState());
-                } else if (results6 != null && results6.size() > 0) {
-                    System.out.println("chest");
-                    c2.open();
-                    getApplication().getStateManager().attach(new GetCardState());
-                } else if (results7 != null && results7.size() > 0) {
-                    System.out.println("chest");
-                    c3.open();
-                    getApplication().getStateManager().attach(new GetCardState());
-                }
-            }
+//            if (move.equals(name) && isPressed) {
+//                if (results5 != null && results5.size() > 0) {
+//                    System.out.println("chest");
+//                    c1.open();
+//                    getApplication().getStateManager().attach(new GetCardState());
+//                } else if (results6 != null && results6.size() > 0) {
+//                    System.out.println("chest");
+//                    c2.open();
+//                    getApplication().getStateManager().attach(new GetCardState());
+//                } else if (results7 != null && results7.size() > 0) {
+//                    System.out.println("chest");
+//                    c3.open();
+//                    getApplication().getStateManager().attach(new GetCardState());
+//                }
+//            }
         }
     }
 
     public void update(float tpf) {
-        if (chan == 0) {
+        /*if (chan == 0) {
             time = time + tpf;
             if (time < 60 && time > 10) {
                 change();
                 cross.setEnabled(false);
             }
+        }*/
+       /* if(chan==0) {
+        try {
+            time = time + tpf;
+            if (sky.finish() == 1) {
+                if (time < 60 && time > 5) {
+                    change();
+                    cross.setEnabled(false);
+                }
+            }
+        }catch (Exception e){
+
         }
+        }*/
 
         if(isTalkShow){
             if(!getStateManager().hasState(talkWithOption)){

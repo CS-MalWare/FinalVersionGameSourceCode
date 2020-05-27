@@ -14,6 +14,7 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.util.SafeArrayList;
 
+//
 public class BattleEffect extends BaseAppState {
 
     private Node rootNode;

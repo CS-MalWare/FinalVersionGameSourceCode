@@ -15,6 +15,7 @@ import com.jme3.scene.Node;
 import com.jme3.shadow.DirectionalLightShadowFilter;
 import com.jme3.util.SafeArrayList;
 
+// 光模组
 public class LightState extends BaseAppState {
 
     DirectionalLight sun = new DirectionalLight();
@@ -82,6 +83,7 @@ public class LightState extends BaseAppState {
             }
             fpp.addFilter(su);
     }
+
 
     @Override
     protected void onDisable() {

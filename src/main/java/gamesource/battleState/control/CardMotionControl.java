@@ -10,9 +10,8 @@ import com.jme3.scene.control.AbstractControl;
 
 
 /**
- * 这是一个运动控件，其作用是让模型朝目标点直线运动。
+ * 主要用来是卡牌移到特定位置,从而使卡在手牌中对齐
  *
- * @author yanmaoyuan
  */
 public class CardMotionControl extends AbstractControl {
 
@@ -62,7 +61,6 @@ public class CardMotionControl extends AbstractControl {
     /**
      * 设置运动速度
      *
-     * @param walkSpeed
      */
     public void setWalkSpeed(float walkSpeed) {
         this.walkSpeed = walkSpeed;
@@ -72,7 +70,6 @@ public class CardMotionControl extends AbstractControl {
     /**
      * 设置目标点
      *
-     * @param target
      */
     public void setTarget(Vector2f target, float tarAngle) {
         this.target = target;
