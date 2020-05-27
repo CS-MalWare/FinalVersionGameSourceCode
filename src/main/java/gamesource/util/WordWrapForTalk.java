@@ -23,6 +23,8 @@ public class WordWrapForTalk extends BaseAppState{
     private int stage;
     private ActionButton continueButton;
 
+    //similiar functions as TalkWithOption and this can be used for the conversation of two poeple
+
     public WordWrapForTalk(ArrayList<String> modelName, ArrayList<String> talkContent, int stage){
         this.talkContent = talkContent;
         this.modelName = modelName;

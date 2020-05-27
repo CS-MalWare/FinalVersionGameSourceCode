@@ -17,7 +17,7 @@ import gamesource.battleState.character.MainRole;
 import gamesource.uiState.bagstate.CardUI;
 import gamesource.util.CardArrayReader;
 import gamesource.util.EquipmentArrayReader;
-
+//this class is to get check from users for whether buy the goods
 public class DragCheck extends BaseAppState{
     private Container dragWindow;
     private int totalCost;

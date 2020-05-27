@@ -206,7 +206,7 @@ public class ShopAppState extends BaseAppState implements ActionListener{
     public void caculateMoney(int cardsMoney){
         this.shopMoney.setTotalMoneyOfCards(shopMoney.getTotalMoneyOfCards() + cardsMoney);
     }
-    private class CardsButtonClick implements Command<Button>{
+    private class CardsButtonClick implements Command<Button>{                  //show information detail of card which is selected
         public void execute(Button button){
             if(button.isPressed()){
                 for(CardUI cardUI : cardUIs){
@@ -222,7 +222,7 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         }
     }
 
-    private class EquipmentCardsClick implements Command<Button>{
+    private class EquipmentCardsClick implements Command<Button>{               //show information of equipment which is selected
         public void execute(Button button){
             if(button.isPressed()){
                 for(EquipmentUI equipmentUI : equipmentUIs){

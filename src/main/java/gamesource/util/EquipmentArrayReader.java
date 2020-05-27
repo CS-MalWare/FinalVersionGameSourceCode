@@ -6,6 +6,7 @@ import com.simsilica.lemur.component.IconComponent;
 
 import gamesource.battleState.equipment.Equipment;
 import gamesource.uiState.shopstate.EquipmentUI;
+//similiar functions as CardArrayReader but this is used for equipments
 
 public class EquipmentArrayReader {
     private static ArrayList<Equipment> equipments;

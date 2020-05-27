@@ -18,6 +18,7 @@ import com.simsilica.lemur.style.ElementId;
 import gamesource.battleState.character.MainRole;
 import gamesource.uiState.bagstate.CardUI;
 
+//this class is used to show the information of certain good
 public class TabTextForShop extends BaseAppState{
     private Container window;
     private final String message1;

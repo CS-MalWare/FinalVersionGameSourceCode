@@ -21,7 +21,7 @@ import com.simsilica.lemur.text.DocumentModelFilter;
 import com.simsilica.lemur.text.TextFilters;
 
 import gamesource.uiState.bagstate.CardUI;
-
+// this method is to want user determine the number of goods they need
 public class FormattedTextForShop extends BaseAppState{
     private Container window;
     private int numberOfBuy;
