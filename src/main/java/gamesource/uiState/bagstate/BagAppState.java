@@ -46,6 +46,7 @@ public class BagAppState extends BaseAppState{
     private final static String bagString = "Bag";
     private VersionedReference[] cardsReference = new VersionedReference[100];
     private ArrayList<Card> mainRoleCards = MainRole.getInstance().getDeck_();
+    private CardArrayReader cardArrayReader = new CardArrayReader(MainRole.getInstance().getDeck_());
     private CardUI[] cardUIs = new CardUI[60];
     private CardUI[] cardUIsCopy = new CardUI[60];
     private CardUI[] saberCardUIs = new CardUI[30];
@@ -124,8 +125,8 @@ public class BagAppState extends BaseAppState{
         generalBorder.addChild(centralPart, Position.Center);
         centralPart.setLocalTranslation(200, app.getCamera().getHeight() - 50, 0);
  
-        pagesContainer = new Container("glass");
-        generalBorder.addChild(pagesContainer, Position.South);
+        buttomPartContainer = new Container("glass");
+        generalBorder.addChild(buttomPartContainer, Position.South);
         //尝试在界面中添加主角有点失败，稍后解决
         //Spatial mainCharacter = app.getAssetManager().loadModel("/LeadingActor/MajorActor4.j3o");
         //app.getGuiNode().attachChild(mainCharacter);
@@ -176,7 +177,6 @@ public class BagAppState extends BaseAppState{
     }
 
     public void showCards(Container centralPart){
-        CardArrayReader cardArrayReader = new CardArrayReader(MainRole.getInstance().getDeck_());
         cardUIs = cardArrayReader.CardArrayToCardUIs();
         System.arraycopy(cardUIs, 0, cardUIsCopy, 0, cardUIs.length);
 
@@ -188,20 +188,25 @@ public class BagAppState extends BaseAppState{
             }
         }
         
-        if(getCardUIsLength() > 12){
-            pagesContainer.setLayout(new SpringGridLayout(Axis.X, Axis.Y, FillMode.None, FillMode.None));
-            
-            int pageNumber = getCardUIsLength() % 12;
-            for(int i=1; i<=pageNumber; i++){
-                Button button = pagesContainer.addChild(new Button(String.valueOf(i)));
-                button.addClickCommands(new PageButtonClick());
-            }
+        pagesContainer = new Container();
+        pagesContainer.setLayout(new SpringGridLayout(Axis.X, Axis.Y, FillMode.None, FillMode.None));
+        buttomPartContainer.setLayout(new SpringGridLayout(Axis.Y, Axis.Y));
+        buttomPartContainer.addChild(pagesContainer);
+
+        int pageNumber = (getCardUIsLength() - getCardUIsLength() % 12) / 12 + 1;
+        for(int i=1; i<=pageNumber; i++){
+            Button button = pagesContainer.addChild(new Button(String.valueOf(i)));
+            button.addClickCommands(new PageButtonClick());
+        }
+        
+
+        for(CardUI cardUI: cardUIs){
+            cardUI.addAction(new CardsButtonClick());
         }
 
         for(int i=0; i<12; i++){
             int j = i % 4;
             int z = (i - j)/4;
-            cardUIs[i].addAction(new CardsButtonClick());
             cardUIs[i].addButtonToContainer(centralPart, 2*z, j);
                 //cardUI.getCheckBox().setTextHAlignment(HAlignment.Center);
             VersionedReference<Boolean> reference = cardUIs[i].getCheckBox().getModel().createReference();
@@ -225,7 +230,7 @@ public class BagAppState extends BaseAppState{
             centralPart.detachAllChildren();
             pagesContainer.detachAllChildren();
             cardUIs = cardUIsCopy;
-            int pageNumber = cardUIs.length % 12;
+            int pageNumber = (getCardUIsLength() - getCardUIsLength() % 12) / 12 + 1;
 
             for(int i=0; i<12; i++){
                 int j = i % 4;
@@ -247,13 +252,17 @@ public class BagAppState extends BaseAppState{
                 infoLabel.setFontSize(20f);
                 infoLabel.setAlpha(2f);
                 centralPart.detachAllChildren();
-                pagesContainer.detachAllChildren();
+                if(pagesContainer != null){
+                    pagesContainer.detachAllChildren();
+                }
                 centralPart.addChild(infoLabel);
             }else{
                 centralPart.detachAllChildren();
-                pagesContainer.detachAllChildren();
+                if(pagesContainer != null){
+                    pagesContainer.detachAllChildren();
+                }
                 cardUIs = saberCardUIs;
-                int pageNumber = getCardUIsLength() % 12;
+                int pageNumber = (getCardUIsLength() - getCardUIsLength() % 12) / 12 + 1;
 
                 for(int i=0; i<12; i++){
                     int j = i % 4;
@@ -282,7 +291,7 @@ public class BagAppState extends BaseAppState{
                 centralPart.detachAllChildren();
                 pagesContainer.detachAllChildren();
                 cardUIs = neutralCardUIs;
-                int pageNumber = getCardUIsLength() % 12;
+                int pageNumber = (getCardUIsLength() - getCardUIsLength() % 12) / 12 + 1;
 
                 for(int i=0; i<12; i++){
                     int j = i % 4;
@@ -300,6 +309,7 @@ public class BagAppState extends BaseAppState{
 
     private class BackToStart implements Command<Button>{
         public void execute(Button button){
+            pagesContainer.detachAllChildren();
             leftPart.detachAllChildren();
             SpringGridLayout leftGridLayout = new SpringGridLayout(Axis.Y, Axis.X, FillMode.None, FillMode.None);
             leftPart.setLayout(leftGridLayout);
@@ -389,7 +399,7 @@ public class BagAppState extends BaseAppState{
             if(button.isPressed()){
                 for(CardUI cardUI : cardUIs){
                     if(cardUI.equals(button)){
-                        TabTextForBag textForBag = new TabTextForBag.Builder("Info", "Name", "Cost")
+                        TabTextForBag textForBag = new TabTextForBag.Builder(cardUI, "Info", "Name", "Cost")
                             .setMessage1(cardUI.getDescription()).setMessgae2(cardUI.getButton().getName())
                             .setMessage3(Integer.toString(cardUI.getCardMoney())).build();
                         getStateManager().attach(textForBag);
@@ -429,7 +439,13 @@ public class BagAppState extends BaseAppState{
     }
     
     public void update(float tpf){
-        //totalMoney.setMoney(MainRole.getInstance().getGold());
-        //moneyLabel.setText("Money: " + totalMoney.getMoney());
+        if(isOpenBag){
+            totalMoney.setMoney(MainRole.getInstance().getGold());
+            moneyLabel.setText("Money: " + totalMoney.getMoney());
+            progressBar.setProgressPercent(MainRole.getInstance().getHP() / MainRole.getInstance().getTotalHP());
+
+            cardUIs = cardArrayReader.CardArrayToCardUIs();
+            System.arraycopy(cardUIs, 0, cardUIsCopy, 0, cardUIs.length);
+        }
     }
 }

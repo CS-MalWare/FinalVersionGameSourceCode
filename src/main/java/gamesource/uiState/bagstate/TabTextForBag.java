@@ -23,6 +23,7 @@ public class TabTextForBag extends BaseAppState{
     private final String tab1;
     private final String tab2;
     private final String tab3;
+    private final CardUI cardUI;
 
     private CloseCommand closeCommand = new CloseCommand();
     private TabbedPanel tabs;
@@ -82,7 +83,8 @@ public class TabTextForBag extends BaseAppState{
         return contents;
     }
 
-    public TabTextForBag(String tab1, String tab2, String tab3, String message1, String message2, String message3){
+    public TabTextForBag(CardUI cardUI, String tab1, String tab2, String tab3, String message1, String message2, String message3){
+        this.cardUI = cardUI;
         this.tab1 = tab1;
         this.tab2 = tab2;
         this.tab3 = tab3;
@@ -95,11 +97,13 @@ public class TabTextForBag extends BaseAppState{
         private final String tab1;
         private final String tab2;
         private final String tab3;
+        private final CardUI cardUI;
         private String message1 = "";
         private String message2 = "";
         private String message3 = "";
         
-        public Builder(String tab1, String tab2, String tab3){
+        public Builder(CardUI cardUI, String tab1, String tab2, String tab3){
+            this.cardUI = cardUI;
             this.tab1 = tab1;
             this.tab2 = tab2;
             this.tab3 = tab3;
@@ -130,6 +134,7 @@ public class TabTextForBag extends BaseAppState{
         this.tab1 = builder.tab1;
         this.tab2 = builder.tab2;
         this.tab3 = builder.tab3;
+        this.cardUI = builder.cardUI;
         this.message1 = builder.message1;
         this.message2 = builder.message2;
         this.message3 = builder.message3;
