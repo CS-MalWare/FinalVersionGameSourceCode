@@ -47,6 +47,8 @@ public class MenuAppState extends BaseAppState{
         Help.class
     };
 
+    private boolean isStartOpen = false;
+
     public MenuAppState(){
         classMap.put(AlphaPanel.class, "Alpha Setting");
         classMap.put(SaveSetting.class, "Save Setting");
@@ -200,6 +202,19 @@ public class MenuAppState extends BaseAppState{
                 getStateManager().detach(child);
                 child = null;
             }
+        }
+    }
+
+    @Override
+    public void update(float tpf){
+        if(!isStartOpen){
+            showMenu();
+            isMenuShow = true;
+            app.getGuiNode().detachChild(mainWindow);
+            app.getFlyByCamera().setDragToRotate(false);
+            isMenuShow = false;
+
+            isStartOpen = true;
         }
     }
 }
