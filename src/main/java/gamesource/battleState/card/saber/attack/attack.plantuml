@@ -1,0 +1,394 @@
+@startuml
+
+title __ATTACK's Class Diagram__\n
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.BladeDance {
+            + BladeDance()
+            + BladeDance()
+            + upgrade()
+            + use()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.BlastStrike {
+            + BlastStrike()
+            + BlastStrike()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.BloodthirstyChop {
+            + BloodthirstyChop()
+            + BloodthirstyChop()
+            + upgrade()
+            + use()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.CoreCross {
+            + CoreCross()
+            + CoreCross()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.DarkIceTrap {
+            + DarkIceTrap()
+            + DarkIceTrap()
+            + upgrade()
+            + use()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.DoubleBladeChop {
+            + DoubleBladeChop()
+            + DoubleBladeChop()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.DrawSwordStrike {
+            + DrawSwordStrike()
+            + DrawSwordStrike()
+            + upgrade()
+            + use()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.FireSlash {
+            + FireSlash()
+            + FireSlash()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.FlameChop {
+            + FlameChop()
+            + FlameChop()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.GoldSlash {
+            + GoldSlash()
+            + GoldSlash()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.IceSlash {
+            + IceSlash()
+            + IceSlash()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.InstantSlash {
+            + InstantSlash()
+            + InstantSlash()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.LightChoppingSword {
+            + LightChoppingSword()
+            + LightChoppingSword()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.LightSlash {
+            + LightSlash()
+            + LightSlash()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.MagicalLIghtSlash {
+            + MagicalLIghtSlash()
+            + MagicalLIghtSlash()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.RedFlameChop {
+            + RedFlameChop()
+            + RedFlameChop()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.Slash {
+            + Slash()
+            + Slash()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.SnakeSkinOperation {
+            + SnakeSkinOperation()
+            + SnakeSkinOperation()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.SoilSlash {
+            + SoilSlash()
+            + SoilSlash()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.SorcerersSword {
+            + SorcerersSword()
+            + SorcerersSword()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.StaggeringBlow {
+            + StaggeringBlow()
+            + StaggeringBlow()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.SuperDrawSwordSlash {
+            + SuperDrawSwordSlash()
+            + SuperDrawSwordSlash()
+            + upgrade()
+            + use()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.Surmount {
+            + Surmount()
+            + Surmount()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.TriumphantReturn {
+            + TriumphantReturn()
+            + TriumphantReturn()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.attack {
+        class gamesource.battleState.card.saber.attack.WoundedStrike {
+            + WoundedStrike()
+            + WoundedStrike()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  gamesource.battleState.card.saber.attack.BladeDance -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.BlastStrike -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.BloodthirstyChop -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.CoreCross -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.DarkIceTrap -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.DoubleBladeChop -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.DrawSwordStrike -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.FireSlash -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.FlameChop -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.GoldSlash -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.IceSlash -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.InstantSlash -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.LightChoppingSword -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.LightSlash -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.MagicalLIghtSlash -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.RedFlameChop -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.Slash -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.SnakeSkinOperation -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.SoilSlash -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.SorcerersSword -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.StaggeringBlow -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.SuperDrawSwordSlash -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.Surmount -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.TriumphantReturn -up-|> gamesource.battleState.card.AttackCard
+  gamesource.battleState.card.saber.attack.WoundedStrike -up-|> gamesource.battleState.card.AttackCard
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

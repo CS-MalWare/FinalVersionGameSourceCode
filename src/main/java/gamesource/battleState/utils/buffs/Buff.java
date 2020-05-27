@@ -4,6 +4,7 @@ import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
 import gamesource.battleState.utils.buffs.foreverBuffs.Artifact;
 
+// 专门用于buff的类
 public class Buff {
     private String name;//buff的名称
     private String description;//buff的文字描述

@@ -1,0 +1,207 @@
+@startuml
+
+title __MENUSTATE's Class Diagram__\n
+
+  namespace gamesource {
+    namespace uiState {
+      namespace menustate {
+        class gamesource.uiState.menustate.AlphaPanel {
+            - alpha : VersionedReference<Double>
+            - app : SimpleApplication
+            - description : Label
+            - window : Container
+            + AlphaPanel()
+            + remove()
+            + update()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+            # refreshAlpha()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace menustate {
+        class gamesource.uiState.menustate.AlphaPanel.CloseCommand {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace menustate {
+        class gamesource.uiState.menustate.Help {
+            - app : SimpleApplication
+            - selectionRef : VersionedReference<Tab>
+            - stateLabel : Label
+            - tabs : TabbedPanel
+            - window : Container
+            + Help()
+            + calculatePreferLocation()
+            + update()
+            # cleanup()
+            # createTabContents()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace menustate {
+        class gamesource.uiState.menustate.Help.CloseCommand {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace menustate {
+        class gamesource.uiState.menustate.MenuAppState {
+            {static} + classes : Class[]
+            {static} ~ logger : Logger
+            {static} - MenuString : String
+            - app : SimpleApplication
+            - classMap : HashMap<Class, String>
+            - inputManager : InputManager
+            - isMenuShow : boolean
+            - isStartOpen : boolean
+            - mainWindow : Container
+            - stateManager : AppStateManager
+            - toggles : List<ToggleChild>
+            + MenuAppState()
+            + closeChild()
+            + getStandardScale()
+            + showMenu()
+            + update()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+            # showError()
+            - classToName()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace menustate {
+        class gamesource.uiState.menustate.MenuAppState.MenuListener {
+            + onAction()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace menustate {
+        class gamesource.uiState.menustate.MenuAppState.ToggleChild {
+            - check : Checkbox
+            - child : AppState
+            - name : String
+            - type : Class
+            + ToggleChild()
+            + close()
+            + execute()
+            + getName()
+            + open()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace menustate {
+        class gamesource.uiState.menustate.MenuStateDemo {
+            {static} + main()
+            + simpleInitApp()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace menustate {
+        class gamesource.uiState.menustate.SaveSetting {
+            - app : SimpleApplication
+            - fileNameMap : HashMap<Integer, String>
+            - listBox : ListBox
+            - nextItem : int
+            - window : Container
+            + SaveSetting()
+            + calculatePreferLocation()
+            + delete()
+            + save()
+            # cleanup()
+            # initialize()
+            # onDisable()
+            # onEnable()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace uiState {
+      namespace menustate {
+        class gamesource.uiState.menustate.SaveSetting.CloseCommand {
+            + execute()
+        }
+      }
+    }
+  }
+  
+
+  gamesource.uiState.menustate.AlphaPanel -up-|> com.jme3.app.state.BaseAppState
+  gamesource.uiState.menustate.AlphaPanel o-- gamesource.uiState.menustate.AlphaPanel.CloseCommand : closeCommand
+  gamesource.uiState.menustate.AlphaPanel +-down- gamesource.uiState.menustate.AlphaPanel.CloseCommand
+  gamesource.uiState.menustate.AlphaPanel.CloseCommand .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.menustate.Help -up-|> com.jme3.app.state.BaseAppState
+  gamesource.uiState.menustate.Help o-- gamesource.uiState.menustate.Help.CloseCommand : closeCommand
+  gamesource.uiState.menustate.Help +-down- gamesource.uiState.menustate.Help.CloseCommand
+  gamesource.uiState.menustate.Help.CloseCommand .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.menustate.MenuAppState -up-|> com.jme3.app.state.BaseAppState
+  gamesource.uiState.menustate.MenuAppState +-down- gamesource.uiState.menustate.MenuAppState.MenuListener
+  gamesource.uiState.menustate.MenuAppState +-down- gamesource.uiState.menustate.MenuAppState.ToggleChild
+  gamesource.uiState.menustate.MenuAppState.MenuListener .up.|> com.jme3.input.controls.ActionListener
+  gamesource.uiState.menustate.MenuAppState.ToggleChild .up.|> com.simsilica.lemur.Command
+  gamesource.uiState.menustate.MenuStateDemo -up-|> com.jme3.app.SimpleApplication
+  gamesource.uiState.menustate.SaveSetting -up-|> com.jme3.app.state.BaseAppState
+  gamesource.uiState.menustate.SaveSetting o-- gamesource.uiState.menustate.SaveSetting.CloseCommand : closeCommand
+  gamesource.uiState.menustate.SaveSetting +-down- gamesource.uiState.menustate.SaveSetting.CloseCommand
+  gamesource.uiState.menustate.SaveSetting.CloseCommand .up.|> com.simsilica.lemur.Command
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

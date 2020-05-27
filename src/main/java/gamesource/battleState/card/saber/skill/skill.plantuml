@@ -1,0 +1,466 @@
+@startuml
+
+title __SKILL's Class Diagram__\n
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.AccumulateEnergy {
+            + AccumulateEnergy()
+            + AccumulateEnergy()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.Alleys {
+            + Alleys()
+            + Alleys()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.CanyingShadow {
+            + CanyingShadow()
+            + CanyingShadow()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.Charge {
+            + Charge()
+            + Charge()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.DeathTogether {
+            + DeathTogether()
+            + DeathTogether()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.Defense {
+            + Defense()
+            + Defense()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.EmpireSwordArt {
+            + EmpireSwordArt()
+            + EmpireSwordArt()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.EnergySplash {
+            + EnergySplash()
+            + EnergySplash()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.Flying {
+            + Flying()
+            + Flying()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.GrindingSword {
+            + GrindingSword()
+            + GrindingSword()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.Heal {
+            + Heal()
+            + Heal()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.IceMagicShield {
+            + IceMagicShield()
+            + IceMagicShield()
+            + upgrade()
+            + use()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.LifeSwordEnchanting {
+            + LifeSwordEnchanting()
+            + LifeSwordEnchanting()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.MagicSheild {
+            + MagicSheild()
+            + MagicSheild()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.NibbleDrumsticks {
+            + NibbleDrumsticks()
+            + NibbleDrumsticks()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.NuclearShield {
+            + NuclearShield()
+            + NuclearShield()
+            + upgrade()
+            + use()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.OutOfBody {
+            + OutOfBody()
+            + OutOfBody()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.Peripateticism {
+            + Peripateticism()
+            + Peripateticism()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.PrayForLight {
+            + PrayForLight()
+            + PrayForLight()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.RaiseShield {
+            + RaiseShield()
+            + RaiseShield()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.Rampage {
+            + Rampage()
+            + Rampage()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.Regenerate {
+            + Regenerate()
+            + Regenerate()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.SealingSpell {
+            + SealingSpell()
+            + SealingSpell()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.SeeThrough {
+            + SeeThrough()
+            + SeeThrough()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.ShieldBash {
+            + ShieldBash()
+            + ShieldBash()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.ShieldTrigger {
+            + ShieldTrigger()
+            + ShieldTrigger()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.SuckFinger {
+            + SuckFinger()
+            + SuckFinger()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.SuperConversion {
+            + SuperConversion()
+            + SuperConversion()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.TakeAnotherShield {
+            + TakeAnotherShield()
+            + TakeAnotherShield()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace battleState.card {
+      namespace saber.skill {
+        class gamesource.battleState.card.saber.skill.WhirlingShield {
+            + WhirlingShield()
+            + WhirlingShield()
+            + upgrade()
+            + use()
+        }
+      }
+    }
+  }
+  
+
+  gamesource.battleState.card.saber.skill.AccumulateEnergy -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.Alleys -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.CanyingShadow -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.Charge -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.DeathTogether -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.Defense -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.EmpireSwordArt -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.EnergySplash -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.Flying -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.GrindingSword -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.Heal -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.IceMagicShield -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.LifeSwordEnchanting -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.MagicSheild -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.NibbleDrumsticks -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.NuclearShield -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.OutOfBody -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.Peripateticism -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.PrayForLight -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.RaiseShield -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.Rampage -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.Regenerate -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.SealingSpell -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.SeeThrough -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.ShieldBash -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.ShieldTrigger -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.SuckFinger -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.SuperConversion -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.TakeAnotherShield -up-|> gamesource.battleState.card.SkillCard
+  gamesource.battleState.card.saber.skill.WhirlingShield -up-|> gamesource.battleState.card.SkillCard
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

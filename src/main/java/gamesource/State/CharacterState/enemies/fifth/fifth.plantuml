@@ -1,0 +1,279 @@
+@startuml
+
+title __FIFTH's Class Diagram__\n
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace fifth {
+            class gamesource.State.CharacterState.enemies.fifth.TalkBot {
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - model : int
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - plane : BoundingVolume
+                - radius : float
+                - robot : Spatial
+                - robotControl : CharacterControl
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - stepHeight : float
+                - time : int
+                - timer : float
+                - type : int
+                + TalkBot()
+                + TalkBot()
+                + TalkBot()
+                + TalkBot()
+                + TalkBot()
+                + get()
+                + initAnim()
+                + initModel()
+                + initPhysics()
+                # cleanup()
+                # initialize()
+                # onDisable()
+                # onEnable()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace fifth {
+            class gamesource.State.CharacterState.enemies.fifth.flyRobot {
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - model : int
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - plane : BoundingVolume
+                - radius : float
+                - robot : Spatial
+                - robotControl : CharacterControl
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - stepHeight : float
+                - time : int
+                - timer : float
+                - type : int
+                + flyRobot()
+                + flyRobot()
+                + flyRobot()
+                + flyRobot()
+                + flyRobot()
+                + get()
+                + initAnim()
+                + initModel()
+                + initPhysics()
+                + update()
+                # cleanup()
+                # initialize()
+                # onDisable()
+                # onEnable()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace fifth {
+            class gamesource.State.CharacterState.enemies.fifth.plane {
+                - Plane : Spatial
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - model : int
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - plane : BoundingVolume
+                - planeControl : CharacterControl
+                - radius : float
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - stepHeight : float
+                - timer : float
+                - type : int
+                + get()
+                + initAnim()
+                + initModel()
+                + initPhysics()
+                + plane()
+                + plane()
+                + plane()
+                + update()
+                # cleanup()
+                # initialize()
+                # onDisable()
+                # onEnable()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace fifth {
+            class gamesource.State.CharacterState.enemies.fifth.robotBoss {
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - model : int
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - plane : BoundingVolume
+                - radius : float
+                - robot : Spatial
+                - robotControl : CharacterControl
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - stepHeight : float
+                - time : int
+                - timer : float
+                - type : int
+                + get()
+                + initAnim()
+                + initModel()
+                + initPhysics()
+                + robotBoss()
+                + robotBoss()
+                + robotBoss()
+                + robotBoss()
+                + robotBoss()
+                + update()
+                # cleanup()
+                # initialize()
+                # onDisable()
+                # onEnable()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  namespace gamesource {
+    namespace State {
+      namespace CharacterState {
+        namespace enemies {
+          namespace fifth {
+            class gamesource.State.CharacterState.enemies.fifth.walkRobot {
+                - animChannel : AnimChannel
+                - animControl : AnimControl
+                - app : SimpleApplication
+                - bip001 : Node
+                - bullet : BulletAppState
+                - capsuleShape : CapsuleCollisionShape
+                - character : Node
+                - height : float
+                - model : int
+                - modelY : float
+                - physics : PhysicsSpace
+                - place : Vector3f
+                - plane : BoundingVolume
+                - radius : float
+                - robot : Spatial
+                - robotControl : CharacterControl
+                - rootNode : Node
+                - rotateX : float
+                - rotateY : float
+                - rotateZ : float
+                - scene : Node
+                - stepHeight : float
+                - time : int
+                - timer : float
+                - type : int
+                + get()
+                + initAnim()
+                + initModel()
+                + initPhysics()
+                + update()
+                + walkRobot()
+                + walkRobot()
+                + walkRobot()
+                + walkRobot()
+                # cleanup()
+                # initialize()
+                # onDisable()
+                # onEnable()
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  gamesource.State.CharacterState.enemies.fifth.TalkBot -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.fifth.flyRobot -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.fifth.plane -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.fifth.robotBoss -up-|> com.jme3.app.state.BaseAppState
+  gamesource.State.CharacterState.enemies.fifth.walkRobot -up-|> com.jme3.app.state.BaseAppState
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
