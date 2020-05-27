@@ -404,7 +404,7 @@ public class FirstState extends BaseAppState {
                         content.clear();
                         content.add("Long time to see, my prince, seems like you have finished you trail.");
                         content.add("We all glad to see you again in King city. After training, there has a great change on your body!");
-                        content.add("We are drilling recruits. Would you be pleasure to give them a lession?");
+                        content.add("We are drilling recruits. If you have time, maybe you can talk with Lizard Mage in city.");
                         talkWithOption = new TalkWithOption("Soldier", content, CallType.CONFIRM, 1, states);
                         state.attach(talkWithOption);
                         isTalkShow = true;

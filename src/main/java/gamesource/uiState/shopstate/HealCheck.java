@@ -16,6 +16,7 @@ import com.simsilica.lemur.event.PopupState;
 import com.simsilica.lemur.style.ElementId;
 
 import gamesource.battleState.character.MainRole;
+import gamesource.util.Storage;
 
 public class HealCheck extends BaseAppState{
     private Container dragWindow;
@@ -67,6 +68,8 @@ public class HealCheck extends BaseAppState{
         int totalMoney = MainRole.getInstance().getGold();
         if(totalMoney - cost >= 0){
             MainRole.getInstance().setHP(MainRole.getInstance().getHP()+20);
+            MainRole.getInstance().setGold(MainRole.getInstance().getGold() - 50);
+            Storage.save();
         }else{
             dragWindow.detachChild(actionButton);
             label.setText("Sorry! You have not enough money!");
