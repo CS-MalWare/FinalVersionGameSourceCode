@@ -73,7 +73,7 @@ public class LeadingActorState extends BaseAppState {
 
         Node scene = (Node) model1;
 
-        Node bip001 = (Node) scene.getChild("Bip001");
+        Node bip001 = (Node) scene.getChild("bip001");
 
 
         //spatial.getChild("AnimControl");

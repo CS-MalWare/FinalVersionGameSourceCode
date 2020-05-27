@@ -236,6 +236,7 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results2() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = p2.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -246,6 +247,7 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results3() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = p3.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -256,6 +258,7 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results4() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = robot1.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -277,6 +280,7 @@ public class FifthState extends BaseAppState {
     }*/
     public CollisionResults results6() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = robot3.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -287,6 +291,7 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results7() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = robot4.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -297,6 +302,7 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results8() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = robot5.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -307,6 +313,7 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results9() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = robot6.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -317,6 +324,7 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results10() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = robot7.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -327,6 +335,7 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results11() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = robot8.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -337,6 +346,7 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results12(){
         try {
+            maj = major.getMajor();
             BoundingVolume kni = c1.get();
             CollisionResults results = new CollisionResults();
             maj.collideWith(kni, results);
@@ -347,6 +357,7 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results13(){
         try {
+            maj = major.getMajor();
             BoundingVolume kni = c2.get();
             CollisionResults results = new CollisionResults();
             maj.collideWith(kni, results);
@@ -358,6 +369,7 @@ public class FifthState extends BaseAppState {
 
     public CollisionResults results14(){
         try {
+            maj = major.getMajor();
             ray=major.get();
             BoundingVolume kni = talkbot.get();
             CollisionResults results = new CollisionResults();
@@ -369,6 +381,7 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results15(){
         try {
+            maj = major.getMajor();
             BoundingVolume kni = lizard.get();
             CollisionResults results = new CollisionResults();
             ray.collideWith(kni, results);
@@ -379,6 +392,7 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results16(){
         try {
+            maj = major.getMajor();
             BoundingVolume kni = master.get();
             CollisionResults results = new CollisionResults();
             ray.collideWith(kni, results);
@@ -389,6 +403,7 @@ public class FifthState extends BaseAppState {
     }
     public CollisionResults results17(){
         try {
+            maj = major.getMajor();
             BoundingVolume kni = boss.get();
             CollisionResults results = new CollisionResults();
             maj.collideWith(kni, results);
