@@ -363,7 +363,7 @@ public class FirstState extends BaseAppState {
                         talkWithOption = new TalkWithOption("Queen", content, CallType.CONFIRM, 1);
                         state.attach(talkWithOption);
                         isTalkShow = true;
-
+                        SecondState.canGo = "can";
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
