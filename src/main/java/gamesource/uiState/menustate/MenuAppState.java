@@ -114,6 +114,7 @@ public class MenuAppState extends BaseAppState{
             }else if(MenuString.equals(name) && isPressed){
                 app.getGuiNode().detachChild(mainWindow);
                 app.getFlyByCamera().setDragToRotate(false);
+                app.getGuiNode().detachAllChildren();
                 isMenuShow = false;
             }
         }

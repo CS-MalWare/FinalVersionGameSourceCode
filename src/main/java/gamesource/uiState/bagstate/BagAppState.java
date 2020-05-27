@@ -102,7 +102,7 @@ public class BagAppState extends BaseAppState{
         styles.getSelector("header", "glass").set("background", 
             new QuadBackgroundComponent(new ColorRGBA(0, 0.75f, 0.75f, 0.5f)));
         styles.getSelector("header", "glass").set("shadowColor", new ColorRGBA(1, 0f, 0f, 1));
-        app.getGuiNode().attachChildAt(generalBorder, 2);
+        app.getGuiNode().attachChild(generalBorder);
 
         leftPart = new Container("glass");
         SpringGridLayout leftLayOut = new SpringGridLayout(Axis.Y, Axis.X, FillMode.None, FillMode.None);
@@ -229,7 +229,6 @@ public class BagAppState extends BaseAppState{
         public void execute(Button button){
             centralPart.detachAllChildren();
             pagesContainer.detachAllChildren();
-            cardUIs = cardUIsCopy;
             int pageNumber = (getCardUIsLength() - getCardUIsLength() % 12) / 12 + 1;
 
             for(int i=0; i<12; i++){
@@ -261,7 +260,6 @@ public class BagAppState extends BaseAppState{
                 if(pagesContainer != null){
                     pagesContainer.detachAllChildren();
                 }
-                cardUIs = saberCardUIs;
                 int pageNumber = (getCardUIsLength() - getCardUIsLength() % 12) / 12 + 1;
 
                 for(int i=0; i<12; i++){
@@ -290,7 +288,6 @@ public class BagAppState extends BaseAppState{
             }else{
                 centralPart.detachAllChildren();
                 pagesContainer.detachAllChildren();
-                cardUIs = neutralCardUIs;
                 int pageNumber = (getCardUIsLength() - getCardUIsLength() % 12) / 12 + 1;
 
                 for(int i=0; i<12; i++){
@@ -315,7 +312,7 @@ public class BagAppState extends BaseAppState{
             leftPart.setLayout(leftGridLayout);
         
             leftPart.setBackground(new QuadBackgroundComponent(new ColorRGBA(0, 0.5f, 0.5f, 0.5f), 5, 5, 0.02f, false));
-            leftPart.addChild(new Label("Shop", new ElementId("header"), "glass"), 0, 0);
+            leftPart.addChild(new Label("Bag", new ElementId("header"), "glass"), 0, 0);
             leftPart.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass"), 1, 0).setUserData(LayerComparator.LAYER, 2);
         
             Button cards = new Button("Cards");
@@ -444,6 +441,7 @@ public class BagAppState extends BaseAppState{
             moneyLabel.setText("Money: " + totalMoney.getMoney());
             progressBar.setProgressPercent(MainRole.getInstance().getHP() / MainRole.getInstance().getTotalHP());
 
+            cardArrayReader = new CardArrayReader(MainRole.getInstance().getDeck_());
             cardUIs = cardArrayReader.CardArrayToCardUIs();
             System.arraycopy(cardUIs, 0, cardUIsCopy, 0, cardUIs.length);
         }

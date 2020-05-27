@@ -94,6 +94,14 @@ public class ShopAppState extends BaseAppState implements ActionListener{
             equipments[i] = commonEquipment;
             //cardUIs[i+40] =  saberCardUIs[i];
         }    
+
+        for(CardUI cardUI: cardUIs){
+            cardUI.addAction(new CardsButtonClick());
+        }
+
+        for(EquipmentUI equipmentUI : equipmentUIs){
+            equipmentUI.addAction(new EquipmentCardsClick());
+        }
     }
 
     public void showShop(){
@@ -164,10 +172,6 @@ public class ShopAppState extends BaseAppState implements ActionListener{
             closeButton.addClickCommands(new CloseCommand());
         }
 
-        for(CardUI cardUI: cardUIs){
-            cardUI.addAction(new CardsButtonClick());
-        }
-
         for(int i=0; i<12; i++){
             int j = i % 4;
             int z = (i - j)/4;
@@ -191,10 +195,6 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         }
         Button closeButton = buttomPartContainer.addChild(new Button("Close"), 1, 0);
         closeButton.addClickCommands(new CloseCommand());
-
-        for(EquipmentUI equipmentUI : equipmentUIs){
-            equipmentUI.addAction(new EquipmentCardsClick());
-        }
 
         for(int i=0; i<12; i++){
             int j = i % 4;
