@@ -1,6 +1,7 @@
 package gamesource.State.worldState;
 
 import com.jme3.app.Application;
+import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
@@ -114,7 +115,7 @@ public class FirstState extends BaseAppState {
 
     private int canmove = 1, chan = 0;
     private int shadow=1024,open=0;
-    private int Cro=0;
+    private int Cro=0,fly=0;
     Ray ray;
 
     BoundingVolume maj;
@@ -249,6 +250,7 @@ public class FirstState extends BaseAppState {
         //major.setPlace(new Vector3f(93.51907f, -31.696218f, 18.607859f));
         major.setPlace(new Vector3f(92.35694f, -31.713285f, 17.851564f));
         major.height(6);
+        state.detach(state.getState(FlyCamAppState.class));
     }
 
     public FirstState(){
@@ -508,9 +510,13 @@ public class FirstState extends BaseAppState {
                 }
             }
             if (change.equals(name) && isPressed) {
+                if(fly==0){
+                    state.attach(new FlyCamAppState());
+                    fly++;
+                }
                 System.out.println("change");
                 major.change();
-                if(Cro==0){
+                if(Cro==1){
                     cross.setEnabled(true);
                     Cro=1;
                 }else{
@@ -577,7 +583,7 @@ public class FirstState extends BaseAppState {
                 cross.setEnabled(false);
             }
         }*/
-        if(chan==0) {
+       /* if(chan==0) {
         try {
             time = time + tpf;
             if (sky.finish() == 1) {
@@ -589,7 +595,7 @@ public class FirstState extends BaseAppState {
         }catch (Exception e){
 
         }
-        }
+        }*/
 
         if(isTalkShow){
             if(!getStateManager().hasState(talkWithOption)){
