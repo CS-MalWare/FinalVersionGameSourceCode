@@ -1,6 +1,7 @@
 package gamesource.State.worldState;
 
 import com.jme3.app.Application;
+import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
@@ -66,6 +67,7 @@ public class SixthState extends BaseAppState {
 
     private SimpleApplication app;
     private int canmove = 1;
+    private int fly=0;
 
     private int Cro=0;
     Ray ray;
@@ -171,6 +173,8 @@ public class SixthState extends BaseAppState {
         major.setPlace(new Vector3f(92.35694f, -31.713285f, 17.851564f));
         major.height(6);
         cross.setEnabled(false);
+        state.detach(state.getState(FlyCamAppState.class));
+        major.change2();
     }
     public SixthState(){
 
@@ -235,6 +239,10 @@ public class SixthState extends BaseAppState {
             CollisionResults results3 = results3();
             CollisionResults results4 = results4();
             if (change.equals(name) && isPressed) {
+                if(fly==0){
+                    state.attach(new FlyCamAppState());
+                    fly++;
+                }
                 System.out.println("change");
                 major.change();
                 if(Cro==0){
@@ -394,7 +402,7 @@ public class SixthState extends BaseAppState {
                 cross.setEnabled(false);
             }
         }*/
-        if(chan==0) {
+        /*if(chan==0) {
             try {
                 time = time + tpf;
                 if (sky.finish() == 1) {
@@ -406,7 +414,7 @@ public class SixthState extends BaseAppState {
             }catch (Exception e){
 
             }
-        }
+        }*/
     }
     private Spatial getPicture(int number) {
         // 创建一个四边形

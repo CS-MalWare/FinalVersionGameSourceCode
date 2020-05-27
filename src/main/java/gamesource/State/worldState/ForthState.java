@@ -1,6 +1,7 @@
 package gamesource.State.worldState;
 
 import com.jme3.app.Application;
+import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
@@ -96,6 +97,7 @@ public class ForthState extends BaseAppState {
     private BoundingVolume maj;
     private FourthWorldOtherSpecial effect = new FourthWorldOtherSpecial();
     private skyBox4 sky;
+    private int fly=0;
 
     private float time = 0;
 
@@ -202,6 +204,9 @@ public class ForthState extends BaseAppState {
         BattleBackGroundState.setBackgroundSrc("Map/fourth.j3o");
         major.height(6);
         cross.setEnabled(false);
+
+        state.detach(state.getState(FlyCamAppState.class));
+        major.change2();
     }
 
     public ForthState(){
@@ -374,6 +379,10 @@ public class ForthState extends BaseAppState {
             CollisionResults results11 = results11();
             CollisionResults results12 = results12();
             if (change.equals(name) && isPressed) {
+                if(fly==0){
+                    state.attach(new FlyCamAppState());
+                    fly++;
+                }
                 System.out.println("change");
                 major.change();
                 if(Cro==0){
@@ -718,7 +727,7 @@ public class ForthState extends BaseAppState {
                 cross.setEnabled(false);
             }
         }*/
-        if(chan==0) {
+        /*if(chan==0) {
             try {
                 time = time + tpf;
                 if (sky.finish() == 1) {
@@ -730,7 +739,7 @@ public class ForthState extends BaseAppState {
             }catch (Exception e){
 
             }
-        }
+        }*/
     }
     private Spatial getPicture(int number) {
         // 创建一个四边形

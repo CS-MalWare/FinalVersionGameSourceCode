@@ -1,6 +1,7 @@
 package gamesource.State.worldState;
 
 import com.jme3.app.Application;
+import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
@@ -104,6 +105,7 @@ public class ThirdState extends BaseAppState {
     private ThirdBackMusic music = new ThirdBackMusic();
     private ThirdOtherSpecial effect = new ThirdOtherSpecial();
     private SkyBox sky;
+    private int fly=0;
     //private Fish6State fish5_1 =new Fish6State(new Vector3f(5,30,0));
 
     private StartTalk st = new StartTalk();
@@ -246,6 +248,8 @@ public class ThirdState extends BaseAppState {
         BattleBackGroundState.setBackgroundSrc("Map/scene.j3o");
         major.height(6);
         cross.setEnabled(false);
+        state.detach(state.getState(FlyCamAppState.class));
+        major.change2();
     }
 
     public ThirdState(){
@@ -353,6 +357,10 @@ public class ThirdState extends BaseAppState {
             }
 
             if (change.equals(name) && isPressed) {
+                if(fly==0){
+                state.attach(new FlyCamAppState());
+                fly++;
+            }
                 System.out.println("change");
                 major.change();
                 if(Cro==0){
@@ -1139,7 +1147,7 @@ public class ThirdState extends BaseAppState {
                 cross.setEnabled(false);
             }
         }*/
-        if(chan==0) {
+        /*if(chan==0) {
             try {
                 time = time + tpf;
                 if (sky.finish() == 1) {
@@ -1151,7 +1159,7 @@ public class ThirdState extends BaseAppState {
             }catch (Exception e){
 
             }
-        }
+        }*/
     }
 
     @Override

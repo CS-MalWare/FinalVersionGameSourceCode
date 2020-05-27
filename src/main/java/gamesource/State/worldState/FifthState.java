@@ -1,6 +1,7 @@
 package gamesource.State.worldState;
 
 import com.jme3.app.Application;
+import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
@@ -106,6 +107,7 @@ public class FifthState extends BaseAppState {
     private BoundingVolume maj;
     private skyBox5 sky;
 
+    private int fly=0;
     private float time=0;
 
     private int chan=0;
@@ -225,6 +227,8 @@ public class FifthState extends BaseAppState {
         major.height(22f);
         BattleBackGroundState.setBackgroundSrc("Map/fifth.j3o");
         cross.setEnabled(false);
+        state.detach(state.getState(FlyCamAppState.class));
+        major.change2();
     }
 
     public FifthState(){
@@ -557,6 +561,10 @@ public class FifthState extends BaseAppState {
             }
 
             if (change.equals(name) && isPressed) {
+                if(fly==0){
+                    state.attach(new FlyCamAppState());
+                    fly++;
+                }
                 System.out.println("change");
                 major.change();
                 if(Cro==0){
@@ -866,7 +874,7 @@ public class FifthState extends BaseAppState {
                 cross.setEnabled(false);
             }
         }*/
-        if(chan==0) {
+        /*if(chan==0) {
             try {
                 time = time + tpf;
                 if (sky.finish() == 1) {
@@ -878,7 +886,7 @@ public class FifthState extends BaseAppState {
             }catch (Exception e){
 
             }
-        }
+        }*/
     }
     private Spatial getPicture(int number) {
         // 创建一个四边形

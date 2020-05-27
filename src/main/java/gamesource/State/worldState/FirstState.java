@@ -115,7 +115,8 @@ public class FirstState extends BaseAppState {
 
     private int canmove = 1, chan = 0;
     private int shadow=1024,open=0;
-    private int Cro=0,fly=0;
+    private int Cro=0;
+    private int fly=0;
     Ray ray;
 
     BoundingVolume maj;
@@ -250,6 +251,7 @@ public class FirstState extends BaseAppState {
         //major.setPlace(new Vector3f(93.51907f, -31.696218f, 18.607859f));
         major.setPlace(new Vector3f(92.35694f, -31.713285f, 17.851564f));
         major.height(6);
+        major.change2();
         state.detach(state.getState(FlyCamAppState.class));
     }
 
