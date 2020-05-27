@@ -182,27 +182,39 @@ public class EnemyState extends BaseAppState {
             add(0);
             add(-1);
         }};
-        hpPositions = new ArrayList<Float>() {{
+//        hpPositions = new ArrayList<Float>() {{
+//            //每个血量提示的x y坐标
+//            add(1.7f);
+//            add(1.5f);
+//
+//            add(3.7f);
+//            add(1.5f);
+//
+//            add(5.7f);
+//            add(1.5f);
+//        }};
+//        blockPositions = new ArrayList<Float>() {{
+//            //每个护甲提示的x y坐标
+//            add(2f);
+//            add(-1f);
+//
+//            add(4f);
+//            add(-1f);
+//
+//            add(6f);
+//            add(-1f);
+//        }};
+
+        hpPositionsnew = new ArrayList<Float>() {{
             //每个血量提示的x y坐标
-            add(1.7f);
-            add(1.5f);
+            add(1000f);
+            add(580f);
 
-            add(3.7f);
-            add(1.5f);
+            add(1200f);
+            add(580f);
 
-            add(5.7f);
-            add(1.5f);
-        }};
-        blockPositions = new ArrayList<Float>() {{
-            //每个护甲提示的x y坐标
-            add(2f);
-            add(-1f);
-
-            add(4f);
-            add(-1f);
-
-            add(6f);
-            add(-1f);
+            add(1400f);
+            add(580f);
         }};
         blockPositionsnews = new ArrayList<Float>() {{
             //每个护甲提示的x y坐标

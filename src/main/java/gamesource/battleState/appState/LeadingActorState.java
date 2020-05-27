@@ -73,7 +73,7 @@ public class LeadingActorState extends BaseAppState {
 
         Node scene = (Node) model1;
 
-        Node bip001 = (Node) scene.getChild("Bip001");
+        Node bip001 = (Node) scene.getChild("bip001");
 
 
         //spatial.getChild("AnimControl");
@@ -172,7 +172,7 @@ public class LeadingActorState extends BaseAppState {
         rootNode.attachChild(hpHint);*/
         String content=String.format("HP: %d/%d", this.target.getHP(), this.target.getTotalHP());
         hpHint=font.getBitmapGeom(content,0,ColorRGBA.Red);
-        hpHint.setLocalTranslation(500,580,0);
+        hpHint.setLocalTranslation(400,580,0);
         guiNode.attachChild(hpHint);
 
         blHint.removeFromParent();
@@ -185,7 +185,7 @@ public class LeadingActorState extends BaseAppState {
         rootNode.attachChild(blHint);*/
         String blockcontent=String.format("Blocks: %d", this.target.getBlock());
         blHint=font.getBitmapGeom(blockcontent,0,ColorRGBA.Blue);
-        blHint.setLocalTranslation(500,320,0);
+        blHint.setLocalTranslation(400,320,0);
         guiNode.attachChild(blHint);
 
         MpText.removeFromParent();
