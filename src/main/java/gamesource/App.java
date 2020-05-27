@@ -41,6 +41,7 @@ import java.io.IOException;
 public class App extends SimpleApplication {
 
     public final static String world = "WORLD";
+    public final static String world2="WORLD2";
     public static int guan = 2;
 
     FirstState f1;
@@ -52,7 +53,7 @@ public class App extends SimpleApplication {
     First t1;
     private AppStateManager state;
     private int shadow = 2048, open = 1, juchi = 4;
-
+    private StartTalk st=new StartTalk();
     /*public App(){
         super(new StatsAppState(),
               new AudioListenerState(),
@@ -114,6 +115,9 @@ public class App extends SimpleApplication {
 
         inputManager.addMapping(world, new KeyTrigger(KeyInput.KEY_Z));
         inputManager.addListener(new StartTalk(), world);
+        inputManager.addMapping(world2, new KeyTrigger(KeyInput.KEY_X));
+        inputManager.addListener(new StartTalk(), world2);
+
         //flyCam.setMoveSpeed(70);
         // 改变鼠标图标
         changeCursor();
@@ -121,7 +125,6 @@ public class App extends SimpleApplication {
         // 注册监听器
         getInputManager().addRawInputListener(inputListener);
 
-        Spatial pic = getPicture(guan);
         //guiNode.attachChild(pic);
         cross.setEnabled(false);
     }
@@ -318,6 +321,51 @@ public class App extends SimpleApplication {
                 //System.out.println("zzzzzz");
 
                 //x1.setEnabled(false);
+            }else if (world2.equals(name) && isPressed) {
+                switch (guan) {
+                    case 1:
+                        if (SecondState.canGo.equals("can")) {
+                            stateManager.detach(f1);
+                            stateManager.attach(f6);
+                            guan = 2;
+                        }
+                        break;
+                    case 2:
+                        if (ThirdState.canGo.equals("can")) {
+                            stateManager.detach(f2);
+                            stateManager.attach(f1);
+                            guan = 3;
+                        }
+                        break;
+                    case 3:
+                        if (ForthState.canGo.equals("can")) {
+                            stateManager.detach(f3);
+                            stateManager.attach(f2);
+                            guan = 4;
+                        }
+                        break;
+                    case 4:
+                        if (FifthState.canGo.equals("can")) {
+                            stateManager.detach(f4);
+                            stateManager.attach(f3);
+                            guan = 5;
+                        }
+                        break;
+                    case 5:
+                        if (SixthState.canGo.equals("can")) {
+                            stateManager.detach(f5);
+                            stateManager.attach(f4);
+                            guan = 6;
+                        }
+                        break;
+                    case 6:
+                        if (FifthState.canGo.equals("can")) {
+                            stateManager.detach(f6);
+                            stateManager.attach(f5);
+                            guan = 1;
+                        }
+                        break;
+                }
             }
         }
     }
@@ -380,7 +428,7 @@ public class App extends SimpleApplication {
         //app.setShowSettings(true);
         settings.setFullscreen(true);
         app.setShowSettings(false);
-        //Storage.load();
+        Storage.load();
         app.start();
 
     }
