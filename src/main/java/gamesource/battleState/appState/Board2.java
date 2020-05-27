@@ -9,7 +9,7 @@ import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.shape.Quad;
 
-public class board2 extends BaseAppState {
+public class Board2 extends BaseAppState {
     private Geometry geom1;
     private Geometry geom2;
     private Geometry geom3;
@@ -87,7 +87,7 @@ public class board2 extends BaseAppState {
 
     }
 
-    public board2(int number){
+    public Board2(int number){
         this.number=number;
         System.out.println(number);
     }

@@ -7,7 +7,7 @@ import com.jme3.material.Material;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.shape.Quad;
 
-public class board extends BaseAppState {
+public class Board extends BaseAppState {
     private Geometry geom;
     private SimpleApplication app;
 

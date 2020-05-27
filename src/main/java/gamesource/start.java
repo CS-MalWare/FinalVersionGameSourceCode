@@ -5,11 +5,11 @@ import gamesource.util.Storage;
 
 public class start {
     public  void Start(int frame,int state,int shadow,int open,int juchi,boolean full){
-        App app = new App(6, 1024, 1, 4);
+        App app = new App(1, 2048, 0, 8);
         AppSettings settings = new AppSettings(true);
 
         // 这里是导入地图存档的,导入人物属性存档在 MainRole类中
-        //Storage.load();
+        Storage.load();
 
         settings.setTitle("Cholera");// 标题
         settings.setResolution(1600, 900);// 分辨率
