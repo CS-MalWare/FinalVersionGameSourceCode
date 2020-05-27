@@ -27,6 +27,7 @@ import gamesource.battleState.equipment.CreateEquipment;
 import gamesource.battleState.equipment.Equipment;
 import gamesource.uiState.bagstate.CardUI;
 import gamesource.util.CardArrayReader;
+import gamesource.util.EquipmentArrayReader;
 
 public class ShopAppState extends BaseAppState implements ActionListener{
     private AppStateManager stateManager;
@@ -38,9 +39,9 @@ public class ShopAppState extends BaseAppState implements ActionListener{
     private CardUI[] saberCardUIs = new CardUI[20];
     private CardUI[] neutralCardUIs = new CardUI[20];
 
-    private EquipmentUI[] equipmentUIs = new EquipmentUI[40];
-    private Equipment[] equipments = new Equipment[40];
-    private EquipmentUI[] equipmentUIsCopy = new EquipmentUI[40];
+    private static EquipmentUI[] equipmentUIs = new EquipmentUI[20];
+    private static Equipment[] equipments = new Equipment[20];
+    private EquipmentUI[] equipmentUIsCopy = new EquipmentUI[20];
     //private CardUI[] saberCardUIs = new CardUI[20];
     private Container centralPart;
     private Container leftPartContainer;
@@ -70,6 +71,8 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         BorderLayout borderLayout = new BorderLayout();
         general.setLayout(borderLayout);
         general.setLocalTranslation(5, app.getCamera().getHeight()-50, 0);
+     
+        app.getInputManager().setCursorVisible(false);
 
         for(int i=0; i < 20; i++){
             saberCard = CreateCard.getRandomCard(OCCUPATION.SABER);
@@ -85,6 +88,10 @@ public class ShopAppState extends BaseAppState implements ActionListener{
             cardUIsCopy[i] = saberCardUIs[i];
             cardUIs[i+20] = neutralCardUIs[i];
             cardUIsCopy[i+20] = neutralCardUIs[i];
+
+            equipmentUIs[i] = EquipmentArrayReader.equipmentToUI(commonEquipment);
+            equipmentUIsCopy[i] = equipmentUIs[i];
+            equipments[i] = commonEquipment;
             //cardUIs[i+40] =  saberCardUIs[i];
         }    
     }
@@ -135,6 +142,7 @@ public class ShopAppState extends BaseAppState implements ActionListener{
 
         cards.addClickCommands(new CardsDirectoryClick());
         health.addClickCommands(new HealthClick());
+        equipments.addClickCommands(new EquipmentClick());
         general.setAlpha(2f);
     }
 
@@ -147,7 +155,7 @@ public class ShopAppState extends BaseAppState implements ActionListener{
             buttomPartContainer.setLayout(new SpringGridLayout(Axis.Y, Axis.Y));
             buttomPartContainer.addChild(pagesContainer);
             
-            int pageNumber = cardUIs.length % 12;
+            int pageNumber = (cardUIs.length - cardUIs.length % 12) / 12 + 1;
             for(int i=1; i<=pageNumber; i++){
                 Button button = pagesContainer.addChild(new Button(String.valueOf(i)));
                 button.addClickCommands(new PageButtonClick());
@@ -169,6 +177,32 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         }
     }
 
+    public void showEquipments(Container centralPart){
+        pagesContainer = new Container();
+        pagesContainer.setLayout(new SpringGridLayout(Axis.X, Axis.Y, FillMode.None, FillMode.None));
+        general.addChild(buttomPartContainer, Position.South);
+        buttomPartContainer.setLayout(new SpringGridLayout(Axis.Y, Axis.Y));
+        buttomPartContainer.addChild(pagesContainer);
+        
+        int pageNumber = (equipmentUIs.length - equipmentUIs.length % 12) / 12 + 1;
+        for(int i=1; i<=pageNumber; i++){
+            Button button = pagesContainer.addChild(new Button(String.valueOf(i)));
+            button.addClickCommands(new PageButtonClickForEquip());
+        }
+        Button closeButton = buttomPartContainer.addChild(new Button("Close"), 1, 0);
+        closeButton.addClickCommands(new CloseCommand());
+
+        for(EquipmentUI equipmentUI : equipmentUIs){
+            equipmentUI.addAction(new EquipmentCardsClick());
+        }
+
+        for(int i=0; i<12; i++){
+            int j = i % 4;
+            int z = (i - j)/4;
+            equipmentUIs[i].addToButtonContainer(centralPart, z*2, j);
+        }
+    }
+
     public void caculateMoney(int cardsMoney){
         this.shopMoney.setTotalMoneyOfCards(shopMoney.getTotalMoneyOfCards() + cardsMoney);
     }
@@ -177,9 +211,25 @@ public class ShopAppState extends BaseAppState implements ActionListener{
             if(button.isPressed()){
                 for(CardUI cardUI : cardUIs){
                     if(cardUI.equals(button)){
-                        TabTextForShop textForShop = new TabTextForShop.Builder(cardUI, "Info", "Name", "Cost")
+                        TabTextForShop textForShop = new TabTextForShop.Builder(cardUI, null,"Info", "Name", "Cost")
                             .setMessage1(cardUI.getDescription()).setMessage2(cardUI.getButton().getName())
                             .setMessage3(Integer.toString(cardUI.getCardMoney())).build();
+                        getStateManager().attach(textForShop);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    private class EquipmentCardsClick implements Command<Button>{
+        public void execute(Button button){
+            if(button.isPressed()){
+                for(EquipmentUI equipmentUI : equipmentUIs){
+                    if(equipmentUI.equals(button)){
+                        TabTextForShop textForShop = new TabTextForShop.Builder(null, equipmentUI, "Info", "Name", "Cost")
+                            .setMessage1(equipmentUI.getDescription()).setMessage2(equipmentUI.getButton().getName())
+                            .setMessage3(Integer.toString(equipmentUI.getCardMoney())).build();
                         getStateManager().attach(textForShop);
                         break;
                     }
@@ -284,10 +334,15 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         
             Button cards = new Button("Cards");
             Button equipments = new Button("Equipments");
+            Button health = new Button("Health");
+
             leftPart.addChild(cards, 2, 0);
             leftPart.addChild(equipments, 3, 0);
+            leftPart.addChild(health, 4, 0);
 
             cards.addClickCommands(new CardsDirectoryClick());
+            health.addClickCommands(new HealthClick());
+            equipments.addClickCommands(new EquipmentClick());
         }
     }
 
@@ -335,14 +390,53 @@ public class ShopAppState extends BaseAppState implements ActionListener{
         }    
     }
 
+    private class PageButtonClickForEquip implements Command<Button>{
+        public void execute(Button button){
+            int pageIndex = Integer.parseInt(button.getText());
+            
+            centralPart.detachAllChildren();
+            if(equipmentUIs.length <= 12*pageIndex){
+                for(int i=12*(pageIndex-1); i<equipmentUIs.length; i++){
+                    int index = i-12*(pageIndex-1);
+                    int j = index % 4;
+                    int z = (index - j)/4;
+                    equipmentUIs[i].addToButtonContainer(centralPart, z*2, j);
+                }
+            }else{
+                for(int i=12*(pageIndex-1); i<12*pageIndex; i++){
+                    int index = i-12*(pageIndex-1);
+                    int j = index % 4;
+                    int z = (index -j) / 4;
+                    equipmentUIs[i].addToButtonContainer(centralPart, 2*z, j);
+                }
+            }    
+        }
+    }
+
     private class HealthClick implements Command<Button>{
         public void execute(Button button){
             centralPart.detachAllChildren();
             pagesContainer.detachAllChildren();
 
             IconComponent medicine = new IconComponent("Util/medicine.jpg");
+            medicine.setIconScale(0.8f);
             CardUI healMedicine = new CardUI(medicine, "Medicine", 100, "Get 100 point health back");
             healMedicine.addToContainer(centralPart, 0, 0);
+        }
+    }
+
+    private class EquipmentClick implements Command<Button>{
+        public void execute(Button button){
+            detachShop();
+            leftPart.setBackground(new QuadBackgroundComponent(new ColorRGBA(0, 0.5f, 0.5f, 0.5f), 5, 5, 0.02f, false));
+            leftPart.addChild(new Label("Shop", new ElementId("header"), "glass"));
+            leftPart.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass")).setUserData(LayerComparator.LAYER, 2);
+
+            Button backToStart = new Button("Back");
+            leftPart.addChild(backToStart);
+
+            backToStart.addClickCommands(new BackToStart());
+            showEquipments(centralPart);
         }
     }
 
@@ -408,4 +502,12 @@ public class ShopAppState extends BaseAppState implements ActionListener{
     public static Card[] getShopCard(){
         return cards;
     }
- }
+
+    public static EquipmentUI[] getShopEquipmentUIs(){
+        return equipmentUIs;
+    }
+
+    public static Equipment[] getShopEquipment(){
+        return equipments;
+    }
+}

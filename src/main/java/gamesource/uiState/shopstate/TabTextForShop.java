@@ -27,6 +27,7 @@ public class TabTextForShop extends BaseAppState{
     private final String tab2;
     private final String tab3;
     private final CardUI cardUI;
+    private final EquipmentUI equipmentUI;
 
     private CloseCommand closeCommand = new CloseCommand();
     private TabbedPanel tabs;
@@ -76,15 +77,20 @@ public class TabTextForShop extends BaseAppState{
     }
 
     protected void BuyCard(){
-        getStateManager().attach(new FormattedTextForShop(0, cardUI.getCardMoney(), MainRole.getInstance().getGold(),
-            cardUI));
+        if(cardUI != null){
+            getStateManager().attach(new FormattedTextForShop(0, cardUI.getCardMoney(), MainRole.getInstance().getGold(),
+                cardUI, null));
+        }else{
+            getStateManager().attach(new FormattedTextForShop(0, equipmentUI.getCardMoney(), MainRole.getInstance().getGold(), 
+                null, equipmentUI));
+        }
         System.out.println("You want to buy card");
     }
 
     public void calculatePreferLocation(){
         float xOfWindow = getState(ShopAppState.class).getGeneral().getPreferredSize().x +
             getState(ShopAppState.class).getGeneral().getLocalTranslation().x;
-        float yOfWindow = getState(ShopAppState.class).getGeneral().getPreferredSize().y;
+        float yOfWindow = getState(ShopAppState.class).getGeneral().getLocalTranslation().y;
         window.setLocalTranslation(xOfWindow, yOfWindow, 100);
     }
 
@@ -106,7 +112,7 @@ public class TabTextForShop extends BaseAppState{
         return contents;
     }
 
-    public TabTextForShop(CardUI cardUI, String tab1, String tab2, String tab3, String message1, String message2, String message3){
+    public TabTextForShop(CardUI cardUI, EquipmentUI equipmentUI, String tab1, String tab2, String tab3, String message1, String message2, String message3){
         this.cardUI = cardUI;
         this.tab1 = tab1;
         this.tab2 = tab2;
@@ -114,6 +120,7 @@ public class TabTextForShop extends BaseAppState{
         this.message1 = message1;
         this.message2 = message2;
         this.message3 = message3;
+        this.equipmentUI = equipmentUI;
     }
 
     public static class Builder{
@@ -121,15 +128,17 @@ public class TabTextForShop extends BaseAppState{
         private final String tab2;
         private final String tab3;
         private final CardUI cardUI;
+        private final EquipmentUI equipmentUI;
         private String message1 = "";
         private String message2 = "";
         private String message3 = "";
 
-        public Builder(CardUI carUI, String tab1, String tab2, String tab3){
+        public Builder(CardUI carUI, EquipmentUI equipmentUI, String tab1, String tab2, String tab3){
             this.cardUI = carUI;
             this.tab1 = tab1;
             this.tab2 = tab2;
             this.tab3 = tab3;
+            this.equipmentUI = equipmentUI;
         }
 
         public Builder setMessage1(String message1){
@@ -157,6 +166,7 @@ public class TabTextForShop extends BaseAppState{
         this.tab2 = builder.tab2;
         this.tab3 = builder.tab3;
         this.cardUI = builder.cardUI;
+        this.equipmentUI = builder.equipmentUI;
         this.message1 = builder.message1;
         this.message2 = builder.message2;
         this.message3 = builder.message3;

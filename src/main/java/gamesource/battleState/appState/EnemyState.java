@@ -37,6 +37,9 @@ import gamesource.battleState.character.Enemy;
 import gamesource.battleState.control.CardMotionControl;
 import gamesource.battleState.particle.KingSkeletonStateParticle;
 import gamesource.battleState.particle.StuxnetStateParticle;
+import truetypefont.TrueTypeFont;
+import truetypefont.TrueTypeKey;
+import truetypefont.TrueTypeLoader;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,11 +49,13 @@ public class EnemyState extends BaseAppState {
     private Node rootNode = new Node("EnemyState");  //主节点
     private ArrayList<Enemy> enemies;
     private ArrayList<Spatial> enemiesModel;
-    private ArrayList<BitmapText> hpHints;
-    private ArrayList<BitmapText> blockHints;
+    private ArrayList<Geometry> hpHints;
+    private ArrayList<Geometry> blockHints;
     private ArrayList<Float> hpPositions;
+    private ArrayList<Float> hpPositionsnew;
     private ArrayList<Integer> modelPositions;
     private ArrayList<Float> blockPositions;
+    private ArrayList<Float> blockPositionsnews;
     private ParticleEmitter pe;
     private ArrayList<AnimChannel> animChannels;  // 用于播放动画
     private ArrayList<AnimControl> animControls;  // 用于播放动画
@@ -75,8 +80,8 @@ public class EnemyState extends BaseAppState {
 
     public EnemyState() {
         enemies = new ArrayList<Enemy>();
-        hpHints = new ArrayList<BitmapText>();
-        blockHints = new ArrayList<BitmapText>();
+        hpHints = new ArrayList<Geometry>();
+        blockHints = new ArrayList<Geometry>();
         enemiesModel = new ArrayList<Spatial>();
         animChannels = new ArrayList<AnimChannel>();
         animControls = new ArrayList<AnimControl>();
@@ -104,6 +109,17 @@ public class EnemyState extends BaseAppState {
 
             add(5.7f);
             add(1.5f);
+        }};
+        hpPositionsnew = new ArrayList<Float>() {{
+            //每个血量提示的x y坐标
+            add(1000f);
+            add(580f);
+
+            add(1200f);
+            add(580f);
+
+            add(1400f);
+            add(580f);
         }};
         blockPositions = new ArrayList<Float>() {{
             //每个护甲提示的x y坐标
@@ -188,6 +204,17 @@ public class EnemyState extends BaseAppState {
             add(6f);
             add(-1f);
         }};
+        blockPositionsnews = new ArrayList<Float>() {{
+            //每个护甲提示的x y坐标
+            add(1000f);
+            add(320f);
+
+            add(1200f);
+            add(320f);
+
+            add(1400f);
+            add(320f);
+        }};
 //        rootNode.attachChild(DamageParticle.getParticle1(assetManager))
     }
 
@@ -215,23 +242,34 @@ public class EnemyState extends BaseAppState {
         int index = 0;
         //为每个敌人添加血量
         BitmapFont fnt = this.assetManager.loadFont("Interface/Fonts/Default.fnt");
+        app.getAssetManager().registerLoader(TrueTypeLoader.class,"ttf");
+        TrueTypeKey ttk=new TrueTypeKey("Util/MTCORSVA.TTF",1,32);
+        TrueTypeFont font =(TrueTypeFont)assetManager.loadAsset(ttk);
         for (Enemy enemy : enemies) {
-            BitmapText hpHint = new BitmapText(fnt, false);
+            /*BitmapText hpHint = new BitmapText(fnt, false);
             hpHint.setBox(new Rectangle(hpPositions.get(2 * index), hpPositions.get(2 * index + 1), 6, 3));
             hpHint.setQueueBucket(RenderQueue.Bucket.Transparent);
             hpHint.setSize(0.3f);
             hpHint.setColor(ColorRGBA.Red);
-            hpHint.setText(String.format("HP: %s/%s", enemy.getHP(), enemy.getTotalHP()));
-            rootNode.attachChild(hpHint);
-            hpHints.add(hpHint);
-            BitmapText blockHint = new BitmapText(fnt, false);
+            hpHint.setText(String.format("HP: %s/%s", enemy.getHP(), enemy.getTotalHP()));*/
+            String content=String.format("HP: %s/%s", enemy.getHP(), enemy.getTotalHP());
+            Geometry text=font.getBitmapGeom(content,0,ColorRGBA.Red);
+            text.setLocalTranslation(hpPositionsnew.get(2*index),hpPositionsnew.get(2*index+1),0);
+            app.getGuiNode().attachChild(text);
+            hpHints.add(text);
+            /*BitmapText blockHint = new BitmapText(fnt, false);
             blockHint.setBox(new Rectangle(blockPositions.get(2 * index), blockPositions.get(2 * index + 1), 6, 3));
             blockHint.setQueueBucket(RenderQueue.Bucket.Transparent);
             blockHint.setSize(0.3f);
             blockHint.setColor(ColorRGBA.Blue);
             blockHint.setText(String.format("Blocks: %s", enemy.getBlock()));
             rootNode.attachChild(blockHint);
-            blockHints.add(blockHint);
+            blockHints.add(blockHint);*/
+            String blockcontent=String.format("Blocks: %s", enemy.getBlock());
+            Geometry blocktext=font.getBitmapGeom(blockcontent,0,ColorRGBA.Blue);
+            blocktext.setLocalTranslation(blockPositionsnews.get(2*index),blockPositionsnews.get(2*index+1),0);
+            app.getGuiNode().attachChild(blocktext);
+            blockHints.add(blocktext);
             index += 1;
         }
     }
@@ -239,50 +277,70 @@ public class EnemyState extends BaseAppState {
     public void updateHints(boolean isAOE) {
         int index = 0;
         BitmapFont fnt = assetManager.loadFont("Interface/Fonts/Default.fnt");
+        app.getAssetManager().registerLoader(TrueTypeLoader.class,"ttf");
+        TrueTypeKey ttk=new TrueTypeKey("Util/MTCORSVA.TTF",1,32);
+        TrueTypeFont font =(TrueTypeFont)assetManager.loadAsset(ttk);
         if (isAOE) {
             for (Enemy enemy : enemies) {
                 hpHints.get(index).removeFromParent();
-                BitmapText hpHint = new BitmapText(fnt, false);
+                /*BitmapText hpHint = new BitmapText(fnt, false);
                 hpHint.setBox(new Rectangle(hpPositions.get(2 * index), hpPositions.get(2 * index + 1), 6, 3));
                 hpHint.setQueueBucket(RenderQueue.Bucket.Transparent);
                 hpHint.setSize(0.3f);
                 hpHint.setColor(ColorRGBA.Red);
                 hpHint.setText(String.format("HP: %s/%s", enemy.getHP(), enemy.getTotalHP()));
-                rootNode.attachChild(hpHint);
-                hpHints.set(index, hpHint);
+                rootNode.attachChild(hpHint);*/
+                String content=String.format("HP: %s/%s", enemy.getHP(), enemy.getTotalHP());
+                Geometry text=font.getBitmapGeom(content,0,ColorRGBA.Red);
+                text.setLocalTranslation(hpPositionsnew.get(2*index),hpPositionsnew.get(2*index+1),0);
+                app.getGuiNode().attachChild(text);
+                hpHints.set(index, text);
 
                 blockHints.get(index).removeFromParent();
-                BitmapText blockHint = new BitmapText(fnt, false);
+                /*BitmapText blockHint = new BitmapText(fnt, false);
                 blockHint.setBox(new Rectangle(blockPositions.get(2 * index), blockPositions.get(2 * index + 1), 6, 3));
                 blockHint.setQueueBucket(RenderQueue.Bucket.Transparent);
                 blockHint.setSize(0.3f);
                 blockHint.setColor(ColorRGBA.Blue);
                 blockHint.setText(String.format("Blocks: %s", enemies.get(index).getBlock()));
                 rootNode.attachChild(blockHint);
-                blockHints.set(index, blockHint);
+                blockHints.set(index, blockHint);*/
+                String blockcontent=String.format("Blocks: %s", enemies.get(index).getBlock());
+                Geometry blocktext=font.getBitmapGeom(blockcontent,0,ColorRGBA.Blue);
+                blocktext.setLocalTranslation(blockPositionsnews.get(2*index),blockPositionsnews.get(2*index+1),0);
+                app.getGuiNode().attachChild(blocktext);
+                blockHints.set(index, blocktext);
                 index += 1;
             }
         } else {
             if (targetID != -1) {
                 hpHints.get(targetID).removeFromParent();
-                BitmapText hpHint = new BitmapText(fnt, false);
+                /*BitmapText hpHint = new BitmapText(fnt, false);
                 hpHint.setBox(new Rectangle(hpPositions.get(2 * targetID), hpPositions.get(2 * targetID + 1), 6, 3));
                 hpHint.setQueueBucket(RenderQueue.Bucket.Transparent);
                 hpHint.setSize(0.3f);
                 hpHint.setColor(ColorRGBA.Red);
                 hpHint.setText(String.format("HP: %s/%s", enemies.get(targetID).getHP(), enemies.get(targetID).getTotalHP()));
-                rootNode.attachChild(hpHint);
-                hpHints.set(targetID, hpHint);
+                rootNode.attachChild(hpHint);*/
+                String content=String.format("HP: %s/%s", enemies.get(targetID).getHP(), enemies.get(targetID).getTotalHP());
+                Geometry text=font.getBitmapGeom(content,0,ColorRGBA.Red);
+                text.setLocalTranslation(hpPositionsnew.get(2*targetID),hpPositionsnew.get(2*targetID+1),0);
+                app.getGuiNode().attachChild(text);
+                hpHints.set(targetID, text);
 
                 blockHints.get(targetID).removeFromParent();
-                BitmapText blockHint = new BitmapText(fnt, false);
+                /*BitmapText blockHint = new BitmapText(fnt, false);
                 blockHint.setBox(new Rectangle(blockPositions.get(2 * targetID), blockPositions.get(2 * targetID + 1), 6, 3));
                 blockHint.setQueueBucket(RenderQueue.Bucket.Transparent);
                 blockHint.setSize(0.3f);
                 blockHint.setColor(ColorRGBA.Blue);
                 blockHint.setText(String.format("Blocks: %s", enemies.get(targetID).getBlock()));
-                rootNode.attachChild(blockHint);
-                blockHints.set(targetID, blockHint);
+                rootNode.attachChild(blockHint);*/
+                String blockcontent=String.format("Blocks: %s", enemies.get(targetID).getBlock());
+                Geometry blocktext=font.getBitmapGeom(blockcontent,0,ColorRGBA.Blue);
+                blocktext.setLocalTranslation(blockPositionsnews.get(2*targetID),blockPositionsnews.get(2*targetID+1),0);
+                app.getGuiNode().attachChild(blocktext);
+                blockHints.set(index, blocktext);
             }
         }
     }
@@ -290,6 +348,10 @@ public class EnemyState extends BaseAppState {
 
     public void addEnemies(Enemy... enemies) {
         this.enemies.addAll(Arrays.asList(enemies));
+    }
+
+    public int  size(){
+        return enemies.size();
     }
 
     private void setModelSize(Spatial model) {
@@ -988,10 +1050,10 @@ public class EnemyState extends BaseAppState {
                 enemies.remove(i);
                 enemiesModel.remove(i);
 
-                blockPositions.remove(2 * i);
-                blockPositions.remove(2 * i);
-                hpPositions.remove(2 * i);
-                hpPositions.remove(2 * i);
+                blockPositionsnews.remove(2 * i);
+                blockPositionsnews.remove(2 * i);
+                hpPositionsnew.remove(2 * i);
+                hpPositionsnew.remove(2 * i);
                 modelPositions.remove(i * 3);
                 modelPositions.remove(i * 3);
                 modelPositions.remove(i * 3);

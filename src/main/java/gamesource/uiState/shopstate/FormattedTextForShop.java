@@ -30,14 +30,16 @@ public class FormattedTextForShop extends BaseAppState{
     private Label totalCost;
     private int totalMoney;
     private CardUI cardUI;
+    private EquipmentUI equipmentUI;
     private CloseCommand closeCommand = new CloseCommand();
     private VersionedReference<DocumentModel> reference;
 
-    public FormattedTextForShop(int number, int cost, int totalMoney, CardUI cardUI){
+    public FormattedTextForShop(int number, int cost, int totalMoney, CardUI cardUI, EquipmentUI equipmentUI){
         numberOfBuy = number;
         this.cost = cost;
         this.totalMoney = totalMoney;
         this.cardUI = cardUI;
+        this.equipmentUI = equipmentUI;
     }
 
     @Override
@@ -100,7 +102,11 @@ public class FormattedTextForShop extends BaseAppState{
 
     protected void Buy(){
         String[] costs = totalCost.getText().split(" ");
-        getStateManager().attach(new DragCheck(Integer.parseInt(costs[2]), totalMoney, cardUI, numberOfBuy));
+        if(cardUI != null){
+            getStateManager().attach(new DragCheck(Integer.parseInt(costs[2]), totalMoney, cardUI, null, numberOfBuy));
+        }else{
+            getStateManager().attach(new DragCheck(Integer.parseInt(costs[2]), totalMoney, null, equipmentUI, numberOfBuy));
+        }
     }
 
     @Override

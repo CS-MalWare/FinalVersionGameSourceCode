@@ -13,6 +13,7 @@ import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.controls.Trigger;
 import com.jme3.material.Material;
 import com.jme3.math.Ray;
+import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import com.jme3.scene.Geometry;
@@ -118,6 +119,7 @@ public class FifthState extends BaseAppState {
     private ArrayList<String> names = new ArrayList<>();
     private TalkWithOption talkWithOption;
     private WordWrapForTalk wordWrapForTalk;
+    private boolean isTalkShow = false;
 
     private ArrayList<BaseAppState> states=new ArrayList<BaseAppState>();
 
@@ -189,7 +191,7 @@ public class FifthState extends BaseAppState {
         state.attach(sky);
         states.add(sky);
 
-        smallMap = new SmallMap(1600, 900, 400);
+        smallMap = new SmallMap(1600, 900, new Vector2f(400, 400), 5);
         state.attach(smallMap);
         states.add(smallMap);
 
@@ -418,7 +420,7 @@ public class FifthState extends BaseAppState {
             CollisionResults results17 = results17();
             if(talk.equals(name)&&isPressed){
                 if(results14.size()>0){             //初始机器人
-                    if(!getStateManager().hasState(wordWrapForTalk)){
+                    if(!getStateManager().hasState(wordWrapForTalk) && !isTalkShow){
                         names.add("Major");
                         names.add("Robot");
                         content.add("Where is this?");
@@ -428,8 +430,13 @@ public class FifthState extends BaseAppState {
                             "you can jump higher than before. There are some people you familiar with is waiting \n" + 
                             "for you. Please save the computer");
                         content.add("Computer? You confused me ....");
-                        wordWrapForTalk = new WordWrapForTalk(names, content);
+                        wordWrapForTalk = new WordWrapForTalk(names, content, 5);
                         state.attach(wordWrapForTalk);
+                        isTalkShow = true;
+                    }else if(!getStateManager().hasState(wordWrapForTalk) && isTalkShow){
+                        getStateManager().detach(wordWrapForTalk);
+                        app.getFlyByCamera().setDragToRotate(false);
+                        isTalkShow = false;
                     }
                     if (canmove == 1) {
                         state.detach(input);
@@ -441,9 +448,16 @@ public class FifthState extends BaseAppState {
                         canmove = 1;
                     }
                 }else if(results15.size()>0){           //蜥蜴
-                    content.clear();
-                    content.add("Long time no see, you find your own power, do need any new cards and equipment?");
-                    talkWithOption = new TalkWithOption("Lizard", content, CallType.CONFIRM, 5);
+                    if(!isTalkShow && !getStateManager().hasState(talkWithOption)){
+                        content.clear();
+                        content.add("Long time no see, you find your own power, do need any new cards and equipment?");
+                        talkWithOption = new TalkWithOption("Lizard", content, CallType.CONFIRM, 5);
+                        isTalkShow = true;
+                    }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        getStateManager().detach(talkWithOption);
+                        app.getFlyByCamera().setDragToRotate(false);
+                        isTalkShow = false;
+                    }
                     if (canmove == 1) {
                         state.detach(input);
                         major.mouseChange();
@@ -454,9 +468,16 @@ public class FifthState extends BaseAppState {
                         canmove = 1;
                     }
                 }else if(results16.size()>0){           //大师
-                    content.clear();
-                    content.add("Finally you get here, seems you got all things needed to save world, \n"+
-                        "you may find this place is different, I got know what happened");
+                    if(!isTalkShow && !getStateManager().hasState(talkWithOption)){
+                        content.clear();
+                        content.add("Finally you get here, seems you got all things needed to save world, \n"+
+                            "you may find this place is different, I got know what happened");
+                        isTalkShow = true;
+                    }else if (isTalkShow && getStateManager().hasState(talkWithOption)){
+                        getStateManager().detach(talkWithOption);
+                        app.getFlyByCamera().setDragToRotate(false);
+                        isTalkShow = false;
+                    }
                     if (canmove == 1) {
                         state.detach(input);
                         major.mouseChange();

@@ -116,7 +116,7 @@ public class DecksState extends BaseAppState {
         this.app.getAssetManager().registerLoader(TrueTypeLoader.class, "ttf");
 
         // 创建字体 (例如：楷书)
-        TrueTypeKey ttk = new TrueTypeKey("Util/font.ttf", // 字体
+        TrueTypeKey ttk = new TrueTypeKey("Util/MTCORSVA.TTF", // 字体
                 BOLD, // 字形：0 普通、1 粗体、2 斜体
                 FONT_SIZE);// 字号
 
@@ -464,7 +464,7 @@ public class DecksState extends BaseAppState {
         private Boolean isDropDeckShow = false;
         private Boolean isExhuastDeckShow = false;
         private String enemyActionAudio = "";
-        TrueTypeKey ttk = new TrueTypeKey("Util/font.ttf", // 字体
+        TrueTypeKey ttk = new TrueTypeKey("Util/MTCORSVA.TTF", // 字体
                 PLAIN, // 字形：0 普通、1 粗体、2 斜体
                 FONT_SIZE);// 字号
         TrueTypeFont font = (TrueTypeFont) app.getAssetManager().loadAsset(ttk);

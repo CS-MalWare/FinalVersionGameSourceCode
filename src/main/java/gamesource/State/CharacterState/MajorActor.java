@@ -124,7 +124,7 @@ public class MajorActor extends BaseAppState implements AnimEventListener {
 
     public void initAnim() {
         scene = (Node) MajorStar;
-        bip001 = (Node) scene.getChild("Bip001");
+        bip001 = (Node) scene.getChild("bip001");
 
         animControl = bip001.getControl(AnimControl.class);
         //System.out.println(animControl.getAnimationNames());

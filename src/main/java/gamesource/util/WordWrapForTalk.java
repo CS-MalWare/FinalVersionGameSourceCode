@@ -11,7 +11,13 @@ import com.simsilica.lemur.Container;
 import com.simsilica.lemur.Label;
 import com.simsilica.lemur.event.PopupState;
 import com.simsilica.lemur.style.ElementId;
+
+import gamesource.State.worldState.FifthState;
 import gamesource.State.worldState.FirstState;
+import gamesource.State.worldState.ForthState;
+import gamesource.State.worldState.SecondState;
+import gamesource.State.worldState.SixthState;
+import gamesource.State.worldState.ThirdState;
 
 public class WordWrapForTalk extends BaseAppState{
     private SimpleApplication app;
@@ -21,11 +27,14 @@ public class WordWrapForTalk extends BaseAppState{
     private ArrayList<String> talkContent;
     private ArrayList<String> modelName;
     private int contentStep;
+    private int stage;
+    private ActionButton continueButton;
 
-    public WordWrapForTalk(ArrayList<String> modelName, ArrayList<String> talkContent){
+    public WordWrapForTalk(ArrayList<String> modelName, ArrayList<String> talkContent, int stage){
         this.talkContent = talkContent;
         this.modelName = modelName;
         this.contentStep = 0;
+        this.stage = stage;
     }
 
     @Override
@@ -35,7 +44,7 @@ public class WordWrapForTalk extends BaseAppState{
 
     @Override
     protected void cleanup(Application application){
-
+        app.getFlyByCamera().setDragToRotate(false);
     }
 
     @Override
@@ -48,11 +57,12 @@ public class WordWrapForTalk extends BaseAppState{
         window = new Container();
         modelNameLabel = window.addChild(new Label(modelName.get(0), new ElementId("window.title.label")));
         contentLabel = window.addChild(new Label(talkContent.get(contentStep)));
+        contentLabel.setFontSize(18f);
         contentLabel.setMaxWidth(400);
         calculatePreferLocation();
 
-        window.addChild(new ActionButton(new CallMethodAction("Close", this, "close")));
-
+        continueButton = window.addChild(new ActionButton(new CallMethodAction("Continue", this, "continueToNext")));
+        window.setAlpha(2f);
         getState(PopupState.class).showPopup(window);
     }
 
@@ -66,14 +76,20 @@ public class WordWrapForTalk extends BaseAppState{
         window.setLocalTranslation(preferCenterWith - halfLabelWidth, preferCenterHeight - halfLabelHeight, 100);
     }
 
-    public void close(){
+    public void continueToNext(){
         if(contentStep == talkContent.size() - 1){
-            getState(FirstState.class).getStateManager().detach(WordWrapForTalk.this);
+            Label endLabel = new Label("Press N to Exit...");
+            window.addChild(endLabel);
+            window.removeChild(continueButton);
         }else{
             contentStep ++;
             modelNameLabel.setText(getAnotherNmae());
             contentLabel.setText(talkContent.get(contentStep));
         }
+    }
+
+    public Container getWindow(){
+        return window;
     }
 
     public String getAnotherNmae(){

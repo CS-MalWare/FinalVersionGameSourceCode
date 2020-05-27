@@ -92,24 +92,34 @@ public class TalkWithOption extends BaseAppState{
         if(contentStep == talkContent.size() - 1){
             switch(stage){
                 case 1: 
-                app.getGuiNode().detachChild(window);
-                getState(FirstState.class).getStateManager().detach(TalkWithOption.this); break;
+                getState(PopupState.class).closePopup(window);
+                getState(FirstState.class).getStateManager().detach(TalkWithOption.this); 
+                cleanup();
+                break;
                 
                 case 2: 
-                app.getGuiNode().detachChild(window);
-                getState(SecondState.class).getStateManager().detach(TalkWithOption.this); break;
+                getState(PopupState.class).closePopup(window);
+                getState(SecondState.class).getStateManager().detach(TalkWithOption.this); 
+                cleanup();
+                break;
                 
                 case 3: 
-                app.getGuiNode().detachChild(window);
-                getState(ThirdState.class).getStateManager().detach(TalkWithOption.this); break;
+                getState(PopupState.class).closePopup(window);
+                getState(ThirdState.class).getStateManager().detach(TalkWithOption.this); 
+                cleanup();
+                break;
                 
                 case 4: 
-                app.getGuiNode().detachChild(window);
-                getState(ForthState.class).getStateManager().detach(TalkWithOption.this); break;
+                getState(PopupState.class).closePopup(window);
+                getState(ForthState.class).getStateManager().detach(TalkWithOption.this); 
+                cleanup();
+                break;
                 
                 case 5: 
-                app.getGuiNode().detachChild(window);
-                getState(FifthState.class).getStateManager().detach(TalkWithOption.this); break;
+                getState(PopupState.class).closePopup(window);
+                getState(FifthState.class).getStateManager().detach(TalkWithOption.this); 
+                cleanup();
+                break;
             }
         }else{
             contentStep ++;
@@ -136,31 +146,31 @@ public class TalkWithOption extends BaseAppState{
     public void confirm(){
         switch(stage){
             case 1:
-            app.getGuiNode().detachChild(window);
+            getState(PopupState.class).closePopup(window);
             getState(FirstState.class).getStateManager().detach(TalkWithOption.this);
             cleanup();
             break;
 
             case 2:
-            app.getGuiNode().detachChild(window);
+            getState(PopupState.class).closePopup(window);
             getState(SecondState.class).getStateManager().detach(TalkWithOption.this);
             cleanup();
             break;
 
             case 3:
-            app.getGuiNode().detachChild(window);
+            getState(PopupState.class).closePopup(window);
             getState(ThirdState.class).getStateManager().detach(TalkWithOption.this);
             cleanup();
             break;
 
             case 4:
-            app.getGuiNode().detachChild(window);
+            getState(PopupState.class).closePopup(window);
             getState(ForthState.class).getStateManager().detach(TalkWithOption.this);
             cleanup();
             break;
 
             case 5:
-            app.getGuiNode().detachChild(window);
+            getState(PopupState.class).closePopup(window);
             getState(FifthState.class).getStateManager().detach(TalkWithOption.this);
             cleanup();
             break;
@@ -201,5 +211,9 @@ public class TalkWithOption extends BaseAppState{
     }
 
     public void save(){
+    }
+
+    public Container getWindow(){
+        return window;
     }
 }

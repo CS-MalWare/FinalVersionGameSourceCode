@@ -13,6 +13,7 @@ import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.controls.Trigger;
 import com.jme3.material.Material;
 import com.jme3.math.Ray;
+import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import com.jme3.scene.Geometry;
@@ -37,6 +38,7 @@ import gamesource.battleState.character.enemy.boss.Ace;
 import gamesource.battleState.character.enemy.boss.Faker;
 import gamesource.battleState.character.enemy.boss.Tuxnet;
 import gamesource.battleState.character.enemy.boss.Zac;
+import gamesource.uiState.SmallMap;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
@@ -82,6 +84,8 @@ public class SixthState extends BaseAppState {
     private ShopAppState shopState;
     private MenuAppState menuState;
     private makeCross cross;
+    private SmallMap smallMap;
+
     private SixthWorldLight light;
     Water x1 = new Water(-34.4f);
     private FirstWorldOtherSpecial effect = new FirstWorldOtherSpecial();
@@ -134,6 +138,9 @@ public class SixthState extends BaseAppState {
         state.attach(music);
         states.add(music);
 
+        smallMap = new SmallMap(1600, 900, new Vector2f(400, 400), 6);
+        state.attach(smallMap);
+        states.add(smallMap);
 
         this.inputManager = application.getInputManager();
         inputManager.addMapping(talk, TALK);

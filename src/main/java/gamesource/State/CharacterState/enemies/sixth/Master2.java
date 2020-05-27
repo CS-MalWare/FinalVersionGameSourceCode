@@ -125,7 +125,7 @@ public class Master2 extends BaseAppState implements ActionListener {
 
         scene=(Node)girl;
 
-        bip001=(Node)scene.getChild("Bip001");
+        bip001=(Node)scene.getChild("bip001");
 
         //bip001.getChild("AnimControl");
 

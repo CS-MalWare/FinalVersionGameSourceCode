@@ -16,20 +16,23 @@ import com.simsilica.lemur.style.ElementId;
 import gamesource.battleState.character.MainRole;
 import gamesource.uiState.bagstate.CardUI;
 import gamesource.util.CardArrayReader;
+import gamesource.util.EquipmentArrayReader;
 
 public class DragCheck extends BaseAppState{
     private Container dragWindow;
     private int totalCost;
     private int totalMoney;
     private CardUI cardUI;
+    private EquipmentUI equipmentUI;
     private int numberOfBuy;
     private CloseCommand closeCommand = new CloseCommand();
 
-    public DragCheck(int totalCost, int totalMoney, CardUI cardUI, int numberOfBuy){
+    public DragCheck(int totalCost, int totalMoney, CardUI cardUI, EquipmentUI equipmentUI, int numberOfBuy){
         this.totalCost = totalCost;
         this.totalMoney = totalMoney;
         this.cardUI = cardUI;
         this.numberOfBuy = numberOfBuy;
+        this.equipmentUI = equipmentUI;
     }
 
     @Override
@@ -58,9 +61,16 @@ public class DragCheck extends BaseAppState{
 
     protected void Confirm(){
         totalMoney = totalMoney - totalCost;
-        for(int i=0; i<numberOfBuy; i++){
-            MainRole.getInstance().getDeck_().add(CardArrayReader
-                .findCardByCardUIs(ShopAppState.getShopCard(), ShopAppState.getShopCardUIs(), cardUI));
+        if(cardUI != null){
+            for(int i=0; i<numberOfBuy; i++){
+                MainRole.getInstance().getDeck_().add(CardArrayReader
+                    .findCardByCardUIs(ShopAppState.getShopCard(), ShopAppState.getShopCardUIs(), cardUI));
+            }
+        }else{
+            for(int i=0; i< numberOfBuy; i++){
+                MainRole.getInstance().getEquipments().add(EquipmentArrayReader
+                    .findEquipByUIs(ShopAppState.getShopEquipment(), ShopAppState.getShopEquipmentUIs(), equipmentUI));
+            }
         }
         getState(TabTextForShop.class).getStateManager().detach(DragCheck.this);
     }

@@ -33,6 +33,7 @@ import gamesource.battleState.character.MainRole;
 import gamesource.battleState.particle.MPParticle;
 import truetypefont.TrueTypeFont;
 import truetypefont.TrueTypeKey;
+import truetypefont.TrueTypeLoader;
 
 import java.util.ArrayList;
 
@@ -59,9 +60,9 @@ public class LeadingActorState extends BaseAppState {
 
     TrueTypeFont font;
 
-    BitmapText hpHint; // 显示的hp
+    Geometry hpHint; // 显示的hp
 
-    BitmapText blHint;  // 显示的护甲
+    Geometry blHint;  // 显示的护甲
 
     protected void initialize(Application application) {
         this.app = (SimpleApplication) getApplication();
@@ -107,7 +108,7 @@ public class LeadingActorState extends BaseAppState {
 
         fnt = app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
 
-        ttk = new TrueTypeKey("Util/font.ttf", // 字体
+        ttk = new TrueTypeKey("Util/MTCORSVA.TTF", // 字体
                 1, // 字形：0 普通、1 粗体、2 斜体
                 30);// 字号
 
@@ -117,21 +118,32 @@ public class LeadingActorState extends BaseAppState {
     }
 
     public void initializeHints() {
-        hpHint = new BitmapText(fnt, false);
+        app.getAssetManager().registerLoader(TrueTypeLoader.class,"ttf");
+        TrueTypeKey ttk=new TrueTypeKey("Util/MTCORSVA.TTF",1,32);
+        TrueTypeFont font =(TrueTypeFont)app.getAssetManager().loadAsset(ttk);
+        /*hpHint = new BitmapText(fnt, false);
         hpHint.setBox(new Rectangle(-3.9f, 1.6f, 6, 3));
         hpHint.setQueueBucket(RenderQueue.Bucket.Transparent);
         hpHint.setSize(0.3f);
         hpHint.setColor(ColorRGBA.Red);
         hpHint.setText(String.format("HP: %d/%d", this.target.getHP(), this.target.getTotalHP()));
-        rootNode.attachChild(hpHint);
+        rootNode.attachChild(hpHint);*/
+        String content=String.format("HP: %d/%d", this.target.getHP(), this.target.getTotalHP());
+        hpHint=font.getBitmapGeom(content,0,ColorRGBA.Red);
+        hpHint.setLocalTranslation(400,580,0);
+        guiNode.attachChild(hpHint);
 
-        blHint = new BitmapText(fnt, false);
+        /*blHint = new BitmapText(fnt, false);
         blHint.setBox(new Rectangle(-3.9f, -1.3f, 6, 3));
         blHint.setQueueBucket(RenderQueue.Bucket.Transparent);
         blHint.setSize(0.3f);
         blHint.setColor(ColorRGBA.Blue);
         blHint.setText(String.format("Blocks: %d", this.target.getBlock()));
-        rootNode.attachChild(blHint);
+        rootNode.attachChild(blHint);*/
+        String blockcontent=String.format("Blocks: %d", this.target.getBlock());
+        blHint=font.getBitmapGeom(blockcontent,0,ColorRGBA.Blue);
+        blHint.setLocalTranslation(400,320,0);
+        guiNode.attachChild(blHint);
 
         // 添加MP显示的图片与文字
         MpPic = new Picture("MP");
@@ -151,22 +163,30 @@ public class LeadingActorState extends BaseAppState {
 
     public void updateHints() {
         hpHint.removeFromParent();
-        hpHint = new BitmapText(fnt, false);
+        /*hpHint = new BitmapText(fnt, false);
         hpHint.setBox(new Rectangle(-3.9f, 1.6f, 6, 3));
         hpHint.setQueueBucket(RenderQueue.Bucket.Transparent);
         hpHint.setSize(0.3f);
         hpHint.setColor(ColorRGBA.Red);
         hpHint.setText(String.format("HP: %d/%d", this.target.getHP(), this.target.getTotalHP()));
-        rootNode.attachChild(hpHint);
+        rootNode.attachChild(hpHint);*/
+        String content=String.format("HP: %d/%d", this.target.getHP(), this.target.getTotalHP());
+        hpHint=font.getBitmapGeom(content,0,ColorRGBA.Red);
+        hpHint.setLocalTranslation(500,580,0);
+        guiNode.attachChild(hpHint);
 
         blHint.removeFromParent();
-        blHint = new BitmapText(fnt, false);
+        /*blHint = new BitmapText(fnt, false);
         blHint.setBox(new Rectangle(-3.9f, -1.3f, 6, 3));
         blHint.setQueueBucket(RenderQueue.Bucket.Transparent);
         blHint.setSize(0.3f);
         blHint.setColor(ColorRGBA.Blue);
         blHint.setText(String.format("Blocks: %d", this.target.getBlock()));
-        rootNode.attachChild(blHint);
+        rootNode.attachChild(blHint);*/
+        String blockcontent=String.format("Blocks: %d", this.target.getBlock());
+        blHint=font.getBitmapGeom(blockcontent,0,ColorRGBA.Blue);
+        blHint.setLocalTranslation(500,320,0);
+        guiNode.attachChild(blHint);
 
         MpText.removeFromParent();
         MpText = font.getBitmapGeom(String.format("%d/%d", MainRole.getInstance().getMP_current(), MainRole.getInstance().getMP_max()), 0, ColorRGBA.Red);

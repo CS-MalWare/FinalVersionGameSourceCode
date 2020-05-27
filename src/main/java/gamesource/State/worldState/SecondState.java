@@ -14,12 +14,15 @@ import com.jme3.input.controls.KeyTrigger;
 import com.jme3.input.controls.Trigger;
 import com.jme3.material.Material;
 import com.jme3.math.Ray;
+import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Quad;
 import com.jme3.texture.Texture;
+import com.simsilica.lemur.event.PopupState;
+
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.enemies.*;
 import gamesource.State.CharacterState.enemies.forth.BossKnight;
@@ -135,6 +138,7 @@ public class SecondState extends BaseAppState {
     private ArrayList<String> content = new ArrayList<>();
     private ArrayList<String> names = new ArrayList<>();
     private WordWrapForTalk wordWrapForTalk;
+    private boolean isTalkShow = false;
 
     protected void initialize(Application application) {
         state = application.getStateManager();
@@ -203,7 +207,7 @@ public class SecondState extends BaseAppState {
         light = new SecondWorldLight(open,shadow);
         state.attach(light);
         states.add(light);
-        smallMap = new SmallMap(1600, 900, 400);
+        smallMap = new SmallMap(1600, 900, new Vector2f(300, 840), 2);
         state.attach(smallMap);
         states.add(smallMap);
 
@@ -419,7 +423,7 @@ public class SecondState extends BaseAppState {
             CollisionResults results15 = results15();
             if (talk.equals(name) && isPressed) {
                 if (results1.size() > 0) {                  //这里是和萨满的对话
-                    if(!getStateManager().hasState(wordWrapForTalk)){
+                    if(!getStateManager().hasState(wordWrapForTalk) && !isTalkShow){
                         content.clear();
                         names.clear();
                         names.add("Shaman");
@@ -430,8 +434,14 @@ public class SecondState extends BaseAppState {
                         content.add("Yeee, master told me that a virus attach the world, and cause distortion of space, I was transferred into here, "+
                             "I need to clean up all evils and find treasure. Is anything different at here?");   
                         content.add("A large number of aggresive creatures appeared at here, my people get attacked, please help me");
-                        wordWrapForTalk = new WordWrapForTalk(names, content);
+                        wordWrapForTalk = new WordWrapForTalk(names, content, 2);
                         state.attach(wordWrapForTalk);
+                        isTalkShow = true;
+                    }else if(isTalkShow && getStateManager().hasState(wordWrapForTalk)){
+                        wordWrapForTalk.getStateManager().getState(PopupState.class).closePopup(wordWrapForTalk.getWindow());
+                        getStateManager().detach(wordWrapForTalk);
+                        app.getFlyByCamera().setDragToRotate(false);
+                        isTalkShow = false;
                     }
                     System.out.println("get");
                     if (canmove == 1) {
@@ -444,13 +454,19 @@ public class SecondState extends BaseAppState {
                         canmove = 1;
                     }
                 } else if (results2.size() > 0) {               //这里是和萨满的小姑娘的对话
-                    if(!getStateManager().hasState(talkWithOption)){
+                    if(!getStateManager().hasState(talkWithOption) && !isTalkShow){
                         content.clear();
                         content.add("Wow, you are the prince, I never see people like you, please help us, we need you!");
                         content.add("Here are some equipment and cards, these would strength and power you!");
                         content.add("Hop you can follow your fate");
                         talkWithOption = new TalkWithOption("Daughter Of Shama", content, CallType.CONFIRM, 2);
                         state.attach(talkWithOption);
+                        isTalkShow = true;
+                    }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
+                        getStateManager().detach(talkWithOption);
+                        app.getFlyByCamera().setDragToRotate(false);
+                        isTalkShow = false;
                     }
                     if (canmove == 1) {
                         state.detach(input);
@@ -791,6 +807,12 @@ public class SecondState extends BaseAppState {
             if (time < 60 && time > 10) {
                 change();
                 cross.setEnabled(false);
+            }
+        }
+
+        if(isTalkShow){
+            if(!getStateManager().hasState(wordWrapForTalk) && !getStateManager().hasState(talkWithOption)){
+                isTalkShow = false;
             }
         }
     }

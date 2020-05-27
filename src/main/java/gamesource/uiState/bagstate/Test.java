@@ -64,7 +64,7 @@ public class Test extends SimpleApplication{
         ArrayList<String> modelName = new ArrayList<>();
         modelName.add("first");
         modelName.add("second");
-        WordWrapForTalk wordWrapForTalk = new WordWrapForTalk(modelName, content);
+        WordWrapForTalk wordWrapForTalk = new WordWrapForTalk(modelName, content, 1);
         stateManager.attach(wordWrapForTalk);
     }
 

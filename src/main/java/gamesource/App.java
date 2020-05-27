@@ -24,6 +24,7 @@ import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.SpecialEffect.makeCross;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.worldState.*;
+import gamesource.battleState.character.MainRole;
 import gamesource.testState.First;
 import gamesource.uiState.bagstate.BagAppState;
 import gamesource.uiState.menustate.MenuAppState;
@@ -363,7 +364,7 @@ public class App extends SimpleApplication {
 
 
     public static void main(String[] args) throws IOException {
-
+        MainRole.getInstance();
         App app = new App(6, 2048, 0, 4);
         AppSettings settings = new AppSettings(true);
 
@@ -379,7 +380,7 @@ public class App extends SimpleApplication {
         app.setShowSettings(false);
         //settings.setFullscreen(true);
         //app.setShowSettings(false);
-//        Storage.load();
+        //Storage.load();
         app.start();
 
     }
