@@ -440,6 +440,8 @@ public class ForthState extends BaseAppState {
                     state.detach(man1);
                     states.remove(man1);
                     state.attach(new Battle(states));
+                    GetCardState.setGoldCountAfterThisBattle(45);
+
                     //  major.setPlace(man1.get().getCenter());
 
                     break;
@@ -462,6 +464,8 @@ public class ForthState extends BaseAppState {
                     state.detach(man2);
                     states.remove(man2);
                     state.attach(new Battle(states));
+                    GetCardState.setGoldCountAfterThisBattle(45);
+
                     // major.setPlace(man2.get().getCenter());
                     break;
                 case 2:
