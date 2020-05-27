@@ -19,8 +19,6 @@ import com.jme3.font.Rectangle;
 import com.jme3.input.InputManager;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.event.*;
-import com.jme3.material.Material;
-import com.jme3.material.RenderState;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector2f;
@@ -76,7 +74,7 @@ public class EnemyState extends BaseAppState {
     BitmapFont fnt;
     BitmapText buffDisplay;
     protected BitmapText actionDisplay;
-    private Geometry displayBoard;
+//    private Geometry displayBoard;
 
     public EnemyState() {
         enemies = new ArrayList<Enemy>();
@@ -158,14 +156,14 @@ public class EnemyState extends BaseAppState {
         actionDisplay = new BitmapText(fnt, false);
         buffDisplay = new BitmapText(fnt, false);//显示的文字
 
-        displayBoard = new Geometry("quad", q);
-        displayBoard.setLocalTranslation(2, 2, -1);
-        Material mt = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        mt.setColor("Color", ColorRGBA.Brown);
-        mt.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
-        displayBoard.setQueueBucket(RenderQueue.Bucket.Transparent);
-        displayBoard.setMaterial(mt);
-        rootNode.attachChild(displayBoard);
+//        displayBoard = new Geometry("quad", q);
+//        displayBoard.setLocalTranslation(2, 2, -1);
+//        Material mt = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+//        mt.setColor("Color", ColorRGBA.Brown);
+//        mt.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
+//        displayBoard.setQueueBucket(RenderQueue.Bucket.Transparent);
+//        displayBoard.setMaterial(mt);
+//        rootNode.attachChild(displayBoard);
         getInstance().displayAction();
         this.myRawInputListener = new MyRawInputListener();
         modelPositions = new ArrayList<Integer>() {{
@@ -182,27 +180,39 @@ public class EnemyState extends BaseAppState {
             add(0);
             add(-1);
         }};
-        hpPositions = new ArrayList<Float>() {{
+//        hpPositions = new ArrayList<Float>() {{
+//            //每个血量提示的x y坐标
+//            add(1.7f);
+//            add(1.5f);
+//
+//            add(3.7f);
+//            add(1.5f);
+//
+//            add(5.7f);
+//            add(1.5f);
+//        }};
+//        blockPositions = new ArrayList<Float>() {{
+//            //每个护甲提示的x y坐标
+//            add(2f);
+//            add(-1f);
+//
+//            add(4f);
+//            add(-1f);
+//
+//            add(6f);
+//            add(-1f);
+//        }};
+
+        hpPositionsnew = new ArrayList<Float>() {{
             //每个血量提示的x y坐标
-            add(1.7f);
-            add(1.5f);
+            add(1000f);
+            add(580f);
 
-            add(3.7f);
-            add(1.5f);
+            add(1200f);
+            add(580f);
 
-            add(5.7f);
-            add(1.5f);
-        }};
-        blockPositions = new ArrayList<Float>() {{
-            //每个护甲提示的x y坐标
-            add(2f);
-            add(-1f);
-
-            add(4f);
-            add(-1f);
-
-            add(6f);
-            add(-1f);
+            add(1400f);
+            add(580f);
         }};
         blockPositionsnews = new ArrayList<Float>() {{
             //每个护甲提示的x y坐标
@@ -725,16 +735,24 @@ public class EnemyState extends BaseAppState {
 
                 AnimControl animControl = bip001.getControl(AnimControl.class);
                 AnimChannel animChannel = animControl.createChannel();
-
                 // 通过调用动画来让敌人立正站好
                 animChannel.setAnim(animControl.getAnimationNames().toArray()[0].toString());
                 animChannel.setLoopMode(LoopMode.DontLoop);
                 animControls.add(animControl);
                 animChannels.add(animChannel);
+                try {
+                    animChannel.setAnim("idle");
+                    animChannel.setLoopMode(LoopMode.Loop);
+                } catch (Exception e) {
+                    System.out.println(src + " 没有idle动画");
+
+                }
+
             } catch (Exception e) {
                 System.out.println(src + " 不能加载动画");
                 System.out.println(e);
             }
+
             model.setModelBound(new BoundingSphere());// 使用包围球
             model.updateModelBound();// 更新包围球
             this.enemiesModel.add(model);

@@ -90,7 +90,8 @@ public class LeadingActorState extends BaseAppState {
         animChannel.setAnim("walk");
         animChannel.setLoopMode(LoopMode.DontLoop);
 
-
+        animChannel.setAnim("idle");
+        animChannel.setLoopMode(LoopMode.Loop);
         System.out.println(model1.getName());
         model1.setName("LeadingActor/leader.j3o");
         model1.scale(0.03f);// 按比例缩小
@@ -172,7 +173,7 @@ public class LeadingActorState extends BaseAppState {
         rootNode.attachChild(hpHint);*/
         String content=String.format("HP: %d/%d", this.target.getHP(), this.target.getTotalHP());
         hpHint=font.getBitmapGeom(content,0,ColorRGBA.Red);
-        hpHint.setLocalTranslation(500,580,0);
+        hpHint.setLocalTranslation(400,580,0);
         guiNode.attachChild(hpHint);
 
         blHint.removeFromParent();
@@ -185,7 +186,7 @@ public class LeadingActorState extends BaseAppState {
         rootNode.attachChild(blHint);*/
         String blockcontent=String.format("Blocks: %d", this.target.getBlock());
         blHint=font.getBitmapGeom(blockcontent,0,ColorRGBA.Blue);
-        blHint.setLocalTranslation(500,320,0);
+        blHint.setLocalTranslation(400,320,0);
         guiNode.attachChild(blHint);
 
         MpText.removeFromParent();
@@ -274,11 +275,19 @@ public class LeadingActorState extends BaseAppState {
         return results;
     }
 
+    public AnimControl getAnimControl() {
+        return animControl;
+    }
+
+    public static AnimChannel getAnimChannel() {
+        return animChannel;
+    }
+
     class MyRawInputListener implements RawInputListener {
         Quad q = new Quad(6, 3);
         BitmapFont fnt = app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
         private BitmapText buffDisplay = new BitmapText(fnt, false);//显示的文字
-        private Geometry buffDisplayBoard = new Geometry("quad", q);//文字后面的版
+//        private Geometry buffDisplayBoard = new Geometry("quad", q);//文字后面的版
 
 
         /**
@@ -299,13 +308,13 @@ public class LeadingActorState extends BaseAppState {
             if (results.size() > 0) {
                 if (target != null) {
                     EnemyState.getInstance().removeAction();
-                    buffDisplayBoard.setLocalTranslation(2, 2, -1);
+//                    buffDisplayBoard.setLocalTranslation(2, 2, -1);
                     Material mt = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
                     mt.setColor("Color", ColorRGBA.Brown);
                     mt.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
-                    buffDisplayBoard.setQueueBucket(RenderQueue.Bucket.Transparent);
-                    buffDisplayBoard.setMaterial(mt);
-                    rootNode.attachChild(buffDisplayBoard);
+//                    buffDisplayBoard.setQueueBucket(RenderQueue.Bucket.Transparent);
+//                    buffDisplayBoard.setMaterial(mt);
+//                    rootNode.attachChild(buffDisplayBoard);
                     String txtB = "This character's buff:\n";
                     txtB += String.format("Strength: %d        ", target.getStrength());
                     txtB += String.format("Dexterity: %d       \n", target.getDexterity());
@@ -335,7 +344,7 @@ public class LeadingActorState extends BaseAppState {
 //                if (buffDisplay != null)
                 buffDisplay.removeFromParent();
 //                if (buffDisplayBoard != null)
-                buffDisplayBoard.removeFromParent();
+//                buffDisplayBoard.removeFromParent();
                 if(!EnemyState.getInstance().lock) // 当鼠标没有移动到敌人身上, 锁便不会锁住,允许主角类修改
                     EnemyState.getInstance().displayAction();
             }
@@ -379,6 +388,7 @@ public class LeadingActorState extends BaseAppState {
 
     @Override
     protected void onEnable() {
+        app.getStateManager().attach(new Board());
         app.getRootNode().attachChild(this.rootNode);
         app.getGuiNode().attachChild(this.guiNode);
     }
@@ -435,6 +445,7 @@ public class LeadingActorState extends BaseAppState {
 
     @Override
     protected void onDisable() {
+        app.getStateManager().detach(app.getStateManager().getState(Board.class));
         this.rootNode.removeFromParent();
         this.guiNode.removeFromParent();
         app.getInputManager().removeRawInputListener(myRawInputListener);
