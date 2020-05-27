@@ -69,7 +69,6 @@ public class App extends SimpleApplication {
         BulletAppState bullet = new BulletAppState();
         stateManager.attach(bullet);
         bullet.getPhysicsSpace().setGravity(new Vector3f(0, -9.81f, 0));
-
         FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
         fpp.setNumSamples(juchi);
         viewPort.addProcessor(fpp);
