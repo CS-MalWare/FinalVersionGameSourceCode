@@ -607,6 +607,37 @@ public class DecksState extends BaseAppState {
                                             default:
                                                 break;
                                         }
+                                        new Thread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                try {
+                                                    Thread.sleep(500);
+                                                } catch (InterruptedException e) {
+                                                }
+                                                try {
+                                                    app.getCamera().setLocation(new Vector3f(0.15f,0.15f,10.5f));
+                                                    Thread.sleep(70);
+                                                    System.out.println("changeCam");
+                                                } catch (Exception e) {
+                                                }try {
+                                                    app.getCamera().setLocation(new Vector3f(-0.15f,-0.15f,10.5f));
+                                                    Thread.sleep(70);
+                                                } catch (Exception e) {
+                                                }try {
+                                                    app.getCamera().setLocation(new Vector3f(0.15f,-0.15f,10.5f));
+                                                    Thread.sleep(70);
+                                                } catch (Exception e) {
+                                                }try {
+                                                    app.getCamera().setLocation(new Vector3f(-0.15f,0.15f,10.5f));
+                                                    Thread.sleep(70);
+                                                } catch (Exception e) {
+                                                }try {
+                                                    app.getCamera().setLocation(new Vector3f(0,0,10.5f));
+                                                    Thread.sleep(70);
+                                                } catch (Exception e) {
+                                                }
+                                            }
+                                        }).start();
                                     }
                                     enemy.endTurn();
                                     app.getStateManager().getState(EnemyState.class).updateHints(true);
