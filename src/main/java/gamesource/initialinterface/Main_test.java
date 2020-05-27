@@ -99,7 +99,7 @@ public class Main_test
         }
         start();
         gamesource.start st = new gamesource.start();
-        System.out.println(User_data.getChapter() + "sfiaofia");
+        //System.out.println(User_data.getChapter() + "sfiaofia");
         if(shadow_bool)
             st.Start(User_data.getFrame_user(), User_data.getChapter(),shadow, 1, alias, User_data.getFull());
         else
