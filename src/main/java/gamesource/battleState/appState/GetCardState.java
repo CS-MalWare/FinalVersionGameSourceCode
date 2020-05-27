@@ -119,7 +119,7 @@ public class GetCardState extends BaseAppState {
         skip.setLocalTranslation(1300, 20, -1);
         rootNode.attachChild(skip);
 
-        try {// 因为懒惰的逸润巨佬卡牌没有做完会爆错，所以这里有个TRY-CATCH
+        try {// 因为卡牌没有做完会爆错，所以这里有个TRY-CATCH
 
             int count = 0;
             for (Card card : card) {
