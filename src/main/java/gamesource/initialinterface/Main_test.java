@@ -66,6 +66,7 @@ public class Main_test
         int shadow;
         int alias;
         boolean shadow_bool = true;
+        start();
         if(User_data.getShadow_user().equals("high"))
         {
             shadow = 8192;
@@ -96,7 +97,6 @@ public class Main_test
         {
             alias = 4;
         }
-        start();
         gamesource.start st = new gamesource.start();
         /*
         Pass the parameter and stat the game
