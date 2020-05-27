@@ -1,6 +1,7 @@
 package gamesource.uiState.menustate;
 
 import com.jme3.app.Application;
+import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.BaseAppState;
 import com.simsilica.lemur.ActionButton;
 import com.simsilica.lemur.CallMethodAction;
@@ -22,6 +23,7 @@ public class AlphaPanel extends BaseAppState{
 
     private Label description;
     private VersionedReference<Double> alpha;
+    private SimpleApplication app;
 
     public AlphaPanel(){
 
@@ -29,7 +31,7 @@ public class AlphaPanel extends BaseAppState{
 
     @Override
     protected void initialize(Application application){
-        
+        app = (SimpleApplication) application;
     }
 
     @Override
@@ -52,9 +54,9 @@ public class AlphaPanel extends BaseAppState{
         Slider slider = window.addChild(new Slider(new DefaultRangedValueModel(0.1, 1, 0.5)));
         alpha = slider.getModel().createReference();
 
-        window.addChild(new ActionButton(new CallMethodAction("Close", window, "removeFromParent")));
+        window.addChild(new ActionButton(new CallMethodAction("Close", this, "remove")));
         window.setLocalTranslation(400, getApplication().getCamera().getHeight() * 0.9f, 50);
-        getState(PopupState.class).showPopup(window, closeCommand);
+        app.getGuiNode().attachChild(window);
 
         refreshAlpha();
     }
@@ -63,6 +65,10 @@ public class AlphaPanel extends BaseAppState{
         String s = String.format("Drag the slider to change the window alpha: %.2f", alpha.get());
         description.setText(s);
         window.setAlpha((float)(double)alpha.get());
+    }
+
+    public void remove(){
+        app.getGuiNode().detachChild(window);
     }
 
     @Override

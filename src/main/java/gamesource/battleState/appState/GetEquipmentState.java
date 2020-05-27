@@ -24,12 +24,16 @@ import com.jme3.math.ColorRGBA;
 import com.jme3.math.Ray;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
+import com.jme3.post.FilterPostProcessor;
 import com.jme3.renderer.Camera;
 import com.jme3.renderer.ViewPort;
 import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.shape.Quad;
+import com.jme3.ui.Picture;
+import gamesource.battleState.battle.Battle;
+import gamesource.battleState.character.MainRole;
 import gamesource.battleState.equipment.CreateEquipment;
 import gamesource.battleState.equipment.Equipment;
 
@@ -122,7 +126,7 @@ public class GetEquipmentState extends BaseAppState {
         skip.setLocalTranslation(1300, 20, 1);
         rootNode.attachChild(skip);
 
-        try {// 因为懒惰的逸润巨佬卡牌没有做完会爆错，所以这里有个TRY-CATCH
+        try {// 因为卡牌没有做完会爆错，所以这里有个TRY-CATCH
 
             int count = 0;
             for (Equipment equipment : equipments) {

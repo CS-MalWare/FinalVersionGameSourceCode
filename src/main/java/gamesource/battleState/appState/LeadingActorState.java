@@ -31,6 +31,7 @@ import com.jme3.scene.shape.Quad;
 import com.jme3.ui.Picture;
 import gamesource.battleState.character.MainRole;
 import gamesource.battleState.particle.MPParticle;
+import gamesource.util.Storage;
 import truetypefont.TrueTypeFont;
 import truetypefont.TrueTypeKey;
 import truetypefont.TrueTypeLoader;
@@ -333,7 +334,7 @@ public class LeadingActorState extends BaseAppState {
                     txtB += String.format("Dexterity: %d        ", target.getDexterity());
                     txtB += String.format("Dodge: %d           ", target.getDodge().getTimes());
                     txtB += String.format("Excite: %d          ", target.getStrength());
-                    buffDisplay.setBox(new Rectangle(2, 4.2f, 6, 3));
+                    buffDisplay.setBox(new Rectangle(2, 4.1f, 6, 3));
                     buffDisplay.setQueueBucket(RenderQueue.Bucket.Transparent);
                     buffDisplay.setSize(0.25f);
                     buffDisplay.setText(txtB);
@@ -409,32 +410,38 @@ public class LeadingActorState extends BaseAppState {
     public void update(float tpf) {
         super.update(tpf);
         if (this.target.getHP() <= 0 && !flag) {
+            Storage.reset();
             AudioNode audioNode = new AudioNode(app.getAssetManager(),"Sound/Dead/主角死亡.wav", AudioData.DataType.Buffer);
             audioNode.setLooping(false);
             audioNode.setPositional(false);
             audioNode.setVolume(10);
             rootNode.attachChild(audioNode);
             audioNode.playInstance();
-            BitmapFont fnt = app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
-            BitmapText word = new BitmapText(fnt, false);//显示的文字
-            word.setText("Game Over");
-            word.setSize(1);
-            word.setLocalTranslation(-2.5f, 0.5f, 0);
-
-            Material mat = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-            mat.setColor("Color", new ColorRGBA(1f, 1f, 1f, 0.01f));// 镜面反射时，高光的颜色。
-
-            // 应用材质。
-            Geometry geom = new Geometry("结束界面", new Quad(1600, 900));
-            geom.setMaterial(mat);
-
-            // 使物体看起来透明
-            mat.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
-            geom.setQueueBucket(RenderQueue.Bucket.Transparent);
-
-            geom.center();
-            rootNode.attachChild(word);
-            rootNode.attachChild(geom);
+//            BitmapFont fnt = app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
+//            BitmapText word = new BitmapText(fnt, false);//显示的文字
+//            word.setText("Game Over");
+//            word.setSize(1);
+//            word.setLocalTranslation(-2.5f, 0.5f, 0);
+//            Material mat = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+//            mat.setColor("Color", new ColorRGBA(1f, 1f, 1f, 0.01f));// 镜面反射时，高光的颜色。
+//
+//            // 应用材质。
+//            Geometry geom = new Geometry("结束界面", new Quad(1600, 900));
+//            geom.setMaterial(mat);
+//
+//            // 使物体看起来透明
+//            mat.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
+//            geom.setQueueBucket(RenderQueue.Bucket.Transparent);
+//
+//            geom.center();
+//            rootNode.attachChild(word);
+//            rootNode.attachChild(geom);
+            try {
+                gamesource.initialinterface.Main_test.start_game();
+                System.exit(0);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             app.getStateManager().detach(app.getStateManager().getState(DecksState.class));
             app.getStateManager().detach(app.getStateManager().getState(HandCardsState.class));
             flag=true;

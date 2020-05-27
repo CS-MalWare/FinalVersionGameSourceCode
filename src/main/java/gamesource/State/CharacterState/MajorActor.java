@@ -98,7 +98,12 @@ public class MajorActor extends BaseAppState implements AnimEventListener {
         initPhysics();
         initMusic();
 
+        //CamSituation = 0;
+        //camSituation2 = 0;
 
+        //chaseCam.setDragToRotate(false);
+        //flycam.setDragToRotate(false);
+        //camNode.removeControl(chaseCam);
     }
 
     public void height(float jump) {
@@ -302,6 +307,14 @@ public class MajorActor extends BaseAppState implements AnimEventListener {
         } else {
             camNode.addControl(chaseCam);
             CamSituation = 1;
+        }
+
+    }
+    public void change2() {
+        if (CamSituation == 1) {
+            camNode.removeControl(chaseCam);
+            CamSituation = 0;
+        } else {
         }
 
     }

@@ -114,6 +114,7 @@ public class MenuAppState extends BaseAppState{
             }else if(MenuString.equals(name) && isPressed){
                 app.getGuiNode().detachChild(mainWindow);
                 app.getFlyByCamera().setDragToRotate(false);
+                app.getGuiNode().detachAllChildren();
                 isMenuShow = false;
             }
         }
@@ -207,14 +208,14 @@ public class MenuAppState extends BaseAppState{
 
     @Override
     public void update(float tpf){
-        if(!isStartOpen){
-            showMenu();
-            isMenuShow = true;
-            app.getGuiNode().detachChild(mainWindow);
-            app.getFlyByCamera().setDragToRotate(false);
-            isMenuShow = false;
+        // if(!isStartOpen){
+        //     showMenu();
+        //     isMenuShow = true;
+        //     app.getGuiNode().detachChild(mainWindow);
+        //     app.getFlyByCamera().setDragToRotate(false);
+        //     isMenuShow = false;
 
-            isStartOpen = true;
-        }
+        //     isStartOpen = true;
+        // }
     }
 }

@@ -1,6 +1,7 @@
 package gamesource.State.worldState;
 
 import com.jme3.app.Application;
+import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
@@ -72,6 +73,7 @@ public class SecondState extends BaseAppState {
     private AppStateManager state;
 
     private int canmove = 1;
+    private int fly=0;
 
     Ray ray;
 
@@ -128,7 +130,7 @@ public class SecondState extends BaseAppState {
     private float time = 0;
 
     private int chan = 0;
-    private int Cro=0;
+    private int Cro=1;
 
     private BagAppState bagState;
     private ShopAppState shopState;
@@ -203,9 +205,6 @@ public class SecondState extends BaseAppState {
         states.add(c2);
         state.attach(c3);
         states.add(c3);
-        sky=new SkyBox2(pic);
-        state.attach(sky);
-        states.add(sky);
         state.attach(special);
         states.add(special);
         light = new SecondWorldLight(open,shadow);
@@ -214,6 +213,9 @@ public class SecondState extends BaseAppState {
         smallMap = new SmallMap(1600, 900, new Vector2f(300, 840), 2);
         state.attach(smallMap);
         states.add(smallMap);
+        sky=new SkyBox2(pic);
+        state.attach(sky);
+        states.add(sky);
 
         this.inputManager = application.getInputManager();
         inputManager.addMapping(talk, TALK);
@@ -240,7 +242,8 @@ public class SecondState extends BaseAppState {
         major.setPlace(new Vector3f(-0.5884632f, -25.645144f, 76.421844f));
         BattleBackGroundState.setBackgroundSrc("Map/two/second.j3o");
         major.height(6);
-        cross.setEnabled(false);
+        state.detach(state.getState(FlyCamAppState.class));
+        major.change2();
     }
         public SecondState(){
 
@@ -543,6 +546,10 @@ public class SecondState extends BaseAppState {
             }
 
             if (change.equals(name) && isPressed) {
+                if(fly==0){
+                    state.attach(new FlyCamAppState());
+                    fly++;
+                }
                 System.out.println("change");
                 major.change();
                 if(Cro==0){
@@ -849,13 +856,26 @@ public class SecondState extends BaseAppState {
     }
 
     public void update(float tpf) {
-        if (chan == 0) {
+        /*if (chan == 0) {
             time = time + tpf;
             if (time < 60 && time > 10) {
                 change();
                 cross.setEnabled(false);
             }
-        }
+        }*/
+        /*if(chan==0) {
+            try {
+                time = time + tpf;
+                if (sky.finish() == 1) {
+                    if (time < 60 && time > 5) {
+                        change();
+                        cross.setEnabled(false);
+                    }
+                }
+            }catch (Exception e){
+
+            }
+        }*/
 
         if(isTalkShow){
             if(!getStateManager().hasState(wordWrapForTalk) && !getStateManager().hasState(talkWithOption)){
@@ -938,7 +958,12 @@ public class SecondState extends BaseAppState {
         inputManager.addListener(st, move);
         for (BaseAppState baseAppState : states) {
             if (!(baseAppState instanceof MenuAppState) && !(baseAppState instanceof BagAppState) && !(baseAppState instanceof ShopAppState)) {
-                baseAppState.setEnabled(true);
+                try {
+                    baseAppState.setEnabled(true);
+                }
+                catch (NullPointerException npe){
+                    npe.printStackTrace();
+                }
                 //state.detach(baseAppState);
             }
 

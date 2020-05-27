@@ -1,6 +1,7 @@
 package gamesource.State.worldState;
 
 import com.jme3.app.Application;
+import com.jme3.app.FlyCamAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.app.state.BaseAppState;
@@ -104,6 +105,7 @@ public class ThirdState extends BaseAppState {
     private ThirdBackMusic music = new ThirdBackMusic();
     private ThirdOtherSpecial effect = new ThirdOtherSpecial();
     private SkyBox sky;
+    private int fly=0;
     //private Fish6State fish5_1 =new Fish6State(new Vector3f(5,30,0));
 
     private StartTalk st = new StartTalk();
@@ -114,7 +116,7 @@ public class ThirdState extends BaseAppState {
 
     private int chan = 0;
 
-    private int Cro=0;
+    private int Cro=1;
     private BagAppState bagState;
     private ShopAppState shopState;
     private MenuAppState menuState;
@@ -211,13 +213,13 @@ public class ThirdState extends BaseAppState {
         states.add(music);
         //state.attach(fish5_1);
         //states.add(fish5_1);
-        sky=new SkyBox(pic);
-        state.attach(sky);
-        states.add(sky);
 
         smallMap = new SmallMap(1600, 900, new Vector2f(400, 400), 3);
         state.attach(smallMap);
         states.add(smallMap);
+        sky=new SkyBox(pic);
+        state.attach(sky);
+        states.add(sky);
 
         this.inputManager = application.getInputManager();
         inputManager.addMapping(talk, TALK);
@@ -245,7 +247,8 @@ public class ThirdState extends BaseAppState {
 
         BattleBackGroundState.setBackgroundSrc("Map/scene.j3o");
         major.height(6);
-        cross.setEnabled(false);
+        state.detach(state.getState(FlyCamAppState.class));
+        major.change2();
     }
 
     public ThirdState(){
@@ -353,6 +356,10 @@ public class ThirdState extends BaseAppState {
             }
 
             if (change.equals(name) && isPressed) {
+                if(fly==0){
+                state.attach(new FlyCamAppState());
+                fly++;
+            }
                 System.out.println("change");
                 major.change();
                 if(Cro==0){
@@ -1132,13 +1139,26 @@ public class ThirdState extends BaseAppState {
     }
 
     public void update(float tpf) {
-        if (chan == 0) {
+        /*if (chan == 0) {
             time = time + tpf;
             if (time < 60 && time > 10) {
                 change();
                 cross.setEnabled(false);
             }
-        }
+        }*/
+        /*if(chan==0) {
+            try {
+                time = time + tpf;
+                if (sky.finish() == 1) {
+                    if (time < 60 && time > 5) {
+                        change();
+                        cross.setEnabled(false);
+                    }
+                }
+            }catch (Exception e){
+
+            }
+        }*/
     }
 
     @Override

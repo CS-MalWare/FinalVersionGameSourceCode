@@ -624,6 +624,37 @@ public class DecksState extends BaseAppState {
                                             default:
                                                 break;
                                         }
+                                        new Thread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                try {
+                                                    Thread.sleep(500);
+                                                } catch (InterruptedException e) {
+                                                }
+                                                try {
+                                                    app.getCamera().setLocation(new Vector3f(0.15f,0.15f,10.5f));
+                                                    Thread.sleep(70);
+                                                    System.out.println("changeCam");
+                                                } catch (Exception e) {
+                                                }try {
+                                                    app.getCamera().setLocation(new Vector3f(-0.15f,-0.15f,10.5f));
+                                                    Thread.sleep(70);
+                                                } catch (Exception e) {
+                                                }try {
+                                                    app.getCamera().setLocation(new Vector3f(0.15f,-0.15f,10.5f));
+                                                    Thread.sleep(70);
+                                                } catch (Exception e) {
+                                                }try {
+                                                    app.getCamera().setLocation(new Vector3f(-0.15f,0.15f,10.5f));
+                                                    Thread.sleep(70);
+                                                } catch (Exception e) {
+                                                }try {
+                                                    app.getCamera().setLocation(new Vector3f(0,0,10.5f));
+                                                    Thread.sleep(70);
+                                                } catch (Exception e) {
+                                                }
+                                            }
+                                        }).start();
                                     }
                                     enemy.endTurn();
                                     // 更新敌人和主角的格挡和血量
@@ -647,7 +678,7 @@ public class DecksState extends BaseAppState {
 
                                     i++;
                                 }
-                                // 停顿一下,假装在加载（逸润巨佬还是高明）
+                                // 停顿一下,假装在加载（yr巨佬还是高明）
                                 try {
                                     Thread.sleep(20);
                                 } catch (InterruptedException e) {
