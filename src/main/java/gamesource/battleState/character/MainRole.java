@@ -271,7 +271,7 @@ public class MainRole extends Role {
         dexterity = 0;
         strength = 0;
         atk = 0;
-
+        this.block = 0;
         // 人物被动"苟"
         this.treat((int) (0.1 * (this.getTotalHP() - this.getHP())));
     }
