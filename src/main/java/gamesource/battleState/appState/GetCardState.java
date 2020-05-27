@@ -83,7 +83,7 @@ public class GetCardState extends BaseAppState {
         // 创建字体 (例如：楷书)
         TrueTypeKey ttk = new TrueTypeKey("Util/font.ttf", // 字体
                 1, // 字形：0 普通、1 粗体、2 斜体
-                32);// 字号
+                28);// 字号
         font = (TrueTypeFont) this.app.getAssetManager().loadAsset(ttk);
 
 

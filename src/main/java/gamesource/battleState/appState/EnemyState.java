@@ -119,6 +119,17 @@ public class EnemyState extends BaseAppState {
             add(1400f);
             add(580f);
         }};
+        blockPositionsnews = new ArrayList<Float>() {{
+            //每个护甲提示的x y坐标
+            add(1000f);
+            add(320f);
+
+            add(1200f);
+            add(320f);
+
+            add(1400f);
+            add(320f);
+        }};
         blockPositions = new ArrayList<Float>() {{
             //每个护甲提示的x y坐标
             add(2f);
