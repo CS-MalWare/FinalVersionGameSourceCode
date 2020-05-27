@@ -21,6 +21,8 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Quad;
 import com.jme3.texture.Texture;
+import com.simsilica.lemur.event.PopupState;
+
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.Master1;
 import gamesource.State.CharacterState.enemies.fifth.*;
@@ -464,6 +466,7 @@ public class FifthState extends BaseAppState {
                         state.attach(wordWrapForTalk);
                         isTalkShow = true;
                     }else if(!getStateManager().hasState(wordWrapForTalk) && isTalkShow){
+                        wordWrapForTalk.getStateManager().getState(PopupState.class).closePopup(wordWrapForTalk.getWindow());
                         getStateManager().detach(wordWrapForTalk);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
@@ -481,9 +484,11 @@ public class FifthState extends BaseAppState {
                     if(!isTalkShow && !getStateManager().hasState(talkWithOption)){
                         content.clear();
                         content.add("Long time no see, you find your own power, do need any new cards and equipment?");
-                        talkWithOption = new TalkWithOption("Lizard", content, CallType.CONFIRM, 5);
+                        content.add("I have got some newer and more powerful goods from Magic World!!");
+                        talkWithOption = new TalkWithOption("Lizard", content, CallType.CONFIRM, 5, states);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
