@@ -268,6 +268,8 @@ public class SecondState extends BaseAppState {
 
     public CollisionResults results4() {
         try {
+
+            maj = major.getMajor();
             BoundingVolume ske = skeleton2.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -280,6 +282,7 @@ public class SecondState extends BaseAppState {
 
     public CollisionResults results5() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = skeleton3.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -291,6 +294,7 @@ public class SecondState extends BaseAppState {
 
     public CollisionResults results6() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = skeleton4.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -303,6 +307,7 @@ public class SecondState extends BaseAppState {
 
     public CollisionResults results7() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = bat1.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -314,6 +319,7 @@ public class SecondState extends BaseAppState {
 
     public CollisionResults results8() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = snowRobot1.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -325,6 +331,7 @@ public class SecondState extends BaseAppState {
 
     public CollisionResults results9() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = skeleton5.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -336,6 +343,7 @@ public class SecondState extends BaseAppState {
 
     public CollisionResults results10() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = skeleton6.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -347,6 +355,7 @@ public class SecondState extends BaseAppState {
 
     public CollisionResults results11() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = skeleton7.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -359,6 +368,7 @@ public class SecondState extends BaseAppState {
 
     public CollisionResults results12() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = skeleton8.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -370,6 +380,7 @@ public class SecondState extends BaseAppState {
 
     public CollisionResults results13() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = bat2.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -381,6 +392,7 @@ public class SecondState extends BaseAppState {
 
     public CollisionResults results14() {
         try {
+            maj = major.getMajor();
             BoundingVolume kni = c2.get();
             CollisionResults results = new CollisionResults();
             maj.collideWith(kni, results);
@@ -392,6 +404,7 @@ public class SecondState extends BaseAppState {
 
     public CollisionResults results15() {
         try {
+            maj = major.getMajor();
             BoundingVolume kni = c3.get();
             CollisionResults results = new CollisionResults();
             maj.collideWith(kni, results);

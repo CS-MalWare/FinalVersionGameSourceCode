@@ -17,7 +17,7 @@ public class start {
 //        settings.setIcons(new BufferedImage[]{
 //                ImageIO.read(Main.class.getResource( "/Map/icon.png" ))});
         app.setSettings(settings);
-        settings.setFullscreen(true);
+        settings.setFullscreen(full);
         app.setShowSettings(false);
         //app.setShowSettings(false);
 //        Storage.load();

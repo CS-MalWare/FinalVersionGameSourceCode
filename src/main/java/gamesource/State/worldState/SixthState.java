@@ -182,6 +182,7 @@ public class SixthState extends BaseAppState {
     }
     public CollisionResults results2() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = knight1.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -192,6 +193,7 @@ public class SixthState extends BaseAppState {
     }
     public CollisionResults results3() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = master.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
@@ -203,6 +205,7 @@ public class SixthState extends BaseAppState {
     }
     public CollisionResults results4() {
         try {
+            maj = major.getMajor();
             BoundingVolume ske = boss.get();
             CollisionResults result = new CollisionResults();
             maj.collideWith(ske, result);
