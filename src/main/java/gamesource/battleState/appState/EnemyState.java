@@ -76,7 +76,7 @@ public class EnemyState extends BaseAppState {
     BitmapFont fnt;
     BitmapText buffDisplay;
     protected BitmapText actionDisplay;
-    private Geometry displayBoard;
+//    private Geometry displayBoard;
 
     public EnemyState() {
         enemies = new ArrayList<Enemy>();
@@ -158,14 +158,14 @@ public class EnemyState extends BaseAppState {
         actionDisplay = new BitmapText(fnt, false);
         buffDisplay = new BitmapText(fnt, false);//显示的文字
 
-        displayBoard = new Geometry("quad", q);
-        displayBoard.setLocalTranslation(2, 2, -1);
-        Material mt = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        mt.setColor("Color", ColorRGBA.Brown);
-        mt.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
-        displayBoard.setQueueBucket(RenderQueue.Bucket.Transparent);
-        displayBoard.setMaterial(mt);
-        rootNode.attachChild(displayBoard);
+//        displayBoard = new Geometry("quad", q);
+//        displayBoard.setLocalTranslation(2, 2, -1);
+//        Material mt = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+//        mt.setColor("Color", ColorRGBA.Brown);
+//        mt.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
+//        displayBoard.setQueueBucket(RenderQueue.Bucket.Transparent);
+//        displayBoard.setMaterial(mt);
+//        rootNode.attachChild(displayBoard);
         getInstance().displayAction();
         this.myRawInputListener = new MyRawInputListener();
         modelPositions = new ArrayList<Integer>() {{
