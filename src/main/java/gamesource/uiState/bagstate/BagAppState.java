@@ -52,18 +52,18 @@ public class BagAppState extends BaseAppState{
     private ArrayList<Card> mainRoleCards = MainRole.getInstance().getDeck_();
     private ArrayList<Equipment> mainRoleEquipments = MainRole.getInstance().getEquipments();
 
-    private CardUI[] cardUIs = new CardUI[60];
+    private CardUI[] cardUIs = new CardUI[60];                          //use to initialize cards
     private CardUI[] cardUIsCopy = new CardUI[60];
     private CardUI[] saberCardUIs = new CardUI[30];
     private CardUI[] neutralCardUIs = new CardUI[30];
     
-    private EquipmentUI[] equipmentUIs = new EquipmentUI[80];
+    private EquipmentUI[] equipmentUIs = new EquipmentUI[80];           //use to initialize equipments
     private EquipmentUI[] rareEquipmentUIs = new EquipmentUI[20];
     private EquipmentUI[] commonEquipmentUIs = new EquipmentUI[20];
     private EquipmentUI[] epicEquipmentUIs = new EquipmentUI[20];
     private EquipmentUI[] legeEquipmentUIs = new EquipmentUI[20];
 
-    private Container generalBorder;
+    private Container generalBorder;                                    //basic components
     private Container centralPart;
     private Container buttomPartContainer;
     private Container pagesContainer;
@@ -71,7 +71,7 @@ public class BagAppState extends BaseAppState{
     private ProgressBar progressBar;
     private Label moneyLabel;
 
-    private BagMoney totalMoney = new BagMoney();
+    private BagMoney totalMoney = new BagMoney();                       //bag money initialize
     private Styles styles;
     private boolean isOpenBag = false;
     private boolean isShowCards = false;
@@ -83,10 +83,10 @@ public class BagAppState extends BaseAppState{
         app = (SimpleApplication) application;
         inputManager = app.getInputManager();
         
-        inputManager.addMapping(bagString, new KeyTrigger(KeyInput.KEY_B));
+        inputManager.addMapping(bagString, new KeyTrigger(KeyInput.KEY_B));             //key mapping
         inputManager.addListener(new BagListener(), bagString);
 
-        GuiGlobals.initialize(app);
+        GuiGlobals.initialize(app);                                     //GUI initialize
         BaseStyles.loadGlassStyle();
         GuiGlobals.getInstance().requestFocus(generalBorder);
 
@@ -100,11 +100,11 @@ public class BagAppState extends BaseAppState{
     }
 
     protected void showBag(){
-        app.getFlyByCamera().setDragToRotate(true);
+        app.getFlyByCamera().setDragToRotate(true);                         //set mouse event and initialize style
         styles = GuiGlobals.getInstance().getStyles();
         styles.setDefaultStyle("glass");
         
-        styles.getSelector(Panel.ELEMENT_ID, "glass").set("background", 
+        styles.getSelector(Panel.ELEMENT_ID, "glass").set("background",             //set basic styles
             new QuadBackgroundComponent(new ColorRGBA(0, 0.25f, 0.25f, 0.5f)));
         styles.getSelector(Checkbox.ELEMENT_ID, "glass").set("background", 
             new QuadBackgroundComponent(new ColorRGBA(0, 0.5f, 0.5f, 0.5f)));
@@ -123,7 +123,7 @@ public class BagAppState extends BaseAppState{
         leftPart.addChild(new Label("Bag", new ElementId("header"), "glass"), 0, 0);
         leftPart.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass"), 1, 0).setUserData(LayerComparator.LAYER, 2);
 
-        Button cards = new Button("Cards");
+        Button cards = new Button("Cards");                             //give two buttons
         Button equipments = new Button("Equipments");
         leftPart.addChild(cards, 2, 0);
         leftPart.addChild(equipments, 3, 0);
@@ -132,7 +132,7 @@ public class BagAppState extends BaseAppState{
         generalBorder.addChild(leftPart, Position.West);
         //cards.addClickCommands();
 
-        centralPart = new Container("glass");
+        centralPart = new Container("glass");                           
         generalBorder.addChild(centralPart, Position.Center);
         centralPart.setLocalTranslation(200, app.getCamera().getHeight() - 50, 0);
  
@@ -146,54 +146,54 @@ public class BagAppState extends BaseAppState{
         generalBorder.setAlpha(2f);
     }
 
-    public void showCardsType(){
+    public void showCardsType(){                                                  //show cards type throught several buttons
         leftPart.setBackground(new QuadBackgroundComponent(new ColorRGBA(0, 0.5f, 0.5f, 0.5f), 5, 5, 0.02f, false));
         leftPart.addChild(new Label("Bag", new ElementId("header"), "glass"));
         leftPart.addChild(new Panel(2, 2, ColorRGBA.Cyan, "glass")).setUserData(LayerComparator.LAYER, 2);
 
-        Button general = new Button("General");
+        Button general = new Button("General");                     //按键分类
         Button saber = new Button("Saber");
         Button neutral = new Button("Neutral");
         Button backToStart = new Button("Back");
         //Button saber = new Button("Saber");
 
-        leftPart.addChild(saber);
+        leftPart.addChild(saber);                       //加入按键
         leftPart.addChild(neutral);
         leftPart.addChild(backToStart);
         //leftPart.addChild(saber);
 
-        saber.addClickCommands(new ShowSaber());
+        saber.addClickCommands(new ShowSaber());        //按键触发事件
         neutral.addClickCommands(new ShowNeutral());
         general.addClickCommands(new showGeneral());
         backToStart.addClickCommands(new BackToStart());
     }
 
-    public void showMoney(){
+    public void showMoney(){                            //在背包中初始化金钱
         Container characterInfo = new Container();
         SpringGridLayout northLayOut = new SpringGridLayout(Axis.X, Axis.Y, FillMode.None, FillMode.None);
         characterInfo.setLayout(northLayOut);
         
-        progressBar = new ProgressBar("glass");
+        progressBar = new ProgressBar("glass");         //初始化血量
         progressBar.getLabel().setText("Health");
         progressBar.setProgressPercent(100);
         characterInfo.addChild(progressBar, 0);
         
-        moneyLabel = characterInfo.addChild(new Label("Money:"), 2);
+        moneyLabel = characterInfo.addChild(new Label("Money:"), 2);    //显示金钱
         moneyLabel.setText("Money: "+totalMoney.getMoney());
         moneyLabel.setSize(new Vector3f(60, 20, 0));
         generalBorder.addChild(characterInfo, Position.North);
     }
 
-    public void detachBag(){
+    public void detachBag(){                            //clean cards type buttons
         leftPart.detachAllChildren();        
     }
 
-    public void showCards(Container centralPart){
+    public void showCards(Container centralPart){       //show general cards 
         cardUIs = CardArrayReader.cardArrayToCardUIs(MainRole.getInstance().getDeck_());
         System.arraycopy(cardUIs, 0, cardUIsCopy, 0, cardUIs.length);
         mainRoleCards = MainRole.getInstance().getDeck_();
 
-        cleanArray(neutralCardUIs);
+        cleanArray(neutralCardUIs);                     //clean cardUIs array
         cleanArray(saberCardUIs);
 
         for(int i=0; i<mainRoleCards.size(); i++){
@@ -209,14 +209,14 @@ public class BagAppState extends BaseAppState{
         buttomPartContainer.setLayout(new SpringGridLayout(Axis.Y, Axis.Y));
         buttomPartContainer.addChild(pagesContainer);
 
-        int pageNumber = (getCardUIsLength() - getCardUIsLength() % 12) / 12 + 1;
+        int pageNumber = (getCardUIsLength() - getCardUIsLength() % 12) / 12 + 1;           //initialize pageButtons
         for(int i=1; i<=pageNumber; i++){
             Button button = pagesContainer.addChild(new Button(String.valueOf(i)));
             button.addClickCommands(new PageButtonClick(null));
         }
         
 
-        for(CardUI cardUI: cardUIs){
+        for(CardUI cardUI: cardUIs){                                    //give every cards' events
             cardUI.addAction(new CardsButtonClick());
         }
 
@@ -230,7 +230,7 @@ public class BagAppState extends BaseAppState{
         }
     }
 
-    public void showEquipments(Container centralPart){
+    public void showEquipments(Container centralPart){              //similiar functions as showCards
         equipmentUIs = EquipmentArrayReader.toEquipmentUIs(MainRole.getInstance().getEquipments());
         mainRoleEquipments = MainRole.getInstance().getEquipments();
         
@@ -302,7 +302,7 @@ public class BagAppState extends BaseAppState{
         return length;
     }
 
-    private class showGeneral implements Command<Button>{
+    private class showGeneral implements Command<Button>{                   
         public void execute(Button button){
             centralPart.detachAllChildren();
             pagesContainer.detachAllChildren();
@@ -321,7 +321,7 @@ public class BagAppState extends BaseAppState{
         }
     } 
     
-    private class ShowSaber implements Command<Button>{
+    private class ShowSaber implements Command<Button>{                     //show saber type cards
         public void execute(Button button){
             int saberLength = getArrayLength(saberCardUIs);
             if(saberCardUIs[0] == null){
@@ -359,7 +359,7 @@ public class BagAppState extends BaseAppState{
         }
     }
 
-    private class ShowNeutral implements Command<Button>{
+    private class ShowNeutral implements Command<Button>{                   //show neutral type cards
         public void execute(Button button){
             int neutralLength = getArrayLength(neutralCardUIs);
             if(neutralCardUIs[0] == null){
@@ -396,7 +396,7 @@ public class BagAppState extends BaseAppState{
         }
     }
 
-    private class ShowCommon implements Command<Button>{
+    private class ShowCommon implements Command<Button>{                           //show common type equipments
         public void execute(Button button){
             int commonLength = getArrayLength(commonEquipmentUIs);
             if(commonEquipmentUIs[0] == null){
@@ -434,7 +434,7 @@ public class BagAppState extends BaseAppState{
         }
     }
 
-    private class ShowEpic implements Command<Button>{
+    private class ShowEpic implements Command<Button>{                          //show epic type cards
         public void execute(Button button){
             int epicLength = getArrayLength(epicEquipmentUIs);
             if(epicEquipmentUIs[0] == null){
@@ -472,7 +472,7 @@ public class BagAppState extends BaseAppState{
         }
     }
 
-    private class ShowRare implements Command<Button>{
+    private class ShowRare implements Command<Button>{                          //show rare type equipments
         public void execute(Button button){
             int rareLength = getArrayLength(rareEquipmentUIs);
             if(rareEquipmentUIs[0] == null){
@@ -510,7 +510,7 @@ public class BagAppState extends BaseAppState{
         }
     }
 
-    private class ShowLege implements Command<Button>{
+    private class ShowLege implements Command<Button>{                      //show legendary equipments
         public void execute(Button button){
             int legeLength = getArrayLength(legeEquipmentUIs);
             if(epicEquipmentUIs[0] == null){
@@ -548,7 +548,7 @@ public class BagAppState extends BaseAppState{
         }
     }
 
-    private class BackToStart implements Command<Button>{
+    private class BackToStart implements Command<Button>{                   ////use to back to cards and equipments choosen
         public void execute(Button button){
             pagesContainer.detachAllChildren();
             leftPart.detachAllChildren();
@@ -569,7 +569,7 @@ public class BagAppState extends BaseAppState{
         }
     }
 
-    private class PageButtonClick implements Command<Button>{
+    private class PageButtonClick implements Command<Button>{                   //add pageButton events
         private OCCUPATION type;
 
         public PageButtonClick(OCCUPATION type){
@@ -610,7 +610,7 @@ public class BagAppState extends BaseAppState{
         }
     }
 
-    private class EquipmentClick implements Command<Button>{
+    private class EquipmentClick implements Command<Button>{            //Equipments events
         public void execute(Button button){
             detachBag();
             leftPart.setBackground(new QuadBackgroundComponent(new ColorRGBA(0, 0.5f, 0.5f, 0.5f), 5, 5, 0.02f, false));
@@ -639,7 +639,7 @@ public class BagAppState extends BaseAppState{
         }
     }
 
-    private class PageButtonClickForEquip implements Command<Button>{
+    private class PageButtonClickForEquip implements Command<Button>{       //page buttons for equipments
         private EquipmentDegree type;
         public PageButtonClickForEquip(EquipmentDegree type){
             this.type = type;
@@ -702,7 +702,7 @@ public class BagAppState extends BaseAppState{
         app.getGuiNode().removeFromParent();
     }
     
-    class BagListener implements ActionListener{
+    class BagListener implements ActionListener{                        //bag show events listener
         @Override
         public void onAction(String name, boolean isPressed, float tpf){
             if(bagString.equals(name) && isPressed && !isOpenBag){
@@ -716,7 +716,7 @@ public class BagAppState extends BaseAppState{
         }
     }
 
-    private class CardsDirectoryClick implements Command<Button>{
+    private class CardsDirectoryClick implements Command<Button>{           //show cards directory
         public void execute(Button button){
             if(button.isPressed()){
                 detachBag();
@@ -727,7 +727,7 @@ public class BagAppState extends BaseAppState{
         }
     }
 
-    private class CardsButtonClick implements Command<Button>{
+    private class CardsButtonClick implements Command<Button>{          //cards Button events
         public void execute(Button button){
             if(button.isPressed()){
                 for(CardUI cardUI : cardUIs){
@@ -798,12 +798,10 @@ public class BagAppState extends BaseAppState{
     }
 
     public void cleanArray(EquipmentUI[] eUis){
-        eUis = null;
         eUis = new EquipmentUI[20];
     }
 
     public void cleanArray(CardUI[] cUis){
-        cUis = null;
         cUis = new CardUI[30];
     }
 
@@ -817,7 +815,7 @@ public class BagAppState extends BaseAppState{
         app.getInputManager().addListener(new BagListener(), bagString);
     }
     
-    public void update(float tpf){
+    public void update(float tpf){                                  //update money and health situation
         if(isOpenBag){
             totalMoney.setMoney(MainRole.getInstance().getGold());
             moneyLabel.setText("Money: " + totalMoney.getMoney());

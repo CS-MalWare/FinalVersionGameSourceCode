@@ -15,7 +15,7 @@ import com.simsilica.lemur.event.ConsumingMouseListener;
 import com.simsilica.lemur.event.MouseEventControl;
 import com.simsilica.lemur.event.PopupState;
 import com.simsilica.lemur.style.ElementId;
-
+//this class is to show the help option on Menu
 public class Help extends BaseAppState{
     private CloseCommand closeCommand = new CloseCommand();
     private TabbedPanel tabs;

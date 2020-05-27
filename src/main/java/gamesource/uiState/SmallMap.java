@@ -47,7 +47,7 @@ public class SmallMap extends BaseAppState{
     }
 
     @Override
-    protected void initialize(Application application){
+    protected void initialize(Application application){             //initialize basic map settings
         System.out.println("Small Map Get");
         app = (SimpleApplication) application;
         GuiGlobals.initialize(app);
@@ -102,7 +102,7 @@ public class SmallMap extends BaseAppState{
         return center;
     }
 
-    public class SmallMapListener implements ActionListener{
+    public class SmallMapListener implements ActionListener{                                   //Map Listener for show map
         public void onAction(String name, boolean isPressed, float tpf){
             System.out.println("Get Map");
             if("map".equals(name) && isPressed && !isShowMap){

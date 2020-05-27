@@ -8,7 +8,9 @@ import com.simsilica.lemur.component.IconComponent;
 import gamesource.battleState.card.Card;
 import gamesource.battleState.card.Card.RARITY;
 import gamesource.uiState.bagstate.CardUI;
-
+/*
+This class is try to change Card to CardUI which can be used for GUI settings
+*/
 public class CardArrayReader {
     private static ArrayList<Card> cards;
     private static CardUI[] cardUIs;
@@ -22,7 +24,7 @@ public class CardArrayReader {
         cardUIs = new CardUI[cards.size()];
     }
 
-    public CardUI[] CardArrayToCardUIs(){
+    public CardUI[] CardArrayToCardUIs(){                       //change cards to array of CardUI
         CardUI cardUI;
         for(int it = 0; it < cards.size(); it++){
             IconComponent iconComponent = new IconComponent(cards.get(it).getPath());
@@ -45,7 +47,7 @@ public class CardArrayReader {
         return cardUIs;
     }
 
-    public static CardUI[] cardArrayToCardUIs(ArrayList<Card> cardsEx){
+    public static CardUI[] cardArrayToCardUIs(ArrayList<Card> cardsEx){         //static methods
         CardUI cardUI;
         cardUIs = null;
         cardUIs = new CardUI[cardsEx.size()];
@@ -70,7 +72,7 @@ public class CardArrayReader {
         return cardUIs;
     }
 
-    public static CardUI cardToCardUI(Card card){
+    public static CardUI cardToCardUI(Card card){                       //change single card to cardUI
         IconComponent iconComponent = new IconComponent(card.getPath());
         iconComponent.setIconScale(0.3f);
         CardUI cardUI = new CardUI();
@@ -86,7 +88,7 @@ public class CardArrayReader {
         return cardUI;
     }
 
-    public Card findCardByUI(CardUI cardUI){
+    public Card findCardByUI(CardUI cardUI){                            //find the card from CardUI
         Card card = cards.get(0);
         for(int i=0; i<cardUIs.length; i++){
             if(cardUIs[i] == cardUI){
@@ -96,7 +98,7 @@ public class CardArrayReader {
         return card;
     }
 
-    public static Card findCardByCardUIs(Card[] cardsExtern, CardUI[] cardUIsExtern, CardUI cardUI){
+    public static Card findCardByCardUIs(Card[] cardsExtern, CardUI[] cardUIsExtern, CardUI cardUI){ //static methods
         Card card = cardsExtern[0];
         for(int i=0; i<cardUIsExtern.length; i++){
             if(cardUI.equals(cardUIsExtern[i].getButton())){

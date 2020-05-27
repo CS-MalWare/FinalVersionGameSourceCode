@@ -16,7 +16,7 @@ import com.simsilica.lemur.component.IconComponent;
 import com.simsilica.lemur.core.VersionedReference;
 import com.simsilica.lemur.event.PopupState;
 import com.simsilica.lemur.style.ElementId;
-
+//this class is used to change alpha settings
 public class AlphaPanel extends BaseAppState{
     private Container window;
     private CloseCommand closeCommand = new CloseCommand();
@@ -40,7 +40,7 @@ public class AlphaPanel extends BaseAppState{
     }
 
     @Override
-    protected void onEnable(){
+    protected void onEnable(){                  //initialize the basic settings
         window = new Container();
         window.addChild(new Label("Alpha Setting", new ElementId("window.title.label")));
     

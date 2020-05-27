@@ -466,6 +466,7 @@ public class FifthState extends BaseAppState {
                         state.attach(wordWrapForTalk);
                         isTalkShow = true;
                     }else if(!getStateManager().hasState(wordWrapForTalk) && isTalkShow){
+                        wordWrapForTalk.getStateManager().getState(PopupState.class).closePopup(wordWrapForTalk.getWindow());
                         getStateManager().detach(wordWrapForTalk);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
@@ -485,6 +486,7 @@ public class FifthState extends BaseAppState {
                         content.add("Long time no see, you find your own power, do need any new cards and equipment?");
                         content.add("I have got some newer and more powerful goods from Magic World!!");
                         talkWithOption = new TalkWithOption("Lizard", content, CallType.CONFIRM, 5, states);
+                        state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
                         talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
@@ -506,8 +508,11 @@ public class FifthState extends BaseAppState {
                         content.clear();
                         content.add("Finally you get here, seems you got all things needed to save world, \n"+
                             "you may find this place is different, I got know what happened");
+                        talkWithOption = new TalkWithOption("Master", content, CallType.CONFIRM, 5, states);
+                        state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if (isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;

@@ -42,7 +42,7 @@ public class TalkWithOption extends BaseAppState{
     private ActionButton optionButton;
     private ActionButton closeButton;
 
-    public static enum CallType{
+    public static enum CallType{            //Talk option 
         CONFIRM,
         SHOP,
         FIGHT,
@@ -59,7 +59,7 @@ public class TalkWithOption extends BaseAppState{
     }
 
     @Override
-    protected void initialize(Application application){
+    protected void initialize(Application application){             //initialize GUI
         app = (SimpleApplication) application;
         GuiGlobals.initialize(app);
         BaseStyles.loadGlassStyle();
@@ -78,7 +78,7 @@ public class TalkWithOption extends BaseAppState{
     }
 
     @Override
-    protected void onEnable(){
+    protected void onEnable(){                  //set basic components
         window = new Container();
         window.addChild(new Label(modelName, new ElementId("window.title.label")));
         contentLabel = window.addChild(new Label(talkContent.get(contentStep)));
@@ -90,7 +90,7 @@ public class TalkWithOption extends BaseAppState{
         getState(PopupState.class).showPopup(window);
     }
 
-    protected void calculatePreferLocation(){
+    protected void calculatePreferLocation(){               //calculate prefer location for window
         float preferCenterWith = app.getCamera().getWidth() / 2;
         float preferCenterHeight = app.getCamera().getHeight() / 2;
 
@@ -100,7 +100,7 @@ public class TalkWithOption extends BaseAppState{
         window.setLocalTranslation(preferCenterWith - halfLabelWidth, preferCenterHeight - halfLabelHeight, 100);
     }
 
-    public void continueToNext(){
+    public void continueToNext(){                           //roll up the content of talking
         contentStep ++;
         contentLabel.setText(talkContent.get(contentStep));
         contentLabel.setFontSize(18f);
@@ -109,7 +109,7 @@ public class TalkWithOption extends BaseAppState{
         }
     }
 
-    public void optionState(){
+    public void optionState(){                              //identify the option of talking
         if(callType == CallType.CONFIRM){
             window.removeChild(continueButton);
             optionButton = window.addChild(new ActionButton(new CallMethodAction("Yes", this, "confirm")));
@@ -127,7 +127,7 @@ public class TalkWithOption extends BaseAppState{
         }
     }
 
-    public void confirm(){
+    public void confirm(){                                     //check option to end conversation
         Label endLabel = new Label("Press N to Exit...");
         window.addChild(endLabel);
         window.removeChild(continueButton);
@@ -135,7 +135,7 @@ public class TalkWithOption extends BaseAppState{
 
     public void fight(){
         switch (stage) {
-            case 1:
+            case 1:                                             
                 getState(PopupState.class).closePopup(window);
                 getState(FirstState.class).getStateManager().detach(TalkWithOption.this);
                 app.getFlyByCamera().setDragToRotate(false);
@@ -203,7 +203,7 @@ public class TalkWithOption extends BaseAppState{
     public void save(){
     }
 
-    public void close(){
+    public void close(){                                        //close the talking option window
         window.detachChild(optionButton);
         window.detachChild(closeButton);
         contentLabel.setText("You have finished the conversation ! Press N to Exit!");

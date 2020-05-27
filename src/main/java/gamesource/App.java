@@ -31,9 +31,10 @@ import gamesource.uiState.menustate.MenuAppState;
 import gamesource.uiState.shopstate.ShopAppState;
 import gamesource.util.Storage;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-//import jdk.tools.jaotc.Main;
 
 /**
  * Hello world!
@@ -428,7 +429,7 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) throws IOException {
         MainRole.getInstance();
-        App app = new App(2, 4096, 1, 1);
+        App app = new App(6, 4096, 1, 1);
         AppSettings settings = new AppSettings(true);
 
         // 这里是导入地图存档的,导入人物属性存档在 MainRole类中
@@ -437,8 +438,8 @@ public class App extends SimpleApplication {
         settings.setTitle("Cholera");// 标题
         settings.setResolution(1600, 900);// 分辨率
         settings.setFrameRate(100);//限制fps
-//        settings.setIcons(new BufferedImage[]{
-//                ImageIO.read(Main.class.getResource( "/Map/icon.png" ))});
+        settings.setIcons(new BufferedImage[]{
+                ImageIO.read(App.class.getResource( "/Map/icon.png" ))});
         settings.setSamples(1);
         app.setSettings(settings);
         //app.setShowSettings(true);
