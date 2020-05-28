@@ -176,6 +176,7 @@ public class BagAppState extends BaseAppState{
         progressBar = new ProgressBar("glass");         //初始化血量
         progressBar.getLabel().setText("Health");
         progressBar.setProgressPercent(100);
+        progressBar.getLabel().setColor(new ColorRGBA(1, 0, 0, 1));
         characterInfo.addChild(progressBar, 0);
         
         moneyLabel = characterInfo.addChild(new Label("Money:"), 2);    //显示金钱
@@ -209,7 +210,7 @@ public class BagAppState extends BaseAppState{
         buttomPartContainer.setLayout(new SpringGridLayout(Axis.Y, Axis.Y));
         buttomPartContainer.addChild(pagesContainer);
 
-        int pageNumber = (getCardUIsLength() - getCardUIsLength() % 12) / 12 + 1;           //initialize pageButtons
+        int pageNumber = (cardUIs.length - cardUIs.length % 12) / 12 + 1;           //initialize pageButtons
         for(int i=1; i<=pageNumber; i++){
             Button button = pagesContainer.addChild(new Button(String.valueOf(i)));
             button.addClickCommands(new PageButtonClick(null));

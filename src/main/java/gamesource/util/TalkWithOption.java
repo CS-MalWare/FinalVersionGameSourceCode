@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.BaseAppState;
+import com.jme3.math.ColorRGBA;
 import com.simsilica.lemur.ActionButton;
 import com.simsilica.lemur.CallMethodAction;
 import com.simsilica.lemur.Container;
@@ -13,6 +14,7 @@ import com.simsilica.lemur.Label;
 import com.simsilica.lemur.event.PopupState;
 import com.simsilica.lemur.style.BaseStyles;
 import com.simsilica.lemur.style.ElementId;
+import com.simsilica.lemur.style.Styles;
 
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.mapState.FirstWorldState;
@@ -82,10 +84,12 @@ public class TalkWithOption extends BaseAppState{
         window = new Container();
         window.addChild(new Label(modelName, new ElementId("window.title.label")));
         contentLabel = window.addChild(new Label(talkContent.get(contentStep)));
+        contentLabel.setFontSize(18f);
         contentLabel.setMaxWidth(400);
         calculatePreferLocation();
-        window.setAlpha(2f);
-        
+        window.setAlpha(10f);
+        contentLabel.setAlpha(10f);
+
         continueButton = window.addChild(new ActionButton(new CallMethodAction("Continue", this, "continueToNext")));
         app.getGuiNode().attachChild(window);
     }
