@@ -209,7 +209,7 @@ public class BagAppState extends BaseAppState{
         buttomPartContainer.setLayout(new SpringGridLayout(Axis.Y, Axis.Y));
         buttomPartContainer.addChild(pagesContainer);
 
-        int pageNumber = (getCardUIsLength() - getCardUIsLength() % 12) / 12 + 1;           //initialize pageButtons
+        int pageNumber = (cardUIs.length - cardUIs.length % 12) / 12 + 1;           //initialize pageButtons
         for(int i=1; i<=pageNumber; i++){
             Button button = pagesContainer.addChild(new Button(String.valueOf(i)));
             button.addClickCommands(new PageButtonClick(null));
