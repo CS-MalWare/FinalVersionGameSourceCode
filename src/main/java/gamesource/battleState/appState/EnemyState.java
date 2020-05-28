@@ -232,7 +232,7 @@ public class EnemyState extends BaseAppState {
         for (int i = 0; i < enemies.size(); i++) {
             txtB += String.format("%d. %s\n\n\n", i + 1, enemies.get(i).getNextActionDescription());
         }
-        actionDisplay.setBox(new Rectangle(2, 4.1f, 5, 3));
+        actionDisplay.setBox(new Rectangle(2, 3.9f, 5, 3));
         actionDisplay.setQueueBucket(RenderQueue.Bucket.Transparent);
         actionDisplay.setSize(0.25f);
         actionDisplay.setText(txtB);
@@ -889,7 +889,7 @@ public class EnemyState extends BaseAppState {
                         txtB += String.format("Dodge: %d           ", targetEnemy.getDodge().getTimes());
                         txtB += String.format("Excite: %d          ", targetEnemy.getStrength());
                     }
-                    buffDisplay.setBox(new Rectangle(2, 4.1f, 6, 3));
+                    buffDisplay.setBox(new Rectangle(2, 3.9f, 6, 3));
                     buffDisplay.setQueueBucket(RenderQueue.Bucket.Transparent);
                     buffDisplay.setSize(0.25f);
                     buffDisplay.setText(txtB);
