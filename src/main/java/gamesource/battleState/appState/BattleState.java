@@ -9,6 +9,7 @@ import com.jme3.app.state.BaseAppState;
 import com.jme3.audio.AudioListenerState;
 import com.jme3.bullet.BulletAppState;
 import com.jme3.cursors.plugins.JmeCursor;
+import com.jme3.input.KeyInput;
 import com.jme3.input.RawInputListener;
 import com.jme3.input.event.*;
 import com.jme3.math.Vector3f;
@@ -21,6 +22,7 @@ import gamesource.State.CharacterState.secondWorldCharacter.goblinGirlState;
 import gamesource.State.CharacterState.secondWorldCharacter.shanmanState;
 import gamesource.State.controlState.InputAppState;
 import gamesource.State.mapState.SecondWorldMap;
+import gamesource.battleState.character.Enemy;
 import gamesource.battleState.character.MainRole;
 
 public class BattleState extends BaseAppState {
@@ -116,6 +118,12 @@ public class BattleState extends BaseAppState {
         }
 
         public void onKeyEvent(KeyInputEvent evt) {
+            if(evt.isPressed() && evt.getKeyCode()== KeyInput.KEY_K){
+                for(Enemy enemy:EnemyState.getInstance().getEnemies()){
+                    enemy.getDamage(100);
+                }
+                EnemyState.getInstance().updateHints(true);
+            }
         }
 
         public void onTouchEvent(TouchEvent evt) {
