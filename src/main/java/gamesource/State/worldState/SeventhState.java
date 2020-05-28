@@ -22,6 +22,8 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Quad;
 import com.jme3.texture.Texture;
+import com.simsilica.lemur.event.PopupState;
+
 import gamesource.State.CharacterState.MajorActor;
 import gamesource.State.CharacterState.Master1;
 import gamesource.State.CharacterState.firstWorldCharacter.*;
@@ -44,7 +46,7 @@ import gamesource.util.TalkWithOption;
 import java.util.ArrayList;
 
 public class SeventhState extends BaseAppState {
-    public static String canGo = "cannot";// 这是用于存档的变量,大佬们不要改没了
+    public static String canGo = "can";// 这是用于存档的变量,大佬们不要改没了
     public final static String talk = "TALK";
     public final static Trigger TALK = new KeyTrigger(KeyInput.KEY_N);
     public final static String change = "CHANGE";
@@ -373,7 +375,7 @@ public class SeventhState extends BaseAppState {
                     if(!isTalkShow && !getStateManager().hasState(talkWithOption)){
                         content.clear();
                         content.add("My son, you came back and become more powerful than before.");
-                        content.add("I am tired. Maybe this would be a good time for retirement");
+                        content.add("Maybe it is time to make you master the country!");
                         content.add("In charge of the country is not an easy thing");
                         content.add("It took up most of my tine, and now, I want stay with family.");
                         talkWithOption = new TalkWithOption("Queen", content, TalkWithOption.CallType.CONFIRM, 1, states);
@@ -381,6 +383,7 @@ public class SeventhState extends BaseAppState {
                         isTalkShow = true;
                         SecondState.canGo = "can";
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
@@ -405,6 +408,7 @@ public class SeventhState extends BaseAppState {
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
@@ -421,14 +425,14 @@ public class SeventhState extends BaseAppState {
                 } else if (results3.size() > 0) {                //这里是购买商店的对话
                     if(!isTalkShow && !getStateManager().hasState(talkWithOption)){
                         content.clear();
-                        content.add("Recently, I feel a evil power from supernatural.");
-                        content.add("So I returned the king city as soon as possible.");
-                        content.add("From the result of division, there will be a prince save this world");
-                        content.add("Before save the world, do you needs some new skills?");
-                        talkWithOption = new TalkWithOption("Lizard Mage", content, TalkWithOption.CallType.SHOP, 1, states);
+                        content.add("Congratulation! You have defeated Stuxnet !!!");
+                        content.add("Because of you, people in King City can have a better life.");
+                        content.add("Of course, if you still want to improve you skills, you can call me!");
+                        talkWithOption = new TalkWithOption("Lizard Mage", content, TalkWithOption.CallType.CONFIRM, 1, states);
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = true;
@@ -455,13 +459,14 @@ public class SeventhState extends BaseAppState {
                 }else if(results8.size()>0){                    //这里是桥上士兵
                     if(!isTalkShow && !getStateManager().hasState(talkWithOption)){
                         content.clear();
-                        content.add("Hello");
-                        content.add("We all glad to see you again in King city. After training, there has a great change on your body!");
-                        content.add("We are drilling recruits. Would you be pleasure to give them a lession?");
-                        talkWithOption = new TalkWithOption("Soldier", content, TalkWithOption.CallType.FIGHT, 1, states);
+                        content.add("Weclome back! My Prince");
+                        content.add("We always believe you can do it!");
+                        content.add("If you have time, we might need your guidance to improve our skills...");
+                        talkWithOption = new TalkWithOption("Soldier", content, TalkWithOption.CallType.CONFIRM, 1, states);
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
@@ -478,12 +483,13 @@ public class SeventhState extends BaseAppState {
                 }else if(results9.size()>0){                    //这里是桥上的骑士
                     if(!isTalkShow && !getStateManager().hasState(talkWithOption)){
                         content.clear();
-                        content.add("Ahead is the most prosperous part of the King city, with the most richest trade marking and the finest order of knights.");
-                        content.add("If you want to go there, you need to keep your weapon in here");
+                        content.add("We are so glad to see you, My prince!");
+                        content.add("Stuxnet has dead, finally we are safe. King City will never be destoryed since you are here");
                         talkWithOption = new TalkWithOption("Soldier", content, TalkWithOption.CallType.CONFIRM, 1, states);
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
+                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;

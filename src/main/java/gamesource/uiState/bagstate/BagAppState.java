@@ -798,10 +798,16 @@ public class BagAppState extends BaseAppState{
     }
 
     public void cleanArray(EquipmentUI[] eUis){
+        for(int i=0; i<eUis.length; i++){
+            eUis[i] = null;
+        }
         eUis = new EquipmentUI[20];
     }
 
     public void cleanArray(CardUI[] cUis){
+        for(int i=0; i<cUis.length; i++){
+            cUis[i] = null;
+        }
         cUis = new CardUI[30];
     }
 
