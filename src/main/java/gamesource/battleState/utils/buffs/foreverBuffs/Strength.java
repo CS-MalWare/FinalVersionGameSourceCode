@@ -4,7 +4,7 @@ import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
 import gamesource.battleState.utils.buffs.BuffFunction;
 import gamesource.battleState.utils.buffs.ForeverBuff;
-
+// 造成的伤害增加力量相应层数
 public class Strength extends ForeverBuff implements BuffFunction {
     public Strength(String name, String description, Picture buffPicture, Role role, int times) {
         super(name, description, buffPicture, role, times);

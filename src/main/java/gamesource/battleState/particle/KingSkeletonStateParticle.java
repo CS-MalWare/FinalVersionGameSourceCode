@@ -6,7 +6,7 @@ import com.jme3.effect.ParticleMesh;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
-
+// boss骷髅王的特效
 public class KingSkeletonStateParticle {
     private static ParticleEmitter flash;
     public static ParticleEmitter getParticle1(AssetManager assetManager){

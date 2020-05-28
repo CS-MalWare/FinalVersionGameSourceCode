@@ -4,7 +4,7 @@ import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
 import gamesource.battleState.utils.buffs.BuffFunction;
 import gamesource.battleState.utils.buffs.LimitBuff;
-
+// 每回合末,获得与护盾层数相同的格挡
 public class Sheild extends LimitBuff implements BuffFunction {
 
     public Sheild(Role role, int duration) {

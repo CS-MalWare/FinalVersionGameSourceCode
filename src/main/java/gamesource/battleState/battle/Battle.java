@@ -121,6 +121,7 @@ public class Battle extends BaseAppState {
 
     }
 
+    // 加载战斗场景时候的图片
     private Spatial getPicture(int number) {
         // 创建一个四边形
         int x=app.getCamera().getWidth();

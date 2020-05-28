@@ -4,7 +4,7 @@ import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
 import gamesource.battleState.utils.buffs.BuffFunction;
 import gamesource.battleState.utils.buffs.ForeverBuff;
-
+// 闪避下次攻击
 public class Dodge extends ForeverBuff implements BuffFunction {
     public Dodge(Role role, int times) {
         super("dodge", "avoid one attack from enemy", new Picture(), role, times);

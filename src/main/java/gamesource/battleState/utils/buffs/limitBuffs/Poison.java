@@ -4,7 +4,7 @@ import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
 import gamesource.battleState.utils.buffs.BuffFunction;
 import gamesource.battleState.utils.buffs.LimitBuff;
-
+// 每回合结束,收到与毒层数相同的真实伤害
 public class Poison extends LimitBuff implements BuffFunction {
 
 
