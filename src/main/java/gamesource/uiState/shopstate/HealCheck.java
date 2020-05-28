@@ -67,9 +67,21 @@ public class HealCheck extends BaseAppState{
     public void Confirm(){
         int totalMoney = MainRole.getInstance().getGold();
         if(totalMoney - cost >= 0){
-            MainRole.getInstance().setHP(MainRole.getInstance().getHP()+20);
-            MainRole.getInstance().setGold(MainRole.getInstance().getGold() - 50);
-            Storage.save();
+            if(MainRole.getInstance().getHP() + 20 > MainRole.getInstance().getTotalHP()){
+                dragWindow.detachChild(actionButton);
+                MainRole.getInstance().setHP(MainRole.getInstance().getTotalHP());
+                label.setText("You current HP is " + MainRole.getInstance().getTotalHP());
+                MainRole.getInstance().setGold(MainRole.getInstance().getGold() - 50);
+                dragWindow.addChild(new ActionButton(new CallMethodAction(this, "OK")));
+                Storage.save();
+            }else{
+                MainRole.getInstance().setHP(MainRole.getInstance().getHP()+20);
+                MainRole.getInstance().setGold(MainRole.getInstance().getGold() - 50);
+                dragWindow.detachChild(actionButton);
+                label.setText("You current HP is " + MainRole.getInstance().getHP());
+                dragWindow.addChild(new ActionButton(new CallMethodAction(this, "OK")));
+                Storage.save();
+            }
         }else{
             dragWindow.detachChild(actionButton);
             label.setText("Sorry! You have not enough money!");
