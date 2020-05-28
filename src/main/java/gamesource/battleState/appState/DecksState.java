@@ -556,6 +556,7 @@ public class DecksState extends BaseAppState {
 
                             // 结束回合操作
                         case "结束回合":
+
                             boolean flag= false;
                             do{
                                 MainRole.getInstance().endTurn();
@@ -569,6 +570,8 @@ public class DecksState extends BaseAppState {
                                 for (Enemy enemy : enemies) {
                                     if(enemy.getStun().getDuration()==0){
                                         enemy.startTurn();
+                                        EnemyState.getInstance().displayAction();
+
                                         enemyActionAudio = enemy.enemyAction();
 
                                         // 根据敌人的行动提示,播放一些音效
@@ -657,6 +660,7 @@ public class DecksState extends BaseAppState {
                                         }).start();
                                     }
                                     enemy.endTurn();
+
                                     // 更新敌人和主角的格挡和血量
                                     app.getStateManager().getState(EnemyState.class).updateHints(true);
                                     app.getStateManager().getState(LeadingActorState.class).updateHints();
@@ -697,6 +701,8 @@ public class DecksState extends BaseAppState {
                                 }
                                 // 将本回合内中已打出的牌清0
                                 flag = false;
+                                EnemyState.getInstance().displayAction();
+
                             } while (flag);
                             ArrayList<AnimChannel> animChannels = app.getStateManager().getState(EnemyState.class).getAnimChannels();
                             // 尝试在敌人攻击后, 将状态恢复到idle
@@ -716,6 +722,7 @@ public class DecksState extends BaseAppState {
                                     }
                                 }).start();
                             }
+
                             break;
                         default:
                             isExhuastDeckShow = false;

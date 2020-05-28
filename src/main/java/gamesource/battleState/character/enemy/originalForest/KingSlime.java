@@ -22,7 +22,6 @@ public class KingSlime extends Enemy {
         if (stun.getDuration() > 0) {
             return;
         }
-        this.nextActionIndex = (int) (Math.random() * this.nextActionSet.length);
         this.updateHints();
     }
 
