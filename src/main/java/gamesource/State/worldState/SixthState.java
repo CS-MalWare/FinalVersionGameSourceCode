@@ -216,7 +216,6 @@ public class SixthState extends BaseAppState {
             maj.collideWith(ske, result);
             return result;
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
     }
