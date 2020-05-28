@@ -117,6 +117,7 @@ public class BattleState extends BaseAppState {
             }
         }
 
+        // 增加外挂作弊按钮K
         public void onKeyEvent(KeyInputEvent evt) {
             if(evt.isPressed() && evt.getKeyCode()== KeyInput.KEY_K){
                 for(Enemy enemy:EnemyState.getInstance().getEnemies()){

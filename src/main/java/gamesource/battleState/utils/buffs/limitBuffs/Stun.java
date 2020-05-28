@@ -5,7 +5,7 @@ import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
 import gamesource.battleState.utils.buffs.BuffFunction;
 import gamesource.battleState.utils.buffs.LimitBuff;
-
+// 眩晕一回合
 public class Stun extends LimitBuff implements BuffFunction {
 
     public Stun(Role role, int duration) {

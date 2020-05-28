@@ -4,7 +4,7 @@ import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
 import gamesource.battleState.utils.buffs.BuffFunction;
 import gamesource.battleState.utils.buffs.LimitBuff;
-
+// 造成伤害减少1/4
 public class Weak extends LimitBuff implements BuffFunction {
 
     public Weak(Role role, int duration) {

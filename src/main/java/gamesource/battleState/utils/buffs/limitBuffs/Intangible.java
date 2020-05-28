@@ -4,7 +4,7 @@ import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
 import gamesource.battleState.utils.buffs.BuffFunction;
 import gamesource.battleState.utils.buffs.LimitBuff;
-
+// 受到伤害减少50%
 public class Intangible extends LimitBuff implements BuffFunction {
     public Intangible(Role role, int duration) {
         super("intangible", "reduce the damage received by 50%", new Picture(), role, duration);

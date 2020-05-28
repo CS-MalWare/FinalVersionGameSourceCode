@@ -2,7 +2,7 @@ package gamesource.battleState.utils.buffs;
 
 import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
-
+// 会随着回合结束而减少一层的buff
 public class LimitBuff extends Buff {
     private int duration;//buff的持续时长
 

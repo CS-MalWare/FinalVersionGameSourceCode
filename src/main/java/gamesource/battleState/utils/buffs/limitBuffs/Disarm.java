@@ -4,10 +4,10 @@ import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
 import gamesource.battleState.utils.buffs.BuffFunction;
 import gamesource.battleState.utils.buffs.LimitBuff;
-
+// 有1/3概率,使得你的造成的伤害变成1
 public class Disarm extends LimitBuff implements BuffFunction {
     public Disarm(Role role, int duration) {
-        super("disarm", "unable to use attack card", new Picture(), role, duration);
+        super("disarm", "have 1/3 chance, to change your attack damage to 1", new Picture(), role, duration);
     }
 
     @Override

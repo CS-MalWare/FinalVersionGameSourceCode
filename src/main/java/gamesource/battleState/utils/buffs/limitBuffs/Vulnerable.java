@@ -4,7 +4,7 @@ import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
 import gamesource.battleState.utils.buffs.BuffFunction;
 import gamesource.battleState.utils.buffs.LimitBuff;
-
+// 收到伤害增加50%
 public class Vulnerable extends LimitBuff implements BuffFunction {
     public Vulnerable(Role role, int duration) {
         super("vulnerable", "increase the damage recieved by 50%", new Picture(), role, duration);

@@ -5,7 +5,7 @@ import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
 import gamesource.battleState.utils.buffs.BuffFunction;
 import gamesource.battleState.utils.buffs.LimitBuff;
-
+// 抽牌数加1
 public class Excite extends LimitBuff implements BuffFunction {
     private int currentDraw;
 

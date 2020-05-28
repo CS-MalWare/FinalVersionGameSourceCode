@@ -4,7 +4,7 @@ import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
 import gamesource.battleState.utils.buffs.BuffFunction;
 import gamesource.battleState.utils.buffs.LimitBuff;
-
+// 获得的格挡减少1/3
 public class Erode extends LimitBuff implements BuffFunction {
     public Erode(Role role, int duration) {
         super("erode", "reduce the block get from cards by 1/3", new Picture(), role, duration);

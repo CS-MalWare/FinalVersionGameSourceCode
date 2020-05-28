@@ -4,7 +4,7 @@ import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
 import gamesource.battleState.utils.buffs.BuffFunction;
 import gamesource.battleState.utils.buffs.LimitBuff;
-
+// 受到攻击时,受到和流血层数相同的真实伤害
 public class Bleeding extends LimitBuff implements BuffFunction {
     public Bleeding(Role role, int duration) {
         super("bleeding", "get x damage when attacked", new Picture(), role, duration);

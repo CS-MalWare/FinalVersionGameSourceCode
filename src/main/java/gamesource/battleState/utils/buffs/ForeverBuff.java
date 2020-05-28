@@ -2,7 +2,7 @@ package gamesource.battleState.utils.buffs;
 
 import gamesource.battleState.character.Role;
 import com.jme3.ui.Picture;
-
+// 每回合结束不会减少层数,只有特定条件才能减少层数的buff
 public class ForeverBuff extends Buff {
     private int times;//部分永久buff有次数限制或者有增加数值（类似增加力量）
 
