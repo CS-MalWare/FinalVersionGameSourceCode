@@ -523,6 +523,7 @@ public class Storage {
             ForthState.canGo = canGo[3];
             FifthState.canGo = canGo[4];
             SixthState.canGo = canGo[5];
+            SeventhState.canGo = canGo[6];
             App.guan = dataJson.getInt("current");
             br.close();
         } catch (FileNotFoundException e) {
@@ -581,7 +582,8 @@ public class Storage {
             tempPath += ThirdState.canGo+"|";
             tempPath += ForthState.canGo+"|";
             tempPath += FifthState.canGo+"|";
-            tempPath += SixthState.canGo;
+            tempPath += SixthState.canGo+"|";
+            tempPath += SeventhState.canGo;
             data += String.format("\"canGo\":\"%s\",\n",tempPath);
             data += String.format("\"current\":\"%d\"", App.guan);
             data += "\n}";
@@ -605,9 +607,7 @@ public class Storage {
             data += "\"deck\":\"false,打击|false,冰魄斩|false,火焰斩|false,撒币|false,光之挥舞|false,裂地斩|false,烈火斩|false,负伤强击|false,格挡|false,格挡|false,格挡|false,格挡|false,格挡|false,魔法盾|false,旋盾|false,治疗\",\n";
             data += "\"gold\":\"0\",\n";
 
-            data += "\"equipments\":\"\",\n";
-            data += "\"canGo\":\"can|can|cannot|cannot|cannot|cannot\"\n";
-            data += "\"current\":\"1\"";
+            data += "\"equipments\":\"\"\n";
             data += "\n}";
             bw.write(data);
             bw.close();
@@ -615,7 +615,7 @@ public class Storage {
             bw = new BufferedWriter(new FileWriter("storageLevel.json"));
             data = "{\n";
             // 这次用这个变量临时存储能进入的关卡
-            data += "\"canGo\":\"can|cannot|cannot|cannot|cannot|cannot\",\n";
+            data += "\"canGo\":\"can|cannot|cannot|cannot|cannot|cannot|cannot\",\n";
             data += "\"current\":\"1\"";
             data += "\n}";
             bw.write(data);
