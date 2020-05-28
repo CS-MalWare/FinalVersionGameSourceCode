@@ -32,12 +32,14 @@ import com.jme3.ui.Picture;
 import gamesource.battleState.character.MainRole;
 import gamesource.battleState.particle.MPParticle;
 import gamesource.util.Storage;
+import org.lwjgl.Sys;
 import truetypefont.TrueTypeFont;
 import truetypefont.TrueTypeKey;
 import truetypefont.TrueTypeLoader;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 // 主角模型在战斗中的模组
 public class LeadingActorState extends BaseAppState {
     private AnimControl animControl;
@@ -121,9 +123,9 @@ public class LeadingActorState extends BaseAppState {
     }
 
     public void initializeHints() {
-        app.getAssetManager().registerLoader(TrueTypeLoader.class,"ttf");
-        TrueTypeKey ttk=new TrueTypeKey("Util/MTCORSVA.TTF",1,32);
-        TrueTypeFont font =(TrueTypeFont)app.getAssetManager().loadAsset(ttk);
+        app.getAssetManager().registerLoader(TrueTypeLoader.class, "ttf");
+        TrueTypeKey ttk = new TrueTypeKey("Util/MTCORSVA.TTF", 1, 32);
+        TrueTypeFont font = (TrueTypeFont) app.getAssetManager().loadAsset(ttk);
         /*hpHint = new BitmapText(fnt, false);
         hpHint.setBox(new Rectangle(-3.9f, 1.6f, 6, 3));
         hpHint.setQueueBucket(RenderQueue.Bucket.Transparent);
@@ -131,9 +133,9 @@ public class LeadingActorState extends BaseAppState {
         hpHint.setColor(ColorRGBA.Red);
         hpHint.setText(String.format("HP: %d/%d", this.target.getHP(), this.target.getTotalHP()));
         rootNode.attachChild(hpHint);*/
-        String content=String.format("HP: %d/%d", this.target.getHP(), this.target.getTotalHP());
-        hpHint=font.getBitmapGeom(content,0,ColorRGBA.Red);
-        hpHint.setLocalTranslation(400,580,0);
+        String content = String.format("HP: %d/%d", this.target.getHP(), this.target.getTotalHP());
+        hpHint = font.getBitmapGeom(content, 0, ColorRGBA.Red);
+        hpHint.setLocalTranslation(400, 580, 0);
         guiNode.attachChild(hpHint);
 
         /*blHint = new BitmapText(fnt, false);
@@ -143,9 +145,9 @@ public class LeadingActorState extends BaseAppState {
         blHint.setColor(ColorRGBA.Blue);
         blHint.setText(String.format("Blocks: %d", this.target.getBlock()));
         rootNode.attachChild(blHint);*/
-        String blockcontent=String.format("Blocks: %d", this.target.getBlock());
-        blHint=font.getBitmapGeom(blockcontent,0,ColorRGBA.Blue);
-        blHint.setLocalTranslation(400,320,0);
+        String blockcontent = String.format("Blocks: %d", this.target.getBlock());
+        blHint = font.getBitmapGeom(blockcontent, 0, ColorRGBA.Blue);
+        blHint.setLocalTranslation(400, 320, 0);
         guiNode.attachChild(blHint);
 
         // 添加MP显示的图片与文字
@@ -173,9 +175,9 @@ public class LeadingActorState extends BaseAppState {
         hpHint.setColor(ColorRGBA.Red);
         hpHint.setText(String.format("HP: %d/%d", this.target.getHP(), this.target.getTotalHP()));
         rootNode.attachChild(hpHint);*/
-        String content=String.format("HP: %d/%d", this.target.getHP(), this.target.getTotalHP());
-        hpHint=font.getBitmapGeom(content,0,ColorRGBA.Red);
-        hpHint.setLocalTranslation(400,580,0);
+        String content = String.format("HP: %d/%d", this.target.getHP(), this.target.getTotalHP());
+        hpHint = font.getBitmapGeom(content, 0, ColorRGBA.Red);
+        hpHint.setLocalTranslation(400, 580, 0);
         guiNode.attachChild(hpHint);
 
         blHint.removeFromParent();
@@ -186,9 +188,9 @@ public class LeadingActorState extends BaseAppState {
         blHint.setColor(ColorRGBA.Blue);
         blHint.setText(String.format("Blocks: %d", this.target.getBlock()));
         rootNode.attachChild(blHint);*/
-        String blockcontent=String.format("Blocks: %d", this.target.getBlock());
-        blHint=font.getBitmapGeom(blockcontent,0,ColorRGBA.Blue);
-        blHint.setLocalTranslation(400,320,0);
+        String blockcontent = String.format("Blocks: %d", this.target.getBlock());
+        blHint = font.getBitmapGeom(blockcontent, 0, ColorRGBA.Blue);
+        blHint.setLocalTranslation(400, 320, 0);
         guiNode.attachChild(blHint);
 
         MpText.removeFromParent();
@@ -290,7 +292,7 @@ public class LeadingActorState extends BaseAppState {
         BitmapFont fnt = app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
         private BitmapText buffDisplay = new BitmapText(fnt, false);//显示的文字
 //        private Geometry buffDisplayBoard = new Geometry("quad", q);//文字后面的版
-
+        private Boolean canExit =false;
 
         /**
          * 键盘输入事件
@@ -311,9 +313,9 @@ public class LeadingActorState extends BaseAppState {
                 if (target != null) {
                     EnemyState.getInstance().removeAction();
 //                    buffDisplayBoard.setLocalTranslation(2, 2, -1);
-                    Material mt = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-                    mt.setColor("Color", ColorRGBA.Brown);
-                    mt.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
+//                    Material mt = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+//                    mt.setColor("Color", ColorRGBA.Brown);
+//                    mt.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
 //                    buffDisplayBoard.setQueueBucket(RenderQueue.Bucket.Transparent);
 //                    buffDisplayBoard.setMaterial(mt);
 //                    rootNode.attachChild(buffDisplayBoard);
@@ -335,11 +337,11 @@ public class LeadingActorState extends BaseAppState {
                     txtB += String.format("Dexterity: %d        ", target.getDexterity());
                     txtB += String.format("Dodge: %d           ", target.getDodge().getTimes());
                     txtB += String.format("Excite: %d          ", target.getStrength());
-                    buffDisplay.setBox(new Rectangle(2, 4.1f, 6, 3));
+                    buffDisplay.setBox(new Rectangle(2, 3.9f, 6, 3));
                     buffDisplay.setQueueBucket(RenderQueue.Bucket.Transparent);
                     buffDisplay.setSize(0.25f);
                     buffDisplay.setText(txtB);
-                    if(!EnemyState.getInstance().lock)
+                    if (!EnemyState.getInstance().lock)
                         rootNode.attachChild(buffDisplay);
                 }
             } else {
@@ -347,7 +349,7 @@ public class LeadingActorState extends BaseAppState {
                 buffDisplay.removeFromParent();
 //                if (buffDisplayBoard != null)
 //                buffDisplayBoard.removeFromParent();
-                if(!EnemyState.getInstance().lock) // 当鼠标没有移动到敌人身上, 锁便不会锁住,允许主角类修改
+                if (!EnemyState.getInstance().lock) // 当鼠标没有移动到敌人身上, 锁便不会锁住,允许主角类修改
                     EnemyState.getInstance().displayAction();
             }
 
@@ -357,6 +359,15 @@ public class LeadingActorState extends BaseAppState {
         public void onMouseButtonEvent(MouseButtonEvent evt) {
             //如果是鼠标按下去
 
+            CollisionResults results = getRootCollision(evt);
+            if (results.size() > 0) {
+                if (canExit&&(results.getClosestCollision().getGeometry().getName().equals("btn")||results.getClosestCollision().getGeometry().getName().equals("gameover"))) {
+                    System.exit(0);
+                }
+                if(results.getClosestCollision().getGeometry().getName().equals("gameover")){
+                    canExit = true;
+                }
+            }
         }
 
         @Override
@@ -395,7 +406,7 @@ public class LeadingActorState extends BaseAppState {
         app.getGuiNode().attachChild(this.guiNode);
     }
 
-    public void end(){
+    public void end() {
         this.MpPic.removeFromParent();
         this.MpText.removeFromParent();
         this.hpHint.removeFromParent();
@@ -404,7 +415,7 @@ public class LeadingActorState extends BaseAppState {
 
     }
 
-    private boolean flag=false;
+    private boolean flag = false;
 
     // 刷新提示和判断是否游戏失败
     @Override
@@ -412,44 +423,52 @@ public class LeadingActorState extends BaseAppState {
         super.update(tpf);
         if (this.target.getHP() <= 0 && !flag) {
             Storage.reset();
-            AudioNode audioNode = new AudioNode(app.getAssetManager(),"Sound/Dead/主角死亡.wav", AudioData.DataType.Buffer);
+            AudioNode audioNode = new AudioNode(app.getAssetManager(), "Sound/Dead/主角死亡.wav", AudioData.DataType.Buffer);
             audioNode.setLooping(false);
             audioNode.setPositional(false);
             audioNode.setVolume(10);
             rootNode.attachChild(audioNode);
             audioNode.playInstance();
-//            BitmapFont fnt = app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
-//            BitmapText word = new BitmapText(fnt, false);//显示的文字
-//            word.setText("Game Over");
-//            word.setSize(1);
-//            word.setLocalTranslation(-2.5f, 0.5f, 0);
-//            Material mat = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
-//            mat.setColor("Color", new ColorRGBA(1f, 1f, 1f, 0.01f));// 镜面反射时，高光的颜色。
-//
-//            // 应用材质。
-//            Geometry geom = new Geometry("结束界面", new Quad(1600, 900));
-//            geom.setMaterial(mat);
-//
-//            // 使物体看起来透明
-//            mat.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
-//            geom.setQueueBucket(RenderQueue.Bucket.Transparent);
-//
-//            geom.center();
-//            rootNode.attachChild(word);
-//            rootNode.attachChild(geom);
-            try {
-                gamesource.initialinterface.Main_test.start_game();
-                System.exit(0);
-            } catch (InterruptedException | IOException e) {
-                e.printStackTrace();
-            }
+            BitmapFont fnt = app.getAssetManager().loadFont("Interface/Fonts/Default.fnt");
+            BitmapText word = new BitmapText(fnt, false);//显示的文字
+            word.setText("Game Over");
+            word.setSize(1);
+            word.setLocalTranslation(-2.5f, 0.5f, 0);
+            Material mat = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+            mat.setColor("Color", new ColorRGBA(1f, 1f, 1f, 0.01f));// 镜面反射时，高光的颜色。
+            BitmapText exitBtn = new BitmapText(fnt, false);
+            exitBtn.setBox(new Rectangle(5f, -1f, 6, 3));
+            exitBtn.setQueueBucket(RenderQueue.Bucket.Transparent);
+            exitBtn.setSize(0.3f);
+            exitBtn.setColor(ColorRGBA.White);
+            exitBtn.setText("EXIT");
+            // 应用材质。
+            Geometry geom = new Geometry("gameover", new Quad(1600, 900));
+            geom.setMaterial(mat);
+
+            // 使物体看起来透明
+            mat.getAdditionalRenderState().setBlendMode(RenderState.BlendMode.Alpha);
+            geom.setQueueBucket(RenderQueue.Bucket.Transparent);
+
+            geom.center();
+
+            Geometry bgBtn = new Geometry("btn", new Quad(1,0.5f));
+            Material mt2 = new Material(app.getAssetManager(), "Common/MatDefs/Misc/Unshaded.j3md");
+            mt2.setColor("Color",ColorRGBA.BlackNoAlpha);
+            bgBtn.setMaterial(mt2);
+            bgBtn.setLocalTranslation(5, -1.5f, 0);
+
+            rootNode.attachChild(word);
+            rootNode.attachChild(geom);
+            rootNode.attachChild(bgBtn);
+            rootNode.attachChild(exitBtn);
             app.getStateManager().detach(app.getStateManager().getState(DecksState.class));
             app.getStateManager().detach(app.getStateManager().getState(HandCardsState.class));
-            flag=true;
+            flag = true;
+
         }
 
     }
-
 
 
     @Override

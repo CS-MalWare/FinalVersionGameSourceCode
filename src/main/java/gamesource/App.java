@@ -51,6 +51,7 @@ public class App extends SimpleApplication {
     ForthState f4;
     FifthState f5;
     SixthState f6;
+    SeventhState f7;
     First t1;
     private AppStateManager state;
     private int shadow = 2048, open = 1, juchi = 4;
@@ -108,7 +109,7 @@ public class App extends SimpleApplication {
                 stateManager.attach(f6);
                 break;
             case 7:
-                SeventhState f7=new SeventhState(shadow,open);
+                f7=new SeventhState(shadow,open);
                 stateManager.attach(f7);
         }
         //stateManager.getState(SecondState.class).setEnabled(false);
@@ -318,9 +319,17 @@ public class App extends SimpleApplication {
                         }
                         break;
                     case 6:
-                        if (FifthState.canGo.equals("can")) {
+                        if (SeventhState.canGo.equals("can")) {
                             stateManager.detach(f6);
-                            f6=new SixthState();
+                            f7=new SeventhState();
+                            stateManager.attach(f7);
+                            guan = 7;
+                        }
+                        break;
+                    case 7:
+                        if (FirstState.canGo.equals("can")) {
+                            stateManager.detach(f7);
+                            f1=new FirstState();
                             stateManager.attach(f1);
                             guan = 1;
                         }
@@ -334,11 +343,11 @@ public class App extends SimpleApplication {
             }else if (world2.equals(name) && isPressed) {
                 switch (guan) {
                     case 1:
-                        if (SixthState.canGo.equals("can")) {
+                        if (SeventhState.canGo.equals("can")) {
                             stateManager.detach(f1);
-                            f6=new SixthState();
-                            stateManager.attach(f6);
-                            guan = 6;
+                            f7=new SeventhState();
+                            stateManager.attach(f7);
+                            guan = 7;
                         }
                         break;
                     case 2:
@@ -381,6 +390,13 @@ public class App extends SimpleApplication {
                             guan = 5;
                         }
                         break;
+                    case 7:
+                        if(SixthState.canGo.equals("can")){
+                            stateManager.detach(f7);
+                            f6 = new SixthState();
+                            stateManager.attach(f6);
+                            guan = 6;
+                        }
                 }
             }
         }
@@ -429,11 +445,11 @@ public class App extends SimpleApplication {
 
     public static void main(String[] args) throws IOException {
         MainRole.getInstance();
-        App app = new App(6, 4096, 1, 1);
+        App app = new App(7, 4096, 1, 1);
         AppSettings settings = new AppSettings(true);
 
         // 这里是导入地图存档的,导入人物属性存档在 MainRole类中
-        //Storage.load();
+//        Storage.load();
 
         settings.setTitle("Cholera");// 标题
         settings.setResolution(1600, 900);// 分辨率
