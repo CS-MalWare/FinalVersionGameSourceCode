@@ -58,7 +58,7 @@ public class WordWrapForTalk extends BaseAppState{
 
         continueButton = window.addChild(new ActionButton(new CallMethodAction("Continue", this, "continueToNext")));
         window.setAlpha(2f);
-        getState(PopupState.class).showPopup(window);
+        app.getGuiNode().attachChild(window);
     }
 
     protected void calculatePreferLocation(){

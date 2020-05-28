@@ -466,7 +466,7 @@ public class FifthState extends BaseAppState {
                         state.attach(wordWrapForTalk);
                         isTalkShow = true;
                     }else if(getStateManager().hasState(wordWrapForTalk) && isTalkShow){
-                        wordWrapForTalk.getStateManager().getState(PopupState.class).closePopup(wordWrapForTalk.getWindow());
+                        app.getGuiNode().detachChild(wordWrapForTalk.getWindow());
                         getStateManager().detach(wordWrapForTalk);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
@@ -489,7 +489,7 @@ public class FifthState extends BaseAppState {
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if(isTalkShow && getStateManager().hasState(talkWithOption)){
-                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
+                        app.getGuiNode().detachChild(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;
@@ -512,7 +512,7 @@ public class FifthState extends BaseAppState {
                         state.attach(talkWithOption);
                         isTalkShow = true;
                     }else if (isTalkShow && getStateManager().hasState(talkWithOption)){
-                        talkWithOption.getStateManager().getState(PopupState.class).closePopup(talkWithOption.getWindow());
+                        app.getGuiNode().detachChild(talkWithOption.getWindow());
                         getStateManager().detach(talkWithOption);
                         app.getFlyByCamera().setDragToRotate(false);
                         isTalkShow = false;

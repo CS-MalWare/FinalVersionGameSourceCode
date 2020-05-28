@@ -87,7 +87,7 @@ public class TalkWithOption extends BaseAppState{
         window.setAlpha(2f);
         
         continueButton = window.addChild(new ActionButton(new CallMethodAction("Continue", this, "continueToNext")));
-        getState(PopupState.class).showPopup(window);
+        app.getGuiNode().attachChild(window);
     }
 
     protected void calculatePreferLocation(){               //calculate prefer location for window
