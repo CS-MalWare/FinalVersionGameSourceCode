@@ -47,7 +47,7 @@ public class start {
             app.start();
         }
     }
-    public  static void main(String[] args){
+    /*public  static void main(String[] args){
         App app = new App(6, 1024, 1, 4);
         AppSettings settings = new AppSettings(true);
 
@@ -65,5 +65,5 @@ public class start {
         //app.setShowSettings(false);
 //        Storage.load();
         app.start();
-    }
+    }*/
 }

@@ -381,17 +381,6 @@ public class ThirdState extends BaseAppState {
                     canmove = 1;
                 }
             }
-            if (map.equals(name) && isPressed) {
-                if (canmove == 1) {
-                    state.detach(input);
-                    major.mouseChange();
-                    canmove = 0;
-                } else {
-                    state.attach(input);
-                    major.mouseChange();
-                    canmove = 1;
-                }
-            }
             if (menu.equals(name) && isPressed) {
                 if (canmove == 1) {
                     state.detach(input);

@@ -975,7 +975,7 @@ public class HandCardsState extends BaseAppState {
         }
     }
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
 //        HandCards a = new HandCards();
 //        double[][] result = a.computePosition(5);
 //        for (double[] x : result) {
@@ -985,5 +985,5 @@ public class HandCardsState extends BaseAppState {
 //            System.out.println();
 //        }
         System.out.println(FastMath.PI / 180 * 3);
-    }
+    }*/
 }

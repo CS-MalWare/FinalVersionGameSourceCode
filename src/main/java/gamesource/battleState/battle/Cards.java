@@ -89,7 +89,7 @@ public class Cards extends SimpleApplication {
         }
     }
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         // 配置参数
         AppSettings settings = new AppSettings(true);
         settings.setTitle("一个方块");// 标题
@@ -100,5 +100,5 @@ public class Cards extends SimpleApplication {
         app.setShowSettings(false);
 
         app.start();
-    }
+    }*/
 }

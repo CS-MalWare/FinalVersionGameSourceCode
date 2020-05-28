@@ -582,17 +582,6 @@ public class SecondState extends BaseAppState {
                     canmove = 1;
                 }
             }
-            if (map.equals(name) && isPressed) {
-                if (canmove == 1) {
-                    state.detach(input);
-                    major.mouseChange();
-                    canmove = 0;
-                } else {
-                    state.attach(input);
-                    major.mouseChange();
-                    canmove = 1;
-                }
-            }
             switch (battle1) {
                 case 0:
                     state.detach(input);
