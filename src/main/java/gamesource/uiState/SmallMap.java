@@ -83,7 +83,7 @@ public class SmallMap extends BaseAppState{
         float x = width - size.getX() - 20;
         float y = size.getY() - 20;
         System.out.println("x: " + x + "  " + "y: " + y);
-        window.setLocalTranslation(x, y, 200);
+        window.setLocalTranslation(x, y, 400);
     }
 
    

@@ -810,6 +810,10 @@ public class BagAppState extends BaseAppState{
         app.getInputManager().deleteMapping(bagString);
     }
 
+    public Container getWindow(){
+        return generalBorder;
+    }
+
     public void exitFight(){
         app.getInputManager().addMapping(bagString, new KeyTrigger(KeyInput.KEY_B));
         app.getInputManager().addListener(new BagListener(), bagString);
