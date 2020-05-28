@@ -176,6 +176,7 @@ public class BagAppState extends BaseAppState{
         progressBar = new ProgressBar("glass");         //初始化血量
         progressBar.getLabel().setText("Health");
         progressBar.setProgressPercent(100);
+        progressBar.getLabel().setColor(new ColorRGBA(1, 0, 0, 1));
         characterInfo.addChild(progressBar, 0);
         
         moneyLabel = characterInfo.addChild(new Label("Money:"), 2);    //显示金钱
