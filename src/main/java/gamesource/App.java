@@ -281,7 +281,7 @@ public class App extends SimpleApplication {
                     case 1:
                         if (SecondState.canGo.equals("can")) {
                             stateManager.detach(f1);
-                            f2=new SecondState();
+                            f2=new SecondState(shadow, open);
                             stateManager.attach(f2);
                             guan = 2;
                         }
@@ -289,7 +289,7 @@ public class App extends SimpleApplication {
                     case 2:
                         if (ThirdState.canGo.equals("can")) {
                             stateManager.detach(f2);
-                            f3=new ThirdState();
+                            f3=new ThirdState(shadow, open);
                             stateManager.attach(f3);
                             guan = 3;
                         }
@@ -297,7 +297,7 @@ public class App extends SimpleApplication {
                     case 3:
                         if (ForthState.canGo.equals("can")) {
                             stateManager.detach(f3);
-                            f4=new ForthState();
+                            f4=new ForthState(shadow, open);
                             stateManager.attach(f4);
                             guan = 4;
                         }
@@ -305,7 +305,7 @@ public class App extends SimpleApplication {
                     case 4:
                         if (FifthState.canGo.equals("can")) {
                             stateManager.detach(f4);
-                            f5=new FifthState();
+                            f5=new FifthState(shadow, open);
                             stateManager.attach(f5);
                             guan = 5;
                         }
@@ -313,7 +313,7 @@ public class App extends SimpleApplication {
                     case 5:
                         if (SixthState.canGo.equals("can")) {
                             stateManager.detach(f5);
-                            f6=new SixthState();
+                            f6=new SixthState(shadow, open);
                             stateManager.attach(f6);
                             guan = 6;
                         }
@@ -321,7 +321,7 @@ public class App extends SimpleApplication {
                     case 6:
                         if (SeventhState.canGo.equals("can")) {
                             stateManager.detach(f6);
-                            f7=new SeventhState();
+                            f7=new SeventhState(shadow, open);
                             stateManager.attach(f7);
                             guan = 7;
                         }
@@ -329,7 +329,7 @@ public class App extends SimpleApplication {
                     case 7:
                         if (FirstState.canGo.equals("can")) {
                             stateManager.detach(f7);
-                            f1=new FirstState();
+                            f1=new FirstState(shadow, open);
                             stateManager.attach(f1);
                             guan = 1;
                         }
@@ -345,7 +345,7 @@ public class App extends SimpleApplication {
                     case 1:
                         if (SeventhState.canGo.equals("can")) {
                             stateManager.detach(f1);
-                            f7=new SeventhState();
+                            f7=new SeventhState(shadow, open);
                             stateManager.attach(f7);
                             guan = 7;
                         }
@@ -353,7 +353,7 @@ public class App extends SimpleApplication {
                     case 2:
                         if (FirstState.canGo.equals("can")) {
                             stateManager.detach(f2);
-                            f1=new FirstState();
+                            f1=new FirstState(shadow, open);
                             stateManager.attach(f1);
                             guan = 1;
                         }
@@ -361,7 +361,7 @@ public class App extends SimpleApplication {
                     case 3:
                         if (SecondState.canGo.equals("can")) {
                             stateManager.detach(f3);
-                            f2=new SecondState();
+                            f2=new SecondState(shadow, open);
                             stateManager.attach(f2);
                             guan = 2;
                         }
@@ -369,7 +369,7 @@ public class App extends SimpleApplication {
                     case 4:
                         if (ThirdState.canGo.equals("can")) {
                             stateManager.detach(f4);
-                            f3=new ThirdState();
+                            f3=new ThirdState(shadow, open);
                             stateManager.attach(f3);
                             guan = 3;
                         }
@@ -377,7 +377,7 @@ public class App extends SimpleApplication {
                     case 5:
                         if (ForthState.canGo.equals("can")) {
                             stateManager.detach(f5);
-                            f4=new ForthState();
+                            f4=new ForthState(shadow, open);
                             stateManager.attach(f4);
                             guan = 4;
                         }
@@ -385,7 +385,7 @@ public class App extends SimpleApplication {
                     case 6:
                         if (FifthState.canGo.equals("can")) {
                             stateManager.detach(f6);
-                            f5=new FifthState();
+                            f5=new FifthState(shadow, open);
                             stateManager.attach(f5);
                             guan = 5;
                         }
@@ -393,7 +393,7 @@ public class App extends SimpleApplication {
                     case 7:
                         if(SixthState.canGo.equals("can")){
                             stateManager.detach(f7);
-                            f6 = new SixthState();
+                            f6 = new SixthState(shadow, open);
                             stateManager.attach(f6);
                             guan = 6;
                         }
