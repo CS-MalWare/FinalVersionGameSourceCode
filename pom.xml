@@ -137,13 +137,6 @@
             <version>3.2.4-stable</version>
         </dependency>
 
-
-
-        <!-- <dependency>
-            <groupId>org.jmonkeyengine</groupId>
-            <artifactId>jme3-jogg</artifactId>
-        </dependency> -->
-
         <dependency>
             <groupId>org</groupId>
             <artifactId>jsfml</artifactId>
@@ -155,6 +148,13 @@
             <artifactId>truetypefont</artifactId>
             <version>1.2.2</version>
         </dependency>
+
+
+        <!-- <dependency>
+            <groupId>org.jmonkeyengine</groupId>
+            <artifactId>jme3-jogg</artifactId>
+        </dependency> -->
+
 
         <dependency>
             <groupId>org.jmonkeyengine</groupId>

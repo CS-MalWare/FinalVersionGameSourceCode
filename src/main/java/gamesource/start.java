@@ -18,7 +18,7 @@ public class start {
 
             settings.setTitle("Cholera");// 标题
             settings.setResolution(1920, 1080);// 分辨率
-            settings.setFrameRate(frame);//限制fps
+            //settings.setFrameRate(frame);//限制fps
        settings.setIcons(new BufferedImage[]{
                ImageIO.read(App.class.getResource( "/Map/icon.png" ))});
             app.setSettings(settings);
@@ -36,7 +36,7 @@ public class start {
 
             settings.setTitle("Cholera");// 标题
             settings.setResolution(1600, 900);// 分辨率
-            settings.setFrameRate(frame);//限制fps
+            //settings.setFrameRate(frame);//限制fps
        settings.setIcons(new BufferedImage[]{
                ImageIO.read(App.class.getResource( "/Map/icon.png" ))});
             app.setSettings(settings);

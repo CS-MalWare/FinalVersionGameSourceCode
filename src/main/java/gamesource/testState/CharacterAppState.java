@@ -190,7 +190,7 @@ public class CharacterAppState extends BaseAppState implements AnimEventListener
      */
     public void jump() {
         if (player.onGround()) {
-            player.jump();
+            //player.jump();
 
             animChannel.setAnim("jump");
             animChannel.setLoopMode(LoopMode.DontLoop);
