@@ -24,7 +24,7 @@ public class start {
             settings.setFullscreen(full);
             app.setShowSettings(false);
             //app.setShowSettings(false);
-//        Storage.load();
+        Storage.load();
             app.start();
         }else {
             App app = new App(state, shadow, open, juchi);
@@ -41,7 +41,7 @@ public class start {
             settings.setFullscreen(false);
             app.setShowSettings(false);
             //app.setShowSettings(false);
-//        Storage.load();
+        Storage.load();
             app.start();
         }
     }
