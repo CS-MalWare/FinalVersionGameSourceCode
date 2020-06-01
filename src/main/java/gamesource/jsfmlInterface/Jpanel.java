@@ -26,7 +26,7 @@ public class Jpanel extends JFrame implements ActionListener {
         for(int i=0;i<4;i++){
             xuwan[i]=false;
         }
-        setTitle("start");
+        setTitle("Start");
         setSize(700,250);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -218,6 +218,7 @@ public class Jpanel extends JFrame implements ActionListener {
                 }
                 if(!FirstState.canGo.equals("can")){
                     state1.setSelected(false);
+                    JOptionPane.showMessageDialog(null, "This map you didn't open.", "warning", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -236,6 +237,7 @@ public class Jpanel extends JFrame implements ActionListener {
                     xuwan[3]=true;
                 }
                 if(!SecondState.canGo.equals("can")){
+                    JOptionPane.showMessageDialog(null, "This map you didn't open.", "warning", JOptionPane.ERROR_MESSAGE);
                     state2.setSelected(false);
                     State=1;
                     xuwan[3]=true;
@@ -257,6 +259,7 @@ public class Jpanel extends JFrame implements ActionListener {
                     xuwan[3]=true;
                 }
                 if(!ThirdState.canGo.equals("can")){
+                    JOptionPane.showMessageDialog(null, "This map you didn't open.", "warning", JOptionPane.ERROR_MESSAGE);
                     state3.setSelected(false);
                     State=1;
                     xuwan[3]=true;
@@ -278,6 +281,7 @@ public class Jpanel extends JFrame implements ActionListener {
                     xuwan[3]=true;
                 }
                 if(!ForthState.canGo.equals("can")){
+                    JOptionPane.showMessageDialog(null, "This map you didn't open.", "warning", JOptionPane.ERROR_MESSAGE);
                     state4.setSelected(false);
                     State=1;
                     xuwan[3]=true;
@@ -299,6 +303,7 @@ public class Jpanel extends JFrame implements ActionListener {
                     xuwan[3]=true;
                 }
                 if(!FifthState.canGo.equals("can")){
+                    JOptionPane.showMessageDialog(null, "This map you didn't open.", "warning", JOptionPane.ERROR_MESSAGE);
                     state5.setSelected(false);
                     State=1;
                     xuwan[3]=true;
@@ -320,6 +325,7 @@ public class Jpanel extends JFrame implements ActionListener {
                     xuwan[3]=true;
                 }
                 if(!SixthState.canGo.equals("can")){
+                    JOptionPane.showMessageDialog(null, "This map you didn't open.", "warning", JOptionPane.ERROR_MESSAGE);
                     state6.setSelected(false);
                     State=1;
                     xuwan[3]=true;
@@ -401,7 +407,6 @@ public class Jpanel extends JFrame implements ActionListener {
         });
         jp5.add(start);
         jp5.add(newGame);
-        jp4.add(state1);
         jp.add(jp5);
 
         add(jp);
