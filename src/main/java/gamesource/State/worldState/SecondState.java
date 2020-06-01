@@ -54,7 +54,7 @@ import gamesource.util.WordWrapForTalk;
 import java.util.ArrayList;
 
 public class SecondState extends BaseAppState {
-    public static String canGo = "can"; // 这是用于存档的变量, 大佬们不要改没了
+    public static String canGo = "cannot"; // 这是用于存档的变量, 大佬们不要改没了
     public final static String talk = "TALK";
     public final static Trigger TALK = new KeyTrigger(KeyInput.KEY_N);
     public final static String change = "CHANGE";

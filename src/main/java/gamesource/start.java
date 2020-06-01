@@ -13,8 +13,7 @@ public class start {
             App app = new App(state, shadow, open, juchi);
             AppSettings settings = new AppSettings(true);
 
-            // 这里是导入地图存档的,导入人物属性存档在 MainRole类中
-            Storage.load();
+
 
             settings.setTitle("Cholera");// 标题
             settings.setResolution(1920, 1080);// 分辨率
@@ -31,8 +30,7 @@ public class start {
             App app = new App(state, shadow, open, juchi);
             AppSettings settings = new AppSettings(true);
 
-            // 这里是导入地图存档的,导入人物属性存档在 MainRole类中
-            Storage.load();
+
 
             settings.setTitle("Cholera");// 标题
             settings.setResolution(1600, 900);// 分辨率

@@ -1,6 +1,8 @@
 package gamesource.jsfmlInterface;
 
+import gamesource.State.worldState.*;
 import gamesource.start;
+import gamesource.util.Storage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +13,7 @@ import java.io.IOException;
 public class Jpanel extends JFrame implements ActionListener {
     JRadioButton full,half,state1,state2,state3,state4,state5,state6,x1,x4,x8,x16,noneshadow,lowshadow,normalshadow,highshadow;
     JButton start;
+    JButton newGame;
     boolean Full=false,shadow=false;
     int State=1;
     int alising=1;
@@ -18,11 +21,13 @@ public class Jpanel extends JFrame implements ActionListener {
     boolean xuwan[]=new boolean[4];
     gamesource.start s1=new start();
     public Jpanel(){
+        // 这里是导入地图存档的,导入人物属性存档在 MainRole类中
+        Storage.load();
         for(int i=0;i<4;i++){
             xuwan[i]=false;
         }
         setTitle("start");
-        setSize(500,250);
+        setSize(700,250);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
@@ -196,7 +201,7 @@ public class Jpanel extends JFrame implements ActionListener {
         jp.add(jp3);
 
         JPanel jp4=new JPanel();
-        JLabel jl4=new JLabel("Level: ");
+        JLabel jl4=new JLabel("Choose a level or Start a new game: ");
         state1=new JRadioButton("level1");
         state1.addActionListener(new ActionListener() {
 
@@ -210,6 +215,9 @@ public class Jpanel extends JFrame implements ActionListener {
                     state6.setSelected(false);
                     State=1;
                     xuwan[3]=true;
+                }
+                if(!FirstState.canGo.equals("can")){
+                    state1.setSelected(false);
                 }
             }
         });
@@ -225,6 +233,11 @@ public class Jpanel extends JFrame implements ActionListener {
                     state5.setSelected(false);
                     state6.setSelected(false);
                     State=2;
+                    xuwan[3]=true;
+                }
+                if(!SecondState.canGo.equals("can")){
+                    state2.setSelected(false);
+                    State=1;
                     xuwan[3]=true;
                 }
             }
@@ -243,6 +256,11 @@ public class Jpanel extends JFrame implements ActionListener {
                     State=3;
                     xuwan[3]=true;
                 }
+                if(!ThirdState.canGo.equals("can")){
+                    state3.setSelected(false);
+                    State=1;
+                    xuwan[3]=true;
+                }
             }
         });
         state4=new JRadioButton("level4");
@@ -257,6 +275,11 @@ public class Jpanel extends JFrame implements ActionListener {
                     state5.setSelected(false);
                     state6.setSelected(false);
                     State=4;
+                    xuwan[3]=true;
+                }
+                if(!ForthState.canGo.equals("can")){
+                    state4.setSelected(false);
+                    State=1;
                     xuwan[3]=true;
                 }
             }
@@ -275,6 +298,11 @@ public class Jpanel extends JFrame implements ActionListener {
                     State=5;
                     xuwan[3]=true;
                 }
+                if(!FifthState.canGo.equals("can")){
+                    state5.setSelected(false);
+                    State=1;
+                    xuwan[3]=true;
+                }
             }
         });
         state6=new JRadioButton("level6");
@@ -289,6 +317,11 @@ public class Jpanel extends JFrame implements ActionListener {
                     state5.setSelected(false);
                     state2.setSelected(false);
                     State=6;
+                    xuwan[3]=true;
+                }
+                if(!SixthState.canGo.equals("can")){
+                    state6.setSelected(false);
+                    State=1;
                     xuwan[3]=true;
                 }
             }
@@ -334,7 +367,40 @@ public class Jpanel extends JFrame implements ActionListener {
                 }
             }
         });
+        newGame=new JButton("NEW GAME");
+        newGame.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Storage.reset();
+                boolean xu=true;
+                for(int i=0;i<4;i++){
+                    if(xuwan[i]=false&&i!=3)
+                        xu=false;
+                }
+                if(xu){
+                    if(shadow==true) {
+                        try {
+                            setVisible(false);
+                            //dispose();
+                            s1.Start(0,State,sha,1,alising,Full);
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                    }else{
+                        try {
+                            setVisible(false);
+                            //dispose();
+                            s1.Start(0,State,sha,0,alising,Full);
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                }
+            }
+        });
         jp5.add(start);
+        jp5.add(newGame);
         jp4.add(state1);
         jp.add(jp5);
 
