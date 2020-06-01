@@ -355,16 +355,16 @@ public class Jpanel extends JFrame implements ActionListener {
                 if(xu){
                     if(shadow==true) {
                         try {
-                            setVisible(false);
-                            //dispose();
+                            //setVisible(false);
+                            dispose();
                             s1.Start(0,State,sha,1,alising,Full);
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
                     }else{
                         try {
-                            setVisible(false);
-                            //dispose();
+                            //setVisible(false);
+                            dispose();
                             s1.Start(0,State,sha,0,alising,Full);
                         } catch (IOException ex) {
                             ex.printStackTrace();
@@ -387,16 +387,16 @@ public class Jpanel extends JFrame implements ActionListener {
                 if(xu){
                     if(shadow==true) {
                         try {
-                            setVisible(false);
-                            //dispose();
+                            //setVisible(false);
+                            dispose();
                             s1.Start(0,State,sha,1,alising,Full);
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
                     }else{
                         try {
-                            setVisible(false);
-                            //dispose();
+                            //setVisible(false);
+                            dispose();
                             s1.Start(0,State,sha,0,alising,Full);
                         } catch (IOException ex) {
                             ex.printStackTrace();
