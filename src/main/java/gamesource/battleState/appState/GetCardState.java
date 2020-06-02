@@ -392,6 +392,7 @@ public class GetCardState extends BaseAppState {
 
     @Override
     protected void onEnable() {
+        Storage.save();
         canStorage = true;
 //        app.getFlyByCamera().setDragToRotate(false);
         app.getStateManager().getState(MajorActor.class).mouseChange();
@@ -433,7 +434,7 @@ public class GetCardState extends BaseAppState {
         MainRole.getInstance().getGold(getGoldCountAfterThisBattle);
 //        // TODO 通过完善宝箱获取卡来修复这个bug
 //        if (canStorage)
-            Storage.save();
+        Storage.save();
         this.rootNode.removeFromParent();
         app.getInputManager().removeRawInputListener(mril);
         app.getStateManager().detach(app.getStateManager().getState(BattleState.class));
