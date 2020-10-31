@@ -1,37 +1,44 @@
 # NewMalware
 
-#### 介绍
+### Description
 this is our game, our youth, our try.
 
-#### 软件架构
-软件架构说明
+### Software Architecture
+
+This project is based on the java 1.8, most of the modules of this program are implemented by JMonkeyEngine,
+but also, the initial interface is written by JSFML(Simple and Fast Multimedia Library for Java), the JSFML 
+part cannot run on the Linux or Mac os, but other parts work normally on the other operation system.
+
+The whole project started at the Sep 2019, and finished at Jun 2020, there are totally six members in this 
+team.
+
+In the Apr 2020, we built this new repository, since the old one was full (all models were added into the old 
+repository), we created this and remove all models from gitee, so this project can not run directly in here, 
+ **If anyone want to run this game, please cantact me and I'd like to provide the entire program.** 
+![game logo](https://images.gitee.com/uploads/images/2020/1031/230835_811516a9_7420705.png "图片1.png")
+![team logo](https://images.gitee.com/uploads/images/2020/1031/230932_20139bd4_7420705.png "icon.png")
+
+### Brief introduction of this program
+
+These are the screenshots of the slides.
+U can find integrated slides in the initial directory.
+![输入图片说明](https://images.gitee.com/uploads/images/2020/1031/232504_5843df32_7420705.png "屏幕截图 2020-10-31 231842.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/1031/232518_335a2333_7420705.png "屏幕截图 2020-10-31 231910.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/1031/232528_273f85c7_7420705.png "屏幕截图 2020-10-31 231931.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/1031/232537_1455db0a_7420705.png "屏幕截图 2020-10-31 231950.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/1031/232549_3c4b259f_7420705.png "屏幕截图 2020-10-31 232007.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/1031/232600_2857b099_7420705.png "屏幕截图 2020-10-31 232030.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/1031/232610_adbc26d7_7420705.png "屏幕截图 2020-10-31 232122.png")
 
 
-#### 安装教程
+### Effect pictures of game
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+![first scene](https://images.gitee.com/uploads/images/2020/1031/221728_8843eb83_7420705.png "first.png")
+![second scene](https://images.gitee.com/uploads/images/2020/1031/221747_499fbdab_7420705.png "second.png")
+![third scene](https://images.gitee.com/uploads/images/2020/1031/222417_d99c095c_7420705.png "third.png")
+![forth scene](https://images.gitee.com/uploads/images/2020/1031/222650_6559e4dd_7420705.png "forth1.png")
+![fifth scene](https://images.gitee.com/uploads/images/2020/1031/222710_d98059c7_7420705.png "fifth.png")
+![sixth scene](https://images.gitee.com/uploads/images/2020/1031/222727_6f961e57_7420705.png "sixth.png")
 
 
-#### 码云特技
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
