@@ -22,6 +22,7 @@ repository), we created this and remove all models from gitee, so this project c
 
 These are the screenshots of the slides.
 U can find integrated slides in the initial directory.
+The file name is GP group2.
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/1031/232504_5843df32_7420705.png "屏幕截图 2020-10-31 231842.png")
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/1031/232518_335a2333_7420705.png "屏幕截图 2020-10-31 231910.png")
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/1031/232528_273f85c7_7420705.png "屏幕截图 2020-10-31 231931.png")
