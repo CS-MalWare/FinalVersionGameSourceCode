@@ -1,9 +1,9 @@
 # NewMalware
 
-#### Description
+### Description
 this is our game, our youth, our try.
 
-#### Software Architecture
+### Software Architecture
 
 this project is based on the java 1.8, most of the modules of this program are implemented by JMonkeyEngine,
 but also, the initial interface is written by JSFML(Simple and Fast Multimedia Library for Java), the JSFML 
@@ -16,7 +16,7 @@ in the Apr 2020, we built this new repository, since the old one was full (all m
 repository), we created this and remove all models from gitee, so this project can not run directly in here, 
  **if anyone want to run this game, please cantact me and I'd like to provide the entire program.** 
 
-#### effect picture of game
+### effect picture of game
 
 ![first scene](https://images.gitee.com/uploads/images/2020/1031/221728_8843eb83_7420705.png "first.png")
 ![second scene](https://images.gitee.com/uploads/images/2020/1031/221747_499fbdab_7420705.png "second.png")
@@ -26,13 +26,13 @@ repository), we created this and remove all models from gitee, so this project c
 ![sixth scene](https://images.gitee.com/uploads/images/2020/1031/222727_6f961e57_7420705.png "sixth.png")
 
 
-#### Instructions
+### Instructions
 
 1.  xxxx
 2.  xxxx
 3.  xxxx
 
-#### Contribution
+### Contribution
 
 1.  Fork the repository
 2.  Create Feat_xxx branch
@@ -40,7 +40,7 @@ repository), we created this and remove all models from gitee, so this project c
 4.  Create Pull Request
 
 
-#### Gitee Feature
+### Gitee Feature
 
 1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
 2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
