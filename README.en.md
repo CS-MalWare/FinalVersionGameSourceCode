@@ -18,13 +18,12 @@ repository), we created this and remove all models from gitee, so this project c
 
 #### effect picture of game
 
-![first scene](https://images.gitee.com/uploads/images/2020/1031/214537_5eb51895_7420705.png "第一个.png")
-![second scene](https://images.gitee.com/uploads/images/2020/1031/214628_246dbc1f_7420705.png "第二个.png")
-![third scene](https://images.gitee.com/uploads/images/2020/1031/214641_3f979127_7420705.png "第三个.png")
-![forth scene](https://images.gitee.com/uploads/images/2020/1031/214802_f07ece01_7420705.png "第四个.png")
-![fifth scene](https://images.gitee.com/uploads/images/2020/1031/214817_f1dff783_7420705.png "第五个.png")
-![sixth scene](https://images.gitee.com/uploads/images/2020/1031/214833_1945929c_7420705.png "第六个.png")
-
+![first scene](https://images.gitee.com/uploads/images/2020/1031/221728_8843eb83_7420705.png "first.png")
+![second scene](https://images.gitee.com/uploads/images/2020/1031/221747_499fbdab_7420705.png "second.png")
+![third scene](https://images.gitee.com/uploads/images/2020/1031/222417_d99c095c_7420705.png "third.png")
+![forth scene](https://images.gitee.com/uploads/images/2020/1031/222650_6559e4dd_7420705.png "forth1.png")
+![fifth scene](https://images.gitee.com/uploads/images/2020/1031/222710_d98059c7_7420705.png "fifth.png")
+![sixth scene](https://images.gitee.com/uploads/images/2020/1031/222727_6f961e57_7420705.png "sixth.png")
 
 
 #### Instructions
