@@ -14,7 +14,7 @@ team.
 
 In the Apr 2020, we built this new repository, since the old one was full (all models were added into the old 
 repository), we created this and remove all models from gitee, so this project can not run directly in here, 
- **If anyone want to run this game, please cantact me and I'd like to provide the entire program.** 
+ **If anyone want to run this game, please cantact me and I'd like to provide the entire program.**   
 ![game logo](https://images.gitee.com/uploads/images/2020/1031/230835_811516a9_7420705.png "图片1.png")
 ![team logo](https://images.gitee.com/uploads/images/2020/1031/230932_20139bd4_7420705.png "icon.png")
 
